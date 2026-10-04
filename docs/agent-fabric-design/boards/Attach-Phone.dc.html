@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Attachments on iPhone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--onac:var(--k5);--font:'Hanken Grotesk',system-ui,sans-serif;--r:12px;--rb:10px;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.af{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-bad{color:var(--bad);background:var(--badbg)}
+.p-bad i{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--rb);border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--font);cursor:pointer;white-space:nowrap}
+.btn.sm{height:36px;padding:0 14px;font-size:13px}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.dng{color:var(--bad);border-color:var(--bad)}
+.dis{background:var(--sf2);color:var(--ink3)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.chip.on{background:var(--ac2);color:var(--acd);font-weight:600}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.nv{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:8px;color:var(--ink2);font-weight:600;font-size:13px}
+.nv.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.tr{display:grid;align-items:center;padding:11px 16px;border-top:1px solid var(--ln);font-size:13px;gap:12px}
+.th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-top:0;padding-top:12px;padding-bottom:8px}
+.seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.seg span{flex:1;min-width:64px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.tg.on{background:var(--ac)}
+.tg.on::after{left:21px;background:var(--onac)}
+.ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.ctl:first-child{border-top:0}
+.val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.opt{display:flex;gap:12px;padding:14px;border:1px solid var(--ln);border-radius:var(--r);background:var(--sf);align-items:flex-start}
+.opt.on{border-color:var(--ac);background:var(--ac2)}
+.rd{width:20px;height:20px;border-radius:10px;border:2px solid var(--ink3);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.opt.on .rd{border-color:var(--ac)}
+.opt.on .rd span{width:10px;height:10px;border-radius:5px;background:var(--ac)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.kv:first-child{border-top:0}
+.kv span:first-child{color:var(--ink3)}
+.kv span:last-child{font-weight:600;text-align:right}
+.li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.li:first-child{border-top:0}
+.mk{border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.sk{background:var(--sf2);border-radius:6px}
+.row{display:flex;align-items:center;gap:10px}
+.col{display:flex;flex-direction:column}
+.ph{border:1px dashed var(--ink3);border-radius:6px;padding:2px 8px;color:var(--ink3);font-size:12px;font-weight:600}
+
+
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:390px;height:844px;display:flex;flex-direction:column">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+
+<div style="flex:1;padding:54px 16px 0;display:flex;flex-direction:column;gap:12px"><div class="row" style="height:44px"><span class="t3" style="flex:1;text-align:center">Product</span></div><span class="sk" style="height:60px;width:75%;border-radius:16px"></span><span class="sk" style="height:84px;width:85%;border-radius:16px;align-self:flex-end;background:var(--ac2)"></span><span class="sk" style="height:60px;width:65%;border-radius:16px"></span></div>
+<div style="position:absolute;inset:0;background:rgba(10,16,22,.45)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--sf);border-radius:20px 20px 0 0;padding:10px 20px 36px;display:flex;flex-direction:column;gap:14px">
+  <span style="width:40px;height:5px;border-radius:3px;background:var(--ln);align-self:center"></span>
+  <div class="t2">Attach to this task</div>
+  <div class="row" style="align-items:flex-start"><div class="col" style="align-items:center;gap:6px;flex:1"><span style="width:56px;height:56px;border-radius:16px;background:var(--sf2);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M9 9.5a1 1 0 1 0 0 .01"/></svg></span><span style="font-size:12px;font-weight:600">Photos</span></div><div class="col" style="align-items:center;gap:6px;flex:1"><span style="width:56px;height:56px;border-radius:16px;background:var(--sf2);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M4 8h4l2-3h4l2 3h4v11H4zM12 11a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></span><span style="font-size:12px;font-weight:600">Camera</span></div><div class="col" style="align-items:center;gap:6px;flex:1"><span style="width:56px;height:56px;border-radius:16px;background:var(--sf2);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M4 4h10l6 6v10H4z"/></svg></span><span style="font-size:12px;font-weight:600">Files</span></div><div class="col" style="align-items:center;gap:6px;flex:1"><span style="width:56px;height:56px;border-radius:16px;background:var(--sf2);display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></span><span style="font-size:12px;font-weight:600">Space files</span></div></div>
+  <div class="card row" style="padding:12px 14px;height:48px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1"/></svg><span style="flex:1;font-weight:600">Add a link</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M9 6l6 6-6 6"/></svg></div>
+  <div class="sub" style="line-height:1.45">Attachments are available to this task only. They are not added to Knowledge unless you choose to save them.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

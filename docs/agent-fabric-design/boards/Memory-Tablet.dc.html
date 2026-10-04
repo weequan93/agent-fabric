@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Knowledge on iPad</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k26:#E2B5B2;--k31:#C5CFF5;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.dng{color:var(--bad);border-color:var(--k26)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.rail{width:84px;flex:none;background:var(--sf2);border-right:1px solid var(--ln);padding:32px 6px 16px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.li{padding:12px 14px;border-radius:12px;display:flex;flex-direction:column;gap:4px;min-height:72px;border:1px solid transparent}
+.li.on{background:var(--ac2);border-color:var(--k31)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--ln);font-size:14px}
+.kv:first-of-type{border-top:0}
+.kv span:first-child{color:var(--ink3)}
+.kv span:last-child{font-weight:600;text-align:right}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k26:#5C2A2C;--k31:#2E3A5C;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:1194px;height:834px;display:flex">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <nav class="rail" aria-label="Primary">
+    <a class="rb"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a class="rb"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a>
+    <a class="rb"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox</a>
+    <a class="rb on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4 4 4 0 0 0-3 6 4 4 0 0 0 4 6h6a4 4 0 0 0 4-6 4 4 0 0 0-3-6 4 4 0 0 0-4-4z"/></svg>Knowledge</a>
+  </nav>
+
+  <section style="width:400px;flex:none;padding:32px 16px 0;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--ln)">
+    <h1 class="t1" style="padding:0 4px">Knowledge</h1>
+    <div style="display:flex;gap:8px"><span class="chip" style="background:var(--ac2);color:var(--acd)">All</span><span class="chip">Saved here</span><span class="chip">Pending review</span></div>
+    <div class="li on"><div style="display:flex;align-items:center;gap:8px"><span class="t3" style="flex:1">Launch review owners</span><span class="pill p-ok"><i></i>Saved here</span></div><div class="sub">Product Space</div></div>
+    <div class="li"><div style="display:flex;align-items:center;gap:8px"><span class="t3" style="flex:1">Prefers weekly summaries</span><span class="pill p-wait"><i></i>Pending review</span></div><div class="sub">Suggested by the agent</div></div>
+    <div class="li"><div style="display:flex;align-items:center;gap:8px"><span class="t3" style="flex:1">Draft pricing note</span><span class="pill p-idle"><i></i>Not saved</span></div><div class="sub">This task only</div></div>
+    <div class="li"><div style="display:flex;align-items:center;gap:8px"><span class="t3" style="flex:1">Brand voice guide</span><span class="pill p-ok"><i></i>Saved here</span></div><div class="sub">Product Space · from Files</div></div>
+  </section>
+
+  <main style="flex:1;min-width:0;padding:32px 36px 0;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px"><h2 class="t1" style="font-size:24px">Launch review owners</h2><span class="pill p-ok"><i></i>Saved here</span></div>
+    <div class="card" style="padding:6px 18px">
+      <div class="kv"><span>Source</span><span>Product chat</span></div>
+      <div class="kv"><span>Author</span><span>Priya</span></div>
+      <div class="kv"><span>Scope</span><span>Product Space only</span></div>
+      <div class="kv"><span>Last verified</span><span>Not verified yet</span></div>
+      <div class="kv"><span>Expires</span><span>Review when owners change</span></div>
+    </div>
+    <div class="card" style="padding:14px 18px"><div class="lbl">History</div><div class="sub" style="margin-top:6px;line-height:1.5">Created from a chat message by Priya. Accepted by Priya. No later changes.</div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn">Correct</button><button class="btn">Supersede</button><button class="btn dng">Forget</button><button class="btn">Explain context</button></div>
+    <div data-fill class="card" style="padding:6px 16px;margin-top:6px"><div class="lbl" style="padding:10px 0 2px">Where it was recalled</div><div class="kv"><span>Weekly metrics digest</span><span>Used on Monday</span></div><div class="kv"><span>Launch dashboard plan</span><span>Used yesterday</span></div><div class="kv"><span>Other Spaces</span><span>Never. Scope is Product Space only</span></div></div>
+    <div class="sub">Forgetting removes it from future recall. Results that already used it keep a note that the source was forgotten.</div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1194,"height":834}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

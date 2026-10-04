@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Plan on iPhone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.seg span{flex:1;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.li{display:flex;gap:10px;align-items:flex-start;padding:4px 0;border-top:1px solid var(--ln);font-size:13px}
+.li:first-of-type{border-top:0}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:390px;height:844px;display:flex;flex-direction:column">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <div style="flex:1;overflow:hidden;padding:54px 16px 0;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;height:44px"><a href="Chat-Phone.dc.html" class="btn ghost" style="padding:0;color:var(--ac)">Back</a><span class="t3" style="flex:1;text-align:center">Plan</span><span class="chip">Version 2</span></div>
+    <div class="seg" role="tablist" aria-label="Intent"><span class="{{ sc0_0 }}" onClick="{{ sf0_0 }}">Ask</span><span class="{{ sc0_1 }}" onClick="{{ sf0_1 }}" role="tab">Plan</span><span class="{{ sc0_2 }}" onClick="{{ sf0_2 }}">Act</span></div>
+
+    <div class="card" style="padding:12px 14px"><span class="lbl">Goal</span><div class="t2" style="margin-top:2px">Launch dashboard for the Q3 review</div></div>
+
+    <div class="card" style="padding:12px 14px"><span class="lbl">Assumptions</span>
+      <div class="li" style="margin-top:4px"><span class="sub">·</span><span>Data comes from the files in Product.</span></div>
+      <div class="li"><span class="sub">·</span><span>Only Product members will see it.</span></div>
+      <div class="li"><span class="sub">·</span><span>No external publishing is part of this plan.</span></div>
+    </div>
+
+    <div class="card" style="padding:12px 14px"><span class="lbl">Steps</span>
+      <div class="li" style="margin-top:4px"><span class="n">1</span><span>Read requirements and the three findings</span></div>
+      <div class="li"><span class="n">2</span><span>Draft the dashboard layout</span></div>
+      <div class="li"><span class="n">3</span><span>Run checks on the draft</span></div>
+      <div class="li"><span class="n">4</span><span>Prepare it for review. You decide on delivery.</span></div>
+    </div>
+
+    <div class="card" style="padding:10px 14px"><div class="lbl">Resources</div><div class="sub" style="margin-top:2px">Product files · Product computer · GitHub, read only</div><div style="margin-top:6px;color:var(--ink2)"><b>Cost not estimated yet.</b> It appears on the task card before anything runs.</div></div>
+  </div>
+
+  <div style="background:var(--sf);border-top:1px solid var(--ln);padding:12px 16px 34px;display:flex;flex-direction:column;gap:8px">
+    <a href="Envelope-Phone.dc.html" class="btn pri" style="width:100%">Start as task (Act)</a>
+    <a href="Chat-Phone.dc.html" class="btn" style="width:100%">Revise plan</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false, seg0: 1 };
+}
+renderVals() {
+const s = this.state;
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),
+sc0_0: s.seg0 === 0 ? 'on' : '',
+sf0_0: () => this.setState({ seg0: 0 }),
+sc0_1: s.seg0 === 1 ? 'on' : '',
+sf0_1: () => this.setState({ seg0: 1 }),
+sc0_2: s.seg0 === 2 ? 'on' : '',
+sf0_2: () => this.setState({ seg0: 2 })
+};
+}
+}
+</script>
+</body>
+</html>

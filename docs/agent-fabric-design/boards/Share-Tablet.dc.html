@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share to a Space on iPad portrait</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-bad{color:var(--bad);background:var(--badbg)}
+.p-bad i{border-radius:1px;transform:rotate(45deg)}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.seg{display:inline-flex;background:var(--sf2);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:none;font:600 13px 'Hanken Grotesk',system-ui,sans-serif;color:var(--ink2);height:40px;padding:0 20px;border-radius:8px;cursor:pointer}
+.seg .on{background:var(--sf);color:var(--ink);box-shadow:0 1px 2px rgba(17,26,34,.14)}
+.av{width:32px;height:32px;border-radius:50%;background:var(--ac2);color:var(--acd);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.rail{width:100%;height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--ink3);font-size:11px;font-weight:600;position:relative;border-radius:12px}
+.rail.on{background:var(--ac2);color:var(--acd)}
+.utab{height:44px;padding:0 18px;display:flex;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent}
+.utab.on{color:var(--ac);border-color:var(--ac)}
+.me{background:var(--ac);color:var(--onac);border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:70%;align-self:flex-end}
+.kv{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid var(--ln)}
+.kv .k{color:var(--ink3);font-size:12px}
+.kv .v{font-weight:500}
+.shx .btn,.shx .card,.shx .chip,.shx .ghost,.shx .ic,.shx .lbl,.shx .li,.shx .mk,.shx .p-ok,.shx .p-wait,.shx .pill,.shx .pri,.shx .sub,.shx .t1,.shx .t2,.shx .t3{all:revert}
+.shx .btn,.shx .card,.shx .chip,.shx .ghost,.shx .ic,.shx .lbl,.shx .li,.shx .mk,.shx .p-ok,.shx .p-wait,.shx .pill,.shx .pri,.shx .sub,.shx .t1,.shx .t2,.shx .t3{box-sizing:border-box}
+.shx *{box-sizing:border-box}
+.shx .card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.shx .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.shx .t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.shx .t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.shx .t3{font-size:14px;font-weight:600;margin:0}
+.shx .sub{color:var(--ink3);font-size:13px}
+.shx .pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.shx .pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.shx .p-wait{color:var(--wait);background:var(--waitbg)}
+.shx .p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.shx .p-ok{color:var(--ok);background:var(--okbg)}
+.shx .p-ok i{border-radius:2px}
+.shx .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.shx .pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.shx .ghost{background:none;border-color:transparent}
+.shx .chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.shx .ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.shx .li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--ln);font-size:13px}
+.shx .li:first-child{border-top:0}
+.shx .mk{width:18px;height:18px;border-radius:50%;flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.shx a,.shx a[class]{text-decoration:none}.shx *{box-sizing:border-box}.shx>div:first-child{padding-top:18px!important}.shx .ic{width:20px;height:20px}
+
+.shx a[class]:where(.li,.row,.card,.col,.kv,.opt,.tr,.ctl,.nv,.rb,.tabi),.shy a[class]:where(.li,.row,.card,.col,.kv,.opt,.tr,.ctl,.nv,.rb,.tabi){color:inherit}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:834px;height:1112px;display:flex">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <nav aria-label="Primary" style="width:92px;flex:none;background:var(--sf);border-right:1px solid var(--ln);padding:44px 10px 24px;display:flex;flex-direction:column;gap:6px;align-items:center">
+    <div style="width:40px;height:40px;border-radius:11px;background:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 8c4 0 5 8 9 8s5-8 9-8"/><path d="M3 16c4 0 5-8 9-8s5 8 9 8"/></svg></div>
+    <a href="Home-Tablet.dc.html" class="rail"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a href="Spaces-Tablet.dc.html" class="rail on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a>
+    <a href="Inbox-Tablet.dc.html" class="rail"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox<span class="badge" style="position:absolute;top:6px;left:calc(50% + 6px)">3</span></a>
+    <span style="flex:1"></span>
+    <span class="av" style="width:44px;height:44px;font-size:15px">MO</span>
+  </nav>
+
+  <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <header style="background:var(--sf);border-bottom:1px solid var(--ln);padding:44px 24px 0">
+      <div style="display:flex;align-items:center;gap:12px"><h1 class="t1" style="font-size:28px">Product</h1><span class="sub">Shared Space</span><span style="flex:1"></span><span class="chip">12 members</span><span class="chip">Computer asleep</span><span class="chip">Model: Auto</span><span class="chip">Synced just now</span></div>
+      <div style="display:flex;margin-top:10px"><a class="utab on">Chat</a><a class="utab">Work</a><a class="utab">Files</a><a class="utab">Computer</a></div>
+    </header>
+
+    <div style="flex:1;overflow:hidden;padding:22px 24px 0;display:flex;flex-direction:column;gap:14px">
+      <div class="me" style="max-width:62%">What did we decide about the launch review date?<div style="font-size:12px;opacity:.85;margin-top:2px">Ask</div></div>
+      <div class="card" style="padding:14px 16px;max-width:76%;display:flex;flex-direction:column;gap:8px">
+        <div>The review is set for Thursday 8 Oct, with the metrics dashboard as the main item.</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">Decision log, 18 Sep</span><span class="chip">Product sync notes, 25 Sep</span></div>
+        <div class="sub">Answered from 2 selected sources. No computer was started.</div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:flex-start"><span class="av">DK</span><div><div class="sub"><b style="color:var(--ink)">Daniel</b> · discussion, not sent to the agent</div><div>Can we show it on Thursday?</div></div></div>
+
+      <div class="me" style="max-width:62%">Make a dashboard prototype for the launch review from last quarter's metrics.<div style="font-size:12px;opacity:.85;margin-top:2px">Act</div></div>
+
+      <div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:4px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:6px"><span class="t2">Ready to start</span><span class="pill p-idle"><i></i>Preflight</span></div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px">
+          <div class="kv"><span class="k">Result</span><span class="v">Design prototype, saved as versioned draft</span></div>
+          <div class="kv"><span class="k">Sources</span><span class="v">Q3 metrics sheet, Brand tokens v6</span></div>
+          <div class="kv"><span class="k">Audience</span><span class="v">Product, 12 members can see it</span></div>
+          <div class="kv"><span class="k">Computer</span><span class="v">Product's, starts only if needed</span></div>
+          <div class="kv"><span class="k">Model</span><span class="v">Auto, organisation approved</span></div>
+          <div class="kv"><span class="k">Payer and limit</span><span class="v">Product cost centre, up to $15.00</span></div>
+        </div>
+        <div class="kv"><span class="k">Will need a later approval</span><span class="v">Publishing outside Product, never part of this Start</span></div>
+        <div style="display:flex;gap:10px;padding-top:12px"><a href="Envelope-Tablet.dc.html" class="btn pri" style="min-width:160px">Start task</a><a href="Plan-Tablet.dc.html" class="btn">Edit details</a></div>
+      </div>
+    </div>
+
+    <div style="background:var(--sf);border-top:1px solid var(--ln);padding:14px 24px 30px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:8px;align-items:center"><span class="sub">Replying as</span><span class="chip">Question about this task</span><span class="chip">Update this task</span><span class="chip" style="background:var(--ac2);color:var(--acd)">New task</span></div>
+      <div class="card" style="display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;min-height:60px">
+        <div style="flex:1;color:var(--ink3);font-size:15px">Message Product, or @Agent to ask for work</div>
+        <div class="seg"><button aria-pressed="false">Ask</button><button aria-pressed="false">Plan</button><button class="on" aria-pressed="true">Act</button></div>
+        <button class="btn ghost" aria-label="Attach file" style="width:44px;padding:0"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11l-8 8a5 5 0 0 1-7-7l8-8a3.5 3.5 0 0 1 5 5l-8 8a2 2 0 0 1-3-3l7-7"/></svg></button>
+        <button class="btn ghost" aria-label="Voice input" style="width:44px;padding:0"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM6 11a6 6 0 0 0 12 0M12 17v4"/></svg></button>
+        <button class="btn pri" aria-label="Send" style="width:44px;padding:0"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      </div>
+    </div>
+  </main>
+<div data-sheet style="position:absolute;inset:0;background:rgba(17,26,34,.40);display:flex;align-items:center;justify-content:center;z-index:5"><a href="Chat-Tablet.dc.html" aria-label="Close" style="position:absolute;inset:0"></a><div class="shx" role="dialog" aria-label="Share to a Space" style="width:520px;height:auto;max-height:840px;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(17,26,34,.35);font-size:14px;line-height:1.4">
+  <div style="flex:1;overflow:hidden;padding:54px 16px 0;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;height:44px"><a href="Task-Tablet.dc.html" class="btn ghost" style="padding:0;color:var(--ac)">Cancel</a><span class="t3" style="flex:1;text-align:center">Move work to a group</span><span style="width:50px"></span></div>
+
+    <div class="card" style="padding:12px 14px;display:flex;align-items:center;gap:10px"><div style="flex:1"><div class="lbl">From</div><div class="t3">Personal · Dashboard prototype</div></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--ink3)"><path d="M5 12h14M13 6l6 6-6 6"/></svg><div style="flex:1"><div class="lbl">To</div><div class="t3">Product · Launch review</div></div></div>
+
+    <div class="card" style="padding:12px 14px">
+      <span class="lbl">Task capsule includes</span>
+      <div class="li" style="margin-top:4px"><span class="mk" style="background:var(--ok);color:#fff"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:12px;height:12px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span>Requirements and next safe action</span></div>
+      <div class="li"><span class="mk" style="background:var(--ok);color:#fff"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:12px;height:12px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span>Launch dashboard, version 4, and its checks</span></div>
+      <div class="li"><span class="mk" style="background:var(--ok);color:#fff"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:12px;height:12px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span>3 selected findings and open questions</span></div>
+    </div>
+
+    <div class="card" style="padding:12px 14px">
+      <span class="lbl">Left behind on purpose</span>
+      <div class="sub" style="margin-top:4px;line-height:1.5">Your personal history, connector results, private files, browser sessions, secrets and hidden reasoning. Approvals, credentials and budget are not carried over.</div>
+    </div>
+
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--waitbg);color:var(--wait)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3zM12 10v4M12 17v.5"/></svg><div style="line-height:1.35"><b>1 source can't be shared with this audience.</b><br><span style="color:var(--ink)">It stays private to you. Leave it out, or ask its owner to share it.</span></div></div>
+
+    <div class="card" style="padding:12px 14px;display:flex;align-items:center;gap:10px"><div style="flex:1"><div class="t3">Audience check</div><div class="sub">12 members of Product can see this</div></div><span class="pill p-ok"><i></i>Allowed</span></div>
+  </div>
+
+  <div style="background:var(--sf);border-top:1px solid var(--ln);padding:12px 16px 34px;display:flex;flex-direction:column;gap:8px">
+    <a href="Task-Tablet.dc.html" class="btn pri" style="width:100%">Share capsule to Product</a>
+    <a href="Task-Tablet.dc.html" class="btn" style="width:100%">Keep private</a>
+  </div>
+</div></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":834,"height":1112}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

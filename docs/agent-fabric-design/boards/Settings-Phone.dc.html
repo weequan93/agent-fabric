@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings on iPhone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:32px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.ctl:first-of-type{border-top:0}
+.tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.tg.on{background:var(--ac)}
+.tg.on::after{left:21px}
+.val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:390px;height:844px;display:flex;flex-direction:column">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <div style="flex:1;overflow:hidden;padding:56px 20px 0;display:flex;flex-direction:column;gap:10px">
+    <h1 class="t1">Settings</h1>
+
+    <div class="lbl" style="padding:4px 4px 0">Privacy on this phone</div>
+    <div class="card">
+      <div class="ctl"><div style="flex:1"><div class="t3">Hide details on the lock screen</div><div class="sub">Notifications say "Needs you", not what for</div></div><span class="tg {{ tg0c }}" role="switch" aria-checked="{{ tg0a }}" aria-label="Hide details on lock screen" onClick="{{ tg0f }}"></span></div>
+      <div class="ctl"><div style="flex:1"><div class="t3">Face ID for approvals</div><div class="sub">Required before you approve an action</div></div><span class="tg {{ tg1c }}" role="switch" aria-checked="{{ tg1a }}" aria-label="Face ID for approvals" onClick="{{ tg1f }}"></span></div>
+      <div class="ctl"><div style="flex:1"><div class="t3">Confirm voice transcripts</div><div class="sub">Review the text before it is sent</div></div><span class="tg {{ tg2c }}" role="switch" aria-checked="{{ tg2a }}" aria-label="Confirm voice transcripts" onClick="{{ tg2f }}"></span></div>
+    </div>
+
+    <div class="lbl" style="padding:8px 4px 0">Work</div>
+    <div class="card">
+      <div class="ctl"><div style="flex:1"><div class="t3">Keep drafts when offline</div><div class="sub">Saved on this phone, sent only when you tap Send</div></div><span class="tg {{ tg3c }}" role="switch" aria-checked="{{ tg3a }}" aria-label="Offline drafts" onClick="{{ tg3f }}"></span></div>
+      <div class="ctl"><div style="flex:1"><div class="t3">Run a local worker on this phone</div><div class="sub">Off. Phones don't run local workers.</div></div><span class="tg {{ tg4c }}" role="switch" aria-checked="{{ tg4a }}" aria-label="Local worker" onClick="{{ tg4f }}"></span></div>
+      <div class="ctl"><div style="flex:1"><div class="t3">Model</div><div class="sub">Chosen for you by your workspace</div></div><span class="val">Auto</span></div>
+    </div>
+<div class="lbl" style="padding:8px 4px 0">More</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><a href="Account-Phone.dc.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ln);border-radius:20px;background:var(--sf);font-weight:600;font-size:14px;color:var(--ac)">Account</a><a href="Notifications-Phone.dc.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ln);border-radius:20px;background:var(--sf);font-weight:600;font-size:14px;color:var(--ac)">Notifications</a><a href="Automation-Phone.dc.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ln);border-radius:20px;background:var(--sf);font-weight:600;font-size:14px;color:var(--ac)">Automations</a><a href="Methods-Phone.dc.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--ln);border-radius:20px;background:var(--sf);font-weight:600;font-size:14px;color:var(--ac)">Methods</a></div>
+  </div>
+
+  <nav aria-label="Primary" style="display:flex;background:var(--sf);border-top:1px solid var(--ln);padding:6px 8px 30px">
+    <a href="Home-Phone.dc.html" class="tabi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a href="Spaces-Phone.dc.html" class="tabi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a>
+    <a href="Inbox-Phone.dc.html" class="tabi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox<span class="badge" style="position:absolute;top:0;left:calc(50% + 6px)">3</span></a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false, tg: [true,true,true,true,false] };
+}
+renderVals() {
+const s = this.state;
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),
+tg0c: s.tg[0]?'on':'',
+tg0a: s.tg[0]?'true':'false',
+tg0f: () => this.setState({ tg: s.tg.map((v, j) => j === 0 ? !v : v) }),
+tg1c: s.tg[1]?'on':'',
+tg1a: s.tg[1]?'true':'false',
+tg1f: () => this.setState({ tg: s.tg.map((v, j) => j === 1 ? !v : v) }),
+tg2c: s.tg[2]?'on':'',
+tg2a: s.tg[2]?'true':'false',
+tg2f: () => this.setState({ tg: s.tg.map((v, j) => j === 2 ? !v : v) }),
+tg3c: s.tg[3]?'on':'',
+tg3a: s.tg[3]?'true':'false',
+tg3f: () => this.setState({ tg: s.tg.map((v, j) => j === 3 ? !v : v) }),
+tg4c: s.tg[4]?'on':'',
+tg4a: s.tg[4]?'true':'false',
+tg4f: () => this.setState({ tg: s.tg.map((v, j) => j === 4 ? !v : v) })
+};
+}
+}
+</script>
+</body>
+</html>

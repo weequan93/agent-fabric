@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mac menu bar and shortcuts</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--onac:var(--k5);--font:'Hanken Grotesk',system-ui,sans-serif;--r:12px;--rb:10px;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.af{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-bad{color:var(--bad);background:var(--badbg)}
+.p-bad i{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--rb);border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--font);cursor:pointer;white-space:nowrap}
+.btn.sm{height:36px;padding:0 14px;font-size:13px}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.dng{color:var(--bad);border-color:var(--bad)}
+.dis{background:var(--sf2);color:var(--ink3)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.chip.on{background:var(--ac2);color:var(--acd);font-weight:600}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.nv{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:8px;color:var(--ink2);font-weight:600;font-size:13px}
+.nv.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.tr{display:grid;align-items:center;padding:11px 16px;border-top:1px solid var(--ln);font-size:13px;gap:12px}
+.th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-top:0;padding-top:12px;padding-bottom:8px}
+.seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.seg span{flex:1;min-width:64px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.tg.on{background:var(--ac)}
+.tg.on::after{left:21px;background:var(--onac)}
+.ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.ctl:first-child{border-top:0}
+.val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.opt{display:flex;gap:12px;padding:14px;border:1px solid var(--ln);border-radius:var(--r);background:var(--sf);align-items:flex-start}
+.opt.on{border-color:var(--ac);background:var(--ac2)}
+.rd{width:20px;height:20px;border-radius:10px;border:2px solid var(--ink3);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.opt.on .rd{border-color:var(--ac)}
+.opt.on .rd span{width:10px;height:10px;border-radius:5px;background:var(--ac)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.kv:first-child{border-top:0}
+.kv span:first-child{color:var(--ink3)}
+.kv span:last-child{font-weight:600;text-align:right}
+.li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.li:first-child{border-top:0}
+.mk{border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.sk{background:var(--sf2);border-radius:6px}
+.row{display:flex;align-items:center;gap:10px}
+.col{display:flex;flex-direction:column}
+.ph{border:1px dashed var(--ink3);border-radius:6px;padding:2px 8px;color:var(--ink3);font-size:12px;font-weight:600}
+
+
+.kb{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;border-radius:6px;background:var(--sf2);border:1px solid var(--ln);font:600 12px var(--font);color:var(--ink2)}
+.kbs{display:flex;gap:4px;flex:none}
+.mb{height:32px;flex:none;display:flex;align-items:center;gap:2px;padding:0 12px;background:var(--sf);border-bottom:1px solid var(--ln);font-size:13px;color:var(--ink)}
+.mb a{display:flex;align-items:center;height:24px;padding:0 10px;border-radius:6px}
+.mb a.on{background:var(--ac);color:var(--onac)}
+.mb b{font-weight:700}
+.dd{position:absolute;background:var(--sf);border:1px solid var(--ln);border-radius:10px;box-shadow:0 12px 32px rgba(17,26,34,.18);padding:6px}
+.mi{display:flex;align-items:center;gap:12px;height:30px;padding:0 10px;border-radius:6px;font-size:13px}
+.mi span.nm{flex:1;white-space:nowrap}
+.mi.hl{background:var(--ac);color:var(--onac)}
+.mi.hl .kb{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);color:var(--onac)}
+.mi.off{color:var(--ink3)}
+.sep{height:1px;background:var(--ln);margin:5px 6px}
+.sc{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);padding:16px 16px 8px;flex:1;min-width:0}
+.sr{display:flex;align-items:center;gap:10px;height:34px;border-top:1px solid var(--ln);font-size:13px}
+.sr:first-of-type{border-top:0}
+.sr span.nm{flex:1;color:var(--ink2)}
+
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:1440px;height:900px;display:flex;flex-direction:column">
+<a class="dmt c" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+<div style="display:flex;flex-direction:column;width:100%;height:100%"><div class="mb"><a style="padding:0 12px"><span style="width:12px;height:12px;border-radius:6px;background:var(--ink)"></span></a><a><b>Agent Fabric</b></a><a>File</a><a>Edit</a><a>View</a><a>Space</a><a class="on">Task</a><a>Window</a><a>Help</a><span style="flex:1"></span><a style="gap:8px;background:var(--ac2);color:var(--acd);font-weight:600"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>2</a><a style="color:var(--ink2)">Fri 9:41</a></div><div style="position:relative;height:380px;flex:none;background:var(--sf2);border-bottom:1px solid var(--ln)"><div style="position:absolute;left:40px;top:34px;width:264px"><div class="lbl">Mac</div><h1 class="t1" style="margin:6px 0 10px">Menu bar and keyboard</h1><div class="sub">Every command lives in a menu with its shortcut shown. The menu bar item keeps Needs you in view while the window is closed.</div></div><div class="dd" style="left:332px;top:2px;width:340px"><div class="mi "><span class="nm">New task</span><span class="kbs"><span class="kb">⌘</span><span class="kb">N</span></span></div><div class="mi "><span class="nm">New task in this Space</span><span class="kbs"><span class="kb">⇧</span><span class="kb">⌘</span><span class="kb">N</span></span></div><div class="sep"></div><div class="mi "><span class="nm">Send or start</span><span class="kbs"><span class="kb">⌘</span><span class="kb">↩</span></span></div><div class="mi "><span class="nm">Stop selected task</span><span class="kbs"><span class="kb">⌘</span><span class="kb">.</span></span></div><div class="sep"></div><div class="mi hl"><span class="nm">Review pending approval…</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">A</span></span></div><div class="mi "><span class="nm">Take over the computer</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">T</span></span></div><div class="mi off"><span class="nm">Return control to the agent</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">R</span></span></div><div class="sep"></div><div class="mi "><span class="nm">Open task in new window</span><span class="kbs"><span class="kb">⇧</span><span class="kb">⌘</span><span class="kb">O</span></span></div></div><div class="dd" style="right:56px;top:2px;width:340px;padding:14px"><div class="row" style="margin-bottom:10px"><span style="width:24px;height:24px;border-radius:7px;background:var(--ac);color:var(--onac);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">A</span><span class="t3" style="flex:1">Agent Fabric</span><span class="pill p-run"><i></i>3 running</span></div><div class="lbl" style="margin:4px 0 6px">Needs you · 2</div><div class="card" style="border-radius:10px"><div class="row" style="padding:10px 12px"><div style="flex:1;min-width:0"><div class="t3" style="font-size:13px">Make launch preview public</div><div class="sub" style="font-size:12px">Approval · Product</div></div><a class="btn sm" style="height:30px">Review</a></div><div class="row" style="padding:10px 12px;border-top:1px solid var(--ln)"><div style="flex:1;min-width:0"><div class="t3" style="font-size:13px">Which interview set?</div><div class="sub" style="font-size:12px">Input · Research</div></div><a class="btn sm" style="height:30px">Clarify</a></div></div><div class="sub" style="font-size:12px;margin:10px 0 8px;display:flex;gap:6px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;"><path d="M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Review opens the app. Approving always asks for Touch ID there.</span></div><div class="sep" style="margin:6px 0"></div><div class="mi "><span class="nm">Open Agent Fabric</span></div><div class="mi "><span class="nm">Pause notifications for 1 hour</span></div></div><div class="lbl" style="position:absolute;left:332px;top:350px;white-space:nowrap">Task menu</div><div class="lbl" style="position:absolute;right:56px;top:350px;width:340px;text-align:right">Menu bar item</div></div><div style="padding:22px 40px 0;flex:1;min-width:0"><div class="row" style="align-items:stretch;gap:16px"><div class="sc"><div class="lbl" style="margin-bottom:6px">Navigate</div><div class="sr"><span class="nm">Search</span><span class="kbs"><span class="kb">⌘</span><span class="kb">K</span></span></div><div class="sr"><span class="nm">Home</span><span class="kbs"><span class="kb">⌘</span><span class="kb">1</span></span></div><div class="sr"><span class="nm">Inbox</span><span class="kbs"><span class="kb">⌘</span><span class="kb">2</span></span></div><div class="sr"><span class="nm">Spaces</span><span class="kbs"><span class="kb">⌘</span><span class="kb">3</span></span></div><div class="sr"><span class="nm">Files</span><span class="kbs"><span class="kb">⌘</span><span class="kb">4</span></span></div><div class="sr"><span class="nm">Back</span><span class="kbs"><span class="kb">⌘</span><span class="kb">[</span></span></div><div class="sr"><span class="nm">Next Space</span><span class="kbs"><span class="kb">⌃</span><span class="kb">Tab</span></span></div></div><div class="sc"><div class="lbl" style="margin-bottom:6px">Compose</div><div class="sr"><span class="nm">Send message</span><span class="kbs"><span class="kb">⌘</span><span class="kb">↩</span></span></div><div class="sr"><span class="nm">New line</span><span class="kbs"><span class="kb">⇧</span><span class="kb">↩</span></span></div><div class="sr"><span class="nm">Attach</span><span class="kbs"><span class="kb">⇧</span><span class="kb">⌘</span><span class="kb">A</span></span></div><div class="sr"><span class="nm">Ask mode</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">1</span></span></div><div class="sr"><span class="nm">Plan mode</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">2</span></span></div><div class="sr"><span class="nm">Act mode</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">3</span></span></div><div class="sr"><span class="nm">Dictate</span><span class="kbs"><span class="kb">⌃</span><span class="kb">Space</span></span></div></div><div class="sc"><div class="lbl" style="margin-bottom:6px">Task</div><div class="sr"><span class="nm">New task</span><span class="kbs"><span class="kb">⌘</span><span class="kb">N</span></span></div><div class="sr"><span class="nm">Send or start</span><span class="kbs"><span class="kb">⌘</span><span class="kb">↩</span></span></div><div class="sr"><span class="nm">Stop selected task</span><span class="kbs"><span class="kb">⌘</span><span class="kb">.</span></span></div><div class="sr"><span class="nm">Review approval</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">A</span></span></div><div class="sr"><span class="nm">Take over</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">T</span></span></div><div class="sr"><span class="nm">Return to agent</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">R</span></span></div><div class="sr"><span class="nm">Open in new window</span><span class="kbs"><span class="kb">⇧</span><span class="kb">⌘</span><span class="kb">O</span></span></div></div><div class="sc"><div class="lbl" style="margin-bottom:6px">View</div><div class="sr"><span class="nm">Toggle sidebar</span><span class="kbs"><span class="kb">⌃</span><span class="kb">⌘</span><span class="kb">S</span></span></div><div class="sr"><span class="nm">Right pane</span><span class="kbs"><span class="kb">⌥</span><span class="kb">⌘</span><span class="kb">P</span></span></div><div class="sr"><span class="nm">Zoom in</span><span class="kbs"><span class="kb">⌘</span><span class="kb">+</span></span></div><div class="sr"><span class="nm">Zoom out</span><span class="kbs"><span class="kb">⌘</span><span class="kb">−</span></span></div><div class="sr"><span class="nm">Actual size</span><span class="kbs"><span class="kb">⌘</span><span class="kb">0</span></span></div><div class="sr"><span class="nm">Full screen</span><span class="kbs"><span class="kb">⌃</span><span class="kb">⌘</span><span class="kb">F</span></span></div><div class="sr"><span class="nm">Close sheet or pane</span><span class="kbs"><span class="kb">Esc</span></span></div></div></div><div class="row" style="gap:16px;align-items:stretch;margin-top:16px"><div class="card" style="flex:2;padding:14px 16px;background:var(--waitbg);border-color:transparent"><div class="row" style="color:var(--wait);margin-bottom:4px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="t3" style="color:var(--wait)">No shortcut approves anything</span></div><div style="font-size:13px;color:var(--ink)">Review approval opens the review screen. Approving, and any decision that changes what leaves the Space, needs Touch ID on this Mac. The menu bar item and notifications can only open the review.</div></div><div class="card" style="flex:1.4;padding:14px 16px"><div class="t3" style="margin-bottom:4px">Full keyboard access</div><div class="sub">Tab reaches every control with a 3 px focus ring. The menu bar item reads "Agent Fabric, 2 need you" to VoiceOver. Windows uses Ctrl in place of Cmd.</div></div><div class="card" style="flex:1;padding:14px 16px"><div class="lbl" style="margin-bottom:6px">Related</div><a class="t3" style="display:block;color:var(--ac);font-size:13px;margin-bottom:4px" href="A11y-Desktop.dc.html">Accessibility and keyboard</a><a class="t3" style="display:block;color:var(--ac);font-size:13px" href="Approval-Desktop.dc.html">Approval on Mac</a></div></div></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

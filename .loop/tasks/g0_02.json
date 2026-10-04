@@ -1,0 +1,128 @@
+{
+  "schema_version": "0.1",
+  "task_id": "g0_02",
+  "revision": 1,
+  "objective": "G0-02 构建基线与公共类型契约 — implement accepted plan, actual deterministic tests, preserve prior history. 选择经过本地验证的构建版本，锁定安装结果和兼容范围；typed envelope、command、event、capability 有版本与序列化例子，schema 往返保持语义。pnpm 配置和锁文件是候选构建方案的拟定路径；工具资格试验若改变方案，由本包 owner 同步修订路径与依赖。先形成锁，再在干净副本验证冻结锁安装与类型/fixture命令，不能假设尚不存在的锁可用。 未知必需字段、不支持的安全能力、缺失 source audience 和部分流式工具参数显式拒绝；manifest 不授予权限，provider 翻译不静默丢弃必需特性。 旧事件通过显式兼容/迁移或拒绝，不能默默降级；每个 Run pin engine、behavior、schema、environment 版本；升级仅在验证边界进行。 实际受支持构建环境中类型检查成功；必选 schema 正/负例全部符合预期；预算 reserve/settle/unknown 接口由控制与 FinOps owner 确认，受保护 oracle 由独立验证 owner 在依赖实现前冻结；锁定依赖和许可证/更新责任进入候选证据包。具体包版本此前仍为待验证。",
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "scope": {
+    "write_allow": [
+      "package.json",
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml",
+      "tsconfig.base.json",
+      "tsconfig.json",
+      "engine/contracts/src/identity.ts",
+      "engine/contracts/src/task-envelope.ts",
+      "engine/contracts/src/commands.ts",
+      "engine/contracts/src/events.ts",
+      "engine/contracts/src/adapters.ts",
+      "engine/contracts/src/budget.ts",
+      "evals/fixtures/g0-oracle-definition.json",
+      ".gitignore",
+      "scripts/build.mjs",
+      "scripts/test.mjs",
+      "scripts/check-g0.mjs",
+      "evals/fixtures/g0-packages.json",
+      "evals/helpers/fixture.ts",
+      "evals/contracts/contracts.test.ts"
+    ],
+    "write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**"
+    ]
+  },
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "criterion-1",
+      "description": "正向: 选择经过本地验证的构建版本，锁定安装结果和兼容范围；typed envelope、command、event、capability 有版本与序列化例子，schema 往返保持语义。pnpm 配置和锁文件是候选构建方案的拟定路径；工具资格试验若改变方案，由本包 owner 同步修订路径与依赖。先形成锁，再在干净副本验证冻结锁安装与类型/fixture命令，不能假设尚不存在的锁可用。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-2",
+      "description": "拒绝: 未知必需字段、不支持的安全能力、缺失 source audience 和部分流式工具参数显式拒绝；manifest 不授予权限，provider 翻译不静默丢弃必需特性。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-3",
+      "description": "恢复: 旧事件通过显式兼容/迁移或拒绝，不能默默降级；每个 Run pin engine、behavior、schema、environment 版本；升级仅在验证边界进行。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-4",
+      "description": "完成门: 实际受支持构建环境中类型检查成功；必选 schema 正/负例全部符合预期；预算 reserve/settle/unknown 接口由控制与 FinOps owner 确认，受保护 oracle 由独立验证 owner 在依赖实现前冻结；锁定依赖和许可证/更新责任进入候选证据包。具体包版本此前仍为待验证。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "outputs",
+      "type": "command",
+      "description": "Declared outputs exist as nonempty files; JSON fixtures parse; preserved accepted planning files remain present. Semantics are behavioral checks and final independent assessment.",
+      "argv": [
+        "python3",
+        "-c",
+        "import pathlib,json; paths=[\"package.json\",\"pnpm-workspace.yaml\",\"pnpm-lock.yaml\",\"tsconfig.base.json\",\"tsconfig.json\",\"engine/contracts/src/identity.ts\",\"engine/contracts/src/task-envelope.ts\",\"engine/contracts/src/commands.ts\",\"engine/contracts/src/events.ts\",\"engine/contracts/src/adapters.ts\",\"engine/contracts/src/budget.ts\",\"evals/fixtures/g0-oracle-definition.json\",\".gitignore\",\"scripts/build.mjs\",\"scripts/test.mjs\",\"scripts/check-g0.mjs\",\"evals/fixtures/g0-packages.json\",\"evals/helpers/fixture.ts\",\"evals/contracts/contracts.test.ts\"]; assert all(pathlib.Path(p).is_file() and pathlib.Path(p).stat().st_size>0 for p in paths); [json.loads(pathlib.Path(p).read_text()) for p in paths if p.endswith('.json')]"
+      ],
+      "timeout_seconds": 30
+    },
+    {
+      "id": "build-and-behavior",
+      "type": "command",
+      "description": "Offline frozen installation, strict typecheck, build, and actual deterministic behavioral tests. Final G0 gate executes all 102 mandatory protected branches without skips.",
+      "argv": [
+        "node",
+        "scripts/check-g0.mjs",
+        "G0-02"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "required_capabilities": {
+    "agent": [
+      "text_input"
+    ],
+    "runtime": []
+  },
+  "limits": {
+    "max_iterations": 16,
+    "max_wall_seconds": 3600,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "agent_step_version": "0.3"
+  }
+}

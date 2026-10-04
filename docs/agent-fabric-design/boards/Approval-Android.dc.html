@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Approval on Android phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--onac:var(--k5);--font:'Hanken Grotesk','Roboto',system-ui,sans-serif;--r:16px;--rb:24px;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.af{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-bad{color:var(--bad);background:var(--badbg)}
+.p-bad i{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--rb);border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--font);cursor:pointer;white-space:nowrap}
+.btn.sm{height:36px;padding:0 14px;font-size:13px}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.dng{color:var(--bad);border-color:var(--bad)}
+.dis{background:var(--sf2);color:var(--ink3)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.chip.on{background:var(--ac2);color:var(--acd);font-weight:600}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.nv{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:8px;color:var(--ink2);font-weight:600;font-size:13px}
+.nv.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.tr{display:grid;align-items:center;padding:11px 16px;border-top:1px solid var(--ln);font-size:13px;gap:12px}
+.th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-top:0;padding-top:12px;padding-bottom:8px}
+.seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.seg span{flex:1;min-width:64px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.tg.on{background:var(--ac)}
+.tg.on::after{left:21px;background:var(--onac)}
+.ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.ctl:first-child{border-top:0}
+.val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.opt{display:flex;gap:12px;padding:14px;border:1px solid var(--ln);border-radius:var(--r);background:var(--sf);align-items:flex-start}
+.opt.on{border-color:var(--ac);background:var(--ac2)}
+.rd{width:20px;height:20px;border-radius:10px;border:2px solid var(--ink3);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.opt.on .rd{border-color:var(--ac)}
+.opt.on .rd span{width:10px;height:10px;border-radius:5px;background:var(--ac)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.kv:first-child{border-top:0}
+.kv span:first-child{color:var(--ink3)}
+.kv span:last-child{font-weight:600;text-align:right}
+.li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.li:first-child{border-top:0}
+.mk{border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.sk{background:var(--sf2);border-radius:6px}
+.row{display:flex;align-items:center;gap:10px}
+.col{display:flex;flex-direction:column}
+.ph{border:1px dashed var(--ink3);border-radius:6px;padding:2px 8px;color:var(--ink3);font-size:12px;font-weight:600}
+
+
+.btn{height:48px;border-radius:24px;padding:0 24px}
+.btn.sm{height:40px}
+.card{border-radius:16px}
+.chip{border-radius:8px;height:32px}
+.opt{border-radius:16px}
+
+/*m3*/
+.tg{width:52px!important;height:32px!important;border-radius:16px!important;background:var(--sf2)!important;border:2px solid var(--ink3)!important;box-sizing:border-box}
+.tg::after{top:6px!important;left:6px!important;width:16px!important;height:16px!important;background:var(--ink3)!important;box-shadow:none!important}
+.tg.on{background:var(--ac)!important;border-color:var(--ac)!important}
+.tg.on::after{top:2px!important;left:22px!important;width:24px!important;height:24px!important;background:var(--onac)!important}
+.seg{background:transparent!important;border:1px solid var(--ink3)!important;border-radius:20px!important;padding:0!important;overflow:hidden}
+.seg span{border-radius:0!important;box-shadow:none!important}
+.seg span+span{border-left:1px solid var(--ln)}
+.seg span.on{background:var(--ac2)!important;color:var(--acd)!important;box-shadow:none!important}
+.af input,.af select{height:52px!important;border-radius:4px!important;border:1px solid var(--ink3)!important;padding:0 16px!important;font-size:16px!important}
+.af textarea{border-radius:4px!important;border:1px solid var(--ink3)!important}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:412px;height:892px;display:flex;flex-direction:column">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+
+<div style="flex:1;overflow:hidden;padding:36px 16px 0;display:flex;flex-direction:column;gap:12px">
+  <div class="row" style="height:56px;padding:0 4px"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M15 6l-6 6 6 6"/></svg></span><span style="font-size:22px;font-weight:600;flex:1;">Approval</span></div>
+  <div class="row"><span class="pill p-wait"><i></i>Approval needed</span><span class="sub">Dashboard prototype · Priya · Product</span></div>
+  <h1 style="margin:0;font-size:26px;font-weight:600;line-height:1.2">Make launch preview public</h1>
+  <div class="card" style="padding:6px 16px">
+    <div class="kv"><span>Action</span><span>Publish the preview page</span></div>
+    <div class="kv"><span>Who can see it</span><span>Anyone with the link</span></div>
+    <div class="kv"><span>Bound to</span><span class="mono">digest 7f3a…c9d1</span></div>
+    <div class="kv"><span>Valid until</span><span>It changes or times out</span></div>
+  </div>
+  <div class="row" style="padding:14px 16px;border-radius:16px;background:var(--waitbg);align-items:flex-start;color:var(--wait)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><path d="M12 4l9 16H3zM12 10v4M12 17v.5"/></svg><div style="color:var(--ink);line-height:1.45">Approving covers this exact version only. If the page changes, you will be asked again.</div></div>
+  <div class="card" style="padding:12px 16px"><div class="lbl">If you decline</div><div class="sub" style="margin-top:4px;line-height:1.5">Nothing is published. Priya is told, and the task keeps the draft so it can be changed and asked again.</div></div>
+  <div class="row sub"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;"><path d="M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg>Fingerprint required to approve</div>
+</div>
+<div style="padding:12px 16px 28px;display:flex;flex-direction:column;gap:8px;flex:none"><sc-if value="{{ undecided }}" hint-placeholder-val="{{ true }}">
+  <button class="btn pri" style="width:100%" onClick="{{ approve }}">Approve</button>
+  <div class="row"><button class="btn" style="flex:1" onClick="{{ decline }}">Decline</button><button class="btn ghost" style="flex:1;color:var(--ac)">Ask a question</button></div>
+</sc-if><sc-if value="{{ approved }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;width:100%"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="pill p-ok"><i></i>Approved</span><span class="sub">Version 4 only. Delivery starts now.</span></div><a href="Delivery-Android.dc.html" class="btn pri" style="width:100%">Continue to delivery</a><button class="btn ghost" onClick="{{ reset }}" style="color:var(--ac);height:32px">Undo (demo)</button></div></sc-if><sc-if value="{{ declined }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;width:100%"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="pill p-idle"><i></i>Declined</span><span class="sub">Nothing is published. Draft kept.</span></div><a href="Inbox-Android.dc.html" class="btn" style="width:100%">Back to Inbox</a><button class="btn ghost" onClick="{{ reset }}" style="color:var(--ac);height:32px">Undo (demo)</button></div></sc-if></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":412,"height":892}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false, decision: '' };
+}
+renderVals() {
+const s = this.state;
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),
+undecided: s.decision === '',
+approved: s.decision === 'approved',
+declined: s.decision === 'declined',
+approve: () => this.setState({ decision: 'approved' }),
+decline: () => this.setState({ decision: 'declined' }),
+reset: () => this.setState({ decision: '' })
+};
+}
+}
+</script>
+</body>
+</html>

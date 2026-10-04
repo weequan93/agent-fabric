@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Computer on Mac</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k1:#EBEEF3;--k2:#DCE3F8;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k10:#EBD08F;--k33:#B4BCC7;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.sm{height:32px;padding:0 12px;font-size:13px;border-radius:8px}
+.ghost{background:none;border-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.av{width:32px;height:32px;border-radius:50%;background:var(--ac2);color:var(--acd);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.nav{display:flex;align-items:center;gap:12px;height:36px;padding:0 12px;border-radius:8px;color:var(--ink2);font-weight:500}
+.nav.on{background:var(--k2);color:var(--acd);font-weight:600}
+.utab{height:40px;padding:0 16px;display:flex;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent}
+.utab.on{color:var(--ac);border-color:var(--ac)}
+.meter{display:flex;align-items:center;gap:10px;height:30px}
+.meter .n{width:70px;color:var(--ink2)}
+.meter .b{flex:1;height:8px;border-radius:4px;background:var(--sf2);overflow:hidden}
+.meter .b span{display:block;height:8px;background:var(--ac)}
+.meter .v{width:80px;text-align:right;font-weight:600;font-size:13px}
+.ev{display:flex;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.ev:first-child{border-top:0}
+.ev .tm{width:66px;color:var(--ink3)}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k1:#131B23;--k2:#1E2A5C;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k10:#5A4716;--k33:#6B7885;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:1440px;height:900px;display:flex">
+<a class="dmt c" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <aside style="width:260px;flex:none;background:var(--k1);border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:0 12px 16px">
+    <div style="height:52px;display:flex;align-items:center;gap:8px;padding:0 6px" aria-hidden="true"><span style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></span><span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></span><span style="width:12px;height:12px;border-radius:50%;background:#28C840"></span></div>
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 8px 16px"><div style="width:30px;height:30px;border-radius:9px;background:var(--ac);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 8c4 0 5 8 9 8s5-8 9-8"/><path d="M3 16c4 0 5-8 9-8s5 8 9 8"/></svg></div><span class="t2">Agent Fabric</span></div>
+    <nav aria-label="Primary" style="display:flex;flex-direction:column;gap:2px">
+      <a href="Home-Desktop.dc.html" class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+      <a href="Spaces-Desktop.dc.html" class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a>
+      <a href="Inbox-Desktop.dc.html" class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox<span style="flex:1"></span><span class="badge">3</span></a>
+    </nav>
+    <div class="lbl" style="padding:22px 12px 8px">Product</div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <a href="Chat-Desktop.dc.html" class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Chat</a>
+      <a class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>Work</a>
+      <a class="nav"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>Files</a>
+      <a class="nav on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v11H3zM8 20h8M12 16v4"/></svg>Computer</a>
+    </div>
+    <span style="flex:1"></span>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 8px 0;border-top:1px solid var(--ln)"><span class="av">MO</span><div><div class="t3">Maya O.</div><div class="sub">Product admin</div></div></div>
+  </aside>
+
+  <section style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <header style="background:var(--sf);border-bottom:1px solid var(--ln);padding:0 24px;height:92px;display:flex;flex-direction:column;justify-content:flex-end">
+      <div style="display:flex;align-items:center;gap:10px;height:52px"><h1 class="t2" style="font-size:17px">Product</h1><span style="flex:1"></span><span class="chip">12 members</span><span class="chip">Synced just now</span></div>
+      <div style="display:flex"><a class="utab">Chat</a><a class="utab">Work</a><a class="utab">Files</a><a class="utab on">Computer</a></div>
+    </header>
+
+    <div style="flex:1;overflow:hidden;padding:20px 24px;display:grid;grid-template-columns:340px minmax(0,1fr);gap:20px;align-content:start">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="card" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px"><div style="flex:1"><div class="t2">Computer is awake</div><div class="sub">Last signal 12 s ago</div></div><span class="pill p-ok"><i></i>Healthy</span></div>
+          <div style="height:1px;background:var(--ln)"></div>
+          <div><div class="lbl">Is the task progressing?</div><div class="t3" style="margin-top:3px">Fix flaky export test</div><div class="sub">Verifying · 2 of 3 required checks</div></div>
+          <div><div class="lbl">What is it waiting on?</div><div style="margin-top:3px">A model response. Not blocked on you, a tool or the machine.</div></div>
+        </div>
+        <div class="card" style="padding:12px 16px">
+          <div class="lbl" style="margin-bottom:2px">Pressure</div>
+          <div class="meter"><span class="n">CPU</span><div class="b"><span style="width:22%"></span></div><span class="v">Low</span></div>
+          <div class="meter"><span class="n">Memory</span><div class="b"><span style="width:55%"></span></div><span class="v">Moderate</span></div>
+          <div class="meter"><span class="n">Disk</span><div class="b"><span style="width:30%"></span></div><span class="v">Low</span></div>
+        </div>
+        <div class="card" style="padding:14px 16px;background:var(--waitbg);border-color:var(--k10)">
+          <div class="t3" style="color:var(--wait)">Before you take over</div>
+          <div style="margin-top:4px;color:var(--ink)">This pauses 2 tasks that change files: Fix flaky export test and Weekly metrics digest. Read-only work can continue.</div>
+        </div>
+        <div style="display:flex;gap:8px"><button class="btn pri" style="flex:1">Take over</button><button class="btn" style="flex:1">Stop task</button></div>
+        <div class="sub">Billed once to Product, shared by 2 tasks. Stopping a task does not restart the computer.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="card" style="overflow:hidden">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--ln)"><span class="pill p-idle"><i></i>View only</span><span class="sub" style="flex:1">Driver: agent, lease gen 14</span><span class="mono" style="color:var(--ink3)">frame 8412 · 12:41:07</span></div>
+          <div style="background:#1A2230;padding:16px;display:flex;justify-content:center">
+            <div style="width:600px;height:340px;background:var(--sf);border-radius:8px;overflow:hidden">
+              <div style="height:34px;background:var(--sf2);display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid var(--ln)"><span style="width:9px;height:9px;border-radius:50%;background:var(--k33)"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--k33)"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--k33)"></span><span style="flex:1;margin-left:10px;height:18px;border-radius:9px;background:var(--sf)"></span></div>
+              <div style="padding:18px;display:flex;flex-direction:column;gap:12px">
+                <div style="height:16px;width:36%;background:var(--sf2);border-radius:3px"></div>
+                <div style="height:10px;width:88%;background:var(--sf2);border-radius:3px"></div>
+                <div style="height:10px;width:72%;background:var(--sf2);border-radius:3px"></div>
+                <div style="height:120px;border:1px solid var(--ln);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px">Remote screen, Chrome, 1280×800</div>
+                <div style="display:flex;gap:8px"><div style="height:30px;width:110px;background:var(--ac);border-radius:6px"></div><div style="height:30px;width:80px;background:var(--sf2);border-radius:6px"></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:10px 14px" class="sub">Viewing never grants control. Taking over needs its own permission and ends the agent's input first.</div>
+        </div>
+
+        <div class="card" style="padding:12px 16px">
+          <div style="display:flex;align-items:center;margin-bottom:2px"><span class="lbl" style="flex:1">Recent receipts</span><span class="sub">Correlated by task and computer</span></div>
+          <div class="ev"><span class="tm mono">12:41:07</span><span class="pill p-ok"><i></i>Done</span><span style="flex:1">Test run 2 of 3 finished</span></div>
+          <div class="ev"><span class="tm mono">12:40:31</span><span class="pill p-ok"><i></i>Done</span><span style="flex:1">Dependencies installed from the approved lockfile</span></div>
+          <div class="ev"><span class="tm mono">12:39:58</span><span class="pill p-idle"><i></i>Denied</span><span style="flex:1">Network request to an unlisted host, blocked by policy</span></div>
+        </div>
+        <div class="card" style="padding:12px 16px;display:flex;align-items:center;gap:12px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--ink3)"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><div style="flex:1"><div class="t3">Expert telemetry</div><div class="sub">Traces, process logs and resource history. Needs the Fleet role.</div></div><button class="btn sm" disabled style="opacity:.6">Locked</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

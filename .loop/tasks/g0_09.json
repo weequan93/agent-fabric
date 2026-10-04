@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1",
+  "task_id": "g0_09",
+  "revision": 1,
+  "objective": "G0-09 Context 编译与模型 operating profile — implement accepted plan, actual deterministic tests, preserve prior history. context 由 typed records 编译，保留 scope/provenance/time/trust；authorize before retrieval、budget before invocation；记录实际 profile+manifest，no-VM Ask 仅使用获批 service 能力。G0-10 完成前只使用 G0-02 冻结预算接口与受控模型替身，不发真实收费模型请求；G0-10 完成后在 G0-14 集成重验预算拒绝、unknown usage 与恢复。 敌意 web/tool/memory 摘要不能提权；缺必需 modalities/schema/cancel/usage 能力显式拒绝；不擅自跨 provider/region fallback；manual pin 未允许替代时 waiting，不将 Fast/Balanced/Thorough 当 authority。 安全边界切换使用 capsule，保留 requirements、uncertainty、失败方案、pending effects、checks 与下一安全动作；opaque reasoning/KV cache 保持 provider-scoped，权限修订后重新编译。 必选 capability/filter/cache-revision 夹具全部符合预期；Ask 夹具 Space VM 启动数为 0；真实 LiteLLM/provider 编码、streaming、计量与取消能力留给 G1 qualified route，不由 mock 结果认证。",
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "scope": {
+    "write_allow": [
+      "engine/context/src/compile.ts",
+      "engine/profiles/src/capabilities.ts",
+      "adapters/models/src/model-adapter.ts",
+      "evals/fixtures/model-conformance-cases.json",
+      "evals/safety/model-profile.test.ts"
+    ],
+    "write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "evals/fixtures/g0-oracle-definition.json"
+    ]
+  },
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "criterion-1",
+      "description": "正向: context 由 typed records 编译，保留 scope/provenance/time/trust；authorize before retrieval、budget before invocation；记录实际 profile+manifest，no-VM Ask 仅使用获批 service 能力。G0-10 完成前只使用 G0-02 冻结预算接口与受控模型替身，不发真实收费模型请求；G0-10 完成后在 G0-14 集成重验预算拒绝、unknown usage 与恢复。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-2",
+      "description": "拒绝: 敌意 web/tool/memory 摘要不能提权；缺必需 modalities/schema/cancel/usage 能力显式拒绝；不擅自跨 provider/region fallback；manual pin 未允许替代时 waiting，不将 Fast/Balanced/Thorough 当 authority。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-3",
+      "description": "恢复: 安全边界切换使用 capsule，保留 requirements、uncertainty、失败方案、pending effects、checks 与下一安全动作；opaque reasoning/KV cache 保持 provider-scoped，权限修订后重新编译。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-4",
+      "description": "完成门: 必选 capability/filter/cache-revision 夹具全部符合预期；Ask 夹具 Space VM 启动数为 0；真实 LiteLLM/provider 编码、streaming、计量与取消能力留给 G1 qualified route，不由 mock 结果认证。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "outputs",
+      "type": "command",
+      "description": "Declared outputs exist as nonempty files; JSON fixtures parse; preserved accepted planning files remain present. Semantics are behavioral checks and final independent assessment.",
+      "argv": [
+        "python3",
+        "-c",
+        "import pathlib,json; paths=[\"engine/context/src/compile.ts\",\"engine/profiles/src/capabilities.ts\",\"adapters/models/src/model-adapter.ts\",\"evals/fixtures/model-conformance-cases.json\",\"evals/safety/model-profile.test.ts\"]; assert all(pathlib.Path(p).is_file() and pathlib.Path(p).stat().st_size>0 for p in paths); [json.loads(pathlib.Path(p).read_text()) for p in paths if p.endswith('.json')]"
+      ],
+      "timeout_seconds": 30
+    },
+    {
+      "id": "build-and-behavior",
+      "type": "command",
+      "description": "Offline frozen installation, strict typecheck, build, and actual deterministic behavioral tests. Final G0 gate executes all 102 mandatory protected branches without skips.",
+      "argv": [
+        "node",
+        "scripts/check-g0.mjs",
+        "G0-09"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "required_capabilities": {
+    "agent": [
+      "text_input"
+    ],
+    "runtime": []
+  },
+  "limits": {
+    "max_iterations": 16,
+    "max_wall_seconds": 3600,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "agent_step_version": "0.3"
+  }
+}

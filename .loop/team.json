@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "basis_digest": "sha256:ba5b9b2954571bf1c08e1586619cebef0c19c5af6230b446bd60f9012d30aa0d",
+  "decisions": [
+    {
+      "role": "coordinator",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Own intake, team selection, scoped tasks, integration and budgets.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root",
+      "covered_by": null,
+      "handoff_to": [
+        "architect",
+        "backend",
+        "tester",
+        "security",
+        "reviewer",
+        "acceptance",
+        "devops"
+      ]
+    },
+    {
+      "role": "requirements_reviewer",
+      "state": "covered",
+      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": "coordinator",
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "designer",
+      "state": "inactive",
+      "reason": "G0 delivers typed presentation protocols; existing design outputs are retained and real client implementation begins G1.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": null,
+      "handoff_to": []
+    },
+    {
+      "role": "architect",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Define architecture, interfaces, data ownership and compatibility.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root/g0_architecture_plan",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "frontend",
+      "state": "inactive",
+      "reason": "No actual client UI in G0; three client protocols only, implementation remains G1.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": null,
+      "handoff_to": []
+    },
+    {
+      "role": "backend",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Implement business logic, APIs, persistence and failure handling.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "tester",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Map requirements to functional, integration and regression checks.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root/g0_verifier",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "security",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Define security controls; independently review the candidate and fixes.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root/plan_review",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "performance",
+      "state": "inactive",
+      "reason": "No G0 production latency or capacity certification; deterministic fault/recovery tests apply and real deployments qualify later.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": null,
+      "handoff_to": []
+    },
+    {
+      "role": "reviewer",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Independently review the integrated implementation and compatibility.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root/plan_review",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "acceptance",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Plan coverage; independently assess delivered business/quality requirements.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root/planning_acceptance",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "integrator",
+      "state": "covered",
+      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": "coordinator",
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "devops",
+      "state": "active",
+      "reason": "Actual host responsibility for G0 Prepare reproducible builds, delivery and rollback procedures.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": "/root",
+      "covered_by": null,
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "database",
+      "state": "covered",
+      "reason": "Covered by active backend with role instructions and separate deliverables.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": "backend",
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "documentation",
+      "state": "covered",
+      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": "coordinator",
+      "handoff_to": [
+        "coordinator"
+      ]
+    },
+    {
+      "role": "reliability",
+      "state": "covered",
+      "reason": "Covered by active devops with role instructions and separate deliverables.",
+      "sources": [
+        ".loop/spec.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md"
+      ],
+      "assignee": null,
+      "covered_by": "devops",
+      "handoff_to": [
+        "coordinator"
+      ]
+    }
+  ]
+}

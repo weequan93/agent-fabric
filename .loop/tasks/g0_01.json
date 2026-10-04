@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1",
+  "task_id": "g0_01",
+  "revision": 1,
+  "objective": "G0-01 架构、权威记录与威胁边界 — implement accepted plan, actual deterministic tests, preserve prior history. 明确 conversation、computer、external-effect 三种执行类；每类记录、调用路径和失败域有一个权威 owner；规定 no-VM Ask、assigned ComputerAssignment 和个人/群组边界。 模型、客户端、session worker、插件、查询投影均不能生成预算、approval、有效 CheckReceipt 或 release grant；不把 worktree、串行锁、协议兼容或硬件标志当作隔离证据。 每类记录说明恢复顺序、tombstone 和重新授权入口，未知外部效果先 reconciliation，禁用恢复时重放写操作。 所有核心记录和 adapter 均有权威、接口、错误、并发与恢复条目；影响授权/效果的未决接口为 0；独立审查状态和剩余部署假设真实登记，文档审阅不能冒充部署安全通过。",
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "scope": {
+    "write_allow": [
+      "docs/architecture/native-engine.md",
+      "docs/architecture/record-authority.md",
+      "docs/architecture/interface-registry.md",
+      "docs/security/threat-model.md"
+    ],
+    "write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "evals/fixtures/g0-oracle-definition.json"
+    ]
+  },
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "criterion-1",
+      "description": "正向: 明确 conversation、computer、external-effect 三种执行类；每类记录、调用路径和失败域有一个权威 owner；规定 no-VM Ask、assigned ComputerAssignment 和个人/群组边界。",
+      "check_ids": [
+        "outputs"
+      ]
+    },
+    {
+      "id": "criterion-2",
+      "description": "拒绝: 模型、客户端、session worker、插件、查询投影均不能生成预算、approval、有效 CheckReceipt 或 release grant；不把 worktree、串行锁、协议兼容或硬件标志当作隔离证据。",
+      "check_ids": [
+        "outputs"
+      ]
+    },
+    {
+      "id": "criterion-3",
+      "description": "恢复: 每类记录说明恢复顺序、tombstone 和重新授权入口，未知外部效果先 reconciliation，禁用恢复时重放写操作。",
+      "check_ids": [
+        "outputs"
+      ]
+    },
+    {
+      "id": "criterion-4",
+      "description": "完成门: 所有核心记录和 adapter 均有权威、接口、错误、并发与恢复条目；影响授权/效果的未决接口为 0；独立审查状态和剩余部署假设真实登记，文档审阅不能冒充部署安全通过。",
+      "check_ids": [
+        "outputs"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "outputs",
+      "type": "command",
+      "description": "Declared outputs exist as nonempty files; JSON fixtures parse; preserved accepted planning files remain present. Semantics are behavioral checks and final independent assessment.",
+      "argv": [
+        "python3",
+        "-c",
+        "import pathlib,json; paths=[\"docs/architecture/native-engine.md\",\"docs/architecture/record-authority.md\",\"docs/architecture/interface-registry.md\",\"docs/security/threat-model.md\"]; assert all(pathlib.Path(p).is_file() and pathlib.Path(p).stat().st_size>0 for p in paths); [json.loads(pathlib.Path(p).read_text()) for p in paths if p.endswith('.json')]"
+      ],
+      "timeout_seconds": 30
+    }
+  ],
+  "required_capabilities": {
+    "agent": [
+      "text_input"
+    ],
+    "runtime": []
+  },
+  "limits": {
+    "max_iterations": 16,
+    "max_wall_seconds": 3600,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "agent_step_version": "0.3"
+  }
+}

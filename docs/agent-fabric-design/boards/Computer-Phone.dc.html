@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Computer on iPhone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.utab{height:44px;padding:0 14px;display:flex;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent}
+.utab.on{color:var(--ac);border-color:var(--ac)}
+.meter{display:flex;align-items:center;gap:10px;height:30px}
+.meter .n{width:68px;color:var(--ink2)}
+.meter .b{flex:1;height:8px;border-radius:4px;background:var(--sf2);overflow:hidden}
+.meter .b span{display:block;height:8px;background:var(--ac)}
+.meter .v{width:78px;text-align:right;font-weight:600;font-size:13px}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:390px;height:844px;display:flex;flex-direction:column">
+<a class="dmt" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <header style="background:var(--sf);border-bottom:1px solid var(--ln);padding:54px 8px 0 8px">
+    <div style="display:flex;align-items:center;height:44px"><a href="Home-Phone.dc.html" class="btn ghost" aria-label="Back to Spaces" style="width:44px;padding:0;color:var(--ac)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 class="t2" style="flex:1;font-size:17px">Product</h1></div>
+    <div style="display:flex;gap:6px;padding:2px 8px 10px;overflow:hidden"><span class="chip">12 members</span><span class="chip">Synced now</span></div>
+    <div style="display:flex;padding:0 4px"><a href="Chat-Phone.dc.html" class="utab">Chat</a><a href="Task-Phone.dc.html" class="utab">Work</a><a href="Files-Phone.dc.html" class="utab">Files</a><a class="utab on">Computer</a></div>
+  </header>
+
+  <div style="flex:1;overflow:hidden;padding:12px 16px 0;display:flex;flex-direction:column;gap:8px">
+    <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="flex:1"><div class="t2">Computer is awake</div><div class="sub">Last signal 12 s ago</div></div><span class="pill p-ok"><i></i>Healthy</span></div>
+      <div style="height:1px;background:var(--ln)"></div>
+      <div><div class="lbl">Working on</div><div class="t3" style="margin-top:2px">Fix flaky export test</div><div class="sub">Verifying · 2 of 3 required checks</div></div>
+      <div><div class="lbl">Right now</div><div style="margin-top:2px">Waiting for a model. Nothing needs you.</div></div>
+    </div>
+
+    <div class="card" style="padding:12px 14px">
+      <div class="lbl" style="margin-bottom:2px">Pressure</div>
+      <div class="meter"><span class="n">CPU</span><div class="b"><span style="width:22%"></span></div><span class="v">Low</span></div>
+      <div class="meter"><span class="n">Memory</span><div class="b"><span style="width:55%"></span></div><span class="v">Moderate</span></div>
+      <div class="meter"><span class="n">Disk</span><div class="b"><span style="width:30%"></span></div><span class="v">Low</span></div>
+    </div>
+
+    <div class="card" style="padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div class="lbl">Cost</div><div>Billed once to Product, shared by 2 tasks. Idle computers suspend.</div></div>
+  </div>
+
+  <div style="background:var(--sf);border-top:1px solid var(--ln);padding:12px 16px 8px;display:flex;flex-direction:column;gap:8px">
+    <a href="Takeover-Phone.dc.html" class="btn pri" style="width:100%">Take over screen</a>
+    <a href="Stop-Phone.dc.html" class="btn" style="width:100%">Stop this task</a>
+    <div class="sub" style="text-align:center">Stopping a task does not restart the computer.</div>
+  </div>
+
+  <nav aria-label="Primary" style="display:flex;background:var(--sf);border-top:1px solid var(--ln);padding:4px 8px 30px">
+    <a href="Home-Phone.dc.html" class="tabi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a href="Spaces-Phone.dc.html" class="tabi on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a>
+    <a href="Inbox-Phone.dc.html" class="tabi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox<span class="badge" style="position:absolute;top:0;left:calc(50% + 6px)">3</span></a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

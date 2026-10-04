@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1",
+  "task_id": "g0_11",
+  "revision": 1,
+  "objective": "G0-11 产物版本、受保护检查与交付分离 — implement accepted plan, actual deterministic tests, preserve prior history. draft/candidate/accepted、verification、DeliveryOperation 和 notification 独立；CheckReceipt 绑定 exact artifact digest、environment image、dependency lock、check definition 和 verifier identity。 worker self-report 不生成有效 receipt；改动 invalidate 受影响 checks/reviews/approval；接受设计不批准部署；准备草稿成功不得伪称 delivered/deployed；agent 不能禁用 protected checks 或改评分规则。 draft 回连按 expected base revision compare/rebase/retain variant，不能覆盖 newer accepted version；unknown delivery 先 reconcile；notification 失败保留真实 task result；缺检查明确 unavailable/pending。 artifact drift、check spoof、并发编辑、delivery/notification 混淆夹具全部符合预期；没有独立 verifier 能力时不得宣布受保护检查认证通过，真实 executor/审批路径在 G1 或相应 effect gate qualification。",
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "scope": {
+    "write_allow": [
+      "services/artifacts/src/version.ts",
+      "execution/verification/src/check-receipt.ts",
+      "execution/action-broker/src/delivery-operation.ts",
+      "evals/safety/protected-completion.test.ts"
+    ],
+    "write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "evals/fixtures/g0-oracle-definition.json"
+    ]
+  },
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "criterion-1",
+      "description": "正向: draft/candidate/accepted、verification、DeliveryOperation 和 notification 独立；CheckReceipt 绑定 exact artifact digest、environment image、dependency lock、check definition 和 verifier identity。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-2",
+      "description": "拒绝: worker self-report 不生成有效 receipt；改动 invalidate 受影响 checks/reviews/approval；接受设计不批准部署；准备草稿成功不得伪称 delivered/deployed；agent 不能禁用 protected checks 或改评分规则。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-3",
+      "description": "恢复: draft 回连按 expected base revision compare/rebase/retain variant，不能覆盖 newer accepted version；unknown delivery 先 reconcile；notification 失败保留真实 task result；缺检查明确 unavailable/pending。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-4",
+      "description": "完成门: artifact drift、check spoof、并发编辑、delivery/notification 混淆夹具全部符合预期；没有独立 verifier 能力时不得宣布受保护检查认证通过，真实 executor/审批路径在 G1 或相应 effect gate qualification。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "outputs",
+      "type": "command",
+      "description": "Declared outputs exist as nonempty files; JSON fixtures parse; preserved accepted planning files remain present. Semantics are behavioral checks and final independent assessment.",
+      "argv": [
+        "python3",
+        "-c",
+        "import pathlib,json; paths=[\"services/artifacts/src/version.ts\",\"execution/verification/src/check-receipt.ts\",\"execution/action-broker/src/delivery-operation.ts\",\"evals/safety/protected-completion.test.ts\"]; assert all(pathlib.Path(p).is_file() and pathlib.Path(p).stat().st_size>0 for p in paths); [json.loads(pathlib.Path(p).read_text()) for p in paths if p.endswith('.json')]"
+      ],
+      "timeout_seconds": 30
+    },
+    {
+      "id": "build-and-behavior",
+      "type": "command",
+      "description": "Offline frozen installation, strict typecheck, build, and actual deterministic behavioral tests. Final G0 gate executes all 102 mandatory protected branches without skips.",
+      "argv": [
+        "node",
+        "scripts/check-g0.mjs",
+        "G0-11"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "required_capabilities": {
+    "agent": [
+      "text_input"
+    ],
+    "runtime": []
+  },
+  "limits": {
+    "max_iterations": 16,
+    "max_wall_seconds": 3600,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "agent_step_version": "0.3"
+  }
+}

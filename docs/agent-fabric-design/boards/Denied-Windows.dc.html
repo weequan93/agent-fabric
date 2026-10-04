@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Permission denied on Windows</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--onac:var(--k5);--font:'Segoe UI Variable','Segoe UI','Hanken Grotesk',system-ui,sans-serif;--r:8px;--rb:4px;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k24:rgba(0,0,0,.05);--k34:#2745D0}
+
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.af{font-family:var(--font);color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-run{color:var(--acd);background:var(--ac2)}
+.p-wait{color:var(--wait);background:var(--waitbg)}
+.p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-bad{color:var(--bad);background:var(--badbg)}
+.p-bad i{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--rb);border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--font);cursor:pointer;white-space:nowrap}
+.btn.sm{height:36px;padding:0 14px;font-size:13px}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.ghost{background:none;border-color:transparent}
+.dng{color:var(--bad);border-color:var(--bad)}
+.dis{background:var(--sf2);color:var(--ink3)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.chip.on{background:var(--ac2);color:var(--acd);font-weight:600}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.tabi.on{color:var(--ac)}
+.nv{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:8px;color:var(--ink2);font-weight:600;font-size:13px}
+.nv.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.tr{display:grid;align-items:center;padding:11px 16px;border-top:1px solid var(--ln);font-size:13px;gap:12px}
+.th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-top:0;padding-top:12px;padding-bottom:8px}
+.seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.seg span{flex:1;min-width:64px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.tg.on{background:var(--ac)}
+.tg.on::after{left:21px;background:var(--onac)}
+.ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.ctl:first-child{border-top:0}
+.val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.opt{display:flex;gap:12px;padding:14px;border:1px solid var(--ln);border-radius:var(--r);background:var(--sf);align-items:flex-start}
+.opt.on{border-color:var(--ac);background:var(--ac2)}
+.rd{width:20px;height:20px;border-radius:10px;border:2px solid var(--ink3);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.opt.on .rd{border-color:var(--ac)}
+.opt.on .rd span{width:10px;height:10px;border-radius:5px;background:var(--ac)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.kv:first-child{border-top:0}
+.kv span:first-child{color:var(--ink3)}
+.kv span:last-child{font-weight:600;text-align:right}
+.li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.li:first-child{border-top:0}
+.mk{border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.sk{background:var(--sf2);border-radius:6px}
+.row{display:flex;align-items:center;gap:10px}
+.col{display:flex;flex-direction:column}
+.ph{border:1px dashed var(--ink3);border-radius:6px;padding:2px 8px;color:var(--ink3);font-size:12px;font-weight:600}
+
+
+.wn{display:flex;align-items:center;gap:12px;height:40px;padding:0 12px;border-radius:4px;color:var(--ink);font-size:14px;position:relative}
+.wn.on{background:var(--k24);font-weight:600}
+.wn.on::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:2px;background:var(--ac)}
+.btn{height:32px;border-radius:4px;font-weight:600;padding:0 14px;font-size:14px}
+.card{border-radius:8px}
+.chip{border-radius:4px}
+.pill{border-radius:4px}
+
+/*comfy*/
+.tr{padding:16px 20px;font-size:14px;min-height:56px}
+.th{min-height:0;padding-top:14px;padding-bottom:10px}
+.kv{padding:12px 0;font-size:14px}
+.li{padding:12px 0;font-size:14px}
+.opt{padding:16px}
+.rel{display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid var(--ln);border-radius:var(--r,12px);background:var(--sf);font-weight:600;font-size:14px;flex:1;min-width:0}
+.rel span.s{color:var(--ink3);font-weight:500;font-size:12px}
+.shx .badge,.shx .btn,.shx .card,.shx .chip,.shx .col,.shx .ctl,.shx .dis,.shx .dng,.shx .ghost,.shx .ic,.shx .kv,.shx .lbl,.shx .li,.shx .mk,.shx .mono,.shx .n,.shx .nv,.shx .on,.shx .opt,.shx .p-bad,.shx .p-idle,.shx .p-ok,.shx .p-run,.shx .p-wait,.shx .ph,.shx .pill,.shx .pri,.shx .rb,.shx .rd,.shx .row,.shx .seg,.shx .sk,.shx .sm,.shx .sub,.shx .t1,.shx .t2,.shx .t3,.shx .tabi,.shx .tg,.shx .th,.shx .tr,.shx .val{all:revert}
+.shx .badge,.shx .btn,.shx .card,.shx .chip,.shx .col,.shx .ctl,.shx .dis,.shx .dng,.shx .ghost,.shx .ic,.shx .kv,.shx .lbl,.shx .li,.shx .mk,.shx .mono,.shx .n,.shx .nv,.shx .on,.shx .opt,.shx .p-bad,.shx .p-idle,.shx .p-ok,.shx .p-run,.shx .p-wait,.shx .ph,.shx .pill,.shx .pri,.shx .rb,.shx .rd,.shx .row,.shx .seg,.shx .sk,.shx .sm,.shx .sub,.shx .t1,.shx .t2,.shx .t3,.shx .tabi,.shx .tg,.shx .th,.shx .tr,.shx .val{box-sizing:border-box}
+.shx *{box-sizing:border-box}
+.shx .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.shx .card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r)}
+.shx .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.shx .t1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.shx .t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.shx .t3{font-size:14px;font-weight:600;margin:0}
+.shx .sub{color:var(--ink3);font-size:13px}
+.shx .pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.shx .pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.shx .p-run{color:var(--acd);background:var(--ac2)}
+.shx .p-wait{color:var(--wait);background:var(--waitbg)}
+.shx .p-wait i{background:none;border:2px solid currentColor;width:8px;height:8px}
+.shx .p-ok{color:var(--ok);background:var(--okbg)}
+.shx .p-ok i{border-radius:2px}
+.shx .p-bad{color:var(--bad);background:var(--badbg)}
+.shx .p-bad i{border-radius:0;transform:rotate(45deg);width:7px;height:7px}
+.shx .p-idle{color:var(--idle);background:var(--idlebg)}
+.shx .p-idle i{border-radius:1px;width:8px;height:2px}
+.shx .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--rb);border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px var(--font);cursor:pointer;white-space:nowrap}
+.shx .btn.sm{height:36px;padding:0 14px;font-size:13px}
+.shx .pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.shx .ghost{background:none;border-color:transparent}
+.shx .dng{color:var(--bad);border-color:var(--bad)}
+.shx .dis{background:var(--sf2);color:var(--ink3)}
+.shx .chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.shx .chip.on{background:var(--ac2);color:var(--acd);font-weight:600}
+.shx .ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.shx .badge{min-width:20px;height:20px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 6px}
+.shx .tabi{flex:1;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink3);font-size:11px;font-weight:600;position:relative}
+.shx .tabi.on{color:var(--ac)}
+.shx .nv{display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border-radius:8px;color:var(--ink2);font-weight:600;font-size:13px}
+.shx .nv.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.shx .rb{width:72px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;color:var(--ink3)}
+.shx .rb.on{background:var(--sf);color:var(--ac);box-shadow:0 0 0 1px var(--ln)}
+.shx .tr{display:grid;align-items:center;padding:11px 16px;border-top:1px solid var(--ln);font-size:13px;gap:12px}
+.shx .th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-top:0;padding-top:12px;padding-bottom:8px}
+.shx .seg{display:flex;background:var(--sf2);border-radius:10px;padding:3px}
+.shx .seg span{flex:1;min-width:64px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink3);border-radius:8px}
+.shx .seg span.on{background:var(--sf);color:var(--ac);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.shx .tg{width:44px;height:26px;border-radius:13px;background:var(--ln);position:relative;flex:none}
+.shx .tg::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:var(--sf);box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.shx .tg.on{background:var(--ac)}
+.shx .tg.on::after{left:21px;background:var(--onac)}
+.shx .ctl{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--ln);min-height:60px}
+.shx .ctl:first-child{border-top:0}
+.shx .val{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
+.shx .opt{display:flex;gap:12px;padding:14px;border:1px solid var(--ln);border-radius:var(--r);background:var(--sf);align-items:flex-start}
+.shx .opt.on{border-color:var(--ac);background:var(--ac2)}
+.shx .rd{width:20px;height:20px;border-radius:10px;border:2px solid var(--ink3);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.shx .opt.on .rd{border-color:var(--ac)}
+.shx .opt.on .rd span{width:10px;height:10px;border-radius:5px;background:var(--ac)}
+.shx .kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.shx .kv:first-child{border-top:0}
+.shx .kv span:first-child{color:var(--ink3)}
+.shx .kv span:last-child{font-weight:600;text-align:right}
+.shx .li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--ln);font-size:13px}
+.shx .li:first-child{border-top:0}
+.shx .mk{border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.shx .n{width:22px;height:22px;border-radius:11px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.shx .sk{background:var(--sf2);border-radius:6px}
+.shx .row{display:flex;align-items:center;gap:10px}
+.shx .col{display:flex;flex-direction:column}
+.shx .ph{border:1px dashed var(--ink3);border-radius:6px;padding:2px 8px;color:var(--ink3);font-size:12px;font-weight:600}
+.shx a,.shx a[class]{text-decoration:none}.shx *{box-sizing:border-box}.shx>div:first-child{padding-top:18px!important}.shx .ic{width:20px;height:20px}
+.shx{border-radius:8px!important}.shx .btn{border-radius:4px!important}.shx .card{border-radius:6px!important}.shx .pill{border-radius:4px!important}
+.shx a[class]:where(.li,.row,.card,.col,.kv,.opt,.tr,.ctl,.nv,.rb,.tabi),.shy a[class]:where(.li,.row,.card,.col,.kv,.opt,.tr,.ctl,.nv,.rb,.tabi){color:inherit}
+/*winnative*/
+.tg{width:40px!important;height:20px!important;border-radius:10px!important;background:transparent!important;border:1px solid var(--ink2)!important;box-sizing:border-box}
+.tg::after{top:4px!important;left:4px!important;width:10px!important;height:10px!important;background:var(--ink2)!important;box-shadow:none!important}
+.tg.on{background:var(--ac)!important;border-color:var(--ac)!important}
+.tg.on::after{left:25px!important;background:var(--onac)!important}
+.af input,.af select{height:32px!important;border-radius:4px!important;border:1px solid var(--ln)!important;border-bottom:1px solid var(--ink3)!important;padding:0 10px!important;font-size:14px!important}
+.af textarea{border-radius:4px!important;border:1px solid var(--ln)!important;border-bottom:1px solid var(--ink3)!important}
+.shx{border:1px solid var(--ln)}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k24:rgba(255,255,255,.06);--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:1440px;height:900px;display:flex;flex-direction:column">
+<a class="dmt c" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+
+<div style="display:flex;align-items:center;height:32px;flex:none;padding-left:12px;gap:10px;font-size:12px"><span style="width:16px;height:16px;border-radius:4px;background:var(--ac);color:var(--onac);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">A</span><span>Product - Agent Fabric</span><span style="display:flex;margin-left:auto"><span style="width:46px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 6h10"/></svg></span><span style="width:46px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1"><rect x="1.5" y="1.5" width="9" height="9"/></svg></span><span style="width:46px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--ink2)"><svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 1l10 10M11 1L1 11"/></svg></span></span></div>
+<div style="flex:1;display:flex;min-height:0">
+<aside style="width:260px;flex:none;padding:12px 10px;display:flex;flex-direction:column;gap:2px"><a href="Windows-Desktop.dc.html" class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a href="Chat-Windows.dc.html" class="wn on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>Spaces</a><a href="Inbox-Windows.dc.html" class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 13h5l1 3h6l1-3h5"/></svg>Inbox</a><a class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M4 4h10l6 6v10H4z"/></svg>Files</a><a class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1"/></svg>Connections</a><a href="Memory-Windows.dc.html" class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 3a4 4 0 0 0-4 4 4 4 0 0 0-3 6 4 4 0 0 0 4 6h6a4 4 0 0 0 4-6 4 4 0 0 0-3-6 4 4 0 0 0-4-4z"/></svg>Knowledge</a><a class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 3v18M16 7H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7"/></svg>Cost</a><span style="flex:1"></span><a href="Devices-Windows.dc.html" class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M3 5h18v11H3zM8 20h8"/></svg>Devices</a><a href="Policy-Windows.dc.html" class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Policy</a><a class="wn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 3v3M12 18v3M3 12h3M18 12h3"/></svg>Settings</a></aside>
+<main style="flex:1;min-width:0;background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-right:0;border-radius:8px 0 0 0;padding:28px 36px 0;display:flex;flex-direction:column;gap:16px;overflow:hidden">
+<div class="row"><h1 class="t1" style="font-weight:600;flex:1">Product</h1><span class="chip">12 members</span><span class="pill p-idle"><i></i>Computer asleep</span></div>
+<div style="border-bottom:1px solid var(--ln)"><span style="display:inline-flex;height:40px;padding:0 4px;margin-right:20px;align-items:center;font-weight:600;color:var(--ac);border-bottom:2px solid var(--ac)">Chat</span><span style="display:inline-flex;height:40px;padding:0 4px;margin-right:20px;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent">Work</span><span style="display:inline-flex;height:40px;padding:0 4px;margin-right:20px;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent">Files</span><span style="display:inline-flex;height:40px;padding:0 4px;margin-right:20px;align-items:center;font-weight:600;color:var(--ink3);border-bottom:2px solid transparent">Computer</span></div>
+<div class="row" style="align-items:flex-start;gap:20px;flex:1;min-height:0">
+  <section class="col" style="flex:1.4;gap:12px">
+    <div class="row" style="gap:8px"><span class="mk" style="width:28px;height:28px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700">DK</span><div class="sub" style="line-height:1.3"><b style="color:var(--ink)">Daniel</b>: Can we show it Thursday?<br><span style="font-size:12px">Discussion. Not sent to the agent.</span></div></div>
+    <div style="align-self:flex-end;max-width:70%;background:var(--ac);color:var(--onac);border-radius:8px;padding:10px 14px">Make a dashboard prototype for the launch review from last quarter's metrics.<div style="font-size:12px;opacity:.85;margin-top:2px">Act</div></div>
+    <span style="flex:1"></span>
+    <div class="card" style="padding:10px 14px"><div style="color:var(--ink3);padding:4px 0 10px">Message Product</div><div class="row"><div class="seg" style="width:220px"><span>Ask</span><span>Plan</span><span class="on">Act</span></div><span style="flex:1"></span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM6 11a6 6 0 0 0 12 0M12 17v4"/></svg><button class="btn pri">Send</button></div></div>
+    <div style="height:20px"></div>
+  </section>
+  <section class="card" style="flex:1;padding:16px 18px"><div class="row" style="padding-bottom:6px"><span class="t2" style="flex:1">Ready to start</span><span class="pill p-idle"><i></i>Preflight</span></div>
+    <div class="kv"><span>Result</span><span>Design prototype, versioned draft</span></div><div class="kv"><span>Sources</span><span>Q3 metrics sheet, Brand tokens v6</span></div><div class="kv"><span>Audience</span><span>Product, 12 members</span></div><div class="kv"><span>Computer</span><span>Starts only if needed</span></div><div class="kv"><span>Cost</span><span>Product cost centre, up to $15.00</span></div><div class="kv"><span>Later approval</span><span>Publishing outside Product</span></div>
+    <div class="row" style="margin-top:10px"><a href="Envelope-Windows.dc.html" class="btn pri">Start</a><a href="Plan-Windows.dc.html" class="btn">Edit</a></div></section>
+</div><!--rel--><div style="margin-top:auto;padding:16px 0 22px;border-top:1px solid var(--ln);display:flex;flex-direction:column;gap:10px"><span class="lbl">Related screens</span><div style="display:flex;gap:12px"><a href="Inbox-Windows.dc.html" class="rel"><span>Inbox - Windows</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;margin-left:auto;color:var(--ink3)"><path d="M9 6l6 6-6 6"/></svg></a><a href="Memory-Windows.dc.html" class="rel"><span>Memory inspector - Windows</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;margin-left:auto;color:var(--ink3)"><path d="M9 6l6 6-6 6"/></svg></a><a href="Chat-Windows.dc.html" class="rel"><span>Space chat - Windows</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;margin-left:auto;color:var(--ink3)"><path d="M9 6l6 6-6 6"/></svg></a></div></div><!--/rel--></main>
+</div>
+<div data-sheet style="position:absolute;inset:0;background:rgba(17,26,34,.40);display:flex;align-items:center;justify-content:center;z-index:5"><a href="Chat-Windows.dc.html" aria-label="Close" style="position:absolute;inset:0"></a><div class="shx" role="dialog" aria-label="Permission denied" style="width:520px;height:auto;max-height:840px;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(17,26,34,.35);font-size:14px;line-height:1.4">
+
+<div style="flex:1;overflow:hidden;padding:54px 24px 0;display:flex;flex-direction:column;gap:14px;align-items:center">
+  <div class="row" style="height:44px;align-self:stretch"><span style="color:var(--ac);font-weight:600">Spaces</span></div>
+  <span style="margin-top:36px;width:72px;height:72px;border-radius:36px;background:var(--sf2);color:var(--ink2);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:32px;height:32px;"><path d="M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+  <h1 class="t1" style="font-size:26px;text-align:center">You can't open this Space</h1>
+  <div style="text-align:center;color:var(--ink2);line-height:1.5;font-size:15px">Platform ops is shared with specific people and you are not on its member list. What is inside is not shown.</div>
+  <div class="card" style="padding:12px 16px;align-self:stretch;margin-top:10px"><div class="lbl">Who can let you in</div><div class="row" style="margin-top:8px"><span class="mk" style="width:28px;height:28px;background:var(--ac2);color:var(--acd);font-size:12px;font-weight:700">RV</span><div class="col"><span class="t3">Ravi</span><span class="sub">Space owner</span></div></div></div>
+  <div class="sub" style="text-align:center;line-height:1.45">Your request goes to the Space owner. You will see the answer in Inbox.</div>
+</div>
+<div style="padding:12px 24px 34px;display:flex;flex-direction:column;gap:8px;flex:none"><a href="Inbox-Windows.dc.html" class="btn pri" style="width:100%">Request access</a><a href="Spaces-Windows.dc.html" class="btn ghost" style="width:100%">Back to Spaces</a></div>
+</div></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: false };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

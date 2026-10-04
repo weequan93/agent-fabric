@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Design Studio on Mac, dark</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+:root{--bg:var(--k4);--sf:var(--k5);--sf2:var(--k3);--ln:#DCE1E8;--ink:#111A22;--ink2:#3F4B57;--ink3:#5B6773;--ac:var(--k34);--ac2:var(--k6);--acd:#1B31A3;--wait:#7A4E00;--waitbg:var(--k7);--ok:#14633A;--okbg:#D8F0E1;--bad:#9B1F26;--badbg:var(--k8);--idle:var(--k9);--idlebg:#E3E7EC;--k3:#E9EDF2;--k4:#F3F5F8;--k5:#FFFFFF;--k6:#E4E9FB;--k7:#FBEBC8;--k8:#FADDDB;--k9:#46515C;--k27:#9DB0F0;--k29:#E4E8EE;--k30:#C5CCD6;--k34:#2745D0}
+.af{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.4;overflow:hidden;position:relative}
+.af *{box-sizing:border-box}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.t1{font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+.t2{font-size:16px;font-weight:600;line-height:1.3;margin:0}
+.t3{font-size:14px;font-weight:600;margin:0}
+.sub{color:var(--ink3);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block}
+.p-ok{color:var(--ok);background:var(--okbg)}
+.p-ok i{border-radius:2px}
+.p-idle{color:var(--idle);background:var(--idlebg)}
+.p-idle i{border-radius:1px;width:8px;height:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:600 14px 'Hanken Grotesk',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pri{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.sm{height:32px;padding:0 12px;font-size:13px;border-radius:8px}
+.ghost{background:none;border-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:var(--sf2);color:var(--ink2);font-size:12px;font-weight:500;white-space:nowrap}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.seg{display:inline-flex;background:var(--sf2);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:none;font:600 13px 'Hanken Grotesk',system-ui,sans-serif;color:var(--ink2);height:30px;padding:0 14px;border-radius:8px;cursor:pointer}
+.seg .on{background:var(--sf);color:var(--ink);box-shadow:0 1px 2px rgba(17,26,34,.14)}
+.av{width:28px;height:28px;border-radius:50%;background:var(--ac2);color:var(--acd);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none;border:2px solid #fff;margin-left:-8px}
+.tile{border:1px solid var(--ln);border-radius:6px;padding:7px;display:flex;flex-direction:column;gap:4px;position:relative;background:var(--sf)}
+.sk{height:8px;border-radius:2px;background:var(--sf2)}
+.utab{height:40px;padding:0 12px;display:flex;align-items:center;font-weight:600;font-size:13px;color:var(--ink3);border-bottom:2px solid transparent}
+.utab.on{color:var(--ac);border-color:var(--ac)}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--ln)}
+.chk:first-child{border-top:0}
+.frame{background:var(--sf);border:1px solid var(--ln);border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(17,26,34,.1)}
+.fh{height:26px;border-bottom:1px solid var(--ln);display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:700}
+kbd{font:500 11px 'IBM Plex Mono',monospace;color:var(--ink3);border:1px solid var(--ln);border-radius:5px;padding:1px 5px;background:var(--sf)}
+.af.dk{--bg:#0F151B;--sf:#18212A;--sf2:#222D38;--ln:#2E3A47;--ink:#EAF0F6;--ink2:#C2CCD6;--ink3:#9AA7B4;--ac:#8AA0FF;--ac2:#1E2A5C;--acd:#C3CEFF;--wait:#F2C46B;--waitbg:#3A2C0C;--ok:#7FD8A3;--okbg:#12341F;--bad:#FF9C95;--badbg:#3E1517;--idle:#B4BFCA;--idlebg:#2A3540;--onac:#0B1236;--k3:#222D38;--k4:#0F151B;--k5:#18212A;--k6:#1E2A5C;--k7:#3A2C0C;--k8:#3E1517;--k9:#B4BFCA;--k27:#3A4A8F;--k29:#131B23;--k30:#2E3A47;--k34:#8AA0FF}
+.af.dk .pri,.af.dk .badge{color:var(--onac)!important}
+.dmt{position:absolute;top:6px;right:10px;z-index:999;height:22px;padding:0 9px;border-radius:11px;background:rgba(128,128,128,.22);color:var(--ink2);font:600 11px var(--font);display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;line-height:1}
+.dmt.c{left:50%;right:auto;transform:translateX(-50%)}
+.dmt svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="af{{ dk }}" style="width:1440px;height:900px;display:flex">
+<a class="dmt c" role="button" aria-label="Switch between light and dark" onClick="{{ tt }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z"/></svg>{{ dl }}</a>
+  <aside style="width:340px;flex:none;background:var(--sf);border-right:1px solid var(--ln);display:flex;flex-direction:column">
+    <div style="height:52px;display:flex;align-items:center;gap:8px;padding:0 18px;border-bottom:1px solid var(--ln)"><span aria-hidden="true" style="display:flex;gap:8px"><span style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></span><span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></span><span style="width:12px;height:12px;border-radius:50%;background:#28C840"></span></span><span class="t3" style="margin-left:14px">Launch dashboard</span></div>
+    <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)">
+      <div style="align-self:flex-end;background:var(--ac);color:var(--onac);border-radius:14px 14px 4px 14px;padding:10px 14px;max-width:88%">Make the revenue change show as a number, not a bar.<div style="font-size:12px;opacity:.85">From Daniel's comment · Act</div></div>
+      <div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px"><span class="t3" style="flex:1">Proposed patch</span><span class="pill p-idle"><i></i>Not applied</span></div>
+        <div class="sub">Changes 1 element on Overview, based on v4. Nothing else moves.</div>
+        <div class="mono" style="background:var(--sf2);border-radius:8px;padding:8px 10px;line-height:1.5"><span style="color:var(--bad)">- delta: bar</span><br><span style="color:var(--ok)">+ delta: number, signed</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri sm">Accept patch</button><button class="btn sm">Compare</button><button class="btn sm">Keep current</button></div>
+      </div>
+      <div class="sub" style="padding:0 4px">Comments are feedback. They never approve a publish or install anything.</div>
+      <span style="flex:1"></span>
+      <div class="card" style="padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+        <div style="color:var(--ink3)">Ask for a change to the selection…</div>
+        <div style="display:flex;align-items:center;gap:8px"><span class="chip" style="background:var(--ac2);color:var(--acd)">Act</span><span class="chip">Model: Auto</span><span style="flex:1"></span><button class="btn pri sm" aria-label="Send" style="width:32px;padding:0"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
+      </div>
+    </div>
+  </aside>
+
+  <section style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--k29)">
+    <header style="height:52px;flex:none;background:var(--sf);border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:12px;padding:0 18px">
+      <span class="chip">Overview</span><span class="pill p-ok"><i></i>Draft v4</span><span class="sub">Autosaved 12:41</span>
+      <span style="flex:1"></span>
+      <div class="seg"><button class="on" aria-pressed="true">Select</button><button aria-pressed="false">Comment</button><button aria-pressed="false">Annotate</button></div>
+      <div style="display:flex;padding-left:8px"><span class="av">PR</span><span class="av">DK</span><span class="av" style="background:var(--okbg);color:var(--ok)">MO</span></div>
+    </header>
+
+    <div style="flex:1;position:relative;background-image:radial-gradient(var(--k30) 1px,transparent 1px);background-size:20px 20px;display:flex;align-items:center;justify-content:center;gap:28px;padding:0 24px">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div class="frame" style="width:120px;height:260px"><div class="fh">Launch review</div><div style="padding:8px;display:flex;flex-direction:column;gap:6px"><div class="tile" style="outline:2px solid var(--ac);outline-offset:1px"><span style="font-size:8px;color:var(--ink3)">Revenue</span><span class="sk" style="width:60%"></span></div><div class="tile"><span style="font-size:8px;color:var(--ink3)">Active teams</span><span class="sk" style="width:50%"></span></div><div class="tile"><span style="font-size:8px;color:var(--ink3)">Cycle time</span><span class="sk" style="width:55%"></span></div></div></div>
+        <span class="sub">Phone · 390</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div class="frame" style="width:200px;height:260px"><div class="fh">Launch review</div><div style="padding:8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px"><div class="tile" style="outline:2px solid var(--ac);outline-offset:1px"><span style="font-size:8px;color:var(--ink3)">Revenue</span><span class="sk" style="width:60%"></span></div><div class="tile"><span style="font-size:8px;color:var(--ink3)">Active teams</span><span class="sk" style="width:50%"></span></div><div class="tile" style="grid-column:span 2"><span style="font-size:8px;color:var(--ink3)">Cycle time</span><div style="display:flex;align-items:flex-end;gap:4px;height:44px"><span style="flex:1;height:40%;background:var(--ac2)"></span><span style="flex:1;height:60%;background:var(--ac2)"></span><span style="flex:1;height:50%;background:var(--ac2)"></span><span style="flex:1;height:80%;background:var(--k27)"></span></div></div></div></div>
+        <span class="sub">Tablet · 834</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div class="frame" style="width:320px;height:260px;display:flex"><div style="width:56px;background:var(--sf2);padding:8px;display:flex;flex-direction:column;gap:6px"><span class="sk" style="background:var(--sf)"></span><span class="sk" style="background:var(--sf)"></span><span class="sk" style="background:var(--sf)"></span></div><div style="flex:1"><div class="fh">Launch review</div><div style="padding:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px"><div class="tile" style="outline:2px solid var(--ac);outline-offset:1px"><span style="font-size:8px;color:var(--ink3)">Revenue</span><span class="sk" style="width:60%"></span></div><div class="tile"><span style="font-size:8px;color:var(--ink3)">Active teams</span><span class="sk" style="width:50%"></span></div><div class="tile"><span style="font-size:8px;color:var(--ink3)">Cycle time</span><span class="sk" style="width:55%"></span></div><div class="tile" style="grid-column:span 2;height:90px"><span style="font-size:8px;color:var(--ink3)">Trend</span><div style="display:flex;align-items:flex-end;gap:4px;flex:1"><span style="flex:1;height:30%;background:var(--ac2)"></span><span style="flex:1;height:55%;background:var(--ac2)"></span><span style="flex:1;height:45%;background:var(--ac2)"></span><span style="flex:1;height:70%;background:var(--ac2)"></span><span style="flex:1;height:85%;background:var(--k27)"></span></div></div><div class="tile" style="height:90px"><span style="font-size:8px;color:var(--ink3)">By team</span><span class="sk"></span><span class="sk"></span><span class="sk" style="width:60%"></span></div></div></div></div>
+        <span class="sub">Desktop · 1440</span>
+      </div>
+    </div>
+
+    <div style="flex:none;background:var(--sf);border-top:1px solid var(--ln);padding:12px 18px;display:flex;align-items:center;gap:10px">
+      <button class="btn pri sm">Accept version</button><button class="btn sm">Download</button><a href="Share-Desktop.dc.html" class="btn sm">Share to Space</a><a href="Export-Desktop.dc.html" class="btn sm">Publish externally…</a>
+      <span style="flex:1"></span><span class="sub">Four separate actions. Only Accept is internal to this draft.</span>
+    </div>
+  </section>
+
+  <aside style="width:340px;flex:none;background:var(--sf);border-left:1px solid var(--ln);display:flex;flex-direction:column">
+    <div style="height:52px;display:flex;padding:12px 8px 0;border-bottom:1px solid var(--ln);align-items:flex-end"><a class="utab">Element</a><a class="utab">Tokens</a><a class="utab">Comments · 1</a><a class="utab on">Checks</a></div>
+    <div style="padding:8px 18px;flex:1;overflow:hidden">
+      <div class="chk"><span class="pill p-ok"><i></i>Passed</span><div><div class="t3">Build</div><div class="sub">Receipt <span class="mono">r_2f81</span></div></div></div>
+      <div class="chk"><span class="pill p-ok"><i></i>Passed</span><div><div class="t3">Responsive sizes</div><div class="sub">390, 834 and 1440 wide</div></div></div>
+      <div class="chk"><span class="pill p-ok"><i></i>Passed</span><div><div class="t3">Keyboard flow</div><div class="sub">Every control reachable with Tab</div></div></div>
+      <div class="chk"><span class="pill p-ok"><i></i>Passed</span><div><div class="t3">Contrast and overflow</div><div class="sub">Automated results are evidence, not certification</div></div></div>
+      <div class="sub" style="padding-top:12px">Checks bind to the exact version. Accepting the patch above creates v5 and these run again.</div>
+      <div style="padding-top:16px"><span class="lbl">Provenance</span><div class="sub" style="margin-top:4px">Generated by the Product agent, run 1. Fonts and assets: brand system v6.</div></div>
+    </div>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { dk: true };
+}
+renderVals() {
+return {
+dk: this.state.dk ? ' dk' : '',
+dl: this.state.dk ? 'Light' : 'Dark',
+tt: () => this.setState({ dk: !this.state.dk }),};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1",
+  "task_id": "g0_05",
+  "revision": 1,
+  "objective": "G0-05 Task、Run 与原生会话状态机 — implement accepted plan, actual deterministic tests, preserve prior history. Task 记录目标/需求修订，Run 是一次尝试；queued/preparing、running/verifying、waiting、paused、cancelling/reconciling、succeeded/partial/failed/cancelled 具有明确定义；budget waiting 支持当前授权 top-up 后继续。 terminal Run 不重开；通知失败不能重定义任务结果；prepare proposal 不显示 published；普通回答不强加部署 gate；模型自报不能决定完成。 终态重试是新 Run，保留历史 evidence/charges；replay 重建 state，不重新请求模型、不执行 write tool；未知 effect 未核对不能让 model 继续。 状态表每条合法/非法 transition 都有夹具，全部符合预期；replay 的模型请求与写工具调用计数均为 0；controller 与 session kernel 分工经审查，不依赖竞争产品 harness。",
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "scope": {
+    "write_allow": [
+      "engine/scheduler/src/task-state.ts",
+      "engine/scheduler/src/run-state.ts",
+      "engine/kernel/src/session-loop.ts",
+      "evals/fixtures/lifecycle-cases.json",
+      "evals/recovery/lifecycle.test.ts"
+    ],
+    "write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "evals/fixtures/g0-oracle-definition.json"
+    ]
+  },
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "criterion-1",
+      "description": "正向: Task 记录目标/需求修订，Run 是一次尝试；queued/preparing、running/verifying、waiting、paused、cancelling/reconciling、succeeded/partial/failed/cancelled 具有明确定义；budget waiting 支持当前授权 top-up 后继续。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-2",
+      "description": "拒绝: terminal Run 不重开；通知失败不能重定义任务结果；prepare proposal 不显示 published；普通回答不强加部署 gate；模型自报不能决定完成。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-3",
+      "description": "恢复: 终态重试是新 Run，保留历史 evidence/charges；replay 重建 state，不重新请求模型、不执行 write tool；未知 effect 未核对不能让 model 继续。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    },
+    {
+      "id": "criterion-4",
+      "description": "完成门: 状态表每条合法/非法 transition 都有夹具，全部符合预期；replay 的模型请求与写工具调用计数均为 0；controller 与 session kernel 分工经审查，不依赖竞争产品 harness。",
+      "check_ids": [
+        "outputs",
+        "build-and-behavior"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "outputs",
+      "type": "command",
+      "description": "Declared outputs exist as nonempty files; JSON fixtures parse; preserved accepted planning files remain present. Semantics are behavioral checks and final independent assessment.",
+      "argv": [
+        "python3",
+        "-c",
+        "import pathlib,json; paths=[\"engine/scheduler/src/task-state.ts\",\"engine/scheduler/src/run-state.ts\",\"engine/kernel/src/session-loop.ts\",\"evals/fixtures/lifecycle-cases.json\",\"evals/recovery/lifecycle.test.ts\"]; assert all(pathlib.Path(p).is_file() and pathlib.Path(p).stat().st_size>0 for p in paths); [json.loads(pathlib.Path(p).read_text()) for p in paths if p.endswith('.json')]"
+      ],
+      "timeout_seconds": 30
+    },
+    {
+      "id": "build-and-behavior",
+      "type": "command",
+      "description": "Offline frozen installation, strict typecheck, build, and actual deterministic behavioral tests. Final G0 gate executes all 102 mandatory protected branches without skips.",
+      "argv": [
+        "node",
+        "scripts/check-g0.mjs",
+        "G0-05"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "required_capabilities": {
+    "agent": [
+      "text_input"
+    ],
+    "runtime": []
+  },
+  "limits": {
+    "max_iterations": 16,
+    "max_wall_seconds": 3600,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "agent_step_version": "0.3"
+  }
+}
