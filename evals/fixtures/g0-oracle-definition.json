@@ -1,0 +1,4074 @@
+{
+  "schemaVersion": 1,
+  "branches": [
+    "allowed",
+    "denied",
+    "recovery"
+  ],
+  "mandatoryBranchCount": 102,
+  "definitionAuthority": "independent tester G0 preparation; frozen before downstream implementation",
+  "executionPolicy": {
+    "allBranchesRequired": true,
+    "skipAllowed": false,
+    "missingBranchIsFailure": true,
+    "expectationsFromImplementationAllowed": false,
+    "environment": "deterministic controlled adapters only"
+  },
+  "thresholds": {
+    "crossSpaceDisclosure": 0,
+    "unauthorizedDispatch": 0,
+    "duplicateEffect": 0,
+    "oldGenerationWrites": 0,
+    "replayModelCalls": 0,
+    "replayWriteCalls": 0,
+    "duplicateSettlements": 0,
+    "unexpectedAllowedWorkRejections": 0
+  },
+  "oracles": [
+    {
+      "id": "G0-O01",
+      "packages": [
+        "G0-02"
+      ],
+      "requirements": [
+        "AF-15",
+        "AF-16"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O01/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "versioned envelope; missing audience/unknown safety field/partial arguments",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "complete envelope survives serialization unchanged",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O01/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "versioned envelope; missing audience/unknown safety field/partial arguments",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "dangerous missing/unknown fields rejected before invocation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O01/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "versioned envelope; missing audience/unknown safety field/partial arguments",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "old schema explicitly migrates or rejects without silently dropping safety fields",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O02",
+      "packages": [
+        "G0-02"
+      ],
+      "requirements": [
+        "AF-01",
+        "AF-02",
+        "AF-15"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O02/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "pinned engine/schema/behavior/environment and incompatible adapter",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "compatible pinned version operates",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O02/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "pinned engine/schema/behavior/environment and incompatible adapter",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "incompatible required capability rejected",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O02/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "pinned engine/schema/behavior/environment and incompatible adapter",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "upgrade requires explicit new verified boundary; old Run pins remain unchanged",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O03",
+      "packages": [
+        "G0-03"
+      ],
+      "requirements": [
+        "AF-03",
+        "UX-06"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O03/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two Spaces with same resource name; spoofed tenant/owner/payer",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "current granted Space resource readable",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O03/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two Spaces with same resource name; spoofed tenant/owner/payer",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "cross-Space/spoofed identity yields no read or dispatch",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O03/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two Spaces with same resource name; spoofed tenant/owner/payer",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "navigation changes do not change pending operation immutable target",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O04",
+      "packages": [
+        "G0-03"
+      ],
+      "requirements": [
+        "AF-13",
+        "AF-16"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O04/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "enterprise/Space/role/envelope/tool/runtime grants",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "intersection of all six grants permits allowed work",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O04/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "enterprise/Space/role/envelope/tool/runtime grants",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "missing any grant denies affected action",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O04/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "enterprise/Space/role/envelope/tool/runtime grants",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "restoration queries current grants rather than cached authority",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O05",
+      "packages": [
+        "G0-03"
+      ],
+      "requirements": [
+        "AF-16",
+        "UX-02",
+        "UX-03"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O05/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Ask/Plan/Act; discussion; explicit group trigger",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "authorized Ask/Plan output and explicitly authorized Act accepted",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O05/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Ask/Plan/Act; discussion; explicit group trigger",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "discussion and intent escalation do not dispatch effects",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O05/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Ask/Plan/Act; discussion; explicit group trigger",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "new explicit current authorization enables allowed operation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O06",
+      "packages": [
+        "G0-03"
+      ],
+      "requirements": [
+        "AF-07",
+        "UX-12",
+        "UX-13"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O06/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "private source/group destination; membership revision cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "source readable and destination shareable both permit",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O06/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "private source/group destination; membership revision cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "private source cannot disclose into group",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O06/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "private source/group destination; membership revision cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "revocation invalidates old capsule/cache/pending delivery",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O07",
+      "packages": [
+        "G0-04"
+      ],
+      "requirements": [
+        "AF-05",
+        "AF-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O07/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "upload bytes, durable confirmation, manifest and outbox",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "publish after both durable bytes and manifest confirmation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O07/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "upload bytes, durable confirmation, manifest and outbox",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "partial commit remains unpublished",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O07/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "upload bytes, durable confirmation, manifest and outbox",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "crash/repeated outbox publish exactly one version",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O08",
+      "packages": [
+        "G0-04"
+      ],
+      "requirements": [
+        "AF-07",
+        "UX-13",
+        "UX-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O08/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "revocation/deletion tombstone; delayed outbox; restore",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "current undeleted authorized data restored",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O08/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "revocation/deletion tombstone; delayed outbox; restore",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "revoked/deleted records cannot become readable",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O08/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "revocation/deletion tombstone; delayed outbox; restore",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "tombstones applied before index rebuild and access",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O09",
+      "packages": [
+        "G0-05"
+      ],
+      "requirements": [
+        "AF-01",
+        "AF-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O09/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "complete transition table including terminal run",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "every legal transition reaches exact declared state",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O09/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "complete transition table including terminal run",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "every illegal transition rejected",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O09/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "complete transition table including terminal run",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "terminal retry creates new Run; old evidence and charges preserved",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O10",
+      "packages": [
+        "G0-05"
+      ],
+      "requirements": [
+        "AF-17",
+        "UX-18"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O10/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "model completion claim; protected check; failed notification",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "true satisfied completion gate reaches terminal result",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O10/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "model completion claim; protected check; failed notification",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "model claim alone cannot complete Task",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O10/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "model completion claim; protected check; failed notification",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "failed notification leaves existing result unchanged",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O11",
+      "packages": [
+        "G0-05",
+        "G0-14"
+      ],
+      "requirements": [
+        "AF-05",
+        "AF-14"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O11/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "fixed event history; model/write spies",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "replay reconstructs expected authoritative state",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "modelCalls": 0,
+          "writeCalls": 0
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O11/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "fixed event history; model/write spies",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "illegal history rejected without effects",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "modelCalls": 0,
+          "writeCalls": 0
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O11/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "fixed event history; model/write spies",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "restore replay issues zero model or write calls",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "modelCalls": 0,
+          "writeCalls": 0
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O12",
+      "packages": [
+        "G0-06"
+      ],
+      "requirements": [
+        "AF-09",
+        "UX-06"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O12/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "same scope/key commands; other scope; stale revision/expiry",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "same scope and key return same command identity",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O12/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "same scope/key commands; other scope; stale revision/expiry",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "ordinary stale/expired command rejected",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O12/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "same scope/key commands; other scope; stale revision/expiry",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "query committed command status; changed approval not silently resubmitted",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O13",
+      "packages": [
+        "G0-06"
+      ],
+      "requirements": [
+        "AF-04",
+        "AF-05"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O13/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "ordered stream; duplicate/out-of-order events; invalid cursor",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "snapshot plus cursor obtains same committed state",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O13/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "ordered stream; duplicate/out-of-order events; invalid cursor",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "stream tokens do not create committed results",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O13/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "ordered stream; duplicate/out-of-order events; invalid cursor",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "invalid cursor obtains authorized snapshot and clears revoked records",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O14",
+      "packages": [
+        "G0-07"
+      ],
+      "requirements": [
+        "AF-13",
+        "AF-16",
+        "UX-05"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O14/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exact actor/target/digest/artifact/policy/approval/lease/reservation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "all preconditions current then one authorized dispatch",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O14/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exact actor/target/digest/artifact/policy/approval/lease/reservation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "recipient/content/policy/expiry drift prevents dispatch",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O14/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exact actor/target/digest/artifact/policy/approval/lease/reservation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "explicit refreshed approval permits new valid attempt",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O15",
+      "packages": [
+        "G0-07"
+      ],
+      "requirements": [
+        "AF-14",
+        "UX-16"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O15/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "remote commit then lost acknowledgement; idempotent lookup",
+          "clockEpochMs": 1700000000000,
+          "remote": {
+            "operation": "op-1",
+            "firstCommitSucceeds": true,
+            "firstAckLost": true,
+            "lookupReturnsCommitted": true
+          }
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "first dispatch writes remote operation once",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "remoteWrites": 1
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O15/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "remote commit then lost acknowledgement; idempotent lookup",
+          "clockEpochMs": 1700000000000,
+          "remote": {
+            "operation": "op-1",
+            "firstCommitSucceeds": true,
+            "firstAckLost": true,
+            "lookupReturnsCommitted": true
+          }
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unknown state forbids blind repeat write",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "remoteWrites": 1
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O15/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "remote commit then lost acknowledgement; idempotent lookup",
+          "clockEpochMs": 1700000000000,
+          "remote": {
+            "operation": "op-1",
+            "firstCommitSucceeds": true,
+            "firstAckLost": true,
+            "lookupReturnsCommitted": true
+          }
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "lookup original committed effect settles without duplicate effect",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "remoteWrites": 1
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O16",
+      "packages": [
+        "G0-07"
+      ],
+      "requirements": [
+        "AF-14",
+        "AF-20"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O16/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "unknown outcome; transport without reliable dedup or lookup",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "known safe operation can be reconciled",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O16/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "unknown outcome; transport without reliable dedup or lookup",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unsafe unknown operation is not retried",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O16/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "unknown outcome; transport without reliable dedup or lookup",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "unknown/waiting resolver and reservation are retained",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O17",
+      "packages": [
+        "G0-08"
+      ],
+      "requirements": [
+        "AF-19",
+        "UX-08"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O17/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "stale-view Stop; current authority; repeated idempotency key",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "stale progress still permits authorized Stop",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O17/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "stale-view Stop; current authority; repeated idempotency key",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "missing current Stop authority rejects",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O17/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "stale-view Stop; current authority; repeated idempotency key",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "same-key repeat uses same identity with monotonic generation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O18",
+      "packages": [
+        "G0-08"
+      ],
+      "requirements": [
+        "AF-19",
+        "UX-08",
+        "UX-09"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O18/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Stop-run/task; old worker/publish/input lease; replacement",
+          "clockEpochMs": 1700000000000,
+          "fencing": {
+            "before": 3,
+            "afterStop": 4,
+            "oldWorkerGeneration": 3,
+            "replacementGeneration": 4
+          }
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "current generation permits authorized mutation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O18/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Stop-run/task; old worker/publish/input lease; replacement",
+          "clockEpochMs": 1700000000000,
+          "fencing": {
+            "before": 3,
+            "afterStop": 4,
+            "oldWorkerGeneration": 3,
+            "replacementGeneration": 4
+          }
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "old generation cannot write after fencing",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "oldGenerationWrites": 0
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O18/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "Stop-run/task; old worker/publish/input lease; replacement",
+          "clockEpochMs": 1700000000000,
+          "fencing": {
+            "before": 3,
+            "afterStop": 4,
+            "oldWorkerGeneration": 3,
+            "replacementGeneration": 4
+          }
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "Stop-task requires explicit current retry authorization before new Run",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O19",
+      "packages": [
+        "G0-08",
+        "G0-12"
+      ],
+      "requirements": [
+        "AF-10",
+        "AF-13",
+        "UX-09",
+        "UX-10"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O19/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shell/SDK/API/filesystem/browser/desktop mutation classes",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "all declared conflicting paths use common barrier",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O19/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shell/SDK/API/filesystem/browser/desktop mutation classes",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unknown path or absent enforceable capability cannot schedule",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O19/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shell/SDK/API/filesystem/browser/desktop mutation classes",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "input disconnect does not replay or automatically resume input",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O20",
+      "packages": [
+        "G0-09"
+      ],
+      "requirements": [
+        "AF-18",
+        "UX-01",
+        "UX-03"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O20/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "authorized retrieval; forbidden source; budget spy; Ask routing",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "authorization precedes retrieval and reserve precedes invocation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O20/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "authorized retrieval; forbidden source; budget spy; Ask routing",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unauthorized retrieval/unreserved invocation never occurs",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O20/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "authorized retrieval; forbidden source; budget spy; Ask routing",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "Ask uses approved service route with zero Space VM provisions",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "vmProvisions": 0
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O21",
+      "packages": [
+        "G0-09"
+      ],
+      "requirements": [
+        "AF-02",
+        "AF-15"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O21/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "required profile modalities/schema/cancel/usage; manual pin; region",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "all required capabilities allow qualified route",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O21/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "required profile modalities/schema/cancel/usage; manual pin; region",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "missing required capability prevents invocation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O21/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "required profile modalities/schema/cancel/usage; manual pin; region",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "disallowed fallback waits; no cross-provider/region switch",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O22",
+      "packages": [
+        "G0-09"
+      ],
+      "requirements": [
+        "AF-02",
+        "AF-07",
+        "UX-13"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O22/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "grant revision; hostile source text; provider-scoped opaque cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "capsule preserves provenance/trust/uncertainty",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O22/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "grant revision; hostile source text; provider-scoped opaque cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "source text cannot add authority",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O22/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "grant revision; hostile source text; provider-scoped opaque cache",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "grant revision recompiles context; opaque cache remains provider scoped",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O23",
+      "packages": [
+        "G0-10"
+      ],
+      "requirements": [
+        "AF-06",
+        "UX-11"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O23/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two children racing reserve on one parent allowance",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "parentCeiling": 100,
+            "children": [
+              "child-a",
+              "child-b"
+            ],
+            "simultaneousRequests": [
+              60,
+              60
+            ]
+          }
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "aggregate successful reserve never exceeds allowance",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "successfulReserves": 1,
+            "reserved": 60,
+            "available": 40
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O23/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two children racing reserve on one parent allowance",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "parentCeiling": 100,
+            "children": [
+              "child-a",
+              "child-b"
+            ],
+            "simultaneousRequests": [
+              60,
+              60
+            ]
+          }
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "atomic losing request denied; child does not copy ceiling",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "rejectedReserves": 1,
+            "reservedAfterLosingRequest": 60
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O23/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "two children racing reserve on one parent allowance",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "parentCeiling": 100,
+            "children": [
+              "child-a",
+              "child-b"
+            ],
+            "simultaneousRequests": [
+              60,
+              60
+            ]
+          }
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "release permits subsequent lawful reserve with conservation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "release": 60,
+            "subsequentReserve": 60,
+            "reserved": 60,
+            "available": 40
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O24",
+      "packages": [
+        "G0-10"
+      ],
+      "requirements": [
+        "AF-06",
+        "UX-11"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O24/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "reserved/unknown/settled usage; repeated settlement; delayed usage",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "ceiling": 100,
+            "reservation": 40,
+            "actualUsage": 35
+          }
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "normal settlement occurs exactly once",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "settled": 35,
+            "reserved": 0,
+            "available": 65
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O24/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "reserved/unknown/settled usage; repeated settlement; delayed usage",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "ceiling": 100,
+            "reservation": 40,
+            "actualUsage": 35
+          }
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unknown reservation not prematurely released",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "unknownReserved": 40,
+            "unknownAvailable": 60
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O24/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "reserved/unknown/settled usage; repeated settlement; delayed usage",
+          "clockEpochMs": 1700000000000,
+          "budget": {
+            "ceiling": 100,
+            "reservation": 40,
+            "actualUsage": 35
+          }
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "duplicate settlement has no added debit and reconciliation conserves ledger",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          },
+          "numeric": {
+            "settledAfterDuplicate": 35,
+            "reserved": 0,
+            "available": 65
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O25",
+      "packages": [
+        "G0-10"
+      ],
+      "requirements": [
+        "AF-06",
+        "AF-20",
+        "UX-11"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O25/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exhausted budget; server payer; top-up; grant revocation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "current authority and sufficient allowance continue",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O25/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exhausted budget; server payer; top-up; grant revocation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "client payer/model ceiling escalation rejected",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O25/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "exhausted budget; server payer; top-up; grant revocation",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "budget wait preserved; top-up rechecks grants and revoked actor remains blocked",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O26",
+      "packages": [
+        "G0-10"
+      ],
+      "requirements": [
+        "AF-06",
+        "AF-14"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O26/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shared engine/gateway retry allowance; unknown charge",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "lawful retry consumes single shared allowance",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O26/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shared engine/gateway retry allowance; unknown charge",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "nested retry amplification rejected",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O26/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "shared engine/gateway retry allowance; unknown charge",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "unknown usage keeps reservation; unreconciled charge forbids added paid invocation",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O27",
+      "packages": [
+        "G0-11"
+      ],
+      "requirements": [
+        "AF-12",
+        "AF-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O27/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "receipt bound to artifact/environment/lock/check/verifier",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "registered independent receipt covers exact candidate",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O27/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "receipt bound to artifact/environment/lock/check/verifier",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "self-report/spoofed verifier/digest drift cannot establish verified completion",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O27/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "receipt bound to artifact/environment/lock/check/verifier",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "changed candidate needs new checks; old receipt cannot be reused",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O28",
+      "packages": [
+        "G0-11"
+      ],
+      "requirements": [
+        "AF-08",
+        "UX-14"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O28/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "base revision; concurrent drafts; newer accepted version",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "matching base can submit candidate",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O28/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "base revision; concurrent drafts; newer accepted version",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "stale base cannot overwrite accepted version",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O28/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "base revision; concurrent drafts; newer accepted version",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "conflict preserves variant or explicit rebase information",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O29",
+      "packages": [
+        "G0-11"
+      ],
+      "requirements": [
+        "AF-17",
+        "UX-05",
+        "UX-18"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O29/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "draft/candidate/check/delivery/notification independent",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "draft/check success represented separately",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O29/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "draft/candidate/check/delivery/notification independent",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "missing delivery receipt cannot report delivered",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O29/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "draft/candidate/check/delivery/notification independent",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "unknown delivery reconciles; notification failure does not repeat committed effect",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O30",
+      "packages": [
+        "G0-12"
+      ],
+      "requirements": [
+        "AF-13",
+        "AF-15",
+        "UX-10",
+        "UX-16"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O30/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "qualified version/deployment/date/expiry/capabilities; lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "current qualified controlled adapter schedules",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O30/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "qualified version/deployment/date/expiry/capabilities; lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "self-declaration/expiry/missing mandatory control denies scheduling",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O30/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "qualified version/deployment/date/expiry/capabilities; lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "capability loss revokes lease; replacement does not reuse old credentials",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O31",
+      "packages": [
+        "G0-13"
+      ],
+      "requirements": [
+        "AF-04",
+        "AF-20",
+        "UX-08"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O31/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "offline Stop; stale snapshot; unsent draft; next action",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "state expresses not-delivered/last-update/wait resolver",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O31/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "offline Stop; stale snapshot; unsent draft; next action",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "offline Stop cannot claim stopped; draft cannot auto-submit",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O31/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "offline Stop; stale snapshot; unsent draft; next action",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "authorized snapshot restores confirmed results without sending draft",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O32",
+      "packages": [
+        "G0-13"
+      ],
+      "requirements": [
+        "AF-07",
+        "AF-12",
+        "UX-15"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O32/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "memory correction; behavior proposal/release; source deletion",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "correction creates provenance-linked revision",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O32/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "memory correction; behavior proposal/release; source deletion",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "fact correction cannot publish behavior release",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O32/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "memory correction; behavior proposal/release; source deletion",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "deleted source invalidates dependents; rollback cannot restore revoked grants",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O33",
+      "packages": [
+        "G0-13"
+      ],
+      "requirements": [
+        "AF-07",
+        "AF-18",
+        "UX-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O33/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "archive/suspend/delete; private title/export audience",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "three lifecycle actions and charge states are distinct",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O33/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "archive/suspend/delete; private title/export audience",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "unauthorized audience cannot receive private title/persistent source access",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O33/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "archive/suspend/delete; private title/export audience",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "delete/restore obey tombstones; suspend/drain retain unknown settlement",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    },
+    {
+      "id": "G0-O34",
+      "packages": [
+        "G0-14"
+      ],
+      "requirements": [
+        "AF-05",
+        "AF-13",
+        "AF-14",
+        "AF-19",
+        "UX-08",
+        "UX-11",
+        "UX-13",
+        "UX-16",
+        "UX-17"
+      ],
+      "laterGatePending": [
+        "G1 real identity/storage/model/runtime/client qualification",
+        "G3 real computer-use all-path isolation",
+        "G4 protected holdout/release qualification"
+      ],
+      "allowed": {
+        "name": "G0-O34/allowed",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "integrated candidate; revoke, ack loss, budget wait, expired lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "all required current grants and confirmations",
+        "expected": {
+          "observation": "legitimate integrated completion remains possible",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "denied": {
+        "name": "G0-O34/denied",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "integrated candidate; revoke, ack loss, budget wait, expired lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "missing or changed precondition specified by input",
+        "expected": {
+          "observation": "fault cannot bypass authority/budget/fencing",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      },
+      "recovery": {
+        "name": "G0-O34/recovery",
+        "setup": {
+          "fixture": "fresh deterministic state",
+          "input": "integrated candidate; revoke, ack loss, budget wait, expired lease",
+          "clockEpochMs": 1700000000000
+        },
+        "injection": "specified crash/revocation/expiry/reconnect after prior committed state",
+        "expected": {
+          "observation": "recover current grants/tombstones, then reconcile unknown, then continue",
+          "prohibitedCounters": {
+            "crossSpaceDisclosure": 0,
+            "unauthorizedDispatch": 0,
+            "duplicateEffect": 0,
+            "oldGenerationWrites": 0,
+            "replayModelCalls": 0,
+            "replayWriteCalls": 0,
+            "duplicateSettlements": 0,
+            "unexpectedAllowedWorkRejections": 0
+          }
+        },
+        "mustExecute": true,
+        "zeroCounters": {
+          "crossSpaceDisclosure": 0,
+          "unauthorizedDispatch": 0,
+          "duplicateEffect": 0,
+          "oldGenerationWrites": 0,
+          "replayModelCalls": 0,
+          "replayWriteCalls": 0,
+          "duplicateSettlements": 0,
+          "unexpectedAllowedWorkRejections": 0
+        }
+      }
+    }
+  ],
+  "commonFixture": {
+    "tenant": "tenant-a",
+    "actor": "actor-alice",
+    "otherActor": "actor-bob",
+    "privateSpace": "space-private",
+    "groupSpace": "space-group",
+    "task": "task-1",
+    "run": "run-1",
+    "operation": "op-1",
+    "policyRevision": 7,
+    "membershipRevision": 4,
+    "generation": 3,
+    "currentClockMs": 1700000000000,
+    "futureExpiryMs": 1700000001000,
+    "expiredExpiryMs": 1699999999999,
+    "artifactDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "changedArtifactDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "idempotencyKey": "key-1"
+  }
+}

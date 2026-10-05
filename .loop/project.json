@@ -2,17 +2,38 @@
   "schema_version": "0.2",
   "project_id": "local-project",
   "languages": [
-    "unknown"
+    "typescript"
   ],
   "commands": {
-    "build": null,
-    "test": null,
+    "build": {
+      "argv": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "source": "package.json scripts",
+      "confirmed": false
+    },
+    "test": {
+      "argv": [
+        "pnpm",
+        "run",
+        "test"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "source": "package.json scripts",
+      "confirmed": false
+    },
     "lint": null,
     "start": null
   },
   "conventions": [],
   "context_paths": [
-    "README.md"
+    "README.md",
+    "package.json"
   ],
   "snapshot": {
     "exclude": [
@@ -33,12 +54,12 @@
       "**/.env",
       "**/.env.*"
     ],
-    "max_file_bytes": 10485760,
+    "max_file_bytes": 16777216,
     "max_total_bytes": 104857600
   },
-  "context_max_bytes": 120000,
+  "context_max_bytes": 524288,
   "notes": [
-    "Configure commands and source context explicitly for this project.",
-    "Detected commands are candidates; confirm them after review or execution."
+    "Detected commands are candidates; confirm them after review or execution.",
+    "Approved exact raw evidence prepared before admission. Binary proposal limits unchanged; metadata context512KiB, snapshot perfile16MiB/total100MiB. Prior final297s and first recovery2s retained; remaining2101s/10iterations."
   ]
 }

@@ -1,0 +1,24 @@
+{
+  "name": "agent-fabric",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=22.22.3 <23",
+    "pnpm": "10.18.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "test:contracts": "node scripts/test.mjs contracts",
+    "test:g0": "node scripts/test.mjs protected",
+    "test:protected": "node scripts/test.mjs protected"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.6",
+    "typescript": "5.9.3"
+  }
+}
+

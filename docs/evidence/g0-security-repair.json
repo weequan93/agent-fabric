@@ -1,0 +1,547 @@
+{
+  "schema_version": "1.0",
+  "current_team_id": "team-9eddd9da871046da99663c814c1d73f6",
+  "accepted_scope": "G0-01–14 implementation retained; original 7 acceptance criteria and 3 independent check procedures. 102 frozen mandatory branches. Stop after current candidate formal G0 acceptance.",
+  "previous_implementation_team_id": "team-b5072612869c462a89678f21097d346c",
+  "previous_recovery_team_id": "team-455373bf869c43bd933912d88f82ebb4",
+  "known_previous_controller_wall_seconds": 615,
+  "source_security_remaining_wall_seconds": 3068,
+  "registered_review_timeout_seconds": 600,
+  "old_recovery_history_location": "/Users/super/Documents/ai/loop-states/agent-fabric/runs/team-455373bf869c43bd933912d88f82ebb4",
+  "setup_archive": "/Users/super/Documents/ai/loop-states/agent-fabric/setup-backups/setup-26615fb6f97849ce8426a6b7f1ed208d",
+  "previous_recovery_tasks": {
+    "g0_recovery": {
+      "status": "COMPLETE",
+      "child_run_id": "run-10c22613e3384d1d810fe02686ea725e",
+      "request": null,
+      "handoff": {
+        "id": "handoff-1aa0d8675ce44c66b57ac5e81f97fb7f",
+        "task_id": "g0_recovery",
+        "child_run_id": "run-10c22613e3384d1d810fe02686ea725e",
+        "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+        "outputs": [
+          {
+            "path": "evals/fixtures/g0-contract-suite.json",
+            "sha256": "sha256:f13c1731babe017768ab1b790bb1974fa84876a572aa4b2f818f48975354ee81"
+          },
+          {
+            "path": "evals/safety/authority-boundaries.test.ts",
+            "sha256": "sha256:0155b19030eb4eaed4131bb5ee5c6eb04da4f117b7f0c23f95a742d10e64fbd6"
+          },
+          {
+            "path": "evals/recovery/replay-and-fencing.test.ts",
+            "sha256": "sha256:83069525ed25e7d7ae30a321b093c1c089e123f0bd251618d5d136eed6f7b958"
+          },
+          {
+            "path": "docs/evidence/g0-evidence-manifest.md",
+            "sha256": "sha256:90e29446266a85ab16bc5fe1fed65919e2f9a3e48a4db7ed631e6a0275ec73db"
+          },
+          {
+            "path": "docs/operations/g0-recovery-procedure.md",
+            "sha256": "sha256:20a94bcc082c678fa8b14092666614cb230855b812bb25a753b4acb9e4f680e0"
+          },
+          {
+            "path": "evals/protected/g0-oracle.test.ts",
+            "sha256": "sha256:ea62746389e1af8a299794c003bdeda7c92a82947e5af3554982ed5953c79da0"
+          },
+          {
+            "path": "evals/protected/g0-workflows.test.ts",
+            "sha256": "sha256:44f8fc54b37a6d02d734c6141dd4974d6e1cdd0b1dfea04bb7e38d3ff732b4f6"
+          },
+          {
+            "path": "docs/evidence/g0-requirements-matrix.csv",
+            "sha256": "sha256:fd98d6f89feb5166d2c5740df03d77ef6b2dfa0b93052dee252cb69b8912c12f"
+          },
+          {
+            "path": "docs/evidence/g0-build.json",
+            "sha256": "sha256:1bcf8009a793a8c3191211641165a8cf95aa55b7e9dcbc669e33b6060dbce8df"
+          },
+          {
+            "path": "docs/operations/g0-quickstart.md",
+            "sha256": "sha256:b40a5415c9f5cdfbe1c3f479bbcca84a95ba76e2187321dca1e5b325f25e3fc8"
+          },
+          {
+            "path": "docs/evidence/g0-review-recovery.json",
+            "sha256": "sha256:271f3c3e2bcae04c98c62e874c8c5c93ab1ac7805d3a19b46330afbbcadba39f"
+          },
+          {
+            "path": "docs/evidence/g0-review-recovery.md",
+            "sha256": "sha256:df37d6a4d92424682c8fda23969963b0a959585c3490a64d59d38eeebaf1a342"
+          }
+        ],
+        "evidence": [
+          "sha256:09f7a8884151df2ecc308e0d364a97a62ec97fcd998fe2028717464b04742803",
+          "sha256:c56832eadc8142eb4afe6046514d8c82378a54bfa52e0943a3bf0fd573251239",
+          "sha256:d697f08232f512276067c9d7baaa10f0c41b0daedd13eec7d4fb017d344626d2"
+        ]
+      },
+      "receipts": {
+        "coordinator": {
+          "accepted": true,
+          "note": "实际核对新两份lineage记录和原10项输出SHA，原86承接文件不变；原冻结outputs/build-and-behavior/recovery-records全部pass且input_mutation=false。tester已实际返回只读核对：原criteria/procedure/registered keys/600s与339s carry无必须修改，咨询不是正式pass；新旧team_budget=null，child扣减正确。原14包/102branches/全部原判据/历史/339s累计保持，继续3正式当前候选评审。"
+        }
+      },
+      "reason": null,
+      "controller_status": "SUCCEEDED",
+      "usage": {
+        "wall_seconds": 6,
+        "tokens": null,
+        "cost_microunits": 0,
+        "cost_currency": "USD"
+      },
+      "provisioning": null,
+      "pending_process": null,
+      "executors": {},
+      "controller_created": true,
+      "host_wait": {
+        "status": "NONE"
+      },
+      "controller_reason": "All required checks passed on the delivered candidate",
+      "pending_edit": null,
+      "evaluation_outcomes": {},
+      "review_preparation": null
+    },
+    "g0_security": {
+      "status": "RUNNING",
+      "child_run_id": "run-c1d9b478c82c4b489e4b6846a8c2f4ca",
+      "request": null,
+      "handoff": null,
+      "receipts": {},
+      "reason": "Required check failed: team-independent-security",
+      "controller_status": "PLANNING",
+      "usage": {
+        "wall_seconds": 270,
+        "tokens": null,
+        "cost_microunits": null,
+        "cost_currency": "USD"
+      },
+      "provisioning": null,
+      "pending_process": null,
+      "executors": {
+        "registered-review:f1bb255cafe193e1ec9ddea687b03a310abf2ad65337bba270fa886eca1ea800": {
+          "id": "review-executor-6c828fadd4f541d8921ed863366a3b62",
+          "kind": "registered_review",
+          "check_id": "team-independent-security",
+          "status": "RESULT",
+          "request": {
+            "schema_version": "1.0",
+            "key_id": "controller",
+            "role": "controller",
+            "purpose": "evaluation_request",
+            "nonce": "88d4e512cadd48dba944b1cb5110f3f1",
+            "payload": {
+              "schema_version": "1.0",
+              "request_id": "evaluation-91ca293e85fb41258c37b714ae360c85",
+              "task_id": "g0_security",
+              "contract_digest": "sha256:569e7f9346306be30e222ae2271fe07c616e6ebc26f5c76f093e695ac76cfe95",
+              "snapshot_digest": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+              "environment_digest": "sha256:442ced061f7612eb6100ad8ebcca8b03ecc4f477322c9ba1f7996a9b4e2e0fec",
+              "check_id": "team-independent-security",
+              "check_digest": "sha256:0122874ea26fc4ee022384f411aac6edb994fb55d28afa8d46a2dd1fd673e1bb",
+              "context_id": "review-context-7bd4826cc0ea4a5596cb36d64d8f8956",
+              "procedure": [
+                "Inspect exact candidate, original sources and acceptance history, registered current command artifacts and protected oracle definition.",
+                "Apply security professional procedure, inspect tests for actual allowed/denied/recovery assertions and fault injections; none may be skipped or derived from implementation outcomes.",
+                "Return concrete blocking findings with source/path/reproduction; pass only if all G0 scoped requirements are met. Genuine G1/G3/G4 deployment evidence remains pending, not waived or represented by substitutes."
+              ],
+              "created_at": "2026-10-04T16:35:13.549+00:00"
+            },
+            "mac": "31175a7b42b22964effbccf958f358d8753dd0623fde1e1f4de6b00b3ca84838"
+          },
+          "registration_digest": "sha256:16f03d4bba6f4e7fe41bbed22ab3c68c7c1b71ec564ed698ecf376b89d18a579",
+          "packet_digest": "sha256:3a6a7dafaa125bd0ad27a09ce970e7614900e7f3fb0be499b1e589781fb013d9",
+          "action_id": "process-219877b19d3847cf8c73e28bc97bbd30",
+          "outcome": "completed",
+          "exit_code": 0,
+          "elapsed_ms": 254978,
+          "known_tokens": 1930162,
+          "tokens": 1930162,
+          "envelope": {
+            "schema_version": "1.0",
+            "key_id": "team-security-reviewer",
+            "role": "reviewer",
+            "purpose": "evidence",
+            "nonce": "4e71273710734b6c9d22ba3afb6b93e3",
+            "payload": {
+              "schema_version": "0.1",
+              "evidence_id": "evidence-2b767d1b4ac34b49b80bcd2382b47c15",
+              "task_id": "g0_security",
+              "contract_digest": "sha256:569e7f9346306be30e222ae2271fe07c616e6ebc26f5c76f093e695ac76cfe95",
+              "snapshot_digest": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+              "environment_digest": "sha256:442ced061f7612eb6100ad8ebcca8b03ecc4f477322c9ba1f7996a9b4e2e0fec",
+              "check_id": "team-independent-security",
+              "check_digest": "sha256:0122874ea26fc4ee022384f411aac6edb994fb55d28afa8d46a2dd1fd673e1bb",
+              "executor_run_id": "review-context-7bd4826cc0ea4a5596cb36d64d8f8956",
+              "started_at": "2026-10-04T16:35:13.549+00:00",
+              "finished_at": "2026-10-04T16:39:31.185+00:00",
+              "result": "fail",
+              "exit_code": null,
+              "artifacts": [
+                {
+                  "uri": "file:///Users/super/Documents/ai/loop-states/agent-fabric/runs/run-c1d9b478c82c4b489e4b6846a8c2f4ca/review-executor-6c828fadd4f541d8921ed863366a3b62/review.json",
+                  "sha256": "sha256:ec74e7e2fc37df42f4ffaa0117db40b79e7480ef47f8b67bb6fdf129bea41931"
+                },
+                {
+                  "uri": "file:///Users/super/Documents/ai/loop-states/agent-fabric/runs/run-c1d9b478c82c4b489e4b6846a8c2f4ca/review-executor-6c828fadd4f541d8921ed863366a3b62/logs/stdout.txt",
+                  "sha256": "sha256:fe93c4895944207bb2230e9a0c983f756ee5d8d0dc43a77710bb43368629c887"
+                },
+                {
+                  "uri": "file:///Users/super/Documents/ai/loop-states/agent-fabric/runs/run-c1d9b478c82c4b489e4b6846a8c2f4ca/review-executor-6c828fadd4f541d8921ed863366a3b62/logs/stderr.txt",
+                  "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                }
+              ],
+              "summary": "Independent source review of candidate sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c found a blocking unknown-usage continuation gap despite supplied evidence of 180 passing tests and 102 mandatory branches. No project code was executed.",
+              "extensions": {
+                "outcome": "evaluator",
+                "request_id": "evaluation-91ca293e85fb41258c37b714ae360c85",
+                "context_id": "review-context-7bd4826cc0ea4a5596cb36d64d8f8956",
+                "findings": [
+                  {
+                    "id": "SEC-G0-001",
+                    "severity": "blocking",
+                    "description": "High severity: unknown model usage does not fence session continuation. adapters/models/src/model-adapter.ts:34–36 preserves an unknown reservation, but engine/kernel/src/session-loop.ts:38 records no pending operation or waiting state when the model port rejects. The integrated model port in evals/protected/g0-workflows.test.ts:41 converts the unknown result into an exception, leaving the session running with no pendingOperations. Source-grounded reproduction using that fixture: create workflow(100,false,true), start its session, catch s.callModel('model-1'), then inspect s.nextAction(). It returns 'iterate'; s.callModel('model-2') reaches another provider invocation while reservation-model-1 remains unknown. An approved effect can likewise continue. This violates G0-IMP-04 and the required reconciliation-before-continuation ordering. Existing unknown-model recovery coverage checks reuse of the original operation directly through the adapter, but does not check session continuation. Backend owner should persist unknown model operation/reservation identity in session state, require trusted reconciliation before further iteration, preserve it through replay/restart, and add behavioral regression assertions without weakening frozen branches. Reproduction was derived from source, not executed.",
+                    "criterion_id": "team-independent-security"
+                  },
+                  {
+                    "id": "SEC-G0-002",
+                    "severity": "note",
+                    "description": "Assessment covers deterministic G0 contracts and supplied current command evidence. Real PostgreSQL/RLS, SSO, encrypted storage, providers, runtime/desktop isolation, clients, and protected release qualification remain pending at their declared later gates; this review does not certify them or controller completion.",
+                    "criterion_id": null
+                  }
+                ]
+              }
+            },
+            "mac": "1c81466c977d462cfd5eaaab50957d493c8d8ecabf0a1423d94c413a0c58dd64"
+          }
+        }
+      },
+      "controller_created": true,
+      "host_wait": {
+        "status": "NONE"
+      },
+      "controller_reason": "Resume reconciled; current workspace inspected",
+      "pending_edit": null,
+      "evaluation_outcomes": {
+        "team-independent-security": {
+          "result": "fail",
+          "evaluation_summary": "Independent source review of candidate sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c found a blocking unknown-usage continuation gap despite supplied evidence of 180 passing tests and 102 mandatory branches. No project code was executed.",
+          "evidence_digest": "sha256:c41669799ca607acb3f39d9d8da91a333631b53fb38b9c64671078e5b426b697",
+          "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+          "environment": "sha256:442ced061f7612eb6100ad8ebcca8b03ecc4f477322c9ba1f7996a9b4e2e0fec",
+          "findings": [
+            {
+              "id": "SEC-G0-001",
+              "severity": "blocking",
+              "description": "High severity: unknown model usage does not fence session continuation. adapters/models/src/model-adapter.ts:34–36 preserves an unknown reservation, but engine/kernel/src/session-loop.ts:38 records no pending operation or waiting state when the model port rejects. The integrated model port in evals/protected/g0-workflows.test.ts:41 converts the unknown result into an exception, leaving the session running with no pendingOperations. Source-grounded reproduction using that fixture: create workflow(100,false,true), start its session, catch s.callModel('model-1'), then inspect s.nextAction(). It returns 'iterate'; s.callModel('model-2') reaches another provider invocation while reservation-model-1 remains unknown. An approved effect can likewise continue. This violates G0-IMP-04 and the required reconciliation-before-continuation ordering. Existing unknown-model recovery coverage checks reuse of the original operation directly through the adapter, but does not check session continuation. Backend owner should persist unknown model operation/reservation identity in session state, require trusted reconciliation before further iteration, preserve it through replay/restart, and add behavioral regression assertions without weakening frozen branches. Reproduction was derived from source, not executed.",
+              "criterion_id": "team-independent-security"
+            },
+            {
+              "id": "SEC-G0-002",
+              "severity": "note",
+              "description": "Assessment covers deterministic G0 contracts and supplied current command evidence. Real PostgreSQL/RLS, SSO, encrypted storage, providers, runtime/desktop isolation, clients, and protected release qualification remain pending at their declared later gates; this review does not certify them or controller completion.",
+              "criterion_id": null
+            }
+          ],
+          "repair_task": "g0_recovery",
+          "repair_owner": "tester",
+          "repair_write_allow": [
+            "docs/architecture/native-engine.md",
+            "docs/architecture/record-authority.md",
+            "docs/architecture/interface-registry.md",
+            "docs/security/threat-model.md",
+            "package.json",
+            "pnpm-workspace.yaml",
+            "pnpm-lock.yaml",
+            "tsconfig.base.json",
+            "tsconfig.json",
+            "engine/contracts/src/identity.ts",
+            "engine/contracts/src/task-envelope.ts",
+            "engine/contracts/src/commands.ts",
+            "engine/contracts/src/events.ts",
+            "engine/contracts/src/adapters.ts",
+            "engine/contracts/src/budget.ts",
+            ".gitignore",
+            "scripts/build.mjs",
+            "evals/fixtures/g0-packages.json",
+            "evals/contracts/contracts.test.ts",
+            "services/spaces/src/bindings.ts",
+            "security/identity/src/actor.ts",
+            "security/policy/src/effective-authority.ts",
+            "evals/safety/space-authorization.test.ts",
+            "infra/migrations/0001_core_records.sql",
+            "services/artifacts/src/commit-manifest.ts",
+            "services/spaces/src/outbox.ts",
+            "evals/recovery/storage-commit.test.ts",
+            "engine/scheduler/src/task-state.ts",
+            "engine/scheduler/src/run-state.ts",
+            "engine/kernel/src/session-loop.ts",
+            "evals/fixtures/lifecycle-cases.json",
+            "evals/recovery/lifecycle.test.ts",
+            "apps/api/src/commands/dispatch-command.ts",
+            "apps/api/src/streams/task-events.ts",
+            "engine/contracts/src/command-response.ts",
+            "evals/recovery/command-sync.test.ts",
+            "execution/action-broker/src/operation.ts",
+            "execution/action-broker/src/dispatch.ts",
+            "execution/action-broker/src/reconcile.ts",
+            "evals/recovery/unknown-effect.test.ts",
+            "engine/scheduler/src/stop.ts",
+            "execution/action-broker/src/fencing.ts",
+            "execution/desktop-broker/src/mutation-barrier-contract.ts",
+            "evals/safety/stale-stop.test.ts",
+            "engine/context/src/compile.ts",
+            "engine/profiles/src/capabilities.ts",
+            "adapters/models/src/model-adapter.ts",
+            "evals/fixtures/model-conformance-cases.json",
+            "evals/safety/model-profile.test.ts",
+            "engine/scheduler/src/budget-ledger.ts",
+            "adapters/models/src/retry-budget.ts",
+            "evals/recovery/budget-ledger.test.ts",
+            "services/artifacts/src/version.ts",
+            "execution/verification/src/check-receipt.ts",
+            "execution/action-broker/src/delivery-operation.ts",
+            "evals/safety/protected-completion.test.ts",
+            "adapters/runtimes/src/runtime-adapter.ts",
+            "adapters/tools/src/tool-contract.ts",
+            "adapters/channels/src/channel-adapter.ts",
+            "security/conformance/src/qualification-record.ts",
+            "evals/safety/adapter-qualification.test.ts",
+            "engine/contracts/src/presentation.ts",
+            "engine/contracts/src/memory.ts",
+            "engine/contracts/src/desktop.ts",
+            "engine/contracts/src/behavior-release.ts",
+            "docs/architecture/client-and-module-contracts.md",
+            "evals/safety/presentation-and-module.test.ts",
+            "evals/fixtures/g0-contract-suite.json",
+            "evals/safety/authority-boundaries.test.ts",
+            "evals/recovery/replay-and-fencing.test.ts",
+            "docs/evidence/g0-evidence-manifest.md",
+            "docs/operations/g0-recovery-procedure.md",
+            "evals/protected/g0-oracle.test.ts",
+            "evals/protected/g0-workflows.test.ts",
+            "docs/evidence/g0-requirements-matrix.csv",
+            "docs/evidence/g0-build.json",
+            "docs/operations/g0-quickstart.md",
+            "docs/evidence/g0-review-recovery.json",
+            "docs/evidence/g0-review-recovery.md"
+          ],
+          "repair_write_deny": [
+            "README.md",
+            "docs/planning/roadmap.md",
+            "docs/planning/g0-implementation-plan.md",
+            "docs/planning/decision-register.md",
+            "docs/planning/requirements-traceability.csv",
+            "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+            "docs/agent-fabric-design/**",
+            ".git/**",
+            ".loop/**",
+            ".agents/**",
+            ".codex/**",
+            "evals/fixtures/g0-oracle-definition.json",
+            "scripts/test.mjs",
+            "scripts/check-g0.mjs",
+            "evals/helpers/fixture.ts",
+            "evals/fixtures/lifecycle-cases.json",
+            "pnpm-lock.yaml"
+          ],
+          "repair_edit_authorized": true,
+          "repair_requires_reviewed_plan": true
+        }
+      },
+      "review_preparation": null
+    },
+    "g0_review": {
+      "status": "PENDING",
+      "child_run_id": null,
+      "request": null,
+      "handoff": null,
+      "receipts": {},
+      "reason": null,
+      "controller_created": false,
+      "host_wait": {
+        "status": "NONE"
+      }
+    },
+    "g0_acceptance": {
+      "status": "PENDING",
+      "child_run_id": null,
+      "request": null,
+      "handoff": null,
+      "receipts": {},
+      "reason": null,
+      "controller_created": false,
+      "host_wait": {
+        "status": "NONE"
+      }
+    }
+  },
+  "previous_recovery_checks": [
+    {
+      "task_id": "g0_recovery",
+      "check_id": "outputs",
+      "result": "pass",
+      "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+      "summary": "outputs: completed, exit=0, input_mutation=False"
+    },
+    {
+      "task_id": "g0_recovery",
+      "check_id": "build-and-behavior",
+      "result": "pass",
+      "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+      "summary": "build-and-behavior: completed, exit=0, input_mutation=False"
+    },
+    {
+      "task_id": "g0_recovery",
+      "check_id": "recovery-records",
+      "result": "pass",
+      "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+      "summary": "recovery-records: completed, exit=0, input_mutation=False"
+    },
+    {
+      "task_id": "g0_security",
+      "check_id": "build-and-behavior",
+      "result": "pass",
+      "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+      "summary": "build-and-behavior: completed, exit=0, input_mutation=False"
+    },
+    {
+      "task_id": "g0_security",
+      "check_id": "team-independent-security",
+      "result": "fail",
+      "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+      "summary": "Independent source review of candidate sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c found a blocking unknown-usage continuation gap despite supplied evidence of 180 passing tests and 102 mandatory branches. No project code was executed."
+    }
+  ],
+  "blocking_source_evidence": {
+    "result": "fail",
+    "evaluation_summary": "Independent source review of candidate sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c found a blocking unknown-usage continuation gap despite supplied evidence of 180 passing tests and 102 mandatory branches. No project code was executed.",
+    "evidence_digest": "sha256:c41669799ca607acb3f39d9d8da91a333631b53fb38b9c64671078e5b426b697",
+    "candidate": "sha256:08f325b2bab0f9d52a96d42e96f159b09a6078e9746c7225088bce09ee788b1c",
+    "environment": "sha256:442ced061f7612eb6100ad8ebcca8b03ecc4f477322c9ba1f7996a9b4e2e0fec",
+    "findings": [
+      {
+        "id": "SEC-G0-001",
+        "severity": "blocking",
+        "description": "High severity: unknown model usage does not fence session continuation. adapters/models/src/model-adapter.ts:34–36 preserves an unknown reservation, but engine/kernel/src/session-loop.ts:38 records no pending operation or waiting state when the model port rejects. The integrated model port in evals/protected/g0-workflows.test.ts:41 converts the unknown result into an exception, leaving the session running with no pendingOperations. Source-grounded reproduction using that fixture: create workflow(100,false,true), start its session, catch s.callModel('model-1'), then inspect s.nextAction(). It returns 'iterate'; s.callModel('model-2') reaches another provider invocation while reservation-model-1 remains unknown. An approved effect can likewise continue. This violates G0-IMP-04 and the required reconciliation-before-continuation ordering. Existing unknown-model recovery coverage checks reuse of the original operation directly through the adapter, but does not check session continuation. Backend owner should persist unknown model operation/reservation identity in session state, require trusted reconciliation before further iteration, preserve it through replay/restart, and add behavioral regression assertions without weakening frozen branches. Reproduction was derived from source, not executed.",
+        "criterion_id": "team-independent-security"
+      },
+      {
+        "id": "SEC-G0-002",
+        "severity": "note",
+        "description": "Assessment covers deterministic G0 contracts and supplied current command evidence. Real PostgreSQL/RLS, SSO, encrypted storage, providers, runtime/desktop isolation, clients, and protected release qualification remain pending at their declared later gates; this review does not certify them or controller completion.",
+        "criterion_id": null
+      }
+    ],
+    "repair_task": "g0_recovery",
+    "repair_owner": "tester",
+    "repair_write_allow": [
+      "docs/architecture/native-engine.md",
+      "docs/architecture/record-authority.md",
+      "docs/architecture/interface-registry.md",
+      "docs/security/threat-model.md",
+      "package.json",
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml",
+      "tsconfig.base.json",
+      "tsconfig.json",
+      "engine/contracts/src/identity.ts",
+      "engine/contracts/src/task-envelope.ts",
+      "engine/contracts/src/commands.ts",
+      "engine/contracts/src/events.ts",
+      "engine/contracts/src/adapters.ts",
+      "engine/contracts/src/budget.ts",
+      ".gitignore",
+      "scripts/build.mjs",
+      "evals/fixtures/g0-packages.json",
+      "evals/contracts/contracts.test.ts",
+      "services/spaces/src/bindings.ts",
+      "security/identity/src/actor.ts",
+      "security/policy/src/effective-authority.ts",
+      "evals/safety/space-authorization.test.ts",
+      "infra/migrations/0001_core_records.sql",
+      "services/artifacts/src/commit-manifest.ts",
+      "services/spaces/src/outbox.ts",
+      "evals/recovery/storage-commit.test.ts",
+      "engine/scheduler/src/task-state.ts",
+      "engine/scheduler/src/run-state.ts",
+      "engine/kernel/src/session-loop.ts",
+      "evals/fixtures/lifecycle-cases.json",
+      "evals/recovery/lifecycle.test.ts",
+      "apps/api/src/commands/dispatch-command.ts",
+      "apps/api/src/streams/task-events.ts",
+      "engine/contracts/src/command-response.ts",
+      "evals/recovery/command-sync.test.ts",
+      "execution/action-broker/src/operation.ts",
+      "execution/action-broker/src/dispatch.ts",
+      "execution/action-broker/src/reconcile.ts",
+      "evals/recovery/unknown-effect.test.ts",
+      "engine/scheduler/src/stop.ts",
+      "execution/action-broker/src/fencing.ts",
+      "execution/desktop-broker/src/mutation-barrier-contract.ts",
+      "evals/safety/stale-stop.test.ts",
+      "engine/context/src/compile.ts",
+      "engine/profiles/src/capabilities.ts",
+      "adapters/models/src/model-adapter.ts",
+      "evals/fixtures/model-conformance-cases.json",
+      "evals/safety/model-profile.test.ts",
+      "engine/scheduler/src/budget-ledger.ts",
+      "adapters/models/src/retry-budget.ts",
+      "evals/recovery/budget-ledger.test.ts",
+      "services/artifacts/src/version.ts",
+      "execution/verification/src/check-receipt.ts",
+      "execution/action-broker/src/delivery-operation.ts",
+      "evals/safety/protected-completion.test.ts",
+      "adapters/runtimes/src/runtime-adapter.ts",
+      "adapters/tools/src/tool-contract.ts",
+      "adapters/channels/src/channel-adapter.ts",
+      "security/conformance/src/qualification-record.ts",
+      "evals/safety/adapter-qualification.test.ts",
+      "engine/contracts/src/presentation.ts",
+      "engine/contracts/src/memory.ts",
+      "engine/contracts/src/desktop.ts",
+      "engine/contracts/src/behavior-release.ts",
+      "docs/architecture/client-and-module-contracts.md",
+      "evals/safety/presentation-and-module.test.ts",
+      "evals/fixtures/g0-contract-suite.json",
+      "evals/safety/authority-boundaries.test.ts",
+      "evals/recovery/replay-and-fencing.test.ts",
+      "docs/evidence/g0-evidence-manifest.md",
+      "docs/operations/g0-recovery-procedure.md",
+      "evals/protected/g0-oracle.test.ts",
+      "evals/protected/g0-workflows.test.ts",
+      "docs/evidence/g0-requirements-matrix.csv",
+      "docs/evidence/g0-build.json",
+      "docs/operations/g0-quickstart.md",
+      "docs/evidence/g0-review-recovery.json",
+      "docs/evidence/g0-review-recovery.md"
+    ],
+    "repair_write_deny": [
+      "README.md",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**",
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "evals/fixtures/g0-oracle-definition.json",
+      "scripts/test.mjs",
+      "scripts/check-g0.mjs",
+      "evals/helpers/fixture.ts",
+      "evals/fixtures/lifecycle-cases.json",
+      "pnpm-lock.yaml"
+    ],
+    "repair_edit_authorized": true,
+    "repair_requires_reviewed_plan": true
+  },
+  "required_fix": "Persist model operation/reservation identity before invocation and retain unresolved usage in pure replay. Session blocks all subsequent model/effect continuation until current-authorized trusted owner lookup confirms original settlement or safely failed non-invocation. Restore cannot erase live pending history.",
+  "before_fix_observed_regression": {"log_sha256":"72ac17862e5a7c3d72f8ea893cadf7007ce56efd6bf7866eb0790627c7c851e8","tests":181,"pass":180,"fail":1,"failure":"SEC-G0-001 nextAction actual iterate vs required reconcile","scope":"host-executed draft regression; not independent evaluator evidence"},
+  "after_fix_observed_regression": {"sha256":"7776381e3ffd1b9063e3d4bb26e294f26915ab8f9d04485d4f0fd0bd4f304252","tests":191,"passed":191,"failed":0,"skipped":0,"mandatory_branches":102,"assurance":"actual host draft check; current controller rerun and registered reviews still required"},
+  "formal_results_source": "current atomic repair team registered check records",
+  "formal_results_at_submission": "pending; actual current-candidate registered security, code and requirements checks all required",
+  "cumulative_usage_formula": "615 + actual g0_final child usage.wall_seconds; historical rows remain unchanged. Overall tokens/cost remains unknown because prior/native host usage is unaccounted; reported reviewer executor token counts remain available as actual log telemetry, not a full-project accounting claim.",
+  "scope_limits": "Real deployment/provider/SSO/clients/PG/desktop isolation qualifications stay pending at later gates. Actual registered review is read-only source inspection plus supplied current command evidence; consultation never independently authenticates a pass."
+}

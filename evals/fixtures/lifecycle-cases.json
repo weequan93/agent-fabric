@@ -1,0 +1,885 @@
+{
+  "schemaVersion": 1,
+  "definitionOwner": "independent tester; coordinator settled complete matrix before reducers",
+  "states": [
+    "queued",
+    "preparing",
+    "running",
+    "verifying",
+    "waiting",
+    "paused",
+    "cancelling",
+    "reconciling",
+    "succeeded",
+    "partial",
+    "failed",
+    "cancelled"
+  ],
+  "initialState": "queued",
+  "terminalStates": [
+    "succeeded",
+    "partial",
+    "failed",
+    "cancelled"
+  ],
+  "transitions": {
+    "queued": [
+      "preparing",
+      "waiting",
+      "cancelling",
+      "failed"
+    ],
+    "preparing": [
+      "running",
+      "waiting",
+      "cancelling",
+      "failed"
+    ],
+    "running": [
+      "verifying",
+      "waiting",
+      "paused",
+      "cancelling",
+      "reconciling",
+      "failed",
+      "partial"
+    ],
+    "verifying": [
+      "succeeded",
+      "partial",
+      "failed",
+      "waiting",
+      "cancelling",
+      "reconciling"
+    ],
+    "waiting": [
+      "preparing",
+      "running",
+      "verifying",
+      "paused",
+      "cancelling",
+      "reconciling",
+      "failed"
+    ],
+    "paused": [
+      "running",
+      "waiting",
+      "cancelling"
+    ],
+    "cancelling": [
+      "reconciling",
+      "cancelled"
+    ],
+    "reconciling": [
+      "verifying",
+      "waiting",
+      "failed",
+      "partial",
+      "cancelled"
+    ],
+    "succeeded": [],
+    "partial": [],
+    "failed": [],
+    "cancelled": []
+  },
+  "cases": [
+    {
+      "from": "queued",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "preparing",
+      "allowed": true
+    },
+    {
+      "from": "queued",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "queued",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "queued",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "queued",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "queued",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "running",
+      "allowed": true
+    },
+    {
+      "from": "preparing",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "preparing",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "preparing",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "preparing",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "preparing",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "running",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "running",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "running",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "running",
+      "to": "verifying",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "paused",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "reconciling",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "running",
+      "to": "partial",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "running",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "verifying",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "reconciling",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "succeeded",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "partial",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "verifying",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "waiting",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "waiting",
+      "to": "preparing",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "running",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "verifying",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "waiting",
+      "to": "paused",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "reconciling",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "waiting",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "waiting",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "waiting",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "running",
+      "allowed": true
+    },
+    {
+      "from": "paused",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "paused",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "cancelling",
+      "allowed": true
+    },
+    {
+      "from": "paused",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "paused",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "reconciling",
+      "allowed": true
+    },
+    {
+      "from": "cancelling",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "cancelling",
+      "to": "cancelled",
+      "allowed": true
+    },
+    {
+      "from": "reconciling",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "verifying",
+      "allowed": true
+    },
+    {
+      "from": "reconciling",
+      "to": "waiting",
+      "allowed": true
+    },
+    {
+      "from": "reconciling",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "reconciling",
+      "to": "partial",
+      "allowed": true
+    },
+    {
+      "from": "reconciling",
+      "to": "failed",
+      "allowed": true
+    },
+    {
+      "from": "reconciling",
+      "to": "cancelled",
+      "allowed": true
+    },
+    {
+      "from": "succeeded",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "succeeded",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "partial",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "failed",
+      "to": "cancelled",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "queued",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "preparing",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "running",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "verifying",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "waiting",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "paused",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "cancelling",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "reconciling",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "succeeded",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "partial",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "failed",
+      "allowed": false
+    },
+    {
+      "from": "cancelled",
+      "to": "cancelled",
+      "allowed": false
+    }
+  ],
+  "caseCount": 144,
+  "selfTransitionsAllowed": false,
+  "behavioralCases": [
+    {
+      "id": "controller-owned-completion",
+      "input": {
+        "controllerGate": true,
+        "modelClaim": false
+      },
+      "expected": "controller gate governs completion"
+    },
+    {
+      "id": "model-claim-not-completion",
+      "input": {
+        "controllerGate": false,
+        "modelClaim": true
+      },
+      "expected": "run cannot succeed from model claim"
+    },
+    {
+      "id": "notification-result-separation",
+      "input": {
+        "taskResult": "succeeded",
+        "notification": "failed"
+      },
+      "expected": "task remains succeeded; notification independently failed"
+    },
+    {
+      "id": "ordinary-answer-no-deployment",
+      "input": {
+        "executionClass": "conversation",
+        "intent": "ask",
+        "deploymentRequested": false
+      },
+      "expected": "ordinary valid answer needs no deployment gate"
+    },
+    {
+      "id": "terminal-new-run",
+      "input": {
+        "oldState": "failed",
+        "retryAuthorized": true,
+        "oldCharges": 35,
+        "oldEvidence": [
+          "evidence-1"
+        ]
+      },
+      "expected": {
+        "newRunRequired": true,
+        "oldRunState": "failed",
+        "oldCharges": 35,
+        "oldEvidence": [
+          "evidence-1"
+        ]
+      }
+    },
+    {
+      "id": "pure-replay",
+      "input": {
+        "history": "fixed committed lifecycle events"
+      },
+      "expected": {
+        "modelCalls": 0,
+        "writeCalls": 0
+      }
+    },
+    {
+      "id": "unknown-before-continuation",
+      "input": {
+        "effectState": "unknown",
+        "currentGrants": true,
+        "reconciled": false
+      },
+      "expected": "reconciling or waiting; no model/write continuation until reconciliation"
+    }
+  ],
+  "laterGatePending": [
+    "Actual durable workflow runtime/worker restoration is G1 qualification; deterministic fixture does not certify deployment"
+  ]
+}

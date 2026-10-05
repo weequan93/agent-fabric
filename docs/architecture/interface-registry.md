@@ -6,7 +6,7 @@ The registry fixes responsibility and safety semantics before implementation. Ex
 
 | Contract / module | Public interface | Failure / concurrency / restore |
 |---|---|---|
-| identity.ts | branded tenant/Space/actor/Task/Run/operation/command/artifact IDs; ScopeRef; AuthenticatedActorRef; Clock; IdFactory; FencingToken; DomainError; Result; canonical digest | reject empty identity/non-JSON or unsafe numeric values; immutable scope; server actor references |
+| identity.ts | validated string aliases for tenant/Space/actor/Task/Run/operation/command/artifact IDs; ScopeRef; AuthenticatedActorRef; Clock; IdFactory; FencingToken; DomainError; Result; canonical digest | runtime parsers reject empty identity/non-JSON or unsafe numeric values; aliases are not nominal compile-time brands; immutable scope; server actor references |
 | task-envelope.ts | Intent ask/plan/act; EffectClass; SourceRef; TargetRef; TaskEnvelope; strict parse/serialize; version pins | closed versioned schema, required audience and targets; unknown security fields/partial arguments deny; explicit migration or UNSUPPORTED_VERSION |
 | commands.ts | CommandEnvelope, StopCommand, Command, CommandAcceptance | ordinary expected revision/expiry; Stop current authority and immutable identity despite stale view; same scoped key identity |
 | events.ts | versioned DomainEvent/RunEvent; EventCursor; AuthorizedSnapshot | monotonic per-stream sequence; invalid histories reject; reducers pure; cursor fallback current authorized snapshot |
@@ -44,3 +44,12 @@ Build probe actually installed TypeScript 5.9.3 and @types/node 22.18.6 with pnp
 
 Interface questions that would change authorization/effect semantics: 0. Implementation defects or compatibility conflicts are returned to their owner, never repaired by weakening protected oracles. Formal independent security/review/acceptance are pending until the integrated G0 candidate exists.
 
+## Session model reconciliation
+
+`engine/kernel/src/session-loop.ts` exports `SessionModelOperation` (operationId/reservationId) and `SessionModelResolution` (exact original identity, completed/safely-failed/unknown, receiptId). `SessionState.pendingModel` is persisted in the session's contiguous event history before async invocation. It fences model and effect continuation, and a live restore cannot rewrite the observed history prefix.
+
+Trusted server `SessionPorts.modelOperation` binds the real adapter identity; `modelResolution` performs current original-owner lookup. `SessionLoop.resolveModel(operationId)` accepts an identity and uses that port rather than accepting a caller's outcome. Completed reconciliation requires the original nonempty receipt and current authorization after asynchronous lookup. When this port exists, returned model text also requires completed owner evidence; unknown usage remains pending. An in-flight call rejects premature absence reconciliation. Legacy trusted successful string-returning model ports retain their API; an error without trusted resolution remains unknown. Current verification and the previous blocking result are source-linked in `docs/evidence/g0-security-repair.json`.
+
+### Cross-Space source destination authority
+
+`AuthorityRequest.destination` is an optional caller hint, never authority to select the actual context. `AuthorityService` derives that destination from the admitted `TaskEnvelope.scope`. Cross-Space source use requires both current source and destination sharing grants even when the hint is omitted; an explicit hint that differs from the envelope fails. Ordinary same-Space reads remain subject to readability and current membership without requiring a sharing grant. The admission records both sides for `assertCurrent`, so revocation invalidates cached cross-Space access before retrieval or dispatch.

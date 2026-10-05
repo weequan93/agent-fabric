@@ -1,0 +1,932 @@
+{
+  "schema_version": "1.0",
+  "recovery_team_id": "team-455373bf869c43bd933912d88f82ebb4",
+  "source_candidate": "sha256:868d3777e820e6849923ddd4f886361e3472569e234c4679e76e82b048d92fc6",
+  "review_timeout_seconds": 600,
+  "mandatory_branches": 102,
+  "original_planning_team_id": "team-38a6d9ab4e99491b8c9c6e76d0c5f90d",
+  "original_criteria_hashes": {
+    ".loop/tasks/g0_14.json": "725f6ece4e71a9a82b6025bb7524a28fd6cfe93399b872967563f15d61d1c4df",
+    ".loop/tasks/g0_02.json": "8e10473b1cdd0d2e0906a99316f21233ac6c25fd1df3d91160d55bda8e2aa199",
+    ".loop/tasks/g0_03.json": "7a270f8311d59a14363f4b3586ef0e78d458775783833b4b87bc6df7b9368597",
+    ".loop/tasks/g0_08.json": "041c9126b2296efec5311eb937a50d3225c366c26114bdfc25a6df504068abcb",
+    ".loop/tasks/g0_12.json": "159af18747104b6555f7c5b8e8bc780c1703345b2209a1c11f4cad84e2ad0b3b",
+    ".loop/tasks/g0_acceptance.json": "da7c565c263601e5d0347896d627a7fd0a76f04c88b8f85909a6a27f700d1efc",
+    ".loop/tasks/g0_04.json": "2a2c0f469417d2b07564a89264c210f41ffc1e4f5bcc27a4c6802048a0aad8d3",
+    ".loop/tasks/g0_05.json": "7d020ae7ea08c156a30923f9828f20fae0656903c4370fbb1e63aff29306981d",
+    ".loop/tasks/g0_review.json": "abe978e5e45cecaf37b976ed8d587c93ec198f7ff4fa68969486a84b9181ce7f",
+    ".loop/tasks/g0_13.json": "18bc519f67360a7e5e0bdfa089a63d31f900d9ce223f648312ffdfe17d0c764f",
+    ".loop/tasks/g0_09.json": "197bf595d7d86117f5c5e3ef10f84e2d42acdbc9085afe3b91c32a85aba5ea5f",
+    ".loop/tasks/g0_security.json": "f2d23a72debe8fb8d84356ca6c1bdabd2cd7a58a7a817a5a578adf0b6ac78bcf",
+    ".loop/tasks/g0_06.json": "fce5db9d4db5aee12155e26dcc00af431922ce0746bfd8fa5aa945220590f2a1",
+    ".loop/tasks/g0_10.json": "5e4671521448a9bbd35ca95b03d6f8adb497773041cb6424fafa64edaf2d884d",
+    ".loop/tasks/g0_11.json": "5b7a0ce8445e34a05db5892ef77e7ba880161e2b6d08eefa31d2bdb8d51387ef",
+    ".loop/tasks/g0_07.json": "8780b50234640675a8bce55c3ca142f83a7e21a3c20230ff7fc41b58c398e987",
+    ".loop/tasks/g0_01.json": "5484d74663ffe2ab5c38066a256e62b4feac25fec416a328bcb26ba88d7e2f75"
+  },
+  "carry_in_file_sha256": {
+    ".gitignore": "b021848ec97b7108f0303b31e7ed0b57f9e6a485306588efecc9ed845725d887",
+    "README.md": "ef7723e299de1d76acedd347bf15cfd5b367ae95a8337eb05546cd58acfa5e6d",
+    "adapters/channels/src/channel-adapter.ts": "09661834b3d0fd31c7eaad87cba3814a465311ba91a0f5f0397aefcf497549d7",
+    "adapters/models/src/model-adapter.ts": "d7db9e2e44578bc75cdc68cc418b666ddf974f928526c760e310f1d47a226aba",
+    "adapters/models/src/retry-budget.ts": "912eb297d51d8866d78f26260220b47893c7f55d872a1d8f3a053cc824657781",
+    "adapters/runtimes/src/runtime-adapter.ts": "cb8e81fe2f95ca0248559a6d1e8fec8845334975f21763a2a18d8748230c5f83",
+    "adapters/tools/src/tool-contract.ts": "a0d4682c9eb29d0ad4d906924529e4d356433480b161e6088922dfc37fa1b8ba",
+    "apps/api/src/commands/dispatch-command.ts": "e4f3de15342be97303d1881458d2c64db3a8773c8f38826af00ca5c201438564",
+    "apps/api/src/streams/task-events.ts": "0d9ddbbe8c17a5317a0141eab0d482348dd2a0a192e5882e6958a2225a09eadb",
+    "docs/architecture/client-and-module-contracts.md": "48d34c5c00d670c06691d818929938a4ddd1199c6e5e14b1986e506e2cb4dd86",
+    "docs/architecture/interface-registry.md": "cb76e1d57f3347d3086210588e6d2621ac33406a9b8369410f493b7ce0f8c39d",
+    "docs/architecture/native-engine.md": "56e6057b472a8c2f4ed8410a5afe3224838d67d495b4b3fbdb6a83a78dae7d13",
+    "docs/architecture/record-authority.md": "746cc606f3a3acbd77ccc1b72947c3cab21609bd60e94faf2faa605ef36d2f91",
+    "docs/evidence/g0-build.json": "1bcf8009a793a8c3191211641165a8cf95aa55b7e9dcbc669e33b6060dbce8df",
+    "docs/evidence/g0-evidence-manifest.md": "90e29446266a85ab16bc5fe1fed65919e2f9a3e48a4db7ed631e6a0275ec73db",
+    "docs/evidence/g0-requirements-matrix.csv": "fd98d6f89feb5166d2c5740df03d77ef6b2dfa0b93052dee252cb69b8912c12f",
+    "docs/operations/g0-quickstart.md": "b40a5415c9f5cdfbe1c3f479bbcca84a95ba76e2187321dca1e5b325f25e3fc8",
+    "docs/operations/g0-recovery-procedure.md": "20a94bcc082c678fa8b14092666614cb230855b812bb25a753b4acb9e4f680e0",
+    "docs/planning/decision-register.md": "5d70240e01d49202f3d588089dec96041dff774c06be358ceaf7686d4e5a0b4a",
+    "docs/planning/g0-implementation-plan.md": "9b455b83ef7688ccaae7b204b17bb323f2da8580e684e82b439910f9f3f3ae83",
+    "docs/planning/requirements-traceability.csv": "1717dcde86e5701fc742fd5f31e216ac3c51aca8b2bd265ff45cc41100d4bad1",
+    "docs/planning/roadmap.md": "3a5442e8651455c3a142a4b8f224837911c233fa0530d636b19e332a11930470",
+    "docs/security/threat-model.md": "5e6eeb0c1fa2a1dc10e8df70bdf9292ec14a930c31d2c9fc6f2c1781cd0787cb",
+    "engine/context/src/compile.ts": "9dc1418938dcd234e74b0931e127b3e974b29ed4fa7a74a51cf1ce5c604f6dc9",
+    "engine/contracts/src/adapters.ts": "dec2db264a44ea3f9da9eeaa8cbb7271456c24920a83465cd7d22d5e12a64651",
+    "engine/contracts/src/behavior-release.ts": "01ffd5b90c5865a28330ff8b0c18d668bde52d980cf5c0c1a34bb59409b7c2ef",
+    "engine/contracts/src/budget.ts": "9921769106188fe32bc864483074cffc01d83617e5d4bb77efc862c22a73deef",
+    "engine/contracts/src/command-response.ts": "c62da1f7be35bf1f84a113cbf05174a83faf76ded16bd876a842bdde32d34ef9",
+    "engine/contracts/src/commands.ts": "00b66304617310eabe85538d259cf91b1f8798380ef04aa953b67c3186b306d3",
+    "engine/contracts/src/desktop.ts": "c6c48819d9f6876853de62aa22b2852b19fbad202cbc21eda705c2134cfb7067",
+    "engine/contracts/src/events.ts": "f1576578b09f97b024ec1fa8ec6323dad0670282bca267af6a4ae30790ba9b41",
+    "engine/contracts/src/identity.ts": "fc03594a68b5d6814ae7a6d84cc365cbd0557e430e7b7e05d1fe67956f7719ed",
+    "engine/contracts/src/memory.ts": "7f84b68548fb368c52d55a4e33c5a7057cf790ebbb6a4819023390100a8f15f3",
+    "engine/contracts/src/presentation.ts": "aacb7d138f9c7380de7757e79597e9b08d123c96abc80264303e44ec1e2dcd40",
+    "engine/contracts/src/task-envelope.ts": "4ad91654e493e2ca55ad1a44202465153ed33ee657a706eae8d63c1df3908c23",
+    "engine/kernel/src/session-loop.ts": "0c1b17bd3818c3acdb6bcb31cb65282e17ba1580d4a7fc4bad00d8f96eaac073",
+    "engine/profiles/src/capabilities.ts": "eaaceef5b4c532c782d580d45bfcfd5da86e6a67be4e8dbe554b8d4c138ebcb9",
+    "engine/scheduler/src/budget-ledger.ts": "8bf728232143b07d8545c2a5a519db91814d786959cd2dbfdb20f1271389c3f0",
+    "engine/scheduler/src/run-state.ts": "b7b9cb52fa1816b0f915fe01ac917d69dc6537d6339102448295bbafe621f896",
+    "engine/scheduler/src/stop.ts": "ad8f5fcb946914edce04911da89ca0e3a2ea6ea706a0cd21625d2e566cd25a40",
+    "engine/scheduler/src/task-state.ts": "8d37461b5ee83a14d2186f7118ffdbd459aeb473c96f10733e88b86cd836b968",
+    "evals/contracts/contracts.test.ts": "029b5832e659000550ba6d852b09e3fea2e19a72d275cf00d5a0110c2113acd6",
+    "evals/fixtures/g0-contract-suite.json": "f13c1731babe017768ab1b790bb1974fa84876a572aa4b2f818f48975354ee81",
+    "evals/fixtures/g0-oracle-definition.json": "1b322da5ef56f4c57700d5e71ae06368eea8110312ecff674db3429dc827d41e",
+    "evals/fixtures/g0-packages.json": "93364f42558b8e2d8515ff2769e8c5fb17c55c4d35ea3e2727b1aa65de14dd49",
+    "evals/fixtures/lifecycle-cases.json": "46f567c2e20964b60af40fb83513b147fe7bc871282844d9cbec337f26725f84",
+    "evals/fixtures/model-conformance-cases.json": "7495f79c37080237cdb01b0abb15926b07f345a8521be8e494f6f1cc9db32184",
+    "evals/helpers/fixture.ts": "35fa8b7a6ecf2018c52321122ea8c6b99b0cb88432c9c4e912b6dc529bd0132d",
+    "evals/protected/g0-oracle.test.ts": "ea62746389e1af8a299794c003bdeda7c92a82947e5af3554982ed5953c79da0",
+    "evals/protected/g0-workflows.test.ts": "44f8fc54b37a6d02d734c6141dd4974d6e1cdd0b1dfea04bb7e38d3ff732b4f6",
+    "evals/recovery/budget-ledger.test.ts": "3cede55d2db96107b0b177be2b660b01a21b73470194bd927ed0ec2a909c1d26",
+    "evals/recovery/command-sync.test.ts": "52d4c9f00ae513fe979c6502632598dfea83f7629ff54ba45fc2590a3a035d54",
+    "evals/recovery/lifecycle.test.ts": "bf67b381c41cc2da6e36235455741c83ef2827cf664fd0273eb39c35f0fa0c67",
+    "evals/recovery/replay-and-fencing.test.ts": "83069525ed25e7d7ae30a321b093c1c089e123f0bd251618d5d136eed6f7b958",
+    "evals/recovery/storage-commit.test.ts": "88abd0f70acebc4ebde06fd8d6b248f68cdf082e3e872b111495da9d710a2a07",
+    "evals/recovery/unknown-effect.test.ts": "f46bf4eb185b2340de22489e6189b1ce65f8a9874e6e0526364cc70135de81eb",
+    "evals/safety/adapter-qualification.test.ts": "de55cc8f2f8a135d672b0ca9b9be4107a8f92dc0bee2f7085eea81d8a563cee2",
+    "evals/safety/authority-boundaries.test.ts": "0155b19030eb4eaed4131bb5ee5c6eb04da4f117b7f0c23f95a742d10e64fbd6",
+    "evals/safety/model-profile.test.ts": "0f9498a12df19c35c51876d38142350496318a10541d0608ab9bb738cd8adde5",
+    "evals/safety/presentation-and-module.test.ts": "298fa3e5b4b3955b15b3b144d61da3d4bd35e09d48d8641684369dcf1a090dfc",
+    "evals/safety/protected-completion.test.ts": "521c5ccbcfbe2ac1fb5afb3558856270b54dcea1bc2289240d0812b083ed7910",
+    "evals/safety/space-authorization.test.ts": "e970d65b9e4b5dd346b8ed84ba53c4b1732a5ba04872511d68d7bc18716b6a94",
+    "evals/safety/stale-stop.test.ts": "1d5454bef74b17916430a07089b17fd7d10a04f0a9001be41882f6b17c563823",
+    "execution/action-broker/src/delivery-operation.ts": "9eb299d62b5b419411b81306eca70a1c643d1fac88b62cc5168a09c3d72833a1",
+    "execution/action-broker/src/dispatch.ts": "0fbc765733941b950ea6fa036f6a78babbbdf7273e8253d9d6f6d8aafbd14910",
+    "execution/action-broker/src/fencing.ts": "6bfff111a5fac25dbea7de6369909e1a331999d5671bbc48f45aebb4fcddd8b4",
+    "execution/action-broker/src/operation.ts": "7296ce5a1f9744afb7040aa7dc68076df56cbf98a4116001d149d9a47b0b282b",
+    "execution/action-broker/src/reconcile.ts": "6b96bedc56003d3194a33869d6a4e9aca2219e5f4cfa1eb683c327a1aa0ae86a",
+    "execution/desktop-broker/src/mutation-barrier-contract.ts": "2345a11b72ed2126bf8e1bbd0137058536df74918abb21bfadb28fc47e836146",
+    "execution/verification/src/check-receipt.ts": "f6e1b18fa75383a796fc3b4ed1ef69d389c10900d5ebd1d8007677232fef783f",
+    "infra/migrations/0001_core_records.sql": "3976b9d7d6c877b17c91296cf19cf728cf1a378f284b58b554e546950e4bb027",
+    "package.json": "9dbfc30e6c9d365473d465567942f0dccfeabcf2a6fad381cbf67f87f9a89925",
+    "pnpm-lock.yaml": "fff742405893ca9a8578c6f61c101231f3290769a1a043b8517928742464922b",
+    "pnpm-workspace.yaml": "9d69ad09ae3bd3244262b360f86279bb271126cf2ef6a1b5efb5eac9f35ed65f",
+    "scripts/build.mjs": "2bb7ee1e98963f60c3120cbcd95612e4de181367fb51a76a4d374d8301c11de5",
+    "scripts/check-g0.mjs": "b05c635b48c9ca2d7e7a589d355d31dc8ef86345fe0b627aaa14fa345b760f9a",
+    "scripts/test.mjs": "646b9eb5e864802b1d6db4fecddd3ec30c7bedec8379f2a7729893006ed7735b",
+    "security/conformance/src/qualification-record.ts": "39d31d09c8906f8827c25efcc88e88f7d56ef02477da3fbfe7b88421b125a1dd",
+    "security/identity/src/actor.ts": "b0b13ce428b5514f2e2175cb4d15d1af22a1f1380ef347a44f7b7df197d7ea8a",
+    "security/policy/src/effective-authority.ts": "baa65d87e7c9a9d10c078f56104b780ecd36d73b59bf61047e9fb0fe097473bc",
+    "services/artifacts/src/commit-manifest.ts": "ddae1e05ff7ff477b7cc7a2b618d769eb4a4d49740ccd76522a73d09e0e863a8",
+    "services/artifacts/src/version.ts": "b097c101ad213e077d2bb1b69ca3bef318595764ebd7ed7c4ab5029328620ff3",
+    "services/spaces/src/bindings.ts": "7b51a3cd696074b9ade275c743c5e38aad1902eae017e8594a1e850ae492af09",
+    "services/spaces/src/outbox.ts": "f54bf29988d995b65a5dbfb3c06a11b3119caba573d4c80ac9d4f24c08ae8355",
+    "tsconfig.base.json": "ee38093ae02df28d7a2b5ea78c1fe0d9aa9485d9712eed313f93b4010067bba3",
+    "tsconfig.json": "3089065ddb5697e53f31fb01a6a0481c0191a937dc11b153a6b51f6a40e5c787"
+  },
+  "previous_batch": {
+    "team_id": "team-b5072612869c462a89678f21097d346c",
+    "status": "CANCELLED for user-approved review recovery; all history retained",
+    "completed_packages": [
+      "g0_01",
+      "g0_02",
+      "g0_03",
+      "g0_04",
+      "g0_05",
+      "g0_06",
+      "g0_07",
+      "g0_08",
+      "g0_09",
+      "g0_10",
+      "g0_11",
+      "g0_12",
+      "g0_13",
+      "g0_14"
+    ],
+    "controller_wall_seconds": 339,
+    "security_controller_wall_seconds": 262,
+    "tasks": {
+      "g0_01": {
+        "status": "COMPLETE",
+        "runId": "run-03401a9aac084e2bb4e567935492cd38",
+        "usage": {
+          "wall_seconds": 2,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-32c2e2d7e1c242bd822084fe0631de20",
+          "task_id": "g0_01",
+          "child_run_id": "run-03401a9aac084e2bb4e567935492cd38",
+          "candidate": "sha256:9618381c44314bdb152252b54dbe20a59473ff1e4f50952f96fc77491e43af73",
+          "outputs": [
+            {
+              "path": "docs/architecture/native-engine.md",
+              "sha256": "sha256:56e6057b472a8c2f4ed8410a5afe3224838d67d495b4b3fbdb6a83a78dae7d13"
+            },
+            {
+              "path": "docs/architecture/record-authority.md",
+              "sha256": "sha256:746cc606f3a3acbd77ccc1b72947c3cab21609bd60e94faf2faa605ef36d2f91"
+            },
+            {
+              "path": "docs/architecture/interface-registry.md",
+              "sha256": "sha256:2cf7c131b6bfa7bf052a3a698a3cb495f5efd43bafb3cc9d9a9db8a4926789df"
+            },
+            {
+              "path": "docs/security/threat-model.md",
+              "sha256": "sha256:5e6eeb0c1fa2a1dc10e8df70bdf9292ec14a930c31d2c9fc6f2c1781cd0787cb"
+            }
+          ],
+          "evidence": [
+            "sha256:e93830fd29e363349ef7f6319846ae8142b3236bed7dfe0314a731121825df75"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Coordinator inspected all four actual docs and passing output check. Ownership, 6-layer authority, exact approval/fences/budget, unknown recovery order, no-VM Ask and honest later real qualification boundaries agree with original plan; accepted as architecture baseline only, not independent security certification."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_02": {
+        "status": "COMPLETE",
+        "runId": "run-935b3bcd65244526b250819d65193cd9",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-0687c6314df2477da7cd3bc9400c154b",
+          "task_id": "g0_02",
+          "child_run_id": "run-935b3bcd65244526b250819d65193cd9",
+          "candidate": "sha256:10292ffa4bf005c29edc7a42b536fd17455d89115f32e7846edff58a807eae4b",
+          "outputs": [
+            {
+              "path": "package.json",
+              "sha256": "sha256:9dbfc30e6c9d365473d465567942f0dccfeabcf2a6fad381cbf67f87f9a89925"
+            },
+            {
+              "path": "pnpm-workspace.yaml",
+              "sha256": "sha256:9d69ad09ae3bd3244262b360f86279bb271126cf2ef6a1b5efb5eac9f35ed65f"
+            },
+            {
+              "path": "pnpm-lock.yaml",
+              "sha256": "sha256:fff742405893ca9a8578c6f61c101231f3290769a1a043b8517928742464922b"
+            },
+            {
+              "path": "tsconfig.base.json",
+              "sha256": "sha256:ee38093ae02df28d7a2b5ea78c1fe0d9aa9485d9712eed313f93b4010067bba3"
+            },
+            {
+              "path": "tsconfig.json",
+              "sha256": "sha256:3089065ddb5697e53f31fb01a6a0481c0191a937dc11b153a6b51f6a40e5c787"
+            },
+            {
+              "path": "engine/contracts/src/identity.ts",
+              "sha256": "sha256:fc03594a68b5d6814ae7a6d84cc365cbd0557e430e7b7e05d1fe67956f7719ed"
+            },
+            {
+              "path": "engine/contracts/src/task-envelope.ts",
+              "sha256": "sha256:4ad91654e493e2ca55ad1a44202465153ed33ee657a706eae8d63c1df3908c23"
+            },
+            {
+              "path": "engine/contracts/src/commands.ts",
+              "sha256": "sha256:00b66304617310eabe85538d259cf91b1f8798380ef04aa953b67c3186b306d3"
+            },
+            {
+              "path": "engine/contracts/src/events.ts",
+              "sha256": "sha256:f1576578b09f97b024ec1fa8ec6323dad0670282bca267af6a4ae30790ba9b41"
+            },
+            {
+              "path": "engine/contracts/src/adapters.ts",
+              "sha256": "sha256:dec2db264a44ea3f9da9eeaa8cbb7271456c24920a83465cd7d22d5e12a64651"
+            },
+            {
+              "path": "engine/contracts/src/budget.ts",
+              "sha256": "sha256:9921769106188fe32bc864483074cffc01d83617e5d4bb77efc862c22a73deef"
+            },
+            {
+              "path": "evals/fixtures/g0-oracle-definition.json",
+              "sha256": "sha256:1b322da5ef56f4c57700d5e71ae06368eea8110312ecff674db3429dc827d41e"
+            },
+            {
+              "path": ".gitignore",
+              "sha256": "sha256:b021848ec97b7108f0303b31e7ed0b57f9e6a485306588efecc9ed845725d887"
+            },
+            {
+              "path": "scripts/build.mjs",
+              "sha256": "sha256:2bb7ee1e98963f60c3120cbcd95612e4de181367fb51a76a4d374d8301c11de5"
+            },
+            {
+              "path": "scripts/test.mjs",
+              "sha256": "sha256:646b9eb5e864802b1d6db4fecddd3ec30c7bedec8379f2a7729893006ed7735b"
+            },
+            {
+              "path": "scripts/check-g0.mjs",
+              "sha256": "sha256:b05c635b48c9ca2d7e7a589d355d31dc8ef86345fe0b627aaa14fa345b760f9a"
+            },
+            {
+              "path": "evals/fixtures/g0-packages.json",
+              "sha256": "sha256:93364f42558b8e2d8515ff2769e8c5fb17c55c4d35ea3e2727b1aa65de14dd49"
+            },
+            {
+              "path": "evals/helpers/fixture.ts",
+              "sha256": "sha256:35fa8b7a6ecf2018c52321122ea8c6b99b0cb88432c9c4e912b6dc529bd0132d"
+            },
+            {
+              "path": "evals/contracts/contracts.test.ts",
+              "sha256": "sha256:029b5832e659000550ba6d852b09e3fea2e19a72d275cf00d5a0110c2113acd6"
+            }
+          ],
+          "evidence": [
+            "sha256:37f76eaa2daa5f11c7ea944704f8d9c7c4c0cd8fd913ac542561fb2443b5da25",
+            "sha256:ea266e0c51e3ed98278b0c49501d316290dcd77eca31985210a4c173a0e3dabf"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Inspected19actualoutputs, exact frozen34-oracleSHA,6publicmodule interfaces and originalcontroller output/install/type/14behavior pass,inputmutationfalse. Security/functional consultation findings addressed by currentregressionchecks. Accepted build/interfacebaseline; later real qualifications and full102suite stillpending."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_03": {
+        "status": "COMPLETE",
+        "runId": "run-e625cc4c45f94433b28822d34017fc8a",
+        "usage": {
+          "wall_seconds": 5,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-ba4d0dbee0824967880263fe18f1c846",
+          "task_id": "g0_03",
+          "child_run_id": "run-e625cc4c45f94433b28822d34017fc8a",
+          "candidate": "sha256:dfa67cbd643bbb622d5a39cb07ad3f9d7a0d37101078c946a44372c00c7bcc57",
+          "outputs": [
+            {
+              "path": "services/spaces/src/bindings.ts",
+              "sha256": "sha256:7b51a3cd696074b9ade275c743c5e38aad1902eae017e8594a1e850ae492af09"
+            },
+            {
+              "path": "security/identity/src/actor.ts",
+              "sha256": "sha256:b0b13ce428b5514f2e2175cb4d15d1af22a1f1380ef347a44f7b7df197d7ea8a"
+            },
+            {
+              "path": "security/policy/src/effective-authority.ts",
+              "sha256": "sha256:baa65d87e7c9a9d10c078f56104b780ecd36d73b59bf61047e9fb0fe097473bc"
+            },
+            {
+              "path": "evals/safety/space-authorization.test.ts",
+              "sha256": "sha256:e970d65b9e4b5dd346b8ed84ba53c4b1732a5ba04872511d68d7bc18716b6a94"
+            }
+          ],
+          "evidence": [
+            "sha256:3f06b25c0c1ef5503ce19ccb8b9b0b582d6578f5ed516772332e58d9206caff4",
+            "sha256:37f08f7f53fdbe3542d3f1b84668dd7eabc0ed819da3424da4db136c17532f60"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Coordinator inspected fouractualoutputs,currentcontrolleroutputs/build/33behaviorchecks,inputmutationfalse. Preserved frozenoracle and planninghashes. Current-source/destination reauth,tombstone/identity,payer/scope/intents and three reproduced securityfixes have meaningfulallow/deny/recovery regressions. AcceptedG003baseline, formalintegratedindependentsignoffstillpending."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_04": {
+        "status": "COMPLETE",
+        "runId": "run-47a6125d5fc947afb82286431b22f2f5",
+        "usage": {
+          "wall_seconds": 5,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-15d0df5300c747a18e4784388beacfa9",
+          "task_id": "g0_04",
+          "child_run_id": "run-47a6125d5fc947afb82286431b22f2f5",
+          "candidate": "sha256:26f20c23b653672da57deb9165f233239bce764897182f3db73000389de593d5",
+          "outputs": [
+            {
+              "path": "infra/migrations/0001_core_records.sql",
+              "sha256": "sha256:3976b9d7d6c877b17c91296cf19cf728cf1a378f284b58b554e546950e4bb027"
+            },
+            {
+              "path": "services/artifacts/src/commit-manifest.ts",
+              "sha256": "sha256:ddae1e05ff7ff477b7cc7a2b618d769eb4a4d49740ccd76522a73d09e0e863a8"
+            },
+            {
+              "path": "services/spaces/src/outbox.ts",
+              "sha256": "sha256:f54bf29988d995b65a5dbfb3c06a11b3119caba573d4c80ac9d4f24c08ae8355"
+            },
+            {
+              "path": "evals/recovery/storage-commit.test.ts",
+              "sha256": "sha256:88abd0f70acebc4ebde06fd8d6b248f68cdf082e3e872b111495da9d710a2a07"
+            }
+          ],
+          "evidence": [
+            "sha256:08db42a97a9ebdde7451252eb5237b73a13471b074f99c43f630df5b449a3e21",
+            "sha256:3f54402afda9c96140c3156120929f47f9d96551dc235f83b6b03f403b84182c"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Inspected four actual outputs, exact SQL scoped/candidate/verifier FKs and actual current controller passing outputs/build/45 tests with input_mutation false. Snapshot revocation, deletion payload exclusion, atomic denied restore fixed under retained regressions. SQL execution/roles/RLS/encrypted durable storage remain G1 qualification pending."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_05": {
+        "status": "COMPLETE",
+        "runId": "run-cf956dde80f54e6697f4e4b766a40842",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-048108bccf2f42fe92bb8a6503d00339",
+          "task_id": "g0_05",
+          "child_run_id": "run-cf956dde80f54e6697f4e4b766a40842",
+          "candidate": "sha256:ca1e1664ac9327dcfe6898be18ad98c3e163251bb3dcd170095abcaf415454f7",
+          "outputs": [
+            {
+              "path": "engine/scheduler/src/task-state.ts",
+              "sha256": "sha256:8d37461b5ee83a14d2186f7118ffdbd459aeb473c96f10733e88b86cd836b968"
+            },
+            {
+              "path": "engine/scheduler/src/run-state.ts",
+              "sha256": "sha256:b7b9cb52fa1816b0f915fe01ac917d69dc6537d6339102448295bbafe621f896"
+            },
+            {
+              "path": "engine/kernel/src/session-loop.ts",
+              "sha256": "sha256:0c1b17bd3818c3acdb6bcb31cb65282e17ba1580d4a7fc4bad00d8f96eaac073"
+            },
+            {
+              "path": "evals/fixtures/lifecycle-cases.json",
+              "sha256": "sha256:46f567c2e20964b60af40fb83513b147fe7bc871282844d9cbec337f26725f84"
+            },
+            {
+              "path": "evals/recovery/lifecycle.test.ts",
+              "sha256": "sha256:bf67b381c41cc2da6e36235455741c83ef2827cf664fd0273eb39c35f0fa0c67"
+            }
+          ],
+          "evidence": [
+            "sha256:9b8cbc9e3af37337d5195a5908015231d83a43faa90bb7cf2384a332a627fd31",
+            "sha256:eec9318291a5f291710b9a45a0c37a2ee3202faf941af85e144de7f0bcfb8fb8"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Inspected five actualoutputs plus independent144case fixture. Current originalcontroller outputs/build/57 deterministic tests pass input_mutationfalse. TerminalnewRun/evidencecharges, unknownfirst, currentauth, check completion, failednotification and postpause late response regression hold; accepted localG005 scope."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_06": {
+        "status": "COMPLETE",
+        "runId": "run-de8252bad631409382ef39499b41cf69",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-80953efbee7146b8895620201df1bc47",
+          "task_id": "g0_06",
+          "child_run_id": "run-de8252bad631409382ef39499b41cf69",
+          "candidate": "sha256:14da2817d917e70cbf5c3cfc43e4abef08f064dc37f23b89cb1e8ecb4a4b2964",
+          "outputs": [
+            {
+              "path": "apps/api/src/commands/dispatch-command.ts",
+              "sha256": "sha256:e4f3de15342be97303d1881458d2c64db3a8773c8f38826af00ca5c201438564"
+            },
+            {
+              "path": "apps/api/src/streams/task-events.ts",
+              "sha256": "sha256:0d9ddbbe8c17a5317a0141eab0d482348dd2a0a192e5882e6958a2225a09eadb"
+            },
+            {
+              "path": "engine/contracts/src/command-response.ts",
+              "sha256": "sha256:c62da1f7be35bf1f84a113cbf05174a83faf76ded16bd876a842bdde32d34ef9"
+            },
+            {
+              "path": "evals/recovery/command-sync.test.ts",
+              "sha256": "sha256:52d4c9f00ae513fe979c6502632598dfea83f7629ff54ba45fc2590a3a035d54"
+            }
+          ],
+          "evidence": [
+            "sha256:5b37c850b13d6a9516f64436a5b7521b33232f7db873a5d4449407572d4d76fe",
+            "sha256:4f7666ac346edabfac545f76fcac616ee456c8bf76219617646520298756f4da"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Inspected fouractual modules/tests. Current originalcontroller output/build pass inputmutationfalse with71 actualassertiontests, including6oraclebranches plus reproduced query-dedup and revoked authority/cursor highwater fixes. Authenticated scopes, exact key conflict, unknownapply query-only, token/draft/cursor distinction hold. Three actualclients remainfutureG1."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_07": {
+        "status": "COMPLETE",
+        "runId": "run-d250fc2ec3e44f4e8a542ebc2d79e1ea",
+        "usage": {
+          "wall_seconds": 5,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-d4434b5ac97548cc8c4060f6bf80448c",
+          "task_id": "g0_07",
+          "child_run_id": "run-d250fc2ec3e44f4e8a542ebc2d79e1ea",
+          "candidate": "sha256:fed03b002ab0a9c7b87a2f012698730e200d323875791698ecaf592f6c8e9257",
+          "outputs": [
+            {
+              "path": "execution/action-broker/src/operation.ts",
+              "sha256": "sha256:f982c99d2d9e21365ec482a8044535c3d2d98d5f083dc656779bd578606c36ce"
+            },
+            {
+              "path": "execution/action-broker/src/dispatch.ts",
+              "sha256": "sha256:0fbc765733941b950ea6fa036f6a78babbbdf7273e8253d9d6f6d8aafbd14910"
+            },
+            {
+              "path": "execution/action-broker/src/reconcile.ts",
+              "sha256": "sha256:6b96bedc56003d3194a33869d6a4e9aca2219e5f4cfa1eb683c327a1aa0ae86a"
+            },
+            {
+              "path": "evals/recovery/unknown-effect.test.ts",
+              "sha256": "sha256:f46bf4eb185b2340de22489e6189b1ce65f8a9874e6e0526364cc70135de81eb"
+            }
+          ],
+          "evidence": [
+            "sha256:410e4bd704329ada573acfc1cbfab0cb699ff568aee883a8a92eb6012b59d2e4",
+            "sha256:60c805ace73a6032452d41bb5a78e53f932b59a686ff3477b0cb883fecf59eef"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "Inspected4actualoutputs and all83currentcontroller tests passing inputmutationfalse. Exactapproval/expiry/currentclaims/fence/payer blocks beforeexecute; realcontrolledremoteMap ackloss writeonce/reconcile originalreceipt/settleonce; unknownresolver and reservation retained; no unproved retryreset. FrozenBudgetPortspy only, actualG010ledgerG014 revalidation pending; real downstreamqualification future."
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_08": {
+        "status": "COMPLETE",
+        "runId": "run-5930a58c0c6b451cb13b9122f8fdd647",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-69be167ad81c415b93978b1e6ade5cb3",
+          "task_id": "g0_08",
+          "child_run_id": "run-5930a58c0c6b451cb13b9122f8fdd647",
+          "candidate": "sha256:925097bbf426ec6b4bcd0acf655693200e612016ed431bd07558b0c2b1c16abf",
+          "outputs": [
+            {
+              "path": "engine/scheduler/src/stop.ts",
+              "sha256": "sha256:ad8f5fcb946914edce04911da89ca0e3a2ea6ea706a0cd21625d2e566cd25a40"
+            },
+            {
+              "path": "execution/action-broker/src/fencing.ts",
+              "sha256": "sha256:6bfff111a5fac25dbea7de6369909e1a331999d5671bbc48f45aebb4fcddd8b4"
+            },
+            {
+              "path": "execution/desktop-broker/src/mutation-barrier-contract.ts",
+              "sha256": "sha256:2345a11b72ed2126bf8e1bbd0137058536df74918abb21bfadb28fc47e836146"
+            },
+            {
+              "path": "evals/safety/stale-stop.test.ts",
+              "sha256": "sha256:dc71b278bd77306d2f9281d1ce486facd0fa5a01c4618d8546b03ec0b5d01d9c"
+            }
+          ],
+          "evidence": [
+            "sha256:117a62a7ebb08966352fde4db9ed5239be6ef2c46909004d25aa9617baaeb0ca",
+            "sha256:d0af47a086ba8556eded820ead8c3c4b88e896bdc7471bdceb71985a3f728f37"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "主线程已检查四个实际实现文件及三项 driver/runtime 修复与 partial-Stop 幂等恢复；原控制器 output/build-and-behavior 通过，101 tests 无 skip，G0 本地协议范围，保留后续 qualification。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_09": {
+        "status": "COMPLETE",
+        "runId": "run-446c724fd007423e957e20b519649c7e",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-9b99639541344e8e950b621abe619086",
+          "task_id": "g0_09",
+          "child_run_id": "run-446c724fd007423e957e20b519649c7e",
+          "candidate": "sha256:2a1c62346e1ef01051a57763890062dc87b11b607f58e091cb24ab212230b7e1",
+          "outputs": [
+            {
+              "path": "engine/context/src/compile.ts",
+              "sha256": "sha256:9dc1418938dcd234e74b0931e127b3e974b29ed4fa7a74a51cf1ce5c604f6dc9"
+            },
+            {
+              "path": "engine/profiles/src/capabilities.ts",
+              "sha256": "sha256:eaaceef5b4c532c782d580d45bfcfd5da86e6a67be4e8dbe554b8d4c138ebcb9"
+            },
+            {
+              "path": "adapters/models/src/model-adapter.ts",
+              "sha256": "sha256:d7db9e2e44578bc75cdc68cc418b666ddf974f928526c760e310f1d47a226aba"
+            },
+            {
+              "path": "evals/fixtures/model-conformance-cases.json",
+              "sha256": "sha256:7495f79c37080237cdb01b0abb15926b07f345a8521be8e494f6f1cc9db32184"
+            },
+            {
+              "path": "evals/safety/model-profile.test.ts",
+              "sha256": "sha256:0f9498a12df19c35c51876d38142350496318a10541d0608ab9bb738cd8adde5"
+            }
+          ],
+          "evidence": [
+            "sha256:e91c5efafcdcea8990cf61b7722886c3f701b566cc431800689f93970c15706f",
+            "sha256:2146339e02a77dec5e78e95958ed36aaaf7dbf78ec148a0cb4bd9d478a7f269c"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "主线程实际检查4outputs+testerfile及current-revision返回边界；原控制器type/behavior113 tests通过无skip，保留G010/G014实际ledger集成门。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_10": {
+        "status": "COMPLETE",
+        "runId": "run-dbe7cb9bf94d4cbcb5cbc25f9a2f4eab",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-936d86b592ba43f881558fd8a3aa6475",
+          "task_id": "g0_10",
+          "child_run_id": "run-dbe7cb9bf94d4cbcb5cbc25f9a2f4eab",
+          "candidate": "sha256:5955ad4d73bb418511306d57d4afb1dc85ee57dec3b938848a1cd7aadd1326f9",
+          "outputs": [
+            {
+              "path": "engine/scheduler/src/budget-ledger.ts",
+              "sha256": "sha256:d9756a62f3033b18fb390de1d99e2a9e605e605f6ee8e8a04a09fc8568e3a93a"
+            },
+            {
+              "path": "adapters/models/src/retry-budget.ts",
+              "sha256": "sha256:912eb297d51d8866d78f26260220b47893c7f55d872a1d8f3a053cc824657781"
+            },
+            {
+              "path": "evals/recovery/budget-ledger.test.ts",
+              "sha256": "sha256:3cede55d2db96107b0b177be2b660b01a21b73470194bd927ed0ec2a909c1d26"
+            }
+          ],
+          "evidence": [
+            "sha256:a5da8c5de1a9c2fdbfb90c952bf164445b5bf15ea6160baa1315e17ca89b4803",
+            "sha256:38c8b27359f0de9495a3b180a036b5cadf48f8c800a3d6dcbe4419dc0bd30141"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "检查实际ledger/retry/test所有输出，当前authority/原子性/ceilingownership与费用分类回归成立，原控制器130tests passing0skip；G014真实共享ledger模型effect集成仍必验。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_11": {
+        "status": "COMPLETE",
+        "runId": "run-0308f2cad8a54be0b7c331a228f5ece4",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-8a083a0d83c94b498fceb77bf427ab0d",
+          "task_id": "g0_11",
+          "child_run_id": "run-0308f2cad8a54be0b7c331a228f5ece4",
+          "candidate": "sha256:facf1c3b5f70a6b4d2243bc286550fcc25fe855e40a3fe1664e74b2fce2d7587",
+          "outputs": [
+            {
+              "path": "services/artifacts/src/version.ts",
+              "sha256": "sha256:b097c101ad213e077d2bb1b69ca3bef318595764ebd7ed7c4ab5029328620ff3"
+            },
+            {
+              "path": "execution/verification/src/check-receipt.ts",
+              "sha256": "sha256:f6e1b18fa75383a796fc3b4ed1ef69d389c10900d5ebd1d8007677232fef783f"
+            },
+            {
+              "path": "execution/action-broker/src/delivery-operation.ts",
+              "sha256": "sha256:9eb299d62b5b419411b81306eca70a1c643d1fac88b62cc5168a09c3d72833a1"
+            },
+            {
+              "path": "evals/safety/protected-completion.test.ts",
+              "sha256": "sha256:521c5ccbcfbe2ac1fb5afb3558856270b54dcea1bc2289240d0812b083ed7910"
+            }
+          ],
+          "evidence": [
+            "sha256:37a9cc7b6c551f4cc0c6b1b4dc132391575bd09f2c2530f055d46d840128d60d",
+            "sha256:d844a086e8d773d5aedb3bc8d5dfc0d833be85c3ca613da154d58a90700ea9ab"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "主线程检查实际3实现files+9mandatorybranches/2regressions；原控制器141tests0skip通过；changedcandidate拒绝旧receipt，通知失败不重复effect，真实verifier/审批部署qualification仍pending。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_12": {
+        "status": "COMPLETE",
+        "runId": "run-f24d9f8edbcf485e926058a61cf29af2",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-5c29c9c736534bf099a4fd57322fdbd6",
+          "task_id": "g0_12",
+          "child_run_id": "run-f24d9f8edbcf485e926058a61cf29af2",
+          "candidate": "sha256:89a9d30f26c72b895963bd6ddde8808982e33105d7cc362e507b54718f6b8551",
+          "outputs": [
+            {
+              "path": "adapters/runtimes/src/runtime-adapter.ts",
+              "sha256": "sha256:cb8e81fe2f95ca0248559a6d1e8fec8845334975f21763a2a18d8748230c5f83"
+            },
+            {
+              "path": "adapters/tools/src/tool-contract.ts",
+              "sha256": "sha256:a0d4682c9eb29d0ad4d906924529e4d356433480b161e6088922dfc37fa1b8ba"
+            },
+            {
+              "path": "adapters/channels/src/channel-adapter.ts",
+              "sha256": "sha256:09661834b3d0fd31c7eaad87cba3814a465311ba91a0f5f0397aefcf497549d7"
+            },
+            {
+              "path": "security/conformance/src/qualification-record.ts",
+              "sha256": "sha256:39d31d09c8906f8827c25efcc88e88f7d56ef02477da3fbfe7b88421b125a1dd"
+            },
+            {
+              "path": "evals/safety/adapter-qualification.test.ts",
+              "sha256": "sha256:de55cc8f2f8a135d672b0ca9b9be4107a8f92dc0bee2f7085eea81d8a563cee2"
+            }
+          ],
+          "evidence": [
+            "sha256:be90a8a7972a6da9189d920253916f839586d783b63498ddd9e9f0cfc912d0e0",
+            "sha256:87a37a06edc901058450a0d97e43785dd7c94646e73572b6bf120fc24607a4f7"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "已检查4实际实现modules+3protectedbranches与5regressions；原控制器149tests0skip通过，G0localqualification仅受控协议证据，没有真实资源/隔离认证。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_13": {
+        "status": "COMPLETE",
+        "runId": "run-285c795bac9142b88e79c906d64ed58d",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-fc194cbed976484eb0371e779a55b5f3",
+          "task_id": "g0_13",
+          "child_run_id": "run-285c795bac9142b88e79c906d64ed58d",
+          "candidate": "sha256:ca3205c66868d34d211e1830e2901f52a36cc1239254b2bb73dbb11ea12c9219",
+          "outputs": [
+            {
+              "path": "engine/contracts/src/presentation.ts",
+              "sha256": "sha256:aacb7d138f9c7380de7757e79597e9b08d123c96abc80264303e44ec1e2dcd40"
+            },
+            {
+              "path": "engine/contracts/src/memory.ts",
+              "sha256": "sha256:7f84b68548fb368c52d55a4e33c5a7057cf790ebbb6a4819023390100a8f15f3"
+            },
+            {
+              "path": "engine/contracts/src/desktop.ts",
+              "sha256": "sha256:c6c48819d9f6876853de62aa22b2852b19fbad202cbc21eda705c2134cfb7067"
+            },
+            {
+              "path": "engine/contracts/src/behavior-release.ts",
+              "sha256": "sha256:01ffd5b90c5865a28330ff8b0c18d668bde52d980cf5c0c1a34bb59409b7c2ef"
+            },
+            {
+              "path": "docs/architecture/client-and-module-contracts.md",
+              "sha256": "sha256:48d34c5c00d670c06691d818929938a4ddd1199c6e5e14b1986e506e2cb4dd86"
+            },
+            {
+              "path": "evals/safety/presentation-and-module.test.ts",
+              "sha256": "sha256:05302280488bbdfcb7d271e281bfa2247682ab0238368dbbef3719299f8140af"
+            }
+          ],
+          "evidence": [
+            "sha256:75afe86433ef6b7e3fe5c9bde42f030bb88ff3303559f4246ff8141b88c09de3",
+            "sha256:3d108da171dd5471f334d0f5b18e1c03ad968a822fed8f1a8b517a4ffeb5d07c"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "检查4实际代码protocol+docs18UXmapping+11tests；原控制器160tests0skip通过，memory修正不发布behavior，sourceDelete/当前撤权rollback失败，副本无original-sourcegrant。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_14": {
+        "status": "COMPLETE",
+        "runId": "run-e673c13e11d04796af508760c391a388",
+        "usage": {
+          "wall_seconds": 6,
+          "tokens": null,
+          "cost_microunits": 0,
+          "cost_currency": "USD"
+        },
+        "handoff": {
+          "id": "handoff-f5c94d49935c49308489560a3c3ec1cb",
+          "task_id": "g0_14",
+          "child_run_id": "run-e673c13e11d04796af508760c391a388",
+          "candidate": "sha256:868d3777e820e6849923ddd4f886361e3472569e234c4679e76e82b048d92fc6",
+          "outputs": [
+            {
+              "path": "evals/fixtures/g0-contract-suite.json",
+              "sha256": "sha256:f13c1731babe017768ab1b790bb1974fa84876a572aa4b2f818f48975354ee81"
+            },
+            {
+              "path": "evals/safety/authority-boundaries.test.ts",
+              "sha256": "sha256:0155b19030eb4eaed4131bb5ee5c6eb04da4f117b7f0c23f95a742d10e64fbd6"
+            },
+            {
+              "path": "evals/recovery/replay-and-fencing.test.ts",
+              "sha256": "sha256:83069525ed25e7d7ae30a321b093c1c089e123f0bd251618d5d136eed6f7b958"
+            },
+            {
+              "path": "docs/evidence/g0-evidence-manifest.md",
+              "sha256": "sha256:90e29446266a85ab16bc5fe1fed65919e2f9a3e48a4db7ed631e6a0275ec73db"
+            },
+            {
+              "path": "docs/operations/g0-recovery-procedure.md",
+              "sha256": "sha256:20a94bcc082c678fa8b14092666614cb230855b812bb25a753b4acb9e4f680e0"
+            },
+            {
+              "path": "evals/protected/g0-oracle.test.ts",
+              "sha256": "sha256:ea62746389e1af8a299794c003bdeda7c92a82947e5af3554982ed5953c79da0"
+            },
+            {
+              "path": "evals/protected/g0-workflows.test.ts",
+              "sha256": "sha256:44f8fc54b37a6d02d734c6141dd4974d6e1cdd0b1dfea04bb7e38d3ff732b4f6"
+            },
+            {
+              "path": "docs/evidence/g0-requirements-matrix.csv",
+              "sha256": "sha256:fd98d6f89feb5166d2c5740df03d77ef6b2dfa0b93052dee252cb69b8912c12f"
+            },
+            {
+              "path": "docs/evidence/g0-build.json",
+              "sha256": "sha256:1bcf8009a793a8c3191211641165a8cf95aa55b7e9dcbc669e33b6060dbce8df"
+            },
+            {
+              "path": "docs/operations/g0-quickstart.md",
+              "sha256": "sha256:b40a5415c9f5cdfbe1c3f479bbcca84a95ba76e2187321dca1e5b325f25e3fc8"
+            }
+          ],
+          "evidence": [
+            "sha256:10c5d05234232347d5444484a9525d017131528df396b8d054dbe0e824612f8e",
+            "sha256:e223fa5cbc3f2da4ba4c0a9600833a94e6ec6b32f3a04d76fcb99b35344c9dc9"
+          ]
+        },
+        "receipts": {
+          "coordinator": {
+            "accepted": true,
+            "note": "实际检查15项draft修复及10requiredoutputs、现候选180tests/102mandatory exactonce和原frozen install/type/behavior pass,input mutationfalse；实际ledger/model/broker restart与tombstones/currentgrants先序覆盖。原规划/hash/history保留，全部localassurance明确，3正式签名评审继续pending。"
+          }
+        },
+        "reviewOutcomes": {}
+      },
+      "g0_security": {
+        "status": "RUNNING",
+        "runId": "run-77ff9e2136d742da8398b9554a5bc400",
+        "usage": {
+          "wall_seconds": 262,
+          "tokens": null,
+          "cost_microunits": null,
+          "cost_currency": "USD"
+        },
+        "handoff": null,
+        "receipts": {},
+        "reviewOutcomes": {
+          "team-independent-security": {
+            "result": "inconclusive",
+            "evaluation_summary": "Registered review timeout, exit=-9",
+            "evidence_digest": "sha256:a32b6fab0cf8c07153d377047441bd124b63ab45c0732f6627c78480e196e3d2",
+            "candidate": "sha256:868d3777e820e6849923ddd4f886361e3472569e234c4679e76e82b048d92fc6",
+            "environment": "sha256:03c654f7a48985a8660f5492dfa560044508bccafbeb189bfe186dc162de187b",
+            "findings": []
+          }
+        }
+      },
+      "g0_review": {
+        "status": "PENDING",
+        "runId": null,
+        "handoff": null,
+        "receipts": {}
+      },
+      "g0_acceptance": {
+        "status": "PENDING",
+        "runId": null,
+        "handoff": null,
+        "receipts": {}
+      }
+    },
+    "host_usage": "unknown; host conversations/delegation are outside controller accounting",
+    "security_attempts": [
+      {
+        "id": "review-executor-75149f2f9c2d4015be41758b76428f6a",
+        "result": "timeout; inconclusive; not passed",
+        "timeout_seconds": 120
+      },
+      {
+        "id": "review-executor-b6e8c9f9c78c4435800bd43f681263ae",
+        "result": "timeout; inconclusive; not passed",
+        "timeout_seconds": 120
+      }
+    ]
+  },
+  "formal_results_source": "current recovery team registered check records",
+  "formal_results_at_baseline": "pending; no formal independent pass is claimed in this source artifact",
+  "cumulative_accounting": {
+    "known_previous_controller_wall_seconds": 339,
+    "formula": "339 + sum(actual current recovery team child usage.wall_seconds)",
+    "host_tokens": null,
+    "host_cost_microunits": null,
+    "overall_cost_microunits": null,
+    "overall_cost_currency": "USD",
+    "note": "Historical controller rows and unknown native-host/review token/cost remain unchanged. Current recovery ledger is additive, never replaces previous ledger. Registry attempt counts are per new child; prior two actual attempts remain historical and no cross-batch attempt-cap claim is made."
+  },
+  "scope": "Retained actual G0-01–14 implementation, 102 frozen mandatory branches and original criteria. Baseline rerun then registered current-candidate security, code review, requirements acceptance. Actual deployment/provider/SSO/database/client/desktop qualification remains later-gate pending.",
+  "history_locations": {
+    "previous_implementation": "/Users/super/Documents/ai/loop-states/agent-fabric/runs/team-b5072612869c462a89678f21097d346c",
+    "previous_planning": "/Users/super/Documents/ai/loop-states/agent-fabric/runs/team-38a6d9ab4e99491b8c9c6e76d0c5f90d",
+    "setup_archive": "/Users/super/Documents/ai/loop-states/agent-fabric/setup-backups/setup-f5784b14d04d46299fa120e70cd8d817"
+  }
+}

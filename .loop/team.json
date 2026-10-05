@@ -1,36 +1,29 @@
 {
   "schema_version": "1.0",
-  "basis_digest": "sha256:ba5b9b2954571bf1c08e1586619cebef0c19c5af6230b446bd60f9012d30aa0d",
+  "basis_digest": "sha256:be05cd5257f4e7554c8ad28bdb0593c07db27a32f9b7b85b9c66985252acb197",
   "decisions": [
     {
       "role": "coordinator",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Own intake, team selection, scoped tasks, integration and budgets.",
+      "reason": "Own approved evidence-only recovery, scoped integration, retained budgets, original commands and final receipt.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": "/root",
       "covered_by": null,
       "handoff_to": [
-        "architect",
-        "backend",
         "tester",
-        "security",
-        "reviewer",
-        "acceptance",
         "devops"
       ]
     },
     {
       "role": "requirements_reviewer",
       "state": "covered",
-      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "reason": "Coordinator covers original G1-LR01–12 coverage and actual user-approved recovery boundaries.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": "coordinator",
@@ -41,11 +34,10 @@
     {
       "role": "designer",
       "state": "inactive",
-      "reason": "G0 delivers typed presentation protocols; existing design outputs are retained and real client implementation begins G1.",
+      "reason": "No journey, screen or interaction design changes are authorized; frozen existing UI cases and their raw evidence remain mandatory.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": null,
@@ -53,15 +45,14 @@
     },
     {
       "role": "architect",
-      "state": "active",
-      "reason": "Actual host responsibility for G0 Define architecture, interfaces, data ownership and compatibility.",
+      "state": "covered",
+      "reason": "Coordinator checks unchanged current-source/API boundaries and byte-bound evidence packaging; no architecture change.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root/g0_architecture_plan",
-      "covered_by": null,
+      "assignee": null,
+      "covered_by": "coordinator",
       "handoff_to": [
         "coordinator"
       ]
@@ -69,11 +60,10 @@
     {
       "role": "frontend",
       "state": "inactive",
-      "reason": "No actual client UI in G0; three client protocols only, implementation remains G1.",
+      "reason": "Client implementation is frozen; recovery imports original images only and retains all mandatory native/browser evidence.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": null,
@@ -81,29 +71,25 @@
     },
     {
       "role": "backend",
-      "state": "active",
-      "reason": "Actual host responsibility for G0 Implement business logic, APIs, persistence and failure handling.",
+      "state": "inactive",
+      "reason": "Business logic, HTTP, authority and persistence source are frozen; unchanged original regression checks still run.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root",
+      "assignee": null,
       "covered_by": null,
-      "handoff_to": [
-        "coordinator"
-      ]
+      "handoff_to": []
     },
     {
       "role": "tester",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Map requirements to functional, integration and regression checks.",
+      "reason": "Actual tester context validates88 prepared byte hashes, relevant native frames and unchanged coverage; formal reviews remain separate.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root/g0_verifier",
+      "assignee": "/root/recovery_evidence_validation",
       "covered_by": null,
       "handoff_to": [
         "coordinator"
@@ -112,13 +98,12 @@
     {
       "role": "security",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Define security controls; independently review the candidate and fixes.",
+      "reason": "Separate registered current-candidate security reviewer, same original criterion and600s effective limit.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root/plan_review",
+      "assignee": "registered-review/security",
       "covered_by": null,
       "handoff_to": [
         "coordinator"
@@ -126,27 +111,27 @@
     },
     {
       "role": "performance",
-      "state": "inactive",
-      "reason": "No G0 production latency or capacity certification; deterministic fault/recovery tests apply and real deployments qualify later.",
+      "state": "covered",
+      "reason": "Tester covers original raw10warmup+100read evidence, fixed workload/threshold and source binding; no production performance pass.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
-      "covered_by": null,
-      "handoff_to": []
+      "covered_by": "tester",
+      "handoff_to": [
+        "coordinator"
+      ]
     },
     {
       "role": "reviewer",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Independently review the integrated implementation and compatibility.",
+      "reason": "Separate registered implementation reviewer must assess exact integrated source and actual evidence.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root/plan_review",
+      "assignee": "registered-review/reviewer",
       "covered_by": null,
       "handoff_to": [
         "coordinator"
@@ -155,13 +140,12 @@
     {
       "role": "acceptance",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Plan coverage; independently assess delivered business/quality requirements.",
+      "reason": "Separate registered requirements evaluator must assess all original local criteria/current evidence; full G1 remains pending.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
-      "assignee": "/root/planning_acceptance",
+      "assignee": "registered-review/acceptance",
       "covered_by": null,
       "handoff_to": [
         "coordinator"
@@ -170,11 +154,10 @@
     {
       "role": "integrator",
       "state": "covered",
-      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "reason": "Coordinator serially imports exact90 scoped outputs and checks current candidate; no parallel source writers.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": "coordinator",
@@ -185,11 +168,10 @@
     {
       "role": "devops",
       "state": "active",
-      "reason": "Actual host responsibility for G0 Prepare reproducible builds, delivery and rollback procedures.",
+      "reason": "Coordinator packages exact original binary artifacts within approved file/transport bounds and retains native build/installation evidence.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": "/root",
       "covered_by": null,
@@ -199,27 +181,23 @@
     },
     {
       "role": "database",
-      "state": "covered",
-      "reason": "Covered by active backend with role instructions and separate deliverables.",
+      "state": "inactive",
+      "reason": "No schema, migration, transaction, tuning or data-compatibility change is authorized; original SQLite/G0 regressions and hashes remain mandatory.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
-      "covered_by": "backend",
-      "handoff_to": [
-        "coordinator"
-      ]
+      "covered_by": null,
+      "handoff_to": []
     },
     {
       "role": "documentation",
       "state": "covered",
-      "reason": "Covered by active coordinator with role instructions and separate deliverables.",
+      "reason": "Coordinator updates two acceptance indexes and retains all histories, synthetic-only labels, source binding and pending qualification.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": "coordinator",
@@ -230,11 +208,10 @@
     {
       "role": "reliability",
       "state": "covered",
-      "reason": "Covered by active devops with role instructions and separate deliverables.",
+      "reason": "DevOps checks retained recovery evidence and operational boundary; no production availability/worker/remote qualification.",
       "sources": [
         ".loop/spec.md",
-        "docs/planning/g0-implementation-plan.md",
-        "docs/planning/decision-register.md"
+        "docs/evidence/g1-local-acceptance.json"
       ],
       "assignee": null,
       "covered_by": "devops",

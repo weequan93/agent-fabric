@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 1,
+  "assurance": "local-synthetic",
+  "frozenBeforeDownstreamImplementation": true,
+  "policy": {
+    "modelMode": "deterministic-test",
+    "effectMode": "synthetic-only",
+    "paidCallsAllowed": false,
+    "remoteAllowed": false
+  },
+  "requirements": [
+    {
+      "id": "G1-LR01",
+      "expectation": "Independent frozen local build; retained G0 hashes and regressions",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "valid isolated local frozen install/build and preserved G0 run",
+        "denied": "missing lock or changed protected G0 hashes reject",
+        "recovery": "clean restart reproduces same pinned source/definition"
+      }
+    },
+    {
+      "id": "G1-LR02",
+      "expectation": "Deterministic test model, synthetic usage and no paid route",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "fixed synthetic input invokes deterministic local model with synthetic units",
+        "denied": "supplier credentials/route/enabling flags invoke zero paid callbacks",
+        "recovery": "unknown model usage holds original reservation until owner receipt"
+      }
+    },
+    {
+      "id": "G1-LR03",
+      "expectation": "Server identity and payer; current Space/source/audience and independent approver",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "separate current operator and approver with two-end sharing allows",
+        "denied": "forged actor/payer/grant, expired approval or cross-Space denial before callbacks",
+        "recovery": "revocation invalidates cached bindings; explicit fresh grants restore legitimate work"
+      }
+    },
+    {
+      "id": "G1-LR04",
+      "expectation": "Loopback HTTP and real SDK; current-authorized Task/command/event/result",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "real loopback HTTP SDK creates and reads same Task/events/result",
+        "denied": "closed-wire forgery and stale ordinary commands reject before mutation",
+        "recovery": "lost acknowledgment queries original command; authorized snapshot resolves cursor gap"
+      }
+    },
+    {
+      "id": "G1-LR05",
+      "expectation": "Local persistence, atomic outbox and restart; unknown blocks replay/continuation",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "actual SQLite commit/outbox persists confirmed result",
+        "denied": "partial commit and deletion/revocation deny late publication",
+        "recovery": "restart conserves operation identity and settlement; pure replay invokes no model/effect"
+      }
+    },
+    {
+      "id": "G1-LR06",
+      "expectation": "Native Task/Run, versioned plans and synthetic confirmed artifacts/checks",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "versioned Ask/Plan and approved synthetic Run produces committed artifact",
+        "denied": "model self-approval, changed plan binding and workstation execution reject",
+        "recovery": "trusted unknown reconciliation precedes continuation and new Run after terminal"
+      }
+    },
+    {
+      "id": "G1-LR07",
+      "expectation": "Current-authority Stop, stale progress exception and truthful offline delivery",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "current authorized Stop admits stale progress and fences dispatch",
+        "denied": "cross-Space/revoked Stop rejects; offline stop displays Not delivered",
+        "recovery": "reconnect preserves unsent drafts without automatic submission/re-execution"
+      }
+    },
+    {
+      "id": "G1-LR08",
+      "expectation": "Actual Web user flow using the running local service",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "actual browser application executes required live-service flow",
+        "denied": "static page/source/build/screenshots without interaction do not qualify",
+        "recovery": "browser reconnect retrieves same Task/result and truthful pending state"
+      }
+    },
+    {
+      "id": "G1-LR09",
+      "expectation": "Actual Electron application with restricted IPC/renderer/navigation",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "actual Electron application executes required live-service flow",
+        "denied": "unsafe IPC/Node renderer/navigation reject; build only does not qualify",
+        "recovery": "desktop reconnect maintains same backend Task without hidden resume"
+      }
+    },
+    {
+      "id": "G1-LR10",
+      "expectation": "Actual Android virtual-device native installation and interaction",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "actual Android emulator installs/launches native app and performs flow",
+        "denied": "browser viewport or build only is not native interaction evidence",
+        "recovery": "native app reconnect observes same Task/result and truthful offline Stop"
+      }
+    },
+    {
+      "id": "G1-LR11",
+      "expectation": "Official-source model cost proposal; no activation before approval",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "current official-source proposal contains workload/token/cache/retry/region/USD math",
+        "denied": "unapproved proposal cannot activate paid route",
+        "recovery": "updated assumptions produce reviewed new proposal while default remains unpaid"
+      }
+    },
+    {
+      "id": "G1-LR12",
+      "expectation": "Current-candidate evidence, independent formal assessment and honest future gates",
+      "branches": [
+        "allowed",
+        "denied",
+        "recovery"
+      ],
+      "unexecutedStatus": "pending",
+      "observations": {
+        "allowed": "all actual scoped checks and registered assessments bind current candidate",
+        "denied": "missing UI evidence, failed mandatory branch or absent evaluator remains pending",
+        "recovery": "candidate changes invalidate affected observations and require current checks/reviews"
+      }
+    }
+  ],
+  "stageOrder": [
+    "baseline",
+    "backend",
+    "http",
+    "web",
+    "desktop",
+    "mobile",
+    "verify"
+  ],
+  "stages": {
+    "baseline": {
+      "requiredFiles": [
+        "g1-local/package.json",
+        "g1-local/pnpm-lock.yaml",
+        "g1-local/tsconfig.json",
+        "g1-local/scripts/build.mjs",
+        "g1-local/scripts/check.mjs",
+        "g1-local/src/contracts.ts",
+        "g1-local/src/errors.ts",
+        "g1-local/evals/definition.json",
+        "g1-local/tests/contracts.test.ts",
+        "docs/planning/g1-local-plan.md",
+        "docs/planning/g1-local-decisions.md",
+        "docs/planning/g1-local-requirements.csv",
+        "docs/planning/g1-model-budget-proposal.md",
+        "docs/architecture/g1-local-runtime-and-api.md"
+      ]
+    },
+    "backend": {
+      "requiredFiles": [
+        "g1-local/src/store.ts",
+        "g1-local/src/identity.ts",
+        "g1-local/src/models.ts",
+        "g1-local/src/session-service.ts",
+        "g1-local/src/synthetic-effects.ts",
+        "g1-local/tests/store.test.ts",
+        "g1-local/tests/identity.test.ts",
+        "g1-local/tests/models.test.ts",
+        "g1-local/tests/session.test.ts"
+      ]
+    },
+    "http": {
+      "requiredFiles": [
+        "g1-local/src/http.ts",
+        "g1-local/src/cli.ts",
+        "g1-local/src/client.ts",
+        "g1-local/tests/http.test.ts"
+      ]
+    },
+    "web": {
+      "requiredFiles": [
+        "g1-local/web/package.json",
+        "g1-local/web/pnpm-lock.yaml",
+        "g1-local/web/index.html",
+        "g1-local/web/vite.config.mjs",
+        "g1-local/web/tsconfig.json",
+        "g1-local/web/src/main.tsx",
+        "g1-local/web/src/styles.css",
+        "g1-local/web/tests/client-state.test.mjs",
+        "g1-local/web/scripts/check.mjs"
+      ]
+    },
+    "desktop": {
+      "requiredFiles": [
+        "g1-local/desktop/package.json",
+        "g1-local/desktop/pnpm-lock.yaml",
+        "g1-local/desktop/main.cjs",
+        "g1-local/desktop/preload.cjs",
+        "g1-local/desktop/security.cjs",
+        "g1-local/desktop/tests/security.test.cjs",
+        "g1-local/desktop/scripts/check.mjs"
+      ]
+    },
+    "mobile": {
+      "requiredFiles": [
+        "g1-local/mobile/package.json",
+        "g1-local/mobile/pnpm-lock.yaml",
+        "g1-local/mobile/app.json",
+        "g1-local/mobile/babel.config.cjs",
+        "g1-local/mobile/tsconfig.json",
+        "g1-local/mobile/App.tsx",
+        "g1-local/mobile/src/api.ts",
+        "g1-local/mobile/src/state.ts",
+        "g1-local/mobile/tests/state.test.mjs",
+        "g1-local/mobile/scripts/check.mjs"
+      ]
+    },
+    "verify": {
+      "requiredFiles": [
+        "g1-local/tests/integration.test.ts",
+        "g1-local/tests/faults.test.ts",
+        "g1-local/scripts/check-ui.mjs",
+        "g1-local/scripts/check-load.mjs",
+        "g1-local/scripts/local-start.mjs",
+        "docs/operations/g1-local-quickstart.md",
+        "docs/operations/g1-local-recovery.md",
+        "docs/evidence/g1-local-verification.json",
+        "docs/evidence/g1-local-verification.md",
+        "docs/evidence/g1-local-ui.json",
+        "docs/evidence/g1-local-load.json",
+        "docs/evidence/g1-local-requirements.csv",
+        "docs/evidence/g1-pending-qualification.md"
+      ]
+    }
+  },
+  "testExecution": {
+    "compiledTestsDirectory": "g1-local/node_modules/.cache/g1-build/g1-local/tests",
+    "recursive": true,
+    "emptyIsFailure": true,
+    "skipAllowed": false,
+    "todoAllowed": false,
+    "missingRequiredFileIsFailure": true,
+    "buildOnlyProvesUi": false,
+    "requiredNamedCases": "All cases whose phase is at or before selected stage must execute exactly once; later phases remain unrequired."
+  },
+  "clientChecks": {
+    "web": "g1-local/web/scripts/check.mjs",
+    "desktop": "g1-local/desktop/scripts/check.mjs",
+    "mobile": "g1-local/mobile/scripts/check.mjs"
+  },
+  "uiEvidence": {
+    "requiredClients": [
+      "web",
+      "desktop",
+      "mobile"
+    ],
+    "realInteractionRequired": true,
+    "candidateBindingRequired": true,
+    "requiredFlow": [
+      "login",
+      "space-selection",
+      "create-task",
+      "ask",
+      "plan",
+      "approval",
+      "synthetic-run",
+      "result",
+      "current-authority-stop",
+      "waiting-or-failure",
+      "offline-stop-not-delivered",
+      "disconnect-and-reconnect"
+    ],
+    "requiredRecordFields": [
+      "client",
+      "candidateDigest",
+      "command",
+      "environment",
+      "startedAt",
+      "finishedAt",
+      "steps",
+      "artifacts",
+      "outcome"
+    ],
+    "unavailableCapability": "pending or concrete blocker; never pass",
+    "staticFixtureOrScreenshotAloneIsPass": false,
+    "browserMobileViewportIsNativeMobile": false,
+    "schema": {
+      "schemaVersion": 1,
+      "candidateDigest": "declared-source-scope sha256",
+      "assurance": "actual-local-interaction",
+      "clients": [
+        {
+          "client": "web|desktop|mobile",
+          "surface": "browser|electron|android-emulator respectively",
+          "outcome": "pass only after execution; pending/fail blocks UI gate",
+          "executor": {
+            "kind": "browser-automation|native-desktop-automation|android-emulator-automation respectively",
+            "id": "actual executor identity"
+          },
+          "launch": {
+            "command": "actual command",
+            "outcome": "pass"
+          },
+          "installation": "mobile requires {command,outcome:pass}; others optional",
+          "environment": "nonempty observed environment object",
+          "startedAt": "ISO timestamp",
+          "finishedAt": "ISO timestamp",
+          "steps": [
+            {
+              "id": "one of requiredFlow; all required",
+              "taskId": "actual Task ID for create-task and later task flows",
+              "revision": "observed nonnegative integer for task flows",
+              "expected": "nonempty expected outcome",
+              "observed": "nonempty actual result",
+              "outcome": "pass"
+            }
+          ],
+          "artifacts": [
+            {
+              "path": "existing screenshot/log file, absolute or repo-relative",
+              "sha256": "64hex of actual bytes",
+              "kind": "screenshot|log"
+            }
+          ]
+        }
+      ],
+      "sharedTaskId": "actual same backend Task whose confirmed result is read by all three clients"
+    }
+  },
+  "performance": {
+    "workload": "warm authorized loopback task reads",
+    "warmupSamples": 10,
+    "measuredSamples": 100,
+    "concurrency": 4,
+    "p95MaxMs": 2000,
+    "maxErrors": 0,
+    "quantile": "nearest-rank ceil(0.95*n)",
+    "retainAllSamples": true,
+    "requiredSampleFields": [
+      "index",
+      "durationMs",
+      "status",
+      "error"
+    ],
+    "realLoopbackHttpRequired": true,
+    "fakeClockMeasurementAllowed": false,
+    "schema": {
+      "schemaVersion": 1,
+      "candidateDigest": "declared-source-scope sha256",
+      "transport": "http-loopback",
+      "baseUrl": "http://127.0.0.1:<port> or http://localhost:<port>",
+      "workload": "authorized-task-read",
+      "timingSource": "performance.now",
+      "concurrency": 4,
+      "startedAt": "ISO timestamp",
+      "finishedAt": "ISO timestamp",
+      "warmup": "10 actual observations; indices0..9",
+      "samples": "100 actual observations; indices0..99",
+      "sample": {
+        "index": "integer",
+        "durationMs": "positive finite measured elapsed time",
+        "status": 200,
+        "error": null,
+        "cancelled": false
+      },
+      "p95Ms": "nearest rank 95th measured duration; recomputed by checker",
+      "errors": 0
+    }
+  },
+  "pendingQualification": [
+    "Complete G1 fourteen-package acceptance",
+    "real supplier models and metering",
+    "paid API activation and region authorization",
+    "remote computer/VM/workstation enrollment",
+    "production SSO and directory lifecycle",
+    "physical mobile device and real desktop sleep",
+    "signed distribution and updates",
+    "G3 hardware all-path isolation",
+    "G4 protected release qualification"
+  ],
+  "finalRequiredFiles": [
+    "docs/evidence/g1-local-acceptance.json",
+    "docs/evidence/g1-local-acceptance.md"
+  ],
+  "candidateBinding": {
+    "kind": "declared-source-scope-sha256",
+    "prefix": "sha256:",
+    "algorithm": "SHA256 of UTF-8 JSON.stringify({schemaVersion:1,files:[{path,sha256}]}) with files sorted by path",
+    "files": "existing requiredFiles beginning g1-local/ across every stage; evidence/docs/generated/node_modules excluded",
+    "missingStageFiles": "rejected by stage admission; earlier phases hash only currently present declared source files",
+    "selfReferentialNativeSnapshotHash": false
+  },
+  "evidencePaths": {
+    "ui": "docs/evidence/g1-local-ui.json",
+    "load": "docs/evidence/g1-local-load.json",
+    "acceptance": "docs/evidence/g1-local-acceptance.json"
+  },
+  "acceptanceEvidence": {
+    "schemaVersion": 1,
+    "candidateDigest": "declared-source-scope sha256",
+    "fileIsPassAttestation": false,
+    "formalResultAuthority": "registered-controller-record",
+    "requiredCheckIds": [
+      "team-independent-security",
+      "team-independent-reviewer",
+      "team-independent-acceptance"
+    ],
+    "commandGateMustNotRequireReviewerPasses": true
+  },
+  "cases": [
+    {
+      "id": "G1-LR02/determinism",
+      "testName": "G1-LR02/determinism",
+      "phase": "backend",
+      "expected": "Same fixed synthetic inputs produce same output/events/usage with deterministic-test labels."
+    },
+    {
+      "id": "G1-LR02/no-route",
+      "testName": "G1-LR02/no-route",
+      "phase": "backend",
+      "expected": "Supplier/paid-route credentials or flags fail before supplier invocation; external invocation counter0."
+    },
+    {
+      "id": "G1-LR02/replay-zero",
+      "testName": "G1-LR02/replay-zero",
+      "phase": "backend",
+      "expected": "Replay invokes zero models/effects and preserves unknown original operation/reservation."
+    },
+    {
+      "id": "G1-LR03/server-identity",
+      "testName": "G1-LR03/server-identity",
+      "phase": "backend",
+      "expected": "Actor and payer derive from authenticated server identity; caller claims cannot replace them."
+    },
+    {
+      "id": "G1-LR03/current-revoke",
+      "testName": "G1-LR03/current-revoke",
+      "phase": "backend",
+      "expected": "Membership/source revocation invalidates prior admission; current denied callback count0."
+    },
+    {
+      "id": "G1-LR03/cross-space-sharing",
+      "testName": "G1-LR03/cross-space-sharing",
+      "phase": "backend",
+      "expected": "Either endpoint grant alone rejects0; both grants plus audience permit; omitted destination cannot bypass."
+    },
+    {
+      "id": "G1-LR03/independent-issuer",
+      "testName": "G1-LR03/independent-issuer",
+      "phase": "backend",
+      "expected": "Operator cannot self-approve; different current authorized approver permits exact existing binding."
+    },
+    {
+      "id": "G1-LR03/approval-expiry",
+      "testName": "G1-LR03/approval-expiry",
+      "phase": "backend",
+      "expected": "Expired approval or changed plan/input digest cannot execute synthetic effect; callback0."
+    },
+    {
+      "id": "G1-LR04/real-sdk",
+      "testName": "G1-LR04/real-sdk",
+      "phase": "http",
+      "expected": "Actual loopback service and SDK login/create/read return same immutable Task with local labels."
+    },
+    {
+      "id": "G1-LR04/wire-denial",
+      "testName": "G1-LR04/wire-denial",
+      "phase": "http",
+      "expected": "Forged actor/payer/permissions and partial/unknown commands reject without mutation."
+    },
+    {
+      "id": "G1-LR04/command-dedup",
+      "testName": "G1-LR04/command-dedup",
+      "phase": "http",
+      "expected": "Exact repeated actor/scope command returns original identity and one mutation; changed payload conflicts."
+    },
+    {
+      "id": "G1-LR04/cursor-recovery",
+      "testName": "G1-LR04/cursor-recovery",
+      "phase": "http",
+      "expected": "Duplicate/gap/expired cursor restores current authorized snapshot without unauthorized disclosure."
+    },
+    {
+      "id": "G1-LR05/sqlite-rollback",
+      "testName": "G1-LR05/sqlite-rollback",
+      "phase": "backend",
+      "expected": "Actual SQLite transaction exception rolls back record/outbox/event together."
+    },
+    {
+      "id": "G1-LR05/crash-reopen",
+      "testName": "G1-LR05/crash-reopen",
+      "phase": "backend",
+      "expected": "Close/reopen real database preserves committed record/outbox/result identities."
+    },
+    {
+      "id": "G1-LR05/duplicate-settlement",
+      "testName": "G1-LR05/duplicate-settlement",
+      "phase": "backend",
+      "expected": "Duplicate delivery/receipt settles once and produces one synthetic artifact."
+    },
+    {
+      "id": "G1-LR05/partial-commit",
+      "testName": "G1-LR05/partial-commit",
+      "phase": "backend",
+      "expected": "Incomplete bytes/manifest or interrupted owner state cannot publish a committed result."
+    },
+    {
+      "id": "G1-LR05/unknown-reconcile",
+      "testName": "G1-LR05/unknown-reconcile",
+      "phase": "backend",
+      "expected": "Remote synthetic commit with lost ack keeps reservation unknown; trusted original lookup settles once without repeat."
+    },
+    {
+      "id": "G1-LR06/ask-plan",
+      "testName": "G1-LR06/ask-plan",
+      "phase": "backend",
+      "expected": "Actual native Session with deterministic model produces separate answer/versioned plan; no workstation/remote dispatch."
+    },
+    {
+      "id": "G1-LR06/approved-synthetic-run",
+      "testName": "G1-LR06/approved-synthetic-run",
+      "phase": "backend",
+      "expected": "Independent exact approval permits synthetic Run and committed artifact/check/result."
+    },
+    {
+      "id": "G1-LR06/plan-drift",
+      "testName": "G1-LR06/plan-drift",
+      "phase": "backend",
+      "expected": "Changed requirements/plan or stale approval rejects effect before callback."
+    },
+    {
+      "id": "G1-LR06/terminal-new-run",
+      "testName": "G1-LR06/terminal-new-run",
+      "phase": "backend",
+      "expected": "Terminal attempt cannot reopen; explicit retry creates new Run retaining evidence/charges."
+    },
+    {
+      "id": "G1-LR07/stale-progress-stop",
+      "testName": "G1-LR07/stale-progress-stop",
+      "phase": "backend",
+      "expected": "Current authorized Stop accepts old expectedRevision and advances fence once."
+    },
+    {
+      "id": "G1-LR07/current-stop-authority",
+      "testName": "G1-LR07/current-stop-authority",
+      "phase": "backend",
+      "expected": "Revoked/cross-Space Stop denies before cancellation/fence mutation."
+    },
+    {
+      "id": "G1-LR07/generation-fence",
+      "testName": "G1-LR07/generation-fence",
+      "phase": "backend",
+      "expected": "After Stop, old-generation callbacks/publish reject; duplicate command returns original Stop receipt."
+    },
+    {
+      "id": "G1-LR07/offline-no-resend",
+      "testName": "G1-LR07/offline-no-resend",
+      "phase": "http",
+      "expected": "Connection loss reports Not delivered; reconnect queries original status and does not silently resend command/input/draft."
+    }
+  ]
+}

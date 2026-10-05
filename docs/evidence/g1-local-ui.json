@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "candidateDigest": "sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e",
+  "assurance": "actual-local-interaction",
+  "sharedTaskId": "task-cb5494be-47a5-404c-9284-205e1964538c",
+  "clients": [
+    {
+      "client": "web",
+      "surface": "browser",
+      "executor": {
+        "kind": "browser-automation",
+        "id": "mcp__cua_repl/Chrome-1/tab-1759170743"
+      },
+      "candidateDigest": "sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e",
+      "startedAt": "2026-10-05T07:48:16.304Z",
+      "finishedAt": "2026-10-05T07:51:55.754Z",
+      "environment": {
+        "platform": "macOS arm64",
+        "browser": "Chrome154",
+        "api": "http://127.0.0.1:8791",
+        "renderer": "current isolated verification workbench Vite5173"
+      },
+      "launch": {
+        "command": "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5173 --strictPort; actual CUA tab reload",
+        "outcome": "pass"
+      },
+      "outcome": "pass",
+      "steps": [
+        {
+          "id": "login",
+          "expected": "Actual native or browser login reads authorized Spaces.",
+          "observed": "Synthetic operator/operator/actor-operator authenticated;Spaces returned.",
+          "outcome": "pass"
+        },
+        {
+          "id": "space-selection",
+          "expected": "Current authorized personal Space and server payer.",
+          "observed": "Personal test/local-test-tenant/private-test/personal/payer actor-operator.",
+          "outcome": "pass"
+        },
+        {
+          "id": "create-task",
+          "taskId": "task-53f27e9e-eb6b-48fc-9334-e4f77f81dd08",
+          "revision": 1,
+          "expected": "Actual browser submits a deterministic Ask.",
+          "observed": "succeeded1/gen0;digest7c60fe1475e5df69fb3de759e67d3e297126da8fcac0765d2d84cdf6044f8932;8units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "ask",
+          "taskId": "task-53f27e9e-eb6b-48fc-9334-e4f77f81dd08",
+          "revision": 1,
+          "expected": "Actual browser submits a deterministic Ask.",
+          "observed": "succeeded1/gen0;digest7c60fe1475e5df69fb3de759e67d3e297126da8fcac0765d2d84cdf6044f8932;8units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "plan",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 1,
+          "expected": "Actual Plan waits for separate approval with no committed result.",
+          "observed": "Plan1/waiting approval/rev1gen0/9units/no committed result.",
+          "outcome": "pass"
+        },
+        {
+          "id": "waiting-or-failure",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 1,
+          "expected": "Actual Plan waits for separate approval with no committed result.",
+          "observed": "Plan1/waiting approval/rev1gen0/9units/no committed result.",
+          "outcome": "pass"
+        },
+        {
+          "id": "approval",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 2,
+          "expected": "Separate actor approves exact current Plan.",
+          "observed": "Operator denied Current Space permission required;actor-approver accepted web-095fb021-a6ce-48ad-b9bb-c38d2f2ae524at07:50:39Z;rev2gen0/no result.",
+          "outcome": "pass"
+        },
+        {
+          "id": "synthetic-run",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 4,
+          "expected": "Owner explicitly starts independently approved synthetic execution.",
+          "observed": "Accepted web-25cbfd0d-6ae9-4012-b8d4-f4019c0912a2 at07:50:57Z;succeeded4gen0;digest e9240a7fc35fa58d2255c54c376e853cb611541d011413a75fe788675f427f13;10units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "offline-stop-not-delivered",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 4,
+          "expected": "Offline Stop is Not delivered without Task mutation.",
+          "observed": "Offline/Not delivered;commandweb-d938f7cf-b7cc-433a-bc17-4a17aec05fbc;rev4gen0 unchanged;draft Current unsent browser correction retained.",
+          "outcome": "pass"
+        },
+        {
+          "id": "disconnect-and-reconnect",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 4,
+          "expected": "Read-only reconnect preserves draft and never replays offline control.",
+          "observed": "Online/authorized state refreshed;rev4gen0 unchanged/draft retained/Not delivered retained.",
+          "outcome": "pass"
+        },
+        {
+          "id": "current-authority-stop",
+          "taskId": "task-e26afcc3-7f88-4e30-aa4e-aab09db04365",
+          "revision": 5,
+          "expected": "Explicit online Stop fences current dispatch and does not claim a real process kill.",
+          "observed": "Acceptedweb-9169f1d5-9e0c-4abd-8a07-33bc169bd1a6 at07:51:34Z;rev5gen1/Dispatch fenced/inflight none/process not applicable/Start and Approve disabled;artifact unchanged.",
+          "outcome": "pass"
+        },
+        {
+          "id": "result",
+          "taskId": "task-cb5494be-47a5-404c-9284-205e1964538c",
+          "revision": 1,
+          "expected": "Each actual client reads the same committed server Task result.",
+          "observed": "Shared Task cb5494be-47a5-404c-9284-205e1964538c/rev1gen0/succeeded/digest a4a2c8e6e83dec5cc8afcebc27ade58108f760883316574008e4e6f48c7cd892/10 synthetic units/check pass(local-synthetic).",
+          "outcome": "pass"
+        }
+      ],
+      "artifacts": [
+        {
+          "kind": "log",
+          "path": "docs/evidence/g1-local-verification.md",
+          "sha256": "fe8e09a96998b598953e59ce99a8480cdd5920a394e4b78551c1f1dd6f4129e3"
+        }
+      ]
+    },
+    {
+      "client": "desktop",
+      "surface": "electron",
+      "executor": {
+        "kind": "native-desktop-automation",
+        "id": "mcp__cua_repl/Electron44.5.1/native-AX"
+      },
+      "candidateDigest": "sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e",
+      "startedAt": "2026-10-05T08:45:07.813Z",
+      "finishedAt": "2026-10-05T08:49:18.373Z",
+      "environment": {
+        "platform": "macOS arm64",
+        "electron": "44.5.1",
+        "nodeIntegration": false,
+        "contextIsolation": true,
+        "sandbox": true,
+        "webSecurity": true,
+        "renderer": "current verification workbench Vite5173",
+        "api": "current verification backend8791"
+      },
+      "launch": {
+        "command": "Existing pinned Electron44.5.1 shell; actual native CUA Cmd-R loads current workbench renderer/API.",
+        "outcome": "pass"
+      },
+      "outcome": "pass",
+      "steps": [
+        {
+          "id": "login",
+          "expected": "Actual native or browser login reads authorized Spaces.",
+          "observed": "Synthetic operator/operator/actor-operator authenticated;Spaces returned.",
+          "outcome": "pass"
+        },
+        {
+          "id": "space-selection",
+          "expected": "Current authorized personal Space and server payer.",
+          "observed": "Personal test/local-test-tenant/private-test/personal/payer actor-operator.",
+          "outcome": "pass"
+        },
+        {
+          "id": "create-task",
+          "taskId": "task-cf91f060-f694-4054-ab87-091ac5e04751",
+          "revision": 1,
+          "expected": "Actual native desktop creates Ask via actual loopback API.",
+          "observed": "succeeded1gen0;owner/payeractor-operator;digest f2bca6dfa94c6fd650fc6a860c1345c674f71d8a75f7ee0d2068bbfd8f079371;8units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "ask",
+          "taskId": "task-cf91f060-f694-4054-ab87-091ac5e04751",
+          "revision": 1,
+          "expected": "Actual native desktop creates Ask via actual loopback API.",
+          "observed": "succeeded1gen0;owner/payeractor-operator;digest f2bca6dfa94c6fd650fc6a860c1345c674f71d8a75f7ee0d2068bbfd8f079371;8units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "plan",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 1,
+          "expected": "Actual native Plan waits for independent exact approval without result.",
+          "observed": "Plan1/waiting approval/1gen0/no committed result/9units;created08:46:00Z.",
+          "outcome": "pass"
+        },
+        {
+          "id": "waiting-or-failure",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 1,
+          "expected": "Actual native Plan waits for independent exact approval without result.",
+          "observed": "Plan1/waiting approval/1gen0/no committed result/9units;created08:46:00Z.",
+          "outcome": "pass"
+        },
+        {
+          "id": "approval",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 2,
+          "expected": "Actual native separate approver approves exact current Plan.",
+          "observed": "actor-approver native Approve acceptedweb-e1722454-b5c9-4804-9031-953bda142346 at08:46:57Z/rev2gen0/Plan1/no result.",
+          "outcome": "pass"
+        },
+        {
+          "id": "synthetic-run",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 4,
+          "expected": "Native owner explicitly starts current approved synthetic Plan.",
+          "observed": "Acceptedweb-04a337ac-c8ea-4145-9368-f7409857f389 at08:48:08Z;succeeded4gen0;digest15655301c08ed818ab674a36a64c5bda40a4c909b0c49e86b3c0172c4283a855;10units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "offline-stop-not-delivered",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 4,
+          "expected": "Actual native offline Stop remains Not delivered without mutation.",
+          "observed": "Offline/Not delivered/no automatic resend;commandweb-eca9fd0a-1f65-4bc1-bdcf-653798c8f90b;rev4gen0 unchanged/draft Current unsent desktop correction retained.",
+          "outcome": "pass"
+        },
+        {
+          "id": "disconnect-and-reconnect",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 4,
+          "expected": "Actual native read-only reconnect retains draft and never replays offline control.",
+          "observed": "Online/Authorized state refreshed. Draft and unsent controls were not submitted. Same draft/rev4gen0/Not delivered original command.",
+          "outcome": "pass"
+        },
+        {
+          "id": "current-authority-stop",
+          "taskId": "task-f6a1ad00-f6bb-4b5e-8bb7-19adc1f2dd7a",
+          "revision": 5,
+          "expected": "Current owner online Stop fences dispatch without a fabricated process kill.",
+          "observed": "Acceptedweb-8fe9bbbb-449c-4d73-a5eb-b9ecd32b2b5a at08:48:45Z;Dispatch fenced/5gen1/inflightnone/process not applicable/Start and Approve disabled/result retained.",
+          "outcome": "pass"
+        },
+        {
+          "id": "result",
+          "taskId": "task-cb5494be-47a5-404c-9284-205e1964538c",
+          "revision": 1,
+          "expected": "Each actual client reads the same committed server Task result.",
+          "observed": "Shared Task cb5494be-47a5-404c-9284-205e1964538c/rev1gen0/succeeded/digest a4a2c8e6e83dec5cc8afcebc27ade58108f760883316574008e4e6f48c7cd892/10 synthetic units/check pass(local-synthetic).",
+          "outcome": "pass"
+        }
+      ],
+      "artifacts": [
+        {
+          "kind": "log",
+          "path": "docs/evidence/g1-local-verification.md",
+          "sha256": "fe8e09a96998b598953e59ce99a8480cdd5920a394e4b78551c1f1dd6f4129e3"
+        }
+      ]
+    },
+    {
+      "client": "mobile",
+      "surface": "android-emulator",
+      "executor": {
+        "kind": "android-emulator-automation",
+        "id": "mcp__cua_repl/AndroidStudio/RunningDevices/emulator-5554"
+      },
+      "candidateDigest": "sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e",
+      "startedAt": "2026-10-05T07:52:29.265Z",
+      "finishedAt": "2026-10-05T08:45:07.813Z",
+      "environment": {
+        "host": "macOS arm64",
+        "avd": "Medium_Phone_API_36.1",
+        "device": "sdk_gphone64_arm64",
+        "android": "16/API36.1",
+        "package": "com.agentfabric.g1local",
+        "expo": "55.0.31",
+        "reactNative": "0.83.10",
+        "nativeInputDigest": "sha256:ab37c95450eb11dd04da70f6e0d67aa8cd71b163b7d9732013f5a470c11756b2",
+        "apkSha256": "21022586d8ea23cdcf9d07c17c523bdd2c530f44609931c8508e737949d7022d"
+      },
+      "installation": {
+        "command": "adb -s emulator-5554 install -r /private/tmp/agent-fabric-g1-native-wkR0E3/g1-local/mobile/android/app/build/outputs/apk/debug/app-debug.apk",
+        "outcome": "pass"
+      },
+      "launch": {
+        "command": "CUA AndroidStudio RunningDevices existing AVD/app icon/actual development-client URI http://127.0.0.1:8081; current local Metro dev client; adb reverse8791/8081.",
+        "outcome": "pass"
+      },
+      "outcome": "pass",
+      "steps": [
+        {
+          "id": "login",
+          "expected": "Actual native or browser login reads authorized Spaces.",
+          "observed": "Synthetic operator/operator/actor-operator authenticated;Spaces returned.",
+          "outcome": "pass"
+        },
+        {
+          "id": "space-selection",
+          "expected": "Current authorized personal Space and server payer.",
+          "observed": "Personal test/local-test-tenant/private-test/personal/payer actor-operator.",
+          "outcome": "pass"
+        },
+        {
+          "id": "create-task",
+          "taskId": "task-5a28481f-8297-479a-80e0-79d7de9fe565",
+          "revision": 1,
+          "expected": "Actual native Android submits Ask through actual SDK/service.",
+          "observed": "Actual title G1 Mobile As;Synthetic mobile answer;succeeded1gen0;private-test owner/payer actor-operator;deterministic plan none.",
+          "outcome": "pass"
+        },
+        {
+          "id": "ask",
+          "taskId": "task-5a28481f-8297-479a-80e0-79d7de9fe565",
+          "revision": 1,
+          "expected": "Actual native Android submits Ask through actual SDK/service.",
+          "observed": "Actual title G1 Mobile As;Synthetic mobile answer;succeeded1gen0;private-test owner/payer actor-operator;deterministic plan none.",
+          "outcome": "pass"
+        },
+        {
+          "id": "result",
+          "taskId": "task-cb5494be-47a5-404c-9284-205e1964538c",
+          "revision": 1,
+          "expected": "Each actual client reads the same committed server Task result.",
+          "observed": "Shared Task cb5494be-47a5-404c-9284-205e1964538c/rev1gen0/succeeded/digest a4a2c8e6e83dec5cc8afcebc27ade58108f760883316574008e4e6f48c7cd892/10 synthetic units/check pass(local-synthetic).",
+          "outcome": "pass"
+        },
+        {
+          "id": "plan",
+          "taskId": "task-ca508252-4706-4844-a4bf-f24d0b2e0f1b",
+          "revision": 1,
+          "expected": "Actual native Plan has exact approval binding and no committed result.",
+          "observed": "Plan1/waiting approval/1gen0/Synthetic mobile answer/6units/no result;expiry08:14:27Z.",
+          "outcome": "pass"
+        },
+        {
+          "id": "waiting-or-failure",
+          "taskId": "task-ca508252-4706-4844-a4bf-f24d0b2e0f1b",
+          "revision": 1,
+          "expected": "Actual native Plan has exact approval binding and no committed result.",
+          "observed": "Plan1/waiting approval/1gen0/Synthetic mobile answer/6units/no result;expiry08:14:27Z.",
+          "outcome": "pass"
+        },
+        {
+          "id": "approval",
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 2,
+          "expected": "Actual native separate approver approves exact current Plan1.",
+          "observed": "actor-approver native Approve accepted08:21:24Z;Task687f37d3-2977-41af-8bb0-48188e56c36b/2gen0/no result.",
+          "outcome": "pass"
+        },
+        {
+          "id": "synthetic-run",
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 7,
+          "expected": "Native owner explicitly runs current separately approved exact Plan2.",
+          "observed": "Native correction android-muuzlu0e-4-z9zu839h generatedPlan2/rev4 at08:28:04Z;separate Web actor-approver acceptedweb-51904cc3-b5cf-4bc8-98c1-263c1128bd39/rev5 at08:28:42Z;actual native Start android-muuzn60o-5-z34uuqd9 succeeded7gen0 at08:29:06Z;artifactv2 digest1074607201b97015797ef6711527df5e175d15b24f08dacb49fa9f30282dbec6;14units/checkpass.",
+          "outcome": "pass"
+        },
+        {
+          "id": "offline-stop-not-delivered",
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 7,
+          "expected": "Actual native offline Stop is Not delivered with unchanged Task.",
+          "observed": "Actual native Not delivered. Reconnect, then decide explicitly whether to send. Originalcommandandroid-muv04wos-6-aqvugoeg/private-test;rev7gen0/resultv2 retained;unsubmitted draft fresh mobile simulation unsent.",
+          "outcome": "pass"
+        },
+        {
+          "id": "disconnect-and-reconnect",
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 7,
+          "expected": "Actual native read-only reconnect retains draft and never replays control.",
+          "observed": "Actual native Read-only refresh complete. No draft or control was resent. Draft fresh mobile simulation unsent retained/rev7gen0/Stop still Not delivered.",
+          "outcome": "pass"
+        },
+        {
+          "id": "current-authority-stop",
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 8,
+          "expected": "Current native owner explicitly online Stops without claiming real process termination.",
+          "observed": "Actual native accepted08:44:34Z;8gen1/Dispatch fenced/inflightnone/process not applicable/Start and Approve disabled/unsent draft retained.",
+          "outcome": "pass"
+        }
+      ],
+      "additionalObservations": [
+        {
+          "taskId": "task-ca508252-4706-4844-a4bf-f24d0b2e0f1b",
+          "revision": 1,
+          "observed": "Original Plan created08:09:27Z/expiry08:14:27Z. Native approval click had no confirmed mutation;Web readonly inspection08:15:52Z still1gen0/waiting/no result;not an approval pass. Actual native test titles retained, including dropped characters."
+        },
+        {
+          "taskId": "task-687f37d3-2977-41af-8bb0-48188e56c36b",
+          "revision": 2,
+          "observed": "Native Plan1 approval08:21:24Z;owner navigation completed after08:23:40Z expiry;no stale Start claimed. Native explicit correction regeneratedPlan2 for current independent Web approval before native Start."
+        }
+      ],
+      "artifacts": [
+        {
+          "kind": "log",
+          "path": "docs/evidence/g1-local-verification.md",
+          "sha256": "fe8e09a96998b598953e59ce99a8480cdd5920a394e4b78551c1f1dd6f4129e3"
+        }
+      ]
+    }
+  ]
+}

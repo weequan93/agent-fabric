@@ -1,0 +1,15 @@
+{
+  "name": "agent-fabric-g1-local",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.0",
+  "engines": { "node": ">=22.22.3 <23", "pnpm": "10.18.0" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
+    "test": "node scripts/check.mjs",
+    "test:baseline": "node scripts/check.mjs baseline"
+  },
+  "devDependencies": { "@types/node": "22.18.6", "typescript": "5.9.3" }
+}

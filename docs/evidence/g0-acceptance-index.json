@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "current_acceptance_team_id": "team-938da3a64aea45dfbf4445e97651cfbe",
+  "known_prior_controller_wall_seconds": 622,
+  "current_context_max_bytes": 262144,
+  "registered_review_timeout_seconds": 600,
+  "remaining_controller_wall_seconds_at_entry": 3061,
+  "previous_repair_team_id": "team-9eddd9da871046da99663c814c1d73f6",
+  "retained_source_candidate": "sha256:55e2ac857af23e64e4cf15e447f5d7efcc7fa11cad998dda8f1ac5426de3ade6",
+  "retained_baseline": {
+    "tests": 191,
+    "passed": 191,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "mandatory_branches": 102,
+    "source": "prior actual original controller build-and-behavior record; rerun required on current candidate"
+  },
+  "original_scope": "G0-01–14 retained; original seven criteria, three independent descriptions/procedures and all102 mandatory branches unchanged. StopG0. Laterqualification remains pending.",
+  "history": [
+    {
+      "team_id": "team-38a6d9ab4e99491b8c9c6e76d0c5f90d",
+      "scope": "Accepted planning",
+      "status": "COMPLETE"
+    },
+    {
+      "team_id": "team-b5072612869c462a89678f21097d346c",
+      "scope": "14 implemented packages; original security120s timeouts",
+      "known_controller_wall_seconds": 339
+    },
+    {
+      "team_id": "team-455373bf869c43bd933912d88f82ebb4",
+      "scope": "600s review recovery baseline and actual signed SEC-G0-001 fail",
+      "known_controller_wall_seconds": 276
+    },
+    {
+      "team_id": "team-9eddd9da871046da99663c814c1d73f6",
+      "scope": "actual SEC-G0-001 repair;191/102controllerpass; no reviewer launched due material context cap",
+      "known_controller_wall_seconds": 7
+    }
+  ],
+  "full_records": "Original durable Loop team/child/evidence/snapshots retained under /Users/super/Documents/ai/loop-states/agent-fabric/runs; source-linked intermediate records are docs/evidence/g0-review-recovery.json and g0-security-repair.json. No historical row overwritten.",
+  "formal_results_source": "current acceptance team actual registered signed check records",
+  "required_check_ids": [
+    "team-independent-security",
+    "team-independent-reviewer",
+    "team-independent-acceptance"
+  ],
+  "formal_results_at_submission": "pending; no local source file self-attests independent pass",
+  "cumulative_usage_formula": "622 + current actual g0_final child usage.wall_seconds",
+  "overall_tokens": null,
+  "overall_cost_microunits": null,
+  "usage_assurance": "Controller wall and available evaluator telemetry retained. Native host conversations/delegation and incomplete previous review accounting remain unknown; no overall hard token/cost cap or complete-spend claim.",
+  "current_batch_historical_evaluations": [
+    {
+      "check_id": "team-independent-security",
+      "result": "fail",
+      "candidate": "sha256:4ed6f939df2c3305ac51f160ec9eeb71679bca95f85b51be0487e851042116cf",
+      "environment": "sha256:4b6a3f9bc1bc6e903680d8fe452ae0c71984124577a811d2989cd245b64733ba",
+      "evidence_digest": "sha256:9fe5ff50d55962c732666ee605cc4592091b658ddde89c268f0673c457431e89",
+      "findings": [
+        {
+          "id": "SEC-G0-002",
+          "severity": "blocking",
+          "description": "High severity: security/policy/src/effective-authority.ts:69 checks destination sharing grants only when the caller supplies optional request.destination. Omitting it permits private-source retrieval under a group-Space envelope. Source-inspection reproduction using the unchanged helpers in evals/safety/space-authorization.test.ts:42–48: const f=setup(); f.act({actor:alice,envelope:envelope(group),effect:'read',source:source(),explicitTrigger:true}); Both authority records have empty shareableDestinations, the source audience contains only Alice, and the group includes Bob. Expected: UNAUTHORIZED before retrieval. The current control flow authorizes the request, passes assertCurrent, and reaches the retrieval counter increment because the sharing checks at lines 70–75 are skipped. This violates the accepted G0-03 requirement and specification section 4 prohibition on fetching private content into shared model context. Existing G0-O06 denial tests always supply destination and miss this bypass. This reproduction was traced through source, not executed under the read-only review restrictions. Owner: identity/security implementation owner. Derive the destination from the admitted envelope for cross-Space source use, enforce sharing grants without relying on an optional caller field, and add an omission regression without changing protected thresholds. Rerun commands and all three independent reviews on the repaired candidate.",
+          "criterion_id": "team-independent-security"
+        }
+      ],
+      "actual_child_run_id": "run-e057a74fee36442a9845239d114d7d92",
+      "controller_wall_seconds_at_failure": 190,
+      "known_cumulative_controller_wall_seconds_at_failure": 812,
+      "formal_pass": false
+    },
+    {
+      "check_id": "team-independent-security",
+      "result": "pass",
+      "candidate": "sha256:e06248063d9b61fe3aa6b06dff3278e43e668785b657cb30788f65df139495cc",
+      "environment": "sha256:4b6a3f9bc1bc6e903680d8fe452ae0c71984124577a811d2989cd245b64733ba",
+      "evidence_digest": "sha256:1a4eb7fdf26c06d6a053bb85401d9dfaae3578e4914180e10884c913b245ade9",
+      "findings": [
+        {
+          "id": "SEC-G0-002-RESOLVED",
+          "severity": "note",
+          "description": "security/policy/src/effective-authority.ts derives cross-Space sharing destination from envelope.scope and requires both endpoint grants even when request.destination is omitted. Regressions in evals/safety/space-authorization.test.ts assert omission rejection before retrieval, one-sided grant rejection, legitimate authorized use, destination mismatch rejection, and revocation at either endpoint. The historical failed assessment remains preserved.",
+          "criterion_id": "team-independent-security"
+        },
+        {
+          "id": "SEC-G0-001-RESOLVED",
+          "severity": "note",
+          "description": "engine/kernel/src/session-loop.ts records pending model identity before invocation and blocks subsequent model/effect continuation until trusted original-owner reconciliation. evals/protected/g0-workflows.test.ts and evals/recovery/replay-and-fencing.test.ts cover unknown usage, restart, pure replay, receipt binding, revocation, policy outage, and in-flight reconciliation rejection using the actual local BudgetLedger.",
+          "criterion_id": "criterion-3"
+        },
+        {
+          "id": "SEC-G0-ASSURANCE",
+          "severity": "note",
+          "description": "Frozen oracle, runner, checker, lock and accepted planning hashes match their preserved references. This assessment covers deterministic G0 contracts and supplied controller evidence. Actual PostgreSQL/RLS, SSO, encrypted storage, providers, runtime/desktop isolation, clients and G4 release qualification remain pending. Separate current implementation review and requirements acceptance are still required; this security result does not establish controller completion.",
+          "criterion_id": "criterion-4"
+        }
+      ],
+      "actual_child_run_id": "run-e057a74fee36442a9845239d114d7d92",
+      "validity": "historical candidate; all three registered checks required anew after license evidence changes",
+      "controller_wall_seconds_at_code_failure": 579,
+      "known_cumulative_controller_wall_seconds_at_code_failure": 1201
+    },
+    {
+      "check_id": "team-independent-reviewer",
+      "result": "fail",
+      "candidate": "sha256:e06248063d9b61fe3aa6b06dff3278e43e668785b657cb30788f65df139495cc",
+      "environment": "sha256:4b6a3f9bc1bc6e903680d8fe452ae0c71984124577a811d2989cd245b64733ba",
+      "evidence_digest": "sha256:f139072e1e56ffe00f5ceaf4ffe3b7a8ee82022436f0d4b9e7edcf8f564755ee",
+      "findings": [
+        {
+          "id": "REV-G0-001",
+          "severity": "blocking",
+          "description": "Required dependency-license evidence is missing. docs/planning/g0-implementation-plan.md:53 explicitly requires locked dependencies and license/update responsibility in the G0-02 candidate evidence package. docs/architecture/interface-registry.md:43 says this is recorded in final evidence, but docs/evidence/g0-build.json records versions and hashes without license records, and no inventory or supporting license references appear in docs/evidence, docs/architecture or docs/operations. Reproduce by inspecting the build manifest and running: rg -n -i 'license|licence|许可证|sbom|更新责任' docs/architecture docs/evidence docs/operations. The sole matching statement is the interface-registry promise. Owner: G0-02 build/DevOps owner. Add sourced license records for the pinned direct and transitive dependencies and record update responsibility in an allowed evidence file. Preserve protected definitions and history, then rerun commands and all three registered independent checks on the revised candidate.",
+          "criterion_id": "team-independent-reviewer"
+        },
+        {
+          "id": "REV-G0-REPAIRS",
+          "severity": "note",
+          "description": "Source and regression inspection supports SEC-G0-001 and SEC-G0-002 resolution. SessionLoop persists pending model identity before invocation and prevents continuation until trusted reconciliation; AuthorityService derives cross-Space destination from the envelope and requires both endpoint sharing grants. Tests exercise denied continuation, restore, original receipt binding, omission, legitimate allowed work and revocation.",
+          "criterion_id": "criterion-3"
+        },
+        {
+          "id": "REV-G0-ASSURANCE",
+          "severity": "note",
+          "description": "Protected oracle, checker, runner, lock and retained planning hashes match their frozen references. Evidence distinguishes local owners and deterministic substitutes from deployment qualification. Genuine G1/G3/G4 deployment, client/UI, isolation and release evidence remains pending. This review does not establish requirements acceptance or controller completion.",
+          "criterion_id": "criterion-4"
+        }
+      ],
+      "actual_child_run_id": "run-e057a74fee36442a9845239d114d7d92",
+      "validity": "historical candidate; all three registered checks required anew after license evidence changes",
+      "controller_wall_seconds_at_code_failure": 579,
+      "known_cumulative_controller_wall_seconds_at_code_failure": 1201
+    }
+  ],
+  "sec002_repair": {
+    "finding": "SEC-G0-002",
+    "behavior": "Actual destination derives from admitted envelope.scope; all cross-Space source use requires both current source and destination sharing grants, whether caller supplies destination or omits it. Explicit destination mismatch is denied. Same-Space ordinary reads remain allowed. Both authority revisions are recorded for current-authority revalidation.",
+    "implementation": "security/policy/src/effective-authority.ts",
+    "regressions": "evals/safety/space-authorization.test.ts",
+    "red_green_observations": [
+      {
+        "stage": "before",
+        "command": "node scripts/check-g0.mjs G0-14",
+        "host_log_sha256": "073cb28846bde37272ba3650638dbf0978a92ee6d8c73e87e7ad3924e4a33dfe",
+        "actual_stats": {
+          "tests": 192,
+          "pass": 191,
+          "fail": 1,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "assurance": "host exploratory observation; current controller rerun and independent evaluation required"
+      },
+      {
+        "stage": "initial-green",
+        "command": "node scripts/check-g0.mjs G0-14",
+        "host_log_sha256": "507f88bb2ab3f25060cf859e08501a376762acff1fee7c5dec2862555dd01d2c",
+        "actual_stats": {
+          "tests": 192,
+          "pass": 192,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "assurance": "host exploratory observation; current controller rerun and independent evaluation required"
+      }
+    ],
+    "formal_status": "pending fresh current-candidate registered evaluations",
+    "collected_local_verification": {
+      "command": "node scripts/check-g0.mjs G0-14",
+      "actual_stats": {
+        "tests": 197,
+        "pass": 197,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "host_log_sha256": "c8bcad30ceaa36a890fd58a3e67a08b5fd7b2b25fd19a390d88a3d4fe63dc1e5",
+      "mandatory_branches": 102,
+      "assurance": "host local observation; authoritative current controller rerun and formal reviews required"
+    }
+  },
+  "rev001_repair": {
+    "finding": "REV-G0-001",
+    "evidence": "docs/evidence/g0-build.json dependencyLicenseInventory",
+    "pinned_packages": 3,
+    "behavior": "Actual shipped license texts, package metadata and frozen lock integrities retained; TypeScript bundled-notice source/hash/components and distribution retention recorded; G0-02 update accountability assigned to existing engine/control and build/DevOps responsibilities",
+    "formal_status": "pending all three fresh registered checks after evidence-only repair"
+  }
+}
