@@ -1,0 +1,128 @@
+full-38-id-ledger: all AF/UX obligations retained; full qualification pending
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +18
+++++++++++++++++++
+Progress: resolved 18, reused 18, downloaded 0, added 18, done
+
+dependencies:
++ pg 8.16.3
+
+devDependencies:
++ @types/node 22.18.6
++ @types/pg 8.15.5
++ typescript 5.9.3
+
+Done in 260ms using pnpm v10.18.0
+{"measurement":"actual-postgres-fixture","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","owner":"e171efae-1fc0-44dc-868f-037b430f0a60","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","containerId":"b795c3486038ebe8898f544d979a644a85c38928df4ef98ef5a2c44e19825bcd","loopback":true,"cpuLimit":1,"memoryBytes":268435456,"productionQualified":false}
+TAP version 13
+# Subtest: server-derived scope is immutable; caller and copied authority are rejected
+ok 1 - server-derived scope is immutable; caller and copied authority are rejected
+  ---
+  duration_ms: 1.30775
+  type: 'test'
+  ...
+# Subtest: authority lookup catches revocation, revision, payer and grant changes
+ok 2 - authority lookup catches revocation, revision, payer and grant changes
+  ---
+  duration_ms: 0.613667
+  type: 'test'
+  ...
+# Subtest: UUID boundaries and scope mismatch fail closed
+ok 3 - UUID boundaries and scope mismatch fail closed
+  ---
+  duration_ms: 0.15175
+  type: 'test'
+  ...
+# Subtest: profile permits synthetic preparation only and cannot widen through config
+ok 4 - profile permits synthetic preparation only and cannot widen through config
+  ---
+  duration_ms: 0.1445
+  type: 'test'
+  ...
+# actual-postgres-role-and-version: nonowner/nonsuperuser/nonBYPASSRLS measured
+# Subtest: PG/nonprivileged-role
+ok 5 - PG/nonprivileged-role
+  ---
+  duration_ms: 152.207208
+  type: 'test'
+  ...
+# Subtest: PG/worker-no-grants
+ok 6 - PG/worker-no-grants
+  ---
+  duration_ms: 12.841042
+  type: 'test'
+  ...
+# Subtest: PG/missing-scope
+ok 7 - PG/missing-scope
+  ---
+  duration_ms: 1.748583
+  type: 'test'
+  ...
+# Subtest: PG/cross-tenant-space
+ok 8 - PG/cross-tenant-space
+  ---
+  duration_ms: 25.153917
+  type: 'test'
+  ...
+# Subtest: PG/current-membership-payer
+ok 9 - PG/current-membership-payer
+  ---
+  duration_ms: 24.427167
+  type: 'test'
+  ...
+# Subtest: PG/reused-pool-reset
+ok 10 - PG/reused-pool-reset
+  ---
+  duration_ms: 6.875583
+  type: 'test'
+  ...
+# Subtest: PG/atomic-outbox
+ok 11 - PG/atomic-outbox
+  ---
+  duration_ms: 14.784625
+  type: 'test'
+  ...
+# Subtest: PG/idempotency-conflict
+ok 12 - PG/idempotency-conflict
+  ---
+  duration_ms: 14.660459
+  type: 'test'
+  ...
+# Subtest: PG/revision-concurrency
+ok 13 - PG/revision-concurrency
+  ---
+  duration_ms: 19.005792
+  type: 'test'
+  ...
+# Subtest: PG/rollback-reopen
+ok 14 - PG/rollback-reopen
+  ---
+  duration_ms: 24.548583
+  type: 'test'
+  ...
+# Subtest: PG/unknown-commit-lookup
+ok 15 - PG/unknown-commit-lookup
+  ---
+  duration_ms: 15.828417
+  type: 'test'
+  ...
+# migration-compatibility and failure-forward-recovery measured on actual PostgreSQL
+# Subtest: PG/migration-recovery
+ok 16 - PG/migration-recovery
+  ---
+  duration_ms: 10.27825
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 412.804791
+{"measurement":"fixture-owned-cleanup","owner":"e171efae-1fc0-44dc-868f-037b430f0a60","containerId":"b795c3486038ebe8898f544d979a644a85c38928df4ef98ef5a2c44e19825bcd","removed":true}
+{"measurement":"remote-readonly-system-smoke","host":"217.216.75.50:34819","observed":"Linux 6.8.0-106-generic x86_64\ndocker-version\n29.1.1\ncgroup-filesystem\ncgroup2fs\ncpu-memory\n4\nMemTotal:        8131808 kB","readOnly":true,"workerIsolationQualified":false,"productionQualified":false}
+Foundation strict build, actual owned PostgreSQL behavior and bounded read-only system probe passed. Full G1 qualification remains pending.

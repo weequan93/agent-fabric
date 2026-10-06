@@ -1,4 +1,59 @@
 {
   "schema_version": "1.0",
-  "questions": []
+  "questions": [
+    {
+      "id": "rn-remote",
+      "question": "记录实际远端独立测试机安装部署及新增收费限制答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "它是独立测试机，允许安装和部署；新增收费资源仍先确认"
+      ]
+    },
+    {
+      "id": "rn-model",
+      "question": "记录实际收费模型关闭答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "先保持关闭，完成适配代码后再确认（推荐）"
+      ]
+    },
+    {
+      "id": "rn-identity-devices",
+      "question": "记录实际本机OIDC和模拟器答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "先用本机 OIDC 测试服务和现有模拟器（推荐）"
+      ]
+    },
+    {
+      "id": "rn-recovery",
+      "question": "记录仅纠正受监督执行能力且保留全部记录预算的批准",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "批准这份恢复方案，仅修正本机开发执行能力为实际具备的受监督执行。保留原批次、全部历史、已完成成果、失败记录和累计用量；不得通过新批次重置预算。保留 PostgreSQL 权限与隔离测试、三项 600 秒独立评审及完整 G1 隔离资格要求。收费模型和新增收费资源继续关闭。后续计划冻结前先实际能力探针核对运行能力、评估入口和有效预算。"
+      ]
+    },
+    {
+      "id": "rn-observation-supplement",
+      "question": "记录仅补充一次180秒观测的本轮批准",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "，仅补充一次 180 秒观测 ok"
+      ]
+    },
+    {
+      "id": "g1-f02-cumulative-allowance",
+      "question": "是否批准为已备妥的 G1-F02 方案追加10,140秒控制器累计额度，将原队列上限从10,197调整为20,337秒？全部历史、已用897秒、原检查、三项600秒独立评审和完整复验储备保留，收费产品API/新增收费资源继续关闭。当前框架尚无原队列受审扩额入口；即使批准，也须该官方能力可用后才能实施，不创建新队列或直接修改账本。",
+      "reason": "真实loop_plan_preflight: remaining9300, proposed_child_integration_limit19440, deficit10140; actualreadonlytester确认合并/缩小功能无法保留全部标准并落入剩余额度。已准备可审阅23输出/2任务合同及真实capabilityprobe/评审路由，均未冻结或派发。官方native_project.register只接受完全相同已冻结声明，当前无budget amendment工具。",
+      "blocking": true,
+      "answers": [
+        "增加无线秒控制器额度"
+      ]
+    }
+  ]
 }

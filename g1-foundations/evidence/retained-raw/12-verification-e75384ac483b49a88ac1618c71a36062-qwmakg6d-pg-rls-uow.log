@@ -1,0 +1,213 @@
+full-38-id-ledger: all AF/UX obligations retained; full qualification pending
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 232ms using pnpm v10.18.0
+{"measurement":"actual-postgres-fixture","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","owner":"986e5d03-57fb-42d5-8dab-a7c121a10a74","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","containerId":"a63d51cea1a83eba6017247011b427a33145913c0ccc4a06f5ab2ff366185bd6","loopback":true,"cpuLimit":1,"memoryBytes":268435456,"productionQualified":false}
+TAP version 13
+# Subtest: server-derived scope is immutable; caller and copied authority are rejected
+ok 1 - server-derived scope is immutable; caller and copied authority are rejected
+  ---
+  duration_ms: 1.339042
+  type: 'test'
+  ...
+# Subtest: authority lookup catches revocation, revision, payer and grant changes
+ok 2 - authority lookup catches revocation, revision, payer and grant changes
+  ---
+  duration_ms: 0.435125
+  type: 'test'
+  ...
+# Subtest: UUID boundaries and scope mismatch fail closed
+ok 3 - UUID boundaries and scope mismatch fail closed
+  ---
+  duration_ms: 0.103334
+  type: 'test'
+  ...
+# Subtest: profile permits synthetic preparation only and cannot widen through config
+ok 4 - profile permits synthetic preparation only and cannot widen through config
+  ---
+  duration_ms: 0.124167
+  type: 'test'
+  ...
+# actual-postgres-role-and-version: nonowner/nonsuperuser/nonBYPASSRLS measured
+# Subtest: PG/nonprivileged-role
+ok 5 - PG/nonprivileged-role
+  ---
+  duration_ms: 148.639
+  type: 'test'
+  ...
+# Subtest: PG/worker-no-grants
+ok 6 - PG/worker-no-grants
+  ---
+  duration_ms: 11.502333
+  type: 'test'
+  ...
+# Subtest: PG/missing-scope
+ok 7 - PG/missing-scope
+  ---
+  duration_ms: 1.687959
+  type: 'test'
+  ...
+# Subtest: PG/cross-tenant-space
+not ok 8 - PG/cross-tenant-space
+  ---
+  duration_ms: 13.313459
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:64:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:65:21)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/current-membership-payer
+not ok 9 - PG/current-membership-payer
+  ---
+  duration_ms: 13.649458
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:72:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:73:18)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/reused-pool-reset
+ok 10 - PG/reused-pool-reset
+  ---
+  duration_ms: 11.700875
+  type: 'test'
+  ...
+# Subtest: PG/atomic-outbox
+not ok 11 - PG/atomic-outbox
+  ---
+  duration_ms: 8.855708
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:94:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:96:21)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/idempotency-conflict
+not ok 12 - PG/idempotency-conflict
+  ---
+  duration_ms: 13.480958
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:103:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Promise.all (index 0)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:105:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/revision-concurrency
+not ok 13 - PG/revision-concurrency
+  ---
+  duration_ms: 11.707167
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:112:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:114:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/rollback-reopen
+not ok 14 - PG/rollback-reopen
+  ---
+  duration_ms: 14.026792
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:122:1'
+  failureType: 'testCodeFailure'
+  error: 'Commit acknowledgement unavailable; reconcile original command key, never replay'
+  code: 'UNKNOWN_COMMIT'
+  name: 'FoundationError'
+  stack: |-
+    PostgresUnitOfWork.withScope (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/src/postgres-uow.js:36:23)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:124:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: PG/unknown-commit-lookup
+not ok 15 - PG/unknown-commit-lookup
+  ---
+  duration_ms: 19.508417
+  type: 'test'
+  location: '/private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:137:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'absent-safe'
+    - 'committed'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'committed'
+  actual: 'absent-safe'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/node_modules/.cache/foundation-build/tests/postgres.test.js:143:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# migration-compatibility and failure-forward-recovery measured on actual PostgreSQL
+# Subtest: PG/migration-recovery
+ok 16 - PG/migration-recovery
+  ---
+  duration_ms: 10.191417
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 9
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 365.7195
+{"measurement":"fixture-owned-cleanup","owner":"986e5d03-57fb-42d5-8dab-a7c121a10a74","containerId":"a63d51cea1a83eba6017247011b427a33145913c0ccc4a06f5ab2ff366185bd6","removed":true}
+file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/scripts/check.mjs:6
+function run(command,args,env=process.env,timeout=60000){const r=spawnSync(command,args,{cwd,env,encoding:'utf8',timeout,maxBuffer:16*1024*1024});process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');if(r.error||r.status!==0)throw r.error??new Error(command+' failed '+r.status);return r.stdout;}
+                                                                                                                                                                                                                                                                ^
+
+Error: /Users/super/.hermes/node/bin/node failed 1
+    at run (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/scripts/check.mjs:6:257)
+    at file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/scripts/check.mjs:16:15
+    at withPgFixture (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/scripts/pg-fixture.mjs:18:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/loop-native-workbench-rjtt2ji9/project/g1-foundations/scripts/check.mjs:15:1
+
+Node.js v22.22.3

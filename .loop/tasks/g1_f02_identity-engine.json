@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "runtime": {
+    "backend": "local",
+    "image": null,
+    "memory_mb": 512,
+    "cpu_millis": 1000,
+    "pids_limit": 128,
+    "tmp_mb": 128,
+    "uid": 1000,
+    "gid": 1000
+  },
+  "model": {
+    "provider": "openai",
+    "model": "set-your-model-id",
+    "api_key_env": "OPENAI_API_KEY",
+    "pricing": null
+  },
+  "response_limits": {
+    "max_output_tokens": 8192,
+    "timeout_seconds": 600,
+    "max_request_bytes": 524288,
+    "max_response_bytes": 2097152,
+    "final_reserve_tokens": 0,
+    "final_reserve_cost_microunits": 0
+  },
+  "evaluator_keys": [],
+  "stages": [
+    {
+      "id": "delivery",
+      "depends_on": [],
+      "criterion_ids": [
+        "oidc-network-and-token",
+        "current-pg-authentication",
+        "exact-approval-audit-audience",
+        "migration-compatibility",
+        "prior-baselines"
+      ],
+      "write_allow": [
+        "g1-identity/package.json",
+        "g1-identity/pnpm-lock.yaml",
+        "g1-identity/tsconfig.json",
+        "g1-identity/src/contracts.ts",
+        "g1-identity/src/test-idp.ts",
+        "g1-identity/src/token-verifier.ts",
+        "g1-identity/src/current-authority.ts",
+        "g1-identity/src/authenticated-uow.ts",
+        "g1-identity/src/approval-repository.ts",
+        "g1-identity/src/audience.ts",
+        "g1-identity/src/http-service.ts",
+        "g1-identity/src/migration.ts",
+        "g1-identity/migrations/0003_identity_approvals.sql",
+        "g1-identity/tests/oidc-network.test.ts",
+        "g1-identity/tests/identity-postgres.test.ts",
+        "g1-identity/tests/approval-audience.test.ts",
+        "g1-identity/scripts/build.mjs",
+        "g1-identity/scripts/check.mjs",
+        "g1-identity/scripts/test-idp-process.mjs",
+        "docs/planning/g1-f02-identity-plan.md",
+        "docs/operations/g1-f02-identity-quickstart.md"
+      ],
+      "write_deny": [
+        ".git/**",
+        ".loop/**",
+        ".agents/**",
+        ".codex/**",
+        "g1-local/**",
+        "engine/**",
+        "security/**",
+        "services/**",
+        "adapters/**",
+        "apps/**",
+        "execution/**",
+        "evals/**",
+        "infra/**",
+        "scripts/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "tsconfig*.json",
+        "docs/planning/roadmap.md",
+        "docs/planning/g0-implementation-plan.md",
+        "docs/planning/decision-register.md",
+        "docs/planning/requirements-traceability.csv",
+        "docs/planning/g1-local*.md",
+        "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+        "docs/agent-fabric-design/**",
+        "g1-foundations/**",
+        "docs/planning/g1-foundations-plan.md",
+        "docs/planning/g1-remaining-ledger.csv"
+      ]
+    }
+  ]
+}

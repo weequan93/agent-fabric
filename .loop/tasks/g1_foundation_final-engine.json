@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "runtime": {
+    "backend": "local",
+    "image": null,
+    "memory_mb": 512,
+    "cpu_millis": 1000,
+    "pids_limit": 128,
+    "tmp_mb": 128,
+    "uid": 1000,
+    "gid": 1000
+  },
+  "model": {
+    "provider": "openai",
+    "model": "set-your-model-id",
+    "api_key_env": "OPENAI_API_KEY",
+    "pricing": null
+  },
+  "response_limits": {
+    "max_output_tokens": 8192,
+    "timeout_seconds": 600,
+    "max_request_bytes": 524288,
+    "max_response_bytes": 2097152,
+    "final_reserve_tokens": 0,
+    "final_reserve_cost_microunits": 0
+  },
+  "evaluator_keys": [
+    {
+      "key_id": "team-coordinator-reviewer",
+      "role": "reviewer",
+      "check_ids": [
+        "team-independent-security",
+        "team-independent-reviewer",
+        "team-independent-acceptance"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "delivery",
+      "depends_on": [],
+      "criterion_ids": [
+        "current-foundation",
+        "preservation",
+        "team-independent-security",
+        "team-independent-reviewer",
+        "team-independent-acceptance"
+      ],
+      "write_allow": [
+        "docs/evidence/g1-foundations-acceptance.json",
+        "docs/evidence/g1-foundations-acceptance.md"
+      ],
+      "write_deny": [
+        ".git/**",
+        ".loop/**",
+        ".agents/**",
+        ".codex/**",
+        "g1-foundations/**",
+        "g1-local/**",
+        "engine/**",
+        "security/**",
+        "services/**",
+        "adapters/**",
+        "apps/**",
+        "execution/**",
+        "evals/**",
+        "infra/**",
+        "scripts/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "tsconfig*.json",
+        "docs/planning/**",
+        "docs/operations/**",
+        "docs/agent-fabric-design/**",
+        "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+        "docs/evidence/g0*",
+        "docs/evidence/g1-local*",
+        "docs/evidence/g1-pending-qualification.md"
+      ]
+    }
+  ]
+}

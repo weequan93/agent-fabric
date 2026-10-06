@@ -1,0 +1,305 @@
+{
+  "schema_version": "0.1",
+  "revision": 1,
+  "kind": "feature",
+  "workflow": "staged",
+  "autonomy": "assisted",
+  "authorization": {
+    "allowed_actions": [
+      "read_workspace",
+      "edit_workspace",
+      "run_checks"
+    ]
+  },
+  "required_capabilities": {
+    "agent": [
+      "text_input",
+      "structured_output"
+    ],
+    "runtime": [
+      "snapshot_capture",
+      "bounded_execution",
+      "durable_state"
+    ]
+  },
+  "task_id": "g1_foundation_data",
+  "objective": "Implement the first substantive remaining G1 foundation in a separate g1-foundations package: settle explicit asynchronous verified-scope/UoW/receipt/profile contracts; actually connect to PostgreSQL using a pinned independent driver, apply the original immutable G0 SQL plus narrow controller-role migration to an owned synthetic database, enforce non-owner/non-superuser/non-BYPASSRLS trusted service boundaries, current membership/Space/payer authorization and per-transaction session reset, durable idempotent task/event/outbox commit, revision conflicts, rollback/concurrency/unknown-commit reconciliation without replay. Implement bounded migration/fixture/remote-system smoke producers and a complete AF01–20/UX01–18 remaining ledger mapped to real G0/G1-local history and full G1–G5 obligations. Preserve every old source/evidence/oracle/lock; paid models disabled, no automatic model/routing/remote fallback. Remote system probe is approved synthetic-test preparation only; existing local and remote services remain untouched. Do not claim full G1, SSO, Temporal, S3, remote OS/worker isolation or production deployment qualification; next slices explicitly retained.",
+  "scope": {
+    "write_allow": [
+      "g1-foundations/**",
+      "docs/planning/g1-remaining-ledger.csv",
+      "docs/planning/g1-foundations-plan.md",
+      "docs/operations/g1-foundations-quickstart.md"
+    ],
+    "write_deny": [
+      ".git/**",
+      ".loop/**",
+      ".agents/**",
+      ".codex/**",
+      "g1-local/**",
+      "engine/**",
+      "security/**",
+      "services/**",
+      "adapters/**",
+      "apps/**",
+      "execution/**",
+      "evals/**",
+      "infra/**",
+      "scripts/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "tsconfig*.json",
+      "docs/evidence/**",
+      "docs/planning/roadmap.md",
+      "docs/planning/g0-implementation-plan.md",
+      "docs/planning/decision-register.md",
+      "docs/planning/requirements-traceability.csv",
+      "docs/planning/g1-local*.md",
+      "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+      "docs/agent-fabric-design/**"
+    ]
+  },
+  "criteria": [
+    {
+      "id": "async-contracts",
+      "description": "Async trust/UoW and qualified-profile contracts preserve immutable tenant/Space/Task/Run and prevent caller-minted authority or automatic paid/remote fallback; real fail-closed tests and compile pass.",
+      "check_ids": [
+        "foundation-behavior"
+      ]
+    },
+    {
+      "id": "real-postgres",
+      "description": "Original G0 schema is actually deployed only to an owned synthetic local PostgreSQL fixture; non-owner RLS, missing scope, tenant/Space crossing, revoked membership/payer, transaction cleanup, task+event+outbox atomicity, dedup/conflicting keys, competing revisions, rollback/reopen and unknown-commit lookup all have actual meaningful tests.",
+      "check_ids": [
+        "foundation-behavior"
+      ]
+    },
+    {
+      "id": "migration-and-ledger",
+      "description": "Migration is bounded, compatibility/failure/forward-recovery measured; owned fixtures use pinned image/driver/version with cleanup limited to their actual identities; all38 AF/UX rows retain remaining G1–G5 responsibilities and concrete next tasks; documented use reproduces code with real versus pending qualifications clear.",
+      "check_ids": [
+        "foundation-behavior"
+      ]
+    },
+    {
+      "id": "prior-baselines",
+      "description": "G0/G1-local source, protected oracle and all evidence/locks/history remain byte-identical; original current source regression checks pass and no real-model calls are enabled.",
+      "check_ids": [
+        "retained-baselines"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "foundation-behavior",
+      "type": "command",
+      "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence.",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check.mjs"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "retained-baselines",
+      "type": "command",
+      "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history.",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check-retained.mjs"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "limits": {
+    "max_iterations": 12,
+    "max_wall_seconds": 1797,
+    "max_stalled_iterations": 3,
+    "max_repeat_failure": 2,
+    "max_tokens": null,
+    "max_cost_microunits": null,
+    "cost_currency": "USD"
+  },
+  "extensions": {
+    "verification_plan": {
+      "decision_ids": [
+        "rn-remote",
+        "rn-model",
+        "rn-identity-devices",
+        "rn-recovery",
+        "rn-observation-supplement"
+      ],
+      "repair_reserve_seconds": 360,
+      "measurements": [
+        {
+          "check_id": "foundation-behavior",
+          "required": [
+            "strict-build",
+            "actual-postgres-role-and-version",
+            "rls-isolation-denials",
+            "transaction-scope-reset",
+            "current-authority",
+            "atomic-outbox",
+            "command-idempotency",
+            "concurrency",
+            "rollback-recovery",
+            "unknown-commit-no-replay",
+            "migration-compatibility",
+            "full-38-id-ledger",
+            "fixture-owned-cleanup"
+          ],
+          "produced": [
+            "strict-build",
+            "actual-postgres-role-and-version",
+            "rls-isolation-denials",
+            "transaction-scope-reset",
+            "current-authority",
+            "atomic-outbox",
+            "command-idempotency",
+            "concurrency",
+            "rollback-recovery",
+            "unknown-commit-no-replay",
+            "migration-compatibility",
+            "full-38-id-ledger",
+            "fixture-owned-cleanup"
+          ],
+          "producer_paths": [
+            "g1-foundations/scripts/check.mjs",
+            "g1-foundations/scripts/pg-fixture.mjs",
+            "g1-foundations/tests/contracts.test.ts",
+            "g1-foundations/tests/postgres.test.ts"
+          ]
+        },
+        {
+          "check_id": "retained-baselines",
+          "required": [
+            "protected-hash-preservation",
+            "original-g0-regression",
+            "original-g1-local-regression"
+          ],
+          "produced": [
+            "protected-hash-preservation",
+            "original-g0-regression",
+            "original-g1-local-regression"
+          ],
+          "producer_paths": [
+            "g1-foundations/scripts/check-retained.mjs",
+            "scripts/check-g0.mjs",
+            "g1-local/scripts/check.mjs"
+          ]
+        }
+      ]
+    },
+    "verification_scenarios": [
+      {
+        "id": "pg-capability-supplement",
+        "check_id": "foundation-behavior",
+        "surface": "postgres-local",
+        "title": "User-approved ONLY one supplemental current-candidate PostgreSQL capability observation; original3 exhausted attempts retained; permission before clock",
+        "kind": "capability",
+        "depends_on": [],
+        "max_attempts": 1,
+        "timeout_seconds": 180
+      },
+      {
+        "id": "pg-rls-uow",
+        "check_id": "foundation-behavior",
+        "surface": "postgres-local",
+        "title": "Actual async trusted controller RLS/transaction/outbox/concurrency/recovery on synthetic PostgreSQL fixture",
+        "kind": "acceptance",
+        "depends_on": [
+          "pg-capability-supplement"
+        ],
+        "max_attempts": 2,
+        "timeout_seconds": 180
+      },
+      {
+        "id": "remote-system-smoke",
+        "check_id": "foundation-behavior",
+        "surface": "remote-linux",
+        "title": "Approved read-only SSH system/Docker/cgroup smoke on existing host; no OS worker isolation or production qualification asserted",
+        "kind": "capability",
+        "depends_on": [],
+        "max_attempts": 2,
+        "timeout_seconds": 30
+      }
+    ],
+    "preserved_baseline": {
+      "g0_team": "team-938da3a64aea45dfbf4445e97651cfbe",
+      "g1_local_team": "team-9fadeec39e704d17af04c441f083b554",
+      "g1_source_digest": "sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e"
+    },
+    "planned_files": [
+      "g1-foundations/package.json",
+      "g1-foundations/pnpm-lock.yaml",
+      "g1-foundations/tsconfig.json",
+      "g1-foundations/src/contracts.ts",
+      "g1-foundations/src/profile.ts",
+      "g1-foundations/src/postgres-uow.ts",
+      "g1-foundations/src/task-repository.ts",
+      "g1-foundations/src/outbox.ts",
+      "g1-foundations/src/migration.ts",
+      "g1-foundations/migrations/0002_controller_roles.sql",
+      "g1-foundations/tests/contracts.test.ts",
+      "g1-foundations/tests/postgres.test.ts",
+      "g1-foundations/scripts/build.mjs",
+      "g1-foundations/scripts/check.mjs",
+      "g1-foundations/scripts/check-retained.mjs",
+      "g1-foundations/scripts/pg-fixture.mjs",
+      "g1-foundations/scripts/remote-probe.mjs",
+      "docs/planning/g1-remaining-ledger.csv",
+      "docs/planning/g1-foundations-plan.md",
+      "docs/operations/g1-foundations-quickstart.md"
+    ],
+    "paidCallsAllowed": false,
+    "newPaidResourcesAllowed": false,
+    "remotePermission": "user-approved independent test installation/deployment; smoke first, own resources only; synthetic data; no existing service modification",
+    "recovery_lineage": {
+      "prior_team_id": "team-b38531f16d314394a7ba417fdf628011",
+      "reserved_child_id": "run-298e5594462a46ef97ae48d3e022d31f",
+      "prior_child_admitted": false,
+      "official_store_probe": "Store.runs: reserved_child_matches=[]; 2026-10-05",
+      "prior_increment_recorded_controller_seconds": 0,
+      "prior_host_elapsed_observed_seconds": "3565.084604024887 (observed; not controller budget)",
+      "host_tokens_and_cost": "unknown; not zero and not reset",
+      "retained_baselines": [
+        "team-938da3a64aea45dfbf4445e97651cfbe",
+        "team-9fadeec39e704d17af04c441f083b554"
+      ],
+      "budget_policy": "Original task limits unchanged; all historical usage remains in original state. New batch is not a fresh project budget.",
+      "immediate_prior_team_id": "team-c0f65ea6430043f392d40504a72b8918",
+      "immediate_prior_child_id": "run-16bc96eb3e7a4de69dd6a98a51167dc4",
+      "authenticated_prior_controller_seconds": 3,
+      "authenticated_prior_iterations": 0,
+      "original_implementation_ceiling_seconds": 1800,
+      "remaining_implementation_ceiling_seconds": 1797,
+      "original_capability_attempts": {
+        "id": "pg-capability",
+        "consumed": 3,
+        "maximum": 3,
+        "timeout_seconds": 60,
+        "preserved_in_prior_team": true
+      },
+      "supplemental_capability_allowance": {
+        "id": "pg-capability-supplement",
+        "maximum": 1,
+        "timeout_seconds": 180,
+        "actual_user_approval": "，仅补充一次 180 秒观测 ok"
+      },
+      "original_behavior_attempts": {
+        "id": "pg-rls-uow",
+        "consumed": 1,
+        "maximum": 3,
+        "remaining": 2
+      },
+      "remote_attempts": {
+        "consumed": 0,
+        "maximum": 2,
+        "remaining": 2
+      },
+      "prior_final_child_admitted": false,
+      "preserved_draft_manifest": "/private/tmp/agent-fabric-foundation-retained-draft/manifest.json"
+    }
+  }
+}

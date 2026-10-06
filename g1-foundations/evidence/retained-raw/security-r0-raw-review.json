@@ -1,0 +1,47 @@
+{
+  "request": {
+    "schema_version": "1.0",
+    "request_id": "evaluation-a589726fc5b14559b41b9f91dc640fc0",
+    "task_id": "g1_foundation_final",
+    "contract_digest": "sha256:a7261473d4882429410d53653d9161c8f6e0aef5675509b996e91d7dc3f56db1",
+    "snapshot_digest": "sha256:a68a4c276355e6b72d11852bc7a9dd3ec7fbc3e950a703e10126fd8dca7901e4",
+    "environment_digest": "sha256:a369b0fbdf090a40b19b5b1823f88ab923aa0fa8118ffd875d83f7f9fe341a3b",
+    "check_id": "team-independent-security",
+    "check_digest": "sha256:441631600f82254e1cedffa9f95bdac929933b800ac1c50cd3e4d20e1b369659",
+    "context_id": "review-context-6974a9276580474d91935930c38c8b42",
+    "procedure": [
+      "Read original product/spec/actual recorded decisions and accepted G0/G1-local protected inputs, inspect exact candidate and original command execution artifacts.",
+      "Apply independent security professional procedure: trace async service authority, real nonprivileged PostgreSQL/RLS/UoW/dedup/outbox/recovery, exact fixture ownership/cleanup, migration compatibility and complete38IDremaining ledger; report blocking findings when missing.",
+      "Verify actual PostgreSQL capability/measurement artifacts and exact candidate/env/procedure bindings; no fake-driver or source-only substitution for required live PG tests. Preserve all unknown outcomes and historical failures.",
+      "Pass only this increment when all its original requirements/checks are satisfied; paid product calls stay disabled. Full G1 including real models, OIDC/formal identity, Temporal/runtime/S3, cross-device sleep and signing plus G2–G5 remain explicit next work; this pass does not declare those implemented or controller COMPLETE."
+    ],
+    "created_at": "2026-10-05T15:48:26.650+00:00"
+  },
+  "registration_digest": "sha256:16f03d4bba6f4e7fe41bbed22ab3c68c7c1b71ec564ed698ecf376b89d18a579",
+  "packet_digest": "sha256:4bd6259dcb507ec36c1ce0bb09036dbc8e344c42ebbebc0958f1eb8c04707760",
+  "response": {
+    "result": "fail",
+    "summary": "The frozen candidate has a blocking current-authentication gap. Supplied observations record 16 passing foundation tests on real PostgreSQL and retained-baseline success, but original execution artifacts are unavailable inside the permitted review copy. Full G1 and G2–G5 remain pending; paid calls remain disabled.",
+    "findings": [
+      {
+        "id": "SEC-G1-001",
+        "severity": "blocking",
+        "description": "g1-foundations/src/postgres-uow.ts:16 replaces the scope's bound authenticating lookup with controller_authority(), which ignores sessionCredential. contracts.ts:53 invokes only that replacement. Consequently, after minting a scope, revoking or expiring its session in the original lookup does not prevent subsequent repository reads or writes while database membership remains unchanged. The scope has no expiry or invalidation mechanism. Preserve current session authentication alongside the transaction-locked database authority check, and add a real PostgreSQL regression where the original lookup denies a previously issued scope.",
+        "criterion_id": "team-independent-security"
+      },
+      {
+        "id": "SEC-G1-002",
+        "severity": "blocking",
+        "description": "The required original command/capability artifacts cannot be inspected within this read-only copy. g1-foundations-acceptance.json indexes historical logs at external absolute paths; current observations provide output tails and bindings but no accessible complete raw files. These support the reported execution outcomes, but do not complete the requested artifact and historical-failure verification. Supply immutable copies of the complete current command logs and original capability/measurement artifacts, with candidate/environment/procedure bindings and hashes, inside the permitted review material.",
+        "criterion_id": "current-foundation"
+      }
+    ]
+  },
+  "outcome": "completed",
+  "exit_code": 0,
+  "elapsed_ms": 98351,
+  "usage": {
+    "tokens": 884738,
+    "known_tokens": 884738
+  }
+}

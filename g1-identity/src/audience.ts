@@ -1,0 +1,12 @@
+import {createHash} from 'node:crypto';
+import {IdentityError,type AudienceVerifier,type SourceAudienceBinding,type SqlTransaction,type VerifiedScope} from './contracts.js';
+export interface AudienceRow {actorId:string;destinationRevision:number|string;sourceRevision:number|string|null;sourceRevoked:boolean;sourceGrants:unknown;actorRevoked:boolean;sourcePayerId:string;sourceAuthorityRevision:number|string;destinationPayerId:string;destinationAuthorityRevision:number|string}
+export function audienceDigest(rows:readonly AudienceRow[]):string{return 'sha256:'+createHash('sha256').update(JSON.stringify([...rows].sort((a,b)=>a.actorId.localeCompare(b.actorId)).map(r=>({actorId:r.actorId,destinationRevision:Number(r.destinationRevision),sourceRevision:r.sourceRevision===null?null:Number(r.sourceRevision),sourceRevoked:r.sourceRevoked,sourceGrants:Array.isArray(r.sourceGrants)?[...r.sourceGrants].sort():null,actorRevoked:r.actorRevoked,sourcePayerId:r.sourcePayerId,sourceAuthorityRevision:Number(r.sourceAuthorityRevision),destinationPayerId:r.destinationPayerId,destinationAuthorityRevision:Number(r.destinationAuthorityRevision)})))).digest('hex');}
+export class CurrentAudienceVerifier implements AudienceVerifier {
+ async verify(tx:SqlTransaction,scope:VerifiedScope,a:SourceAudienceBinding):Promise<void>{
+  if(a.destinationSpaceId!==scope.spaceId||new Set(a.recipientActorIds).size!==a.recipientActorIds.length)throw new IdentityError('AUDIENCE_DENIED');
+  const r=(await tx.query('SELECT fabric.identity_audience($1,$2,$3) AS audience',[a.sourceSpaceId,a.destinationSpaceId,a.sourceTaskId])).rows[0]?.audience;
+  if(!Array.isArray(r)||r.length===0)throw new IdentityError('AUDIENCE_DENIED');
+  const rows=r as AudienceRow[];if(rows.some(x=>typeof x.sourcePayerId!=='string'||x.sourcePayerId.length===0||typeof x.destinationPayerId!=='string'||x.destinationPayerId.length===0||!Number.isSafeInteger(Number(x.sourceAuthorityRevision))||Number(x.sourceAuthorityRevision)<0||!Number.isSafeInteger(Number(x.destinationAuthorityRevision))||Number(x.destinationAuthorityRevision)<0||x.actorRevoked||x.sourceRevoked||x.sourceRevision===null||!Array.isArray(x.sourceGrants)||!x.sourceGrants.includes('task:read'))||!rows.some(x=>x.actorId===scope.actorId)||JSON.stringify(rows.map(x=>x.actorId).sort())!==JSON.stringify([...a.recipientActorIds].sort())||audienceDigest(rows)!==a.revisionDigest)throw new IdentityError('AUDIENCE_DENIED');
+ }
+}
