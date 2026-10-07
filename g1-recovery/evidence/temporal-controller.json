@@ -1,0 +1,736 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local Temporal/native deterministic conversation worker slice only. No external effect/remote containment/whole F03 qualification.",
+  "checkCommand": "node g1-recovery/scripts/check-slice.mjs temporal",
+  "pins": {
+    "node": "22.22.3",
+    "pnpm": "10.18.0",
+    "typescript": "5.9.3",
+    "temporalCli": "1.4.1",
+    "temporalServer": "1.28.0",
+    "temporalSDK": "1.24.0"
+  },
+  "runs": [
+    {
+      "jobId": "job-10de3193be",
+      "job": {
+        "id": "job-10de3193be",
+        "checks": [
+          "f03-temporal-worker.f03-temporal-recreation"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T16:44:44+00:00",
+        "pid": 8986,
+        "identity": "8986@1791305084.92",
+        "purpose": null,
+        "finished_at": "2026-10-06T16:44:49+00:00",
+        "results": {
+          "f03-temporal-worker.f03-temporal-recreation": "fail"
+        }
+      },
+      "result": null,
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-10de3193be/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 2638,
+          "sha256": "8db5d8fec1a4c60f555627044fa2baeef46f9de06061d0b26e7a6ee77b85afe1",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 191ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 165ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 163ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"e4552609-e136-4ef6-88f7-586751f1ba05\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"c5a28007262543c298ec58addcb5ff0e65a502759c2d0c7422c602121dbf566c\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:9\n# import { temporal } from '@temporalio/proto';\n#          ^^^^^^^^\n# SyntaxError: Named export 'temporal' not found. The requested module '@temporalio/proto' is a CommonJS module, which may not support all module.exports as named exports.\n# CommonJS modules can always be imported via the default export, for example using:\n# import pkg from '@temporalio/proto';\n# const { temporal } = pkg;\n#     at ModuleJob._instantiate (node:internal/modules/esm/module_job:226:21)\n#     at async ModuleJob.run (node:internal/modules/esm/module_job:335:5)\n#     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n# Node.js v22.22.3\n# Subtest: /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js\nnot ok 1 - /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js\n  ---\n  duration_ms: 50.529\n  type: 'test'\n  location: '/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:1:1'\n  failureType: 'testCodeFailure'\n  exitCode: 1\n  signal: ~\n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 54.934792\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"e4552609-e136-4ef6-88f7-586751f1ba05\",\"containerId\":\"c5a28007262543c298ec58addcb5ff0e65a502759c2d0c7422c602121dbf566c\",\"removed\":true}\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-10de3193be/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 1767,
+          "sha256": "0c6b14bf71dff165e3be20f4d703c8ad4cd85a95fbfcf34eec715cbdc763c62c",
+          "text": "file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8\n process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');if(r.error||r.status!==0)throw r.error??new Error(command+' failed '+r.status);return r.stdout;\n                                                                                                               ^\n\nError: /Users/super/.hermes/node/bin/node failed 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8:112)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:17:12\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async withPgFixture (file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/pg-fixture.mjs:18:10)\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:15:1\n\nNode.js v22.22.3\nfile:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11\n  if (r.error || r.status !== 0) throw r.error ?? new Error('Recovery check failed: ' + r.status);\n                                                  ^\n\nError: Recovery check failed: 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11:51)\n    at runSuites (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:35:50)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/check-slice.mjs:5:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n\nNode.js v22.22.3\n"
+        }
+      ],
+      "artifacts": [],
+      "postCheckIndexUpdate": true
+    },
+    {
+      "jobId": "job-ee052d5129",
+      "job": {
+        "id": "job-ee052d5129",
+        "checks": [
+          "f03-temporal-worker.f03-temporal-recreation"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T16:45:12+00:00",
+        "pid": 9406,
+        "identity": "9406@1791305112.34",
+        "purpose": null,
+        "finished_at": "2026-10-06T16:45:51+00:00",
+        "results": {
+          "f03-temporal-worker.f03-temporal-recreation": "fail"
+        }
+      },
+      "result": null,
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-ee052d5129/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 15214,
+          "sha256": "cfc5650360bb68473820e47f87c5cdca0346c0c6e8b9054ea32abf53c08590c2",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 176ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 155ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 155ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"a1c9b6d6-f59b-4a82-86e0-66d66f56116e\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"2af70ee9b369b0413ae116a5713f1a7487cd2233e4dacb0e9dc9203f2ee1d90f\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"b3608db6-b8d0-461d-ba96-8b0e9b5f5608\",\"pid\":9501,\"address\":\"127.0.0.1:50508\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-b3608db6-b8d0-461d-ba96-8b0e9b5f5608-hlJCpm/history.sqlite\",\"bytes\":565248,\"process\":{\"pid\":9501,\"ppid\":9497,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 50508 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-b3608db6-b8d0-461d-ba96-8b0e9b5f5608-hlJCpm/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"temporal-versions\",\"cli\":\"1.4.1\",\"server\":\"1.28.0\",\"sdk\":\"1.24.0\",\"node\":\"v22.22.3\",\"persistence\":\"owned-sqlite\",\"historyAuthority\":\"Temporal\",\"policyAuthority\":\"PostgreSQL\"}\n# Subtest: TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\nok 1 - TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\n  ---\n  duration_ms: 1467.388459\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":1,\"worker\":{\"pid\":9505,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-0.jsonl\"}\n# {\"measurement\":\"client-disconnect-durable-checkpoint\",\"workflowId\":\"fabric/native/0a1b1e56-fe72-4c58-96a6-28dfa10f35c4/ec5204fb-b2a8-4ff8-9f7c-f6aaae2ad7e3/eb594c38-18fc-430e-bdd5-bd60f824e902\",\"temporalRun\":\"01a1121a-f8c6-74b3-99e6-f5368a2a73c8\",\"taskId\":\"7e797ca9-a2d8-4149-9c7b-d23456739b8f\",\"runId\":\"eb594c38-18fc-430e-bdd5-bd60f824e902\",\"sessionId\":\"0490cae7-9869-4541-a26e-6cb8bd5cc034\",\"cursor\":1,\"modelCalls\":1,\"admissions\":1,\"clientTransportClosed\":true}\n# Subtest: TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\nok 2 - TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\n  ---\n  duration_ms: 1907.439458\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9505,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9501,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"b3608db6-b8d0-461d-ba96-8b0e9b5f5608\",\"pid\":9519,\"address\":\"127.0.0.1:50508\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-b3608db6-b8d0-461d-ba96-8b0e9b5f5608-hlJCpm/history.sqlite\",\"bytes\":589824,\"process\":{\"pid\":9519,\"ppid\":9497,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 50508 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-b3608db6-b8d0-461d-ba96-8b0e9b5f5608-hlJCpm/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":2,\"worker\":{\"pid\":9521,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-1.jsonl\"}\n# Subtest: TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\nok 3 - TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\n  ---\n  duration_ms: 3107.722875\n  type: 'test'\n  ...\n# Subtest: TEMPORAL/old generation cannot continue even with the original committed command key\nok 4 - TEMPORAL/old generation cannot continue even with the original committed command key\n  ---\n  duration_ms: 32.910041\n  type: 'test'\n  ...\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/completed.history.json\",\"workflowId\":\"fabric/native/0a1b1e56-fe72-4c58-96a6-28dfa10f35c4/ec5204fb-b2a8-4ff8-9f7c-f6aaae2ad7e3/eb594c38-18fc-430e-bdd5-bd60f824e902\",\"events\":21,\"bytes\":16975,\"sha256\":\"031cd1fa6d5ce8f7d71e79cc2a3bcac0181dee2e318fe947cad0236098b7b578\"}\n# {\"measurement\":\"native-worker-recreation\",\"oldPid\":9505,\"newPid\":9521,\"generation\":2,\"taskId\":\"7e797ca9-a2d8-4149-9c7b-d23456739b8f\",\"runId\":\"eb594c38-18fc-430e-bdd5-bd60f824e902\",\"sessionId\":\"0490cae7-9869-4541-a26e-6cb8bd5cc034\",\"recordedResponsePreserved\":true,\"modelCallsByGeneration\":[1,1],\"cursor\":2,\"taskResult\":\"verifying-not-yet-accepted\",\"noExternalEffects\":true}\n# Subtest: TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\nok 5 - TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\n  ---\n  duration_ms: 128.584917\n  type: 'test'\n  ...\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/completed.history.json\",\"kind\":\"replay\",\"mode\":\"compatible\",\"success\":true,\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/completed.history.json\",\"kind\":\"replay\",\"mode\":\"incompatible\",\"success\":false,\"errorName\":\"DeterminismViolationError\",\"error\":\"Replay failed with a nondeterminism error. This means that the workflow code as written is not compatible with the history that was fed in. Details: Workflow activation completion failed: Failure { failure: Some(Failure { message: \\\\\"[TMPRL1100] Nondeterminism error: Timer machine does not handle this event: HistoryEvent(id: 5, ActivityTaskScheduled)\\\\\", source: \\\\\"\\\\\", stack_trace: \\\\\"\\\\\", encoded_attributes: None, cause: None, failure_info: Some(ApplicationFailureInfo(ApplicationFailureInfo { r\\#type: \\\\\"\\\\\", non_retryable: false, details: None, next_retry_delay: None, category: Unspecified })) }), force_cause: NonDeterministicError }\",\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# Subtest: TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\nok 6 - TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\n  ---\n  duration_ms: 1153.04425\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":1,\"worker\":{\"pid\":9527,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-2.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9527,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":2,\"worker\":{\"pid\":9533,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-3.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-membership.history.json\",\"workflowId\":\"fabric/native/0a1b1e56-fe72-4c58-96a6-28dfa10f35c4/ec5204fb-b2a8-4ff8-9f7c-f6aaae2ad7e3/8b2f9adb-b1d9-4829-a476-83126ae29561\",\"events\":23,\"bytes\":21391,\"sha256\":\"9f30e991b599dd0c370251fce2c18456e4f444428e764cf9ff917e6817ccfb6b\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"membership\",\"oldPid\":9527,\"newPid\":9533,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9533,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks membership before any missing model turn\nok 7 - TEMPORAL/recreated worker rechecks membership before any missing model turn\n  ---\n  duration_ms: 12077.934625\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":1,\"worker\":{\"pid\":9570,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-4.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9570,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":2,\"worker\":{\"pid\":9578,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-5.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-lease-expiry.history.json\",\"workflowId\":\"fabric/native/0a1b1e56-fe72-4c58-96a6-28dfa10f35c4/ec5204fb-b2a8-4ff8-9f7c-f6aaae2ad7e3/f20a2360-48c4-4885-95ef-14ff65817e32\",\"events\":23,\"bytes\":20675,\"sha256\":\"53c04d6dba8c3266a75f45533a0d896929be8f0673342b8bdae58212d5b2906e\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"lease-expiry\",\"oldPid\":9570,\"newPid\":9578,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9578,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\nok 8 - TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\n  ---\n  duration_ms: 12331.861\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"f536eed0-e6d1-40f8-8e37-4bb6ca144d59\",\"generation\":1,\"worker\":{\"pid\":9610,\"ppid\":9497,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=f536eed0-e6d1-40f8-8e37-4bb6ca144d59\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9610,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nnot ok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 1172.116583\n  type: 'test'\n  location: '/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:231:5'\n  failureType: 'testCodeFailure'\n  error: 'new row for relation \"budget_reservations\" violates check constraint \"budget_reservations_check1\"'\n  code: '23514'\n  name: 'error'\n  stack: |-\n    /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/pg-pool@3.14.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:245:13)\n    async Test.run (node:internal/test_runner/test:1054:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9521,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":9519,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"b3608db6-b8d0-461d-ba96-8b0e9b5f5608\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":9499,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 8\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 34821.320375\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"a1c9b6d6-f59b-4a82-86e0-66d66f56116e\",\"containerId\":\"2af70ee9b369b0413ae116a5713f1a7487cd2233e4dacb0e9dc9203f2ee1d90f\",\"removed\":true}\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-ee052d5129/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 1767,
+          "sha256": "0c6b14bf71dff165e3be20f4d703c8ad4cd85a95fbfcf34eec715cbdc763c62c",
+          "text": "file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8\n process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');if(r.error||r.status!==0)throw r.error??new Error(command+' failed '+r.status);return r.stdout;\n                                                                                                               ^\n\nError: /Users/super/.hermes/node/bin/node failed 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8:112)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:17:12\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async withPgFixture (file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/pg-fixture.mjs:18:10)\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:15:1\n\nNode.js v22.22.3\nfile:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11\n  if (r.error || r.status !== 0) throw r.error ?? new Error('Recovery check failed: ' + r.status);\n                                                  ^\n\nError: Recovery check failed: 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11:51)\n    at runSuites (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:35:50)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/check-slice.mjs:5:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n\nNode.js v22.22.3\n"
+        }
+      ],
+      "artifacts": [
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/completed.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/completed.history.json",
+          "bytes": 16975,
+          "sha256": "031cd1fa6d5ce8f7d71e79cc2a3bcac0181dee2e318fe947cad0236098b7b578"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-lease-expiry.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-lease-expiry.history.json",
+          "bytes": 20675,
+          "sha256": "53c04d6dba8c3266a75f45533a0d896929be8f0673342b8bdae58212d5b2906e"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-membership.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/denied-membership.history.json",
+          "bytes": 21391,
+          "sha256": "9f30e991b599dd0c370251fce2c18456e4f444428e764cf9ff917e6817ccfb6b"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-compatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-compatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-compatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-compatible.stdout",
+          "bytes": 108,
+          "sha256": "394b6d6117a14c2c0a0fa78618ae15283934a47258982b9f9bca87fb7997c6c6"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-incompatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-incompatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-incompatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/replay-incompatible.stdout",
+          "bytes": 1449,
+          "sha256": "c692abb2cace1142d3fd360ce4cb8a8653c38e7e2db326a9d6cf7d557f7fa91e"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-0.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-0.jsonl",
+          "bytes": 592,
+          "sha256": "1ef30bb7c5107eff44eb466ed9f3441cfebf983d8a5de0f5f817f20c8f1973fd"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-1.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-1.jsonl",
+          "bytes": 592,
+          "sha256": "1c888449944a3799d233d1e5c586afafe489b3c4e27af3797a3471836dc7168c"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-2.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-2.jsonl",
+          "bytes": 592,
+          "sha256": "9b826d4dd7662cc50df1532e6428788c7ada7ca303f0a593a1a86f96f590d567"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-3.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-3.jsonl",
+          "bytes": 346,
+          "sha256": "f668fb7d8318d4ddece85cc1c98d93ed5e784f6400c2185d2a4c4c6382028ef8"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-4.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-4.jsonl",
+          "bytes": 592,
+          "sha256": "3863793d8c655ddb775c27338c5609f72fe2486f86828da90c0c2d20d196004e"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-5.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-5.jsonl",
+          "bytes": 122,
+          "sha256": "96f4f09ce8c5cfc2fe6bff8a1d860829e46c333d7237df1bf2c9ed2fe746e3dc"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-6.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/f536eed0-e6d1-40f8-8e37-4bb6ca144d59/worker-6.jsonl",
+          "bytes": 592,
+          "sha256": "97f955394eb14391e19f682986df311f698dede0f46694bcaa15afb819561da4"
+        }
+      ],
+      "postCheckIndexUpdate": true
+    },
+    {
+      "jobId": "job-960e618ecc",
+      "job": {
+        "id": "job-960e618ecc",
+        "checks": [
+          "f03-temporal-worker.f03-temporal-recreation"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T16:47:10+00:00",
+        "pid": 10078,
+        "identity": "10078@1791305230.68",
+        "purpose": null,
+        "finished_at": "2026-10-06T16:47:49+00:00",
+        "results": {
+          "f03-temporal-worker.f03-temporal-recreation": "fail"
+        }
+      },
+      "result": null,
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-960e618ecc/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 15230,
+          "sha256": "95c587fa4cac30f744c3d646a2fcf517b58dd45f9d54611bb4c7f5e23a676314",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 192ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 162ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 160ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"b4ad3bbb-434b-4bb0-bc35-fd69528fd56c\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"ef56ac2d55a3f5b747336e13c59c8960d00502a9e71ea018f61a0151c95e6cc2\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"ead765d7-1ae0-4773-899c-1f873bb380d1\",\"pid\":10271,\"address\":\"127.0.0.1:50805\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-ead765d7-1ae0-4773-899c-1f873bb380d1-XUhjR1/history.sqlite\",\"bytes\":565248,\"process\":{\"pid\":10271,\"ppid\":10267,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 50805 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-ead765d7-1ae0-4773-899c-1f873bb380d1-XUhjR1/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"temporal-versions\",\"cli\":\"1.4.1\",\"server\":\"1.28.0\",\"sdk\":\"1.24.0\",\"node\":\"v22.22.3\",\"persistence\":\"owned-sqlite\",\"historyAuthority\":\"Temporal\",\"policyAuthority\":\"PostgreSQL\"}\n# Subtest: TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\nok 1 - TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\n  ---\n  duration_ms: 1410.363458\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":1,\"worker\":{\"pid\":10273,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-0.jsonl\"}\n# {\"measurement\":\"client-disconnect-durable-checkpoint\",\"workflowId\":\"fabric/native/dab14cd8-b634-482c-8d41-472d7465a9be/ef259c01-50bd-47a8-a00e-7c173ad8f5c2/292d013b-4876-4c6e-996b-49a8efd80c60\",\"temporalRun\":\"01a1121c-c45a-73ef-9b9a-be45601a5895\",\"taskId\":\"93835baa-b4bd-462f-8281-ca15e1027360\",\"runId\":\"292d013b-4876-4c6e-996b-49a8efd80c60\",\"sessionId\":\"a80ad516-c9da-49ed-b3aa-b3c0d9ff2f29\",\"cursor\":1,\"modelCalls\":1,\"admissions\":1,\"clientTransportClosed\":true}\n# Subtest: TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\nok 2 - TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\n  ---\n  duration_ms: 1160.771084\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10273,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10271,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"ead765d7-1ae0-4773-899c-1f873bb380d1\",\"pid\":10289,\"address\":\"127.0.0.1:50805\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-ead765d7-1ae0-4773-899c-1f873bb380d1-XUhjR1/history.sqlite\",\"bytes\":585728,\"process\":{\"pid\":10289,\"ppid\":10267,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 50805 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-ead765d7-1ae0-4773-899c-1f873bb380d1-XUhjR1/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":2,\"worker\":{\"pid\":10292,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-1.jsonl\"}\n# Subtest: TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\nok 3 - TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\n  ---\n  duration_ms: 3188.623084\n  type: 'test'\n  ...\n# Subtest: TEMPORAL/old generation cannot continue even with the original committed command key\nok 4 - TEMPORAL/old generation cannot continue even with the original committed command key\n  ---\n  duration_ms: 44.287541\n  type: 'test'\n  ...\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/completed.history.json\",\"workflowId\":\"fabric/native/dab14cd8-b634-482c-8d41-472d7465a9be/ef259c01-50bd-47a8-a00e-7c173ad8f5c2/292d013b-4876-4c6e-996b-49a8efd80c60\",\"events\":21,\"bytes\":16988,\"sha256\":\"8beb9307edce450d25287d6bb05e83b213d525020f4542b35d95196c7c61cd58\"}\n# {\"measurement\":\"native-worker-recreation\",\"oldPid\":10273,\"newPid\":10292,\"generation\":2,\"taskId\":\"93835baa-b4bd-462f-8281-ca15e1027360\",\"runId\":\"292d013b-4876-4c6e-996b-49a8efd80c60\",\"sessionId\":\"a80ad516-c9da-49ed-b3aa-b3c0d9ff2f29\",\"recordedResponsePreserved\":true,\"modelCallsByGeneration\":[1,1],\"cursor\":2,\"taskResult\":\"verifying-not-yet-accepted\",\"noExternalEffects\":true}\n# Subtest: TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\nok 5 - TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\n  ---\n  duration_ms: 150.041459\n  type: 'test'\n  ...\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/completed.history.json\",\"kind\":\"replay\",\"mode\":\"compatible\",\"success\":true,\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/completed.history.json\",\"kind\":\"replay\",\"mode\":\"incompatible\",\"success\":false,\"errorName\":\"DeterminismViolationError\",\"error\":\"Replay failed with a nondeterminism error. This means that the workflow code as written is not compatible with the history that was fed in. Details: Workflow activation completion failed: Failure { failure: Some(Failure { message: \\\\\"[TMPRL1100] Nondeterminism error: Timer machine does not handle this event: HistoryEvent(id: 5, ActivityTaskScheduled)\\\\\", source: \\\\\"\\\\\", stack_trace: \\\\\"\\\\\", encoded_attributes: None, cause: None, failure_info: Some(ApplicationFailureInfo(ApplicationFailureInfo { r\\#type: \\\\\"\\\\\", non_retryable: false, details: None, next_retry_delay: None, category: Unspecified })) }), force_cause: NonDeterministicError }\",\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# Subtest: TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\nok 6 - TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\n  ---\n  duration_ms: 1267.223667\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":1,\"worker\":{\"pid\":10306,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-2.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10306,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":2,\"worker\":{\"pid\":10312,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-3.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-membership.history.json\",\"workflowId\":\"fabric/native/dab14cd8-b634-482c-8d41-472d7465a9be/ef259c01-50bd-47a8-a00e-7c173ad8f5c2/704ec3a8-079c-44e3-9f82-55421fa4b971\",\"events\":23,\"bytes\":21409,\"sha256\":\"75192896b885f07bc30903d58adacdb79cde869e5046a9d1ba268b913560f216\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"membership\",\"oldPid\":10306,\"newPid\":10312,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10312,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks membership before any missing model turn\nok 7 - TEMPORAL/recreated worker rechecks membership before any missing model turn\n  ---\n  duration_ms: 12277.619542\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":1,\"worker\":{\"pid\":10338,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-4.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10338,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":2,\"worker\":{\"pid\":10344,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-5.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-lease-expiry.history.json\",\"workflowId\":\"fabric/native/dab14cd8-b634-482c-8d41-472d7465a9be/ef259c01-50bd-47a8-a00e-7c173ad8f5c2/7767254f-d2a1-4614-a78d-b7c4cee286d3\",\"events\":23,\"bytes\":21313,\"sha256\":\"1c10e75094b7ae039ef1b453adcf15c3dfe8548d3a02994b1863d61ee2c515e0\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"lease-expiry\",\"oldPid\":10338,\"newPid\":10344,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10344,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\nok 8 - TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\n  ---\n  duration_ms: 12397.352875\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"8dce63e2-9814-4761-be78-828e703e3a9e\",\"generation\":1,\"worker\":{\"pid\":10391,\"ppid\":10267,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=8dce63e2-9814-4761-be78-828e703e3a9e\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10391,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nnot ok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 1096.674542\n  type: 'test'\n  location: '/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:231:5'\n  failureType: 'testCodeFailure'\n  error: 'column \"released_amount\" of relation \"budget_reservations\" does not exist'\n  code: '42703'\n  name: 'error'\n  stack: |-\n    /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/pg-pool@3.14.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/tests/temporal-worker.test.js:245:13)\n    async Test.run (node:internal/test_runner/test:1054:7)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10292,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":10289,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"ead765d7-1ae0-4773-899c-1f873bb380d1\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":10269,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 8\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 34471.082125\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"b4ad3bbb-434b-4bb0-bc35-fd69528fd56c\",\"containerId\":\"ef56ac2d55a3f5b747336e13c59c8960d00502a9e71ea018f61a0151c95e6cc2\",\"removed\":true}\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-960e618ecc/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 1767,
+          "sha256": "0c6b14bf71dff165e3be20f4d703c8ad4cd85a95fbfcf34eec715cbdc763c62c",
+          "text": "file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8\n process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');if(r.error||r.status!==0)throw r.error??new Error(command+' failed '+r.status);return r.stdout;\n                                                                                                               ^\n\nError: /Users/super/.hermes/node/bin/node failed 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:8:112)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:17:12\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async withPgFixture (file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/pg-fixture.mjs:18:10)\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/temporal-suite.mjs:15:1\n\nNode.js v22.22.3\nfile:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11\n  if (r.error || r.status !== 0) throw r.error ?? new Error('Recovery check failed: ' + r.status);\n                                                  ^\n\nError: Recovery check failed: 1\n    at run (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:11:51)\n    at runSuites (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/run-suites.mjs:35:50)\n    at file:///Users/super/Documents/ai/agent-fabric/g1-recovery/scripts/check-slice.mjs:5:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n\nNode.js v22.22.3\n"
+        }
+      ],
+      "artifacts": [
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/completed.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/completed.history.json",
+          "bytes": 16988,
+          "sha256": "8beb9307edce450d25287d6bb05e83b213d525020f4542b35d95196c7c61cd58"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-lease-expiry.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-lease-expiry.history.json",
+          "bytes": 21313,
+          "sha256": "1c10e75094b7ae039ef1b453adcf15c3dfe8548d3a02994b1863d61ee2c515e0"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-membership.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/denied-membership.history.json",
+          "bytes": 21409,
+          "sha256": "75192896b885f07bc30903d58adacdb79cde869e5046a9d1ba268b913560f216"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-compatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-compatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-compatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-compatible.stdout",
+          "bytes": 108,
+          "sha256": "394b6d6117a14c2c0a0fa78618ae15283934a47258982b9f9bca87fb7997c6c6"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-incompatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-incompatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-incompatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/replay-incompatible.stdout",
+          "bytes": 1449,
+          "sha256": "ff24d736b854c1ac6ab5eabe3959dca6b2c9b59d63b624548560b904b057bf7b"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-0.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-0.jsonl",
+          "bytes": 596,
+          "sha256": "7483e28abdd132a2f12ebe53f4656c44577587bfe0c36907f0148c24aa8aaab4"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-1.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-1.jsonl",
+          "bytes": 596,
+          "sha256": "08dec266801fe72c4d09e123a98f0f3a991475455729f05ef15887cdf34d7dac"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-2.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-2.jsonl",
+          "bytes": 596,
+          "sha256": "b8994db3fe603f4da74dca45b498af155d928f336256ef7291fb94dd86f02a83"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-3.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-3.jsonl",
+          "bytes": 348,
+          "sha256": "322c6fe21e484ef4bc61e3cf3eec7f3ccf3a235da4a63a2fe1e34bf9b36b420e"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-4.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-4.jsonl",
+          "bytes": 596,
+          "sha256": "9effd0b90b248379eed4f970a5ffac9d596fa45cb970b01f857b1d0e2def61f1"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-5.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-5.jsonl",
+          "bytes": 348,
+          "sha256": "ba345177822dc9a449e6680ce9031efd095e09be5138e9e26f1f3c427211a64e"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-6.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/8dce63e2-9814-4761-be78-828e703e3a9e/worker-6.jsonl",
+          "bytes": 596,
+          "sha256": "05664f2dd3ac19954fe99c6c8f5268948d12251f857d28de0a35e761fc9182d1"
+        }
+      ],
+      "postCheckIndexUpdate": true
+    },
+    {
+      "jobId": "job-f36c4044ba",
+      "job": {
+        "id": "job-f36c4044ba",
+        "checks": [
+          "f03-temporal-worker.f03-temporal-recreation"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T16:48:40+00:00",
+        "pid": 11225,
+        "identity": "11225@1791305320.56",
+        "purpose": null,
+        "finished_at": "2026-10-06T16:49:29+00:00",
+        "results": {
+          "f03-temporal-worker.f03-temporal-recreation": "pass"
+        }
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 48700,
+        "started_at": "2026-10-06T16:48:40+00:00",
+        "finished_at": "2026-10-06T16:49:29+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-f36c4044ba/f03-temporal-worker.f03-temporal-recreation",
+        "tail": "…c13da709-0473-4864-80ba-934afb5a71fd/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11432,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":2,\"worker\":{\"pid\":11438,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-budget.history.json\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/3e8b19ce-e250-4787-aa24-2f0539aba0fc\",\"events\":23,\"bytes\":21333,\"sha256\":\"bd383a958e44bec175266491090bd99f38fe8692b36e27f1daedef4bfa7f6438\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":11432,\"newPid\":11438,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11438,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 11983.913791\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11381,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11377,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"83715c54-b434-40cc-8b48-5d2a2ebb087c\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":11358,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 44326.439417\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"20f9e2ed-4055-41a7-9bd1-6a777c0ccfa9\",\"containerId\":\"f6f0047052cb2a842b61f1afe6d682a5d818f1d42396a322aa1dfaf0e2d668b5\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n",
+        "cleanup": "zombie",
+        "fingerprint": "git:4419babcf8454c9c077222bb",
+        "actor": "agent",
+        "workspace_changed": true
+      },
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-f36c4044ba/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 15749,
+          "sha256": "c3dab7eeb8579cf22a721e62e2b2634dc3b47eac9a36541ebff16ad98a100ba5",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 184ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 151ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 156ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"20f9e2ed-4055-41a7-9bd1-6a777c0ccfa9\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"f6f0047052cb2a842b61f1afe6d682a5d818f1d42396a322aa1dfaf0e2d668b5\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"83715c54-b434-40cc-8b48-5d2a2ebb087c\",\"pid\":11360,\"address\":\"127.0.0.1:51029\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-83715c54-b434-40cc-8b48-5d2a2ebb087c-06jhVM/history.sqlite\",\"bytes\":565248,\"process\":{\"pid\":11360,\"ppid\":11356,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 51029 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-83715c54-b434-40cc-8b48-5d2a2ebb087c-06jhVM/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"temporal-versions\",\"cli\":\"1.4.1\",\"server\":\"1.28.0\",\"sdk\":\"1.24.0\",\"node\":\"v22.22.3\",\"persistence\":\"owned-sqlite\",\"historyAuthority\":\"Temporal\",\"policyAuthority\":\"PostgreSQL\"}\n# Subtest: TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\nok 1 - TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\n  ---\n  duration_ms: 1381.649709\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":1,\"worker\":{\"pid\":11362,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-0.jsonl\"}\n# {\"measurement\":\"client-disconnect-durable-checkpoint\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/a7a1fe29-08ed-42ee-a0ea-c2cda9b01bdd\",\"temporalRun\":\"01a1121e-21ae-7461-a061-24646e93b4c3\",\"taskId\":\"ae78ce13-79e5-44b4-8d48-31d571d90094\",\"runId\":\"a7a1fe29-08ed-42ee-a0ea-c2cda9b01bdd\",\"sessionId\":\"90d747f3-e9e5-4bda-8cd2-8a272bf9e15b\",\"cursor\":1,\"modelCalls\":1,\"admissions\":1,\"clientTransportClosed\":true}\n# Subtest: TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\nok 2 - TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\n  ---\n  duration_ms: 923.701333\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11362,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11360,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"83715c54-b434-40cc-8b48-5d2a2ebb087c\",\"pid\":11377,\"address\":\"127.0.0.1:51029\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-83715c54-b434-40cc-8b48-5d2a2ebb087c-06jhVM/history.sqlite\",\"bytes\":585728,\"process\":{\"pid\":11377,\"ppid\":11356,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 51029 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-83715c54-b434-40cc-8b48-5d2a2ebb087c-06jhVM/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":2,\"worker\":{\"pid\":11381,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-1.jsonl\"}\n# Subtest: TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\nok 3 - TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\n  ---\n  duration_ms: 3055.780208\n  type: 'test'\n  ...\n# Subtest: TEMPORAL/old generation cannot continue even with the original committed command key\nok 4 - TEMPORAL/old generation cannot continue even with the original committed command key\n  ---\n  duration_ms: 35.438542\n  type: 'test'\n  ...\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/completed.history.json\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/a7a1fe29-08ed-42ee-a0ea-c2cda9b01bdd\",\"events\":21,\"bytes\":16990,\"sha256\":\"899a579fdd938302885a57d39a49bd49bfa12077989b638e10d234710288279b\"}\n# {\"measurement\":\"native-worker-recreation\",\"oldPid\":11362,\"newPid\":11381,\"generation\":2,\"taskId\":\"ae78ce13-79e5-44b4-8d48-31d571d90094\",\"runId\":\"a7a1fe29-08ed-42ee-a0ea-c2cda9b01bdd\",\"sessionId\":\"90d747f3-e9e5-4bda-8cd2-8a272bf9e15b\",\"recordedResponsePreserved\":true,\"modelCallsByGeneration\":[1,1],\"cursor\":2,\"taskResult\":\"verifying-not-yet-accepted\",\"noExternalEffects\":true}\n# Subtest: TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\nok 5 - TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\n  ---\n  duration_ms: 134.341291\n  type: 'test'\n  ...\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/completed.history.json\",\"kind\":\"replay\",\"mode\":\"compatible\",\"success\":true,\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/completed.history.json\",\"kind\":\"replay\",\"mode\":\"incompatible\",\"success\":false,\"errorName\":\"DeterminismViolationError\",\"error\":\"Replay failed with a nondeterminism error. This means that the workflow code as written is not compatible with the history that was fed in. Details: Workflow activation completion failed: Failure { failure: Some(Failure { message: \\\\\"[TMPRL1100] Nondeterminism error: Timer machine does not handle this event: HistoryEvent(id: 5, ActivityTaskScheduled)\\\\\", source: \\\\\"\\\\\", stack_trace: \\\\\"\\\\\", encoded_attributes: None, cause: None, failure_info: Some(ApplicationFailureInfo(ApplicationFailureInfo { r\\#type: \\\\\"\\\\\", non_retryable: false, details: None, next_retry_delay: None, category: Unspecified })) }), force_cause: NonDeterministicError }\",\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# Subtest: TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\nok 6 - TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\n  ---\n  duration_ms: 1145.798125\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":1,\"worker\":{\"pid\":11389,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-2.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11389,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":2,\"worker\":{\"pid\":11395,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-3.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-membership.history.json\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/f17a41e1-0d85-4778-b497-0c07564c2783\",\"events\":23,\"bytes\":21409,\"sha256\":\"6032db6b75c13c3d36802e079ff29cf68f221528e3a3f45d0b82a0be4333c2c0\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"membership\",\"oldPid\":11389,\"newPid\":11395,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11395,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks membership before any missing model turn\nok 7 - TEMPORAL/recreated worker rechecks membership before any missing model turn\n  ---\n  duration_ms: 11988.290959\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":1,\"worker\":{\"pid\":11407,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-4.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11407,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":2,\"worker\":{\"pid\":11413,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-5.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-lease-expiry.history.json\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/781fd945-31be-4f22-80d7-f88481116adc\",\"events\":23,\"bytes\":21313,\"sha256\":\"09097493510b5b8c521f2dec202f73c8901f7f073a96d266b31c6ca99d7ca767\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"lease-expiry\",\"oldPid\":11407,\"newPid\":11413,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11413,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\nok 8 - TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\n  ---\n  duration_ms: 12260.247917\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":1,\"worker\":{\"pid\":11432,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11432,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"c13da709-0473-4864-80ba-934afb5a71fd\",\"generation\":2,\"worker\":{\"pid\":11438,\"ppid\":11356,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=c13da709-0473-4864-80ba-934afb5a71fd\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-budget.history.json\",\"workflowId\":\"fabric/native/53e1fb59-203c-40b0-b80d-28b5f27ef856/cb931534-601d-4929-ada3-b3f6f00a300d/3e8b19ce-e250-4787-aa24-2f0539aba0fc\",\"events\":23,\"bytes\":21333,\"sha256\":\"bd383a958e44bec175266491090bd99f38fe8692b36e27f1daedef4bfa7f6438\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":11432,\"newPid\":11438,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11438,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 11983.913791\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11381,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":11377,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"83715c54-b434-40cc-8b48-5d2a2ebb087c\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":11358,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 44326.439417\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"20f9e2ed-4055-41a7-9bd1-6a777c0ccfa9\",\"containerId\":\"f6f0047052cb2a842b61f1afe6d682a5d818f1d42396a322aa1dfaf0e2d668b5\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-f36c4044ba/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        }
+      ],
+      "artifacts": [
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/completed.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/completed.history.json",
+          "bytes": 16990,
+          "sha256": "899a579fdd938302885a57d39a49bd49bfa12077989b638e10d234710288279b"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-budget.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-budget.history.json",
+          "bytes": 21333,
+          "sha256": "bd383a958e44bec175266491090bd99f38fe8692b36e27f1daedef4bfa7f6438"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-lease-expiry.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-lease-expiry.history.json",
+          "bytes": 21313,
+          "sha256": "09097493510b5b8c521f2dec202f73c8901f7f073a96d266b31c6ca99d7ca767"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-membership.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/denied-membership.history.json",
+          "bytes": 21409,
+          "sha256": "6032db6b75c13c3d36802e079ff29cf68f221528e3a3f45d0b82a0be4333c2c0"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-compatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-compatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-compatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-compatible.stdout",
+          "bytes": 108,
+          "sha256": "394b6d6117a14c2c0a0fa78618ae15283934a47258982b9f9bca87fb7997c6c6"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-incompatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-incompatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-incompatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/replay-incompatible.stdout",
+          "bytes": 1449,
+          "sha256": "bcf3fd5866353820baa3e7f1cb5c929b11fe27dcfe9144c6bb9b88b6fdf6fdc0"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-0.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-0.jsonl",
+          "bytes": 596,
+          "sha256": "595e492bc1483eb870f0cd9cd393c12d43a83b34f3c2d791fc62fd2a1567d02c"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-1.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-1.jsonl",
+          "bytes": 596,
+          "sha256": "7798bad943f8dcbcdf3de5ac83a3dd9c83f31c85123281e7a5c5473759b80390"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-2.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-2.jsonl",
+          "bytes": 596,
+          "sha256": "d3b34544641cd9bb3dbdba3a3fd9ae7cd0a0dbfc0d87861a4486e63217b37641"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-3.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-3.jsonl",
+          "bytes": 348,
+          "sha256": "e85788038087cece3891be5fc163ce2612aff3857c7a5abe6a05b4207fa03a1a"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-4.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-4.jsonl",
+          "bytes": 596,
+          "sha256": "d417d805e6c80b1292581cf56801fff53be5f0713f3009075a6a596fdc4fe091"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-5.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-5.jsonl",
+          "bytes": 348,
+          "sha256": "3408e1277621688b73c7ecc0d8a156accae9d9a047f557cf9ad9019acdde51c4"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-6.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-6.jsonl",
+          "bytes": 596,
+          "sha256": "4f102725ee82f42540b4cfbb83ab7feaf2109a1f579e90fe209a75802eb70a65"
+        },
+        {
+          "originalPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-7.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/c13da709-0473-4864-80ba-934afb5a71fd/worker-7.jsonl",
+          "bytes": 348,
+          "sha256": "eb4ee01e364142fd6949aabd3a50a977a866978e50ee8c71640ef85732b44608"
+        }
+      ],
+      "postCheckIndexUpdate": true
+    },
+    {
+      "jobId": "job-684dc84f70",
+      "job": {
+        "id": "job-684dc84f70",
+        "checks": [
+          "f03-temporal-worker.f03-temporal-recreation"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T16:52:09+00:00",
+        "pid": 11933,
+        "identity": "11933@1791305529.43",
+        "purpose": {
+          "type": "task",
+          "task": "f03-temporal-worker"
+        },
+        "finished_at": "2026-10-06T16:53:00+00:00",
+        "results": {
+          "f03-temporal-worker.f03-temporal-recreation": "pass"
+        }
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 50832,
+        "started_at": "2026-10-06T16:52:09+00:00",
+        "finished_at": "2026-10-06T16:53:00+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-684dc84f70/f03-temporal-worker.f03-temporal-recreation",
+        "tail": "…ker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12122,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":2,\"worker\":{\"pid\":12128,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-budget.history.json\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/bebfba40-af10-4c58-b4ee-5813812561d6\",\"events\":23,\"bytes\":21333,\"sha256\":\"a46a29fa902526d7ee01b7b1f70c3aa091eb513ff45661fe8bc52acc0985c017\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":12122,\"newPid\":12128,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12128,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 12117.451416\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12040,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12038,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"3771f537-21a5-45a4-ac40-4406f5af062c\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":12026,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 45240.540958\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"af99b5d1-2cf1-4160-959d-8a8543a28531\",\"containerId\":\"0e1826bc01b21ec9848181fb344de7cd0d873e397499301ea644c691cf27979c\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n",
+        "cleanup": "zombie",
+        "fingerprint": "git:9d214be3b4e5638a9885d507",
+        "actor": "agent"
+      },
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-684dc84f70/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 16030,
+          "sha256": "e3ecc473bbb31e72c7781ac7d4df374b2379b5ab0d2786a51473fa3a1d6a9537",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 278ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 155ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 153ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"af99b5d1-2cf1-4160-959d-8a8543a28531\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"0e1826bc01b21ec9848181fb344de7cd0d873e397499301ea644c691cf27979c\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"3771f537-21a5-45a4-ac40-4406f5af062c\",\"pid\":12028,\"address\":\"127.0.0.1:51357\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-3771f537-21a5-45a4-ac40-4406f5af062c-SJgwi9/history.sqlite\",\"bytes\":565248,\"process\":{\"pid\":12028,\"ppid\":12024,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 51357 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-3771f537-21a5-45a4-ac40-4406f5af062c-SJgwi9/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"temporal-versions\",\"cli\":\"1.4.1\",\"server\":\"1.28.0\",\"sdk\":\"1.24.0\",\"node\":\"v22.22.3\",\"persistence\":\"owned-sqlite\",\"historyAuthority\":\"Temporal\",\"policyAuthority\":\"PostgreSQL\"}\n# Subtest: TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\nok 1 - TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\n  ---\n  duration_ms: 1467.910167\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":1,\"worker\":{\"pid\":12030,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-0.jsonl\"}\n# {\"measurement\":\"client-disconnect-durable-checkpoint\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/6e84437b-bf57-4e7c-9a52-aa4043e55760\",\"temporalRun\":\"01a11221-56c3-796e-9de3-71134e96d991\",\"taskId\":\"fd0d25c7-bcad-48e0-b7f9-ce85051e13ee\",\"runId\":\"6e84437b-bf57-4e7c-9a52-aa4043e55760\",\"sessionId\":\"b7ba9a2c-132b-45ac-9489-9671c612ad4a\",\"cursor\":1,\"modelCalls\":1,\"admissions\":1,\"clientTransportClosed\":true}\n# Subtest: TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\nok 2 - TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\n  ---\n  duration_ms: 1209.580459\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12030,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12028,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"3771f537-21a5-45a4-ac40-4406f5af062c\",\"pid\":12038,\"address\":\"127.0.0.1:51357\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-3771f537-21a5-45a4-ac40-4406f5af062c-SJgwi9/history.sqlite\",\"bytes\":585728,\"process\":{\"pid\":12038,\"ppid\":12024,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 51357 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-3771f537-21a5-45a4-ac40-4406f5af062c-SJgwi9/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":2,\"worker\":{\"pid\":12040,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-1.jsonl\"}\n# Subtest: TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\nok 3 - TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\n  ---\n  duration_ms: 3046.121667\n  type: 'test'\n  ...\n# Subtest: TEMPORAL/old generation cannot continue even with the original committed command key\nok 4 - TEMPORAL/old generation cannot continue even with the original committed command key\n  ---\n  duration_ms: 34.711709\n  type: 'test'\n  ...\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/completed.history.json\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/6e84437b-bf57-4e7c-9a52-aa4043e55760\",\"events\":21,\"bytes\":16996,\"sha256\":\"d58277cf878d4af3e658353dbb2147614418524f8c04c73d0e1ed28372f458be\"}\n# {\"measurement\":\"native-worker-recreation\",\"oldPid\":12030,\"newPid\":12040,\"generation\":2,\"taskId\":\"fd0d25c7-bcad-48e0-b7f9-ce85051e13ee\",\"runId\":\"6e84437b-bf57-4e7c-9a52-aa4043e55760\",\"sessionId\":\"b7ba9a2c-132b-45ac-9489-9671c612ad4a\",\"recordedResponsePreserved\":true,\"modelCallsByGeneration\":[1,1],\"cursor\":2,\"taskResult\":\"verifying-not-yet-accepted\",\"noExternalEffects\":true}\n# Subtest: TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\nok 5 - TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\n  ---\n  duration_ms: 126.947584\n  type: 'test'\n  ...\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/completed.history.json\",\"kind\":\"replay\",\"mode\":\"compatible\",\"success\":true,\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/completed.history.json\",\"kind\":\"replay\",\"mode\":\"incompatible\",\"success\":false,\"errorName\":\"DeterminismViolationError\",\"error\":\"Replay failed with a nondeterminism error. This means that the workflow code as written is not compatible with the history that was fed in. Details: Workflow activation completion failed: Failure { failure: Some(Failure { message: \\\\\"[TMPRL1100] Nondeterminism error: Timer machine does not handle this event: HistoryEvent(id: 5, ActivityTaskScheduled)\\\\\", source: \\\\\"\\\\\", stack_trace: \\\\\"\\\\\", encoded_attributes: None, cause: None, failure_info: Some(ApplicationFailureInfo(ApplicationFailureInfo { r\\#type: \\\\\"\\\\\", non_retryable: false, details: None, next_retry_delay: None, category: Unspecified })) }), force_cause: NonDeterministicError }\",\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# Subtest: TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\nok 6 - TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\n  ---\n  duration_ms: 1160.395667\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":1,\"worker\":{\"pid\":12048,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-2.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12048,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":2,\"worker\":{\"pid\":12058,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-3.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-membership.history.json\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/0188b79d-1383-4956-b61e-a2e6ad3488f7\",\"events\":23,\"bytes\":21409,\"sha256\":\"8ef173cf928b47f199468218a03e2e2b948edfdf2c3b48e2611260bec207c472\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"membership\",\"oldPid\":12048,\"newPid\":12058,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12058,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks membership before any missing model turn\nok 7 - TEMPORAL/recreated worker rechecks membership before any missing model turn\n  ---\n  duration_ms: 12145.060625\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":1,\"worker\":{\"pid\":12074,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-4.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12074,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":2,\"worker\":{\"pid\":12080,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-5.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-lease-expiry.history.json\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/fa47e820-69ce-4817-b663-9635462a0ffc\",\"events\":23,\"bytes\":21309,\"sha256\":\"3bd751735eb5f003eb72f191418eea5eb7814ddf0bad4bb13e1c3c47c85d1abd\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"lease-expiry\",\"oldPid\":12074,\"newPid\":12080,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12080,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\nok 8 - TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\n  ---\n  duration_ms: 12444.953375\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":1,\"worker\":{\"pid\":12122,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12122,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"1736783e-7bc4-42f9-ad4b-f53866f1c345\",\"generation\":2,\"worker\":{\"pid\":12128,\"ppid\":12024,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=1736783e-7bc4-42f9-ad4b-f53866f1c345\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-budget.history.json\",\"workflowId\":\"fabric/native/78809764-3b25-43ba-97e3-b41ae8d13b87/4bb7939f-9ba0-4156-8d94-743a75d0c4bb/bebfba40-af10-4c58-b4ee-5813812561d6\",\"events\":23,\"bytes\":21333,\"sha256\":\"a46a29fa902526d7ee01b7b1f70c3aa091eb513ff45661fe8bc52acc0985c017\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":12122,\"newPid\":12128,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12128,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 12117.451416\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12040,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":12038,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"3771f537-21a5-45a4-ac40-4406f5af062c\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":12026,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 45240.540958\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"af99b5d1-2cf1-4160-959d-8a8543a28531\",\"containerId\":\"0e1826bc01b21ec9848181fb344de7cd0d873e397499301ea644c691cf27979c\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-684dc84f70/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        }
+      ],
+      "artifacts": [
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/completed.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/completed.history.json",
+          "bytes": 16996,
+          "sha256": "d58277cf878d4af3e658353dbb2147614418524f8c04c73d0e1ed28372f458be"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-budget.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-budget.history.json",
+          "bytes": 21333,
+          "sha256": "a46a29fa902526d7ee01b7b1f70c3aa091eb513ff45661fe8bc52acc0985c017"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-lease-expiry.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-lease-expiry.history.json",
+          "bytes": 21309,
+          "sha256": "3bd751735eb5f003eb72f191418eea5eb7814ddf0bad4bb13e1c3c47c85d1abd"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-membership.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/denied-membership.history.json",
+          "bytes": 21409,
+          "sha256": "8ef173cf928b47f199468218a03e2e2b948edfdf2c3b48e2611260bec207c472"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-compatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-compatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-compatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-compatible.stdout",
+          "bytes": 108,
+          "sha256": "394b6d6117a14c2c0a0fa78618ae15283934a47258982b9f9bca87fb7997c6c6"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-incompatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-incompatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-incompatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/replay-incompatible.stdout",
+          "bytes": 1449,
+          "sha256": "47e8b540c6692755abb5805bada55ba2c7319f631ee21e13109ab07455b3123a"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-0.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-0.jsonl",
+          "bytes": 596,
+          "sha256": "76d410b0f53c0e04898bb1a92508858ec0ddb6b213826d020f915b885f9152df"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-1.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-1.jsonl",
+          "bytes": 596,
+          "sha256": "442a23f1ce4c4f2a187b0469e2bb174ed90d2f5e74ced0efbe90899e62b3cd58"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-2.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-2.jsonl",
+          "bytes": 596,
+          "sha256": "a58adc058c857bd76392b810d7f546a716fd1be617c666ae31bd800402c830cd"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-3.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-3.jsonl",
+          "bytes": 348,
+          "sha256": "48f0a6f0d485744b51487b253ef02e589cb713196abe7561d365bbeb58a8b8a5"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-4.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-4.jsonl",
+          "bytes": 596,
+          "sha256": "aec18d7a0e7bd96829dc8f9ecd0f3bb86ad67709a70fef5728bda994e022c12b"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-5.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-5.jsonl",
+          "bytes": 348,
+          "sha256": "500b2007eb047154c97f5aa15d0111348370961b040e29a205c305513be5c022"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-6.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-6.jsonl",
+          "bytes": 596,
+          "sha256": "284a0e53c774c7880303dd4530d075141ebd58181f924ea402610b2ebb733137"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-7.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/1736783e-7bc4-42f9-ad4b-f53866f1c345/worker-7.jsonl",
+          "bytes": 348,
+          "sha256": "4ab483f7130c6531a7c44ed60ca1d3d2c2a3a705ca8cf53bf9661efc0090d6b6"
+        }
+      ],
+      "postCheckIndexUpdate": true
+    },
+    {
+      "jobId": "job-b526912599",
+      "job": {
+        "id": "job-b526912599",
+        "checks": [
+          "f03-durable-authority.f03-postgres",
+          "f03-temporal-worker.f03-temporal-recreation",
+          "f03-unknown-effects.f03-effects-crash"
+        ],
+        "status": "finished",
+        "actor": "agent",
+        "started_at": "2026-10-06T17:32:55+00:00",
+        "pid": 24853,
+        "identity": "24853@1791307975.77",
+        "purpose": null,
+        "finished_at": "2026-10-06T17:36:58+00:00",
+        "results": {
+          "f03-durable-authority.f03-postgres": "pass",
+          "f03-temporal-worker.f03-temporal-recreation": "pass",
+          "f03-unknown-effects.f03-effects-crash": "pass"
+        }
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 51257,
+        "started_at": "2026-10-06T17:33:12+00:00",
+        "finished_at": "2026-10-06T17:34:03+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-b526912599/f03-temporal-worker.f03-temporal-recreation",
+        "tail": "…ker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25131,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":2,\"worker\":{\"pid\":25137,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-budget.history.json\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/12c2152d-216f-418c-ac61-b8cb996c2f11\",\"events\":23,\"bytes\":21331,\"sha256\":\"b712f7b4efaf2ec4a9fd9cca5296550661ce937f633ad9c99b2364327987b485\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":25131,\"newPid\":25137,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25137,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 12202.249208\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25088,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25086,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"e692707b-2b57-4d5b-9760-9f1acaac9400\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":25072,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 45692.345708\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"cfde4854-3a33-41bc-abfa-48368e35fe78\",\"containerId\":\"7f1bf604250e97c3b8dd6d9d8cd41645127e6928684f8f8a33eeff5bf1b7c2fd\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n",
+        "cleanup": "zombie",
+        "fingerprint": "git:2e2ebcf05d1b8403632fec75",
+        "actor": "agent"
+      },
+      "streams": [
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-b526912599/f03-temporal-worker.f03-temporal-recreation/stdout.log",
+          "bytes": 16028,
+          "sha256": "a2df3f77fbf13109e1c08dd12b444d3f415d993f8e3e3596197f24ccd2aebd4b",
+          "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 184ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 160ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 163ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"cfde4854-3a33-41bc-abfa-48368e35fe78\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"7f1bf604250e97c3b8dd6d9d8cd41645127e6928684f8f8a33eeff5bf1b7c2fd\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"e692707b-2b57-4d5b-9760-9f1acaac9400\",\"pid\":25074,\"address\":\"127.0.0.1:56280\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-e692707b-2b57-4d5b-9760-9f1acaac9400-wUnOpI/history.sqlite\",\"bytes\":565248,\"process\":{\"pid\":25074,\"ppid\":25070,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 56280 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-e692707b-2b57-4d5b-9760-9f1acaac9400-wUnOpI/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"temporal-versions\",\"cli\":\"1.4.1\",\"server\":\"1.28.0\",\"sdk\":\"1.24.0\",\"node\":\"v22.22.3\",\"persistence\":\"owned-sqlite\",\"historyAuthority\":\"Temporal\",\"policyAuthority\":\"PostgreSQL\"}\n# Subtest: TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\nok 1 - TEMPORAL/pinned real local service, disk history, strict SDK versions and append-only PG events\n  ---\n  duration_ms: 1454.200042\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":1,\"worker\":{\"pid\":25077,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-0.jsonl\"}\n# {\"measurement\":\"client-disconnect-durable-checkpoint\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/b8d7b7c8-f636-465c-b1ff-2fadf3327c62\",\"temporalRun\":\"01a11246-eabd-7386-b085-3f183e2f970e\",\"taskId\":\"1964f202-4456-4fb9-ac19-efd1a57e7f28\",\"runId\":\"b8d7b7c8-f636-465c-b1ff-2fadf3327c62\",\"sessionId\":\"6eb0ae26-2b73-413d-b1bb-bf5a0f58cab5\",\"cursor\":1,\"modelCalls\":1,\"admissions\":1,\"clientTransportClosed\":true}\n# Subtest: TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\nok 2 - TEMPORAL/outbox admission ACK loss and concurrent dedup; submitting client disconnects after admission\n  ---\n  duration_ms: 1419.208958\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25077,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25074,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"real-temporal-service\",\"owner\":\"e692707b-2b57-4d5b-9760-9f1acaac9400\",\"pid\":25086,\"address\":\"127.0.0.1:56280\",\"version\":\"temporal version 1.4.1 (Server 1.28.0, UI 2.39.0)\",\"db\":\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-e692707b-2b57-4d5b-9760-9f1acaac9400-wUnOpI/history.sqlite\",\"bytes\":585728,\"process\":{\"pid\":25086,\"ppid\":25070,\"command\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-cli/temporal --disable-config-file --disable-config-env server start-dev --headless --ip 127.0.0.1 --port 56280 --db-filename /var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/fabric-temporal-e692707b-2b57-4d5b-9760-9f1acaac9400-wUnOpI/history.sqlite\"},\"productionQualified\":false}\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":2,\"worker\":{\"pid\":25088,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-1.jsonl\"}\n# Subtest: TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\nok 3 - TEMPORAL/kill observed native worker, restart durable service and recreate generation2 with empty process memory\n  ---\n  duration_ms: 3090.964458\n  type: 'test'\n  ...\n# Subtest: TEMPORAL/old generation cannot continue even with the original committed command key\nok 4 - TEMPORAL/old generation cannot continue even with the original committed command key\n  ---\n  duration_ms: 43.920125\n  type: 'test'\n  ...\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/completed.history.json\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/b8d7b7c8-f636-465c-b1ff-2fadf3327c62\",\"events\":21,\"bytes\":16992,\"sha256\":\"82711b0da7ec400388eb75c3fb45f9085265522382bb53808b66870f6c04cbe5\"}\n# {\"measurement\":\"native-worker-recreation\",\"oldPid\":25077,\"newPid\":25088,\"generation\":2,\"taskId\":\"1964f202-4456-4fb9-ac19-efd1a57e7f28\",\"runId\":\"b8d7b7c8-f636-465c-b1ff-2fadf3327c62\",\"sessionId\":\"6eb0ae26-2b73-413d-b1bb-bf5a0f58cab5\",\"recordedResponsePreserved\":true,\"modelCallsByGeneration\":[1,1],\"cursor\":2,\"taskResult\":\"verifying-not-yet-accepted\",\"noExternalEffects\":true}\n# Subtest: TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\nok 5 - TEMPORAL/new process restores same Task/Run/session and recorded response; only missing turn calls model\n  ---\n  duration_ms: 148.121458\n  type: 'test'\n  ...\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/completed.history.json\",\"kind\":\"replay\",\"mode\":\"compatible\",\"success\":true,\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# {\"measurement\":\"real-sdk-replay\",\"history\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/completed.history.json\",\"kind\":\"replay\",\"mode\":\"incompatible\",\"success\":false,\"errorName\":\"DeterminismViolationError\",\"error\":\"Replay failed with a nondeterminism error. This means that the workflow code as written is not compatible with the history that was fed in. Details: Workflow activation completion failed: Failure { failure: Some(Failure { message: \\\\\"[TMPRL1100] Nondeterminism error: Timer machine does not handle this event: HistoryEvent(id: 5, ActivityTaskScheduled)\\\\\", source: \\\\\"\\\\\", stack_trace: \\\\\"\\\\\", encoded_attributes: None, cause: None, failure_info: Some(ApplicationFailureInfo(ApplicationFailureInfo { r\\#type: \\\\\"\\\\\", non_retryable: false, details: None, next_retry_delay: None, category: Unspecified })) }), force_cause: NonDeterministicError }\",\"modelCalls\":0,\"checkpointWrites\":0,\"externalWrites\":0}\n# Subtest: TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\nok 6 - TEMPORAL/actual exported SDK replay invokes zero measured model/checkpoint/external writes; incompatible replay fails\n  ---\n  duration_ms: 1179.437625\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":1,\"worker\":{\"pid\":25094,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-2.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25094,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":2,\"worker\":{\"pid\":25100,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-3.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-membership.history.json\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/043bc561-db54-40aa-b0e6-c02caaaf436f\",\"events\":23,\"bytes\":21409,\"sha256\":\"944cb0bc020e1a003452f768bbb91cab6737c33ad20cd69e2b26c59fa97f08ee\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"membership\",\"oldPid\":25094,\"newPid\":25100,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25100,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks membership before any missing model turn\nok 7 - TEMPORAL/recreated worker rechecks membership before any missing model turn\n  ---\n  duration_ms: 12107.482666\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":1,\"worker\":{\"pid\":25114,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-4.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25114,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":2,\"worker\":{\"pid\":25123,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-5.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-lease-expiry.history.json\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/892cf0c3-4531-48bb-b273-2d2b97cb8eee\",\"events\":23,\"bytes\":21308,\"sha256\":\"d8511a719008fcd8e3a453dbbfc83a0b0f3c5e21fb38fec455489a53dbd6d8dc\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"lease-expiry\",\"oldPid\":25114,\"newPid\":25123,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25123,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\nok 8 - TEMPORAL/recreated worker rechecks lease-expiry before any missing model turn\n  ---\n  duration_ms: 12537.8985\n  type: 'test'\n  ...\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":1,\"worker\":{\"pid\":25131,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-6.jsonl\"}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25131,\"signal\":\"SIGKILL\",\"exitCode\":null,\"signalCode\":\"SIGKILL\",\"removed\":true}\n# {\"measurement\":\"native-process-census\",\"owner\":\"84acbc06-eb83-4de1-832d-77704123d8c9\",\"generation\":2,\"worker\":{\"pid\":25137,\"ppid\":25070,\"command\":\"/Users/super/.hermes/node/bin/node /Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-worker-process.js --fixture-owner=84acbc06-eb83-4de1-832d-77704123d8c9\"},\"executionChildren\":[],\"competingHarnesses\":0,\"ordinaryConversationVMs\":0,\"measurementPath\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-7.jsonl\"}\n# {\"measurement\":\"actual-temporal-history-export\",\"path\":\"/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-budget.history.json\",\"workflowId\":\"fabric/native/6a3bff72-cb12-4f9f-ba15-adbcecb12f4e/b126337d-7089-43da-afe5-e7d9dff12535/12c2152d-216f-418c-ac61-b8cb996c2f11\",\"events\":23,\"bytes\":21331,\"sha256\":\"b712f7b4efaf2ec4a9fd9cca5296550661ce937f633ad9c99b2364327987b485\"}\n# {\"measurement\":\"recovery-current-denial\",\"denial\":\"budget\",\"oldPid\":25131,\"newPid\":25137,\"generation\":2,\"modelCallsAfterRecovery\":0,\"durableCursor\":1,\"failedActivityRecorded\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25137,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# Subtest: TEMPORAL/recreated worker rechecks budget before any missing model turn\nok 9 - TEMPORAL/recreated worker rechecks budget before any missing model turn\n  ---\n  duration_ms: 12202.249208\n  type: 'test'\n  ...\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25088,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-process-cleanup\",\"pid\":25086,\"signal\":\"SIGTERM\",\"exitCode\":0,\"signalCode\":null,\"removed\":true}\n# {\"measurement\":\"owned-temporal-directory-cleanup\",\"owner\":\"e692707b-2b57-4d5b-9760-9f1acaac9400\",\"removed\":true}\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":25072,\"removed\":true,\"realCredentials\":false}\n1..9\n# tests 9\n# suites 0\n# pass 9\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 45692.345708\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"cfde4854-3a33-41bc-abfa-48368e35fe78\",\"containerId\":\"7f1bf604250e97c3b8dd6d9d8cd41645127e6928684f8f8a33eeff5bf1b7c2fd\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n"
+        },
+        {
+          "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-b526912599/f03-temporal-worker.f03-temporal-recreation/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        }
+      ],
+      "artifacts": [
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/completed.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/completed.history.json",
+          "bytes": 16992,
+          "sha256": "82711b0da7ec400388eb75c3fb45f9085265522382bb53808b66870f6c04cbe5"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-budget.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/denied-budget.history.json",
+          "bytes": 21331,
+          "sha256": "b712f7b4efaf2ec4a9fd9cca5296550661ce937f633ad9c99b2364327987b485"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-lease-expiry.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/denied-lease-expiry.history.json",
+          "bytes": 21308,
+          "sha256": "d8511a719008fcd8e3a453dbbfc83a0b0f3c5e21fb38fec455489a53dbd6d8dc"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/denied-membership.history.json",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/denied-membership.history.json",
+          "bytes": 21409,
+          "sha256": "944cb0bc020e1a003452f768bbb91cab6737c33ad20cd69e2b26c59fa97f08ee"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/replay-compatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/replay-compatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/replay-compatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/replay-compatible.stdout",
+          "bytes": 108,
+          "sha256": "394b6d6117a14c2c0a0fa78618ae15283934a47258982b9f9bca87fb7997c6c6"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/replay-incompatible.stderr",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/replay-incompatible.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/replay-incompatible.stdout",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/replay-incompatible.stdout",
+          "bytes": 1449,
+          "sha256": "eb4134735ffa4f8e4ccf95e040643778768ecb765cb144e3aca869aacd2306f3"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-0.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-0.jsonl",
+          "bytes": 596,
+          "sha256": "f9d0833bfd8bd9b6c0e797a3e51b212776ce5a8b089e05f244077f9db722ac22"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-1.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-1.jsonl",
+          "bytes": 596,
+          "sha256": "5f1b6b1f5c0a7781027e7f5fe4aab17d15833c2798bb89837f9adbcfd6440c9d"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-2.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-2.jsonl",
+          "bytes": 596,
+          "sha256": "799a348629e69a00e4f93076cc39ad47177d3a01e42d42242bb8878259dea4d6"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-3.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-3.jsonl",
+          "bytes": 348,
+          "sha256": "5de6c22170826e198ae44c32ddb820df99fe632b05e63bc92d4b8a3fde1e1c53"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-4.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-4.jsonl",
+          "bytes": 596,
+          "sha256": "92f3f4f8147108b3c12dd3e97af2e10f41cb74897c7cc8cb6a33c253ca4c67e1"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-5.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-5.jsonl",
+          "bytes": 348,
+          "sha256": "5325e0677a079a068962c5bfcd47f28d826d27d9da4fa72246e3ade87b0a4090"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-6.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-6.jsonl",
+          "bytes": 596,
+          "sha256": "c16bf511db3e9f0826453cd6baa74bc75962031d8c6cec3a31d4747ee63e79a1"
+        },
+        {
+          "originalPath": "g1-recovery/node_modules/.cache/temporal-evidence/84acbc06-eb83-4de1-832d-77704123d8c9/worker-7.jsonl",
+          "copyPath": "g1-recovery/evidence/temporal/84acbc06-eb83-4de1-832d-77704123d8c9/worker-7.jsonl",
+          "bytes": 348,
+          "sha256": "e8a807b1b1cd30c91bb70cd0d4a265ce77813bbf80a1145cc62a110fbf0e7238"
+        }
+      ],
+      "postCheckIndexUpdate": true
+    }
+  ]
+}

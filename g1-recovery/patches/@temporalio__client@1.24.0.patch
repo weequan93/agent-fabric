@@ -1,0 +1,18 @@
+--- a/lib/schedule-types.d.ts
++++ b/lib/schedule-types.d.ts
+@@ -1,5 +1,5 @@
+ import type { Replace } from '@temporalio/common/lib/type-helpers';
+-import type { Duration, SearchAttributes, Workflow, TypedSearchAttributes, SearchAttributePair } from '@temporalio/common';
++import type { Duration, SearchAttributes, Workflow, TypedSearchAttributes, SearchAttributePair, WithWorkflowArgs } from '@temporalio/common';
+ import type { temporal } from '@temporalio/proto';
+ import type { WorkflowStartOptions } from './workflow-options';
+ /**
+@@ -638,7 +638,7 @@
+ export type ScheduleOptionsStartWorkflowAction<W extends Workflow> = {
+     type: 'startWorkflow';
+     workflowType: string | W;
+-} & Pick<WorkflowStartOptions<W>, 'taskQueue' | 'args' | 'memo' | 'searchAttributes' | 'typedSearchAttributes' | 'retry' | 'workflowExecutionTimeout' | 'workflowRunTimeout' | 'workflowTaskTimeout' | 'staticDetails' | 'staticSummary'> & {
++} & WithWorkflowArgs<W, Pick<WorkflowStartOptions<Workflow>, 'taskQueue' | 'memo' | 'searchAttributes' | 'typedSearchAttributes' | 'retry' | 'workflowExecutionTimeout' | 'workflowRunTimeout' | 'workflowTaskTimeout' | 'staticDetails' | 'staticSummary'>> & {
+     /**
+      * Workflow id to use when starting. Assign a meaningful business id.
+      * This ID can be used to ensure starting Workflows is idempotent.

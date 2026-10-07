@@ -1,0 +1,520 @@
+{
+  "events": [
+    {
+      "eventId": "1",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 537555000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+      "taskId": "1048587",
+      "workflowExecutionStartedEventAttributes": {
+        "workflowType": {
+          "name": "nativeConversation"
+        },
+        "taskQueue": {
+          "name": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVmZTdjYWYxLTU4YjItNDA0MC04YmM3LWZmODgyYzI1ODQ1NCIsInNwYWNlSWQiOiIwMTAwMGE0ZC1hNDJiLTRkM2ItOGNiYS05YTFhN2RmNTczZjkiLCJ0YXNrSWQiOiI2MTg0N2EyNi04OWY4LTRmMjMtOTlmNC01NjJjODY3MTM1ZTYiLCJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6M2E4NzFhZWNiOTAwM2Y0NGI4MWE5ZmIxMWZmNmZmNmIxMmNhMjJjY2I1NjE0YzdkNzRiYWMxNTIyMTMxNWY0MCJ9"
+            }
+          ]
+        },
+        "workflowTaskTimeout": {
+          "seconds": "10"
+        },
+        "originalExecutionRunId": "01a112f2-34c1-7874-b6ac-1a926d054e30",
+        "identity": "4118@supers-Mac-mini.local",
+        "firstExecutionRunId": "01a112f2-34c1-7874-b6ac-1a926d054e30",
+        "attempt": 1,
+        "firstWorkflowTaskBackoff": {},
+        "memo": {
+          "fields": {
+            "admissionDigest": {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "InNoYTI1Njo4MWQ4ZDAwNTg2Y2UzOTNjZDk0NjE0YmE0ZWIxMmIyNTY4NzFjNDhjNDgyOTZjMzUwODg5MDYzZTQxOTJiM2E4Ig=="
+            }
+          }
+        },
+        "header": {},
+        "workflowId": "fabric/native/5fe7caf1-58b2-4040-8bc7-ff882c258454/01000a4d-a42b-4d3b-8cba-9a1a7df573f9/4862ee2c-c277-4ad6-a265-88d4bab27a63"
+      }
+    },
+    {
+      "eventId": "2",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 537612000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1048588",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "3",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 540364000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1048593",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "2",
+        "identity": "4128@supers-Mac-mini.local",
+        "requestId": "9dfb3f39-e897-40a3-89b7-f9dbdc821ee4",
+        "historySizeBytes": "917",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "4",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 573024000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1048602",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "2",
+        "startedEventId": "3",
+        "identity": "4128@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {
+          "coreUsedFlags": [
+            2,
+            3,
+            1
+          ],
+          "sdkName": "temporal-typescript",
+          "sdkVersion": "1.24.0"
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "5",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 573087000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "1048603",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "1",
+        "activityType": {
+          "name": "nativeTurn"
+        },
+        "taskQueue": {
+          "name": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVmZTdjYWYxLTU4YjItNDA0MC04YmM3LWZmODgyYzI1ODQ1NCIsInNwYWNlSWQiOiIwMTAwMGE0ZC1hNDJiLTRkM2ItOGNiYS05YTFhN2RmNTczZjkiLCJ0YXNrSWQiOiI2MTg0N2EyNi04OWY4LTRmMjMtOTlmNC01NjJjODY3MTM1ZTYiLCJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6M2E4NzFhZWNiOTAwM2Y0NGI4MWE5ZmIxMWZmNmZmNmIxMmNhMjJjY2I1NjE0YzdkNzRiYWMxNTIyMTMxNWY0MCJ9"
+            },
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "MQ=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {},
+        "scheduleToStartTimeout": {},
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "4",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 1
+        },
+        "useWorkflowBuildId": true
+      }
+    },
+    {
+      "eventId": "6",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 575577000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "1048614",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "5",
+        "identity": "4128@supers-Mac-mini.local",
+        "requestId": "9aa6f1c8-7c46-4d72-b26d-9b14b6a5e78d",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "7",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 638923000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+      "taskId": "1048615",
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsInNlcXVlbmNlIjoxLCJldmVudERpZ2VzdCI6InNoYTI1NjplMTk2ZDI1Mzg3ZDk3ZDcyNGFmNDkwNThkN2IyNGI3YTJhNjAwM2YzMjgxYzA4MTI5M2EzMjBmZTU3MzUwOTY5In0="
+            }
+          ]
+        },
+        "scheduledEventId": "5",
+        "startedEventId": "6",
+        "identity": "4128@supers-Mac-mini.local"
+      }
+    },
+    {
+      "eventId": "8",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 638926000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "1048616",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "4128@supers-Mac-mini.local-279b153ed2354eab841bc25f18622567",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "9",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 640777000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "1048620",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "8",
+        "identity": "4128@supers-Mac-mini.local",
+        "requestId": "e08c0a0b-7d86-49aa-8a82-6232f6effe21",
+        "historySizeBytes": "2461",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "10",
+      "eventTime": {
+        "seconds": "1791319225",
+        "nanos": 645491000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "1048624",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "8",
+        "startedEventId": "9",
+        "identity": "4128@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "11",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 768116000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_SIGNALED",
+      "taskId": "2097161",
+      "workflowExecutionSignaledEventAttributes": {
+        "signalName": "continueNative",
+        "input": {},
+        "identity": "4118@supers-Mac-mini.local",
+        "header": {}
+      }
+    },
+    {
+      "eventId": "12",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 768118000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097162",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "4128@supers-Mac-mini.local-279b153ed2354eab841bc25f18622567",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "13",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 770667000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097166",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "12",
+        "identity": "4139@supers-Mac-mini.local",
+        "requestId": "45da9ef0-2fae-4a4e-a974-7f89402b1d11",
+        "historySizeBytes": "3032",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "14",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 805329000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097170",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "12",
+        "startedEventId": "13",
+        "identity": "4139@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {
+          "langUsedFlags": [
+            2
+          ]
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "15",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 805616000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "2097171",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "2",
+        "activityType": {
+          "name": "nativeTurn"
+        },
+        "taskQueue": {
+          "name": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVmZTdjYWYxLTU4YjItNDA0MC04YmM3LWZmODgyYzI1ODQ1NCIsInNwYWNlSWQiOiIwMTAwMGE0ZC1hNDJiLTRkM2ItOGNiYS05YTFhN2RmNTczZjkiLCJ0YXNrSWQiOiI2MTg0N2EyNi04OWY4LTRmMjMtOTlmNC01NjJjODY3MTM1ZTYiLCJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6M2E4NzFhZWNiOTAwM2Y0NGI4MWE5ZmIxMWZmNmZmNmIxMmNhMjJjY2I1NjE0YzdkNzRiYWMxNTIyMTMxNWY0MCJ9"
+            },
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "Mg=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {},
+        "scheduleToStartTimeout": {},
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "14",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 1
+        },
+        "useWorkflowBuildId": true
+      }
+    },
+    {
+      "eventId": "16",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 810136000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "2097176",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "15",
+        "identity": "4139@supers-Mac-mini.local",
+        "requestId": "af276d78-3de8-4b73-ba45-bd03da323d0c",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "17",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 877731000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+      "taskId": "2097177",
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsInNlcXVlbmNlIjoyLCJldmVudERpZ2VzdCI6InNoYTI1Njo4YTJhMmQ2ZjcxZDMxY2ZlN2UyZmJiODBmMzM4M2ZkMjQ4MzA2MmJjN2I3YzZlOWM1YzIxMDk4ZmYxZDk4YzUxIn0="
+            }
+          ]
+        },
+        "scheduledEventId": "15",
+        "startedEventId": "16",
+        "identity": "4139@supers-Mac-mini.local"
+      }
+    },
+    {
+      "eventId": "18",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 877735000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097178",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "4139@supers-Mac-mini.local-33fa94e383174a238ad9178571d9d73b",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "fabric-182a5a70-8f8c-4a23-8e3f-468aa5c9df26"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "19",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 879705000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097182",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "18",
+        "identity": "4139@supers-Mac-mini.local",
+        "requestId": "9cbd621d-26c6-46cd-91f1-aa0aea62072c",
+        "historySizeBytes": "4551",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "20",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 883151000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097186",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "18",
+        "startedEventId": "19",
+        "identity": "4139@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "21",
+      "eventTime": {
+        "seconds": "1791319228",
+        "nanos": 883181000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_COMPLETED",
+      "taskId": "2097187",
+      "workflowExecutionCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJydW5JZCI6IjQ4NjJlZTJjLWMyNzctNGFkNi1hMjY1LTg4ZDRiYWIyN2E2MyIsInNlc3Npb25JZCI6IjRmMzI4NTM2LTc2MWUtNDFjMC1hZDJmLTJlZWEzMWI0YmVjNSIsInNlcXVlbmNlIjoyLCJldmVudERpZ2VzdCI6InNoYTI1Njo4YTJhMmQ2ZjcxZDMxY2ZlN2UyZmJiODBmMzM4M2ZkMjQ4MzA2MmJjN2I3YzZlOWM1YzIxMDk4ZmYxZDk4YzUxIn0="
+            }
+          ]
+        },
+        "workflowTaskCompletedEventId": "20"
+      }
+    }
+  ]
+}

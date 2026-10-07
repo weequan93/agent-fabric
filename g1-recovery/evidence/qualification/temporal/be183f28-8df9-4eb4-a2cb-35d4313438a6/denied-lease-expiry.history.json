@@ -1,0 +1,563 @@
+{
+  "events": [
+    {
+      "eventId": "1",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 423128000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_STARTED",
+      "taskId": "2097256",
+      "workflowExecutionStartedEventAttributes": {
+        "workflowType": {
+          "name": "nativeConversation"
+        },
+        "taskQueue": {
+          "name": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVjN2YyZGMzLTVkOWUtNDM4NS04M2NlLWMxYWZiNjM0NjYzNyIsInNwYWNlSWQiOiJlZWU5MTAwOS04OTQyLTQxMGMtODJmZC1iZGE5YjYyYjA2ODYiLCJ0YXNrSWQiOiI5NmM4OTYxNi1iMzdkLTQyYWItODI2ZC0zZmUxMTdmYjc2OTQiLCJydW5JZCI6IjMyN2RlY2JmLTg2YjgtNGVmYy1iZGFhLWJiZjlkZTM5NmQ2MyIsInNlc3Npb25JZCI6Ijk1NTdhMmZkLWE1NTAtNDY1Mi04Mjk0LWViYTVkYWY5ZGNjNCIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6MDYzNGYwMzQ5NjE2MWZiNGNiYTRjZDk1YTg1NDY1M2RiZDk4OTIwMzgyOGZlNjNjMDdhMThkNDQwZmFhZjllYiJ9"
+            }
+          ]
+        },
+        "workflowTaskTimeout": {
+          "seconds": "10"
+        },
+        "originalExecutionRunId": "01a1127a-1a37-71f0-9a73-4ee3edfa3852",
+        "identity": "46737@supers-Mac-mini.local",
+        "firstExecutionRunId": "01a1127a-1a37-71f0-9a73-4ee3edfa3852",
+        "attempt": 1,
+        "firstWorkflowTaskBackoff": {},
+        "memo": {
+          "fields": {
+            "admissionDigest": {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "InNoYTI1Njo4YmE1ZjY0OWY3MDBiOGYyNjc3ZWJhY2IwNTI0NDE2MzUwYjQ4ZTc3YWQyMTU0NzA1ZTdlZWI0YmY5NTg5NmUzIg=="
+            }
+          }
+        },
+        "header": {},
+        "workflowId": "fabric/native/5c7f2dc3-5d9e-4385-83ce-c1afb6346637/eee91009-8942-410c-82fd-bda9b62b0686/327decbf-86b8-4efc-bdaa-bbf9de396d63"
+      }
+    },
+    {
+      "eventId": "2",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 423172000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097257",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "3",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 425232000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097262",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "2",
+        "identity": "46777@supers-Mac-mini.local",
+        "requestId": "4c13eedd-fd92-4ac2-889c-80079c37172d",
+        "historySizeBytes": "946",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "4",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 461104000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097266",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "2",
+        "startedEventId": "3",
+        "identity": "46777@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {
+          "coreUsedFlags": [
+            2,
+            1,
+            3
+          ],
+          "sdkName": "temporal-typescript",
+          "sdkVersion": "1.24.0"
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "5",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 461138000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "2097267",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "1",
+        "activityType": {
+          "name": "nativeTurn"
+        },
+        "taskQueue": {
+          "name": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVjN2YyZGMzLTVkOWUtNDM4NS04M2NlLWMxYWZiNjM0NjYzNyIsInNwYWNlSWQiOiJlZWU5MTAwOS04OTQyLTQxMGMtODJmZC1iZGE5YjYyYjA2ODYiLCJ0YXNrSWQiOiI5NmM4OTYxNi1iMzdkLTQyYWItODI2ZC0zZmUxMTdmYjc2OTQiLCJydW5JZCI6IjMyN2RlY2JmLTg2YjgtNGVmYy1iZGFhLWJiZjlkZTM5NmQ2MyIsInNlc3Npb25JZCI6Ijk1NTdhMmZkLWE1NTAtNDY1Mi04Mjk0LWViYTVkYWY5ZGNjNCIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6MDYzNGYwMzQ5NjE2MWZiNGNiYTRjZDk1YTg1NDY1M2RiZDk4OTIwMzgyOGZlNjNjMDdhMThkNDQwZmFhZjllYiJ9"
+            },
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "MQ=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {},
+        "scheduleToStartTimeout": {},
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "4",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 1
+        },
+        "useWorkflowBuildId": true
+      }
+    },
+    {
+      "eventId": "6",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 463440000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "2097273",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "5",
+        "identity": "46777@supers-Mac-mini.local",
+        "requestId": "3fb49a56-ff8e-4533-b9da-3d7dc3f195b3",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "7",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 533588000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_COMPLETED",
+      "taskId": "2097274",
+      "activityTaskCompletedEventAttributes": {
+        "result": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJydW5JZCI6IjMyN2RlY2JmLTg2YjgtNGVmYy1iZGFhLWJiZjlkZTM5NmQ2MyIsInNlc3Npb25JZCI6Ijk1NTdhMmZkLWE1NTAtNDY1Mi04Mjk0LWViYTVkYWY5ZGNjNCIsInNlcXVlbmNlIjoxLCJldmVudERpZ2VzdCI6InNoYTI1Njo5M2NjZGZlMmYzMDA5YTU4NTQ3MTc5NDllODg3NDMyMjQ3ODdmMTdiMmI2YzcxOGE3OGFlZmEwMGY5ZjhkMzQ3In0="
+            }
+          ]
+        },
+        "scheduledEventId": "5",
+        "startedEventId": "6",
+        "identity": "46777@supers-Mac-mini.local"
+      }
+    },
+    {
+      "eventId": "8",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 533592000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097275",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "46777@supers-Mac-mini.local-f92ed4b7ea8743fa8e9a2e84ae28302d",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "9",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 535537000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097279",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "8",
+        "identity": "46777@supers-Mac-mini.local",
+        "requestId": "3feb5d86-94f5-436c-b467-00d7980508f3",
+        "historySizeBytes": "2528",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "10",
+      "eventTime": {
+        "seconds": "1791311354",
+        "nanos": 540525000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097283",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "8",
+        "startedEventId": "9",
+        "identity": "46777@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "11",
+      "eventTime": {
+        "seconds": "1791311355",
+        "nanos": 736893000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_SIGNALED",
+      "taskId": "2097285",
+      "workflowExecutionSignaledEventAttributes": {
+        "signalName": "continueNative",
+        "input": {},
+        "identity": "46737@supers-Mac-mini.local",
+        "header": {}
+      }
+    },
+    {
+      "eventId": "12",
+      "eventTime": {
+        "seconds": "1791311355",
+        "nanos": 736896000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097286",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "46777@supers-Mac-mini.local-f92ed4b7ea8743fa8e9a2e84ae28302d",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "13",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 738214000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_TIMED_OUT",
+      "taskId": "2097290",
+      "workflowTaskTimedOutEventAttributes": {
+        "scheduledEventId": "12",
+        "timeoutType": "TIMEOUT_TYPE_SCHEDULE_TO_START"
+      }
+    },
+    {
+      "eventId": "14",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 738221000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097291",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "15",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 742473000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097294",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "14",
+        "identity": "46783@supers-Mac-mini.local",
+        "requestId": "07fbcea9-2c1d-47b7-aa17-fcddfef31525",
+        "historySizeBytes": "3245",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "16",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 788575000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097298",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "14",
+        "startedEventId": "15",
+        "identity": "46783@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {
+          "langUsedFlags": [
+            2
+          ]
+        },
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "17",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 788599000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_SCHEDULED",
+      "taskId": "2097299",
+      "activityTaskScheduledEventAttributes": {
+        "activityId": "2",
+        "activityType": {
+          "name": "nativeTurn"
+        },
+        "taskQueue": {
+          "name": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6",
+          "kind": "TASK_QUEUE_KIND_NORMAL"
+        },
+        "header": {},
+        "input": {
+          "payloads": [
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "eyJ0ZW5hbnRJZCI6IjVjN2YyZGMzLTVkOWUtNDM4NS04M2NlLWMxYWZiNjM0NjYzNyIsInNwYWNlSWQiOiJlZWU5MTAwOS04OTQyLTQxMGMtODJmZC1iZGE5YjYyYjA2ODYiLCJ0YXNrSWQiOiI5NmM4OTYxNi1iMzdkLTQyYWItODI2ZC0zZmUxMTdmYjc2OTQiLCJydW5JZCI6IjMyN2RlY2JmLTg2YjgtNGVmYy1iZGFhLWJiZjlkZTM5NmQ2MyIsInNlc3Npb25JZCI6Ijk1NTdhMmZkLWE1NTAtNDY1Mi04Mjk0LWViYTVkYWY5ZGNjNCIsImJpbmRpbmdEaWdlc3QiOiJzaGEyNTY6MDYzNGYwMzQ5NjE2MWZiNGNiYTRjZDk1YTg1NDY1M2RiZDk4OTIwMzgyOGZlNjNjMDdhMThkNDQwZmFhZjllYiJ9"
+            },
+            {
+              "metadata": {
+                "encoding": "anNvbi9wbGFpbg=="
+              },
+              "data": "Mg=="
+            }
+          ]
+        },
+        "scheduleToCloseTimeout": {},
+        "scheduleToStartTimeout": {},
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "heartbeatTimeout": {},
+        "workflowTaskCompletedEventId": "16",
+        "retryPolicy": {
+          "initialInterval": {
+            "seconds": "1"
+          },
+          "backoffCoefficient": 2,
+          "maximumInterval": {
+            "seconds": "100"
+          },
+          "maximumAttempts": 1
+        },
+        "useWorkflowBuildId": true
+      }
+    },
+    {
+      "eventId": "18",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 790773000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
+      "taskId": "2097304",
+      "activityTaskStartedEventAttributes": {
+        "scheduledEventId": "17",
+        "identity": "46783@supers-Mac-mini.local",
+        "requestId": "a8cfc121-f0d7-4513-a94e-bbbdf631409c",
+        "attempt": 1,
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "19",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 859874000
+      },
+      "eventType": "EVENT_TYPE_ACTIVITY_TASK_FAILED",
+      "taskId": "2097305",
+      "activityTaskFailedEventAttributes": {
+        "failure": {
+          "message": "Expired recovery command or lease",
+          "source": "TypeScriptSDK",
+          "stackTrace": "FoundationError: Expired recovery command or lease\n    at RecoveryRepository.live (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:44:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async RecoveryRepository.nativeCurrent (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:246:9)\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:290:13\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:71:13\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-identity/src/authenticated-uow.js:16:27\n    at async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-foundations/src/postgres-uow.js:29:27)\n    at async nativeTurn (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-activities.js:31:13)\n    at async Activity.execute (/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/@temporalio+worker@1.24.0/node_modules/@temporalio/worker/lib/activity.js:104:20)\n    at async NativeConnection.withAbortSignal (/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/@temporalio+worker@1.24.0/node_modules/@temporalio/worker/lib/connection.js:172:16)",
+          "applicationFailureInfo": {
+            "type": "FoundationError"
+          }
+        },
+        "scheduledEventId": "17",
+        "startedEventId": "18",
+        "identity": "46783@supers-Mac-mini.local",
+        "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
+      }
+    },
+    {
+      "eventId": "20",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 859877000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_SCHEDULED",
+      "taskId": "2097306",
+      "workflowTaskScheduledEventAttributes": {
+        "taskQueue": {
+          "name": "46783@supers-Mac-mini.local-134120e1db854363a8ff1064c67305f5",
+          "kind": "TASK_QUEUE_KIND_STICKY",
+          "normalName": "denial-lease-expiry-be183f28-8df9-4eb4-a2cb-35d4313438a6"
+        },
+        "startToCloseTimeout": {
+          "seconds": "10"
+        },
+        "attempt": 1
+      }
+    },
+    {
+      "eventId": "21",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 861987000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
+      "taskId": "2097310",
+      "workflowTaskStartedEventAttributes": {
+        "scheduledEventId": "20",
+        "identity": "46783@supers-Mac-mini.local",
+        "requestId": "3eb556f8-f1db-41d0-a5d3-ff4cb2114909",
+        "historySizeBytes": "6270",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        }
+      }
+    },
+    {
+      "eventId": "22",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 867841000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
+      "taskId": "2097314",
+      "workflowTaskCompletedEventAttributes": {
+        "scheduledEventId": "20",
+        "startedEventId": "21",
+        "identity": "46783@supers-Mac-mini.local",
+        "workerVersion": {
+          "buildId": "@temporalio/worker@1.24.0+58a59de822169423d4ade45a2a18fb2345ad85d4c6c6031842c86262b5d18d56"
+        },
+        "sdkMetadata": {},
+        "meteringMetadata": {}
+      }
+    },
+    {
+      "eventId": "23",
+      "eventTime": {
+        "seconds": "1791311365",
+        "nanos": 867863000
+      },
+      "eventType": "EVENT_TYPE_WORKFLOW_EXECUTION_FAILED",
+      "taskId": "2097315",
+      "workflowExecutionFailedEventAttributes": {
+        "failure": {
+          "message": "Activity task failed",
+          "cause": {
+            "message": "Expired recovery command or lease",
+            "source": "TypeScriptSDK",
+            "stackTrace": "FoundationError: Expired recovery command or lease\n    at RecoveryRepository.live (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:44:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async RecoveryRepository.nativeCurrent (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:246:9)\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:290:13\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/repository.js:71:13\n    at async file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-identity/src/authenticated-uow.js:16:27\n    at async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-foundations/src/postgres-uow.js:29:27)\n    at async nativeTurn (file:///Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.cache/recovery-build/g1-recovery/src/native-activities.js:31:13)\n    at async Activity.execute (/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/@temporalio+worker@1.24.0/node_modules/@temporalio/worker/lib/activity.js:104:20)\n    at async NativeConnection.withAbortSignal (/Users/super/Documents/ai/agent-fabric/g1-recovery/node_modules/.pnpm/@temporalio+worker@1.24.0/node_modules/@temporalio/worker/lib/connection.js:172:16)",
+            "applicationFailureInfo": {
+              "type": "FoundationError"
+            }
+          },
+          "activityFailureInfo": {
+            "scheduledEventId": "17",
+            "startedEventId": "18",
+            "identity": "46783@supers-Mac-mini.local",
+            "activityType": {
+              "name": "nativeTurn"
+            },
+            "activityId": "2",
+            "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
+          }
+        },
+        "retryState": "RETRY_STATE_RETRY_POLICY_NOT_SET",
+        "workflowTaskCompletedEventId": "22"
+      }
+    }
+  ]
+}

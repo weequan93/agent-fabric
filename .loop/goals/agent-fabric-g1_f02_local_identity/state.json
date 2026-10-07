@@ -1,0 +1,753 @@
+{
+  "schema": "loop.state/2",
+  "goal_id": "agent-fabric-g1_f02_local_identity",
+  "status": "done",
+  "status_reason": "Review team-independent-acceptance passed. 3 review(s) passed.",
+  "approved_digest": "sha256:eda888f9af13ee93ba7f1018a16b82e5e3d08889d43dc82bff49558d55f92984",
+  "approved_by": "human",
+  "approved_at": "2026-10-06T12:55:52+00:00",
+  "tasks": [
+    {
+      "id": "g1_f02_identity",
+      "status": "done",
+      "attempts": 0,
+      "notes": [],
+      "created_at": "2026-10-06T10:23:01+00:00",
+      "summary": "Completed in Loop v1 (team team-aa741c058dac4bbb8e530e859445a639).",
+      "title": "implement: g1_f02_identity",
+      "detail": "G1-F02 additive independent localtestOIDC IdP/code+PKCE/stricttoken, currentPGidentity/session/membership/serviceprincipal/sourceaudience, exactindependentapproval and atomicappendonlyaudit;21newfiles only. Architectinterfaces first then disjointbackend/databaseworkers; preserve every prioracceptedbaseline/evidence/history/cumulativeusage; no old supplement or paidcalls. ScopeformalSSO/humanapproval/physicaldevice/signing/protectedOS/fullG1 qualification remains pending.\n\nCriteria:\n- {\"id\": \"oidc-network-and-token\", \"description\": \"F02-01/02: independent test-only loopbackIdPprocess, code+S256PKCE/state/nonce one-use replaydenials; fixedissuer/audience/key/algorithm/type/time validation; no token-minted authority.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"current-pg-authentication\", \"description\": \"F02-02/03/05: originalboundauthenticatinglookup remains; additiveUoWlocks currentPGsession in same transaction as lockedDBauthority. Currentidentity/membership/payer/lifecycle revocation and expiry/race denied; narrowserviceprincipal cannotimpersonate humanapprover.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"exact-approval-audit-audience\", \"description\": \"F02-03/04/05: immutabletarget/digest/artifact/revisions/independentactor/expiry/sourceaudience exactbinding; self/stale/crossScope/revokedapproval deny; concurrentconsumption/dedup/rollback, auditfailclosed and lostCOMMITackoriginalkeylookup withoutreplay.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"migration-compatibility\", \"description\": \"F02-06: separateidentitymigrationledger keeps old foundation1/2ledger intact; narrowroles/nonowner/nonsuperuser/nonBYPASSRLS, workers nofunctions/tables and controllercannotrewriteaudit. Meaningful actualPGpermissiontests.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"prior-baselines\", \"description\": \"Original597protected/raw88 and foundation42source hashes immutable; originalG0197/G1local72/foundation17 regression checks unchanged; no paidcalls/historyreset.\", \"check_ids\": [\"identity-behavior\", \"foundation-behavior\", \"retained-baselines\"]}\n\nOriginal contract: .loop/legacy-v1/tasks/g1_f02_identity.json",
+      "role": "backend",
+      "depends_on": [],
+      "checks": [
+        {
+          "id": "identity-behavior",
+          "argv": [
+            "node",
+            "g1-identity/scripts/check.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strictbuild actual independent loopbackIdP code+PKCE/state/nonce/token tests and realnonownerPostgreSQLcurrentauth/approval/audit/sourceaudience/revocationrace/rollback/unknowncommit. No skips/mocks for mandatoryintegration; originalfoundation42files hashchecked."
+        },
+        {
+          "id": "foundation-behavior",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence."
+        },
+        {
+          "id": "retained-baselines",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history."
+        }
+      ],
+      "updated_at": "2026-10-06T10:23:01+00:00",
+      "finished_at": "2026-10-06T10:23:01+00:00"
+    },
+    {
+      "id": "g1_f02_final",
+      "status": "done",
+      "attempts": 0,
+      "notes": [
+        {
+          "at": "2026-10-06T10:23:01+00:00",
+          "kind": "handoff",
+          "by": "migration",
+          "text": "v1 status RUNNING: Missing evidence: team-independent-security; Missing evidence: team-independent-reviewer; Missing evidence: team-independent-acceptance; required non-command evidence needs an external evaluator"
+        },
+        {
+          "at": "2026-10-06T11:44:08+00:00",
+          "kind": "handoff",
+          "text": "Turn 1: changed only docs/evidence/g1-f02-acceptance.json and .md by adding explicitly non-acceptance local diagnostics; every existing history field retained. Unchanged runtime preflight now succeeds (process census, loopback HTTP, owned child, cached real PG16 cleanup). All21 implementation hashes match; direct unchanged identity31/31 and foundation17/17 pass. Direct retained check fails exit1 after protected/raw hash guards, G0 197/197 and G1-local48/web5/desktop9 pass: pinned Electron44.5.1 --version SIGABRT, reproduced directly, empty streams; crash Electron-2026-10-06-194138.ips aborts at HIServices _RegisterApplication/AppKit initialization. Complete foundation/retained raw logs embedded in JSON; identity output tool chunks348bcc/a288bb are diagnostic, not collector-owned raw streams. MCP loop_check and loop_note rejected by host approval policy never; no check job. Used documented CLI fallback for metadata only, no host approval/security changes. Current controller review timeout7200s differs from original600s and model has no per-review timeout; migrated max_repair_rounds5 must not override original exhausted2 rounds. V2 starts usage at zero; original v1 state/history retained separately and combined cumulative accounting remains unverified. Next: operator/controller recovery of unchanged native probe, compliant600s independent-review execution, originalrework/cumulative accounting and approved controller execution route. Then original controller checks/full raw evidence, all3 fresh independent registered reviews and actual final tester handoff. Task remains incomplete; no fullG1/PASS. Paid product API/new resources OFF; no protected sources/history/budget reset.",
+          "by": "agent",
+          "task": "g1_f02_final"
+        },
+        {
+          "at": "2026-10-06T15:16:43+00:00",
+          "kind": "evidence",
+          "text": "Controller job job-907e9b7248 passed all unchanged task commands outside sandbox: identity31/31, foundation17/17, G0197/197, G1local72/72 incl native Electron and Android bundle; 597 protected/88 raw and foundation42 guards pass. All21 implementation hashes match. Added complete controller-owned stdout/stderr copies with bytes/hash/path to docs/evidence/g1-f02-acceptance.json and additive MD turn2 section; all existing JSON fields/history unchanged. Current configured reviews each timeout_minutes10; latest human decision authorizes max_repair_rounds5 and fresh v2 accounting, v1 preserved as history. Review verdicts/final acceptance/actual final recipient acknowledgment remain pending.",
+          "by": "agent",
+          "task": "g1_f02_final",
+          "finding": "f-45a9404e9a"
+        },
+        {
+          "at": "2026-10-06T15:18:33+00:00",
+          "kind": "handoff",
+          "text": "Turn2: only added docs/evidence/g1-f02-acceptance.json/.md controller evidence; preserved all19 original JSON fields/history. All21 implementation hashes match. Both tasks controller-done (job-65fe99f781). loop_finish final job-fdfd19605d passes all3 unchanged acceptance commands: identity31/foundation17/G0197/G1local72 incl real Electron44.5.1 and Android bundle;597protected/88raw/foundation42 guards pass. Read complete latest raw streams at .loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-fdfd19605d/acceptance.{identity-behavior,foundation-behavior,retained-baselines}/{stdout,stderr}.log, not tails. JSON embeds6 earlier controller streams with hashes/bytes (job-907e9b7248), explicitly pre-index fingerprint. Next: fresh controller independent security/reviewer/acceptance, each timeout_minutes10; acceptance recipient must inspect current full evidence and acknowledge real final handoff. No independent pass/signature/COMPLETE claimed. Latest human decision authorizes5 v2 repair rounds/fresh v2 accounting; v1 history retained. Product paid APIs/new resourcesOFF, fullG1/productionexternals pending. Do not rerun native checks inside sandbox.",
+          "by": "agent",
+          "task": "g1_f02_final"
+        }
+      ],
+      "created_at": "2026-10-06T10:23:01+00:00",
+      "summary": "Additive final evidence indexes now include six complete raw controller streams from job-907e9b7248, exact log paths/hash/bytes, unchanged21 implementation hashes and later authorized v2 policy. Original fields/history preserved. All three unchanged controller commands passed; submitting for controller rerun. Three independent600s reviews and actual final recipient acknowledgment remain required at the goal gates; no final acceptance claim.",
+      "title": "acceptance: g1_f02_final",
+      "detail": "Accept only current G1-F02 localOIDC/realPGidentity/approval/audit increment: unchangedoriginalregressions plus newmeaningful realnetwork/PG tests, collector-owned complete review-evidence, fresh original3independent600ssecurity/code/acceptance reviews and realhandoff. Truthfulnewindexes only, no prefilled selfpass/fullG1 claim; preserved allhistoryandcumulativecap.\n\nCriteria:\n- {\"id\": \"oidc-network-and-token\", \"description\": \"F02-01/02: independent test-only loopbackIdPprocess, code+S256PKCE/state/nonce one-use replaydenials; fixedissuer/audience/key/algorithm/type/time validation; no token-minted authority.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"current-pg-authentication\", \"description\": \"F02-02/03/05: originalboundauthenticatinglookup remains; additiveUoWlocks currentPGsession in same transaction as lockedDBauthority. Currentidentity/membership/payer/lifecycle revocation and expiry/race denied; narrowserviceprincipal cannotimpersonate humanapprover.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"exact-approval-audit-audience\", \"description\": \"F02-03/04/05: immutabletarget/digest/artifact/revisions/independentactor/expiry/sourceaudience exactbinding; self/stale/crossScope/revokedapproval deny; concurrentconsumption/dedup/rollback, auditfailclosed and lostCOMMITackoriginalkeylookup withoutreplay.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"migration-compatibility\", \"description\": \"F02-06: separateidentitymigrationledger keeps old foundation1/2ledger intact; narrowroles/nonowner/nonsuperuser/nonBYPASSRLS, workers nofunctions/tables and controllercannotrewriteaudit. Meaningful actualPGpermissiontests.\", \"check_ids\": [\"identity-behavior\"]}\n- {\"id\": \"prior-baselines\", \"description\": \"Original597protected/raw88 and foundation42source hashes immutable; originalG0197/G1local72/foundation17 regression checks unchanged; no paidcalls/historyreset.\", \"check_ids\": [\"identity-behavior\", \"foundation-behavior\", \"retained-baselines\"]}\n- {\"id\": \"team-independent-security\", \"description\": \"Fresh actual independent team-independent-security assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.\", \"check_ids\": [\"team-independent-security\"]}\n- {\"id\": \"team-independent-reviewer\", \"description\": \"Fresh actual independent team-independent-reviewer assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.\", \"check_ids\": [\"team-independent-reviewer\"]}\n- {\"id\": \"team-independent-acceptance\", \"description\": \"Fresh actual independent team-independent-acceptance assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.\", \"check_ids\": [\"team-independent-acceptance\"]}\n\nOriginal contract: .loop/legacy-v1/tasks/g1_f02_final.json",
+      "role": "acceptance",
+      "depends_on": [
+        "g1_f02_identity"
+      ],
+      "checks": [
+        {
+          "id": "identity-behavior",
+          "argv": [
+            "node",
+            "g1-identity/scripts/check.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strictbuild actual independent loopbackIdP code+PKCE/state/nonce/token tests and realnonownerPostgreSQLcurrentauth/approval/audit/sourceaudience/revocationrace/rollback/unknowncommit. No skips/mocks for mandatoryintegration; originalfoundation42files hashchecked."
+        },
+        {
+          "id": "foundation-behavior",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence."
+        },
+        {
+          "id": "retained-baselines",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history."
+        }
+      ],
+      "updated_at": "2026-10-06T15:17:22+00:00",
+      "claim": {
+        "summary": "Additive final evidence indexes now include six complete raw controller streams from job-907e9b7248, exact log paths/hash/bytes, unchanged21 implementation hashes and later authorized v2 policy. Original fields/history preserved. All three unchanged controller commands passed; submitting for controller rerun. Three independent600s reviews and actual final recipient acknowledgment remain required at the goal gates; no final acceptance claim.",
+        "at": "2026-10-06T15:16:43+00:00"
+      },
+      "finished_at": "2026-10-06T15:17:22+00:00"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-rn-remote",
+      "kind": "question",
+      "text": "记录实际远端独立测试机安装部署及新增收费限制答复",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "它是独立测试机，允许安装和部署；新增收费资源仍先确认",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    },
+    {
+      "id": "q-rn-model",
+      "kind": "question",
+      "text": "记录实际收费模型关闭答复",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "先保持关闭，完成适配代码后再确认（推荐）",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    },
+    {
+      "id": "q-rn-identity-devices",
+      "kind": "question",
+      "text": "记录实际本机OIDC和模拟器答复",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "先用本机 OIDC 测试服务和现有模拟器（推荐）",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    },
+    {
+      "id": "q-rn-recovery",
+      "kind": "question",
+      "text": "记录仅纠正受监督执行能力且保留全部记录预算的批准",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "批准这份恢复方案，仅修正本机开发执行能力为实际具备的受监督执行。保留原批次、全部历史、已完成成果、失败记录和累计用量；不得通过新批次重置预算。保留 PostgreSQL 权限与隔离测试、三项 600 秒独立评审及完整 G1 隔离资格要求。收费模型和新增收费资源继续关闭。后续计划冻结前先实际能力探针核对运行能力、评估入口和有效预算。",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    },
+    {
+      "id": "q-rn-observation-supplement",
+      "kind": "question",
+      "text": "记录仅补充一次180秒观测的本轮批准",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "，仅补充一次 180 秒观测 ok",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    },
+    {
+      "id": "q-g1-f02-cumulative-allowance",
+      "kind": "question",
+      "text": "是否批准为已备妥的 G1-F02 方案追加10,140秒控制器累计额度，将原队列上限从10,197调整为20,337秒？全部历史、已用897秒、原检查、三项600秒独立评审和完整复验储备保留，收费产品API/新增收费资源继续关闭。当前框架尚无原队列受审扩额入口；即使批准，也须该官方能力可用后才能实施，不创建新队列或直接修改账本。",
+      "options": [],
+      "blocking": false,
+      "asked_at": "2026-10-06T10:23:01+00:00",
+      "by": "v1",
+      "action": null,
+      "answer": "增加无线秒控制器额度",
+      "answered_at": "2026-10-06T10:23:01+00:00",
+      "answered_by": "v1 user"
+    }
+  ],
+  "checks": {
+    "g1_f02_final.identity-behavior": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 15424,
+      "started_at": "2026-10-06T15:16:43+00:00",
+      "finished_at": "2026-10-06T15:16:59+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-65fe99f781/g1_f02_final.identity-behavior",
+      "tail": "…nce\n  ---\n  duration_ms: 101.895334\n  type: 'test'\n  ...\n# Subtest: OIDC/exact redirect, S256-only, password and required state nonce denials\nok 24 - OIDC/exact redirect, S256-only, password and required state nonce denials\n  ---\n  duration_ms: 5.506625\n  type: 'test'\n  ...\n# Subtest: OIDC/code one use, wrong verifier, duplicate and expired grant denials\nok 25 - OIDC/code one use, wrong verifier, duplicate and expired grant denials\n  ---\n  duration_ms: 1116.039834\n  type: 'test'\n  ...\n# Subtest: OIDC/RP checks callback state and cryptographically bound nonce before API use\nok 26 - OIDC/RP checks callback state and cryptographically bound nonce before API use\n  ---\n  duration_ms: 16.027084\n  type: 'test'\n  ...\n# Subtest: OIDC/RP consumes state nonce transaction across different codes sequentially and concurrently\nok 27 - OIDC/RP consumes state nonce transaction across different codes sequentially and concurrently\n  ---\n  duration_ms: 10.60075\n  type: 'test'\n  ...\n# Subtest: OIDC/RP unregistered expired and exact bindings fail closed and consume before exchange\nok 28 - OIDC/RP unregistered expired and exact bindings fail closed and consume before exchange\n  ---\n  duration_ms: 1139.764458\n  type: 'test'\n  ...\n# Subtest: OIDC/strict signed issuer audience key type algorithm expiry and malformed rejection\nok 29 - OIDC/strict signed issuer audience key type algorithm expiry and malformed rejection\n  ---\n  duration_ms: 4.081916\n  type: 'test'\n  ...\n# Subtest: OIDC/original bound scope lookup revalidates and HTTP refuses wire authority\nok 30 - OIDC/original bound scope lookup revalidates and HTTP refuses wire authority\n  ---\n  duration_ms: 12.013375\n  type: 'test'\n  ...\n# Subtest: OIDC/valid-signature-time-and-key-policy-negative-cases\nok 31 - OIDC/valid-signature-time-and-key-policy-negative-cases\n  ---\n  duration_ms: 32.703834\n  type: 'test'\n  ...\n1..31\n# tests 31\n# suites 0\n# pass 31\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 11234.122291\noriginal-foundation-migration-compatibility: versions1/2 unchanged after identity migration\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"ca30175a-d2d6-45d8-911e-2df2db38c2f7\",\"containerId\":\"b0b48561a78753ffb56fef41f96e440fac34268ebc0499641de2494a222e2dc7\",\"removed\":true}\nfoundation-source-hashes: 42 accepted files unchanged\nG1-F02 local synthetic identity qualification only; paid model API OFF; formal SSO, human approval qualification, physical devices, signing, remote containment and full G1 remain pending.\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:d6f4dc595621f60ef0fef4c8",
+      "actor": "agent"
+    },
+    "g1_f02_final.foundation-behavior": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 2795,
+      "started_at": "2026-10-06T15:16:59+00:00",
+      "finished_at": "2026-10-06T15:17:01+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-65fe99f781/g1_f02_final.foundation-behavior",
+      "tail": "…tic preparation only and cannot widen through config\n  ---\n  duration_ms: 0.123792\n  type: 'test'\n  ...\n# actual-postgres-role-and-version: nonowner/nonsuperuser/nonBYPASSRLS measured\n# Subtest: PG/nonprivileged-role\nok 5 - PG/nonprivileged-role\n  ---\n  duration_ms: 135.141083\n  type: 'test'\n  ...\n# Subtest: PG/worker-no-grants\nok 6 - PG/worker-no-grants\n  ---\n  duration_ms: 10.767959\n  type: 'test'\n  ...\n# Subtest: PG/missing-scope\nok 7 - PG/missing-scope\n  ---\n  duration_ms: 1.571417\n  type: 'test'\n  ...\n# Subtest: PG/cross-tenant-space\nok 8 - PG/cross-tenant-space\n  ---\n  duration_ms: 28.413959\n  type: 'test'\n  ...\n# Subtest: PG/current-membership-payer\nok 9 - PG/current-membership-payer\n  ---\n  duration_ms: 24.154\n  type: 'test'\n  ...\n# Subtest: PG/current-session-expiry-revocation\nok 10 - PG/current-session-expiry-revocation\n  ---\n  duration_ms: 52.236791\n  type: 'test'\n  ...\n# Subtest: PG/reused-pool-reset\nok 11 - PG/reused-pool-reset\n  ---\n  duration_ms: 6.536083\n  type: 'test'\n  ...\n# Subtest: PG/atomic-outbox\nok 12 - PG/atomic-outbox\n  ---\n  duration_ms: 15.606709\n  type: 'test'\n  ...\n# Subtest: PG/idempotency-conflict\nok 13 - PG/idempotency-conflict\n  ---\n  duration_ms: 14.570208\n  type: 'test'\n  ...\n# Subtest: PG/revision-concurrency\nok 14 - PG/revision-concurrency\n  ---\n  duration_ms: 23.29175\n  type: 'test'\n  ...\n# Subtest: PG/rollback-reopen\nok 15 - PG/rollback-reopen\n  ---\n  duration_ms: 30.602125\n  type: 'test'\n  ...\n# Subtest: PG/unknown-commit-lookup\nok 16 - PG/unknown-commit-lookup\n  ---\n  duration_ms: 19.836\n  type: 'test'\n  ...\n# migration-compatibility and failure-forward-recovery measured on actual PostgreSQL\n# Subtest: PG/migration-recovery\nok 17 - PG/migration-recovery\n  ---\n  duration_ms: 12.242834\n  type: 'test'\n  ...\n1..17\n# tests 17\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 469.143417\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"6715e70e-9b95-40db-b5cd-5146054fabf1\",\"containerId\":\"9ccdeb01440e8a10d9574b4a4d96ca2fbb4b489819fdfeb787ca298e6b8a79c4\",\"removed\":true}\n{\"measurement\":\"remote-readonly-system-smoke\",\"host\":\"217.216.75.50:34819\",\"observed\":\"Linux 6.8.0-106-generic x86_64\\ndocker-version\\n29.1.1\\ncgroup-filesystem\\ncgroup2fs\\ncpu-memory\\n4\\nMemTotal:        8131808 kB\",\"readOnly\":true,\"workerIsolationQualified\":false,\"productionQualified\":false}\nFoundation strict build, actual owned PostgreSQL behavior and bounded read-only system probe passed. Full G1 qualification remains pending.\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:d6f4dc595621f60ef0fef4c8",
+      "actor": "agent"
+    },
+    "g1_f02_final.retained-baselines": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 20238,
+      "started_at": "2026-10-06T15:17:01+00:00",
+      "finished_at": "2026-10-06T15:17:22+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-65fe99f781/g1_f02_final.retained-baselines",
+      "tail": "…d SDK keep the local profile and reject external transport\n  ---\n  duration_ms: 0.203292\n  type: 'test'\n  ...\n# Subtest: Actual installed native polyfill exposes default shared SDK cache query failure\nok 9 - Actual installed native polyfill exposes default shared SDK cache query failure\n  ---\n  duration_ms: 6.466459\n  type: 'test'\n  ...\n# Subtest: Mobile adapter keeps actual native polyfill URLs, auth, command identity and readonly recovery intact\nok 10 - Mobile adapter keeps actual native polyfill URLs, auth, command identity and readonly recovery intact\n  ---\n  duration_ms: 9.422875\n  type: 'test'\n  ...\n1..10\n# tests 10\n# suites 0\n# pass 10\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 63.075958\nStarting Metro Bundler\n\nwarning: Bundler cache is empty, rebuilding (this may take a minute)\nAndroid ../../../../../Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.pnpm/expo@55.0.31_@babel+core@7.29.7_@expo+dom-webview@55.0.6_react-native@0.83.10_@babel+co_f6ad1e3a7c53dd8150d1c914d54ec2c8/node_modules/expo/AppEntry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)\nAndroid Bundled 3079ms ../../../../../Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.pnpm/expo@55.0.31_@babel+core@7.29.7_@expo+dom-webview@55.0.6_react-native@0.83.10_@babel+co_f6ad1e3a7c53dd8150d1c914d54ec2c8/node_modules/expo/AppEntry.js (575 modules)\n\n› android bundles (1):\n_expo/static/js/android/AppEntry-ef607db5cc0a7dfb26d0d341ee05a607.hbc (1.7MB)\n\n› Files (1):\nmetadata.json (153B)\n\nExported: /Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.cache/android-bundle\nMobile: strict TypeScript, 10 actual helper/shared SDK component tests and Android Metro bundle passed. Native installation and UI interactions remain separate mandatory checks.\nUI evidence: current source, actual three-client twelve-flow records and retained artifact bytes verified. This validator does not execute or self-attest a UI journey.\n{\"check\":\"actual-local-http-load\",\"taskId\":\"task-cb5494be-47a5-404c-9284-205e1964538c\",\"candidateDigest\":\"sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e\",\"samples\":100,\"p95Ms\":110.40712500000001,\"errors\":0,\"productionSLAQualified\":false}\nG1-local final: current-stage build and actual behavioral checks passed; UI/qualification require their actual evidence.\n{\"protectedFiles\":597,\"rawFiles\":88,\"oldHistory\":\"retained externally; host cost unknown; no reset\",\"checks\":[\"original-g0-regression\",\"original-g1-local-regression\"]}\n\n[stderr]\n\n  g1-local/mobile/node_modules/.cache/test-state.mjs  2.6kb\n\n⚡ Done in 1ms\n\n  g1-local/mobile/node_modules/.cache/test-api.mjs  14.9kb\n\n⚡ Done in 2ms\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:d6f4dc595621f60ef0fef4c8",
+      "actor": "agent"
+    },
+    "acceptance.identity-behavior": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 17643,
+      "started_at": "2026-10-06T15:30:59+00:00",
+      "finished_at": "2026-10-06T15:31:17+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-748d62d922/acceptance.identity-behavior",
+      "tail": "…ovenance\n  ---\n  duration_ms: 67.841333\n  type: 'test'\n  ...\n# Subtest: OIDC/exact redirect, S256-only, password and required state nonce denials\nok 28 - OIDC/exact redirect, S256-only, password and required state nonce denials\n  ---\n  duration_ms: 5.3055\n  type: 'test'\n  ...\n# Subtest: OIDC/code one use, wrong verifier, duplicate and expired grant denials\nok 29 - OIDC/code one use, wrong verifier, duplicate and expired grant denials\n  ---\n  duration_ms: 1111.605417\n  type: 'test'\n  ...\n# Subtest: OIDC/RP checks callback state and cryptographically bound nonce before API use\nok 30 - OIDC/RP checks callback state and cryptographically bound nonce before API use\n  ---\n  duration_ms: 15.073625\n  type: 'test'\n  ...\n# Subtest: OIDC/RP consumes state nonce transaction across different codes sequentially and concurrently\nok 31 - OIDC/RP consumes state nonce transaction across different codes sequentially and concurrently\n  ---\n  duration_ms: 13.207\n  type: 'test'\n  ...\n# Subtest: OIDC/RP unregistered expired and exact bindings fail closed and consume before exchange\nok 32 - OIDC/RP unregistered expired and exact bindings fail closed and consume before exchange\n  ---\n  duration_ms: 1140.129584\n  type: 'test'\n  ...\n# Subtest: OIDC/strict signed issuer audience key type algorithm expiry and malformed rejection\nok 33 - OIDC/strict signed issuer audience key type algorithm expiry and malformed rejection\n  ---\n  duration_ms: 4.165292\n  type: 'test'\n  ...\n# Subtest: OIDC/original bound scope lookup revalidates and HTTP refuses wire authority\nok 34 - OIDC/original bound scope lookup revalidates and HTTP refuses wire authority\n  ---\n  duration_ms: 11.947083\n  type: 'test'\n  ...\n# Subtest: OIDC/valid-signature-time-and-key-policy-negative-cases\nok 35 - OIDC/valid-signature-time-and-key-policy-negative-cases\n  ---\n  duration_ms: 24.608084\n  type: 'test'\n  ...\n1..35\n# tests 35\n# suites 0\n# pass 35\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 13435.234625\noriginal-foundation-migration-compatibility: versions1/2 unchanged after identity migration\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"0222b9b7-052b-425e-8938-6910afd17608\",\"containerId\":\"93dd1b2ba2c09f6fa197c7c63c01e1ada7b4c3188f38474be1a045747bb5d4be\",\"removed\":true}\nfoundation-source-hashes: 42 accepted files unchanged\nG1-F02 local synthetic identity qualification only; paid model API OFF; formal SSO, human approval qualification, physical devices, signing, remote containment and full G1 remain pending.\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "actor": "agent"
+    },
+    "acceptance.foundation-behavior": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 2488,
+      "started_at": "2026-10-06T15:31:17+00:00",
+      "finished_at": "2026-10-06T15:31:19+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-748d62d922/acceptance.foundation-behavior",
+      "tail": "…c preparation only and cannot widen through config\n  ---\n  duration_ms: 0.11275\n  type: 'test'\n  ...\n# actual-postgres-role-and-version: nonowner/nonsuperuser/nonBYPASSRLS measured\n# Subtest: PG/nonprivileged-role\nok 5 - PG/nonprivileged-role\n  ---\n  duration_ms: 135.545708\n  type: 'test'\n  ...\n# Subtest: PG/worker-no-grants\nok 6 - PG/worker-no-grants\n  ---\n  duration_ms: 10.645083\n  type: 'test'\n  ...\n# Subtest: PG/missing-scope\nok 7 - PG/missing-scope\n  ---\n  duration_ms: 2.529208\n  type: 'test'\n  ...\n# Subtest: PG/cross-tenant-space\nok 8 - PG/cross-tenant-space\n  ---\n  duration_ms: 26.654542\n  type: 'test'\n  ...\n# Subtest: PG/current-membership-payer\nok 9 - PG/current-membership-payer\n  ---\n  duration_ms: 22.259334\n  type: 'test'\n  ...\n# Subtest: PG/current-session-expiry-revocation\nok 10 - PG/current-session-expiry-revocation\n  ---\n  duration_ms: 49.40275\n  type: 'test'\n  ...\n# Subtest: PG/reused-pool-reset\nok 11 - PG/reused-pool-reset\n  ---\n  duration_ms: 7.137667\n  type: 'test'\n  ...\n# Subtest: PG/atomic-outbox\nok 12 - PG/atomic-outbox\n  ---\n  duration_ms: 12.877792\n  type: 'test'\n  ...\n# Subtest: PG/idempotency-conflict\nok 13 - PG/idempotency-conflict\n  ---\n  duration_ms: 13.291375\n  type: 'test'\n  ...\n# Subtest: PG/revision-concurrency\nok 14 - PG/revision-concurrency\n  ---\n  duration_ms: 19.437416\n  type: 'test'\n  ...\n# Subtest: PG/rollback-reopen\nok 15 - PG/rollback-reopen\n  ---\n  duration_ms: 21.14225\n  type: 'test'\n  ...\n# Subtest: PG/unknown-commit-lookup\nok 16 - PG/unknown-commit-lookup\n  ---\n  duration_ms: 16.9425\n  type: 'test'\n  ...\n# migration-compatibility and failure-forward-recovery measured on actual PostgreSQL\n# Subtest: PG/migration-recovery\nok 17 - PG/migration-recovery\n  ---\n  duration_ms: 10.172625\n  type: 'test'\n  ...\n1..17\n# tests 17\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 430.474458\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"8372e6ee-9d22-4361-a350-96cd91d14838\",\"containerId\":\"d53c5f591056ef610093b0348a25de5c162b0d50f10a3fede53ef802562101b1\",\"removed\":true}\n{\"measurement\":\"remote-readonly-system-smoke\",\"host\":\"217.216.75.50:34819\",\"observed\":\"Linux 6.8.0-106-generic x86_64\\ndocker-version\\n29.1.1\\ncgroup-filesystem\\ncgroup2fs\\ncpu-memory\\n4\\nMemTotal:        8131808 kB\",\"readOnly\":true,\"workerIsolationQualified\":false,\"productionQualified\":false}\nFoundation strict build, actual owned PostgreSQL behavior and bounded read-only system probe passed. Full G1 qualification remains pending.\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "actor": "agent"
+    },
+    "acceptance.retained-baselines": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 19673,
+      "started_at": "2026-10-06T15:31:19+00:00",
+      "finished_at": "2026-10-06T15:31:39+00:00",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-748d62d922/acceptance.retained-baselines",
+      "tail": "…ared SDK keep the local profile and reject external transport\n  ---\n  duration_ms: 0.188333\n  type: 'test'\n  ...\n# Subtest: Actual installed native polyfill exposes default shared SDK cache query failure\nok 9 - Actual installed native polyfill exposes default shared SDK cache query failure\n  ---\n  duration_ms: 10.414125\n  type: 'test'\n  ...\n# Subtest: Mobile adapter keeps actual native polyfill URLs, auth, command identity and readonly recovery intact\nok 10 - Mobile adapter keeps actual native polyfill URLs, auth, command identity and readonly recovery intact\n  ---\n  duration_ms: 10.9695\n  type: 'test'\n  ...\n1..10\n# tests 10\n# suites 0\n# pass 10\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 67.651\nStarting Metro Bundler\n\nwarning: Bundler cache is empty, rebuilding (this may take a minute)\nAndroid ../../../../../Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.pnpm/expo@55.0.31_@babel+core@7.29.7_@expo+dom-webview@55.0.6_react-native@0.83.10_@babel+co_f6ad1e3a7c53dd8150d1c914d54ec2c8/node_modules/expo/AppEntry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)\nAndroid Bundled 2906ms ../../../../../Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.pnpm/expo@55.0.31_@babel+core@7.29.7_@expo+dom-webview@55.0.6_react-native@0.83.10_@babel+co_f6ad1e3a7c53dd8150d1c914d54ec2c8/node_modules/expo/AppEntry.js (575 modules)\n\n› android bundles (1):\n_expo/static/js/android/AppEntry-ef607db5cc0a7dfb26d0d341ee05a607.hbc (1.7MB)\n\n› Files (1):\nmetadata.json (153B)\n\nExported: /Users/super/Documents/ai/agent-fabric/g1-local/mobile/node_modules/.cache/android-bundle\nMobile: strict TypeScript, 10 actual helper/shared SDK component tests and Android Metro bundle passed. Native installation and UI interactions remain separate mandatory checks.\nUI evidence: current source, actual three-client twelve-flow records and retained artifact bytes verified. This validator does not execute or self-attest a UI journey.\n{\"check\":\"actual-local-http-load\",\"taskId\":\"task-cb5494be-47a5-404c-9284-205e1964538c\",\"candidateDigest\":\"sha256:b901f53b806e2499035704037d000a023dd4436f5a98921db161bdc7ec50e85e\",\"samples\":100,\"p95Ms\":110.40712500000001,\"errors\":0,\"productionSLAQualified\":false}\nG1-local final: current-stage build and actual behavioral checks passed; UI/qualification require their actual evidence.\n{\"protectedFiles\":597,\"rawFiles\":88,\"oldHistory\":\"retained externally; host cost unknown; no reset\",\"checks\":[\"original-g0-regression\",\"original-g1-local-regression\"]}\n\n[stderr]\n\n  g1-local/mobile/node_modules/.cache/test-state.mjs  2.6kb\n\n⚡ Done in 1ms\n\n  g1-local/mobile/node_modules/.cache/test-api.mjs  14.9kb\n\n⚡ Done in 4ms\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "actor": "agent"
+    }
+  },
+  "reviews": {
+    "team-independent-security": {
+      "verdict": "pass",
+      "findings": "PASS for exact controller candidate git:a944e0961ac8289d20b7e0b3, scoped only to the additive local G1-F02 increment. No unresolved blocking security finding. Independent read-only assessment; no file modifications or implementing fixes.\n\nSEC-F02-003 remediation verified at g1-identity/src/approval-repository.ts:21-27,42-51: consume and lookup share tenant/Space/executor/original-key transaction advisory lock before receipt access, exclude digest from namespace, hold lock through COMMIT/ROLLBACK, and read receipt in a subsequent READ COMMITTED statement. Failed lock acquisition remains UNKNOWN_COMMIT/unknown. g1-identity/tests/approval-audience.test.ts:97-143 actually observes pg_blocking_pids against the original consume backend while all receipt/audit/outbox writes are uncommitted; commit returns the identical receipt, rollback yields safe absence and zero effects, timeout retains unknown then recovers the receipt. Different key/executor namespaces are independent and changed digest conflicts.\n\nSEC-F02-004 remediation verified at g1-identity/src/http-service.ts:23-30 and src/contracts.ts:107-111: actual FoundationError/IdentityError UNKNOWN_COMMIT returns503 typed unknown with original-key POST lookup and replayAllowed=false, without secrets or exception text. g1-identity/tests/approval-audience.test.ts:145-185 performs separate-process IdP/code+PKCE login, real current PG authentication and real HTTP request after durable COMMIT with deliberately lost acknowledgement;503 is preserved, original lookup returns exact durable receipt, only one audit/outbox/receipt exists, and nonallowlisted/spoofed errors stay403.\n\nRechecked independent loopback IdP/private process keys, bounded opaque RP state/nonce transactions consumed before await, fixed issuer/audience/key/algorithm/type/time/signature validation and token provenance; current PostgreSQL identity/session/membership/payer/lifecycle and original authenticating lookup alongside locked UoW; narrow nonowner roles/service principal exclusion from human approval; exact immutable approval and current full source/destination audience/payer binding; fresh all-party expiry checks after locks/effects, atomic rollback, append-only audit/receipt/outbox and deduplication. Mandatory actual network/PG regressions contain meaningful negative/expiry/race/partial-write assertions; synthetic/mocked authority used for boundary unit coverage is not relied on as PG evidence.\n\nRead all six complete final controller-owned stdout/stderr logs from job-748d62d922, including all1742 retained stdout lines. Controller state links unchanged acceptance commands and exit0 results to this exact fingerprint: identity35/35, foundation17/17, G0197/197 and G1local72/72, no failures/skips/TODO; native Electron44.5.1 and Android bundle pass outside sandbox. Independently recalculated hashes for all21 current outputs,597protected files including88raw, and42foundation files: zero mismatches. Original migrated spec, workflow, task contracts and answers are byte-identical to their git originals; all18 pre-migration HEAD evidence fields remain unchanged; six repaired embedded raw copies match original paths/bytes/hashes. Complete current final evidence is present, not replaced by old passes or log tails.\n\nLimitations: this verdict grants only local synthetic identity/approval qualification. Formal enterprise SSO, real human judgment, physical devices/signing, real models, enforced remote/OS isolation, full G1 and G2–G5 stay pending. Product paid APIs/new paid resources remain OFF. Other independent reviews, final recipient acknowledgment and final controller completion are still required; no whole-product completion or host-issued evaluator signature asserted.",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "at": "2026-10-06T15:36:11+00:00",
+      "by": "reviewer"
+    },
+    "team-independent-reviewer": {
+      "verdict": "pass",
+      "findings": "PASS for exact controller candidate git:a944e0961ac8289d20b7e0b3, limited to the additive local G1-F02 increment. No blocking findings. Independent read-only assessment, no files changed or agents started. Original F02-01..07 contracts/actual decisions and reviewer procedure examined. g1-identity/src/test-idp.ts:68-103 registers bounded opaque RP transactions and consumes before awaits; token-verifier.ts:17-65 validates pinned signature/key/issuer/audience/type/time and token provenance. authenticated-uow.ts:8-16 preserves foundation authenticated authority and locks/rechecks current sessions within the business transaction. migrations/0003_identity_approvals.sql:23-49 rechecks all parties at a fresh DB time after locks; approval-repository.ts:38-49 repeats party/approval expiry after writes. Current audience/source and both payer authorization locks, immutable exact target and three independent parties, append-only audit/receipt/outbox and rollback boundaries inspected. approval-repository.ts:21-27,42-51 uses the same tenant/Space/executor/original-key xact lock before consume and lookup receipt access, excluding digest, retained through commit/rollback; lookup timeout remains unknown. http-service.ts:23-29 preserves actual FoundationError UNKNOWN_COMMIT as503 with original-key lookup and replayAllowed=false, without exposing internal details. tests/approval-audience.test.ts:96-199 independently observes real PG backend blocking, invisible uncommitted writes, commit/rollback/timeout outcomes, exact original receipt and zero rollback effects; real HTTP/separate-process OIDC/PKCE lost-ack regression proves exactly one durable audit/outbox/receipt and denies spoofed/nonallowlisted errors. Complete six latest collector streams job-748d62d922 inspected, including retained stdout lines1..1742 and stderr: identity35/foundation17/G0197/G1local72, native Electron44.5.1/Android, zero failure/skip/TODO; all3 controller exit0 checks and verification bind to assigned fingerprint. Independent SHA256 checks:21 current outputs,597protected including88raw,42foundation:zero mismatches. All18 original HEAD evidence fields and original migrated spec/plan/workflow/questions/contracts/engine bytes unchanged; six repaired embedded raw copies match original hash/size/bytes. Review is based on current collector evidence and source assertions, not a sandbox live PG/GUI rerun or historical pass reuse. Fresh independent acceptance/current final recipient acknowledgment and controller completion remain required. Formal enterprise SSO, real human approval judgment, physical devices/signing, real models, protected remote/OS runtime, fullG1 and G2-G5 remain pending; paid product APIs/new paid resources OFF.",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "at": "2026-10-06T15:40:07+00:00",
+      "by": "reviewer"
+    },
+    "team-independent-acceptance": {
+      "verdict": "pass",
+      "findings": "PASS for exact controller fingerprint git:a944e0961ac8289d20b7e0b3, limited to the additive local G1-F02 increment. No blocking acceptance findings. This is an independent read-only assessment; no files modified or other agents started.\n\nRequirement/evidence assessment:\nF02-01 — accepted locally. g1-identity/src/test-idp.ts:13-59 and scripts/test-idp-process.mjs:1-12 implement a distinct loopback synthetic IdP process whose private signing key stays in that process, fixed client/redirect and one-use bounded authorization code with S256 PKCE. test-idp.ts:68-103 registers opaque bounded RP state/nonce transactions and consumes them synchronously before exchange. tests/oidc-network.test.ts:15-76 performs actual independent-process HTTP exchanges, sequential/concurrent reuse, forged/expired handles, exact-binding and failed-exchange denials.\nF02-02 — accepted locally. token-verifier.ts:17-65 validates actual pinned signature/key/algorithm/type/issuer/audience/time/nonce and opaque token provenance; current-authority.ts:5-26 maps trusted issuer/subject/session through current PG and retains the original authenticating lookup. authenticated-uow.ts:6-16 adds identity/session locks and fresh expiry checks inside the original foundation transaction. Real token-to-PG and current membership/payer/lifecycle/session-revocation tests are present in tests/identity-postgres.test.ts:40-56. The original foundation scope and locked controller_authority paths remain intact.\nF02-03 — accepted locally. migrations/0003_identity_approvals.sql:16-23,52-78 maintains authoritative current identity and narrow IdP/controller/worker permissions; source/destination Spaces, complete destination audience, source grants and both payers are locked and bound. audience.ts:8-12 and approval-repository.ts:33-49 require current authorization and prohibit a service principal from supplying human approval. Real PG permission, source authorization, payer/revision and two-direction revocation races contain denial and zero-effect assertions.\nF02-04 — accepted locally. approval-repository.ts:7-12,33-49 binds immutable tenant/Space/task/run/operation/target/action/args/artifact/revisions/audience/limits/expiry and three distinct parties, atomically consumes approval with append-only audit/outbox/receipt and deduplicates the original key. Tests exercise changed fields, concurrent consume, revoked parties, real partial-write failures and late expiry rollback. SEC-F02-003 is repaired at approval-repository.ts:21-27,42-51: consume and lookup use the same tenant/Space/executor/original-key transaction lock before receipt access, exclude digest, hold through COMMIT/ROLLBACK, and lookup reads a fresh statement after the lock; unresolved timeout stays unknown. tests/approval-audience.test.ts:97-143 observes pg_blocking_pids against actual uncommitted consume, proves exact receipt after commit, safe absence/zero effects after rollback, timeout-unknown and later recovery. SEC-F02-004 is repaired at http-service.ts:23-30: actual FoundationError UNKNOWN_COMMIT returns503 typed original-key recovery/replayAllowed=false. tests/approval-audience.test.ts:145-199 performs actual HTTP with separate-process IdP/code+PKCE and current PG identity, loses acknowledgement after durable COMMIT, recovers the exact original receipt and proves only one audit/outbox/receipt; spoofed and nonallowlisted errors remain denied.\nF02-05 — accepted locally. Same-transaction session/identity/authority locks, full current audience and immutable approval binding prevent navigation or caller claims from replacing the approved target. migrations/0003_identity_approvals.sql:23-49 rechecks all participants at a fresh DB timestamp after all locks; approval-repository.ts:38-49 rechecks parties/approval expiry after writes. Actual later-session-lock and post-partial-write expiry tests assert rollback and no durable effects. Audit is non-secret and joins its digest/approval ID to immutable exact binding; controller update/delete and worker access are denied.\nF02-06 — accepted. Inspected all six complete current collector-owned streams for job-748d62d922, including all1742 retained stdout lines and all stderr, rather than tails or historical passes. Controller verification and all3 exit0 checks bind to this exact fingerprint: identity35/35, foundation17/17, originalG0197/197 and G1local72/72, no fail/skip/TODO. Native Electron44.5.1 and Android bundle pass outside sandbox. Independently recomputed21 current output hashes,597 protected hashes including88 raw and42 foundation hashes:zero mismatches. All18 original HEAD evidence fields preserved; six repair embedded raw copies match original paths/bytes/hash/size;49 migrated original files byte-identical to HEAD. Original checks are unchanged, foundation ledger remains1/2, and separate identity ledger is3.\nF02-07 — this fresh independent acceptance assessment is delivered through the assigned controller review route. Existing fresh security/code passes are bound to the same fingerprint; all3 review limits remain600seconds. Actual human decision at2026-10-06T12:56:05 authorizes v2 repair/accounting and retains v1 history. No fabricated host signature or history deletion found. Final actual recipient inspection/acknowledgment and controller completion remain downstream required gates; this review does not assert either has occurred.\n\nFormal enterprise SSO, actual human independent judgment, physical phones, signing/distribution, real model region/credentials/billing, enforced remote/OS containment, full G1 and G2-G5 remain pending. Paid product APIs and new paid resources remain OFF. Acceptance grants only the local synthetic OIDC/current real PostgreSQL identity/approval/audit increment, with no deployment or whole-product qualification.",
+      "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+      "at": "2026-10-06T15:45:05+00:00",
+      "by": "reviewer"
+    }
+  },
+  "review_turn": null,
+  "jobs": {
+    "job-907e9b7248": {
+      "id": "job-907e9b7248",
+      "checks": [
+        "g1_f02_final.identity-behavior",
+        "g1_f02_final.foundation-behavior",
+        "g1_f02_final.retained-baselines"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:14:58+00:00",
+      "pid": 51691,
+      "identity": "51691@1791299698.44",
+      "purpose": null,
+      "finished_at": "2026-10-06T15:15:40+00:00",
+      "results": {
+        "g1_f02_final.identity-behavior": "pass",
+        "g1_f02_final.foundation-behavior": "pass",
+        "g1_f02_final.retained-baselines": "pass"
+      }
+    },
+    "job-65fe99f781": {
+      "id": "job-65fe99f781",
+      "checks": [
+        "g1_f02_final.identity-behavior",
+        "g1_f02_final.foundation-behavior",
+        "g1_f02_final.retained-baselines"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:16:43+00:00",
+      "pid": 52678,
+      "identity": "52678@1791299803.53",
+      "purpose": {
+        "type": "task",
+        "task": "g1_f02_final"
+      },
+      "finished_at": "2026-10-06T15:17:22+00:00",
+      "results": {
+        "g1_f02_final.identity-behavior": "pass",
+        "g1_f02_final.foundation-behavior": "pass",
+        "g1_f02_final.retained-baselines": "pass"
+      }
+    },
+    "job-fdfd19605d": {
+      "id": "job-fdfd19605d",
+      "checks": [
+        "acceptance.identity-behavior",
+        "acceptance.foundation-behavior",
+        "acceptance.retained-baselines"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:17:35+00:00",
+      "pid": 53441,
+      "identity": "53441@1791299855.78",
+      "purpose": {
+        "type": "acceptance"
+      },
+      "finished_at": "2026-10-06T15:18:15+00:00",
+      "results": {
+        "acceptance.identity-behavior": "pass",
+        "acceptance.foundation-behavior": "pass",
+        "acceptance.retained-baselines": "pass"
+      }
+    },
+    "job-b407fe7d5e": {
+      "id": "job-b407fe7d5e",
+      "checks": [
+        "acceptance.identity-behavior"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:27:13+00:00",
+      "pid": 60824,
+      "identity": "60824@1791300433.87",
+      "purpose": null,
+      "finished_at": "2026-10-06T15:27:32+00:00",
+      "results": {
+        "acceptance.identity-behavior": "pass"
+      }
+    },
+    "job-b9b53e9709": {
+      "id": "job-b9b53e9709",
+      "checks": [
+        "acceptance.identity-behavior",
+        "acceptance.foundation-behavior",
+        "acceptance.retained-baselines"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:28:33+00:00",
+      "pid": 61835,
+      "identity": "61835@1791300513.60",
+      "purpose": {
+        "type": "acceptance"
+      },
+      "finished_at": "2026-10-06T15:29:16+00:00",
+      "results": {
+        "acceptance.identity-behavior": "pass",
+        "acceptance.foundation-behavior": "pass",
+        "acceptance.retained-baselines": "pass"
+      }
+    },
+    "job-748d62d922": {
+      "id": "job-748d62d922",
+      "checks": [
+        "acceptance.identity-behavior",
+        "acceptance.foundation-behavior",
+        "acceptance.retained-baselines"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-06T15:30:59+00:00",
+      "pid": 63437,
+      "identity": "63437@1791300659.55",
+      "purpose": {
+        "type": "acceptance"
+      },
+      "finished_at": "2026-10-06T15:31:39+00:00",
+      "results": {
+        "acceptance.identity-behavior": "pass",
+        "acceptance.foundation-behavior": "pass",
+        "acceptance.retained-baselines": "pass"
+      }
+    }
+  },
+  "iteration": 7,
+  "repair_rounds": 1,
+  "stagnant_turns": 0,
+  "turns": [
+    {
+      "n": 1,
+      "action": "work",
+      "task": "g1_f02_final",
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T11:39:09+00:00",
+      "finished_at": "2026-10-06T11:44:24+00:00",
+      "seconds": 314.44,
+      "progress": true,
+      "events": [
+        "goal.pause",
+        "goal.blocked"
+      ],
+      "cost_usd": null,
+      "summary": "Recorded the handoff and blocked final acceptance.\n\nLocal checks passed: identity 31/31, foundation 17/17, G0 197/197. All 21 implementation hashes match.\n\nRemaining blockers: Electron’s native probe aborts; migrated review timeouts are 7,200 seconds instead of the required 600; cumulative accounting and original repair limits need reconciliation. Details are preserved in the [acceptance index](/Users/super/Documents/ai/agent-fabric/docs/evidence/g1-f02-acceptance.md). No acceptance certified.\n\nThe host rejected controller MCP mutations because approval policy is `never`. The CLI fallback recorded the handoff and blocker.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0001"
+    },
+    {
+      "n": 2,
+      "action": "work",
+      "task": "g1_f02_final",
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:14:34+00:00",
+      "finished_at": "2026-10-06T15:18:42+00:00",
+      "seconds": 247.443,
+      "progress": true,
+      "events": [
+        "check.result",
+        "check.result",
+        "check.result",
+        "job.finished",
+        "note.evidence",
+        "task.claimed",
+        "check.result",
+        "check.result",
+        "check.result",
+        "job.finished",
+        "goal.finish_claimed",
+        "check.result",
+        "check.result",
+        "check.result",
+        "job.finished"
+      ],
+      "cost_usd": null,
+      "summary": "Both tasks are verified. All three controller acceptance checks passed, including Electron outside the sandbox.\n\nComplete logs and handoff are recorded; existing history is preserved. The controller now proceeds to three independent 600-second reviews. Final acceptance remains pending.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0002"
+    },
+    {
+      "n": 3,
+      "action": "review",
+      "task": null,
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:18:43+00:00",
+      "finished_at": "2026-10-06T15:24:21+00:00",
+      "seconds": 338.171,
+      "progress": true,
+      "events": [
+        "review.recorded"
+      ],
+      "cost_usd": null,
+      "summary": "Recorded **fail** for two blocking recovery defects:\n\n- [approval-repository.ts:41](/Users/super/Documents/ai/agent-fabric/g1-identity/src/approval-repository.ts:41): lookup can report `absent-safe` while consumption remains uncommitted.\n- [http-service.ts:23](/Users/super/Documents/ai/agent-fabric/g1-identity/src/http-service.ts:23): HTTP converts `UNKNOWN_COMMIT` into `UNAUTHORIZED`, hiding the reconciliation requirement.\n\nExisting controller checks pass. No files changed. The controller has queued repair and re-review.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0003"
+    },
+    {
+      "n": 4,
+      "action": "repair",
+      "task": null,
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:24:23+00:00",
+      "finished_at": "2026-10-06T15:32:08+00:00",
+      "seconds": 464.791,
+      "progress": true,
+      "events": [
+        "note.root_cause",
+        "check.result",
+        "job.finished",
+        "check.result",
+        "check.result",
+        "check.result",
+        "job.finished",
+        "note.evidence",
+        "goal.finish_claimed",
+        "check.result",
+        "check.result",
+        "goal.pause",
+        "goal.resume",
+        "check.result",
+        "job.finished"
+      ],
+      "cost_usd": null,
+      "summary": "Repaired both recovery defects: lookup now serializes with consume, and HTTP preserves `UNKNOWN_COMMIT` with original-key recovery instructions.\n\nController checks passed: identity 35/35, foundation 17/17, G0 197/197, and G1-local 72/72. Historical evidence and original checks remain intact.\n\nHandoff recorded. Fresh independent reviews and final acceptance remain pending.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0004"
+    },
+    {
+      "n": 5,
+      "action": "review",
+      "task": null,
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:32:09+00:00",
+      "finished_at": "2026-10-06T15:36:17+00:00",
+      "seconds": 248.035,
+      "progress": true,
+      "events": [
+        "review.recorded"
+      ],
+      "cost_usd": null,
+      "summary": "Recorded **pass** for independent security review of `git:a944e0961ac8289d20b7e0b3`.\n\nBoth recovery defects are fixed; complete controller evidence and preserved hashes verified. No files modified.\n\nCode and acceptance reviews remain pending. This pass covers local G1-F02 only.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0005"
+    },
+    {
+      "n": 6,
+      "action": "review",
+      "task": null,
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:36:18+00:00",
+      "finished_at": "2026-10-06T15:40:15+00:00",
+      "seconds": 236.869,
+      "progress": true,
+      "events": [
+        "review.recorded"
+      ],
+      "cost_usd": null,
+      "summary": "Recorded **pass** for independent code review of `git:a944e0961ac8289d20b7e0b3`.\n\nNo blocking findings. Complete controller logs, meaningful race/recovery tests, and preserved hashes verified. No files modified.\n\nIndependent acceptance remains pending; this passes only the local G1-F02 increment.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0006"
+    },
+    {
+      "n": 7,
+      "action": "review",
+      "task": null,
+      "adapter": "codex",
+      "outcome": "ok",
+      "started_at": "2026-10-06T15:40:17+00:00",
+      "finished_at": "2026-10-06T15:45:13+00:00",
+      "seconds": 296.403,
+      "progress": true,
+      "events": [
+        "review.recorded"
+      ],
+      "cost_usd": null,
+      "summary": "Recorded **pass** for independent acceptance of `git:a944e0961ac8289d20b7e0b3`.\n\nNo blocking findings. Complete controller evidence, race/recovery assertions and preserved hashes verified. No files modified.\n\nAll three reviews passed; controller status is **done**. Acceptance covers local G1-F02 only; production and full G1 qualification remain pending.",
+      "log": ".loop/goals/agent-fabric-g1_f02_local_identity/runs/turn-0007"
+    }
+  ],
+  "usage": {
+    "turns": 7,
+    "cost_usd": 0.0,
+    "cost_complete": false,
+    "input_tokens": 12546481,
+    "output_tokens": 60378,
+    "agent_seconds": 2146.152
+  },
+  "started_at": "2026-10-06T11:39:09+00:00",
+  "notes": [
+    {
+      "at": "2026-10-06T10:23:01+00:00",
+      "kind": "handoff",
+      "by": "migration",
+      "text": "Migrated from Loop v1 on 2026-10-06T10:23:01+00:00. v1 team team-aa741c058dac4bbb8e530e859445a639.\nLast v1 supervisor report (supervisor-3c9afb5b3b134d1c9916c139fd40cd73, blocked): Both stopped workers’ repairs collected; strict compilation passed. Runtime preflight failed on process-census EPERM and Docker socket permission denial. Effective approval policy is never, so official review cannot be requested here. Exact recovery procedure retained in turn-2/PERMISSION-RECOVERY.md. No pending operations; original checks, independent reviews and handoff remain pending. No acceptance certified.\nRe-check any v1 'permission' blocker before trusting it: v1 used /bin/ps (setuid, refused in sandboxes) and treated macOS killpg EPERM on zombie-only groups as a permission error."
+    },
+    {
+      "at": "2026-10-06T11:44:08+00:00",
+      "kind": "handoff",
+      "text": "Turn 1: changed only docs/evidence/g1-f02-acceptance.json and .md by adding explicitly non-acceptance local diagnostics; every existing history field retained. Unchanged runtime preflight now succeeds (process census, loopback HTTP, owned child, cached real PG16 cleanup). All21 implementation hashes match; direct unchanged identity31/31 and foundation17/17 pass. Direct retained check fails exit1 after protected/raw hash guards, G0 197/197 and G1-local48/web5/desktop9 pass: pinned Electron44.5.1 --version SIGABRT, reproduced directly, empty streams; crash Electron-2026-10-06-194138.ips aborts at HIServices _RegisterApplication/AppKit initialization. Complete foundation/retained raw logs embedded in JSON; identity output tool chunks348bcc/a288bb are diagnostic, not collector-owned raw streams. MCP loop_check and loop_note rejected by host approval policy never; no check job. Used documented CLI fallback for metadata only, no host approval/security changes. Current controller review timeout7200s differs from original600s and model has no per-review timeout; migrated max_repair_rounds5 must not override original exhausted2 rounds. V2 starts usage at zero; original v1 state/history retained separately and combined cumulative accounting remains unverified. Next: operator/controller recovery of unchanged native probe, compliant600s independent-review execution, originalrework/cumulative accounting and approved controller execution route. Then original controller checks/full raw evidence, all3 fresh independent registered reviews and actual final tester handoff. Task remains incomplete; no fullG1/PASS. Paid product API/new resources OFF; no protected sources/history/budget reset.",
+      "by": "agent",
+      "task": "g1_f02_final"
+    },
+    {
+      "at": "2026-10-06T12:56:05+00:00",
+      "kind": "decision",
+      "by": "human",
+      "text": "Unblocked: 1) Electron 只在 Codex 沙箱内崩溃，沙箱外正常：用 loop_check 让控制器运行检查；2) 评审时限已改为 10 分钟；3) 我授权在 v2 下按 max_repair_rounds=5 重新开始返修和计费，v1 的累计用量只作历史记录。"
+    },
+    {
+      "at": "2026-10-06T15:16:43+00:00",
+      "kind": "evidence",
+      "text": "Controller job job-907e9b7248 passed all unchanged task commands outside sandbox: identity31/31, foundation17/17, G0197/197, G1local72/72 incl native Electron and Android bundle; 597 protected/88 raw and foundation42 guards pass. All21 implementation hashes match. Added complete controller-owned stdout/stderr copies with bytes/hash/path to docs/evidence/g1-f02-acceptance.json and additive MD turn2 section; all existing JSON fields/history unchanged. Current configured reviews each timeout_minutes10; latest human decision authorizes max_repair_rounds5 and fresh v2 accounting, v1 preserved as history. Review verdicts/final acceptance/actual final recipient acknowledgment remain pending.",
+      "by": "agent",
+      "task": "g1_f02_final",
+      "finding": "f-45a9404e9a"
+    },
+    {
+      "at": "2026-10-06T15:18:33+00:00",
+      "kind": "handoff",
+      "text": "Turn2: only added docs/evidence/g1-f02-acceptance.json/.md controller evidence; preserved all19 original JSON fields/history. All21 implementation hashes match. Both tasks controller-done (job-65fe99f781). loop_finish final job-fdfd19605d passes all3 unchanged acceptance commands: identity31/foundation17/G0197/G1local72 incl real Electron44.5.1 and Android bundle;597protected/88raw/foundation42 guards pass. Read complete latest raw streams at .loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-fdfd19605d/acceptance.{identity-behavior,foundation-behavior,retained-baselines}/{stdout,stderr}.log, not tails. JSON embeds6 earlier controller streams with hashes/bytes (job-907e9b7248), explicitly pre-index fingerprint. Next: fresh controller independent security/reviewer/acceptance, each timeout_minutes10; acceptance recipient must inspect current full evidence and acknowledge real final handoff. No independent pass/signature/COMPLETE claimed. Latest human decision authorizes5 v2 repair rounds/fresh v2 accounting; v1 history retained. Product paid APIs/new resourcesOFF, fullG1/productionexternals pending. Do not rerun native checks inside sandbox.",
+      "by": "agent",
+      "task": "g1_f02_final"
+    },
+    {
+      "at": "2026-10-06T15:24:14+00:00",
+      "kind": "handoff",
+      "text": "Turn3 independent team-independent-security review of git:d6f4dc595621f60ef0fef4c8, read-only. Inspected README, original F02-01..07 spec/answers/frozen contracts and security procedure, accepted baseline indexes, all identity source/migration/tests/check scripts and foundation authority/UoW/recovery. Read complete current collector job-fdfd19605d stdout/stderr for all3 acceptance commands (retained stream read in overlapping chunks); identity31/foundation17/G0197/G1local72,597protected/88raw/foundation42 pass. Independently hashed21 implementation outputs: zero mismatches. Found2 blocking recovery defects: approval-repository.ts:41 reports absent-safe without shared consume/lookup key lock, and http-service.ts:23 hides FoundationError UNKNOWN_COMMIT as403 UNAUTHORIZED. Read-only executable control-flow probes confirmed unlocked absent-safe query and exact compiled HTTP handler error mapping (tool chunk5f1c4e); these are NOT live PG/HTTP integration evidence. Attempted additional owned-PG/loopback probes denied by sandbox Docker socket/listen EPERM; no product failure inferred and no blocker filed. Required implementing owner followup: shared original-key reconciliation serialization and typed unknown-commit HTTP recovery plus controller-run PG in-flight lookup and HTTP lost-ack regressions, then unchanged checks/fresh independent review. Paid product APIs/new resourcesOFF; fullG1/external qualifications pending. No files changed or agents spawned.",
+      "by": "reviewer"
+    },
+    {
+      "at": "2026-10-06T15:25:06+00:00",
+      "kind": "root_cause",
+      "text": "Repair confirms SEC-F02-003 and SEC-F02-004: lookup does not serialize with consume, and HTTP drops FoundationError UNKNOWN_COMMIT. Implementing shared scoped original-key transaction lock plus typed HTTP recovery, retaining all original checks/history and adding actual PG/HTTP regressions.",
+      "by": "agent",
+      "finding": "f-c3bf278347"
+    },
+    {
+      "at": "2026-10-06T15:30:59+00:00",
+      "kind": "evidence",
+      "text": "Turn4 repair implemented SEC-F02-003 shared tenant/Space/executor/original-key advisory xact lock in consume+lookup (digest excluded), timeout remains unknown; SEC-F02-004 allowlisted FoundationError UNKNOWN_COMMIT survives HTTP as503 typed recovery/no replay. Strict build passes. Controller job-b9b53e9709 fingerprint git:ae954c0897c0b02542a77629 passes all unchanged commands: identity35/foundation17/G0197/G1local72, protected597/raw88/foundation42. Read complete6 raw streams (retained middle recovered by overlapping slice after output truncation); new JSON post_migration_repairs embeds all6 with bytes/hashes,21 current output hashes, all20 prior fields retained unchanged. Five implementation outputs changed incl quickstart; no original scripts/baselines modified. Fresh independent reviews and actual final recipient acknowledgment required.",
+      "by": "agent",
+      "finding": "f-6ea332546f"
+    },
+    {
+      "at": "2026-10-06T15:32:01+00:00",
+      "kind": "handoff",
+      "text": "Turn4 repair complete: modified only g1-identity/src/{approval-repository,contracts,http-service}.ts, tests/approval-audience.test.ts, docs/operations/g1-f02-identity-quickstart.md and additive docs/evidence/g1-f02-acceptance.{json,md}. SEC-F02-003 consume+lookup share scoped original-key advisory xact lock before receipt access, held through commit/rollback; lookup lock timeout returns unknown, digest excluded from key. SEC-F02-004 actual FoundationError UNKNOWN_COMMIT returns503 typed original-key lookup recovery/replayAllowed=false; nonallowlisted/spoofed errors stay403. Four new real non-owner PG/HTTP regressions prove uncommitted-write wait/commit/rollback/timeout and actual separate-process OIDC/PKCE lost-COMMIT ack with one durable effect. Strict build/diff checks pass. job-b9b53e9709 full6 streams inspected/copied with hashes/bytes;21 repaired output hashes indexed, all20 prior JSON fields/history unchanged. loop_finish final job-748d62d922 passes all3 unchanged commands after index update: identity35/foundation17/G0197/G1local72 incl nativeElectron44.5.1/Android,597protected/88raw/foundation42 guards. Current final complete streams at .loop/goals/agent-fabric-g1_f02_local_identity/runs/checks/job-748d62d922/acceptance.{identity-behavior,foundation-behavior,retained-baselines}/{stdout,stderr}.log; do not use only tails. Next controller must perform fresh independent security/reviewer/acceptance each600s and actual final recipient inspect current evidence+acknowledge handoff. No review pass/signature/COMPLETE asserted. Do not run native checks in sandbox; preserve v1 history and latest authorized5 v2 repair rounds/accounting. Paid APIs/new paid resourcesOFF; fullG1/production externals pending.",
+      "by": "agent"
+    },
+    {
+      "at": "2026-10-06T15:35:49+00:00",
+      "kind": "handoff",
+      "text": "Turn5 independent team-independent-security assessment of exact git:a944e0961ac8289d20b7e0b3, read-only; no files modified or agents started. Read README, original F02-01..07 spec/actual answers/frozen identity+final contracts and security procedure, accepted G0/G1local/foundation indexes. Inspected all identity source/SQL/test producers, full new recovery assertions and foundation authenticating scope/UoW authority/commit boundary. Read all6 complete current controller streams job-748d62d922 (retained stdout lines1..1742 across contiguous chunks), not tails: identity35/foundation17/G0197/G1local72 incl real Electron44.5.1/Android, no fail/skip/TODO; controller state binds all3 exit0 commands to assigned fingerprint. Independently hashed21 current outputs,597protected including88raw and42foundation files: zero mismatches; original migrated spec/workflow/contracts/answers byte-identical to git HEAD; original18 HEAD evidence fields preserved and repaired6 embedded raw copies/hash/bytes match. SEC-F02-003 verified shared original-key scoped advisory xact lock before receipt access through commit/rollback, no digest in lock namespace, real pg_blocking_pids commit/rollback/timeout tests and exact receipt recovery. SEC-F02-004 verified actual FoundationError UNKNOWN_COMMIT allowlisted as503 typed original-key lookup/no-replay, real separate-process OIDC+HTTP+nonownerPG lost-ack regression proves exactly1 durable audit/outbox/receipt, arbitrary/spoofed errors stay403. No remaining blocking scoped defect found. Only security verdict follows; independent code/acceptance reviews, actual final recipient acknowledgment and controller completion remain required. Paid APIs/new resources OFF; formalSSO/humanjudgment/physicaldevices/signing/models/remotecontainment/fullG1/G2–G5 remain pending. No local native check rerun or production assurance asserted.",
+      "by": "reviewer"
+    },
+    {
+      "at": "2026-10-06T15:40:07+00:00",
+      "kind": "handoff",
+      "text": "Turn6 independent team-independent-reviewer read-only assessment of git:a944e0961ac8289d20b7e0b3. No files modified and no other agents started. Read original F02-01..07 spec/actual answers/frozen identity and final contracts, reviewer procedure, planning/operations and accepted G0/G1-local/foundation indexes. Traced all identity source/SQL/tests/check scripts and original foundation scope/UoW/authority/commit handling. Inspected complete six current controller streams job-748d62d922, retained stdout lines1..1742 in contiguous chunks: identity35/foundation17/G0197/G1local72, native Electron44.5.1/Android; no failure/skip/TODO. Controller verification and all3 exit0 commands bound to assigned fingerprint. Independently hashed21 current outputs,597protected including88raw and42foundation files with zero mismatches; all18 original HEAD evidence fields preserved, six repaired embedded streams match their original bytes/hash/size, migrated spec/plan/workflow/questions/contracts/engines byte-identical to HEAD. Verified original-key consume+lookup lock before receipt access through commit/rollback, fresh postlock receipt SELECT and timeout unknown; actual pg_blocking_pids tests plus rollback zero-effects and real separate-process OIDC/HTTP lost-COMMIT ack exact receipt/one durable audit+outbox+receipt assertions are meaningful. Verified opaque RP one-use transaction, strict token validation, original authenticated lookup plus locked session, current party expiry after locks/writes, current source/destination audience+payers, append-only permission/atomic rollback boundaries. No blocking code finding within local G1-F02 scope. Next required independent acceptance recipient must inspect current full evidence and acknowledge final handoff; this reviewer verdict does not claim controller COMPLETE/fullG1. Paid APIs/new resources OFF; enterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2-G5 pending.",
+      "by": "reviewer"
+    },
+    {
+      "at": "2026-10-06T15:44:30+00:00",
+      "kind": "handoff",
+      "text": "Turn7 independent team-independent-acceptance read-only assessment of exact controller candidate git:a944e0961ac8289d20b7e0b3. No files modified, agents started or sandbox PG/GUI reruns. Read README, original F02-01..07 spec/actual answers/frozen task+engine contracts and acceptance procedure; original G0/G1-local/foundation indexes and export COMPLETE lineage. Inspected all identity source/SQL/scripts/test producers and foundation bound authenticating scope, locked authority and commit boundary. Read all six complete final controller streams job-748d62d922 (identity242lines, foundation123lines, retained1742lines plus8stderrlines): identity35/foundation17/G0197/G1local72, no fail/skip/TODO, native Electron44.5.1 and Android bundle. Controller verification/all3 exit0 checks bind to assigned fingerprint. Independently hashed21 current outputs,597protected including88raw and42foundation files:zero mismatches. All18 original HEAD evidence fields remain unchanged; six repair raw copies match original bytes/hash/size;49 migrated originals byte-identical to HEAD. Verified original-key consume+lookup serialization through commit/rollback and timeout-unknown; actual pg_blocking_pids observations, invisible uncommitted effects, exact receipt recovery and zero rollback effects. Real HTTP/separate-process IdP/code+PKCE lost-ack test proves503 typed recovery/no replay and exactly one durable effect. Current session/identity/membership/payer/lifecycle, narrow principals, exact independent approval/audience/expiry and append-only audit checked. Human decision at2026-10-06T12:56:05 explicitly authorizes v2 repair/accounting while retaining v1 history; all3 review timeouts10minutes preserved. No blocking acceptance defect found. Recording one PASS limited to local G1-F02. Final actual recipient acknowledgment and controller completion still required; enterpriseSSO/humanjudgment/physicaldevices/signing/realmodels/remoteOS/fullG1/G2-G5 remain pending; paid APIs/new resources OFF.",
+      "by": "reviewer"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f-45a9404e9a",
+      "kind": "evidence",
+      "text": "Controller job job-907e9b7248 passed all unchanged task commands outside sandbox: identity31/31, foundation17/17, G0197/197, G1local72/72 incl native Electron and Android bundle; 597 protected/88 raw and foundation42 guards pass. All21 implementation hashes match. Added complete controller-owned stdout/stderr copies with bytes/hash/path to docs/evidence/g1-f02-acceptance.json and additive MD turn2 section; all existing JSON fields/history unchanged. Current configured reviews each timeout_minutes10; latest human decision authorizes max_repair_rounds5 and fresh v2 accounting, v1 preserved as history. Review verdicts/final acceptance/actual final recipient acknowledgment remain pending.",
+      "at": "2026-10-06T15:16:43+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-c3bf278347",
+      "kind": "root_cause",
+      "text": "Repair confirms SEC-F02-003 and SEC-F02-004: lookup does not serialize with consume, and HTTP drops FoundationError UNKNOWN_COMMIT. Implementing shared scoped original-key transaction lock plus typed HTTP recovery, retaining all original checks/history and adding actual PG/HTTP regressions.",
+      "at": "2026-10-06T15:25:06+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-6ea332546f",
+      "kind": "evidence",
+      "text": "Turn4 repair implemented SEC-F02-003 shared tenant/Space/executor/original-key advisory xact lock in consume+lookup (digest excluded), timeout remains unknown; SEC-F02-004 allowlisted FoundationError UNKNOWN_COMMIT survives HTTP as503 typed recovery/no replay. Strict build passes. Controller job-b9b53e9709 fingerprint git:ae954c0897c0b02542a77629 passes all unchanged commands: identity35/foundation17/G0197/G1local72, protected597/raw88/foundation42. Read complete6 raw streams (retained middle recovered by overlapping slice after output truncation); new JSON post_migration_repairs embeds all6 with bytes/hashes,21 current output hashes, all20 prior fields retained unchanged. Five implementation outputs changed incl quickstart; no original scripts/baselines modified. Fresh independent reviews and actual final recipient acknowledgment required.",
+      "at": "2026-10-06T15:30:59+00:00",
+      "status": "recorded"
+    }
+  ],
+  "incidents": [],
+  "blocker": null,
+  "report": {
+    "text": "Repaired both independent security blockers SEC-F02-003 and SEC-F02-004. Original-key lookup now serializes with consume before receipt access and stays unknown on unresolved lock timeout; actual PG commit/rollback/timeout regressions observe backend blocking and exact receipt recovery. HTTP explicitly preserves actual FoundationError UNKNOWN_COMMIT as503 typed recovery directing original-key lookup with replayAllowed=false; actual separate-process OIDC/HTTP/PG lost-ack test proves one durable audit/outbox/receipt and exact original receipt recovery, with nonallowlisted/spoofed errors still denied. Strict build passed; controller job-b9b53e9709 passed unchanged identity35/foundation17/G0197/G1local72, native Electron/Android and597protected/88raw/foundation42 guards. Added current21 hashes and complete6 raw streams to additive post_migration_repairs; all20 preexisting JSON fields/history retained. Final acceptance rerun and all3 fresh independent600s reviews plus actual final recipient acknowledgment remain required. Paid APIs/new resources OFF; fullG1/production externals pending.",
+    "at": "2026-10-06T15:30:59+00:00"
+  },
+  "control": null,
+  "fingerprint": null,
+  "next_cycle_at": null,
+  "integrity": "ok",
+  "created_at": "2026-10-06T10:23:01+00:00",
+  "updated_at": "2026-10-06T16:02:54+00:00",
+  "migration": {
+    "from": "loop-engineering v1",
+    "at": "2026-10-06T10:23:01+00:00",
+    "team": "team-aa741c058dac4bbb8e530e859445a639",
+    "bundle": "/Users/super/Documents/ai/agent-fabric/.loop/legacy-v1/export",
+    "applied": {},
+    "integrate": []
+  },
+  "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1",
+  "session_id": "01a111df-6c78-7f50-b0c8-c1fb20adb2ae",
+  "verification": {
+    "at": "2026-10-06T15:31:39+00:00",
+    "fingerprint": "git:a944e0961ac8289d20b7e0b3",
+    "passed": true,
+    "failing": [],
+    "results": {
+      "acceptance.identity-behavior": "pass",
+      "acceptance.foundation-behavior": "pass",
+      "acceptance.retained-baselines": "pass"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "jobId": "job-674eb76f87",
+  "scope": "f03-durable-authority only; no Temporal/native worker recreation/external effect dispatch/full F03 qualification",
+  "candidateFingerprint": "git:06cc382364cd4a5256cc0075",
+  "checks": {
+    "f03-postgres": {
+      "status": "pass",
+      "exitCode": 0,
+      "tests": 28,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "streams": [
+    {
+      "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-674eb76f87/f03-durable-authority.f03-postgres/stdout.log",
+      "bytes": 9123,
+      "sha256": "485a958c3e617f316ca810b63e5c7ed8c8f260b65725851a975a19726c4df2ac",
+      "text": "F03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 170ms using pnpm v10.18.0\nF03 entry dependency hashes: 666 unchanged\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 182ms using pnpm v10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 162ms using pnpm v10.18.0\n{\"measurement\":\"actual-postgres-fixture\",\"image\":\"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333\",\"owner\":\"46a229b9-576f-4dd0-8b10-49d262e90db9\",\"version\":\"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit\",\"containerId\":\"649337d58ed732ac5568f68528e9f1d606a9b55f291b99551533635a3445f374\",\"loopback\":true,\"cpuLimit\":1,\"memoryBytes\":268435456,\"productionQualified\":false}\nTAP version 13\n# Subtest: POSTGRES/separate migration rollback, digest refusal and unchanged F01/F02 ledgers\nok 1 - POSTGRES/separate migration rollback, digest refusal and unchanged F01/F02 ledgers\n  ---\n  duration_ms: 231.46775\n  type: 'test'\n  ...\n# Subtest: POSTGRES/actual OIDC-bound scopes persist session/lease and reconstruct from distinct backend\nok 2 - POSTGRES/actual OIDC-bound scopes persist session/lease and reconstruct from distinct backend\n  ---\n  duration_ms: 36.146083\n  type: 'test'\n  ...\n# Subtest: POSTGRES/concurrent duplicate original key commits one checkpoint/receipt/outbox\nok 3 - POSTGRES/concurrent duplicate original key commits one checkpoint/receipt/outbox\n  ---\n  duration_ms: 31.383083\n  type: 'test'\n  ...\n# Subtest: POSTGRES/idempotency rejects changed payload or binding; unchanged key returns original command\nok 4 - POSTGRES/idempotency rejects changed payload or binding; unchanged key returns original command\n  ---\n  duration_ms: 26.113416\n  type: 'test'\n  ...\n# Subtest: POSTGRES/SQL failure after actual checkpoint+receipt writes rolls entire transaction back\nok 5 - POSTGRES/SQL failure after actual checkpoint+receipt writes rolls entire transaction back\n  ---\n  duration_ms: 28.657833\n  type: 'test'\n  ...\n# Subtest: POSTGRES/lost COMMIT ACK reconciles original key on fresh connection with no mutator replay\nok 6 - POSTGRES/lost COMMIT ACK reconciles original key on fresh connection with no mutator replay\n  ---\n  duration_ms: 27.864\n  type: 'test'\n  ...\n# Subtest: POSTGRES/original-key lookup waits through real uncommitted commit\nok 7 - POSTGRES/original-key lookup waits through real uncommitted commit\n  ---\n  duration_ms: 28.28475\n  type: 'test'\n  ...\n# Subtest: POSTGRES/original-key lookup waits through real uncommitted rollback\nok 8 - POSTGRES/original-key lookup waits through real uncommitted rollback\n  ---\n  duration_ms: 26.620417\n  type: 'test'\n  ...\n# Subtest: POSTGRES/original-key lookup waits through real uncommitted timeout\nok 9 - POSTGRES/original-key lookup waits through real uncommitted timeout\n  ---\n  duration_ms: 2033.845084\n  type: 'test'\n  ...\n# Subtest: POSTGRES/concurrent distinct checkpoint keys enforce revision and cursor; durable result survives pool recreation\nok 10 - POSTGRES/concurrent distinct checkpoint keys enforce revision and cursor; durable result survives pool recreation\n  ---\n  duration_ms: 100.790167\n  type: 'test'\n  ...\n# Subtest: POSTGRES/forged scopes and current session/membership/actor/payer/lifecycle reject without writes\nok 11 - POSTGRES/forged scopes and current session/membership/actor/payer/lifecycle reject without writes\n  ---\n  duration_ms: 74.275542\n  type: 'test'\n  ...\n# Subtest: POSTGRES/real non-owner worker/client sessions cannot SQL or spoof GUC authority; RLS and immutable bindings hold\nok 12 - POSTGRES/real non-owner worker/client sessions cannot SQL or spoof GUC authority; RLS and immutable bindings hold\n  ---\n  duration_ms: 105.660125\n  type: 'test'\n  ...\n# Subtest: POSTGRES/exact F02 approval consumption and recovery effect/receipt/outbox commit atomically\nok 13 - POSTGRES/exact F02 approval consumption and recovery effect/receipt/outbox commit atomically\n  ---\n  duration_ms: 152.314125\n  type: 'test'\n  ...\n# Subtest: POSTGRES/recovery SQL failure after consumed approval rolls back F02 and recovery effects together\nok 14 - POSTGRES/recovery SQL failure after consumed approval rolls back F02 and recovery effects together\n  ---\n  duration_ms: 77.299709\n  type: 'test'\n  ...\n# Subtest: POSTGRES/effect refuses wrong actor/target/approval/audience/lease/generation and budget preconditions\nok 15 - POSTGRES/effect refuses wrong actor/target/approval/audience/lease/generation and budget preconditions\n  ---\n  duration_ms: 214.046875\n  type: 'test'\n  ...\n# Subtest: POSTGRES/current requester/approver/source payer revocation and stale target invalidate approved effect\nok 16 - POSTGRES/current requester/approver/source payer revocation and stale target invalidate approved effect\n  ---\n  duration_ms: 238.959166\n  type: 'test'\n  ...\n# Subtest: POSTGRES/command and original session expiry after measured run lock wait reject all writes\nok 17 - POSTGRES/command and original session expiry after measured run lock wait reject all writes\n  ---\n  duration_ms: 1260.189916\n  type: 'test'\n  ...\n# Subtest: POSTGRES/command expiry after actual full checkpoint/receipt/outbox writes rolls back\nok 18 - POSTGRES/command expiry after actual full checkpoint/receipt/outbox writes rolls back\n  ---\n  duration_ms: 874.575334\n  type: 'test'\n  ...\n# Subtest: POSTGRES/approval expiry after actual approval/effect/receipt/outbox writes rolls back\nok 19 - POSTGRES/approval expiry after actual approval/effect/receipt/outbox writes rolls back\n  ---\n  duration_ms: 1104.0485\n  type: 'test'\n  ...\n# Subtest: POSTGRES/approver-session expiry after actual approval/effect/receipt/outbox writes rolls back\nok 20 - POSTGRES/approver-session expiry after actual approval/effect/receipt/outbox writes rolls back\n  ---\n  duration_ms: 1128.847708\n  type: 'test'\n  ...\n# Subtest: POSTGRES/current authority row locks serialize payer revocation with entire recovery transaction\nok 21 - POSTGRES/current authority row locks serialize payer revocation with entire recovery transaction\n  ---\n  duration_ms: 24.287917\n  type: 'test'\n  ...\n# Subtest: POSTGRES/late approval expiry during a later participant lock wait is not reusable on recovery\nok 22 - POSTGRES/late approval expiry during a later participant lock wait is not reusable on recovery\n  ---\n  duration_ms: 984.69425\n  type: 'test'\n  ...\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":96024,\"removed\":true,\"realCredentials\":false}\n# Subtest: POSTGRES/policy revision and revoked read grants revalidate current scopes and fence old prepared inputs\nok 23 - POSTGRES/policy revision and revoked read grants revalidate current scopes and fence old prepared inputs\n  ---\n  duration_ms: 260.12875\n  type: 'test'\n  ...\n# Subtest: POSTGRES/lease expiry, revocation and persisted stale generation prevent fresh continuation\nok 24 - POSTGRES/lease expiry, revocation and persisted stale generation prevent fresh continuation\n  ---\n  duration_ms: 91.649709\n  type: 'test'\n  ...\n# Subtest: POSTGRES/reservation ancestry has current payer/backing and cannot create a second effect from one reservation\nok 25 - POSTGRES/reservation ancestry has current payer/backing and cannot create a second effect from one reservation\n  ---\n  duration_ms: 91.271333\n  type: 'test'\n  ...\n# Subtest: POSTGRES/deferred pair constraints reject a receipt without its matching immutable outbox\nok 26 - POSTGRES/deferred pair constraints reject a receipt without its matching immutable outbox\n  ---\n  duration_ms: 33.098792\n  type: 'test'\n  ...\n# Subtest: POSTGRES/lease expires after full initialization writes and is rechecked before COMMIT\nok 27 - POSTGRES/lease expires after full initialization writes and is rechecked before COMMIT\n  ---\n  duration_ms: 777.864209\n  type: 'test'\n  ...\n# Subtest: POSTGRES/lost effect-preparation COMMIT ACK keeps one consumed approval and reconciles without a new operation\nok 28 - POSTGRES/lost effect-preparation COMMIT ACK keeps one consumed approval and reconciles without a new operation\n  ---\n  duration_ms: 105.707709\n  type: 'test'\n  ...\n# {\"measurement\":\"recovery-owned-idp-cleanup\",\"pid\":96000,\"removed\":true,\"realCredentials\":false}\n1..28\n# tests 28\n# suites 0\n# pass 28\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 10257.393208\n{\"measurement\":\"recovery-ledger-compatibility\",\"foundation\":[{\"version\":1,\"digest\":\"3976b9d7d6c877b17c91296cf19cf728cf1a378f284b58b554e546950e4bb027\"},{\"version\":2,\"digest\":\"2f40417a2b7f3544a64e7c57dcc7e84006a29e3f49458363f6ba553bd8361569\"}],\"identity\":[{\"version\":3,\"digest\":\"d7170eb1b5a4733421c6b4e1f05e92e7eba0663b341f7d48697e0e65fab759b7\"}],\"recovery\":[{\"version\":4,\"digest\":\"f8ef0b1e8dffba943843f72d6bc070a7ccf229c68e2363d214b8f4391e33cf13\"}],\"originalMigrationsUnchanged\":true}\n{\"measurement\":\"fixture-owned-cleanup\",\"owner\":\"46a229b9-576f-4dd0-8b10-49d262e90db9\",\"containerId\":\"649337d58ed732ac5568f68528e9f1d606a9b55f291b99551533635a3445f374\",\"removed\":true}\nF03 entry dependency hashes: 666 unchanged\n"
+    },
+    {
+      "path": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-674eb76f87/f03-durable-authority.f03-postgres/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    }
+  ],
+  "environment": {
+    "node": "v22.22.3",
+    "pnpm": "10.18.0",
+    "typescript": "5.9.3",
+    "typesNode": "22.18.6",
+    "pg": "8.16.3",
+    "typesPg": "8.15.5",
+    "installation": "frozen offline, scripts disabled",
+    "productionQualified": false
+  },
+  "measurements": [
+    {
+      "measurement": "actual-postgres-fixture",
+      "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+      "owner": "46a229b9-576f-4dd0-8b10-49d262e90db9",
+      "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+      "containerId": "649337d58ed732ac5568f68528e9f1d606a9b55f291b99551533635a3445f374",
+      "loopback": true,
+      "cpuLimit": 1,
+      "memoryBytes": 268435456,
+      "productionQualified": false
+    },
+    {
+      "measurement": "recovery-owned-idp-cleanup",
+      "pid": 96024,
+      "removed": true,
+      "realCredentials": false
+    },
+    {
+      "measurement": "recovery-owned-idp-cleanup",
+      "pid": 96000,
+      "removed": true,
+      "realCredentials": false
+    },
+    {
+      "measurement": "recovery-ledger-compatibility",
+      "foundation": [
+        {
+          "version": 1,
+          "digest": "3976b9d7d6c877b17c91296cf19cf728cf1a378f284b58b554e546950e4bb027"
+        },
+        {
+          "version": 2,
+          "digest": "2f40417a2b7f3544a64e7c57dcc7e84006a29e3f49458363f6ba553bd8361569"
+        }
+      ],
+      "identity": [
+        {
+          "version": 3,
+          "digest": "d7170eb1b5a4733421c6b4e1f05e92e7eba0663b341f7d48697e0e65fab759b7"
+        }
+      ],
+      "recovery": [
+        {
+          "version": 4,
+          "digest": "f8ef0b1e8dffba943843f72d6bc070a7ccf229c68e2363d214b8f4391e33cf13"
+        }
+      ],
+      "originalMigrationsUnchanged": true
+    },
+    {
+      "measurement": "fixture-owned-cleanup",
+      "owner": "46a229b9-576f-4dd0-8b10-49d262e90db9",
+      "containerId": "649337d58ed732ac5568f68528e9f1d606a9b55f291b99551533635a3445f374",
+      "removed": true
+    }
+  ],
+  "controllerResults": {
+    "f03-durable-authority.f03-postgres": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 13927,
+      "started_at": "2026-10-06T16:33:00+00:00",
+      "finished_at": "2026-10-06T16:33:14+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f03-recovery/runs/checks/job-674eb76f87/f03-durable-authority.f03-postgres",
+      "cleanup": "zombie",
+      "fingerprint": "git:06cc382364cd4a5256cc0075",
+      "actor": "agent"
+    }
+  }
+}

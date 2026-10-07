@@ -1,6 +1,6 @@
 import {createServer,type IncomingMessage} from 'node:http';
-import {assertUuid,revalidateScope} from '../../g1-foundations/src/contracts.js';
-import {IdentityError,type IdentityHttpServiceOptions,type RunningIdentityHttpService,type CreateApprovalInput,type ConsumeApprovalInput} from './contracts.js';
+import {assertUuid,revalidateScope,FoundationError} from '../../g1-foundations/src/contracts.js';
+import {IdentityError,type UnknownApprovalCommitResponse,type IdentityHttpServiceOptions,type RunningIdentityHttpService,type CreateApprovalInput,type ConsumeApprovalInput} from './contracts.js';
 const forbidden=new Set(['actorId','payerId','grants','principalKind','authorityRevision','membershipRevision','sessionCredential']);
 function boundary(value:unknown):void{if(value&&typeof value==='object'){if(Array.isArray(value)){for(const item of value)boundary(item);}else{for(const [key,item]of Object.entries(value)){if(forbidden.has(key))throw new IdentityError('INVALID_INPUT');boundary(item);}}}}
 async function json(req:IncomingMessage){let text='';for await(const chunk of req){text+=String(chunk);if(text.length>32768)throw new IdentityError('INVALID_INPUT');}const value:unknown=JSON.parse(text);if(!value||typeof value!=='object'||Array.isArray(value))throw new IdentityError('INVALID_INPUT');boundary(value);return value as Record<string,unknown>;}
@@ -20,6 +20,12 @@ export async function startIdentityHttpService(options:IdentityHttpServiceOption
   else if(url.pathname==='/approvals/lookup'){if(Object.keys(input).some(k=>!['idempotencyKey','bindingDigest'].includes(k))||typeof input.idempotencyKey!=='string'||typeof input.bindingDigest!=='string')throw new IdentityError('INVALID_INPUT');result=await options.approvals.lookupCommand(scope,input.idempotencyKey,input.bindingDigest);}
   else{res.statusCode=404;res.end(JSON.stringify({error:'not_found'}));return;}
   res.end(JSON.stringify(result));
- }catch(error){const code=error instanceof IdentityError?error.code:'UNAUTHORIZED';res.statusCode=code==='INVALID_INPUT'?400:403;res.end(JSON.stringify({error:code}));}});
+ }catch(error){
+  // Only this foundation code crosses the boundary; arbitrary errors stay closed.
+  if((error instanceof FoundationError||error instanceof IdentityError)&&error.code==='UNKNOWN_COMMIT'){
+   const response:UnknownApprovalCommitResponse={error:'UNKNOWN_COMMIT',status:'unknown',recovery:{path:'/approvals/lookup',method:'POST',useOriginalKey:true,replayAllowed:false}};
+   res.statusCode=503;res.end(JSON.stringify(response));return;
+  }
+  const code=error instanceof IdentityError?error.code:'UNAUTHORIZED';res.statusCode=code==='INVALID_INPUT'?400:403;res.end(JSON.stringify({error:code}));}});
  server.requestTimeout=5000;server.headersTimeout=5000;await new Promise<void>((r,j)=>{server.once('error',j);server.listen(0,'127.0.0.1',()=>r());});const address=server.address();if(!address||typeof address==='string')throw new Error('listen');return {url:'http://127.0.0.1:'+address.port,close:async()=>{server.closeAllConnections();await new Promise<void>((r,j)=>server.close(e=>e?j(e):r()));}};
 }

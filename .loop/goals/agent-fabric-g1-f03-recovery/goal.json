@@ -1,0 +1,116 @@
+{
+  "schema": "loop.goal/2",
+  "id": "agent-fabric-g1-f03-recovery",
+  "kind": "develop",
+  "title": "agent-fabric: G1-F03 recovery",
+  "objective": "Deliver the G1-F03 increment of Agent Fabric G1: Temporal/controller integration and actual recreated-worker recovery with fences, unknown-effect reconciliation and notifications.\n\nLedger requirements in scope (docs/planning/g1-remaining-ledger.csv):\n- AF-01: 原生引擎拥有普通代理执行 — remaining: 确定性session/effect契约；实际运行无竞争harness进程\n- AF-05: 远端工作独立于客户端并可恢复 — remaining: replay/恢复fixture；实际worker再建与durable state恢复\n- AF-09: Dispatch调度监测和安全控制任务 — remaining: command dedup/审批/等待fixture；实际schedule/timezone/expiry/recovery\n- AF-14: 恢复不能盲目重复外部写入 — remaining: 外部成功ack丢失/dedup/reconcile/replay零写；实际crash recovery\n- AF-17: Task尝试产物交付状态无歧义 — remaining: 状态正/负/恢复fixture；实际draft/check/delivery/notification分立\n- AF-19: 并发时Stop和接管有效 — remaining: stale Stop/旧generation拒绝fixture；实际所有冲突mutation quiesce\n- UX-08: 旧移动进度Stop按当前权限推进fencing并显示不确定性 — remaining: stale Stop/idempotency/generation fixture；实际在线Stop与in-flight报告\n- UX-18: 通知失败不改变已有任务结果且另有delivery status — remaining: task/artifact/delivery/notification fixture；实际推送失败仍能取回结果\n\nCreate g1-recovery/ with a build and g1-recovery/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f03-plan.md and docs/evidence/g1-f03-acceptance.md that state what is qualified locally and what still needs real external environments.",
+  "context": [
+    "docs/planning/roadmap.md",
+    "docs/planning/g1-foundations-plan.md",
+    "docs/planning/g1-remaining-ledger.csv",
+    "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+    "docs/evidence/g1-f02-acceptance.md"
+  ],
+  "constraints": [
+    "Additive increment only: never modify or weaken accepted G0/G1-local/G1-foundations/G1-F02 checks, protected files or raw evidence.",
+    "Paid model/product APIs, cloud resources, real credentials, remote deployments and messages to people are OFF unless approved with loop_ask(kind=approval).",
+    "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
+    "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
+    "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger."
+  ],
+  "acceptance": [
+    {
+      "id": "g1-recovery-behavior",
+      "argv": [
+        "node",
+        "g1-recovery/scripts/check.mjs"
+      ],
+      "timeout": 1800,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1-F03 increment behavior check (created by this goal)."
+    },
+    {
+      "id": "identity-behavior",
+      "argv": [
+        "node",
+        "g1-identity/scripts/check.mjs"
+      ],
+      "timeout": 600,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1-F02 accepted increment must keep passing (regression)."
+    },
+    {
+      "id": "foundation-behavior",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check.mjs"
+      ],
+      "timeout": 600,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1 foundations must keep passing (regression)."
+    },
+    {
+      "id": "retained-baselines",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check-retained.mjs"
+      ],
+      "timeout": 900,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Original G0/G1-local protected files, raw evidence and checks unchanged (regression)."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "security",
+      "by": "agent",
+      "instructions": "Independent review of the G1-F03 increment against its ledger requirements, the master specification and the increment check. Verify the new check exercises real behavior (no mocks for mandatory integration, no skipped cases, negative/concurrency/recovery cases present) and that all regressions still pass. Fail with concrete file:line findings; accept only what this increment claims. Focus: security, authorization, isolation, data leakage.",
+      "timeout_minutes": 15
+    },
+    {
+      "id": "code",
+      "by": "agent",
+      "instructions": "Independent review of the G1-F03 increment against its ledger requirements, the master specification and the increment check. Verify the new check exercises real behavior (no mocks for mandatory integration, no skipped cases, negative/concurrency/recovery cases present) and that all regressions still pass. Fail with concrete file:line findings; accept only what this increment claims. Focus: correctness, failure handling, maintainability.",
+      "timeout_minutes": 15
+    },
+    {
+      "id": "acceptance",
+      "by": "agent",
+      "instructions": "Independent review of the G1-F03 increment against its ledger requirements, the master specification and the increment check. Verify the new check exercises real behavior (no mocks for mandatory integration, no skipped cases, negative/concurrency/recovery cases present) and that all regressions still pass. Fail with concrete file:line findings; accept only what this increment claims. Focus: every listed requirement is covered by real evidence.",
+      "timeout_minutes": 15
+    }
+  ],
+  "policy": {
+    "max_iterations": 60,
+    "max_hours": 24.0,
+    "turn_timeout_minutes": 120,
+    "stagnation_limit": 3,
+    "max_task_attempts": 4,
+    "max_repair_rounds": 5,
+    "max_cost_usd": null,
+    "approval_required": [
+      "deploy or release to a shared or production environment",
+      "delete or overwrite data that is not reproducible from the repository",
+      "spend money or start paid resources",
+      "send messages, emails or posts to people",
+      "change credentials, secrets, access control or security settings",
+      "force-push, rewrite published git history or delete branches"
+    ],
+    "allow_network": true,
+    "fresh_session_each_turn": true,
+    "pause_on_interrupt": false,
+    "check_timeout_seconds": 3600
+  },
+  "schedule": null,
+  "agent": {
+    "adapter": "codex",
+    "model": null,
+    "permission_mode": null,
+    "extra_args": []
+  },
+  "created_at": "2026-10-06T15:59:25+00:00"
+}

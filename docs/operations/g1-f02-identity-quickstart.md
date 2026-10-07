@@ -33,6 +33,10 @@ node g1-foundations/scripts/check-retained.mjs
 
 精确审批须核对 target、完整参数/版本/权限/受众和 expiry。requester、executor 与 human approver 互不相同。原键失去 COMMIT 确认时查询既有 receipt，禁止自动重放。任何强制审计失败都必须让该事务回滚。
 
+consume 和 lookup 在 receipt 读写之前取得同一个 PostgreSQL transaction advisory lock；键包含固定 receipt namespace、tenant、Space、executor 和原 idempotencyKey，不包含 bindingDigest。锁保留至 COMMIT/ROLLBACK，lookup 取得锁后在 READ COMMITTED 的新语句快照读取 receipt。锁等待超时返回 `status: unknown`，不能将不可见的未提交写入判为安全不存在。仅已取得锁且没有 receipt 才返回 `absent-safe`；它表示该次查询的序列化时点，不授权自动重放或更换键。
+
+HTTP 遇到真实 UoW 的 `FoundationError('UNKNOWN_COMMIT')` 或 identity 的同类错误返回 503、`error: UNKNOWN_COMMIT`、`status: unknown`，并给出 `/approvals/lookup` 的 POST 恢复入口、`useOriginalKey: true`、`replayAllowed: false`。客户端保留原 tenant/Space、idempotencyKey 和 bindingDigest，以当前有效身份查询该入口；不得重放 consume、换新键或把 503 当作未发生效果。lookup 仍为 unknown 时继续保留原未知结果。响应不回显 token、请求参数或内部异常；其他 foundation 错误及伪造 code 的普通异常保持拒绝。
+
 ## 证据、恢复和资格
 
 控制器原始命令结果、候选版本和私有注册评审才是正式验收依据；工程草稿或此文档不能证明 PASS。保留此前失败记录。修复沿原实施任务及最多两轮 native_rework，不重建队列、不重置预算或追加旧补充观测。

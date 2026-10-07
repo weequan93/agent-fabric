@@ -1,0 +1,104 @@
+{
+  "schema": "loop.goal/2",
+  "id": "agent-fabric-g1_f02_local_identity",
+  "kind": "develop",
+  "title": "agent-fabric: g1_f02_local_identity",
+  "objective": "Continue the agent-fabric work migrated from Loop Engineering v1 (team team-aa741c058dac4bbb8e530e859445a639, workflow g1_f02_local_identity).\n\nOriginal scope:\nAdditiveG1-F02localOIDC/currentPGidentity/approval/audit only, originalsimmutable and cumulativecapnoreset; allproductionexternals pending; afterqualificationfollowboundedqueue.\n\nThe original task contracts (objective, criteria, checks) are in .loop/legacy-v1/tasks/. Tasks completed in v1 stay done; the final acceptance and reviews re-verify the integrated result.",
+  "context": [
+    "README.md",
+    ".loop/legacy-v1/spec.md",
+    ".loop/legacy-v1/plan.md",
+    ".loop/legacy-v1/workflow-tasks.json",
+    ".loop/legacy-v1/tasks/"
+  ],
+  "constraints": [
+    "Do not redo tasks completed in v1 unless a check proves them broken.",
+    "Follow each original task contract in .loop/legacy-v1/tasks/<task>.json (criteria and limits).",
+    "Preserve answered decisions and existing evidence; never weaken original checks.",
+    "Electron/GUI checks crash (SIGABRT) inside the Codex sandbox but pass outside it; run them through loop_check so the controller executes them outside the sandbox, and do not treat sandbox-only crashes as product failures."
+  ],
+  "acceptance": [
+    {
+      "id": "identity-behavior",
+      "argv": [
+        "node",
+        "g1-identity/scripts/check.mjs"
+      ],
+      "timeout": 180,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Strictbuild actual independent loopbackIdP code+PKCE/state/nonce/token tests and realnonownerPostgreSQLcurrentauth/approval/audit/sourceaudience/revocationrace/rollback/unknowncommit. No skips/mocks for mandatoryintegration; originalfoundation42files hashchecked."
+    },
+    {
+      "id": "foundation-behavior",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check.mjs"
+      ],
+      "timeout": 180,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence."
+    },
+    {
+      "id": "retained-baselines",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check-retained.mjs"
+      ],
+      "timeout": 180,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "team-independent-security",
+      "by": "agent",
+      "instructions": "Fresh independently registered team-independent-security assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.\n[\"Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.\", \"Apply team-independent-security procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.\", \"Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.\", \"Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset.\"]",
+      "timeout_minutes": 10
+    },
+    {
+      "id": "team-independent-reviewer",
+      "by": "agent",
+      "instructions": "Fresh independently registered team-independent-reviewer assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.\n[\"Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.\", \"Apply team-independent-reviewer procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.\", \"Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.\", \"Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset.\"]",
+      "timeout_minutes": 10
+    },
+    {
+      "id": "team-independent-acceptance",
+      "by": "agent",
+      "instructions": "Fresh independently registered team-independent-acceptance assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.\n[\"Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.\", \"Apply team-independent-acceptance procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.\", \"Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.\", \"Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset.\"]",
+      "timeout_minutes": 10
+    }
+  ],
+  "policy": {
+    "max_iterations": 80,
+    "max_hours": 48.0,
+    "turn_timeout_minutes": 120,
+    "stagnation_limit": 3,
+    "max_task_attempts": 4,
+    "max_repair_rounds": 5,
+    "max_cost_usd": null,
+    "approval_required": [
+      "deploy or release to a shared or production environment",
+      "delete or overwrite data that is not reproducible from the repository",
+      "spend money or start paid resources",
+      "send messages, emails or posts to people",
+      "change credentials, secrets, access control or security settings",
+      "force-push, rewrite published git history or delete branches"
+    ],
+    "allow_network": true,
+    "fresh_session_each_turn": true,
+    "pause_on_interrupt": false,
+    "check_timeout_seconds": 3600
+  },
+  "schedule": null,
+  "agent": {
+    "adapter": "codex",
+    "model": null,
+    "permission_mode": null,
+    "extra_args": []
+  },
+  "created_at": "2026-10-06T10:23:01+00:00"
+}

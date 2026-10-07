@@ -1,0 +1,881 @@
+{
+  "project": "/Users/super/Documents/ai/agent-fabric",
+  "state_dir": "/Users/super/Documents/ai/loop-states/agent-fabric",
+  "teams": [
+    {
+      "team_id": "team-aa741c058dac4bbb8e530e859445a639",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "PAUSED",
+      "updated_at": "2026-10-06T09:42:54.732+00:00"
+    },
+    {
+      "team_id": "team-a34a6700edb14a66827f5adf16491840",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "COMPLETE",
+      "updated_at": "2026-10-06T04:12:13.568+00:00"
+    },
+    {
+      "team_id": "team-c0f65ea6430043f392d40504a72b8918",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-05T15:32:13.503+00:00"
+    },
+    {
+      "team_id": "team-b38531f16d314394a7ba417fdf628011",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-05T13:55:35.033+00:00"
+    },
+    {
+      "team_id": "team-9fadeec39e704d17af04c441f083b554",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "COMPLETE",
+      "updated_at": "2026-10-05T12:07:31.102+00:00"
+    },
+    {
+      "team_id": "team-b821e9da64074adcacbe30a75677f063",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-05T09:52:25.317+00:00"
+    },
+    {
+      "team_id": "team-b8733841c4e64668b730d6e5f132581d",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-05T09:36:26.508+00:00"
+    },
+    {
+      "team_id": "team-938da3a64aea45dfbf4445e97651cfbe",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "COMPLETE",
+      "updated_at": "2026-10-05T01:35:15.977+00:00"
+    },
+    {
+      "team_id": "team-9eddd9da871046da99663c814c1d73f6",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-04T17:22:35.143+00:00"
+    },
+    {
+      "team_id": "team-455373bf869c43bd933912d88f82ebb4",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-04T16:42:47.412+00:00"
+    },
+    {
+      "team_id": "team-b5072612869c462a89678f21097d346c",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "CANCELLED",
+      "updated_at": "2026-10-04T16:21:13.825+00:00"
+    },
+    {
+      "team_id": "team-38a6d9ab4e99491b8c9c6e76d0c5f90d",
+      "workspace": "/Users/super/Documents/ai/agent-fabric",
+      "status": "COMPLETE",
+      "updated_at": "2026-10-04T10:03:43.181+00:00"
+    }
+  ],
+  "selected_team": {
+    "team_id": "team-aa741c058dac4bbb8e530e859445a639",
+    "status": "PAUSED",
+    "stage": "EXECUTION",
+    "reason": null,
+    "revision": 182,
+    "updated_at": "2026-10-06T09:42:54.732+00:00",
+    "scope": "AdditiveG1-F02localOIDC/currentPGidentity/approval/audit only, originalsimmutable and cumulativecapnoreset; allproductionexternals pending; afterqualificationfollowboundedqueue.",
+    "final_task": "g1_f02_final",
+    "records": {
+      "g1_f02_identity": {
+        "status": "COMPLETE",
+        "reason": null,
+        "child_run_id": "run-89eb7c0d7799412f82af857439c3d219",
+        "request_id": null
+      },
+      "g1_f02_final": {
+        "status": "RUNNING",
+        "reason": "Missing evidence: team-independent-security; Missing evidence: team-independent-reviewer; Missing evidence: team-independent-acceptance; required non-command evidence needs an external evaluator",
+        "child_run_id": "run-660ee724fb724bbcb72b87eff0124614",
+        "request_id": null
+      }
+    },
+    "tasks": {
+      "g1_f02_identity": {
+        "id": "g1_f02_identity",
+        "phase": "implement",
+        "role": "backend",
+        "depends_on": [],
+        "outputs": [
+          "g1-identity/package.json",
+          "g1-identity/pnpm-lock.yaml",
+          "g1-identity/tsconfig.json",
+          "g1-identity/src/contracts.ts",
+          "g1-identity/src/test-idp.ts",
+          "g1-identity/src/token-verifier.ts",
+          "g1-identity/src/current-authority.ts",
+          "g1-identity/src/authenticated-uow.ts",
+          "g1-identity/src/approval-repository.ts",
+          "g1-identity/src/audience.ts",
+          "g1-identity/src/http-service.ts",
+          "g1-identity/src/migration.ts",
+          "g1-identity/migrations/0003_identity_approvals.sql",
+          "g1-identity/tests/oidc-network.test.ts",
+          "g1-identity/tests/identity-postgres.test.ts",
+          "g1-identity/tests/approval-audience.test.ts",
+          "g1-identity/scripts/build.mjs",
+          "g1-identity/scripts/check.mjs",
+          "g1-identity/scripts/test-idp-process.mjs",
+          "docs/planning/g1-f02-identity-plan.md",
+          "docs/operations/g1-f02-identity-quickstart.md"
+        ]
+      },
+      "g1_f02_final": {
+        "id": "g1_f02_final",
+        "phase": "acceptance",
+        "role": "acceptance",
+        "depends_on": [
+          "g1_f02_identity"
+        ],
+        "outputs": [
+          "docs/evidence/g1-f02-acceptance.json",
+          "docs/evidence/g1-f02-acceptance.md"
+        ]
+      }
+    },
+    "usage": "unknown; host conversation and delegation are outside the controller ledger"
+  },
+  "supervisors": [
+    {
+      "id": "supervisor-3c9afb5b3b134d1c9916c139fd40cd73",
+      "status": "RECOVERY_REQUIRED",
+      "reason": "Host cancelled, exit=-9; original effects need inspection",
+      "turns": 3,
+      "known_tokens": 10967138,
+      "dispatch_ms": 852357,
+      "last_report": {
+        "status": "blocked",
+        "summary": "Both stopped workers’ repairs collected; strict compilation passed. Runtime preflight failed on process-census EPERM and Docker socket permission denial. Effective approval policy is never, so official review cannot be requested here. Exact recovery procedure retained in turn-2/PERMISSION-RECOVERY.md. No pending operations; original checks, independent reviews and handoff remain pending. No acceptance certified.",
+        "blocker": "permission",
+        "questions": []
+      },
+      "team_id": "team-aa741c058dac4bbb8e530e859445a639",
+      "pending": {
+        "number": 3,
+        "reserved_ms": 14400000,
+        "pid": 96136,
+        "identity": "Tue Oct  6 17:10:27 2026     96136",
+        "artifacts": "/Users/super/Documents/ai/loop-states/agent-fabric/runs/supervisor-3c9afb5b3b134d1c9916c139fd40cd73/turn-3",
+        "before": "sha256:2557d4b040027438e3adba6603a1d131db877c0c7f5e56f565ce5d70ff922f1c"
+      },
+      "session_id": "01a11020-f9e3-7190-9827-02b937b517f6"
+    }
+  ],
+  "drafts": [],
+  "workflow": {
+    "schema_version": "1.0",
+    "workflow_id": "g1_f02_local_identity",
+    "revision": 1,
+    "scope": "AdditiveG1-F02localOIDC/currentPGidentity/approval/audit only, originalsimmutable and cumulativecapnoreset; allproductionexternals pending; afterqualificationfollowboundedqueue.",
+    "final_task": "g1_f02_final",
+    "native_rework": {
+      "max_rounds": 2
+    },
+    "tasks": [
+      {
+        "id": "g1_f02_identity",
+        "phase": "implement",
+        "role": "backend",
+        "task_file": ".loop/tasks/g1_f02_identity.json",
+        "engine_file": ".loop/tasks/g1_f02_identity-engine.json",
+        "depends_on": [],
+        "outputs": [
+          "g1-identity/package.json",
+          "g1-identity/pnpm-lock.yaml",
+          "g1-identity/tsconfig.json",
+          "g1-identity/src/contracts.ts",
+          "g1-identity/src/test-idp.ts",
+          "g1-identity/src/token-verifier.ts",
+          "g1-identity/src/current-authority.ts",
+          "g1-identity/src/authenticated-uow.ts",
+          "g1-identity/src/approval-repository.ts",
+          "g1-identity/src/audience.ts",
+          "g1-identity/src/http-service.ts",
+          "g1-identity/src/migration.ts",
+          "g1-identity/migrations/0003_identity_approvals.sql",
+          "g1-identity/tests/oidc-network.test.ts",
+          "g1-identity/tests/identity-postgres.test.ts",
+          "g1-identity/tests/approval-audience.test.ts",
+          "g1-identity/scripts/build.mjs",
+          "g1-identity/scripts/check.mjs",
+          "g1-identity/scripts/test-idp-process.mjs",
+          "docs/planning/g1-f02-identity-plan.md",
+          "docs/operations/g1-f02-identity-quickstart.md"
+        ],
+        "handoff_to": [
+          "tester"
+        ]
+      },
+      {
+        "id": "g1_f02_final",
+        "phase": "acceptance",
+        "role": "acceptance",
+        "task_file": ".loop/tasks/g1_f02_final.json",
+        "engine_file": ".loop/tasks/g1_f02_final-engine.json",
+        "depends_on": [
+          "g1_f02_identity"
+        ],
+        "outputs": [
+          "docs/evidence/g1-f02-acceptance.json",
+          "docs/evidence/g1-f02-acceptance.md"
+        ],
+        "handoff_to": [
+          "tester"
+        ],
+        "repair_task": "g1_f02_identity"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "rn-remote",
+      "question": "记录实际远端独立测试机安装部署及新增收费限制答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "它是独立测试机，允许安装和部署；新增收费资源仍先确认"
+      ]
+    },
+    {
+      "id": "rn-model",
+      "question": "记录实际收费模型关闭答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "先保持关闭，完成适配代码后再确认（推荐）"
+      ]
+    },
+    {
+      "id": "rn-identity-devices",
+      "question": "记录实际本机OIDC和模拟器答复",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "先用本机 OIDC 测试服务和现有模拟器（推荐）"
+      ]
+    },
+    {
+      "id": "rn-recovery",
+      "question": "记录仅纠正受监督执行能力且保留全部记录预算的批准",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "批准这份恢复方案，仅修正本机开发执行能力为实际具备的受监督执行。保留原批次、全部历史、已完成成果、失败记录和累计用量；不得通过新批次重置预算。保留 PostgreSQL 权限与隔离测试、三项 600 秒独立评审及完整 G1 隔离资格要求。收费模型和新增收费资源继续关闭。后续计划冻结前先实际能力探针核对运行能力、评估入口和有效预算。"
+      ]
+    },
+    {
+      "id": "rn-observation-supplement",
+      "question": "记录仅补充一次180秒观测的本轮批准",
+      "reason": "已有人类实际答复，只补接新批次正式记录，不再次询问",
+      "blocking": true,
+      "answers": [
+        "，仅补充一次 180 秒观测 ok"
+      ]
+    },
+    {
+      "id": "g1-f02-cumulative-allowance",
+      "question": "是否批准为已备妥的 G1-F02 方案追加10,140秒控制器累计额度，将原队列上限从10,197调整为20,337秒？全部历史、已用897秒、原检查、三项600秒独立评审和完整复验储备保留，收费产品API/新增收费资源继续关闭。当前框架尚无原队列受审扩额入口；即使批准，也须该官方能力可用后才能实施，不创建新队列或直接修改账本。",
+      "reason": "真实loop_plan_preflight: remaining9300, proposed_child_integration_limit19440, deficit10140; actualreadonlytester确认合并/缩小功能无法保留全部标准并落入剩余额度。已准备可审阅23输出/2任务合同及真实capabilityprobe/评审路由，均未冻结或派发。官方native_project.register只接受完全相同已冻结声明，当前无budget amendment工具。",
+      "blocking": true,
+      "answers": [
+        "增加无线秒控制器额度"
+      ]
+    }
+  ],
+  "task_contracts": {
+    "g1_f02_final": {
+      "objective": "Accept only current G1-F02 localOIDC/realPGidentity/approval/audit increment: unchangedoriginalregressions plus newmeaningful realnetwork/PG tests, collector-owned complete review-evidence, fresh original3independent600ssecurity/code/acceptance reviews and realhandoff. Truthfulnewindexes only, no prefilled selfpass/fullG1 claim; preserved allhistoryandcumulativecap.",
+      "kind": "feature",
+      "criteria": [
+        {
+          "id": "oidc-network-and-token",
+          "description": "F02-01/02: independent test-only loopbackIdPprocess, code+S256PKCE/state/nonce one-use replaydenials; fixedissuer/audience/key/algorithm/type/time validation; no token-minted authority.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "current-pg-authentication",
+          "description": "F02-02/03/05: originalboundauthenticatinglookup remains; additiveUoWlocks currentPGsession in same transaction as lockedDBauthority. Currentidentity/membership/payer/lifecycle revocation and expiry/race denied; narrowserviceprincipal cannotimpersonate humanapprover.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "exact-approval-audit-audience",
+          "description": "F02-03/04/05: immutabletarget/digest/artifact/revisions/independentactor/expiry/sourceaudience exactbinding; self/stale/crossScope/revokedapproval deny; concurrentconsumption/dedup/rollback, auditfailclosed and lostCOMMITackoriginalkeylookup withoutreplay.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "migration-compatibility",
+          "description": "F02-06: separateidentitymigrationledger keeps old foundation1/2ledger intact; narrowroles/nonowner/nonsuperuser/nonBYPASSRLS, workers nofunctions/tables and controllercannotrewriteaudit. Meaningful actualPGpermissiontests.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "prior-baselines",
+          "description": "Original597protected/raw88 and foundation42source hashes immutable; originalG0197/G1local72/foundation17 regression checks unchanged; no paidcalls/historyreset.",
+          "check_ids": [
+            "identity-behavior",
+            "foundation-behavior",
+            "retained-baselines"
+          ]
+        },
+        {
+          "id": "team-independent-security",
+          "description": "Fresh actual independent team-independent-security assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.",
+          "check_ids": [
+            "team-independent-security"
+          ]
+        },
+        {
+          "id": "team-independent-reviewer",
+          "description": "Fresh actual independent team-independent-reviewer assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.",
+          "check_ids": [
+            "team-independent-reviewer"
+          ]
+        },
+        {
+          "id": "team-independent-acceptance",
+          "description": "Fresh actual independent team-independent-acceptance assessment of exact current G1-F02 localOIDC/currentPGidentity/session/approval/audit increment, complete realnetwork/PG command artifacts and unchanged protectedG0/G1local/G1F01 baselines. Signedpass/no blockingfindings required; fullG1 and externalSSO/device/realmodel qualification remainpending.",
+          "check_ids": [
+            "team-independent-acceptance"
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "id": "identity-behavior",
+          "type": "command",
+          "description": "Strictbuild actual independent loopbackIdP code+PKCE/state/nonce/token tests and realnonownerPostgreSQLcurrentauth/approval/audit/sourceaudience/revocationrace/rollback/unknowncommit. No skips/mocks for mandatoryintegration; originalfoundation42files hashchecked.",
+          "argv": [
+            "node",
+            "g1-identity/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "foundation-behavior",
+          "type": "command",
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "retained-baselines",
+          "type": "command",
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "team-independent-security",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh independently registered team-independent-security assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.",
+          "procedure": [
+            "Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.",
+            "Apply team-independent-security procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.",
+            "Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.",
+            "Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset."
+          ]
+        },
+        {
+          "id": "team-independent-reviewer",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh independently registered team-independent-reviewer assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.",
+          "procedure": [
+            "Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.",
+            "Apply team-independent-reviewer procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.",
+            "Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.",
+            "Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset."
+          ]
+        },
+        {
+          "id": "team-independent-acceptance",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh independently registered team-independent-acceptance assessment of exactG1-F02 localcandidate and completeactualraw evidence; no blocker permitted.",
+          "procedure": [
+            "Read originalF02-01..07requirements/actualanswers/frozencontracts and originalG0/G1local/G1foundationacceptedbaselines; inspect exactcandidate with completecurrentcommandsincollector-owned review-evidence.",
+            "Apply team-independent-acceptance procedure to independentIdP/processkeys/code+PKCE/state/nonce/signature/type/timevalidation, authoritativePGidentity/sessionlocks/revocation, narrowserviceprincipals, exact independentapproval/currentaudience and atomicappendonlyaudit/receipt/dedup/unknowncommit.",
+            "Verify meaningful realHTTP/PGnegative/expiry/concurrency/race/rollbacktests, old597protected/raw88/foundation42bytes and originalG0197/G1local72/foundation17 unchangedchecks; missingrawmaterials or behaviors must be inconclusive/fail.",
+            "Accept only localG1-F02increment. FormalenterpriseSSO/humanjudgment/physicalphones/signing/realmodels/remoteOS/fullG1/G2–G5staypending; paidproductAPI/newresources remainOFF. No hostselfsignedpass/historyreset."
+          ]
+        }
+      ],
+      "scope": {
+        "write_allow": [
+          "docs/evidence/g1-f02-acceptance.json",
+          "docs/evidence/g1-f02-acceptance.md"
+        ],
+        "write_deny": [
+          ".git/**",
+          ".loop/**",
+          ".agents/**",
+          ".codex/**",
+          "g1-foundations/**",
+          "g1-local/**",
+          "engine/**",
+          "security/**",
+          "services/**",
+          "adapters/**",
+          "apps/**",
+          "execution/**",
+          "evals/**",
+          "infra/**",
+          "scripts/**",
+          "package.json",
+          "pnpm-lock.yaml",
+          "pnpm-workspace.yaml",
+          "tsconfig*.json",
+          "docs/planning/**",
+          "docs/operations/**",
+          "docs/agent-fabric-design/**",
+          "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+          "docs/evidence/g0*",
+          "docs/evidence/g1-local*",
+          "docs/evidence/g1-pending-qualification.md",
+          "g1-identity/**"
+        ]
+      },
+      "limits": {
+        "max_iterations": 12,
+        "max_wall_seconds": 8280,
+        "max_stalled_iterations": 3,
+        "max_repeat_failure": 2,
+        "max_tokens": null,
+        "max_cost_microunits": null,
+        "cost_currency": "USD"
+      },
+      "authorization": {
+        "allowed_actions": [
+          "read_workspace",
+          "edit_workspace",
+          "run_checks"
+        ]
+      }
+    },
+    "g1_f02_identity": {
+      "objective": "G1-F02 additive independent localtestOIDC IdP/code+PKCE/stricttoken, currentPGidentity/session/membership/serviceprincipal/sourceaudience, exactindependentapproval and atomicappendonlyaudit;21newfiles only. Architectinterfaces first then disjointbackend/databaseworkers; preserve every prioracceptedbaseline/evidence/history/cumulativeusage; no old supplement or paidcalls. ScopeformalSSO/humanapproval/physicaldevice/signing/protectedOS/fullG1 qualification remains pending.",
+      "kind": "feature",
+      "criteria": [
+        {
+          "id": "oidc-network-and-token",
+          "description": "F02-01/02: independent test-only loopbackIdPprocess, code+S256PKCE/state/nonce one-use replaydenials; fixedissuer/audience/key/algorithm/type/time validation; no token-minted authority.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "current-pg-authentication",
+          "description": "F02-02/03/05: originalboundauthenticatinglookup remains; additiveUoWlocks currentPGsession in same transaction as lockedDBauthority. Currentidentity/membership/payer/lifecycle revocation and expiry/race denied; narrowserviceprincipal cannotimpersonate humanapprover.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "exact-approval-audit-audience",
+          "description": "F02-03/04/05: immutabletarget/digest/artifact/revisions/independentactor/expiry/sourceaudience exactbinding; self/stale/crossScope/revokedapproval deny; concurrentconsumption/dedup/rollback, auditfailclosed and lostCOMMITackoriginalkeylookup withoutreplay.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "migration-compatibility",
+          "description": "F02-06: separateidentitymigrationledger keeps old foundation1/2ledger intact; narrowroles/nonowner/nonsuperuser/nonBYPASSRLS, workers nofunctions/tables and controllercannotrewriteaudit. Meaningful actualPGpermissiontests.",
+          "check_ids": [
+            "identity-behavior"
+          ]
+        },
+        {
+          "id": "prior-baselines",
+          "description": "Original597protected/raw88 and foundation42source hashes immutable; originalG0197/G1local72/foundation17 regression checks unchanged; no paidcalls/historyreset.",
+          "check_ids": [
+            "identity-behavior",
+            "foundation-behavior",
+            "retained-baselines"
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "id": "identity-behavior",
+          "type": "command",
+          "description": "Strictbuild actual independent loopbackIdP code+PKCE/state/nonce/token tests and realnonownerPostgreSQLcurrentauth/approval/audit/sourceaudience/revocationrace/rollback/unknowncommit. No skips/mocks for mandatoryintegration; originalfoundation42files hashchecked.",
+          "argv": [
+            "node",
+            "g1-identity/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "foundation-behavior",
+          "type": "command",
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "retained-baselines",
+          "type": "command",
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout_seconds": 180
+        }
+      ],
+      "scope": {
+        "write_allow": [
+          "g1-identity/package.json",
+          "g1-identity/pnpm-lock.yaml",
+          "g1-identity/tsconfig.json",
+          "g1-identity/src/contracts.ts",
+          "g1-identity/src/test-idp.ts",
+          "g1-identity/src/token-verifier.ts",
+          "g1-identity/src/current-authority.ts",
+          "g1-identity/src/authenticated-uow.ts",
+          "g1-identity/src/approval-repository.ts",
+          "g1-identity/src/audience.ts",
+          "g1-identity/src/http-service.ts",
+          "g1-identity/src/migration.ts",
+          "g1-identity/migrations/0003_identity_approvals.sql",
+          "g1-identity/tests/oidc-network.test.ts",
+          "g1-identity/tests/identity-postgres.test.ts",
+          "g1-identity/tests/approval-audience.test.ts",
+          "g1-identity/scripts/build.mjs",
+          "g1-identity/scripts/check.mjs",
+          "g1-identity/scripts/test-idp-process.mjs",
+          "docs/planning/g1-f02-identity-plan.md",
+          "docs/operations/g1-f02-identity-quickstart.md"
+        ],
+        "write_deny": [
+          ".git/**",
+          ".loop/**",
+          ".agents/**",
+          ".codex/**",
+          "g1-local/**",
+          "engine/**",
+          "security/**",
+          "services/**",
+          "adapters/**",
+          "apps/**",
+          "execution/**",
+          "evals/**",
+          "infra/**",
+          "scripts/**",
+          "package.json",
+          "pnpm-lock.yaml",
+          "pnpm-workspace.yaml",
+          "tsconfig*.json",
+          "docs/planning/roadmap.md",
+          "docs/planning/g0-implementation-plan.md",
+          "docs/planning/decision-register.md",
+          "docs/planning/requirements-traceability.csv",
+          "docs/planning/g1-local*.md",
+          "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+          "docs/agent-fabric-design/**",
+          "g1-foundations/**",
+          "docs/planning/g1-foundations-plan.md",
+          "docs/planning/g1-remaining-ledger.csv"
+        ]
+      },
+      "limits": {
+        "max_iterations": 12,
+        "max_wall_seconds": 1440,
+        "max_stalled_iterations": 3,
+        "max_repeat_failure": 2,
+        "max_tokens": null,
+        "max_cost_microunits": null,
+        "cost_currency": "USD"
+      },
+      "authorization": {
+        "allowed_actions": [
+          "read_workspace",
+          "edit_workspace",
+          "run_checks"
+        ]
+      }
+    },
+    "g1_foundation_data": {
+      "objective": "Implement the first substantive remaining G1 foundation in a separate g1-foundations package: settle explicit asynchronous verified-scope/UoW/receipt/profile contracts; actually connect to PostgreSQL using a pinned independent driver, apply the original immutable G0 SQL plus narrow controller-role migration to an owned synthetic database, enforce non-owner/non-superuser/non-BYPASSRLS trusted service boundaries, current membership/Space/payer authorization and per-transaction session reset, durable idempotent task/event/outbox commit, revision conflicts, rollback/concurrency/unknown-commit reconciliation without replay. Implement bounded migration/fixture/remote-system smoke producers and a complete AF01–20/UX01–18 remaining ledger mapped to real G0/G1-local history and full G1–G5 obligations. Preserve every old source/evidence/oracle/lock; paid models disabled, no automatic model/routing/remote fallback. Remote system probe is approved synthetic-test preparation only; existing local and remote services remain untouched. Do not claim full G1, SSO, Temporal, S3, remote OS/worker isolation or production deployment qualification; next slices explicitly retained.",
+      "kind": "feature",
+      "criteria": [
+        {
+          "id": "async-contracts",
+          "description": "Async trust/UoW and qualified-profile contracts preserve immutable tenant/Space/Task/Run and prevent caller-minted authority or automatic paid/remote fallback; real fail-closed tests and compile pass.",
+          "check_ids": [
+            "foundation-behavior"
+          ]
+        },
+        {
+          "id": "real-postgres",
+          "description": "Original G0 schema is actually deployed only to an owned synthetic local PostgreSQL fixture; non-owner RLS, missing scope, tenant/Space crossing, revoked membership/payer, transaction cleanup, task+event+outbox atomicity, dedup/conflicting keys, competing revisions, rollback/reopen and unknown-commit lookup all have actual meaningful tests.",
+          "check_ids": [
+            "foundation-behavior"
+          ]
+        },
+        {
+          "id": "migration-and-ledger",
+          "description": "Migration is bounded, compatibility/failure/forward-recovery measured; owned fixtures use pinned image/driver/version with cleanup limited to their actual identities; all38 AF/UX rows retain remaining G1–G5 responsibilities and concrete next tasks; documented use reproduces code with real versus pending qualifications clear.",
+          "check_ids": [
+            "foundation-behavior"
+          ]
+        },
+        {
+          "id": "prior-baselines",
+          "description": "G0/G1-local source, protected oracle and all evidence/locks/history remain byte-identical; original current source regression checks pass and no real-model calls are enabled.",
+          "check_ids": [
+            "retained-baselines"
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "id": "foundation-behavior",
+          "type": "command",
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "retained-baselines",
+          "type": "command",
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout_seconds": 180
+        }
+      ],
+      "scope": {
+        "write_allow": [
+          "g1-foundations/**",
+          "docs/planning/g1-remaining-ledger.csv",
+          "docs/planning/g1-foundations-plan.md",
+          "docs/operations/g1-foundations-quickstart.md"
+        ],
+        "write_deny": [
+          ".git/**",
+          ".loop/**",
+          ".agents/**",
+          ".codex/**",
+          "g1-local/**",
+          "engine/**",
+          "security/**",
+          "services/**",
+          "adapters/**",
+          "apps/**",
+          "execution/**",
+          "evals/**",
+          "infra/**",
+          "scripts/**",
+          "package.json",
+          "pnpm-lock.yaml",
+          "pnpm-workspace.yaml",
+          "tsconfig*.json",
+          "docs/evidence/**",
+          "docs/planning/roadmap.md",
+          "docs/planning/g0-implementation-plan.md",
+          "docs/planning/decision-register.md",
+          "docs/planning/requirements-traceability.csv",
+          "docs/planning/g1-local*.md",
+          "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+          "docs/agent-fabric-design/**"
+        ]
+      },
+      "limits": {
+        "max_iterations": 12,
+        "max_wall_seconds": 1797,
+        "max_stalled_iterations": 3,
+        "max_repeat_failure": 2,
+        "max_tokens": null,
+        "max_cost_microunits": null,
+        "cost_currency": "USD"
+      },
+      "authorization": {
+        "allowed_actions": [
+          "read_workspace",
+          "edit_workspace",
+          "run_checks"
+        ]
+      }
+    },
+    "g1_foundation_final": {
+      "objective": "Independently accept this first remaining G1 production-data foundation on one exact candidate: actual strict build, async authority and real PostgreSQL role/RLS/UoW/idempotency/outbox/concurrency/rollback/unknown-commit measurements, owned-resource smoke and original G0/G1-local preservation/regression; three separate current registered600s independent security/code/requirements reviews, then actual recipient inspection. Create truthful additive evidence indexes only, not prefilled self-signed pass statements. Retain all fullG1/G2–G5 remaining requirements, actual decisions, existing services, protected artifacts and history/cumulative use. Complete this increment then follow remaining-roadmap prerequisites; do not declare entire product complete.",
+      "kind": "feature",
+      "criteria": [
+        {
+          "id": "current-foundation",
+          "description": "Current foundation commands and real PostgreSQL measurements meet original data task requirements with actual execution and indexed raw artifacts; implementation is not expanded by indexing.",
+          "check_ids": [
+            "foundation-behavior"
+          ]
+        },
+        {
+          "id": "preservation",
+          "description": "Current original G0/G1-local checks and exact protected-file hashes pass; all prior evidence/history/accounting retained.",
+          "check_ids": [
+            "retained-baselines"
+          ]
+        },
+        {
+          "id": "team-independent-security",
+          "description": "Fresh actual independent security assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope. Current signed pass with no blocking findings is required.",
+          "check_ids": [
+            "team-independent-security"
+          ]
+        },
+        {
+          "id": "team-independent-reviewer",
+          "description": "Fresh actual independent reviewer assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope. Current signed pass with no blocking findings is required.",
+          "check_ids": [
+            "team-independent-reviewer"
+          ]
+        },
+        {
+          "id": "team-independent-acceptance",
+          "description": "Fresh actual independent acceptance assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope. Current signed pass with no blocking findings is required.",
+          "check_ids": [
+            "team-independent-acceptance"
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "id": "foundation-behavior",
+          "type": "command",
+          "description": "Build strict async foundation and actually run meaningful behavior/concurrency/recovery and real owned PostgreSQL non-owner/RLS/UoW tests; no mocks accepted as PG evidence.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "retained-baselines",
+          "type": "command",
+          "description": "Byte-check original G0/G1-local protected files and original raw evidence; run original G0 and G1-local checks without changing their definitions or history.",
+          "argv": [
+            "node",
+            "g1-foundations/scripts/check-retained.mjs"
+          ],
+          "timeout_seconds": 180
+        },
+        {
+          "id": "team-independent-security",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh actual independent security assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope.",
+          "procedure": [
+            "Read original product/spec/actual recorded decisions and accepted G0/G1-local protected inputs, inspect exact candidate and original command execution artifacts.",
+            "Apply independent security professional procedure: trace async service authority, real nonprivileged PostgreSQL/RLS/UoW/dedup/outbox/recovery, exact fixture ownership/cleanup, migration compatibility and complete38IDremaining ledger; report blocking findings when missing.",
+            "Verify actual PostgreSQL capability/measurement artifacts and exact candidate/env/procedure bindings; no fake-driver or source-only substitution for required live PG tests. Preserve all unknown outcomes and historical failures.",
+            "Pass only this increment when all its original requirements/checks are satisfied; paid product calls stay disabled. Full G1 including real models, OIDC/formal identity, Temporal/runtime/S3, cross-device sleep and signing plus G2–G5 remain explicit next work; this pass does not declare those implemented or controller COMPLETE."
+          ]
+        },
+        {
+          "id": "team-independent-reviewer",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh actual independent reviewer assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope.",
+          "procedure": [
+            "Read original product/spec/actual recorded decisions and accepted G0/G1-local protected inputs, inspect exact candidate and original command execution artifacts.",
+            "Apply independent reviewer professional procedure: trace async service authority, real nonprivileged PostgreSQL/RLS/UoW/dedup/outbox/recovery, exact fixture ownership/cleanup, migration compatibility and complete38IDremaining ledger; report blocking findings when missing.",
+            "Verify actual PostgreSQL capability/measurement artifacts and exact candidate/env/procedure bindings; no fake-driver or source-only substitution for required live PG tests. Preserve all unknown outcomes and historical failures.",
+            "Pass only this increment when all its original requirements/checks are satisfied; paid product calls stay disabled. Full G1 including real models, OIDC/formal identity, Temporal/runtime/S3, cross-device sleep and signing plus G2–G5 remain explicit next work; this pass does not declare those implemented or controller COMPLETE."
+          ]
+        },
+        {
+          "id": "team-independent-acceptance",
+          "type": "review",
+          "independent": true,
+          "description": "Fresh actual independent acceptance assessment of the first G1 data foundation on exact integrated candidate, with original retained baseline, real PostgreSQL execution and current permitted scope.",
+          "procedure": [
+            "Read original product/spec/actual recorded decisions and accepted G0/G1-local protected inputs, inspect exact candidate and original command execution artifacts.",
+            "Apply independent acceptance professional procedure: trace async service authority, real nonprivileged PostgreSQL/RLS/UoW/dedup/outbox/recovery, exact fixture ownership/cleanup, migration compatibility and complete38IDremaining ledger; report blocking findings when missing.",
+            "Verify actual PostgreSQL capability/measurement artifacts and exact candidate/env/procedure bindings; no fake-driver or source-only substitution for required live PG tests. Preserve all unknown outcomes and historical failures.",
+            "Pass only this increment when all its original requirements/checks are satisfied; paid product calls stay disabled. Full G1 including real models, OIDC/formal identity, Temporal/runtime/S3, cross-device sleep and signing plus G2–G5 remain explicit next work; this pass does not declare those implemented or controller COMPLETE."
+          ]
+        }
+      ],
+      "scope": {
+        "write_allow": [
+          "docs/evidence/g1-foundations-acceptance.json",
+          "docs/evidence/g1-foundations-acceptance.md"
+        ],
+        "write_deny": [
+          ".git/**",
+          ".loop/**",
+          ".agents/**",
+          ".codex/**",
+          "g1-foundations/**",
+          "g1-local/**",
+          "engine/**",
+          "security/**",
+          "services/**",
+          "adapters/**",
+          "apps/**",
+          "execution/**",
+          "evals/**",
+          "infra/**",
+          "scripts/**",
+          "package.json",
+          "pnpm-lock.yaml",
+          "pnpm-workspace.yaml",
+          "tsconfig*.json",
+          "docs/planning/**",
+          "docs/operations/**",
+          "docs/agent-fabric-design/**",
+          "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+          "docs/evidence/g0*",
+          "docs/evidence/g1-local*",
+          "docs/evidence/g1-pending-qualification.md"
+        ]
+      },
+      "limits": {
+        "max_iterations": 12,
+        "max_wall_seconds": 8400,
+        "max_stalled_iterations": 3,
+        "max_repeat_failure": 2,
+        "max_tokens": null,
+        "max_cost_microunits": null,
+        "cost_currency": "USD"
+      },
+      "authorization": {
+        "allowed_actions": [
+          "read_workspace",
+          "edit_workspace",
+          "run_checks"
+        ]
+      }
+    }
+  }
+}

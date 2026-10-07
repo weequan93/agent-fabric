@@ -1,12 +1,18 @@
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID,createHash} from 'node:crypto';
+import {spawn} from 'node:child_process';
 import {createFixture} from './identity-postgres.test.js';
 import {ExactApprovalRepository,approvalDigest} from '../src/approval-repository.js';
 import {audienceDigest,CurrentAudienceVerifier,type AudienceRow} from '../src/audience.js';
 import {AuthenticatedUnitOfWork} from '../src/authenticated-uow.js';
 import {PostgresUnitOfWork} from '../../g1-foundations/src/postgres-uow.js';
-import type {ExactApprovalBinding,VerifiedScope,AsyncUnitOfWork} from '../src/contracts.js';
+import {FoundationError} from '../../g1-foundations/src/contracts.js';
+import {startIdentityHttpService} from '../src/http-service.js';
+import {createIdentityScopeVerifier} from '../src/current-authority.js';
+import {verifyAccessToken} from '../src/token-verifier.js';
+import {beginTestAuthorization,completeTestAuthorization} from '../src/test-idp.js';
+import type {ExactApprovalBinding,VerifiedScope,AsyncUnitOfWork,ApprovalReceipt} from '../src/contracts.js';
 let f:Awaited<ReturnType<typeof createFixture>>,requester:VerifiedScope,executor:VerifiedScope,approver:VerifiedScope,service:VerifiedScope,repo:ExactApprovalRepository;
 before(async()=>{f=await createFixture();[requester,executor,approver,service]=await Promise.all([0,1,2,3].map(i=>f.scopeFor(i))) as [VerifiedScope,VerifiedScope,VerifiedScope,VerifiedScope];repo=new ExactApprovalRepository({uow:f.uow,bindingFor:f.bindingFor});});after(async()=>{await f?.close();});
 async function binding(overrides:Partial<ExactApprovalBinding>={},fixture=f,scope=requester):Promise<ExactApprovalBinding>{const rows=await fixture.uow.withScope(scope,async tx=>(await tx.query('SELECT fabric.identity_audience($1,$2,$3) AS audience',[fixture.source,fixture.space,fixture.sourceTask])).rows[0]?.audience as AudienceRow[]);const target='synthetic://'+randomUUID();const argsDigest='sha256:'+createHash('sha256').update('synthetic').digest('hex');await fixture.admin.query('INSERT INTO fabric.identity_target_versions(tenant_id,space_id,target,artifact_version,args_digest) VALUES($1,$2,$3,1,$4)',[fixture.tenant,fixture.space,target,argsDigest]);return {tenantId:fixture.tenant,spaceId:fixture.space,taskId:fixture.task,runId:fixture.run,operationId:randomUUID(),target,action:'synthetic:publish',argsDigest,artifactVersion:1,policyRevision:1,requirementsRevision:1,sourceAudience:{sourceSpaceId:fixture.source,sourceTaskId:fixture.sourceTask,destinationSpaceId:fixture.space,recipientActorIds:rows.map(r=>r.actorId),revisionDigest:audienceDigest(rows)},limits:{maxOperations:1,maxCostMicrounits:0},expiresAt:new Date(Date.now()+60000).toISOString(),...overrides};}
@@ -85,5 +91,95 @@ test('APPROVAL/participant-and-approval-expiry-after-real-partial-writes-rolls-b
    assert.equal(afterWrites,true,'actual consumed UPDATE and expiry-wait trigger completed after all three writes');
    await assertNoApprovalEffects(r.approvalId);
   }finally{await f.admin.query(`DROP TRIGGER IF EXISTS ${tr} ON fabric.exact_approvals`);await f.admin.query(`DROP FUNCTION fabric.${fn}()`);if(mode==='approver-session')await f.admin.query("UPDATE fabric.identity_sessions SET expires_at=clock_timestamp()+interval '600 seconds' WHERE issuer=$1 AND subject=$2 AND sid=$3",[f.issuer,f.actors[2],f.sessions[2]]);}
+ }
+});
+
+async function waitForCommandLock(blockerPid:number){
+ const deadline=Date.now()+1500;
+ while(Date.now()<deadline){
+  const rows=(await f.admin.query("SELECT pid FROM pg_stat_activity WHERE datname=current_database() AND wait_event_type='Lock' AND $1=ANY(pg_blocking_pids(pid)) AND query LIKE 'SELECT pg_advisory_xact_lock%'",[blockerPid])).rows;
+  if(rows.length)return;
+  await new Promise(resolve=>setTimeout(resolve,10));
+ }
+ throw new Error('Expected actual original-key advisory lock wait');
+}
+for(const outcome of ['commit','rollback','timeout'] as const)test('APPROVAL/original-key-lookup-during-uncommitted-writes-'+outcome,async()=>{
+ const {b,r}=await approved(),input={approvalId:r.approvalId,idempotencyKey:randomUUID(),binding:b};
+ let release!:()=>void,entered!:(value:{pid:number;receipt:ApprovalReceipt})=>void;
+ const gate=new Promise<void>(resolve=>release=resolve),ready=new Promise<{pid:number;receipt:ApprovalReceipt}>(resolve=>entered=resolve);
+ const heldUow:AsyncUnitOfWork={withScope:(scope,work)=>f.uow.withScope(scope,async tx=>{
+  const pid=Number((await tx.query('SELECT pg_backend_pid() AS pid')).rows[0]!.pid);
+  const value=await work(tx);entered({pid,receipt:value as ApprovalReceipt});await gate;
+  if(outcome==='rollback')throw new Error('injected rollback after all approval writes');return value;
+ })};
+ const held=new ExactApprovalRepository({uow:heldUow,bindingFor:f.bindingFor});
+ const consuming=held.consume(executor,input);
+ const consumed=outcome==='rollback'?assert.rejects(consuming,/injected rollback/):consuming;
+ let lookup:ReturnType<typeof repo.lookupCommand>|undefined;
+ try{
+  const original=await Promise.race([ready,consuming.then(()=>{throw new Error('Consume settled before observation');})]);
+  // Independent connection cannot see the receipt while all writes are held.
+  for(const table of ['approval_audit','approval_outbox','approval_receipts'])assert.equal((await f.admin.query(`SELECT count(*)::int AS n FROM fabric.${table} WHERE receipt->>'approvalId'=$1`,[r.approvalId])).rows[0].n,0);
+  let settled=false;lookup=repo.lookupCommand(executor,input.idempotencyKey,approvalDigest(b));lookup.then(()=>settled=true,()=>settled=true);
+  await waitForCommandLock(original.pid);assert.equal(settled,false);
+  // Key and executor namespaces remain independent; neither can reveal receipt.
+  assert.deepEqual(await repo.lookupCommand(executor,randomUUID(),approvalDigest(b)),{status:'absent-safe'});
+  assert.deepEqual(await repo.lookupCommand(requester,input.idempotencyKey,approvalDigest(b)),{status:'absent-safe'});
+  if(outcome==='timeout'){
+   assert.deepEqual(await lookup,{status:'unknown',nextAction:'lookup-original-key-no-replay'});
+   assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.approval_receipts WHERE idempotency_key=$1',[input.idempotencyKey])).rows[0].n,0);
+  }
+  release();await consumed;
+  if(outcome==='rollback'){
+   assert.deepEqual(await lookup,{status:'absent-safe'});await assertNoApprovalEffects(r.approvalId);
+  }else{
+   const result=outcome==='timeout'?await repo.lookupCommand(executor,input.idempotencyKey,approvalDigest(b)):await lookup;
+   assert.deepEqual(result,{status:'committed',receipt:original.receipt});
+   for(const table of ['approval_audit','approval_outbox','approval_receipts'])assert.equal((await f.admin.query(`SELECT count(*)::int AS n FROM fabric.${table} WHERE receipt->>'approvalId'=$1`,[r.approvalId])).rows[0].n,1);
+   await assert.rejects(repo.lookupCommand(executor,input.idempotencyKey,'sha256:'+'0'.repeat(64)),e=>(e as {code:string}).code==='APPROVAL_CONFLICT');
+  }
+ }finally{release();await Promise.allSettled([consumed,...(lookup?[lookup]:[])]);}
+});
+
+test('APPROVAL/real-HTTP-PG-lost-COMMIT-ack-preserves-unknown-and-original-receipt',async()=>{
+ const {b,r}=await approved();
+ const clientId='recovery-test',apiAudience='recovery-api',redirectUri='http://127.0.0.1/callback';
+ const child=spawn(process.execPath,['g1-identity/scripts/test-idp-process.mjs'],{env:{...process.env,FABRIC_TEST_IDP_CONFIG:JSON.stringify({clientId,apiAudience,redirectUri,users:[{subject:f.actors[1],password:'synthetic'}],sessionDsn:f.idpDsn})},stdio:['pipe','pipe','pipe']});
+ let service:Awaited<ReturnType<typeof startIdentityHttpService>>|undefined;
+ try{
+  const endpoints=await new Promise<{issuer:string;jwksUrl:string;authorizationEndpoint:string;tokenEndpoint:string}>((resolve,reject)=>{
+   let text='';const timer=setTimeout(()=>reject(new Error('Recovery IdP readiness timeout')),5000);
+   child.once('error',error=>{clearTimeout(timer);reject(error);});child.once('exit',()=>{clearTimeout(timer);reject(new Error('Recovery IdP exited'));});
+   child.stderr.on('data',()=>{});child.stdout.on('data',data=>{text+=String(data);if(text.includes('\n')){clearTimeout(timer);try{resolve(JSON.parse(text.split('\n')[0]!));}catch(error){reject(error);}}});
+  });
+  await f.admin.query("INSERT INTO fabric.identities(issuer,subject,tenant_id,actor_id,principal_kind) VALUES($1,$2,$3,$4,'human')",[endpoints.issuer,f.actors[1],f.tenant,f.actors[1]]);
+  const transaction=beginTestAuthorization({...endpoints,clientId,apiAudience,redirectUri});
+  const auth=await fetch(endpoints.authorizationEndpoint,{method:'POST',redirect:'manual',body:new URLSearchParams({client_id:clientId,redirect_uri:redirectUri,response_type:'code',code_challenge_method:'S256',code_challenge:createHash('sha256').update(transaction.verifier).digest('base64url'),state:transaction.state,nonce:transaction.nonce,username:f.actors[1]!,password:'synthetic'})});assert.equal(auth.status,302);
+  const raw=await completeTestAuthorization({...endpoints,clientId,apiAudience,redirectUri,callbackUrl:auth.headers.get('location')!,transaction,...transaction});
+  const scopes=createIdentityScopeVerifier({verifyToken:token=>verifyAccessToken(token,{...endpoints,apiAudience}),lookupAuthority:f.lookup});
+  const bindingFor=(scope:VerifiedScope)=>scopes.bindingFor(scope);let commits=0;
+  const lostUow=new AuthenticatedUnitOfWork({foundation:new PostgresUnitOfWork(f.controller,()=>{commits++;throw new Error('lost durable acknowledgement: private internal detail');}),bindingFor});
+  const lost=new ExactApprovalRepository({uow:lostUow,bindingFor}),normal=new ExactApprovalRepository({uow:new AuthenticatedUnitOfWork({foundation:f.foundation,bindingFor}),bindingFor});
+  let fault:unknown;
+  service=await startIdentityHttpService({scopes,approvals:{create:normal.create.bind(normal),approve:normal.approve.bind(normal),consume:async(scope,input)=>{if(fault)throw fault;return lost.consume(scope,input);},lookupCommand:normal.lookupCommand.bind(normal)}});
+  const headers={authorization:'Bearer '+raw,'content-type':'application/json'},query='?tenantId='+f.tenant+'&spaceId='+f.space;
+  const input={approvalId:r.approvalId,idempotencyKey:randomUUID(),binding:b};
+  const response=await fetch(service.url+'/approvals/consume'+query,{method:'POST',headers,body:JSON.stringify(input)});
+  assert.equal(response.status,503);assert.equal(response.headers.get('cache-control'),'no-store');
+  assert.deepEqual(await response.json(),{error:'UNKNOWN_COMMIT',status:'unknown',recovery:{path:'/approvals/lookup',method:'POST',useOriginalKey:true,replayAllowed:false}});
+  const durable=(await f.admin.query('SELECT receipt FROM fabric.approval_receipts WHERE idempotency_key=$1',[input.idempotencyKey])).rows[0].receipt;
+  const recovered=await fetch(service.url+'/approvals/lookup'+query,{method:'POST',headers,body:JSON.stringify({idempotencyKey:input.idempotencyKey,bindingDigest:approvalDigest(b)})});
+  assert.equal(recovered.status,200);assert.deepEqual(await recovered.json(),{status:'committed',receipt:durable});assert.equal(commits,1);
+  // Only the allowlisted error classes/code get the recovery response. Private
+  // messages and arbitrary objects bearing the same code must not cross HTTP.
+  for(const error of [new FoundationError('UNAUTHORIZED','private authorization detail'),Object.assign(new Error('private spoofed detail'),{code:'UNKNOWN_COMMIT'})]){
+   fault=error;const denied:Response=await fetch(service.url+'/approvals/consume'+query,{method:'POST',headers,body:JSON.stringify(input)});
+   assert.equal(denied.status,403);assert.deepEqual(await denied.json(),{error:'UNAUTHORIZED'});
+  }
+  assert.equal(commits,1);
+  for(const table of ['approval_audit','approval_outbox','approval_receipts'])assert.equal((await f.admin.query(`SELECT count(*)::int AS n FROM fabric.${table} WHERE receipt->>'approvalId'=$1`,[r.approvalId])).rows[0].n,1);
+  assert.equal((await f.admin.query('SELECT state FROM fabric.exact_approvals WHERE approval_id=$1',[r.approvalId])).rows[0].state,'consumed');
+ }finally{
+  await service?.close();if(child.exitCode===null&&child.signalCode===null){await new Promise<void>(resolve=>{child.once('exit',()=>resolve());child.kill('SIGTERM');const timer=setTimeout(()=>child.kill('SIGKILL'),1500);timer.unref();});}
  }
 });

@@ -103,6 +103,11 @@ export interface ApprovalReceipt extends ScopeRef {
 }
 export type ApprovalCommitLookup = { readonly status: 'committed'; readonly receipt: ApprovalReceipt }
  | { readonly status: 'absent-safe' } | { readonly status: 'unknown'; readonly nextAction: string };
+/** A 503 preserves an unresolved outcome without echoing request data or secrets. */
+export interface UnknownApprovalCommitResponse {
+ readonly error: 'UNKNOWN_COMMIT'; readonly status: 'unknown';
+ readonly recovery: { readonly path: '/approvals/lookup'; readonly method: 'POST'; readonly useOriginalKey: true; readonly replayAllowed: false };
+}
 export interface ApprovalRepositoryPort {
  create(scope: VerifiedScope, input: CreateApprovalInput): Promise<ApprovalRecord>;
  approve(scope: VerifiedScope, approvalId: string, bindingDigest: string): Promise<ApprovalRecord>;

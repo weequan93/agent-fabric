@@ -1,3 +1,11 @@
-[mcp_servers.loop-native]
+# >>> loop-engineering (managed) >>>
+[mcp_servers.loop]
 command = "/Users/super/Documents/ai/loop-engineering-code/.venv/bin/python"
-args = ["/Users/super/Documents/ai/loop-engineering-code/scripts/native_mcp.py", "--project", "/Users/super/Documents/ai/agent-fabric", "--state-dir", "/Users/super/Documents/ai/loop-states/agent-fabric"]
+args = ["-m", "loop_engineering", "mcp", "--project", "/Users/super/Documents/ai/agent-fabric"]
+tool_timeout_sec = 180
+startup_timeout_sec = 30
+default_tools_approval_mode = "approve"
+
+[mcp_servers.loop.env]
+PYTHONPATH = "/Users/super/Documents/ai/loop-engineering-code"
+# <<< loop-engineering (managed) <<<

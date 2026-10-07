@@ -1,0 +1,31 @@
+import {appendFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import pg from 'pg';
+import {Worker,NativeConnection,Runtime,DefaultLogger} from '@temporalio/worker';
+import {createIdentityScopeVerifier} from '../../g1-identity/src/current-authority.js';
+import {verifyAccessToken} from '../../g1-identity/src/token-verifier.js';
+import {AuthenticatedUnitOfWork,createPostgresAuthorityLookup} from '../../g1-identity/src/authenticated-uow.js';
+import {PostgresUnitOfWork} from '../../g1-foundations/src/postgres-uow.js';
+import {RecoveryRepository} from './repository.js';
+import {EffectRepository} from './effect-repository.js';
+import {createEffectActivities} from './effect-activities.js';
+import type {EffectRequest} from './effect-protocol.js';
+import {createNativeActivities} from './native-activities.js';
+const raw=process.env.FABRIC_NATIVE_WORKER;if(!raw)throw new Error('Owned native worker configuration required');
+const config=JSON.parse(raw) as {owner:string;dsn:string;issuer:string;jwksUrl:string;token:string;tenantId:string;spaceId:string;address:string;taskQueue:string;generation:number;measurementPath:string;effectEndpoint?:string;effectRequest?:EffectRequest};
+Runtime.install({logger:new DefaultLogger('ERROR')});
+const pool=new pg.Pool({connectionString:config.dsn,max:2});
+const verifier=createIdentityScopeVerifier({verifyToken:token=>verifyAccessToken(token,{issuer:config.issuer,apiAudience:'recovery-api',jwksUrl:config.jwksUrl}),lookupAuthority:createPostgresAuthorityLookup(pool)});
+const uow=new AuthenticatedUnitOfWork({foundation:new PostgresUnitOfWork(pool),bindingFor:s=>verifier.bindingFor(s)});
+const repo=new RecoveryRepository(uow,s=>verifier.bindingFor(s));
+const measure=(record:Record<string,unknown>)=>appendFileSync(config.measurementPath,JSON.stringify({owner:config.owner,pid:process.pid,...record})+'\n');
+measure({kind:'process-start',generation:config.generation,sessionCacheEntries:0});
+const connection=await NativeConnection.connect({address:config.address});
+try {
+ const scope=()=>verifier.verify({tenantId:config.tenantId,spaceId:config.spaceId,sessionCredential:config.token});
+ const effectActivities=config.effectEndpoint?createEffectActivities({repo:new EffectRepository(repo),scope,generation:config.generation,endpoint:config.effectEndpoint,requestFor:async()=>{if(!config.effectRequest)throw new Error('Owned exact fixture request required');return config.effectRequest;},measure}):{};
+ const worker=await Worker.create({connection,workflowsPath:fileURLToPath(new URL(config.effectEndpoint?'./effect-workflow.js':'./native-workflow.js',import.meta.url)),taskQueue:config.taskQueue,maxConcurrentActivityTaskExecutions:1,maxConcurrentWorkflowTaskExecutions:2,activities:{...createNativeActivities({repo,scope,workerGeneration:config.generation,measure}),...effectActivities}});
+ process.once('SIGTERM',()=>worker.shutdown());
+ process.stdout.write(JSON.stringify({kind:'ready',owner:config.owner,pid:process.pid,generation:config.generation})+'\n');
+ await worker.run();
+} finally {await connection.close();await pool.end();}
