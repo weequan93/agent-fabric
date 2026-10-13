@@ -1,0 +1,154 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:c104f19aa21352b70476b89831dae9fac8dddf92fe96336283c76b603c4d5b00","files":61,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 148ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"daee8315-3582-4bae-b49d-4d7c8726c337","instance":"b28e1d4f-9663-44bb-9c1e-94632152df80","containerId":"49dfbd4eda6a7dae85afd994c2df8d3c542af7c1667c12a14573bd6ea7794d46","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"3ef9a4e9-dd83-42cd-8b6c-438fcf1198e5","device":16777238,"inode":324203172},"backup":{"rootId":"2a1dca84-562f-4e30-a9bc-f1ef22269cb8","device":16777238,"inode":324203174},"restore":{"rootId":"256d179f-7d37-4b42-9d94-18634e524b0a","device":16777238,"inode":324203176}},"fixtureRoot":{"rootId":"befea6c4-e518-449d-a6f7-149b4a360ae7","device":16777238,"inode":324203170},"preexistingContainers":[],"processBefore":{"rows":776,"digest":"a367b9204977fd2bc4f8edb4404d6b90fb1e951904f64a1fed8b5b2144eb8644"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":85236,"marker":"e806b4c8-ef6c-41ec-a8b7-3b0e992df951","instance":"85135/Thu Oct  8 05:53:11 2026","ppid":85234,"loopback":true}
+# Subtest: MIGRATION/behavior / real owned subtype migration and installed accounting
+    # Subtest: rollback leaves original FK, schema and ledgers
+    ok 1 - rollback leaves original FK, schema and ledgers
+      ---
+      duration_ms: 49.960125
+      type: 'test'
+      ...
+    # Subtest: unexpected installed FK refuses atomically
+    ok 2 - unexpected installed FK refuses atomically
+      ---
+      duration_ms: 31.20325
+      type: 'test'
+      ...
+    # Subtest: repeat, identity substitution and digest tamper
+    ok 3 - repeat, identity substitution and digest tamper
+      ---
+      duration_ms: 82.215
+      type: 'test'
+      ...
+    # Subtest: forced RLS and no enrollment/mutation grants
+    ok 4 - forced RLS and no enrollment/mutation grants
+      ---
+      duration_ms: 19.858875
+      type: 'test'
+      ...
+    # Subtest: ask logical resource uses unchanged prepare/settle with zero computer assignment
+    not ok 5 - ask logical resource uses unchanged prepare/settle with zero computer assignment
+      ---
+      duration_ms: 159.784083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly deep-equal:
+        + actual - expected
+        
+          Comparison {
+        +   code: 'UNAUTHORIZED'
+        -   code: '23514'
+          }
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+        code: '23514'
+      actual:
+      error: 'UNAUTHORIZED'
+      stack: |-
+        ResourceRepository.failure (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src/resource-repository.js:77:15)
+        file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src/resource-repository.js:65:22
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async waitForActual (node:assert:644:5)
+        async Function.rejects (node:assert:767:25)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:135:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:13)
+      operator: 'rejects'
+      stack: |-
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:135:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: maintenance logical resource uses unchanged prepare/settle with zero computer assignment
+    not ok 6 - maintenance logical resource uses unchanged prepare/settle with zero computer assignment
+      ---
+      duration_ms: 200.088875
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly deep-equal:
+        + actual - expected
+        
+          Comparison {
+        +   code: 'UNAUTHORIZED'
+        -   code: '23514'
+          }
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+        code: '23514'
+      actual:
+      error: 'UNAUTHORIZED'
+      stack: |-
+        ResourceRepository.failure (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src/resource-repository.js:77:15)
+        file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src/resource-repository.js:65:22
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async waitForActual (node:assert:644:5)
+        async Function.rejects (node:assert:767:25)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:135:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:13)
+      operator: 'rejects'
+      stack: |-
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:135:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:97:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: original computer relation remains independently available
+    ok 7 - original computer relation remains independently available
+      ---
+      duration_ms: 51.721792
+      type: 'test'
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"migration","positives":{"save":0,"ask":0,"forget":0,"restore":0,"read":0,"write":0,"deny":54,"conflict":0,"propagate":0,"backup":0,"owner":2,"harness":0},"violations":{"unauthorizedDisclosure":0,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+# {"measurement":"model-owned-process-cleanup","pid":85236,"instance":"85135/Thu Oct  8 05:53:11 2026","signal":"SIGTERM","removed":true}
+    1..7
+not ok 1 - MIGRATION/behavior / real owned subtype migration and installed accounting
+  ---
+  duration_ms: 1071.36
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/migration.component.test.js:11:1'
+  failureType: 'subtestsFailed'
+  error: '2 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 8
+# suites 0
+# pass 5
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1142.609334
+{"measurement":"storage-container-cleanup","owner":"daee8315-3582-4bae-b49d-4d7c8726c337","instance":"b28e1d4f-9663-44bb-9c1e-94632152df80","containerId":"49dfbd4eda6a7dae85afd994c2df8d3c542af7c1667c12a14573bd6ea7794d46","removed":true,"censusUnchanged":true,"processAfter":{"rows":776,"digest":"8a905866ca7abdadfaa461e06107734afec42e5a029b603cf49f1c3be131294f"}}
+{"measurement":"storage-root-cleanup","owner":"daee8315-3582-4bae-b49d-4d7c8726c337","instance":"b28e1d4f-9663-44bb-9c1e-94632152df80","rootId":"befea6c4-e518-449d-a6f7-149b4a360ae7","rootIds":["3ef9a4e9-dd83-42cd-8b6c-438fcf1198e5","2a1dca84-562f-4e30-a9bc-f1ef22269cb8","256d179f-7d37-4b42-9d94-18634e524b0a"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

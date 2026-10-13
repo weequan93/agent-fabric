@@ -1,0 +1,187 @@
+{
+ "pipeline": [
+  {
+   "stage": "intake",
+   "state": "done",
+   "detail": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md"
+  },
+  {
+   "stage": "requirements",
+   "state": "done",
+   "detail": "96 recorded · final"
+  },
+  {
+   "stage": "requirements_review",
+   "state": "done",
+   "detail": "pass"
+  },
+  {
+   "stage": "solution",
+   "state": "done",
+   "detail": "docs/loop/agent-fabric-g1-f05-storage/solution.md"
+  },
+  {
+   "stage": "test_design",
+   "state": "done",
+   "detail": "docs/loop/agent-fabric-g1-f05-storage/test-plan.md"
+  },
+  {
+   "stage": "plan",
+   "state": "done",
+   "detail": "55 tasks · 0 uncovered · final"
+  },
+  {
+   "stage": "resources",
+   "state": "current",
+   "detail": "pending"
+  },
+  {
+   "stage": "plan_review",
+   "state": "pending",
+   "detail": "fail (round 2)"
+  },
+  {
+   "stage": "develop",
+   "state": "pending",
+   "detail": "3/55 tasks"
+  },
+  {
+   "stage": "test",
+   "state": "pending",
+   "detail": "integration:-, regression:pass, regression:pass, regression:pass"
+  },
+  {
+   "stage": "reviews",
+   "state": "pending",
+   "detail": "security:-, code:-"
+  },
+  {
+   "stage": "final-acceptance",
+   "state": "pending",
+   "detail": "pending"
+  },
+  {
+   "stage": "product-acceptance",
+   "state": "pending",
+   "detail": "pending"
+  },
+  {
+   "stage": "done",
+   "state": "pending",
+   "detail": ""
+  }
+ ],
+ "goal": "agent-fabric-g1-f05-storage",
+ "title": "agent-fabric: G1-F05 storage",
+ "kind": "develop",
+ "status": "blocked",
+ "reason": "Blocked (environment): RESOURCE39-01 continuation approved in q-3336b91016 but not applied: existing goal still has max_iterations60/max_hours24 at iteration41 (19 future turns for52 unchanged work tasks). Authorized human/controller maintainer must apply120/144 with preserved history and contract authorization before resources can be submitted. No further approval of the same continuation is needed.",
+ "next": {
+  "kind": "unblock",
+  "actor": "human",
+  "summary": "Blocked (environment): RESOURCE39-01 continuation approved in q-3336b91016 but not applied: existing goal still has max_iterations60/max_hours24 at iteration41 (19 future turns for52 unchanged work tasks). Authorized human/controller maintainer must apply120/144 with preserved history and contract authorization before resources can be submitted. No further approval of the same continuation is needed."
+ },
+ "tasks": {
+  "total": 55,
+  "pending": 51,
+  "active": 1,
+  "done": 3,
+  "blocked": 0,
+  "dropped": 0
+ },
+ "acceptance": {
+  "acceptance.g1-storage-behavior": "not run",
+  "acceptance.identity-behavior": "pass",
+  "acceptance.foundation-behavior": "pass",
+  "acceptance.retained-baselines": "pass"
+ },
+ "open_questions": [],
+ "blocker": {
+  "category": "environment",
+  "reason": "RESOURCE39-01 continuation approved in q-3336b91016 but not applied: existing goal still has max_iterations60/max_hours24 at iteration41 (19 future turns for52 unchanged work tasks). Authorized human/controller maintainer must apply120/144 with preserved history and contract authorization before resources can be submitted. No further approval of the same continuation is needed.",
+  "evidence": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn41/approval-record.json records approve by human at2026-10-08T03:44:03Z. controller-status-before-block.json and capacity-audit.json reproduce actual60/24, iteration41,52 unfinished tasks. CLI --help/goal --help/repair --help all exit0; installed engine.answer775–797 only records decision, store.create_goal140–154 rejects existing ID, approve483–496 does not mutate policy, limit resume/unblock resets anchors. controller-interface-probes.json records full exact streams; CLI audit ok=true/problems=[]. application-handoff.md and approved-policy-change.json specify maintainer operation.",
+  "attempted": "Inspected all installed MCP loop tools and CLI entrypoints plus exact controller implementation; no existing-goal policy mutation endpoint exists. Verified approval and authored plan, preserved original start/default iteration_base0/55 task histories/monotonic usage/event726 prefix and2581 protected inputs. Prepared exact approved policy delta and recomputed feasible authorized79future=52work+7pipeline+20repair,126.19825h total<144. Did not recreate goal, hand-edit.loop, spoof human approval, reset accounting or weaken checks.",
+  "at": "2026-10-08T03:47:58+00:00",
+  "by": "agent"
+ },
+ "iteration": 41,
+ "max_iterations": 60,
+ "usage": {
+  "turns": 40,
+  "cost_usd": 0.0,
+  "cost_complete": false,
+  "input_tokens": 122281453,
+  "output_tokens": 861628,
+  "agent_seconds": 26459.665000000005
+ },
+ "runner": {
+  "pid": 86098,
+  "identity": "86098@1791395186.24",
+  "host": "supers-Mac-mini.local",
+  "started_at": "2026-10-07T20:19:27+00:00",
+  "heartbeat_at": "2026-10-08T03:48:14+00:00",
+  "adapter": "codex",
+  "turn": {
+   "n": 41,
+   "action": "resources",
+   "started_at": "2026-10-08T03:44:05+00:00",
+   "pgid": 85004
+  },
+  "exited_at": null,
+  "state": "running",
+  "heartbeat_age_s": 13
+ },
+ "incident": null,
+ "next_cycle_at": null,
+ "updated_at": "2026-10-08T03:48:27+00:00",
+ "goals": [
+  "agent-fabric-g1_f02_local_identity",
+  "agent-fabric-g1-f06-runtime",
+  "agent-fabric-g1-f07-clients",
+  "agent-fabric-g1-f03-recovery",
+  "agent-fabric-g1-f04-model-finops",
+  "agent-fabric-g1-f05-storage"
+ ],
+ "queue": [
+  {
+   "position": 1,
+   "id": "agent-fabric-g1-f03-recovery",
+   "title": "agent-fabric: G1-F03 recovery",
+   "status": "done",
+   "approved": true,
+   "current": false
+  },
+  {
+   "position": 2,
+   "id": "agent-fabric-g1-f04-model-finops",
+   "title": "agent-fabric: G1-F04 model",
+   "status": "done",
+   "approved": true,
+   "current": false
+  },
+  {
+   "position": 3,
+   "id": "agent-fabric-g1-f05-storage",
+   "title": "agent-fabric: G1-F05 storage",
+   "status": "blocked",
+   "approved": true,
+   "current": true
+  },
+  {
+   "position": 4,
+   "id": "agent-fabric-g1-f06-runtime",
+   "title": "agent-fabric: G1-F06 runtime",
+   "status": "ready",
+   "approved": true,
+   "current": false
+  },
+  {
+   "position": 5,
+   "id": "agent-fabric-g1-f07-clients",
+   "title": "agent-fabric: G1-F07 clients",
+   "status": "ready",
+   "approved": true,
+   "current": false
+  }
+ ]
+}

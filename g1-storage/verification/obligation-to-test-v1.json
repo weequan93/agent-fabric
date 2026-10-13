@@ -1,0 +1,2687 @@
+{
+  "schemaVersion": 1,
+  "profile": "deterministic-local-only",
+  "source": "g1-storage/verification/test-design-v1.json",
+  "sourceSha256": "sha256:582d92a9317bdba9a58dd182b2fec552444f9f36735b939ba2dbb525f3fd2ef5",
+  "requirementsSource": "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/requirements.json",
+  "requirementsSourceSha256": "sha256:f1b9e8e4f2fc991b665b07cfa6f96e303d8aea425a5cf0994c4680df040d9edd",
+  "requirementCount": 96,
+  "localCaseCount": 64,
+  "regressionCaseCount": 3,
+  "externalCaseCount": 9,
+  "requirements": [
+    {
+      "id": "AF-07",
+      "source": "docs/planning/g1-remaining-ledger.csv:8 (AF-07); docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:700–706; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:53",
+      "verify": "integration/security: save and read personal/group knowledge through actual persistence; reject wrong-tenant, wrong-Space and forged bindings.",
+      "cases": [
+        "A01",
+        "A02",
+        "A03",
+        "K01",
+        "K08",
+        "L02",
+        "L03"
+      ],
+      "classification": "increment-local-behavior-with-full-ledger-pending",
+      "assertionSuites": [
+        {
+          "case": "A01",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "A03",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K01",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L02",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L03",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-001",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:706; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:53",
+      "verify": "integration/security: exercise allowed same-scope relations, approved sharing and forged cross-scope object/manifest/checkpoint relations; denied mutations leave no durable rows or bytes published.",
+      "cases": [
+        "A01",
+        "A02",
+        "V05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A01",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V05",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-002",
+      "source": "docs/planning/g1-foundations-plan.md:24; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:93; docs/operations/g1-f02-identity-quickstart.md, 数据与权限边界",
+      "verify": "integration/security: use real local authenticated service and non-owner PostgreSQL transactions; deny forged actor/payer/scope, expired/revoked sessions and authority changes around asynchronous/commit boundaries.",
+      "cases": [
+        "A03",
+        "Q08",
+        "G01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A03",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G01",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        }
+      ]
+    },
+    {
+      "id": "R-003",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §4:223–225,258–260; §17:778; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,57",
+      "verify": "integration/security: eligible group sources succeed; personal-to-group and partly authorized audience requests are refused before private content enters generation and at output.",
+      "cases": [
+        "A02",
+        "Q02",
+        "Q04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-004",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §4:260; §31:1388; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:53,57",
+      "verify": "security: mark restricted fixture payloads/titles, inspect actual generator inputs, responses, manifests/logs and durable state after refusals; all unauthorized disclosure/mutation counts are zero.",
+      "cases": [
+        "A02",
+        "E03",
+        "Q02",
+        "Q09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "E03",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-005",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:201,211; §4:240; §18:819; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:44,53",
+      "verify": "integration/security: private-note/group-volume writes and restricted-history guest access are refused; allowed group-readable files remain governed by their actual storage grant.",
+      "cases": [
+        "A02",
+        "Q06",
+        "V03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q06",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V03",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-006",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:706; docs/planning/g1-foundations-plan.md:24; docs/operations/g1-f02-identity-quickstart.md, 数据与权限边界",
+      "verify": "integration/security: inspect real fixture role/grant properties and attempt worker/unauthorized direct access; rerun unchanged foundation and identity guards through controller.",
+      "cases": [
+        "A04",
+        "G02",
+        "G03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A04",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G02",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "G03",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        }
+      ]
+    },
+    {
+      "id": "R-007",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:793; §28:1262; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:57,105",
+      "verify": "integration/security/recovery: inject current-authority outage with populated caches and restored old grants; observe no affected content/generator input or durable unauthorized write, and recover allowed service after authority returns.",
+      "cases": [
+        "A05",
+        "R03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A05",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R03",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-008",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §7:368–382; §15:688–700,722; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:53,62,93; docs/architecture/record-authority.md",
+      "verify": "review/security: map every new record to its owner and existing integration; adversarial stored/model data cannot create approvals, budgets, protected receipts, control changes or canonical memory through a generated context file.",
+      "cases": [
+        "K09",
+        "Q08",
+        "G03",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K09",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G03",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-009",
+      "source": "docs/planning/g1-foundations-plan.md:17; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:700,714; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:54",
+      "verify": "integration/security: read actual retained object/volume/checkpoint/backup files, verify fixture private plaintext is absent, and decrypt/recover the exact acknowledged payload using authorized fixture material across recreation.",
+      "cases": [
+        "E01",
+        "E03",
+        "R01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E01",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "E03",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-010",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:54,45",
+      "verify": "integration/security/recovery: alter persisted ciphertext/metadata binding and use wrong/missing fixture keys; affected reads/restore fail with no payload or false recovery success; correct material recovers unchanged bytes.",
+      "cases": [
+        "E02",
+        "R05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E02",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R05",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-011",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:54,104,109; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:700–714",
+      "verify": "review/security: inspect the documented inventory against real retained files/database fields/derived stores and logs using marked private data; every copy is covered by the stated encryption/retention boundary.",
+      "cases": [
+        "E03",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E03",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-012",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:54,82,86,94,107",
+      "verify": "review/security: inspect fixture setup, persisted outputs and key documentation; confirm only repository-reproducible synthetic material is used and production managed-key claims remain unqualified.",
+      "cases": [
+        "E04",
+        "D03",
+        "D04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E04",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D04",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-013",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:714; §22:1004; §31:1388; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:54,109",
+      "verify": "security/review: inspect logs, audit rows and diagnostic export after save/ask/delete/failure; verify redacted payload handling, declared retention and scoped access.",
+      "cases": [
+        "E03",
+        "Q09",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E03",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-014",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:700–702; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:21,53–55; docs/planning/decision-register.md E-02",
+      "verify": "integration/review: inspect actual PostgreSQL records/outbox and stored object/volume manifests; rebuild a derived view without granting it canonical authority; show a volume snapshot cannot substitute for a metadata transaction.",
+      "cases": [
+        "K01",
+        "K03",
+        "K09",
+        "V01",
+        "L05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K01",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K03",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K09",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V01",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L05",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-015",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:748–750; §18:811,817; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,55",
+      "verify": "integration: save, recreate service, correct and recall real records; inspect canonical revision/history and permitted manifests for exact recorded provenance rather than inferred/generated fields.",
+      "cases": [
+        "K01",
+        "Q01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K01",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-016",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:750,758; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,55–56",
+      "verify": "unit/integration: exercise supported status transitions and recall eligibility; pending/disputed/expired/deleted records cannot be presented as current verified decisions, and provenance preserves uncertainty.",
+      "cases": [
+        "C01",
+        "K02",
+        "Q02",
+        "L01",
+        "L02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "C01",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K02",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L01",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L02",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-017",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:758; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40",
+      "verify": "integration: store ordinary discussion and a proposed inference, then ask for the accepted decision; neither becomes approved by implication, while an explicit authorized save succeeds.",
+      "cases": [
+        "K02",
+        "Q06"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K02",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q06",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-018",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:736; §15:712; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,55",
+      "verify": "integration/recovery: interrupt transaction before/after revision/event/outbox writes; verify all required canonical pieces commit together or roll back, and invalid secret/retention admission leaves no accepted record.",
+      "cases": [
+        "A03",
+        "K02",
+        "K03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A03",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K02",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K03",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-019",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:736,738,760; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,55",
+      "verify": "integration/recovery: observe commit and response order, fail/intercept actual writes and recreate service; every Saved here response resolves to the same durable accepted revision, and pending/failure states remain distinct.",
+      "cases": [
+        "K02",
+        "K03",
+        "K07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K02",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K03",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K07",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-020",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:712; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:55",
+      "verify": "integration/recovery: interrupt byte upload, manifest persistence and metadata publication in turn; fresh reads never expose a dangling published artifact and fully confirmed publication returns exact bytes/digest.",
+      "cases": [
+        "K04",
+        "V05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K04",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V05",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-021",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:712; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:55,95",
+      "verify": "integration/recovery: create interrupted uploads, observe no serving/publication, then exercise declared quarantine/cleanup while proving unrelated fixture objects are untouched.",
+      "cases": [
+        "K05",
+        "H03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K05",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H03",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-022",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §6:310; §18:811; §26:1156; docs/architecture/interface-registry.md, Shared declarations",
+      "verify": "unit/integration/security: reject missing/forged bindings, expired ordinary writes and stale revision commands; serialize/parse the supported command contract without silently discarding required security fields.",
+      "cases": [
+        "C01",
+        "C02",
+        "A03",
+        "K06",
+        "V04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "C01",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "C02",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "A03",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K06",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V04",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-023",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:811; §26:1196; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,55–56",
+      "verify": "integration/concurrency/recovery: race identical and incompatible retries, including service recreation; count one canonical revision/event/outbox/receipt set for identical retries and explicit conflict for changed binding.",
+      "cases": [
+        "K06",
+        "Q08",
+        "R04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K06",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R04",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-024",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:55; docs/evidence/g1-f02-acceptance.md:41–45; docs/operations/g1-f02-identity-quickstart.md, consume/lookup and UNKNOWN_COMMIT contract",
+      "verify": "integration/recovery: lose actual commit acknowledgement, recreate caller, query original key during commit/rollback/lock-timeout windows, observe exact receipt or truthful unknown/absence and no duplicate canonical commit.",
+      "cases": [
+        "K07",
+        "R04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K07",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R04",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-025",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:811–813; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,56",
+      "verify": "integration/concurrency/recovery: two real writers read one revision, contend on incompatible changes and include a recreated stale writer; current accepted head is preserved and the losing writer receives inspectable conflict/review.",
+      "cases": [
+        "K08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-026",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:811; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,56",
+      "verify": "integration/concurrency: concurrently persist independent facts through actual storage and read both via a fresh service; no unnecessary global overwrite or missing record.",
+      "cases": [
+        "K08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-027",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:752; §18:811–817; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,56",
+      "verify": "integration: correct one real saved claim beside unrelated knowledge; verify supersession chain/history/current recall and unchanged unrelated record, with disputed claims not hidden or treated as certain.",
+      "cases": [
+        "K01",
+        "K08",
+        "Q02",
+        "L08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K01",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L08",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-028",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:702; §16:752",
+      "verify": "unit/integration/security: exercise similar values from separate sources/scopes and permitted identical retries; inspect responses and canonical records for correct nonmerging and no cross-tenant existence disclosure.",
+      "cases": [
+        "E04",
+        "K08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E04",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-029",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:722; §18:837,843; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:56,62",
+      "verify": "security/integration: save/correct adversarial memory and edit a generated context proposal; inspect owners/call counters to prove no behavior release, grant, check receipt or controller completion is created.",
+      "cases": [
+        "K09",
+        "R06"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K09",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R06",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-030",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:778; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,57",
+      "verify": "integration/security: populate eligible and forbidden stored sources, capture actual generator/reranker/enrichment inputs, and verify only currently eligible content crosses each supported boundary.",
+      "cases": [
+        "A02",
+        "Q02",
+        "Q05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A02",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-031",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:778,795; §18:813,845; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,43,57",
+      "verify": "integration/concurrency/security: pause a real answer after eligible retrieval, then delete/revoke or change audience before disclosure; no subsequent disallowed answer/manifest publication, while unchanged eligible publication succeeds.",
+      "cases": [
+        "Q04",
+        "L07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L07",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-032",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:791,801; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,57",
+      "verify": "integration: inspect manifests from actual saved-decision answers, delayed-index and restored journeys; all fields identify the real selected records/current authority and hidden titles/content are absent.",
+      "cases": [
+        "Q01",
+        "Q03",
+        "R01",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-033",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:793; §28:1261; §31:1384; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:57",
+      "verify": "integration/recovery: commit a decision with indexing paused, delayed and failed; retrieve real canonical bytes before index repair, observe watermark/limitation and no permission bypass.",
+      "cases": [
+        "Q03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-034",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:797,803; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,58",
+      "verify": "integration: ask with absent/expired/disputed evidence and a historical record; assert explicit safe limitation/next action and no fabricated saved decision or live-inspection result.",
+      "cases": [
+        "Q02",
+        "Q09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-035",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §9:466; §18:837; §31:1375; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:57,108",
+      "verify": "security/integration: use same billing team across rooms, stale populated caches, permission/source revisions and revocation; inspect allowed outputs and generator inputs for zero cross-scope leakage.",
+      "cases": [
+        "E04",
+        "Q03",
+        "Q07",
+        "L03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "E04",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q07",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L03",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-036",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:752–754; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:55–57",
+      "verify": "integration/concurrency/recovery: fail enrichment after canonical commit, recreate processor and process an older queued summary after correction; original acknowledged record survives and accepted head is not silently overwritten.",
+      "cases": [
+        "K03",
+        "Q03",
+        "L05",
+        "L08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K03",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L05",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L08",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-037",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §9:446,468; §16:754; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:24,62,106; docs/loop/agent-fabric-g1-f04-model-finops/product-brief.md, Must AF-02/AF-06",
+      "verify": "integration/security/review: demonstrate stored-source Ask composition with installed identity/model/budget owners; deny stale/ineligible profiles or missing budgets before local call, inspect original binding/manifest, and label paid or unsupported calls as disabled.",
+      "cases": [
+        "Q05",
+        "Q08",
+        "L09",
+        "D05",
+        "X07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L09",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X07",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "UX-01",
+      "source": "docs/planning/g1-remaining-ledger.csv:22 (UX-01); docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §31:1396; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:7,41,58",
+      "verify": "e2e/integration: explicitly save a decision, recreate service, Ask what was decided, assert selected stored bytes affect the answer and permitted source/version manifest, and observe zero Space-computer starts; deterministic answer path is labelled local.",
+      "cases": [
+        "Q01",
+        "Q05",
+        "R01"
+      ],
+      "classification": "increment-local-behavior-with-full-ledger-pending",
+      "assertionSuites": [
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-038",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5:294; §7:386; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:58",
+      "verify": "integration/security: exercise real saved-decision service routing and source broker calls; inspect supplied capabilities/dispatches and test attempted file/shell/effect proposals are denied with zero target writes.",
+      "cases": [
+        "Q05",
+        "Q08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-039",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:58,64; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:193; §7:386–390",
+      "verify": "integration/concurrency/recovery: instrument the actual service/computer boundary and run each listed journey; assert each computer-route counter is zero while authorized answers remain useful.",
+      "cases": [
+        "Q01",
+        "Q03",
+        "Q04",
+        "Q05",
+        "R01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-040",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:193; §5:294; §7:388–390; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,58",
+      "verify": "integration/security: request unsupported live inspection and inject service failures; verify safe refusal/capability next action and no hidden computer, disk, local-host or unapproved-route dispatch.",
+      "cases": [
+        "Q05",
+        "Q09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-041",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:180,187,193–207; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:20,41,53",
+      "verify": "integration/concurrency: queue an Ask/save in Space A, switch to B, complete and recreate service; A retains original binding, B sees only permitted records and forged currentSpace does not change authority.",
+      "cases": [
+        "Q07",
+        "V04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q07",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V04",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-042",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:201; §9:476; §16:738,760; §17:801; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:58",
+      "verify": "unit/integration: exercise each supported setting independently and in combination, inspect selected content and created canonical records, and verify task-only/no-save behavior plus truthful filesystem/retention explanation.",
+      "cases": [
+        "C03",
+        "Q06"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "C03",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q06",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-043",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §16:738; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,53",
+      "verify": "integration/security: save to the resolved personal/group binding; if copy is supported, test allowed/denied export, otherwise refuse it explicitly; no silent private extraction or new source grant.",
+      "cases": [
+        "Q06",
+        "Q07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q06",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q07",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-044",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:714; §16:748; §18:827; §30:1357; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:59,104",
+      "verify": "integration: inventory retention classes, advance an explicit fixture clock/duration, and verify eligible-before/expired-after behavior for real canonical records, files and supported derivatives.",
+      "cases": [
+        "L01",
+        "E03",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L01",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "E03",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-045",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §4:229–236; §14:654; §22:998; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:32,59,45",
+      "verify": "integration/security: permitted fixture data operators can delete/restore; readers/members, forged operators and revoked/expired grants are denied with no durable lifecycle effect.",
+      "cases": [
+        "A06",
+        "R08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A06",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-046",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:827–831; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59",
+      "verify": "integration/recovery: delete/expire real persisted records, recreate services, inspect durable tombstones/invalidation work and confirm future recall/publication remains unavailable.",
+      "cases": [
+        "L01",
+        "L02",
+        "L07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L01",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L02",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L07",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-047",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:829,845; §25:1137; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59",
+      "verify": "integration/security/concurrency: revoke a source before and during recall/generation/derived processing; future content is suppressed; any supported copied-publication exception requires a separately recorded, current grant.",
+      "cases": [
+        "L03",
+        "Q04",
+        "L05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L03",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L05",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-048",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §4:244; §18:826; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59",
+      "verify": "integration/security/concurrency: remove a fixture member with active retrieval and cached context; test both race orders and subsequent reads/outputs, including recreation, for zero disallowed disclosure.",
+      "cases": [
+        "A03",
+        "L03",
+        "Q04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "A03",
+          "suite": "S-A",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L03",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-049",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:831; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59,108",
+      "verify": "integration/recovery: persist a multi-level dependency graph, apply each restriction, inspect durable affected descendants and actual retrieval/output refusal; unsupported descendant classes are explicitly inventoried rather than claimed qualified.",
+      "cases": [
+        "C02",
+        "L04",
+        "L06",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "C02",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L04",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L06",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-050",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:712; §18:831; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59,108",
+      "verify": "integration/concurrency/recovery: queue jobs before delete/revoke/correct, release them afterward and after processor restart, including duplicate delivery; canonical/derived reads stay denied or current and no stale writer restores restricted bytes.",
+      "cases": [
+        "L05",
+        "L07",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L05",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L07",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-051",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:845; §7:380; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59",
+      "verify": "integration/recovery: fail descendant processing after partial progress, observe truthful pending state and immediate serving denial, recreate processor and retry to completion without duplicate mutations or content resurrection.",
+      "cases": [
+        "L06",
+        "L02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L06",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L02",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-052",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:825; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,56–57",
+      "verify": "integration/recovery: correct real source-backed knowledge with an old cached/indexed answer, process/retry derived updates and inspect canonical current recall before/after propagation.",
+      "cases": [
+        "K01",
+        "L04",
+        "L08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K01",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L04",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L08",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-053",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:833,845; §14:682; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:43,59,86",
+      "verify": "integration/review: exercise permitted, denied, repeated and partially propagated forget requests; inspect user/operator impact/status fields and documented external/backup limitations.",
+      "cases": [
+        "L02",
+        "L06",
+        "R08",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L02",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L06",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-054",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:59,64,105,108; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:811,827–831",
+      "verify": "integration/concurrency/recovery: observe real contested operations in both orderings, duplicate delete and crashes around tombstone/invalidation writes; finite suite has zero future prohibited recall/publication/resurrection.",
+      "cases": [
+        "L07",
+        "Q04",
+        "L05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "L07",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L05",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-055",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12:565; §15:702,718–720; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:9,44,104",
+      "verify": "integration/review: persist/checkpoint supported classes separately, interrupt uncommitted editing, recreate service and inspect actual recovery plus Saved/unsaved/uncheckpointed status per class.",
+      "cases": [
+        "V01",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V01",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-056",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:718–720; §4:242; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:44,56",
+      "verify": "integration/concurrency: race two actual promotions from one base, verify exact accepted bytes/manifest and explicit losing conflict; unauthorized promotion leaves canonical files unchanged.",
+      "cases": [
+        "V02",
+        "V04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V02",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V04",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-057",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:718–720; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:44,55–56",
+      "verify": "integration/recovery/security: save a draft, recreate service, inspect original version and audience, then reconnect a stale draft against a newer accepted version and verify conflict/retention without overwrite.",
+      "cases": [
+        "V03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V03",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-058",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §1:120; §12:565; §28:1272; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:40,44,55,60",
+      "verify": "integration/recovery: close/recreate actual service/process/storage clients after confirmed saves and interrupted writes, then read exact committed bytes/records and accurately expose unavailable unsaved work.",
+      "cases": [
+        "K03",
+        "K04",
+        "V05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "K03",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K04",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V05",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-059",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §8:431; §28:1284; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,45,56",
+      "verify": "integration/concurrency/recovery: retain a stale writer across actual recreation/restore, advance the authoritative revision/generation and attempt save/promotion; denied writes leave current canonical state unchanged.",
+      "cases": [
+        "V04",
+        "Q08",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V04",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-060",
+      "source": "docs/planning/g1-foundations-plan.md:17; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:714; §28:1270; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:45,60",
+      "verify": "integration/recovery: create real backup/checkpoint files and canonical metadata, restore into a fresh owned destination and recreated service, compare surviving records/manifests/bytes and perform a real restored saved-decision Ask; in-memory serialization alone fails.",
+      "cases": [
+        "R01",
+        "R09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R09",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-061",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §28:1270; §15:712–714; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:45,60",
+      "verify": "integration/recovery/security: restore a complete backup plus corrupt, missing-byte, mismatched-manifest and incomplete variants; assert exact good recovery and inspectable blocked state with no dangling published record in each bad case.",
+      "cases": [
+        "C02",
+        "R05",
+        "E02",
+        "V05",
+        "R09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "C02",
+          "suite": "S-C",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R05",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "E02",
+          "suite": "S-E",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "V05",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R09",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-062",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:714; §18:828; §28:1270; docs/planning/roadmap.md:50; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:45,60,105",
+      "verify": "integration/recovery/concurrency: back up real data, delete/expire/revoke afterward, restore older copies and observe the serving/rebuild barrier; eligible survivors succeed but restricted records/files/descendants cannot enter inputs or outputs.",
+      "cases": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R03",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-063",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:773,791–797; §18:825; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,60,105",
+      "verify": "integration/recovery: back up revision N, correct to N+1, restore the old backup and Ask; canonical current authority resolves the accepted revision or blocks serving with a stated freshness limitation, never silently presents N as current.",
+      "cases": [
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-064",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:45,105; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:793; §28:1262,1286; docs/architecture/native-engine.md, Recovery order",
+      "verify": "integration/recovery/security: restore with current ledger/policy missing, unavailable or stale, and crash around barrier transitions; no affected serving occurs until authoritative freshness is proven.",
+      "cases": [
+        "R03",
+        "R04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R03",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R04",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-065",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:60,105; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §28:1270; §26:1156,1196",
+      "verify": "integration/recovery/concurrency: interrupt actual restore before/after metadata/byte/restriction phases, recreate operator/service and repeat the bound operation; inspect persisted recovery state, canonical identities and served content.",
+      "cases": [
+        "R04",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R04",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-066",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §8:433; §28:1270–1272,1282–1284; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:45,88",
+      "verify": "integration/recovery/security: include fixture stale operation/approval/generation/credential references, restore and inspect dispatch/model/write counters plus authority state; recovery causes no effect replay or grant/session resurrection.",
+      "cases": [
+        "R06",
+        "K09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "R06",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K09",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-067",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §28:1272,1284; §32:1456; docs/planning/decision-register.md O-04; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:60,70,104",
+      "verify": "review/integration/recovery: compare class inventory and operating procedure to executed crash/restore observations, acknowledged revisions and checkpoint timestamps; document what was preserved and what was lost without invented production RPO/RTO.",
+      "cases": [
+        "V01",
+        "R07",
+        "R08",
+        "R09",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V01",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R07",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R09",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-068",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5:302; §28:1286; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:41,45,68",
+      "verify": "integration/review: inspect allowed/denied/conflict/expiry/index-outage/encryption/restore-failure outcomes for safe status and actionable resolver; no indefinite success spinner or invented completed action.",
+      "cases": [
+        "Q09",
+        "R08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-069",
+      "source": "Current goal, Required deliverables; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:61",
+      "verify": "review/integration: controller executes node g1-storage/scripts/check.mjs and verifies requested plan/evidence paths exist and describe the implemented candidate.",
+      "cases": [
+        "D01",
+        "H01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D01",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H01",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-070",
+      "source": "Current goal, Required deliverables; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:61; g1-identity/scripts/check.mjs, strict build and mandatory suites",
+      "verify": "integration: controller runs the check from a fresh candidate/dependency state; verify strict compiler success and actual executed assertions for canonical storage, saved answers and restore instead of prebuilt/canned outputs.",
+      "cases": [
+        "H01",
+        "H02",
+        "H04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "H01",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H02",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H04",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-071",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:61; g1-identity/scripts/check.mjs, runtimePreflight and TAP validation",
+      "verify": "integration/review: inspect and exercise harness failure cases for each condition; require successful nonempty execution per mandatory behavior group and zero failed/cancelled/skipped/TODO tests.",
+      "cases": [
+        "H01",
+        "H02",
+        "H03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "H01",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H02",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H03",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-072",
+      "source": "Current goal, real behavior/negative/concurrency/recovery; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:64,114; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §29:1314; §31:1383–1388",
+      "verify": "integration/e2e/security: controller observes actual stored bytes/records, generator inputs, manifests, competing writers, propagation and recreation/restore; assert prohibited counters zero and positive outcomes, not schema/label-only tests or refuse-all behavior.",
+      "cases": [
+        "H04",
+        "Q01",
+        "K08",
+        "L07",
+        "R01"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "H04",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K08",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L07",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R01",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-073",
+      "source": "Current goal, Additive constraint; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:26,62,92; docs/evidence/g1-f02-acceptance.md:31,45–47",
+      "verify": "regression/review: unchanged retained-source/raw hash guards and existing required controller checks pass; inspect diff for only new increment or authorized additive paths, leaving previous worktree/controller state untouched.",
+      "cases": [
+        "G01",
+        "G02",
+        "G03",
+        "H03",
+        "D02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "G01",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "G02",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "G03",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "H03",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D02",
+          "suite": "S-D",
+          "evidenceClass": "successor-mandatory"
+        }
+      ]
+    },
+    {
+      "id": "R-074",
+      "source": "Current goal, Electron/GUI constraint; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:62,96; docs/evidence/g1-f02-acceptance.md:19–37",
+      "verify": "regression/review: inspect controller job definitions/results for unchanged identity, foundation and retained baselines including Electron; local diagnostics are labelled separately from acceptance.",
+      "cases": [
+        "G01",
+        "G02",
+        "D02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "G01",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "G02",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "D02",
+          "suite": "S-D",
+          "evidenceClass": "successor-mandatory"
+        }
+      ]
+    },
+    {
+      "id": "R-075",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:62,86–88,110; docs/planning/roadmap.md:20; docs/planning/g1-foundations-plan.md:26; docs/evidence/g1-f02-acceptance.md:33,47",
+      "verify": "review: audit evidence-to-current-controller-output links and hashes/fingerprints, preserve raw failures, and confirm no unsigned author claim substitutes for registered reviews or controller completion.",
+      "cases": [
+        "D02",
+        "D05",
+        "D06"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D02",
+          "suite": "S-D",
+          "evidenceClass": "successor-mandatory"
+        },
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D06",
+          "suite": "S-D",
+          "evidenceClass": "successor-mandatory"
+        }
+      ]
+    },
+    {
+      "id": "R-076",
+      "source": "docs/planning/roadmap.md:20; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §27:1236–1240; §30:1349; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:69–70",
+      "verify": "review: inspect requested plan/evidence and linked increment documents against actual build dependencies, owner boundaries, supported classes and test obligations; rollback must preserve external effects/tombstones rather than imply undo.",
+      "cases": [
+        "D01",
+        "D03",
+        "G03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D01",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G03",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        }
+      ]
+    },
+    {
+      "id": "R-077",
+      "source": "Current goal, Constraints and Needs approval first; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:82,94",
+      "verify": "review/security: inspect actions, scripts and evidence for local synthetic-only execution, disabled external routes and official approval records before any restricted action; no elapsed-time or inferred approval.",
+      "cases": [
+        "D04",
+        "Q05",
+        "H03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D04",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H03",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-078",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:82,95; g1-identity/scripts/check.mjs, runtimePreflight; docs/operations/g1-foundations-quickstart.md, fixture ownership",
+      "verify": "integration/security/review: inspect fixture identities and cleanup observations, preserve preexisting fixture census, exercise cleanup failure and verify no global prune/kill/unowned path deletion or external fallback.",
+      "cases": [
+        "H03",
+        "K05",
+        "R08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "H03",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "K05",
+          "suite": "S-K",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-079",
+      "source": "Current requirements assignment; .agents/skills/loop/SKILL.md §2",
+      "verify": "review: inspect recorded requirements and turn diff/tool history; stage submission is requirements-only and controller owns progression.",
+      "cases": [
+        "D04"
+      ],
+      "classification": "historical-requirements-only",
+      "assertionSuites": [
+        {
+          "case": "D04",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-080",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:68",
+      "verify": "review/integration: follow the documented local journey against actual fixture persistence and inspect user-readable outputs; any exception to this intended default is documented.",
+      "cases": [
+        "D01",
+        "Q09",
+        "R08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D01",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q09",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R08",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-081",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:69",
+      "verify": "review: trace each recorded mandatory obligation to an executed assertion or explicit pending external gate in the matrix; no interface-only coverage is counted as behavior.",
+      "cases": [
+        "D01",
+        "D05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D01",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-082",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:70; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §3:215; §11:555; §12:565",
+      "verify": "review/integration: inspect local save/recovery/lifecycle explanations and existing model charge contract integration; document retained fixture classes and clarify that actual cloud billing is not measured.",
+      "cases": [
+        "V01",
+        "L08",
+        "R07",
+        "D03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "V01",
+          "suite": "S-V",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L08",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R07",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-083",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:74–76",
+      "verify": "review: if added, map each optional fixture to an existing obligation and preserve mandatory coverage and local-only limits.",
+      "cases": [
+        "D04",
+        "H04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D04",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "H04",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-084",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:86–88; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §15:714; §28:1254,1270–1278",
+      "verify": "review: list each untested deployment/storage guarantee with missing environment evidence and next gate; local encrypted-file/restore results qualify only their finite local profile.",
+      "cases": [
+        "D05",
+        "R03",
+        "X01",
+        "X02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R03",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X01",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        },
+        {
+          "case": "X02",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-085",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:64,86,100,107; docs/planning/decision-register.md O-07; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §14:668; §18:833; §32:1459",
+      "verify": "review/human: document fixture durations/keys as test parameters and unresolved external decisions as pending; before external use obtain the actual authorized policy-owner decision through loop_ask.",
+      "cases": [
+        "D03",
+        "D05",
+        "X03"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X03",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-086",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §14:678–682; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:86–88",
+      "verify": "review/security: inventory implemented serving paths and local reauthorization tests; explicitly mark real broker/stream/signed-link guarantees pending until approved-provider revocation tests and exposure windows exist.",
+      "cases": [
+        "D05",
+        "Q04",
+        "L03",
+        "X04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L03",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X04",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-087",
+      "source": "docs/planning/g1-foundations-plan.md:18; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:86–88; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §7:386–390; §13:631–635",
+      "verify": "review: evidence separates executable local source/route behavior from missing real host/kernel/image/service isolation; next qualification gate is named without running remote resources in this stage.",
+      "cases": [
+        "D05",
+        "Q05",
+        "X05"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q05",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X05",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-088",
+      "source": "docs/evidence/g1-f02-acceptance.md:11,37,47; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:86",
+      "verify": "review: acceptance identifies reused local identity qualification and explicitly pending enterprise SSO/human gates rather than equating fixtures with production identity.",
+      "cases": [
+        "D05",
+        "G01",
+        "X06"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G01",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "X06",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-089",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:82,84,86; docs/loop/agent-fabric-g1-f04-model-finops/product-brief.md, Explicit non-scope",
+      "verify": "review: label actual answer adapter/profile and synthetic accounting; list missing approved real model/gateway/data-region evidence and leave external enablement gated.",
+      "cases": [
+        "D05",
+        "Q01",
+        "Q08",
+        "X07"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q01",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q08",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X07",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-090",
+      "source": "docs/planning/g1-foundations-plan.md:19; docs/evidence/g1-f02-acceptance.md:37,47; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:86",
+      "verify": "review: preserve required existing client regressions while acceptance records missing physical/platform and representative-user evidence; no new GUI is demanded by F05.",
+      "cases": [
+        "D05",
+        "G02",
+        "X08"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "G02",
+          "suite": "S-G",
+          "evidenceClass": "controller-regression"
+        },
+        {
+          "case": "X08",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-091",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:11,84; docs/planning/roadmap.md:44–72; docs/planning/g1-foundations-plan.md:20; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §18:839; §30:1336–1339",
+      "verify": "review: separate baseline implemented requirements and later-depth/external obligations in plan/evidence; unrelated modules and ledger rows remain pending, with no omission of mandatory F05 behaviors.",
+      "cases": [
+        "D05",
+        "L04",
+        "X09"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "L04",
+          "suite": "S-L",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X09",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-092",
+      "source": "docs/loop/agent-fabric-g1-f05-storage/product-brief.md:64,60,86; docs/planning/roadmap.md:40; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §28:1278; §29:1310–1316",
+      "verify": "review/performance: audit evidence for measured boundaries, actual samples/conditions and explicit pending production measurements; roadmap pilot numbers are identified as targets, not local achieved SLAs.",
+      "cases": [
+        "D03",
+        "D05",
+        "R07",
+        "X02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D03",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R07",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "X02",
+          "suite": "S-X",
+          "evidenceClass": "pending-external"
+        }
+      ]
+    },
+    {
+      "id": "R-093",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §2:170; §30:1359; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:11,64,84,88; docs/planning/g1-foundations-plan.md:26",
+      "verify": "review/security: retain unresolved findings and profile limitations visibly; confirm controller acceptance and independent review stay separate from author evidence and unaffected ledger obligations are not closed.",
+      "cases": [
+        "D05",
+        "D06",
+        "H04"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "D05",
+          "suite": "S-D",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "D06",
+          "suite": "S-D",
+          "evidenceClass": "successor-mandatory"
+        },
+        {
+          "case": "H04",
+          "suite": "S-H",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    },
+    {
+      "id": "R-094",
+      "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §17:773,787,791–797; §16:750–752; docs/loop/agent-fabric-g1-f05-storage/product-brief.md:42,55,57",
+      "verify": "integration: change source revision/validity and knowledge head with an older index/context present; inspect exact source-backed answer/manifest and visible conflict/limitation, with authorized current decisions still retrievable.",
+      "cases": [
+        "Q02",
+        "Q03",
+        "Q04",
+        "R02"
+      ],
+      "classification": "increment-obligation",
+      "assertionSuites": [
+        {
+          "case": "Q02",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q03",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "Q04",
+          "suite": "S-Q",
+          "evidenceClass": "local-assertion-required"
+        },
+        {
+          "case": "R02",
+          "suite": "S-R",
+          "evidenceClass": "local-assertion-required"
+        }
+      ]
+    }
+  ],
+  "suiteOwners": {
+    "S-C": "contracts.test.ts",
+    "S-A": "authority.test.ts",
+    "S-E": "owned-encryption.test.ts",
+    "S-K": "commit-conflict.test.ts",
+    "S-Q": "recall-ask.test.ts",
+    "S-L": "lifecycle-propagation.test.ts",
+    "S-V": "volume-draft.test.ts",
+    "S-R": "backup-restore.test.ts",
+    "S-H": "harness.test.ts",
+    "S-D": "delivery-audit.test.ts",
+    "S-G": "unchanged controller baseline commands",
+    "S-X": "pending approved real environment"
+  },
+  "noPassInference": true
+}

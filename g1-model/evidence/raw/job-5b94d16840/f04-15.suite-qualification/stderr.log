@@ -1,0 +1,375 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:4
+ if (result.error || result.signal !== null || result.status !== 0) throw new Error(label + ' failed (' + (result.error?.code ?? result.signal ?? result.status) + ')');
+                                                                          ^
+
+Error: node:test failed (1)
+    at requireExit (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:4:75)
+    at parseTap (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:20:2)
+    at executeSuite (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/suite-execution.mjs:17:33)
+    at execute (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/runner.mjs:28:21)
+    at file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/runner.mjs:45:6
+    at Module.withModelFixture (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/fixture.mjs:33:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async check (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/runner.mjs:42:5)
+    at async file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/check-slice.mjs:2:1 {
+  result: {
+    status: 1,
+    signal: null,
+    output: [
+      null,
+      'TAP version 13\n' +
+        '# Subtest: Q01 / actual owned clean build and source/test/stale-cache refusals\n' +
+        'not ok 1 - Q01 / actual owned clean build and source/test/stale-cache refusals\n' +
+        '  ---\n' +
+        '  duration_ms: 3390.552084\n' +
+        "  type: 'test'\n" +
+        "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:12:1'\n" +
+        "  failureType: 'testCodeFailure'\n" +
+        '  error: |-\n' +
+        '    (node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\n' +
+        '    (Use `node --trace-warnings ...` to show where the warning was created)\n' +
+        '    file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22\n' +
+        "     if (lines[0] !== 'TAP version 13' || lines.filter(x => x === 'TAP version 13').length !== 1) throw new Error('One TAP13 stream required');\n" +
+        '                                                                                                        ^\n' +
+        '    \n' +
+        '    Error: One TAP13 stream required\n' +
+        '        at parseTap (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22:101)\n' +
+        '        at executeSuite (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+        '        at execute (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:28:21)\n' +
+        '        at check (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:48:11)\n' +
+        '        at file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/check-slice.mjs:2:7\n' +
+        '        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n' +
+        '        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n' +
+        '        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n' +
+        '      result: {\n' +
+        '        status: 0,\n' +
+        '        signal: null,\n' +
+        '        output: [\n' +
+        '          null,\n' +
+        "          '',\n" +
+        "          '(node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\\n' +\n" +
+        "            '(Use `node --trace-warnings ...` to show where the warning was created)\\n'\n" +
+        '        ],\n' +
+        '        pid: 51798,\n' +
+        "        stdout: '',\n" +
+        "        stderr: '(node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\\n' +\n" +
+        "          '(Use `node --trace-warnings ...` to show where the warning was created)\\n'\n" +
+        '      }\n' +
+        '    }\n' +
+        '    \n' +
+        '    Node.js v22.22.3\n' +
+        '    \n' +
+        '    \n' +
+        '    1 !== 0\n' +
+        '    \n' +
+        "  code: 'ERR_ASSERTION'\n" +
+        "  name: 'AssertionError'\n" +
+        '  expected: 0\n' +
+        '  actual: 1\n' +
+        "  operator: 'strictEqual'\n" +
+        '  stack: |-\n' +
+        '    parseTap (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22:101)\n' +
+        '    executeSuite (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+        '    execute (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:28:21)\n' +
+        '    check (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:48:11)\n' +
+        '    file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/check-slice.mjs:2:7\n' +
+        '    ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n' +
+        '    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n' +
+        '    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n' +
+        '    file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:28:29\n' +
+        '    withOwnedCopy (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:15:13)\n' +
+        '    buildSabotage (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:22:2)\n' +
+        '    TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:14:5)\n' +
+        '    async Test.run (node:internal/test_runner/test:1054:7)\n' +
+        '    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)\n' +
+        '  ...\n' +
+        '# Subtest: Q02 / every missing suite/case and bounded real subprocess/TAP sabotage\n' +
+        'not ok 2 - Q02 / every missing suite/case and bounded real subprocess/TAP sabotage\n' +
+        '  ---\n' +
+        '  duration_ms: 1661.998625\n' +
+        "  type: 'test'\n" +
+        "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:16:1'\n" +
+        "  failureType: 'testCodeFailure'\n" +
+        "  error: 'One TAP13 stream required'\n" +
+        "  code: 'ERR_TEST_FAILURE'\n" +
+        '  stack: |-\n' +
+        '    parseTap (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:22:101)\n' +
+        '    executeSuite (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+        '    file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:58:52\n' +
+        '    withOwnedCopy (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:15:13)\n' +
+        '    parserSabotage (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:44:2)\n' +
+        '    TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:18:5)\n' +
+        '    async Test.run (node:internal/test_runner/test:1054:7)\n' +
+        '    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n' +
+        '  ...\n' +
+        '# {"measurement":"qualification-model-migration-lock","label":"first-receipt","blocker":70,"waiters":[{"pid":72,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,74,73]},{"pid":73,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,74]},{"pid":74,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70]}]}\n' +
+        '# Subtest: Q03 / additive concurrent idempotent migration and retained owner digests\n' +
+        '    # Subtest: Q03-concurrent-first-receipt-domain-and-idempotent-owner\n' +
+        '    ok 1 - Q03-concurrent-first-receipt-domain-and-idempotent-owner\n' +
+        '      ---\n' +
+        '      duration_ms: 47.694167\n' +
+        "      type: 'test'\n" +
+        '      ...\n' +
+        '    # Subtest: Q03-real-partial-model-migration-rollback\n' +
+        '    ok 2 - Q03-real-partial-model-migration-rollback\n' +
+        '      ---\n' +
+        '      duration_ms: 33.461708\n' +
+        "      type: 'test'\n" +
+        '      ...\n' +
+        '# {"measurement":"qualification-model-migration-lock","label":"forward-model","blocker":70,"waiters":[{"pid":71,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,73,74]},{"pid":73,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70]},{"pid":74,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,73]}]}\n' +
+        '    # Subtest: Q03-concurrent-additive-model-migrations-and-repeat\n' +
+        '    ok 3 - Q03-concurrent-additive-model-migrations-and-repeat\n' +
+        '      ---\n' +
+        '      duration_ms: 153.882541\n' +
+        "      type: 'test'\n" +
+        '      ...\n' +
+        '    # Subtest: Q03-actual-same-version-source-and-installed-digest-refusal\n' +
+        '    ok 4 - Q03-actual-same-version-source-and-installed-digest-refusal\n' +
+        '      ---\n' +
+        '      duration_ms: 20.60425\n' +
+        "      type: 'test'\n" +
+        '      ...\n' +
+        '    # Subtest: Q03-unchanged-prerequisite-ledgers-definitions-and-retained-bytes\n' +
+        '    not ok 5 - Q03-unchanged-prerequisite-ledgers-definitions-and-retained-bytes\n' +
+        '      ---\n' +
+        '      duration_ms: 18.107625\n' +
+        "      type: 'test'\n" +
+        "      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:141:17'\n" +
+        "      failureType: 'testCodeFailure'\n" +
+        '      error: |-\n' +
+        '        columns retained definition\n' +
+        '        + actual - expected\n' +
+        '        \n' +
+        '          {\n' +
+        "        +   attname: 'tenant_id',\n" +
+        "        -   attname: 'created_at',\n" +
+        '            attnotnull: true,\n' +
+        '        +   attnum: 1,\n' +
+        '        -   attnum: 2,\n' +
+        '            attrelid: 16397,\n' +
+        '        +   atttypid: 2950,\n' +
+        '        +   default_expr: null\n' +
+        '        -   atttypid: 1184,\n' +
+        "        -   default_expr: 'now()'\n" +
+        '          }\n' +
+        '        \n' +
+        "      code: 'ERR_ASSERTION'\n" +
+        "      name: 'AssertionError'\n" +
+        '      expected:\n' +
+        '        attrelid: 16397\n' +
+        "        attname: 'created_at'\n" +
+        '        atttypid: 1184\n' +
+        '        attnotnull: true\n' +
+        '        attnum: 2\n' +
+        "        default_expr: 'now()'\n" +
+        '      actual:\n' +
+        '        attrelid: 16397\n' +
+        "        attname: 'tenant_id'\n" +
+        '        atttypid: 2950\n' +
+        '        attnotnull: true\n' +
+        '        attnum: 1\n' +
+        '        default_expr: ~\n' +
+        "      operator: 'deepStrictEqual'\n" +
+        '      stack: |-\n' +
+        '        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:146:28)\n' +
+        '        process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n' +
+        '        async Test.run (node:internal/test_runner/test:1054:7)\n' +
+        '        async TestContext.qualificationMigrationCases (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:141:9)\n' +
+        '        async Test.run (node:internal/test_runner/test:1054:7)\n' +
+        '        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n' +
+        '      ...\n' +
+        '    1..5\n' +
+        'not ok 3 - Q03 / additive concurrent idempotent migration and retained owner digests\n' +
+        '  ---\n' +
+        '  duration_ms: 539.99175\n' +
+        "  type: 'test'\n" +
+        "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:20:1'\n" +
+        "  failureType: 'subtestsFailed'\n" +
+        "  error: '1 subtest failed'\n" +
+        "  code: 'ERR_TEST_FAILURE'\n" +
+        '  ...\n' +
+        '# {"measurement":"model-owned-process","pid":51874,"marker":"137ce229-d470-4af2-9be9-44ee17678a1f","instance":"51642/Wed Oct  7 16:36:45 2026","ppid":51764,"loopback":true}\n' +
+        '# {"measurement":"model-owned-process","pid":51878,"marker":"7161c4eb-bf8e-4d33-8bef-2ea58bfb435a","instance":"51642/Wed Oct  7 16:36:45 2026","ppid":51764,"loopback":true}\n' +
+        '# {"measurement":"model-owned-process","pid":51896,"marker":"f22c12fe-f5eb-4faf-badf-1a3aec76e855","instance":"51642/Wed Oct  7 16:36:46 2026","ppid":51764,"loopbac'... 11270 more characters,
+      ''
+    ],
+    pid: 51763,
+    stdout: 'TAP version 13\n' +
+      '# Subtest: Q01 / actual owned clean build and source/test/stale-cache refusals\n' +
+      'not ok 1 - Q01 / actual owned clean build and source/test/stale-cache refusals\n' +
+      '  ---\n' +
+      '  duration_ms: 3390.552084\n' +
+      "  type: 'test'\n" +
+      "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:12:1'\n" +
+      "  failureType: 'testCodeFailure'\n" +
+      '  error: |-\n' +
+      '    (node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\n' +
+      '    (Use `node --trace-warnings ...` to show where the warning was created)\n' +
+      '    file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22\n' +
+      "     if (lines[0] !== 'TAP version 13' || lines.filter(x => x === 'TAP version 13').length !== 1) throw new Error('One TAP13 stream required');\n" +
+      '                                                                                                        ^\n' +
+      '    \n' +
+      '    Error: One TAP13 stream required\n' +
+      '        at parseTap (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22:101)\n' +
+      '        at executeSuite (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+      '        at execute (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:28:21)\n' +
+      '        at check (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:48:11)\n' +
+      '        at file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/check-slice.mjs:2:7\n' +
+      '        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n' +
+      '        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n' +
+      '        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n' +
+      '      result: {\n' +
+      '        status: 0,\n' +
+      '        signal: null,\n' +
+      '        output: [\n' +
+      '          null,\n' +
+      "          '',\n" +
+      "          '(node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\\n' +\n" +
+      "            '(Use `node --trace-warnings ...` to show where the warning was created)\\n'\n" +
+      '        ],\n' +
+      '        pid: 51798,\n' +
+      "        stdout: '',\n" +
+      "        stderr: '(node:51798) Warning: node:test run() is being called recursively within a test file. skipping running files.\\n' +\n" +
+      "          '(Use `node --trace-warnings ...` to show where the warning was created)\\n'\n" +
+      '      }\n' +
+      '    }\n' +
+      '    \n' +
+      '    Node.js v22.22.3\n' +
+      '    \n' +
+      '    \n' +
+      '    1 !== 0\n' +
+      '    \n' +
+      "  code: 'ERR_ASSERTION'\n" +
+      "  name: 'AssertionError'\n" +
+      '  expected: 0\n' +
+      '  actual: 1\n' +
+      "  operator: 'strictEqual'\n" +
+      '  stack: |-\n' +
+      '    parseTap (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/process-result.mjs:22:101)\n' +
+      '    executeSuite (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+      '    execute (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:28:21)\n' +
+      '    check (file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/runner.mjs:48:11)\n' +
+      '    file:///private/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/f04-qualification-hXClvH/g1-model/scripts/check-slice.mjs:2:7\n' +
+      '    ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n' +
+      '    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n' +
+      '    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n' +
+      '    file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:28:29\n' +
+      '    withOwnedCopy (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:15:13)\n' +
+      '    buildSabotage (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:22:2)\n' +
+      '    TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:14:5)\n' +
+      '    async Test.run (node:internal/test_runner/test:1054:7)\n' +
+      '    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)\n' +
+      '  ...\n' +
+      '# Subtest: Q02 / every missing suite/case and bounded real subprocess/TAP sabotage\n' +
+      'not ok 2 - Q02 / every missing suite/case and bounded real subprocess/TAP sabotage\n' +
+      '  ---\n' +
+      '  duration_ms: 1661.998625\n' +
+      "  type: 'test'\n" +
+      "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:16:1'\n" +
+      "  failureType: 'testCodeFailure'\n" +
+      "  error: 'One TAP13 stream required'\n" +
+      "  code: 'ERR_TEST_FAILURE'\n" +
+      '  stack: |-\n' +
+      '    parseTap (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:22:101)\n' +
+      '    executeSuite (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/suite-execution.mjs:17:33)\n' +
+      '    file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:58:52\n' +
+      '    withOwnedCopy (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:15:13)\n' +
+      '    parserSabotage (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/qualification-sabotage.mjs:44:2)\n' +
+      '    TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:18:5)\n' +
+      '    async Test.run (node:internal/test_runner/test:1054:7)\n' +
+      '    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n' +
+      '  ...\n' +
+      '# {"measurement":"qualification-model-migration-lock","label":"first-receipt","blocker":70,"waiters":[{"pid":72,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,74,73]},{"pid":73,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,74]},{"pid":74,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70]}]}\n' +
+      '# Subtest: Q03 / additive concurrent idempotent migration and retained owner digests\n' +
+      '    # Subtest: Q03-concurrent-first-receipt-domain-and-idempotent-owner\n' +
+      '    ok 1 - Q03-concurrent-first-receipt-domain-and-idempotent-owner\n' +
+      '      ---\n' +
+      '      duration_ms: 47.694167\n' +
+      "      type: 'test'\n" +
+      '      ...\n' +
+      '    # Subtest: Q03-real-partial-model-migration-rollback\n' +
+      '    ok 2 - Q03-real-partial-model-migration-rollback\n' +
+      '      ---\n' +
+      '      duration_ms: 33.461708\n' +
+      "      type: 'test'\n" +
+      '      ...\n' +
+      '# {"measurement":"qualification-model-migration-lock","label":"forward-model","blocker":70,"waiters":[{"pid":71,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,73,74]},{"pid":73,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70]},{"pid":74,"wait_event_type":"Lock","wait_event":"advisory","blockers":[70,73]}]}\n' +
+      '    # Subtest: Q03-concurrent-additive-model-migrations-and-repeat\n' +
+      '    ok 3 - Q03-concurrent-additive-model-migrations-and-repeat\n' +
+      '      ---\n' +
+      '      duration_ms: 153.882541\n' +
+      "      type: 'test'\n" +
+      '      ...\n' +
+      '    # Subtest: Q03-actual-same-version-source-and-installed-digest-refusal\n' +
+      '    ok 4 - Q03-actual-same-version-source-and-installed-digest-refusal\n' +
+      '      ---\n' +
+      '      duration_ms: 20.60425\n' +
+      "      type: 'test'\n" +
+      '      ...\n' +
+      '    # Subtest: Q03-unchanged-prerequisite-ledgers-definitions-and-retained-bytes\n' +
+      '    not ok 5 - Q03-unchanged-prerequisite-ledgers-definitions-and-retained-bytes\n' +
+      '      ---\n' +
+      '      duration_ms: 18.107625\n' +
+      "      type: 'test'\n" +
+      "      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:141:17'\n" +
+      "      failureType: 'testCodeFailure'\n" +
+      '      error: |-\n' +
+      '        columns retained definition\n' +
+      '        + actual - expected\n' +
+      '        \n' +
+      '          {\n' +
+      "        +   attname: 'tenant_id',\n" +
+      "        -   attname: 'created_at',\n" +
+      '            attnotnull: true,\n' +
+      '        +   attnum: 1,\n' +
+      '        -   attnum: 2,\n' +
+      '            attrelid: 16397,\n' +
+      '        +   atttypid: 2950,\n' +
+      '        +   default_expr: null\n' +
+      '        -   atttypid: 1184,\n' +
+      "        -   default_expr: 'now()'\n" +
+      '          }\n' +
+      '        \n' +
+      "      code: 'ERR_ASSERTION'\n" +
+      "      name: 'AssertionError'\n" +
+      '      expected:\n' +
+      '        attrelid: 16397\n' +
+      "        attname: 'created_at'\n" +
+      '        atttypid: 1184\n' +
+      '        attnotnull: true\n' +
+      '        attnum: 2\n' +
+      "        default_expr: 'now()'\n" +
+      '      actual:\n' +
+      '        attrelid: 16397\n' +
+      "        attname: 'tenant_id'\n" +
+      '        atttypid: 2950\n' +
+      '        attnotnull: true\n' +
+      '        attnum: 1\n' +
+      '        default_expr: ~\n' +
+      "      operator: 'deepStrictEqual'\n" +
+      '      stack: |-\n' +
+      '        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:146:28)\n' +
+      '        process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n' +
+      '        async Test.run (node:internal/test_runner/test:1054:7)\n' +
+      '        async TestContext.qualificationMigrationCases (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/qualification-db.js:141:9)\n' +
+      '        async Test.run (node:internal/test_runner/test:1054:7)\n' +
+      '        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n' +
+      '      ...\n' +
+      '    1..5\n' +
+      'not ok 3 - Q03 / additive concurrent idempotent migration and retained owner digests\n' +
+      '  ---\n' +
+      '  duration_ms: 539.99175\n' +
+      "  type: 'test'\n" +
+      "  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/qualification.test.js:20:1'\n" +
+      "  failureType: 'subtestsFailed'\n" +
+      "  error: '1 subtest failed'\n" +
+      "  code: 'ERR_TEST_FAILURE'\n" +
+      '  ...\n' +
+      '# {"measurement":"model-owned-process","pid":51874,"marker":"137ce229-d470-4af2-9be9-44ee17678a1f","instance":"51642/Wed Oct  7 16:36:45 2026","ppid":51764,"loopback":true}\n' +
+      '# {"measurement":"model-owned-process","pid":51878,"marker":"7161c4eb-bf8e-4d33-8bef-2ea58bfb435a","instance":"51642/Wed Oct  7 16:36:45 2026","ppid":51764,"loopback":true}\n' +
+      '# {"measurement":"model-owned-process","pid":51896,"marker":"f22c12fe-f5eb-4faf-badf-1a3aec76e855","instance":"51642/Wed Oct  7 16:36:46 2026","ppid":51764,"loopbac'... 11270 more characters,
+    stderr: ''
+  }
+}
+
+Node.js v22.22.3

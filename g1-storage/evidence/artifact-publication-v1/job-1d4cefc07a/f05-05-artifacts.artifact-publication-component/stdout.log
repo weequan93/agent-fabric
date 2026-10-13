@@ -1,0 +1,359 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:bdeaf1fd472e51f3a005d68bcf53361d691dbfa3537ba59823e5d43732b0809f","files":728,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 150ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"ad395341-cf31-4f80-bd0e-dcd252eca62c","instance":"d2779107-8b27-415d-81cf-771a3bb581ef","containerId":"9b22c9383449b7fa4e1c14e85f72f11d9f8825841f180adf45b59d7a0894cb72","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"5da4da4e-b721-4e7a-ae88-f0e0b165e4b1","device":16777238,"inode":336566717},"backup":{"rootId":"f9760a3b-eab2-4926-b53e-6bd31144b8eb","device":16777238,"inode":336566719},"restore":{"rootId":"ef26039b-0fc8-4e90-a35c-0f6e49f927cd","device":16777238,"inode":336566721},"authority":{"rootId":"142ebddc-e141-47bd-a5d1-5f0056660e70","device":16777238,"inode":336566723}},"fixtureRoot":{"rootId":"ed4a9f9b-3ecf-4878-8184-b3d30806d551","device":16777238,"inode":336566715},"preexistingContainers":[],"processBefore":{"rows":811,"digest":"336ab2744b443cb8bed13845196ed31209f3de17b676c9a37107a8db979b8d18"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":33522,"marker":"5e0848d5-ec71-4c0c-927c-bb926c58c95e","instance":"33422/Thu Oct  8 14:47:02 2026","ppid":33520,"loopback":true}
+# Subtest: ARTIFACT-PUBLICATION/behavior / durable immutable bytes and orphan custody
+    # Subtest: ARTIFACT-PUBLICATION/migration
+    ok 1 - ARTIFACT-PUBLICATION/migration
+      ---
+      duration_ms: 2738.348
+      type: 'test'
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/atomic-publication
+    not ok 2 - ARTIFACT-PUBLICATION/atomic-publication
+      ---
+      duration_ms: 75.572959
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:100:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:102:31)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/recreated-exact-binary-and-manifest
+    not ok 3 - ARTIFACT-PUBLICATION/recreated-exact-binary-and-manifest
+      ---
+      duration_ms: 1.821708
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:129:21'
+      failureType: 'testCodeFailure'
+      error: 'INVALID_SCHEMA'
+      code: 'INVALID_SCHEMA'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.ref (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:95:166)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:130:63)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:129:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/integrity-negatives
+    not ok 4 - ARTIFACT-PUBLICATION/integrity-negatives
+      ---
+      duration_ms: 0.95525
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:151:21'
+      failureType: 'testCodeFailure'
+      error: "ENOENT: no such file or directory, open '/private/tmp/agent-fabric-storage-zAFiuz/authority/w-322334366bb40bcc92bbd2f7a0f4694facb2cfe088c14f12bcb698e0c20cf1d4/u-undefined/object'"
+      code: 'ENOENT'
+      stack: |-
+        async open (node:internal/fs/promises:639:25)
+        async readFile (node:internal/fs/promises:1249:14)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:153:97)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:151:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/schema-validation-and-scope
+    not ok 5 - ARTIFACT-PUBLICATION/schema-validation-and-scope
+      ---
+      duration_ms: 140.831542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:183:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:195:17)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/partial-publication-rollback
+    not ok 6 - ARTIFACT-PUBLICATION/partial-publication-rollback
+      ---
+      duration_ms: 42.309541
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:208:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:209:47)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/deferred-required-evidence
+    not ok 7 - ARTIFACT-PUBLICATION/deferred-required-evidence
+      ---
+      duration_ms: 45.276208
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:221:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:223:51)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/concurrent-original-and-collector
+    not ok 8 - ARTIFACT-PUBLICATION/concurrent-original-and-collector
+      ---
+      duration_ms: 38.412125
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:241:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:242:47)
+      ...
+# {"measurement":"storage-cipher-process-kill","phase":"object-fsynced","operation":"stage","pid":33528,"uploadId":"f860987a-db1d-406c-b7db-fcf828ce0e74","signal":"SIGKILL","exitCode":null,"phaseObserved":true,"pgOwnerAborted":true,"workerOutputBytes":0}
+    # Subtest: ARTIFACT-PUBLICATION/fsync-process-interruption
+    ok 9 - ARTIFACT-PUBLICATION/fsync-process-interruption
+      ---
+      duration_ms: 1503.275542
+      type: 'test'
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/pg-process-publication-interruption
+    not ok 10 - ARTIFACT-PUBLICATION/pg-process-publication-interruption
+      ---
+      duration_ms: 49.622333
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:301:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:302:47)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/unknown-commit-and-recreated-lookup
+    not ok 11 - ARTIFACT-PUBLICATION/unknown-commit-and-recreated-lookup
+      ---
+      duration_ms: 43.609958
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:311:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:312:47)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/orphan-lease-quarantine-and-unowned
+    not ok 12 - ARTIFACT-PUBLICATION/orphan-lease-quarantine-and-unowned
+      ---
+      duration_ms: 45.194083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:347:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:348:47)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/posteffect-validator-and-manifest-refusal
+    not ok 13 - ARTIFACT-PUBLICATION/posteffect-validator-and-manifest-refusal
+      ---
+      duration_ms: 45.170666
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:376:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:378:51)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/native-stop-retained-read
+    not ok 14 - ARTIFACT-PUBLICATION/native-stop-retained-read
+      ---
+      duration_ms: 167.744917
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:403:21'
+      failureType: 'testCodeFailure'
+      error: 'CHECK_BINDING_MISMATCH'
+      code: 'CHECK_BINDING_MISMATCH'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.require (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:90:25)
+        #manifest (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:120:30)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:134:56
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async ArtifactPublicationRepository.prepare (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/artifact-publication.js:132:26)
+        async Object.stage (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:94:65)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:411:67)
+      ...
+    # Subtest: ARTIFACT-PUBLICATION/current-source-revocation-and-membership
+    not ok 15 - ARTIFACT-PUBLICATION/current-source-revocation-and-membership
+      ---
+      duration_ms: 153.265
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:433:21'
+      failureType: 'testCodeFailure'
+      error: 'Expected RETENTION_RESTRICTED got INVALID_SCHEMA'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        deny (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:52:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:437:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:433:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"artifact-publication","positives":{"save":0,"ask":0,"forget":0,"restore":0,"read":0,"write":3,"deny":15,"conflict":0,"propagate":0,"backup":0,"owner":1,"harness":0},"violations":{"unauthorizedDisclosure":1,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+    # Subtest: ARTIFACT-PUBLICATION/forced-rls-narrow-function-and-history
+    not ok 16 - ARTIFACT-PUBLICATION/forced-rls-narrow-function-and-history
+      ---
+      duration_ms: 19.711708
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:460:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        The expression evaluated to a falsy value:
+        
+          assert.ok(caught)
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        deny (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:54:22)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:467:21)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:460:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":33522,"instance":"33422/Thu Oct  8 14:47:02 2026","signal":"SIGTERM","removed":true}
+    1..16
+not ok 1 - ARTIFACT-PUBLICATION/behavior / durable immutable bytes and orphan custody
+  ---
+  duration_ms: 6660.389875
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-artifact-publication-tests.js:28:12'
+  failureType: 'subtestsFailed'
+  error: '14 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 17
+# suites 0
+# pass 2
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6738.686417
+{"measurement":"storage-container-cleanup","owner":"ad395341-cf31-4f80-bd0e-dcd252eca62c","instance":"d2779107-8b27-415d-81cf-771a3bb581ef","containerId":"9b22c9383449b7fa4e1c14e85f72f11d9f8825841f180adf45b59d7a0894cb72","removed":true,"censusUnchanged":true,"processAfter":{"rows":815,"digest":"194b1ef638a25202589c12614dc0c3e1e3b6452da363e33f897c7a94793295c5"}}
+{"measurement":"storage-root-cleanup","owner":"ad395341-cf31-4f80-bd0e-dcd252eca62c","instance":"d2779107-8b27-415d-81cf-771a3bb581ef","rootId":"ed4a9f9b-3ecf-4878-8184-b3d30806d551","rootIds":["5da4da4e-b721-4e7a-ae88-f0e0b165e4b1","f9760a3b-eab2-4926-b53e-6bd31144b8eb","ef26039b-0fc8-4e90-a35c-0f6e49f927cd","142ebddc-e141-47bd-a5d1-5f0056660e70"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

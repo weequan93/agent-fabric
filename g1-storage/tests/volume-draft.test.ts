@@ -1,0 +1,11 @@
+import test from 'node:test';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import type {ComponentTest} from './helpers/canonical-component.js';
+const {registerFullComponent}=await import(pathToFileURL(resolve(process.env['STORAGE_REPO_ROOT']!,'g1-storage/scripts/full-registration.mjs')).href);
+import { registerVolumeDraftTests } from './helpers/register-volume-drafts-tests.js';
+await registerFullComponent('volume-draft','volume-drafts',registerVolumeDraftTests,test);
+import { registerVolumePromotionTests } from './helpers/register-volume-promotion-tests.js';
+await registerFullComponent('volume-draft','volume-promotion',registerVolumePromotionTests,test);
+import {registerVolumeVerificationTests} from './helpers/register-volume-verification-tests.js';
+await registerFullComponent('volume-draft','verify-volume',(register:ComponentTest)=>registerVolumeVerificationTests('volume-draft',register),test);

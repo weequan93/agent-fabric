@@ -1,0 +1,1552 @@
+{
+  "schemaVersion": 1,
+  "assurance": "deterministic-local-only",
+  "scope": "current-authority control reads in both witness branches and pending-work metadata; f05-02 stays active",
+  "externalQualification": "pending",
+  "precedingIndex": {
+    "path": "g1-storage/evidence/f05-02-forget-work-v1.json",
+    "bytes": 145826,
+    "sha256": "16af1cd05761c8001cb612f8fe0def14bd37ec67ff6aa777fee2cdcdd171ee9a"
+  },
+  "verifiedPrecedingIndexes": [
+    {
+      "path": "g1-storage/evidence/f05-02-accounting-v1.json",
+      "bytes": 35396,
+      "sha256": "708e97d0e0206ba58d7a52947b6d78a3332072e6e9d1f210007ee1a80e04ef59"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-authority-v1.json",
+      "bytes": 5820,
+      "sha256": "ba8784631dc017a43fb7ac820d0729cb219622242c9d2924024b0c3f6ea9b813"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-authority-v2.json",
+      "bytes": 11003,
+      "sha256": "8db58b40aef4aa47c1fbb8abee68c492a8c572dc446b766d1182509d45a429bd"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-epoch-v1.json",
+      "bytes": 71139,
+      "sha256": "3d237e2f976311b7662ab92a532b13d002c0e18f0a3c37b158583f770c41c66c"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-epoch-v2.json",
+      "bytes": 23813,
+      "sha256": "7751f5ef2e509c228cc60e10277915d7dd033ae30fd8eb6286e5f706e60b4d0c"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-forget-work-v1.json",
+      "bytes": 145826,
+      "sha256": "16af1cd05761c8001cb612f8fe0def14bd37ec67ff6aa777fee2cdcdd171ee9a"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-migration-v1.json",
+      "bytes": 3682,
+      "sha256": "5bb299a2ded52a832421857e180b267502321c3f1783b196852e4d0c0ba0eaac"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-policy-v1.json",
+      "bytes": 130608,
+      "sha256": "cdbe1751a06c7eb10bf2edbef2171dfb8e497dcc3a5679edbea719dcbd78e48e"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-sharing-v1.json",
+      "bytes": 33137,
+      "sha256": "cedc8acfe1b34f33e19d89d14640a1cda058e6b9b1a63e592608376d438bd6a0"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-sharing-v2.json",
+      "bytes": 12463,
+      "sha256": "3fbede99fa9d4bf2a77aa453089c5aa764e2238c7b0a6f688857a2932fbb39e0"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-source-v1.json",
+      "bytes": 188565,
+      "sha256": "f0829bbe37dd90e5d6b0b9dd50f9a17453ae0fd933962c2835d7f274df4d937f"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-tombstone-v1.json",
+      "bytes": 131397,
+      "sha256": "cc9b377c90d5aa2d768f47eddbd816d7de2a6cbcfdcd5853f75e7adb6d55a9c7"
+    }
+  ],
+  "verifiedPriorReferences": 150,
+  "attemptNotes": {
+    "job-9514dfb02e": "Intentional pre-repair regression run; 4 mandatory child failures and parent failure, unauthorizedDisclosure=9. Confirms resolved audience/native bypass and missing control lineage. All cleanup and guards retained.",
+    "job-90d73f3571": "After repair authority84/84 read119/deny416/owner6 and migration8/8 owner2/deny60; all6 violations0 and2581 protected inputs unchanged."
+  },
+  "checks": [
+    {
+      "jobId": "job-9514dfb02e",
+      "check": "f05-02.authority-component",
+      "status": "fail",
+      "storageCandidateDigest": "sha256:b1a9628633792e255f12b8a5de7bbc2566f6a6f5d865f7e2b13b31886b5ad333",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-9514dfb02e/f05-02.authority-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-9514dfb02e/f05-02.authority-component/stdout.log",
+          "bytes": 23711,
+          "sha256": "7fc71d51577e0020625b87f934b25639e1d4cb7807571af85f0864aae7d0e14a"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-9514dfb02e/f05-02.authority-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-9514dfb02e/f05-02.authority-component/stderr.log",
+          "bytes": 2164,
+          "sha256": "cb3399611f82e9c296274b2e7282651bbc99b48a0e2b97ae9db351fb628c4cc2"
+        }
+      },
+      "tapSummary": {
+        "tests": 84,
+        "pass": 79,
+        "fail": 5,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:b1a9628633792e255f12b8a5de7bbc2566f6a6f5d865f7e2b13b31886b5ad333",
+          "files": 229,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "60501090-f6f0-45a2-b055-cc0748a549d1",
+          "instance": "3a4f6a22-1f0a-4902-8d66-953ca1c983ec",
+          "containerId": "38a33e97df2f751652f47df052851b2c7e92eeed19ab4aa84e06de23c668d3c6",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "a5965823-0a5f-416f-b76f-c710ff6f8a96",
+              "device": 16777238,
+              "inode": 324255459
+            },
+            "backup": {
+              "rootId": "77599c4b-99eb-4b2e-bbe7-42bd8bdefbac",
+              "device": 16777238,
+              "inode": 324255461
+            },
+            "restore": {
+              "rootId": "ffcf29bf-6732-47a7-8605-b528f428220d",
+              "device": 16777238,
+              "inode": 324255463
+            },
+            "authority": {
+              "rootId": "6237b906-e632-412a-b016-6943027c91c2",
+              "device": 16777238,
+              "inode": 324255465
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "40ba1336-d2f6-4dfd-9ea4-7dda9ad3977c",
+            "device": 16777238,
+            "inode": 324255457
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 773,
+            "digest": "823f5c295c5be1834987e39ad96a13bb18a9ec772cc37c854a15c22e320cd60e"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 10416,
+          "marker": "1996f953-3faa-4e80-a765-f580876f8807",
+          "instance": "10315/Thu Oct  8 07:39:36 2026",
+          "ppid": 10414,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "authority",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 102,
+            "write": 0,
+            "deny": 391,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 6,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 9,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 10416,
+          "instance": "10315/Thu Oct  8 07:39:36 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "60501090-f6f0-45a2-b055-cc0748a549d1",
+          "instance": "3a4f6a22-1f0a-4902-8d66-953ca1c983ec",
+          "containerId": "38a33e97df2f751652f47df052851b2c7e92eeed19ab4aa84e06de23c668d3c6",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 761,
+            "digest": "b5eafbae5f2d25bb87c725d48b811e82b983a30e8c8ba94d6962156b46cc09d9"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "60501090-f6f0-45a2-b055-cc0748a549d1",
+          "instance": "3a4f6a22-1f0a-4902-8d66-953ca1c983ec",
+          "rootId": "40ba1336-d2f6-4dfd-9ea4-7dda9ad3977c",
+          "rootIds": [
+            "a5965823-0a5f-416f-b76f-c710ff6f8a96",
+            "77599c4b-99eb-4b2e-bbe7-42bd8bdefbac",
+            "ffcf29bf-6732-47a7-8605-b528f428220d",
+            "6237b906-e632-412a-b016-6943027c91c2"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-90d73f3571",
+      "check": "f05-02.authority-component",
+      "status": "pass",
+      "storageCandidateDigest": "sha256:a50828adfd36322765e5d029f3c9c8efd157b43ccd6f2fc37f95348c776647e6",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-90d73f3571/f05-02.authority-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-90d73f3571/f05-02.authority-component/stdout.log",
+          "bytes": 32637,
+          "sha256": "dfefc44a7812c66a4aa54aca677e310860171b05e3f308ac6dd2bc064bbb8d83"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-90d73f3571/f05-02.authority-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-90d73f3571/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "tapSummary": {
+        "tests": 84,
+        "pass": 84,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:a50828adfd36322765e5d029f3c9c8efd157b43ccd6f2fc37f95348c776647e6",
+          "files": 233,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "f91a4312-0c8c-41c0-92e5-829b959e7953",
+          "instance": "e6d52142-d7ed-425a-a5e7-002ebe84c24f",
+          "containerId": "17aa86c95273365437caa7a7889c4e1db82a522d6ea6f9fc42cb363e1f14dd33",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "5248ff8a-84f6-4053-8a43-ba943f323dab",
+              "device": 16777238,
+              "inode": 324257980
+            },
+            "backup": {
+              "rootId": "36969dea-c813-4043-a859-10efaa3dbcb7",
+              "device": 16777238,
+              "inode": 324257982
+            },
+            "restore": {
+              "rootId": "776b7c70-ccab-4eee-89f8-51c470adb748",
+              "device": 16777238,
+              "inode": 324257984
+            },
+            "authority": {
+              "rootId": "3931f3e1-9414-4c3e-8190-02f1b62c67e0",
+              "device": 16777238,
+              "inode": 324257986
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "49c948b9-3bdc-435a-b4f2-02a48633a208",
+            "device": 16777238,
+            "inode": 324257978
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 769,
+            "digest": "2d7cd40dc06c30e443bfc5ffbd3cd28ab0676a647b6bb409d2d03289c2ba7f97"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 10792,
+          "marker": "35fa2086-1b9f-4b2b-b964-e527ab9ba15a",
+          "instance": "10691/Thu Oct  8 07:41:38 2026",
+          "ppid": 10790,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "authority",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 119,
+            "write": 0,
+            "deny": 416,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 6,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 10792,
+          "instance": "10691/Thu Oct  8 07:41:38 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "f91a4312-0c8c-41c0-92e5-829b959e7953",
+          "instance": "e6d52142-d7ed-425a-a5e7-002ebe84c24f",
+          "containerId": "17aa86c95273365437caa7a7889c4e1db82a522d6ea6f9fc42cb363e1f14dd33",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 761,
+            "digest": "cfe98eb198bfe9adc19fe829e6f0f5000097f929b06c4e4d98b071289686e115"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "f91a4312-0c8c-41c0-92e5-829b959e7953",
+          "instance": "e6d52142-d7ed-425a-a5e7-002ebe84c24f",
+          "rootId": "49c948b9-3bdc-435a-b4f2-02a48633a208",
+          "rootIds": [
+            "5248ff8a-84f6-4053-8a43-ba943f323dab",
+            "36969dea-c813-4043-a859-10efaa3dbcb7",
+            "776b7c70-ccab-4eee-89f8-51c470adb748",
+            "3931f3e1-9414-4c3e-8190-02f1b62c67e0"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "authority",
+              "tests": 84,
+              "cases": [
+                "AUTHORITY/behavior / real authenticated current control ledger"
+              ],
+              "variants": [
+                "AUTHORITY/migration",
+                "AUTHORITY/live-owners",
+                "AUTHORITY/scope-negative",
+                "AUTHORITY/database-roles",
+                "AUTHORITY/grants-policy",
+                "AUTHORITY/anchor-recovery",
+                "AUTHORITY/expiry-after-wait",
+                "AUTHORITY/shared-live",
+                "AUTHORITY/shared-negative",
+                "AUTHORITY/shared-roles",
+                "AUTHORITY/shared-current",
+                "AUTHORITY/shared-lock-order",
+                "AUTHORITY/accounting-ask",
+                "AUTHORITY/accounting-maintenance",
+                "AUTHORITY/accounting-rollback",
+                "AUTHORITY/accounting-negative",
+                "AUTHORITY/accounting-expiry-wait",
+                "AUTHORITY/shared-accounting-order",
+                "AUTHORITY/shared-accounting-grant-wait",
+                "AUTHORITY/shared-accounting-dependencies",
+                "AUTHORITY/maintenance-grant-wait",
+                "AUTHORITY/epoch-publication",
+                "AUTHORITY/epoch-rollback",
+                "AUTHORITY/epoch-ack-gap",
+                "AUTHORITY/epoch-wire-unknown",
+                "AUTHORITY/epoch-wire-rollback",
+                "AUTHORITY/epoch-journal-cas",
+                "AUTHORITY/epoch-concurrency",
+                "AUTHORITY/epoch-journal-integrity",
+                "AUTHORITY/epoch-roles",
+                "AUTHORITY/policy-publication",
+                "AUTHORITY/policy-negative",
+                "AUTHORITY/policy-rollback",
+                "AUTHORITY/policy-ack-gap",
+                "AUTHORITY/policy-wire-outcomes",
+                "AUTHORITY/policy-concurrency",
+                "AUTHORITY/policy-expiry",
+                "AUTHORITY/policy-roles",
+                "AUTHORITY/policy-admin-grant-wait",
+                "AUTHORITY/policy-current",
+                "AUTHORITY/source-publication",
+                "AUTHORITY/source-negative",
+                "AUTHORITY/source-rollback",
+                "AUTHORITY/source-ack-gap",
+                "AUTHORITY/source-wire-outcomes",
+                "AUTHORITY/source-concurrency",
+                "AUTHORITY/source-expiry",
+                "AUTHORITY/source-roles",
+                "AUTHORITY/source-grant-wait",
+                "AUTHORITY/source-journal-branches",
+                "AUTHORITY/tombstone-publication",
+                "AUTHORITY/tombstone-class-lineage",
+                "AUTHORITY/tombstone-negative",
+                "AUTHORITY/tombstone-rollback",
+                "AUTHORITY/tombstone-ack-gap",
+                "AUTHORITY/tombstone-wire-outcomes",
+                "AUTHORITY/tombstone-concurrency",
+                "AUTHORITY/tombstone-expiry",
+                "AUTHORITY/tombstone-roles",
+                "AUTHORITY/tombstone-grant-wait",
+                "AUTHORITY/tombstone-journal-branches",
+                "AUTHORITY/forget-work-publication",
+                "AUTHORITY/forget-work-class-lineage",
+                "AUTHORITY/forget-work-negative",
+                "AUTHORITY/forget-work-rollback",
+                "AUTHORITY/forget-work-partial-write",
+                "AUTHORITY/forget-work-original-isolation",
+                "AUTHORITY/forget-work-ack-gap",
+                "AUTHORITY/forget-work-wire-outcomes",
+                "AUTHORITY/forget-work-concurrency",
+                "AUTHORITY/forget-work-expiry",
+                "AUTHORITY/forget-work-roles",
+                "AUTHORITY/forget-work-grant-wait",
+                "AUTHORITY/forget-work-journal-branches",
+                "AUTHORITY/control-read-preparation",
+                "AUTHORITY/control-read-audience",
+                "AUTHORITY/control-read-audience-wait",
+                "AUTHORITY/control-read-lineage",
+                "AUTHORITY/control-read-pending-audience",
+                "AUTHORITY/control-read-native-stop",
+                "AUTHORITY/shared-revocation",
+                "AUTHORITY/remaining-audience",
+                "AUTHORITY/restriction-session"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "AUTHORITY/migration",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "AUTHORITY/live-owners",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "AUTHORITY/scope-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "AUTHORITY/database-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "AUTHORITY/grants-policy",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "AUTHORITY/anchor-recovery",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "AUTHORITY/expiry-after-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "AUTHORITY/shared-live",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "AUTHORITY/shared-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "AUTHORITY/shared-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "AUTHORITY/shared-current",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 12,
+                  "name": "AUTHORITY/shared-lock-order",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 13,
+                  "name": "AUTHORITY/accounting-ask",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 14,
+                  "name": "AUTHORITY/accounting-maintenance",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 15,
+                  "name": "AUTHORITY/accounting-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 16,
+                  "name": "AUTHORITY/accounting-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 17,
+                  "name": "AUTHORITY/accounting-expiry-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 18,
+                  "name": "AUTHORITY/shared-accounting-order",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 19,
+                  "name": "AUTHORITY/shared-accounting-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 20,
+                  "name": "AUTHORITY/shared-accounting-dependencies",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 21,
+                  "name": "AUTHORITY/maintenance-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 22,
+                  "name": "AUTHORITY/epoch-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 23,
+                  "name": "AUTHORITY/epoch-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 24,
+                  "name": "AUTHORITY/epoch-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 25,
+                  "name": "AUTHORITY/epoch-wire-unknown",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 26,
+                  "name": "AUTHORITY/epoch-wire-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 27,
+                  "name": "AUTHORITY/epoch-journal-cas",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 28,
+                  "name": "AUTHORITY/epoch-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 29,
+                  "name": "AUTHORITY/epoch-journal-integrity",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 30,
+                  "name": "AUTHORITY/epoch-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 31,
+                  "name": "AUTHORITY/policy-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 32,
+                  "name": "AUTHORITY/policy-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 33,
+                  "name": "AUTHORITY/policy-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 34,
+                  "name": "AUTHORITY/policy-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 35,
+                  "name": "AUTHORITY/policy-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 36,
+                  "name": "AUTHORITY/policy-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 37,
+                  "name": "AUTHORITY/policy-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 38,
+                  "name": "AUTHORITY/policy-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 39,
+                  "name": "AUTHORITY/policy-admin-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 40,
+                  "name": "AUTHORITY/policy-current",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 41,
+                  "name": "AUTHORITY/source-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 42,
+                  "name": "AUTHORITY/source-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 43,
+                  "name": "AUTHORITY/source-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 44,
+                  "name": "AUTHORITY/source-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 45,
+                  "name": "AUTHORITY/source-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 46,
+                  "name": "AUTHORITY/source-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 47,
+                  "name": "AUTHORITY/source-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 48,
+                  "name": "AUTHORITY/source-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 49,
+                  "name": "AUTHORITY/source-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 50,
+                  "name": "AUTHORITY/source-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 51,
+                  "name": "AUTHORITY/tombstone-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 52,
+                  "name": "AUTHORITY/tombstone-class-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 53,
+                  "name": "AUTHORITY/tombstone-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 54,
+                  "name": "AUTHORITY/tombstone-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 55,
+                  "name": "AUTHORITY/tombstone-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 56,
+                  "name": "AUTHORITY/tombstone-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 57,
+                  "name": "AUTHORITY/tombstone-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 58,
+                  "name": "AUTHORITY/tombstone-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 59,
+                  "name": "AUTHORITY/tombstone-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 60,
+                  "name": "AUTHORITY/tombstone-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 61,
+                  "name": "AUTHORITY/tombstone-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 62,
+                  "name": "AUTHORITY/forget-work-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 63,
+                  "name": "AUTHORITY/forget-work-class-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 64,
+                  "name": "AUTHORITY/forget-work-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 65,
+                  "name": "AUTHORITY/forget-work-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 66,
+                  "name": "AUTHORITY/forget-work-partial-write",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 67,
+                  "name": "AUTHORITY/forget-work-original-isolation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 68,
+                  "name": "AUTHORITY/forget-work-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 69,
+                  "name": "AUTHORITY/forget-work-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 70,
+                  "name": "AUTHORITY/forget-work-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 71,
+                  "name": "AUTHORITY/forget-work-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 72,
+                  "name": "AUTHORITY/forget-work-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 73,
+                  "name": "AUTHORITY/forget-work-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 74,
+                  "name": "AUTHORITY/forget-work-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 75,
+                  "name": "AUTHORITY/control-read-preparation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 76,
+                  "name": "AUTHORITY/control-read-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 77,
+                  "name": "AUTHORITY/control-read-audience-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 78,
+                  "name": "AUTHORITY/control-read-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 79,
+                  "name": "AUTHORITY/control-read-pending-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 80,
+                  "name": "AUTHORITY/control-read-native-stop",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 81,
+                  "name": "AUTHORITY/shared-revocation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 82,
+                  "name": "AUTHORITY/remaining-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 83,
+                  "name": "AUTHORITY/restriction-session",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "AUTHORITY/behavior / real authenticated current control ledger",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "authority",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 119,
+                  "write": 0,
+                  "deny": 416,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 6,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-90d73f3571",
+      "check": "f05-02.migration-component",
+      "status": "pass",
+      "storageCandidateDigest": "sha256:a50828adfd36322765e5d029f3c9c8efd157b43ccd6f2fc37f95348c776647e6",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-90d73f3571/f05-02.migration-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-90d73f3571/f05-02.migration-component/stdout.log",
+          "bytes": 8928,
+          "sha256": "670d91b3080614b47500082d59ac0d67d81eae35cf277499c1c8618f43110496"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-90d73f3571/f05-02.migration-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-90d73f3571/f05-02.migration-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "tapSummary": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:a50828adfd36322765e5d029f3c9c8efd157b43ccd6f2fc37f95348c776647e6",
+          "files": 233,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "dbafab85-4fe2-45de-9e1e-3945fa00ff18",
+          "instance": "b9a43e08-7bed-4a68-83f9-8782496117a7",
+          "containerId": "34d2cde54e1df9d42aa6b7ea497f4148750a19ff0b1ee61b4912d57896dd24d2",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "b85fb191-3380-4bfb-ba68-8f0e64c753fc",
+              "device": 16777238,
+              "inode": 324258943
+            },
+            "backup": {
+              "rootId": "a8b58635-a420-427a-983c-32295002ab5e",
+              "device": 16777238,
+              "inode": 324258945
+            },
+            "restore": {
+              "rootId": "1a400cbb-0d4c-40ec-b691-ab94f956423a",
+              "device": 16777238,
+              "inode": 324258947
+            },
+            "authority": {
+              "rootId": "6d19a336-c0c8-4336-8af4-73c9331753d2",
+              "device": 16777238,
+              "inode": 324258949
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "7a8cbdae-b93d-488b-b2a8-0a1e0f241181",
+            "device": 16777238,
+            "inode": 324258941
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 763,
+            "digest": "c4bfda69bf94245fe931f58cd61588ce49329519d074cefbbd8ebddcd9350590"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 10998,
+          "marker": "9cfbf518-577f-4819-be4d-71fe81d7ea4d",
+          "instance": "10896/Thu Oct  8 07:42:43 2026",
+          "ppid": 10996,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "migration",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 0,
+            "write": 0,
+            "deny": 60,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 2,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 10998,
+          "instance": "10896/Thu Oct  8 07:42:43 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "dbafab85-4fe2-45de-9e1e-3945fa00ff18",
+          "instance": "b9a43e08-7bed-4a68-83f9-8782496117a7",
+          "containerId": "34d2cde54e1df9d42aa6b7ea497f4148750a19ff0b1ee61b4912d57896dd24d2",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 763,
+            "digest": "2e5e8dcb69cf3c86f7ae4de24a53ffe8c6c417b3643b08262737ee05eea55003"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "dbafab85-4fe2-45de-9e1e-3945fa00ff18",
+          "instance": "b9a43e08-7bed-4a68-83f9-8782496117a7",
+          "rootId": "7a8cbdae-b93d-488b-b2a8-0a1e0f241181",
+          "rootIds": [
+            "b85fb191-3380-4bfb-ba68-8f0e64c753fc",
+            "a8b58635-a420-427a-983c-32295002ab5e",
+            "1a400cbb-0d4c-40ec-b691-ab94f956423a",
+            "6d19a336-c0c8-4336-8af4-73c9331753d2"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "migration",
+              "tests": 8,
+              "cases": [
+                "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              ],
+              "variants": [
+                "rollback leaves original FK, schema and ledgers",
+                "unexpected installed FK refuses atomically",
+                "repeat, identity substitution and digest tamper",
+                "forced RLS and no enrollment/mutation grants",
+                "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                "original computer relation remains independently available"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "rollback leaves original FK, schema and ledgers",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "unexpected installed FK refuses atomically",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "repeat, identity substitution and digest tamper",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "forced RLS and no enrollment/mutation grants",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "original computer relation remains independently available",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "MIGRATION/behavior / real owned subtype migration and installed accounting",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "migration",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 0,
+                  "write": 0,
+                  "deny": 60,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 2,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    }
+  ],
+  "localDiagnostics": [
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-authority-stderr.log",
+      "bytes": 1256,
+      "sha256": "f110d3a81bdc8e798bb0761c691bb7458e26aa537dcdfa1987c19c85501eb93a"
+    },
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-authority-stdout.log",
+      "bytes": 2006,
+      "sha256": "934a6414176e7d757fd188a51599117abd24d32ce5f9615cf5f5f3a784804011"
+    },
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-contracts-stderr.log",
+      "bytes": 778,
+      "sha256": "d592b8cb721643c0d1fa33bbfbbef742b5c6dad58c76fb6e8a7d1066f31ac658"
+    },
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-contracts-stdout.log",
+      "bytes": 10336,
+      "sha256": "2dbc250ed957b3bcd671e11af857bd7b163d5bea5564b22ec68c242338544586"
+    },
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-contracts-stable-stdout.log",
+      "bytes": 10343,
+      "sha256": "0913ea3881aa325ad20f0989dc64f6e16827792a18a431faab5b602bf24acd93"
+    },
+    {
+      "path": "g1-storage/evidence/diagnostics/turn19-contracts-stable-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "localDiagnosticNotes": "First redirected local runs wrote inside the candidate and were correctly rejected by the candidate-change guard; contracts tests passed12/12 but command exited1. Authority also refused unavailable sandbox process census before fixture creation. All original diagnostic logs retained. Stable contracts run captured outside candidate passes exit0, tests12/12; not controller evidence.",
+  "limitations": [
+    "No full content/save/Ask/forget/propagation/backup/restore acceptance.",
+    "Original-native revocation remains a fail-closed refusal; recovery through a newly authorized native binding is unsupported.",
+    "Canonical accepted-head/content command and authenticated sharing mutation remain pending f05-02 work.",
+    "X01-X09 and provider/KMS/multi-host/anti-rollback/power-loss/journal compaction remain unqualified."
+  ],
+  "candidateBoundary": "Retained raw/index/docs updates follow the executed passing candidate; final current-candidate aggregate/regression/review acceptance is pending."
+}

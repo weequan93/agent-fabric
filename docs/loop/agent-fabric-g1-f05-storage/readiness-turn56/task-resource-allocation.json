@@ -1,0 +1,1593 @@
+[
+  {
+    "id": "f05-01",
+    "role": "architect",
+    "team": [],
+    "status": "done",
+    "dependsOn": [],
+    "checks": [
+      {
+        "id": "strict-build",
+        "run": "node g1-storage/scripts/build.mjs",
+        "timeout": 180,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Compile current own sources/tests and imported owners with pinned offline frozen dependencies; refuse stale/symlinked emission.",
+        "stage": "unit"
+      },
+      {
+        "id": "contracts-component",
+        "run": "node g1-storage/scripts/check-component.mjs contracts",
+        "timeout": 180,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual closed command/envelope/state positive and invalid-security-field/bounds probes; inspect direct owner composition contracts.",
+        "stage": "unit"
+      }
+    ],
+    "budgetMinutes": null,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-01"
+  },
+  {
+    "id": "f05-02",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-01"
+    ],
+    "checks": [
+      {
+        "id": "authority-component",
+        "run": "node g1-storage/scripts/check-component.mjs authority",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual local IdP/HTTP/non-owner PG authorization, relation/RLS/grant negatives, lifecycle grants and surviving-current-ledger boundary.",
+        "stage": "integration"
+      },
+      {
+        "id": "migration-component",
+        "run": "node g1-storage/scripts/check-component.mjs migration",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Rerun unchanged F01-F04 migrations, exact ledgers/grants/hash equality and refusal of changed installed digest in an owned DB.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": null,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-02"
+  },
+  {
+    "id": "f05-03",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-02"
+    ],
+    "checks": [
+      {
+        "id": "encryption-component",
+        "run": "node g1-storage/scripts/check-component.mjs encryption",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Real encrypted file and PG round-trip after recreation; AAD/tag/body/key substitution negatives and no private/log/key plaintext.",
+        "stage": "integration"
+      },
+      {
+        "id": "staging-component",
+        "run": "node g1-storage/scripts/check-component.mjs staging",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual interrupted byte/manifest writes and scope/lease-aware orphan cleanup protect reachable/unknown and foreign sentinel data.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": null,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-03"
+  },
+  {
+    "id": "f05-04",
+    "role": "data",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-03"
+    ],
+    "checks": [
+      {
+        "id": "atomic-save-component",
+        "run": "node g1-storage/scripts/check-component.mjs atomic-save",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      },
+      {
+        "id": "source-content-component",
+        "run": "node g1-storage/scripts/check-component.mjs source-content",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Additive prerequisite diagnostic: real encrypted provenance, migration, role denial, rollback, concurrent original and genuine COMMIT wire outcomes; does not replace knowledge or commands gates.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 95,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-04"
+  },
+  {
+    "id": "f05-04-status",
+    "role": "data",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-04"
+    ],
+    "checks": [
+      {
+        "id": "knowledge-status-component",
+        "run": "node g1-storage/scripts/check-component.mjs knowledge-status",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-04-status"
+  },
+  {
+    "id": "f05-04-correction",
+    "role": "data",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-04-status"
+    ],
+    "checks": [
+      {
+        "id": "knowledge-correction-component",
+        "run": "node g1-storage/scripts/check-component.mjs knowledge-correction",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-04-correction"
+  },
+  {
+    "id": "f05-04-recovery",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-04-correction"
+    ],
+    "checks": [
+      {
+        "id": "command-recovery-component",
+        "run": "node g1-storage/scripts/check-component.mjs command-recovery",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-04-recovery"
+  },
+  {
+    "id": "f05-04-gate",
+    "role": "data",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-04-recovery"
+    ],
+    "checks": [
+      {
+        "id": "knowledge-component",
+        "run": "node g1-storage/scripts/check-component.mjs knowledge",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      },
+      {
+        "id": "commands-component",
+        "run": "node g1-storage/scripts/check-component.mjs commands",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      },
+      {
+        "id": "source-content-component",
+        "run": "node g1-storage/scripts/check-component.mjs source-content",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Additive prerequisite diagnostic: real encrypted provenance, migration, role denial, rollback, concurrent original and genuine COMMIT wire outcomes; does not replace knowledge or commands gates.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 20,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-04-gate"
+  },
+  {
+    "id": "f05-05-artifacts",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-04-gate"
+    ],
+    "checks": [
+      {
+        "id": "artifact-publication-component",
+        "run": "node g1-storage/scripts/check-component.mjs artifact-publication",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-artifacts"
+  },
+  {
+    "id": "f05-05-drafts",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-05-artifacts"
+    ],
+    "checks": [
+      {
+        "id": "volume-drafts-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume-drafts",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-drafts"
+  },
+  {
+    "id": "f05-05-promotion",
+    "role": "backend",
+    "team": [],
+    "status": "done",
+    "dependsOn": [
+      "f05-05-drafts"
+    ],
+    "checks": [
+      {
+        "id": "volume-promotion-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume-promotion",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-promotion"
+  },
+  {
+    "id": "f05-05-recovery",
+    "role": "devops",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-05-promotion"
+    ],
+    "checks": [
+      {
+        "id": "volume-owned-recovery",
+        "run": "node g1-storage/scripts/check-volume-owned-recovery.mjs",
+        "timeout": 600,
+        "cwd": ".",
+        "description": "Strict build plus OWNED-RECOVERY/behavior and its 8 mandatory actual proof/refusal/sentinel variants; no skips/TODO and unchanged guard hashes.",
+        "stage": "security",
+        "expect_exit": 0
+      },
+      {
+        "id": "volume-interrupted-receipt",
+        "run": "node g1-storage/scripts/check-volume-interrupted-receipt.mjs",
+        "timeout": 180,
+        "cwd": ".",
+        "description": "Fail unless byte/hash-bound job-27c90a1221 actual current recovery receipt and both immutable original streams reconcile every leaked container/root/IdP identity, absence/refusal and sentinel preservation.",
+        "stage": "integration",
+        "expect_exit": 0
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [
+      "g1-storage/scripts/check-volume-interrupted-receipt.mjs",
+      "g1-storage/scripts/check-volume-owned-recovery.mjs"
+    ],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-recovery"
+  },
+  {
+    "id": "f05-05-custodian",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-05-recovery"
+    ],
+    "checks": [
+      {
+        "id": "volume-custodian",
+        "run": "node g1-storage/scripts/check-volume-custodian.mjs",
+        "timeout": 600,
+        "cwd": ".",
+        "description": "Strict build, real nested container lifetimes, worker SIGKILL/deadline/owner disconnect after durable work+IdP, cleanup failure and journal substitution; exact 8 mandatory variants and byte/hash-bound phase/identity/census receipts.",
+        "stage": "integration",
+        "expect_exit": 0
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [
+      "g1-storage/scripts/check-volume-custodian.mjs"
+    ],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-custodian"
+  },
+  {
+    "id": "f05-05-schedule",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-05-promotion",
+      "f05-05-custodian"
+    ],
+    "checks": [
+      {
+        "id": "volume-schedule-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Complete original volume gate under unchanged suite limit; all predecessor assertions and observed useful positives, final owned cleanup/census and preservation guards pass.",
+        "stage": "integration"
+      },
+      {
+        "id": "volume-schedule-proof",
+        "run": "node g1-storage/scripts/check-volume-schedule.mjs",
+        "timeout": 600,
+        "cwd": ".",
+        "description": "Strict build and original volume run: 3 complete frozen child TAP/observations/raw hashes, LIFO cleanup/census and <=235s measured target; 8 required proof/refusal variants. Never closes on old receipts or only VOLUME/behavior.",
+        "stage": "integration",
+        "expect_exit": 0
+      },
+      {
+        "id": "artifact-publication-component",
+        "run": "node g1-storage/scripts/check-component.mjs artifact-publication",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      },
+      {
+        "id": "volume-drafts-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume-drafts",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      },
+      {
+        "id": "volume-promotion-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume-promotion",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [
+      "g1-storage/scripts/check-volume-schedule.mjs"
+    ],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05-schedule"
+  },
+  {
+    "id": "f05-05",
+    "role": "backend",
+    "team": [],
+    "status": "active",
+    "dependsOn": [
+      "f05-05-promotion",
+      "f05-05-schedule"
+    ],
+    "checks": [
+      {
+        "id": "volume-component",
+        "run": "node g1-storage/scripts/check-component.mjs volume",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual encrypted file/artifact/draft/checkpoint states and recreation, expected-base contention, stale variant/fence and private audience negatives.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 20,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-05"
+  },
+  {
+    "id": "f05-06-recall",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-05"
+    ],
+    "checks": [
+      {
+        "id": "recall-broker-component",
+        "run": "node g1-storage/scripts/check-component.mjs recall-broker",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-06-recall"
+  },
+  {
+    "id": "f05-06-native",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-06-recall"
+    ],
+    "checks": [
+      {
+        "id": "native-ask-component",
+        "run": "node g1-storage/scripts/check-component.mjs native-ask",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 95,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-06-native"
+  },
+  {
+    "id": "f05-06-disclosure",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-06-native"
+    ],
+    "checks": [
+      {
+        "id": "ask-disclosure-component",
+        "run": "node g1-storage/scripts/check-component.mjs ask-disclosure",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-06-disclosure"
+  },
+  {
+    "id": "f05-06",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-06-disclosure"
+    ],
+    "checks": [
+      {
+        "id": "ask-component",
+        "run": "node g1-storage/scripts/check-component.mjs ask",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Real native/IdP/HTTP saved decision A/B answers and exact manifests, independent controls/tab binding; zero actual computer/model/effect calls.",
+        "stage": "integration"
+      },
+      {
+        "id": "admission-component",
+        "run": "node g1-storage/scripts/check-component.mjs admission",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Installed native freshness/fence and resource allowance conservation, same-key recreation, exhausted/revoked maintenance/service admission; no new owner/plaintext history.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 20,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-06"
+  },
+  {
+    "id": "f05-07-retention",
+    "role": "data",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-06"
+    ],
+    "checks": [
+      {
+        "id": "retention-forget-component",
+        "run": "node g1-storage/scripts/check-component.mjs retention-forget",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-07-retention"
+  },
+  {
+    "id": "f05-07-graph",
+    "role": "data",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-07-retention"
+    ],
+    "checks": [
+      {
+        "id": "dependency-graph-component",
+        "run": "node g1-storage/scripts/check-component.mjs dependency-graph",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-07-graph"
+  },
+  {
+    "id": "f05-07-maintenance",
+    "role": "data",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-07-graph"
+    ],
+    "checks": [
+      {
+        "id": "maintenance-admission-component",
+        "run": "node g1-storage/scripts/check-component.mjs maintenance-admission",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-07-maintenance"
+  },
+  {
+    "id": "f05-07-retry",
+    "role": "data",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-07-maintenance"
+    ],
+    "checks": [
+      {
+        "id": "propagation-retry-component",
+        "run": "node g1-storage/scripts/check-component.mjs propagation-retry",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-07-retry"
+  },
+  {
+    "id": "f05-07",
+    "role": "data",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-07-retry"
+    ],
+    "checks": [
+      {
+        "id": "lifecycle-component",
+        "run": "node g1-storage/scripts/check-component.mjs lifecycle",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Real nested encrypted graph delete/expiry/revoke/correct invalidation, partial failure/restart, observed two-sided write/read/job races and truthful forget counts.",
+        "stage": "integration"
+      },
+      {
+        "id": "maintenance-component",
+        "run": "node g1-storage/scripts/check-component.mjs maintenance",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual installed F04 maintenance reserve/settle admission, allowance exhaustion/revocation/late job rechecks and one-charge duplicate processing.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 20,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-07"
+  },
+  {
+    "id": "f05-08-capture",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-07"
+    ],
+    "checks": [
+      {
+        "id": "backup-capture-component",
+        "run": "node g1-storage/scripts/check-component.mjs backup-capture",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-08-capture"
+  },
+  {
+    "id": "f05-08",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-08-capture"
+    ],
+    "checks": [
+      {
+        "id": "backup-component",
+        "run": "node g1-storage/scripts/check-component.mjs backup",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual coherent encrypted archive, exact inventory/checkpoint/epoch, concurrent capture orders, expiry and original-key interrupted/ACK-loss recovery.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-08"
+  },
+  {
+    "id": "f05-09-import",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-08"
+    ],
+    "checks": [
+      {
+        "id": "restore-import-component",
+        "run": "node g1-storage/scripts/check-component.mjs restore-import",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-09-import"
+  },
+  {
+    "id": "f05-09-activation",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-09-import"
+    ],
+    "checks": [
+      {
+        "id": "restore-activation-component",
+        "run": "node g1-storage/scripts/check-component.mjs restore-activation",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 95,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-09-activation"
+  },
+  {
+    "id": "f05-09-progress",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-09-activation"
+    ],
+    "checks": [
+      {
+        "id": "restore-progress-component",
+        "run": "node g1-storage/scripts/check-component.mjs restore-progress",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-09-progress"
+  },
+  {
+    "id": "f05-09",
+    "role": "backend",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-09-progress"
+    ],
+    "checks": [
+      {
+        "id": "restore-component",
+        "run": "node g1-storage/scripts/check-component.mjs restore",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Real source-content loss, fresh-root byte/metadata recovery and restored useful Ask; post-backup restrictions/freshness and corrupt/missing/stale-authority negatives.",
+        "stage": "integration"
+      },
+      {
+        "id": "restore-recovery-component",
+        "run": "node g1-storage/scripts/check-component.mjs restore-recovery",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Persisted staged/import/reconcile/activation process-loss resume, original-key duplicate/COMMIT windows, stale generation and zero effect/control replay.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 20,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-09"
+  },
+  {
+    "id": "f05-10-build",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-09"
+    ],
+    "checks": [
+      {
+        "id": "harness-build-component",
+        "run": "node g1-storage/scripts/check-component.mjs harness-build",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "unit"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-10-build"
+  },
+  {
+    "id": "f05-10-cleanup",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-10-build"
+    ],
+    "checks": [
+      {
+        "id": "harness-cleanup-component",
+        "run": "node g1-storage/scripts/check-component.mjs harness-cleanup",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "unit"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-10-cleanup"
+  },
+  {
+    "id": "f05-10",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-10-cleanup"
+    ],
+    "checks": [
+      {
+        "id": "contracts-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs contracts",
+        "timeout": 300,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen contracts suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "unit"
+      },
+      {
+        "id": "harness-component",
+        "run": "node g1-storage/scripts/check-component.mjs harness",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Execute owned-copy failure variants and actual good driver results with strict gate/cleanup oracles; aggregate negative probe included.",
+        "stage": "unit"
+      }
+    ],
+    "budgetMinutes": 30,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-10"
+  },
+  {
+    "id": "f05-11-authority",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-10"
+    ],
+    "checks": [
+      {
+        "id": "verify-authority-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-authority",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-authority"
+  },
+  {
+    "id": "f05-11-atomic",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-authority"
+    ],
+    "checks": [
+      {
+        "id": "verify-atomic-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-atomic",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 80,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-atomic"
+  },
+  {
+    "id": "f05-11-knowledge",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-atomic"
+    ],
+    "checks": [
+      {
+        "id": "verify-knowledge-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-knowledge",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 80,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-knowledge"
+  },
+  {
+    "id": "f05-11-artifact",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-knowledge"
+    ],
+    "checks": [
+      {
+        "id": "verify-artifact-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-artifact",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 80,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-artifact"
+  },
+  {
+    "id": "f05-11-volume",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-artifact"
+    ],
+    "checks": [
+      {
+        "id": "verify-volume-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-volume",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-volume"
+  },
+  {
+    "id": "f05-11-lifecycle",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-volume"
+    ],
+    "checks": [
+      {
+        "id": "verify-lifecycle-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-lifecycle",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-lifecycle"
+  },
+  {
+    "id": "f05-11-retry",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-lifecycle"
+    ],
+    "checks": [
+      {
+        "id": "verify-propagation-retry-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-propagation-retry",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-retry"
+  },
+  {
+    "id": "f05-11-maintenance",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-retry"
+    ],
+    "checks": [
+      {
+        "id": "verify-maintenance-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-maintenance",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-maintenance"
+  },
+  {
+    "id": "f05-11-races",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-maintenance"
+    ],
+    "checks": [
+      {
+        "id": "verify-lifecycle-races-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-lifecycle-races",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11-races"
+  },
+  {
+    "id": "f05-11",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11-races"
+    ],
+    "checks": [
+      {
+        "id": "authority-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs authority",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen authority suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "integration"
+      },
+      {
+        "id": "commit-conflict-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs commit-conflict",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen commit-conflict suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "integration"
+      },
+      {
+        "id": "lifecycle-propagation-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs lifecycle-propagation",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen lifecycle-propagation suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "integration"
+      },
+      {
+        "id": "volume-draft-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs volume-draft",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen volume-draft suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 30,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-11"
+  },
+  {
+    "id": "f05-12-recall",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-11"
+    ],
+    "checks": [
+      {
+        "id": "verify-ask-recall-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-ask-recall",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "e2e"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-12-recall"
+  },
+  {
+    "id": "f05-12-disclosure",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-12-recall"
+    ],
+    "checks": [
+      {
+        "id": "verify-ask-disclosure-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-ask-disclosure",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "e2e"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-12-disclosure"
+  },
+  {
+    "id": "f05-12-routing",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-12-disclosure"
+    ],
+    "checks": [
+      {
+        "id": "verify-ask-routing-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-ask-routing",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "e2e"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-12-routing"
+  },
+  {
+    "id": "f05-12",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-12-routing"
+    ],
+    "checks": [
+      {
+        "id": "recall-ask-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs recall-ask",
+        "timeout": 1200,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen recall-ask suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "e2e"
+      }
+    ],
+    "budgetMinutes": 25,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-12"
+  },
+  {
+    "id": "f05-13-current",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-12"
+    ],
+    "checks": [
+      {
+        "id": "verify-restore-current-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-restore-current",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 95,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-13-current"
+  },
+  {
+    "id": "f05-13-interruption",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-13-current"
+    ],
+    "checks": [
+      {
+        "id": "verify-restore-interruption-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-restore-interruption",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-13-interruption"
+  },
+  {
+    "id": "f05-13-integrity",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-13-interruption"
+    ],
+    "checks": [
+      {
+        "id": "verify-restore-integrity-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-restore-integrity",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-13-integrity"
+  },
+  {
+    "id": "f05-13-measurement",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-13-integrity"
+    ],
+    "checks": [
+      {
+        "id": "verify-restore-measurement-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-restore-measurement",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "performance"
+      }
+    ],
+    "budgetMinutes": 90,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-13-measurement"
+  },
+  {
+    "id": "f05-13",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-13-measurement"
+    ],
+    "checks": [
+      {
+        "id": "backup-restore-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs backup-restore",
+        "timeout": 1200,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen backup-restore suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "performance"
+      }
+    ],
+    "budgetMinutes": 25,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-13"
+  },
+  {
+    "id": "f05-15-docs",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-13"
+    ],
+    "checks": [
+      {
+        "id": "delivery-operations-component",
+        "run": "node g1-storage/scripts/check-component.mjs delivery-operations",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-15-docs"
+  },
+  {
+    "id": "f05-15-evidence",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-15-docs"
+    ],
+    "checks": [
+      {
+        "id": "delivery-evidence-component",
+        "run": "node g1-storage/scripts/check-component.mjs delivery-evidence",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 75,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-15-evidence"
+  },
+  {
+    "id": "f05-14-cipher",
+    "role": "security",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-15-evidence"
+    ],
+    "checks": [
+      {
+        "id": "verify-encryption-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-encryption",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "security"
+      }
+    ],
+    "budgetMinutes": 80,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-14-cipher"
+  },
+  {
+    "id": "f05-14-copies",
+    "role": "security",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-14-cipher"
+    ],
+    "checks": [
+      {
+        "id": "verify-retained-copies-component",
+        "run": "node g1-storage/scripts/check-component.mjs verify-retained-copies",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "stage": "security"
+      }
+    ],
+    "budgetMinutes": 85,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-14-copies"
+  },
+  {
+    "id": "f05-14",
+    "role": "security",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-14-copies"
+    ],
+    "checks": [
+      {
+        "id": "owned-encryption-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs owned-encryption",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen owned-encryption suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "security"
+      },
+      {
+        "id": "harness-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs harness",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen harness suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "security"
+      },
+      {
+        "id": "authority-suite",
+        "run": "node g1-storage/scripts/check-slice.mjs authority",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current build and nonempty frozen authority suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+        "stage": "security"
+      },
+      {
+        "id": "security-component",
+        "run": "node g1-storage/scripts/check-component.mjs security",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Adversarial memory/control injection, real serving-path/source/restore barriers and encrypted retained-copy inventory fail on leakage or privilege promotion.",
+        "stage": "integration"
+      }
+    ],
+    "budgetMinutes": 30,
+    "missingPlannedEntrypoints": [],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-14"
+  },
+  {
+    "id": "f05-15",
+    "role": "tester",
+    "team": [],
+    "status": "pending",
+    "dependsOn": [
+      "f05-14",
+      "f05-15-evidence"
+    ],
+    "checks": [
+      {
+        "id": "evidence-local",
+        "run": "node g1-storage/scripts/check-evidence.mjs local",
+        "timeout": 180,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Artifact/matrix/source/pins/nonclaim/raw-stream validation; no self-certification or stale implementation fingerprint.",
+        "stage": "integration"
+      },
+      {
+        "id": "full-storage-behavior",
+        "run": "node g1-storage/scripts/check.mjs",
+        "timeout": 1800,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict current clean build then every frozen local suite/case/variant, real positives and six finite zero violations, cleanup/guards including failure paths.",
+        "stage": "integration"
+      },
+      {
+        "id": "identity-retained",
+        "run": "node g1-identity/scripts/check.mjs",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Exact unchanged current-candidate F02 check through controller.",
+        "stage": "regression"
+      },
+      {
+        "id": "foundation-retained",
+        "run": "node g1-foundations/scripts/check.mjs",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Exact unchanged current-candidate F01 check through controller.",
+        "stage": "regression"
+      },
+      {
+        "id": "original-retained",
+        "run": "node g1-foundations/scripts/check-retained.mjs",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Exact unchanged G0/G1-local/client/Electron checks through controller outside sandbox.",
+        "stage": "regression"
+      },
+      {
+        "id": "evidence-controller",
+        "run": "node g1-storage/scripts/check-evidence.mjs controller-behavior",
+        "timeout": 180,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Inspect complete actual four controller streams/job/definition/candidate bindings, current executable fingerprint, executed coverage, cleanup and unresolved severe findings.",
+        "stage": "acceptance"
+      }
+    ],
+    "budgetMinutes": 45,
+    "missingPlannedEntrypoints": [
+      "g1-storage/scripts/check-evidence.mjs"
+    ],
+    "resourceProfile": "pinned local Node/PG/encrypted files/HTTP/IdP; controller process census and GUI where required",
+    "ownerOfMissingOutputs": "f05-15"
+  }
+]

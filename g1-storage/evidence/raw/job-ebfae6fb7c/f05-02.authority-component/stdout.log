@@ -1,0 +1,88 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:1d820f49faffca9e44c96790f9a6cb87c67691ad3f7f2f02df764f193ff8e1b9","files":89,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 145ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"f169b22f-572f-4bba-8f27-dcc7dd6fea6a","instance":"22cb82ae-7961-4028-86df-af10f4707cbf","containerId":"7d7fc6e215c45b7a0f87cc60139069d55c5a6cbddaef2c90588d90d989d03ef5","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"71a8023e-0d30-49c0-a33a-2370a091828c","device":16777238,"inode":324210974},"backup":{"rootId":"d4d46097-7e07-4b6c-8319-5c7a257b7c27","device":16777238,"inode":324210976},"restore":{"rootId":"6932247e-7450-455c-93a0-a074ddf3e772","device":16777238,"inode":324210978}},"fixtureRoot":{"rootId":"26620624-62d2-46c6-8a25-d6d822cc8847","device":16777238,"inode":324210972},"preexistingContainers":[],"processBefore":{"rows":772,"digest":"b5bf511f9ef2575092369253949d0b7827a193307cb9c80d805c1f3156de2de6"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":90100,"marker":"a24a8e2c-7e79-46f9-8db8-69f00d94675e","instance":"90001/Thu Oct  8 06:20:38 2026","ppid":90098,"loopback":true}
+# Subtest: AUTHORITY/behavior / real authenticated current control ledger
+    # Subtest: AUTHORITY/migration
+    ok 1 - AUTHORITY/migration
+      ---
+      duration_ms: 532.424834
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/live-owners
+    ok 2 - AUTHORITY/live-owners
+      ---
+      duration_ms: 176.612417
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/scope-negative
+    ok 3 - AUTHORITY/scope-negative
+      ---
+      duration_ms: 90.547417
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/database-roles
+    ok 4 - AUTHORITY/database-roles
+      ---
+      duration_ms: 288.494333
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/grants-policy
+    ok 5 - AUTHORITY/grants-policy
+      ---
+      duration_ms: 105.399542
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/anchor-recovery
+    ok 6 - AUTHORITY/anchor-recovery
+      ---
+      duration_ms: 109.285917
+      type: 'test'
+      ...
+    # Subtest: AUTHORITY/expiry-after-wait
+    ok 7 - AUTHORITY/expiry-after-wait
+      ---
+      duration_ms: 585.897375
+      type: 'test'
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":90100,"instance":"90001/Thu Oct  8 06:20:38 2026","signal":"SIGTERM","removed":true}
+    1..7
+not ok 1 - AUTHORITY/behavior / real authenticated current control ledger
+  ---
+  duration_ms: 2413.7345
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:9:1'
+  failureType: 'testCodeFailure'
+  error: 'immutable Space owner/payer/namespaces or stale authority'
+  code: 'P0001'
+  name: 'error'
+  stack: |-
+    /Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.pnpm/pg-pool@3.14.0_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:228:9)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 8
+# suites 0
+# pass 7
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2488.414875
+{"measurement":"storage-container-cleanup","owner":"f169b22f-572f-4bba-8f27-dcc7dd6fea6a","instance":"22cb82ae-7961-4028-86df-af10f4707cbf","containerId":"7d7fc6e215c45b7a0f87cc60139069d55c5a6cbddaef2c90588d90d989d03ef5","removed":true,"censusUnchanged":true,"processAfter":{"rows":772,"digest":"65c53e40d482ee67943d456eaf31cc38ce453a0b58e65dc552ab395c0498804d"}}
+{"measurement":"storage-root-cleanup","owner":"f169b22f-572f-4bba-8f27-dcc7dd6fea6a","instance":"22cb82ae-7961-4028-86df-af10f4707cbf","rootId":"26620624-62d2-46c6-8a25-d6d822cc8847","rootIds":["71a8023e-0d30-49c0-a33a-2370a091828c","d4d46097-7e07-4b6c-8319-5c7a257b7c27","6932247e-7450-455c-93a0-a074ddf3e772"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

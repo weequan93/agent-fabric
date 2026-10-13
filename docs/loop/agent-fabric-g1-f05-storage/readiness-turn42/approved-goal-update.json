@@ -1,0 +1,24 @@
+{
+  "id": "agent-fabric-g1-f05-storage",
+  "policy": {
+    "max_iterations": 120,
+    "max_hours": 144,
+    "turn_timeout_minutes": 120,
+    "stagnation_limit": 3,
+    "max_task_attempts": 4,
+    "max_repair_rounds": 5,
+    "max_cost_usd": null,
+    "approval_required": [
+      "deploy or release to a shared or production environment",
+      "delete or overwrite data that is not reproducible from the repository",
+      "spend money or start paid resources",
+      "send messages, emails or posts to people",
+      "change credentials, secrets, access control or security settings",
+      "force-push, rewrite published git history or delete branches"
+    ],
+    "allow_network": true,
+    "fresh_session_each_turn": true,
+    "pause_on_interrupt": false,
+    "check_timeout_seconds": 3600
+  }
+}

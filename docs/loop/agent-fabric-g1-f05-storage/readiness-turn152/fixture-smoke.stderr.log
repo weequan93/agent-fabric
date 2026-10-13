@@ -1,0 +1,13 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/fixture.mjs:10
+function census(){const r=spawnSync('ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8',timeout:5000});if(r.error||r.status!==0||!r.stdout.trim())throw new Error('Real process census unavailable');return {rows:r.stdout.trim().split('\n').length,digest:createHash('sha256').update(r.stdout).digest('hex')};}
+                                                                                                                                                      ^
+
+Error: Real process census unavailable
+    at census (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/fixture.mjs:10:151)
+    at withStorageFixture (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/fixture.mjs:22:172)
+    at file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f05-storage/readiness-turn152/fixture-interface-readiness.mjs:7:7
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.22.3

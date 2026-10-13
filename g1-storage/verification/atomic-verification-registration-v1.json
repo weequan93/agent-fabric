@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "predecessorDigest": "sha256:631ff13c0baabd0a81701c5272ad64e5923e734c15b32e0729672cdf871c47e4",
+  "currentDigest": "sha256:47c868a26a41d8aa47e79cb7668ae4e92f47f96aa93e16d259331f5df540f185",
+  "extension": "\n,\n\"verify-atomic\": {\n  \"positives\": [\n    \"save\",\n    \"deny\"\n  ],\n  \"file\": \"components/verify-atomic.component.test.js\",\n  \"cases\": [\n    \"K03\",\n    \"K06\",\n    \"K07\"\n  ],\n  \"integration\": true,\n  \"variants\": {\n    \"K03\": [\n      \"K03/kill-revision\",\n      \"K03/kill-head\",\n      \"K03/kill-receipt\",\n      \"K03/kill-event\",\n      \"K03/kill-outbox\",\n      \"K03/committed-recreated\",\n      \"K03/response-after-commit\"\n    ],\n    \"K06\": [\n      \"K06/same-key-identical-concurrent\",\n      \"K06/same-key-changed-concurrent\",\n      \"K06/recreated-retry\",\n      \"K06/exact-effect-counts\"\n    ],\n    \"K07\": [\n      \"K07/observed-commit-wait\",\n      \"K07/observed-rollback-wait\",\n      \"K07/observed-timeout\",\n      \"K07/lost-commit-ack\",\n      \"K07/serialized-absence-no-replay\"\n    ]\n  }\n}\n",
+  "predecessorPins": {
+    "schemaVersion": 1,
+    "files": {
+      "scripts/check-volume-schedule.mjs": "sha256:8c873bd0af17c7fc509bace3333b2c078d40847ed88c9cf1abc60f161a723d6d",
+      "scripts/schedule/verification.mjs": "sha256:985a5c1f361118a8c0915edc3c66cef6ebe2745c17bf63fc4a27aa21557acac5",
+      "scripts/schedule/supervisor.mjs": "sha256:88676ae35a824d88b3f581420febf8ca2df16d4d0dffa5f5e706fea44b580b7d",
+      "scripts/schedule/custodian-process.mjs": "sha256:5f57b929303078301461296ca6cfcdd3ea6689f9e6506927ad1ac140753d7bac",
+      "scripts/schedule/full-worker.mjs": "sha256:38b59d2ddeec2092f3ab6f473f31a188b5c4a1ac96866592fb3f59dd769c930b",
+      "scripts/schedule/descendants.mjs": "sha256:5b2a30ada97a6402dac426cbada9ff5f7f2f45af38524473fe50f1a9ccd27a2a",
+      "scripts/schedule/schedule.test.mjs": "sha256:2acdd0561703cc7f10f7be9d087f5a50ca8df0f69b450da82cb7a37c03488a80",
+      "tests/helpers/volume-component.ts": "sha256:52a3e9498f35f4f35816dc6c7035768308071e25d84408d79231e6a1595d1678",
+      "scripts/manifest.mjs": "sha256:631ff13c0baabd0a81701c5272ad64e5923e734c15b32e0729672cdf871c47e4"
+    }
+  },
+  "predecessorPinsDigest": "sha256:3cc1953a9dc02bcc440f5bf6592060594689fee98e0009b41842960290193054"
+}

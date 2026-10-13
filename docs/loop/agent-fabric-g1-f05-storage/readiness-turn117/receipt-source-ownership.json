@@ -1,0 +1,129 @@
+{
+  "task": "f05-11-receipt-boundaries",
+  "lead": "tester",
+  "team": [],
+  "engineeringMinutes": 65,
+  "breakdownMinutes": {
+    "diagnostic": 10,
+    "splitMarkers": 10,
+    "preservation": 10,
+    "controls": 10,
+    "controller": 20,
+    "evidence": 5
+  },
+  "existingAuthorizedSources": [
+    {
+      "path": "g1-storage/scripts/full-registration.mjs",
+      "bytes": 2536,
+      "sha256": "e154a54c836283f7c1dea30fb1866d5319a1104f77c3e02d777b7dbfa78ab386"
+    },
+    {
+      "path": "g1-storage/scripts/full-composition.mjs",
+      "bytes": 9510,
+      "sha256": "55e9ee09f58cb8f875034814669ff479624c15652df5beecfa73b3baa9d0b542"
+    },
+    {
+      "path": "g1-storage/scripts/check-full-predecessor-composition.mjs",
+      "bytes": 20768,
+      "sha256": "253249b560f5534c564f164e09018311fe37f9071d2b99436577ad5abd51bab4"
+    },
+    {
+      "path": "g1-storage/scripts/composition-preservation.mjs",
+      "bytes": 2458,
+      "sha256": "5f3ed54305c5096cf05f3d2418689526789f94a99787ce0d9deb44faa683628b"
+    },
+    {
+      "path": "g1-storage/scripts/receipt-preservation.mjs",
+      "bytes": 1900,
+      "sha256": "03e413d385221ddd8f95ff50780ec0daa7fc83b6251db275882496986992a2d1"
+    }
+  ],
+  "newOwnedOutputs": [
+    "Small closed nonqualifying diagnostic codec; bind actual current bytes in every full registration",
+    "Standalone correction preservation reader; no imports/calls back into earlier reconstruction readers",
+    "Versioned correction extension sealing exact current1116 predecessor and only five changed/additive paths"
+  ],
+  "immutableDependencies": [
+    {
+      "path": "g1-storage/scripts/full-receipt-transport.mjs",
+      "bytes": 2376,
+      "sha256": "1ce151402c3e0dc2972f585341af4c10ee35c2f321c8509b97d9bf4ce4eff398"
+    },
+    {
+      "path": "g1-storage/scripts/runner.mjs",
+      "bytes": 4952,
+      "sha256": "010f22c10f42112c3c4e6d57e3e10f24a727b305c1853474bf6f696ce5b2b9be"
+    },
+    {
+      "path": "g1-storage/scripts/suite-execution.mjs",
+      "bytes": 2217,
+      "sha256": "cd927f340b805837e150998eb33a19d34b468acbdcb3a51a3da16eeb99ef3336"
+    },
+    {
+      "path": "g1-storage/scripts/execution-preservation.mjs",
+      "bytes": 3280,
+      "sha256": "8ee89ab09e6bf48afaebd196f092d1d7ecc3a23225729f073f48befc424b43e1"
+    },
+    {
+      "path": "g1-storage/scripts/fixture.mjs",
+      "bytes": 7966,
+      "sha256": "43820722f3472a507b1fbe79c8b1d5fc8009a9473600d0e88cd046bec82d8e54"
+    },
+    {
+      "path": "g1-storage/scripts/process-result.mjs",
+      "bytes": 5362,
+      "sha256": "8c8cadde22031ad39e1eac9070e36b3a5c42a0214a7ae69dea264b3eb91d599c"
+    },
+    {
+      "path": "g1-storage/scripts/observation-gate.mjs",
+      "bytes": 855,
+      "sha256": "ba07a74c30835a9cde8815477ed0877fcd6edb6137fb81d919a30d0b06603acd"
+    },
+    {
+      "path": "g1-storage/scripts/build.mjs",
+      "bytes": 4824,
+      "sha256": "d32e0631133ecce68ad845f02e37868301cfb2a880bc11cb9f41a8f250b14548"
+    },
+    {
+      "path": "g1-storage/scripts/manifest.mjs",
+      "bytes": 83135,
+      "sha256": "3940711462870b9a640c76f4538584b7048c64ffb381f364c1cc5562021ce51d"
+    },
+    {
+      "path": "g1-storage/verification/full-receipt-extension-v1.json",
+      "bytes": 215998,
+      "sha256": "4e48099620069b4499f37fa21b92a3bece5d4ffe1344095662e0e54d33097271"
+    },
+    {
+      "path": "g1-storage/verification/full-composition-extension-v1.json",
+      "bytes": 188789,
+      "sha256": "9363270895c03d867c6f7233ce414db0137f7a5771b9ff605a417251a537b3f8"
+    },
+    {
+      "path": "g1-storage/verification/measurement-transport-extension-v1.json",
+      "bytes": 333347,
+      "sha256": "9af20b90100f269c78c80393889964aac742a655f77c836c76e5e9b077caf81b"
+    },
+    {
+      "path": "g1-storage/verification/execution-extension-v1.json",
+      "bytes": 5259,
+      "sha256": "22a71072de223e767ce8cf90e2c43b8ed85ec58b61b1b50a6039b17838174d93"
+    }
+  ],
+  "proposal": {
+    "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn115/repair-proposal.md",
+    "bytes": 12293,
+    "sha256": "9b72a950490b118e7663c86ad410b839d5fcf90a9b6ee680e6a1c12d887129fe"
+  },
+  "missingResources": [],
+  "missingImplementation": [
+    "closed SQL diagnostic adapter/admission and hostility",
+    "closed native split-marker collector/actual serializer controls",
+    "default/all correction and receipt reader paths plus closed control coverage",
+    "all four actual complete gates on one frozen repaired candidate"
+  ],
+  "defaultAudit": "Exact correction metadata/all changed/new paths; exact receipt metadata/all changed/new receipt paths via correction; composition changed/additions via receipt/correction; existing execution/measurement seals/pins. Unchanged deleted ordinary files must reach original compiler/module/fixture checks.",
+  "allAudit": "Mandatory no-argument composition guard reconstructs every1116 predecessor byte, then1113/1106/1103/1100 inventories and14pins; changed/missing ordinary files refused exhaustively.",
+  "bootstrap": "Correction reader validates current five thin source bytes and added modules against its new closed record, then reverses to exact1116 bytes before prior records certify anything. Receipt reader is itself a prior sealed added module: compare its corrected predecessor bytes, not modified live bytes, to old receipt added digest. Composition reader first applies correction via receipt reconstruction. No circular imports, recursion, double reversal or broad catch/fallback. Record predecessor digest fixed ce6fdecf and exact changed/additions lists; independent review must verify actual implementation.",
+  "sourceBindingRequirement": "Future diagnostic codec current byte hash enters every registration source binding. Current codec stays unchanged; earlier records/raw evidence immutable. New artifacts exact names and byte seals assigned by development after independent review."
+}

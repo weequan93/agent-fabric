@@ -16,7 +16,9 @@
     "Paid model/product APIs, cloud resources, real credentials, remote deployments and messages to people are OFF unless approved with loop_ask(kind=approval).",
     "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
     "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
-    "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger."
+    "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger.",
+    "Human decision 2026-10-09: the 240000 ms hard per-file suite limit (g1-storage/scripts/suite-execution.mjs) is removed and is no longer a frozen requirement; the controller check timeouts (900s/1800s) remain the outer bound. This goal has no turn or wall-clock budget, so plans and reviews must not fail on remaining-turn/hour capacity.",
+    "Human decision 2026-10-12 (re-scope): 'never modify accepted ... protected files' protects only ACCEPTED increments (G0, G1-local, G1-foundations, G1-F02, F03, F04). F05's own code and tests (g1-storage) are NOT frozen: fix bugs at their source. Do not build capture/observer/admission/receipt wrappers or verification-of-verification layers around F05's own harness; the controller-run slice checks are the evidence. Keep evidence proportionate: a report plus the latest run per check, no copied candidate trees."
   ],
   "acceptance": [
     {
@@ -85,8 +87,8 @@
     }
   ],
   "policy": {
-    "max_iterations": 60,
-    "max_hours": 24.0,
+    "max_iterations": null,
+    "max_hours": null,
     "turn_timeout_minutes": 120,
     "stagnation_limit": 3,
     "max_task_attempts": 4,
@@ -108,49 +110,10 @@
   "schedule": null,
   "agent": {
     "adapter": "codex",
-    "model": null,
+    "model": "gpt-6.1-sol",
     "permission_mode": null,
     "extra_args": [],
-    "stages": {
-      "intake": {
-        "effort": "high"
-      },
-      "requirements": {
-        "effort": "high"
-      },
-      "requirements_review": {
-        "effort": "high"
-      },
-      "solution": {
-        "effort": "high"
-      },
-      "test_design": {
-        "effort": "high"
-      },
-      "plan": {
-        "effort": "high"
-      },
-      "resources": {
-        "effort": "high"
-      },
-      "plan_review": {
-        "effort": "high"
-      },
-      "final_acceptance": {
-        "effort": "high"
-      },
-      "product_acceptance": {
-        "effort": "high"
-      }
-    },
-    "roles": {
-      "architect": {
-        "effort": "high"
-      },
-      "security": {
-        "effort": "high"
-      }
-    }
+    "effort": "max"
   },
   "created_at": "2026-10-06T15:59:25+00:00",
   "pipeline": "full"

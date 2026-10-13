@@ -1,0 +1,358 @@
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 148ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 161ms using pnpm v10.18.0
+{"measurement":"model-owned-postgres","owner":"ab069ce8-83fc-425b-a08d-bdef63b6c166","containerId":"c3db9b629839a01e2563d37aaba5ffda4f90bb29994b27f990b391b3ee8d9ee3","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":23386,"marker":"1309d0cc-7713-44cd-be32-d9103073a752","instance":"23268/Wed Oct  7 11:59:48 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process","pid":23390,"marker":"3f30097c-cd11-44fc-bc83-58258455a0ae","instance":"23268/Wed Oct  7 11:59:48 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process","pid":23408,"marker":"0f379c4e-7e56-4531-ba60-11efe561de90","instance":"23268/Wed Oct  7 11:59:50 2026","ppid":23384,"loopback":true}
+# Subtest: NATIVE/wait-stop
+    # Subtest: owned-native-process-no-choice-Ask-actual-compiler-and-service-receipt
+    not ok 1 - owned-native-process-no-choice-Ask-actual-compiler-and-service-receipt
+      ---
+      duration_ms: 1341.143583
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:19:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'waiting'
+        - 'completed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'completed'
+      actual: 'waiting'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:27:16)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:19:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: actual-native-budget-wait-no-fictitious-reservation-restart-and-32-polls
+    not ok 2 - actual-native-budget-wait-no-fictitious-reservation-restart-and-32-polls
+      ---
+      duration_ms: 63.868875
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:44:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: authorized-idempotent-top-up-is-separate-from-resume-and-smaller-scope
+    not ok 3 - authorized-idempotent-top-up-is-separate-from-resume-and-smaller-scope
+      ---
+      duration_ms: 59.892333
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:71:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: approval-wait-preserves-result-expiry-and-ongoing-cost-policy-zero-turns
+    not ok 4 - approval-wait-preserves-result-expiry-and-ongoing-cost-policy-zero-turns
+      ---
+      duration_ms: 70.147625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:101:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: model-permission-resource-connection-waits-use-native-state-not-model-text
+    ok 5 - model-permission-resource-connection-waits-use-native-state-not-model-text
+      ---
+      duration_ms: 302.276125
+      type: 'test'
+      ...
+    # Subtest: unknown-usage-holds-original-reserve-top-up-and-resume-cannot-clear-it
+    not ok 6 - unknown-usage-holds-original-reserve-top-up-and-resume-cannot-clear-it
+      ---
+      duration_ms: 61.038792
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:144:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: Stop-first-burns-fresh-claim-blocks-every-continuation-and-survives-restart
+    not ok 7 - Stop-first-burns-fresh-claim-blocks-every-continuation-and-survives-restart
+      ---
+      duration_ms: 29.00975
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:169:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:170:234)
+      ...
+# {"measurement":"model-owned-process","pid":23427,"marker":"ebc9ef57-9dd7-44bf-90f6-16c84f5bed04","instance":"23268/Wed Oct  7 11:59:51 2026","ppid":23384,"loopback":true}
+    # Subtest: accept-first-Stop-is-actually-blocked-then-fences-with-retained-liability
+    not ok 8 - accept-first-Stop-is-actually-blocked-then-fences-with-retained-liability
+      ---
+      duration_ms: 8270.381042
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:201:13'
+      failureType: 'testCodeFailure'
+      error: 'Deadline: actual prepared native original'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        waitUntil (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/process-fixture.js:17:11)
+        async latest (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:17:53)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:206:19)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:201:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: parent-Stop-fences-a-separately-admitted-child-before-model-acceptance
+    ok 9 - parent-Stop-fences-a-separately-admitted-child-before-model-acceptance
+      ---
+      duration_ms: 151.435625
+      type: 'test'
+      ...
+    # Subtest: zero-port-pure-replay-does-not-encode-select-authorize-output-or-publish
+    not ok 10 - zero-port-pure-replay-does-not-encode-select-authorize-output-or-publish
+      ---
+      duration_ms: 72.880542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:234:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: boundary-forgery-expiry-conflicts-and-cost-view-redaction
+    not ok 11 - boundary-forgery-expiry-conflicts-and-cost-view-redaction
+      ---
+      duration_ms: 104.027042
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:246:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: required-native-checkpoint-audit-failure-rolls-back-without-new-dispatch
+    ok 12 - required-native-checkpoint-audit-failure-rolls-back-without-new-dispatch
+      ---
+      duration_ms: 67.383083
+      type: 'test'
+      ...
+# {"measurement":"model-owned-process","pid":23447,"marker":"7d8dff43-adba-4d6a-927d-309be1178a42","instance":"23268/Wed Oct  7 12:00:00 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process","pid":23455,"marker":"74383450-8684-4014-9f14-203a2d9199cf","instance":"23268/Wed Oct  7 12:00:00 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process-cleanup","pid":23447,"instance":"23268/Wed Oct  7 12:00:00 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":23455,"instance":"23268/Wed Oct  7 12:00:00 2026","signal":"SIGTERM","removed":true}
+    # Subtest: revoked-in-flight-audience-blocks-output-but-original-cost-remains-settled
+    not ok 13 - revoked-in-flight-audience-blocks-output-but-original-cost-remains-settled
+      ---
+      duration_ms: 1668.446958
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:276:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+# {"measurement":"model-owned-process","pid":23489,"marker":"9a2b7daf-ec5e-416d-9f36-6949616d16f0","instance":"23268/Wed Oct  7 12:00:02 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process","pid":23493,"marker":"638827a1-aad0-42a1-a61f-9381094d44b3","instance":"23268/Wed Oct  7 12:00:02 2026","ppid":23384,"loopback":true}
+# {"measurement":"model-owned-process-cleanup","pid":23489,"instance":"23268/Wed Oct  7 12:00:02 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":23493,"instance":"23268/Wed Oct  7 12:00:02 2026","signal":"SIGTERM","removed":true}
+    # Subtest: revocation-between-broker-chunks-denies-subsequent-disclosure
+    not ok 14 - revocation-between-broker-chunks-denies-subsequent-disclosure
+      ---
+      duration_ms: 1645.844083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:306:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: switch-and-resume-are-fresh-safe-controls-never-replay-an-original
+    not ok 15 - switch-and-resume-are-fresh-safe-controls-never-replay-an-original
+      ---
+      duration_ms: 164.85275
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:333:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+    # Subtest: native-controls-rls-history-and-current-stop-do-not-erase-accounting
+    not ok 16 - native-controls-rls-history-and-current-stop-do-not-erase-accounting
+      ---
+      duration_ms: 70.134209
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:355:13'
+      failureType: 'testCodeFailure'
+      error: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        TaskContextSourceStore.owner (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:35:82)
+        TaskContextSourceStore.current (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:37:24)
+        AuthorizedContextCompiler.authorizeDescriptor (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:71:73)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:93:13)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async Object.model (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:95:27)
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":23408,"instance":"23268/Wed Oct  7 11:59:50 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":23427,"instance":"23268/Wed Oct  7 11:59:51 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":23386,"instance":"23268/Wed Oct  7 11:59:48 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":23390,"instance":"23268/Wed Oct  7 11:59:48 2026","signal":"SIGTERM","removed":true}
+    1..16
+not ok 1 - NATIVE/wait-stop
+  ---
+  duration_ms: 16224.764416
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:13:1'
+  failureType: 'subtestsFailed'
+  error: '13 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 17
+# suites 0
+# pass 3
+# fail 14
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16291.859459
+{"measurement":"model-owned-postgres-cleanup","owner":"ab069ce8-83fc-425b-a08d-bdef63b6c166","containerId":"c3db9b629839a01e2563d37aaba5ffda4f90bb29994b27f990b391b3ee8d9ee3","removed":true}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}

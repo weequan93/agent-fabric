@@ -1,0 +1,286 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:ff1a06dca67e392aa46727aa3392e7c95031e6a33bb26b78ccb1f813c6c5b32a","files":647,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 146ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"ac35c8df-40c2-41ab-b9dd-46b08e918730","instance":"308d4666-d8a5-4f1c-9029-4b6e3beb138f","containerId":"ee65df12e38b3a31d8b3d0922c3e70de0df01e9a0071ba4f293c7fa61cfb7d7d","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"810288f7-4305-492e-ac80-6a171d3c7baf","device":16777238,"inode":336527663},"backup":{"rootId":"1e6b6a01-06c3-473d-a929-b3ffbfd71d77","device":16777238,"inode":336527665},"restore":{"rootId":"042d5f62-2d17-4735-85d5-d6ba5bf964bb","device":16777238,"inode":336527667},"authority":{"rootId":"3dd34c3b-15c2-4dba-9706-ebc925bd5ea7","device":16777238,"inode":336527669}},"fixtureRoot":{"rootId":"bf337bc4-b161-481e-a6bc-f442fa5d200a","device":16777238,"inode":336527661},"preexistingContainers":[],"processBefore":{"rows":822,"digest":"ef53701796fdead5a099fd389e6bcb607e55bd21c71e3f08360e6666f616c8a6"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":19430,"marker":"cad621fb-c088-4fb4-b65d-93db8c8c6dc6","instance":"19330/Thu Oct  8 13:57:32 2026","ppid":19428,"loopback":true}
+# Subtest: KNOWLEDGE-CORRECTION/behavior / exact original dedup and selective CAS correction
+    # Subtest: KNOWLEDGE-CORRECTION/migration
+    ok 1 - KNOWLEDGE-CORRECTION/migration
+      ---
+      duration_ms: 2660.300625
+      type: 'test'
+      ...
+# {"measurement":"correction-uow-refusal","code":"42702","message":"column reference \\"old.tenant_id\\" is ambiguous","stack":["    at /Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17","    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)","    at async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:31:13)","    at async Object.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:29:28)"]}
+    # Subtest: KNOWLEDGE-CORRECTION/atomic-lineage-history
+    not ok 2 - KNOWLEDGE-CORRECTION/atomic-lineage-history
+      ---
+      duration_ms: 386.27
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:109:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        {"schemaVersion":1,"status":"not-saved","error":"UNAUTHORIZED","replayAllowed":false,"nextAction":"inspect-current-authority"}
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:117:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:109:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/target-and-terminal-negative
+    not ok 3 - KNOWLEDGE-CORRECTION/target-and-terminal-negative
+      ---
+      duration_ms: 26.836709
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:141:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:143:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:141:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/deferred-lineage-rollback
+    not ok 4 - KNOWLEDGE-CORRECTION/deferred-lineage-rollback
+      ---
+      duration_ms: 18.423417
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:160:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:162:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:160:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/two-writers-and-recreated-loser
+    not ok 5 - KNOWLEDGE-CORRECTION/two-writers-and-recreated-loser
+      ---
+      duration_ms: 18.197416
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:180:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:183:28)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:180:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/concurrent-original-dedup
+    not ok 6 - KNOWLEDGE-CORRECTION/concurrent-original-dedup
+      ---
+      duration_ms: 19.098208
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:224:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        The expression evaluated to a falsy value:
+        
+          assert.ok(pid)
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: 0
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:231:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:224:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/independent-concurrent-claims
+    not ok 7 - KNOWLEDGE-CORRECTION/independent-concurrent-claims
+      ---
+      duration_ms: 18.950542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:258:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        The expression evaluated to a falsy value:
+        
+          assert.ok(pid)
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: 0
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:265:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:258:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/scoped-buckets-and-contradictions
+    not ok 8 - KNOWLEDGE-CORRECTION/scoped-buckets-and-contradictions
+      ---
+      duration_ms: 19.573459
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:286:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:289:28)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:286:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: KNOWLEDGE-CORRECTION/database-integrity-and-roles
+    not ok 9 - KNOWLEDGE-CORRECTION/database-integrity-and-roles
+      ---
+      duration_ms: 18.887209
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:341:21'
+      failureType: 'testCodeFailure'
+      error: 'Missing expected rejection.'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      operator: 'rejects'
+      stack: |-
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:351:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:341:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"correction-uow-refusal","code":"AUTHORITY_UNAVAILABLE","message":"AUTHORITY_UNAVAILABLE","stack":["    at demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)","    at BoundHeadRepository.locks (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:108:9)","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/head-publication.js:32:13","    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27"]}
+    # Subtest: KNOWLEDGE-CORRECTION/content-is-data-and-revocation
+    not ok 10 - KNOWLEDGE-CORRECTION/content-is-data-and-revocation
+      ---
+      duration_ms: 28.951083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:362:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:366:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:362:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"knowledge-correction","positives":{"save":1,"ask":0,"forget":0,"restore":0,"read":1,"write":2,"deny":7,"conflict":0,"propagate":0,"backup":0,"owner":1,"harness":0},"violations":{"unauthorizedDisclosure":0,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+# {"measurement":"model-owned-process-cleanup","pid":19430,"instance":"19330/Thu Oct  8 13:57:32 2026","signal":"SIGTERM","removed":true}
+    1..10
+not ok 1 - KNOWLEDGE-CORRECTION/behavior / exact original dedup and selective CAS correction
+  ---
+  duration_ms: 5010.64
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-correction-tests.js:17:5'
+  failureType: 'subtestsFailed'
+  error: '9 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 11
+# suites 0
+# pass 1
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5086.631125
+{"measurement":"storage-container-cleanup","owner":"ac35c8df-40c2-41ab-b9dd-46b08e918730","instance":"308d4666-d8a5-4f1c-9029-4b6e3beb138f","containerId":"ee65df12e38b3a31d8b3d0922c3e70de0df01e9a0071ba4f293c7fa61cfb7d7d","removed":true,"censusUnchanged":true,"processAfter":{"rows":821,"digest":"d852b609a2f9ce5d384d7b27bfe346d62a6bb62277fb1fc49122fd1d2ff6153b"}}
+{"measurement":"storage-root-cleanup","owner":"ac35c8df-40c2-41ab-b9dd-46b08e918730","instance":"308d4666-d8a5-4f1c-9029-4b6e3beb138f","rootId":"bf337bc4-b161-481e-a6bc-f442fa5d200a","rootIds":["810288f7-4305-492e-ac80-6a171d3c7baf","1e6b6a01-06c3-473d-a929-b3ffbfd71d77","042d5f62-2d17-4735-85d5-d6ba5bf964bb","3dd34c3b-15c2-4dba-9706-ebc925bd5ea7"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

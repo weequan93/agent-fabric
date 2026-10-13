@@ -1,0 +1,26 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:25
+if(failures.length)throw new AggregateError(failures,'Interrupted recovery receipt check failed');
+                         ^
+
+AggregateError: Interrupted recovery receipt check failed
+    at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:25:26 {
+  [errors]: [
+    AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'failed'
+    - 'complete'
+    
+        at readJournal (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/recovery/journal.mjs:37:47)
+        at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:9:77 {
+      generatedMessage: true,
+      code: 'ERR_ASSERTION',
+      actual: 'failed',
+      expected: 'complete',
+      operator: 'strictEqual',
+      diff: 'simple'
+    }
+  ]
+}
+
+Node.js v22.22.3

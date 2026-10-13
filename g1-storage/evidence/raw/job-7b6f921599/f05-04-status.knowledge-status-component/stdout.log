@@ -1,0 +1,206 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:7a8e0c2527ffad927a04140570feeafb5eb8d07e002fafad2d1219693b7645e9","files":609,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 167ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"16e183b3-392e-43ff-9116-18b0a8cba8e5","instance":"63675786-b764-4046-ad6e-44922f9c817e","containerId":"121996f520bdd96476cbf17334317f5669540cfc49746dd119248343c53d03ba","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"7bdc58be-ac00-473f-ad45-8cd16c012fdb","device":16777238,"inode":336505754},"backup":{"rootId":"6c678b6e-63e6-4f77-9ee6-06223d6cb4ea","device":16777238,"inode":336505756},"restore":{"rootId":"06eed11a-ec19-46c4-87a6-56fe0862adcd","device":16777238,"inode":336505758},"authority":{"rootId":"a249aa21-8c61-4173-9527-f6398415de32","device":16777238,"inode":336505760}},"fixtureRoot":{"rootId":"40e2157b-e1de-4c79-a418-9d784f55cd5a","device":16777238,"inode":336505752},"preexistingContainers":[],"processBefore":{"rows":822,"digest":"bfaac040606011ffd89687f352a3e9a04b559e69d88bad08eb2b9bc3bef1f9c1"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":10094,"marker":"dd843621-f139-41e0-81c1-f7f574a922b7","instance":"9993/Thu Oct  8 13:29:07 2026","ppid":10092,"loopback":true}
+# Subtest: KNOWLEDGE-STATUS/behavior / immutable typed state and independent source checks
+    # Subtest: KNOWLEDGE-STATUS/migration
+    ok 1 - KNOWLEDGE-STATUS/migration
+      ---
+      duration_ms: 1794.525291
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/registered-check
+    ok 2 - KNOWLEDGE-STATUS/registered-check
+      ---
+      duration_ms: 210.26425
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/persisted-initial-states
+    ok 3 - KNOWLEDGE-STATUS/persisted-initial-states
+      ---
+      duration_ms: 923.559166
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/repeated-discussion-pending
+    ok 4 - KNOWLEDGE-STATUS/repeated-discussion-pending
+      ---
+      duration_ms: 1161.35475
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/check-binding-negative
+    ok 5 - KNOWLEDGE-STATUS/check-binding-negative
+      ---
+      duration_ms: 495.506375
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/sequential-status-history
+    not ok 6 - KNOWLEDGE-STATUS/sequential-status-history
+      ---
+      duration_ms: 238.388792
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:173:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:174:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:173:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: KNOWLEDGE-STATUS/expired-deleted-and-validity
+    not ok 7 - KNOWLEDGE-STATUS/expired-deleted-and-validity
+      ---
+      duration_ms: 22.668917
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:200:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:202:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:200:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: KNOWLEDGE-STATUS/transition-boundaries
+    not ok 8 - KNOWLEDGE-STATUS/transition-boundaries
+      ---
+      duration_ms: 20.991458
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:230:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'pending-review'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'pending-review'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:232:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:230:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: KNOWLEDGE-STATUS/database-integrity-and-roles
+    ok 9 - KNOWLEDGE-STATUS/database-integrity-and-roles
+      ---
+      duration_ms: 37.290375
+      type: 'test'
+      ...
+    # Subtest: KNOWLEDGE-STATUS/content-is-data
+    not ok 10 - KNOWLEDGE-STATUS/content-is-data
+      ---
+      duration_ms: 28.133208
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:269:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'saved-here'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'saved-here'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:277:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:269:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"knowledge-status","positives":{"save":3,"ask":0,"forget":0,"restore":0,"read":9,"write":10,"deny":34,"conflict":0,"propagate":0,"backup":0,"owner":1,"harness":0},"violations":{"unauthorizedDisclosure":0,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+    # Subtest: KNOWLEDGE-STATUS/current-source-revocation
+    not ok 11 - KNOWLEDGE-STATUS/current-source-revocation
+      ---
+      duration_ms: 8.156042
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:291:21'
+      failureType: 'testCodeFailure'
+      error: 'AUTHORITY_UNAVAILABLE'
+      code: 'AUTHORITY_UNAVAILABLE'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        StorageAuthorityRepository.check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/authority.js:124:9)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/knowledge-save.js:313:13
+        async file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/postgres-uow.js:29:27)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:292:33)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:291:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":10094,"instance":"9993/Thu Oct  8 13:29:07 2026","signal":"SIGTERM","removed":true}
+    1..11
+not ok 1 - KNOWLEDGE-STATUS/behavior / immutable typed state and independent source checks
+  ---
+  duration_ms: 6553.775125
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-knowledge-status-tests.js:21:5'
+  failureType: 'subtestsFailed'
+  error: '5 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 12
+# suites 0
+# pass 6
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6627.441542
+{"measurement":"storage-container-cleanup","owner":"16e183b3-392e-43ff-9116-18b0a8cba8e5","instance":"63675786-b764-4046-ad6e-44922f9c817e","containerId":"121996f520bdd96476cbf17334317f5669540cfc49746dd119248343c53d03ba","removed":true,"censusUnchanged":true,"processAfter":{"rows":823,"digest":"1313fdb9a6e9dae1df0d53f488f10973ed763e800fa7f168d03f9d5f1890ef82"}}
+{"measurement":"storage-root-cleanup","owner":"16e183b3-392e-43ff-9116-18b0a8cba8e5","instance":"63675786-b764-4046-ad6e-44922f9c817e","rootId":"40e2157b-e1de-4c79-a418-9d784f55cd5a","rootIds":["7bdc58be-ac00-473f-ad45-8cd16c012fdb","6c678b6e-63e6-4f77-9ee6-06223d6cb4ea","06eed11a-ec19-46c4-87a6-56fe0862adcd","a249aa21-8c61-4173-9527-f6398415de32"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "authorization": "2026-10-09 human decision; plan-turn98/PLAN97-01",
+  "files": {
+    "scripts/suite-execution.mjs": {
+      "predecessorDigest": "sha256:21390ddcabd1969d2083d840fbc2a24c2047bcbf6634c39962fcaeca7365e598",
+      "currentDigest": "sha256:003075daf8b187b62dbd6e0ad4a83008e31ffdf1ec6548419ab4cf74bfb4f61e",
+      "changes": [
+        {
+          "before": "import { parseTap } from './process-result.mjs';",
+          "after": "import { parseTap } from './process-result.mjs';\nimport { performance } from 'node:perf_hooks';\nimport { assertExecutionPreservation } from './execution-preservation.mjs';"
+        },
+        {
+          "before": "// The same bounded seam is used by the shipped runner and nonrecursive sabotage.",
+          "after": "// The same seam is used by the shipped runner and nonrecursive sabotage.\n// Human decision 2026-10-09 removes only the default whole-file cap; explicit hostile timeouts remain."
+        },
+        {
+          "before": " const env={...process.env,...options.env};delete env.NODE_TEST_CONTEXT;",
+          "after": " assertExecutionPreservation();\n const env={...process.env,...options.env};delete env.NODE_TEST_CONTEXT;\n const dispatched=performance.now();"
+        },
+        {
+          "before": "encoding: 'utf8', timeout: 240_000, maxBuffer:",
+          "after": "encoding: 'utf8', maxBuffer:"
+        },
+        {
+          "before": " });\n try {",
+          "after": " });\n const returned=performance.now();\n const timing={clock:'parent-monotonic',dispatchMs:dispatched,returnMs:returned,elapsedMs:returned-dispatched};\n Object.defineProperty(result,'timing',{value:Object.freeze(timing)});\n console.log(JSON.stringify({measurement:'storage-suite-dispatch',file,...timing,status:result.status,signal:result.signal,error:result.error?.code??null,explicitTimeoutMs:options.timeout??null}));\n try {"
+        },
+        {
+          "before": "  return { result, report };",
+          "after": "  return { result, report, timing };"
+        }
+      ]
+    },
+    "scripts/runner.mjs": {
+      "predecessorDigest": "sha256:f026d7e05f7a533ced0210ab4fde9d13597576f0c0bf7109d97f83552fe8b28a",
+      "currentDigest": "sha256:b890d02ac52abd1c07f45c7fd37bab4aa792ac51b5718ada72482f02cd881906",
+      "changes": [
+        {
+          "before": "import { validateObservations } from './observation-gate.mjs';",
+          "after": "import { validateObservations } from './observation-gate.mjs';\nimport { startMeasurement, endMeasurement } from './execution-measurement.mjs';\nimport { assertExecutionPreservation } from './execution-preservation.mjs';"
+        },
+        {
+          "before": " const errors=[];",
+          "after": " assertExecutionPreservation();\n const commandMeasurement=startMeasurement('command',{mode,candidate:candidate.digest},true);\n const errors=[];"
+        },
+        {
+          "before": "  run(process.execPath,[resolve(cwd,'scripts/build.mjs')]);",
+          "after": "  const buildMeasurement=startMeasurement('build');\n  try{run(process.execPath,[resolve(cwd,'scripts/build.mjs')]);}finally{endMeasurement(buildMeasurement);}"
+        },
+        {
+          "before": "  for(const [id,suite] of selected){",
+          "after": "  for(const [id,suite] of selected){\n   const lifetimeMeasurement=startMeasurement('suite-lifetime',{suite:id});\n   try{"
+        },
+        {
+          "before": "  }\n  if(reports.length!==selected.length)",
+          "after": "   }finally{endMeasurement(lifetimeMeasurement);}\n  }\n  if(reports.length!==selected.length)"
+        },
+        {
+          "before": "  try{assertBaseline();}catch(error){errors.push(error);}",
+          "after": "  try{assertBaseline();}catch(error){errors.push(error);}\n  try{assertExecutionPreservation();}catch(error){errors.push(error);}\n  try{endMeasurement(commandMeasurement,{success:errors.length===0});}catch(error){errors.push(error);}"
+        }
+      ]
+    },
+    "scripts/recovery/ownership.mjs": {
+      "predecessorDigest": "sha256:fbbd7f2a4669b1db01fd2f26ecf033f9b31c4b238ffdd1600839451f62739c0f",
+      "currentDigest": "sha256:ecdca0ddaf3be5ccc2e1177e3bf877b8d688d8a094d160a4af0a284095061d09",
+      "changes": [
+        {
+          "before": "",
+          "after": "import { reconstructExecutionSource } from '../execution-preservation.mjs';\n",
+          "prefix": true
+        },
+        {
+          "before": "export function assertRecoveryPins(){",
+          "after": "// Retain historical pins by reversing only the authorized execution extension.\nexport function assertRecoveryPins(){"
+        },
+        {
+          "before": "hash(readFileSync(resolve(root,path))),'sha256:'+sha256",
+          "after": "hash(reconstructExecutionSource(path.replace(/^g1-storage\\//,''),readFileSync(resolve(root,path),'utf8'))),'sha256:'+sha256"
+        }
+      ]
+    }
+  },
+  "unchanged": {
+    "tests/lifecycle-propagation.test.ts": "sha256:52fac7578904b1e1dd78f8c22db502000a6f4f65b78f0b355a4d69d01ea727ce",
+    "verification/required-variants-v1.json": "sha256:31e8e23b8f3c96a244378d94c0676b054365d3a2c0dc204989ba8a037a11dd30",
+    "verification/test-design-v1.json": "sha256:582d92a9317bdba9a58dd182b2fec552444f9f36735b939ba2dbb525f3fd2ef5"
+  }
+}

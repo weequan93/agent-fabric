@@ -1,0 +1,123 @@
+full-38-id-ledger: all AF/UX obligations retained; full qualification pending
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 152ms using pnpm v10.18.0
+{"measurement":"actual-postgres-fixture","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","owner":"a376cc57-1bb4-4ec1-8177-5d744282aa38","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","containerId":"2e1c8cc3c6bdbb9c3aaadb960785f1c82720ff0822a5886644b4055548fea8a3","loopback":true,"cpuLimit":1,"memoryBytes":268435456,"productionQualified":false}
+TAP version 13
+# Subtest: server-derived scope is immutable; caller and copied authority are rejected
+ok 1 - server-derived scope is immutable; caller and copied authority are rejected
+  ---
+  duration_ms: 1.031916
+  type: 'test'
+  ...
+# Subtest: authority lookup catches revocation, revision, payer and grant changes
+ok 2 - authority lookup catches revocation, revision, payer and grant changes
+  ---
+  duration_ms: 0.374708
+  type: 'test'
+  ...
+# Subtest: UUID boundaries and scope mismatch fail closed
+ok 3 - UUID boundaries and scope mismatch fail closed
+  ---
+  duration_ms: 0.094333
+  type: 'test'
+  ...
+# Subtest: profile permits synthetic preparation only and cannot widen through config
+ok 4 - profile permits synthetic preparation only and cannot widen through config
+  ---
+  duration_ms: 0.11325
+  type: 'test'
+  ...
+# actual-postgres-role-and-version: nonowner/nonsuperuser/nonBYPASSRLS measured
+# Subtest: PG/nonprivileged-role
+ok 5 - PG/nonprivileged-role
+  ---
+  duration_ms: 117.876625
+  type: 'test'
+  ...
+# Subtest: PG/worker-no-grants
+ok 6 - PG/worker-no-grants
+  ---
+  duration_ms: 10.294667
+  type: 'test'
+  ...
+# Subtest: PG/missing-scope
+ok 7 - PG/missing-scope
+  ---
+  duration_ms: 2.278042
+  type: 'test'
+  ...
+# Subtest: PG/cross-tenant-space
+ok 8 - PG/cross-tenant-space
+  ---
+  duration_ms: 22.751583
+  type: 'test'
+  ...
+# Subtest: PG/current-membership-payer
+ok 9 - PG/current-membership-payer
+  ---
+  duration_ms: 18.22475
+  type: 'test'
+  ...
+# Subtest: PG/current-session-expiry-revocation
+ok 10 - PG/current-session-expiry-revocation
+  ---
+  duration_ms: 44.177041
+  type: 'test'
+  ...
+# Subtest: PG/reused-pool-reset
+ok 11 - PG/reused-pool-reset
+  ---
+  duration_ms: 5.669
+  type: 'test'
+  ...
+# Subtest: PG/atomic-outbox
+ok 12 - PG/atomic-outbox
+  ---
+  duration_ms: 13.421708
+  type: 'test'
+  ...
+# Subtest: PG/idempotency-conflict
+ok 13 - PG/idempotency-conflict
+  ---
+  duration_ms: 13.10975
+  type: 'test'
+  ...
+# Subtest: PG/revision-concurrency
+ok 14 - PG/revision-concurrency
+  ---
+  duration_ms: 16.069875
+  type: 'test'
+  ...
+# Subtest: PG/rollback-reopen
+ok 15 - PG/rollback-reopen
+  ---
+  duration_ms: 20.739542
+  type: 'test'
+  ...
+# Subtest: PG/unknown-commit-lookup
+ok 16 - PG/unknown-commit-lookup
+  ---
+  duration_ms: 12.0595
+  type: 'test'
+  ...
+# migration-compatibility and failure-forward-recovery measured on actual PostgreSQL
+# Subtest: PG/migration-recovery
+ok 17 - PG/migration-recovery
+  ---
+  duration_ms: 6.973042
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 382.614208
+{"measurement":"fixture-owned-cleanup","owner":"a376cc57-1bb4-4ec1-8177-5d744282aa38","containerId":"2e1c8cc3c6bdbb9c3aaadb960785f1c82720ff0822a5886644b4055548fea8a3","removed":true}
+{"measurement":"remote-readonly-system-smoke","host":"217.216.75.50:34819","observed":"Linux 6.8.0-106-generic x86_64\ndocker-version\n29.1.1\ncgroup-filesystem\ncgroup2fs\ncpu-memory\n4\nMemTotal:        8131808 kB","readOnly":true,"workerIsolationQualified":false,"productionQualified":false}
+Foundation strict build, actual owned PostgreSQL behavior and bounded read-only system probe passed. Full G1 qualification remains pending.

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "task": "f05-05",
+  "controllerJob": "job-27c90a1221",
+  "check": "f05-05.volume-component",
+  "status": "fail",
+  "exitCode": 1,
+  "durationMs": 245192,
+  "candidate": {
+    "digest": "sha256:9f9db7904669c319b737a26fd7eff2b120aaabf26a46082e7b2356b2060ba715",
+    "files": 835
+  },
+  "streams": [
+    {
+      "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-27c90a1221/f05-05.volume-component/stdout.log",
+      "path": "g1-storage/evidence/volume-integration-v1/job-27c90a1221/f05-05.volume-component/stdout.log",
+      "bytes": 19786,
+      "sha256": "c4788a221ffa218e49e2a10ff51dfd74aee428e9c9c3e5155978824aedbef480"
+    },
+    {
+      "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-27c90a1221/f05-05.volume-component/stderr.log",
+      "path": "g1-storage/evidence/volume-integration-v1/job-27c90a1221/f05-05.volume-component/stderr.log",
+      "bytes": 2663,
+      "sha256": "fed715b7be0d03a4c4bbacecd34346b17f32f7a0d74604c3a1504ac8bc4231d6"
+    }
+  ],
+  "cause": [
+    "Original suite 240000ms ETIMEDOUT during promotion after complete artifact and drafts predecessors",
+    "Outer cleanup guard refused changed preexisting container census after interrupted nested fixture"
+  ],
+  "lastInterruptedFixture": {
+    "measurement": "storage-owned-fixture",
+    "owner": "bf1d7748-6b01-449e-8cfe-9802ff82c863",
+    "instance": "828e0cf3-7b03-4c2d-82f2-d23dcc801a8c",
+    "containerId": "4f6965b47a430aeea46ac69ca234a1b398f099229115973aa0948152c952dfd4",
+    "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+    "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+    "loopback": true,
+    "roots": {
+      "content": {
+        "rootId": "fe68dbc5-0148-42d0-9ab9-9dbc87aeb638",
+        "device": 16777238,
+        "inode": 336628389
+      },
+      "backup": {
+        "rootId": "0d92d607-cce7-489e-8391-79b26a8f12b9",
+        "device": 16777238,
+        "inode": 336628391
+      },
+      "restore": {
+        "rootId": "2e3e106a-50d5-4205-8be6-6ef8f65b2813",
+        "device": 16777238,
+        "inode": 336628393
+      },
+      "authority": {
+        "rootId": "103c8e0f-3dad-49e5-956c-7ea0256bde05",
+        "device": 16777238,
+        "inode": 336628395
+      }
+    },
+    "fixtureRoot": {
+      "rootId": "a3c722b1-c83c-4638-ae77-c7680aa37dd0",
+      "device": 16777238,
+      "inode": 336628387
+    },
+    "preexistingContainers": [
+      "3688ff4f36a1"
+    ],
+    "processBefore": {
+      "rows": 812,
+      "digest": "55165d53cd1c8ee74b3fdf938baba74de8a6a27f9b8f8777bf146f1d1d2da64a"
+    },
+    "paidCallsAllowed": false,
+    "assurance": "deterministic-local-only"
+  },
+  "repairTask": "f05-05-schedule",
+  "qualification": "Strict build passed; original volume integration incomplete. No final observation/TAP verdict or complete cleanup. All frozen V01-V05/full F05, AF-07/UX-01 and X01-X09 external environments remain unqualified."
+}

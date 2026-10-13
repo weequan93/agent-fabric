@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { resolve } from 'node:path';
+import { cwd } from '../paths.mjs';
+import { launchFresh,processExpected } from './processes.mjs';
+const c=JSON.parse(process.env.FABRIC_CUSTODIAN_CONFIG);delete process.env.FABRIC_CUSTODIAN_CONFIG;
+assert.equal(process.argv.length,3);assert.deepEqual(Object.keys(c).sort(),['operation','candidate','marker'].sort());assert.equal(c.operation,'owner-loss-probe');assert.equal(c.marker,process.argv[2]);
+const custodian=await launchFresh(resolve(cwd,'scripts/custodian/custodian-process.mjs'),{operation:'closed-probe',scenario:'owner-loss',candidate:c.candidate});
+process.stdout.write(JSON.stringify({pid:process.pid,marker:c.marker,custodian:processExpected(custodian),journal:custodian.ready.journal})+'\n');
+custodian.child.on('message',m=>{if(process.connected)process.send(m,()=>{});});
+const result=await custodian.exit;process.stdout.write(custodian.streams().stdout);process.stderr.write(custodian.streams().stderr);
+process.exitCode=result.code===0?0:1;if(process.connected)process.disconnect();

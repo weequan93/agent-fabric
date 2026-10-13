@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {decodeMeasurement} from '../../../../g1-storage/scripts/measurement-transport.mjs';
+const base=new URL('./',import.meta.url);
+const lines=readFileSync(new URL('controller/job-7cda7343d4/f05-02.authority-component/stdout.log',base),'utf8').trim().split('\n');
+const rows=lines.filter(l=>l.startsWith('{')).map(l=>JSON.parse(l));
+const frames=rows.filter(r=>r.measurement==='storage-measurement-transport'&&r.binding?.phase==='command');
+assert.equal(frames.length,4);
+assert.equal(frames.at(-1).kind,'final');
+const first=frames.at(-1),receipt=rows.filter(r=>r.measurement==='storage-measurement-transport'&&r.digest===first.digest);
+const decoded=decodeMeasurement(receipt,first.binding);
+writeFileSync(new URL('authority-command-decoded.json',base),decoded.raw);
+console.log(JSON.stringify({bytes:decoded.raw.length,sha256:'sha256:'+createHash('sha256').update(decoded.raw).digest('hex'),keys:Object.keys(decoded.record),qualification:'resource readiness only'}));

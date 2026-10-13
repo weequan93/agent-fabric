@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "purpose": "resource-readiness only; no task completion or aggregate acceptance",
+  "jobId": "job-1ec3525e01",
+  "checks": {
+    "f05-01.strict-build": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 3476,
+      "started_at": "2026-10-08T09:22:19+00:00",
+      "finished_at": "2026-10-08T09:22:23+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-01.strict-build",
+      "cleanup": "zombie",
+      "fingerprint": "git:f013c43f49c380e5500eccc8",
+      "actor": "agent"
+    },
+    "f05-04.source-content-component": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 11388,
+      "started_at": "2026-10-08T09:22:23+00:00",
+      "finished_at": "2026-10-08T09:22:34+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-04.source-content-component",
+      "cleanup": "zombie",
+      "fingerprint": "git:f013c43f49c380e5500eccc8",
+      "actor": "agent"
+    },
+    "acceptance.retained-baselines": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 22298,
+      "started_at": "2026-10-08T09:22:34+00:00",
+      "finished_at": "2026-10-08T09:22:56+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/acceptance.retained-baselines",
+      "cleanup": "zombie",
+      "fingerprint": "git:f013c43f49c380e5500eccc8",
+      "actor": "agent"
+    }
+  },
+  "streams": [
+    {
+      "check": "f05-01.strict-build",
+      "stream": "stdout",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-01.strict-build/stdout.log",
+      "bytes": 1148,
+      "sha256": "c1d02ba0b6f1c920b777444f13eca64cd514618431bdf88b9001afdf60f8c2aa"
+    },
+    {
+      "check": "f05-01.strict-build",
+      "stream": "stderr",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-01.strict-build/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "f05-04.source-content-component",
+      "stream": "stdout",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-04.source-content-component/stdout.log",
+      "bytes": 9971,
+      "sha256": "abf48e0626c99b1bb38326d850ba8871d90ca87e205b1d93a77b32edb2b13f90"
+    },
+    {
+      "check": "f05-04.source-content-component",
+      "stream": "stderr",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/f05-04.source-content-component/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "acceptance.retained-baselines",
+      "stream": "stdout",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/acceptance.retained-baselines/stdout.log",
+      "bytes": 50298,
+      "sha256": "abc096ca501069611324bbb25fe6ff772fab0cec113f89695523da8cf7d5b7bd"
+    },
+    {
+      "check": "acceptance.retained-baselines",
+      "stream": "stderr",
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1ec3525e01/acceptance.retained-baselines/stderr.log",
+      "bytes": 156,
+      "sha256": "99a22041f5e92686d8d7bd25614fadf9056837e1aa1e910c4658acb4f11a729f"
+    }
+  ],
+  "summaries": {
+    "f05-01.strict-build": {
+      "passCounts": [],
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ],
+      "fullStreamRead": true
+    },
+    "f05-04.source-content-component": {
+      "passCounts": [
+        "12"
+      ],
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:c6ae2eb555678a6477799d4581e75752fc4b97c8453e982dad22e2f19ee15ebb",
+          "files": 838,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "bb786efd-ca96-4de1-87d7-ce858b6c8c28",
+          "instance": "90bbe648-a7fa-44fe-8d28-ba16e61aeac0",
+          "containerId": "2c7422c045dd0263720f93b68dec689cef7c4467cfd8512eac2a176e116d1c38",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "bd4d9985-2e32-44c0-a4df-b7357221c1a9",
+              "device": 16777238,
+              "inode": 336631704
+            },
+            "backup": {
+              "rootId": "cd438e19-86ae-42ea-a945-33b8df9223df",
+              "device": 16777238,
+              "inode": 336631706
+            },
+            "restore": {
+              "rootId": "14dd746c-a117-407e-824c-cf612608044c",
+              "device": 16777238,
+              "inode": 336631708
+            },
+            "authority": {
+              "rootId": "3baec9a0-76d6-43e9-a0a9-839cf1a449c6",
+              "device": 16777238,
+              "inode": 336631710
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "aa0126da-ad26-4edd-80fd-8e7a3608126e",
+            "device": 16777238,
+            "inode": 336631702
+          },
+          "preexistingContainers": [
+            "4f6965b47a43"
+          ],
+          "processBefore": {
+            "rows": 810,
+            "digest": "5267ab6483065ef6423065427592dc5f7493ba9aa13cdd5c1f423e74efeb577d"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "bb786efd-ca96-4de1-87d7-ce858b6c8c28",
+          "instance": "90bbe648-a7fa-44fe-8d28-ba16e61aeac0",
+          "containerId": "2c7422c045dd0263720f93b68dec689cef7c4467cfd8512eac2a176e116d1c38",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 812,
+            "digest": "8944794e1493e9b1f61c15f80aa4338e7decdf1f1677104a7dcdf7692b4d9842"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "bb786efd-ca96-4de1-87d7-ce858b6c8c28",
+          "instance": "90bbe648-a7fa-44fe-8d28-ba16e61aeac0",
+          "rootId": "aa0126da-ad26-4edd-80fd-8e7a3608126e",
+          "rootIds": [
+            "bd4d9985-2e32-44c0-a4df-b7357221c1a9",
+            "cd438e19-86ae-42ea-a945-33b8df9223df",
+            "14dd746c-a117-407e-824c-cf612608044c",
+            "3baec9a0-76d6-43e9-a0a9-839cf1a449c6"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "source-content",
+              "tests": 12,
+              "cases": [
+                "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+              ],
+              "variants": [
+                "SOURCE-CONTENT/migration",
+                "SOURCE-CONTENT/exact-recreated-and-retained",
+                "SOURCE-CONTENT/material-admission-boundaries",
+                "SOURCE-CONTENT/roles-and-integrity",
+                "SOURCE-CONTENT/same-transaction-envelope-refusals",
+                "SOURCE-CONTENT/partial-rollback-and-original",
+                "SOURCE-CONTENT/killed-partial-transaction",
+                "SOURCE-CONTENT/postinsert-owner-change",
+                "SOURCE-CONTENT/current-revocation",
+                "SOURCE-CONTENT/concurrent-original",
+                "SOURCE-CONTENT/wire-outcomes"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "SOURCE-CONTENT/migration",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "SOURCE-CONTENT/exact-recreated-and-retained",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "SOURCE-CONTENT/material-admission-boundaries",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "SOURCE-CONTENT/roles-and-integrity",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "SOURCE-CONTENT/same-transaction-envelope-refusals",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "SOURCE-CONTENT/partial-rollback-and-original",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "SOURCE-CONTENT/killed-partial-transaction",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "SOURCE-CONTENT/postinsert-owner-change",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "SOURCE-CONTENT/current-revocation",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "SOURCE-CONTENT/concurrent-original",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "SOURCE-CONTENT/wire-outcomes",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "source-content",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 4,
+                  "write": 3,
+                  "deny": 37,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ],
+      "fullStreamRead": true
+    },
+    "acceptance.retained-baselines": {
+      "passCounts": [
+        "197",
+        "48",
+        "5",
+        "9",
+        "10"
+      ],
+      "measurements": [],
+      "fullStreamRead": true
+    }
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "controllerUsage": {
+    "source": ".loop/goals/agent-fabric-g1-f04-model-finops/state.json",
+    "observedAt": "2026-10-07T12-24-05.220Z",
+    "snapshot": {
+      "turns": 38,
+      "cost_usd": 0,
+      "cost_complete": false,
+      "input_tokens": 180876731,
+      "output_tokens": 1006319,
+      "agent_seconds": 33217.395999999986
+    }
+  },
+  "usageClaim": "retained-controller-cumulative-history; no zero host-cost claim",
+  "failedJobs": [
+    {
+      "id": "job-5b94d16840",
+      "results": {
+        "f04-15.suite-qualification": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-bebeb5d8fc",
+      "results": {
+        "f04-15.suite-qualification": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-9a23f5971d",
+      "results": {
+        "f04-15.full-model-behavior": "fail",
+        "f04-15.identity-retained": "pass",
+        "f04-15.foundation-retained": "pass",
+        "f04-15.original-retained": "pass"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-88bb0d1286",
+      "results": {
+        "f04-10.suite-budget-concurrency": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-8b5677492a",
+      "results": {
+        "f04-04.component-ledger": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-066cffdabf",
+      "results": {
+        "f04-15.suite-qualification": "fail",
+        "f04-15.full-model-behavior": "fail",
+        "f04-15.identity-retained": "pass",
+        "f04-15.foundation-retained": "pass",
+        "f04-15.original-retained": "pass",
+        "f04-15.controller-evidence-index": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-9659955865",
+      "results": {
+        "f04-09.suite-profile-context": "fail",
+        "f04-11.suite-retry-usage-recovery": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-a8424556b0",
+      "results": {
+        "f04-09.suite-profile-context": "pass",
+        "f04-11.suite-retry-usage-recovery": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-6213766fdb",
+      "results": {
+        "f04-11.suite-retry-usage-recovery": "fail"
+      },
+      "status": "finished"
+    },
+    {
+      "id": "job-6f719e72a5",
+      "results": {
+        "f04-11.suite-retry-usage-recovery": "fail"
+      },
+      "status": "finished"
+    }
+  ],
+  "allJobs": [
+    "job-5b94d16840",
+    "job-bebeb5d8fc",
+    "job-f7a7a6f57b",
+    "job-9a23f5971d",
+    "job-85f223bc7a",
+    "job-3eee2a0813",
+    "job-88bb0d1286",
+    "job-8b5677492a",
+    "job-2eaada6ea5",
+    "job-d289bc0808",
+    "job-75f83a14ca",
+    "job-066cffdabf",
+    "job-9659955865",
+    "job-a8424556b0",
+    "job-bed914f8b9",
+    "job-6213766fdb",
+    "job-c296ce209d",
+    "job-08ec7f0013",
+    "job-457707d5cb",
+    "job-6f719e72a5"
+  ],
+  "priorControllerTurns": 38,
+  "findings": [
+    {
+      "id": "f-892793c278",
+      "kind": "root_cause",
+      "text": "First native controller job-8dabc65b5a failed because initial cost view attempted SELECT on protected base budget_reservations, correctly denied to fabric_controller. Repaired additively with pinned forward migration7 fixed scoped model_native_costs + expected-revision model_native_top_up; no accepted table grant changed. Subsequent job-a403150e98 currently pending beyond nominal240s, likely on an unbounded diagnostic result-stage test gate. New diagnostic gates are bounded and preserve assertions. Accidental local in-sandbox native run session45118 was interrupted with Ctrl-C (exit130); its owner-marked PG container c751dfc9-f966-41b6-9b16-9b5f1fa4f006 remains for ownership-checked cleanup after running controller fixture census completes. Added mandatory process census BEFORE future child spawn so unsupported surfaces cannot leak a newly spawned child.",
+      "at": "2026-10-07T03:59:16+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-6573ffe0ae",
+      "kind": "evidence",
+      "text": "Read complete stdout/stderr for current native diagnostic job-1f67f31f4c (20595ms18/18;13728bytes sha2568b9631fe84a67b1ad27492ed678dd18214c4d48cc906d8732d744df48cebf10b;stderr0 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855). Verified all15 unique owned children have cleanup records; PG8427fb81-d508-4954-873d-3f0594e96c9c removed. Relevant controller regressions COMPLETE streams: usage job-7a7a38a23113803ms16/16 stdout10497bytes sha256c9ccdf201ebafb7eaeaedab7a7ff60d837b671bcd622c0f5934d151c64a1d873; ledger job-456c0c383214960ms16/16 stdout13670bytes sha25645940de670fdc226d201dc28c1a78c89b19a53af19ecf144db57f40c0206c71c; profile job-5dc2b6b7cf12277ms14/14 stdout7393bytes sha25633d90549821508133e592163923a203fb8968c1a6ea70bd17247aac3f337802e; all stderr0 same emptyhash. These are component diagnostics only. Final completion controller job-79b1d2558a now running on final extra returned-output authorization check.",
+      "at": "2026-10-07T04:14:08+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-57127bbe47",
+      "kind": "evidence",
+      "text": "Precompletion controller job-5dd5681e4f suite-contracts exit0/2300ms strict source+tests build, actual C01-C03 plus1643 named variants Node1646/pass1646/fail0/cancel0/skip0/TODO0. Full stdout384912bytes SHA2565b44cd7a1e231b90ded46306ebe2c431e5752be37a0d0cbf8af5c00f0ccc9d8c and stderr0bytes emptyhash read/audited; original paths in docs/evidence/g1-f04-acceptance.md. Affected controller job-60fd494b57 profile14/14, native18/18, resource18/18 full logs read/hashes/cleanup indexed; all owned PG/children removed. Local five disposable-emission mutants each failed expected C assertions (overflow, depth65, capsule uncertainty loss, intent grant, shared-charge loss), exact bytes restored, never accepted inputs; mutations are diagnostics not controller passes. Complete fixed C manifest unchanged; all1733 protected inputs preserved. Pure ancestry/continuation/facts extraction shared with native transactional paths; resource view decodes receipts. E01-E05 and remaining acceptance suites still pending.",
+      "at": "2026-10-07T04:40:06+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-3708c38362",
+      "kind": "root_cause",
+      "text": "Turn19 red-suite investigation: job-88db770fd2 executed P01-P13 (216 tests, 124 pass/92 fail; no cancelled/skipped/TODO). Full stdout/stderr audited (stdout164599bytes SHA2566f2f6eadd66965b2da54efdf33faeb97d596095b350c1a8b83e58de4e4f095b8; stderr1185bytes SHA256a5dae2df97e318b06c127b9ebaf4889d2b5e2c6c4c4c4ac3a5ef491fdadfec82). Most failures were new fixture mistakes and are corrected without weakening product expectations: repeated source catalogue IDs, other-Space command scope, actual source revision column and supported profile/tool relationships. Confirmed product reproductions: native second qualified pin fails compiler QUALIFICATION_MISMATCH; unavailable pin cannot use user/policy equivalent replacement; native API lacks coordinated retry/failover; native next turn discarded preserved capsule facts; native switch accepted incompatible installed engine/schema/environment/behavior/lock/check pins; native task view omitted full actual model metadata. Last three have scoped fixes plus native revalidation estimate; corrected suite job-b3c82bb108 is running. Never treat the initial red-run fixture failures as qualified behavior. P02/P11 charged retry/failover schedule remains deliberately failing until a real native original-key retry route exists.",
+      "at": "2026-10-07T04:54:42+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-fcadfac45b",
+      "kind": "evidence",
+      "text": "Turn19 corrected P gate job-0eff92dfc2 exit1/102769ms: strict source/tests build; all P01-P13 executed;221 tests/pass212/fail9/cancel0/skip0/TODO0 (6 failed variants +3 parents P02/P05/P11). Full logs audited stdout69339 SHA256d65d0bfbca5960834f74d2430e87353961474c6c34e59f9d43e4fa9807bcc7f6 stderr1185 SHA256a5dae2df97e318b06c127b9ebaf4889d2b5e2c6c4c4c4ac3a5ef491fdadfec82; PG ownerdd26e3aa-005f-4379-8e71-1eae1e66c49a removed and58/58 unique owned children reaped. Corrected P05 dual selector/compiler registry reaches fixed P-A model authority: P-B still waits; user/policy unavailable-pin fallback waits. P02/P11 blocked retry-route assertions after real sealed/charged failures are intentionally RED; actual retry/failover counter/history/output/cost schedule still needs expansion after native API implementation. Scoped fixes validated P04/P07: complete capsule retained, installed version pins checked, actual/current profile metadata and synthetic switch estimate exposed. Affected job-22bd619e8e native18/18,C1646/1646,profile14/14,resource18/18 pass; complete hashes/cleanup audits in appended evidence index. All1733 preserved inputs unchanged; accepted tracked source diff empty. Documentation explicitly marks f04-09 active/incomplete and remaining variant obligations; no whole-suite/external/final qualification claim.",
+      "at": "2026-10-07T05:01:44+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-7841240da2",
+      "kind": "root_cause",
+      "text": "Turn20 repairs fixed native fixed-default receipt authority, missing explicit original-operation retry, and unavailable-pin fallback permission branches. First controller job-f1e6a3c1fc ran P221 with219 pass/2 fail (one cross-thread variant +P09 parent); original six red variants pass. Candidate source was edited during this job, invalidating source/check-definition qualification pins for a later fresh fixture; this run cannot qualify the current candidate. Subsequent controller runs must freeze source/emitted outputs for their entire duration. Added actual post-encoding policy-permission revocation, A-to-B safe capsule switch, native ineligible failover and unknown retry refusal assertions; fresh rerun pending.",
+      "at": "2026-10-07T05:08:42+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-00b2791bdc",
+      "kind": "evidence",
+      "text": "Turn20 frozen precompletion P job-2d54e29e70 exit0/117909ms actual P01-P13 plus210 variants223/223, no fail/cancel/skip/TODO. COMPLETE stdout/stderr audited: stdout71834 SHA256b333ad954436d5a2aaecd36dbec706c4dd92ebf713c01ed70b10a606db3486d7; stderr0 SHA256e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. PG16.12 ownera3a8109e-7788-4323-9589-80fa0b3f8c32 removed;58/58 owned children reaped. Affected frozen job-48ce2a71c2 passed profile14/14 usage16/16 native18/18 resource18/18 C1646/1646; full raw streams/hashes and4/8/15/8 owned child cleanup indexed in docs/evidence/g1-f04-acceptance.md. Retained f1e6a3c1fc source-edit interference, aec8eb2bfe revoked-fixture-command setup failure and b13975cf15 compile failure all audited and preserved. Local strict/C1646 diagnostic pass. Controller task done submission job-2987b0b603 now runs final P; do not advance or claim final done until its successful result.",
+      "at": "2026-10-07T05:15:49+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-554362c4de",
+      "kind": "evidence",
+      "text": "Retained initial B gate job-5e306a681e exit1/29645ms, actual126 tests29pass97fail/no cancel/skip/TODO. Entire raw streams read via diagnostic audit: stdout169389 SHA256ce74b04de2c1eda329bcc61ddf815a3312d398279d986fa332af83eab9a1f6ee, stderr1185 SHA256a5dae2df97e318b06c127b9ebaf4889d2b5e2c6c4c4c4ac3a5ef491fdadfec82. Fixture observer misnamed settlement_id and ambiguous run_id joins caused first failures and held-liability cascades. Fix queries, repeated resource migration setup and immutable metadata negative before new frozen rerun. Task remains active; no qualification claimed.",
+      "at": "2026-10-07T05:25:37+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-f033895d81",
+      "kind": "root_cause",
+      "text": "Third/fourth B gates job-74d57ffe4c and job-2f74bb86c2 each134/136, only B06 preflight variant+parent fail, all32 schedules/max8 pass. Retained native Space barrier is exclusive during bounded acceptance. Nested inspect in accept callback self-blocks; external pre-accept inspect also serializes until ACK deadline, correctly returning unknown usage. Fixture now pauses after acknowledged prepare COMMIT before claim/accept for positive complete preflight, retains required completed/exact-cost assertions, and adds separate actual held-ACK unknown->original-owner once-only settlement recovery case. No product lock, deadline or check changed. Current frozen gate job-9b58c8724f running.",
+      "at": "2026-10-07T05:33:29+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-08a1071c37",
+      "kind": "root_cause",
+      "text": "U11 reproduced a real terminal-session defect in controller job-0c6b38f4bb: after native failed history was persisted at control revision3, requestTurn(terminal session,current revision,new key) rejects downstream in SessionLoop but commits native-turn-requested/control revision4 first. Final snapshot assertion at emitted retry-usage-recovery.test.js:665 correctly fails (history still terminal, control mutated). Do not weaken assertion. Minimal root: NativeSession.requestTurn commits control/command before terminal eligibility is checked. Repair will reject before first mutation and preserve complete terminal snapshot; same precondition needed on retryTurn.",
+      "at": "2026-10-07T06:08:25+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-823c3ef968",
+      "kind": "root_cause",
+      "text": "Strengthened controller job-382b438476 U111 actual tests109pass/2fail (one failing variant +U11 parent), 0cancel/skips/TODO, proves new defect: recovery-linked-run-unknown.ts terminalUnknownLinkedRun makes accepted usage-never original native/scheduler Run failed while preserving pendingModel and unknown wait, scheduler permits attempt2 sameTask. Trusted fixture persists new identity/leaf on original ancestor. NativeRepository.open incorrectly ADMITTED newRun: assert.rejects expected UNKNOWN_EFFECT_REQUIRES_RECONCILIATION fails with Missing expected rejection. No second model acceptance is claimed; the demonstrated defect is native admission across retained original Task liability. F04 open/fresh checks current Run + parent ancestry, ModelRepository.prepare pending query is run_id only. Need Task-scoped unresolved-model admission/continuation guard under existing Space barrier, including direct model prepare bypass. Preserve original UsageRepository settlement/reconciliation and known resolved linked Run positives. Accepted scheduler/foundations/recovery files must remain unchanged. New distinct-layer U01 races, true post-COMMIT U09 timeout and four allowance/account U11 boundaries all PASS.",
+      "at": "2026-10-07T06:23:14+00:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "f-650c773e77",
+      "kind": "root_cause",
+      "text": "Turn23 root cause confirmed: F04 native open/fresh and ModelRepository.locked check only the proposed Run/parent fence, while unresolved operations on another Run of the same Task survive terminalization. Added F04-only assertOtherRunsResolved under existing exclusive Space barrier to native open/fresh and model locked (prepare/claim/retry/dispatch), leaving original-owner usage/reconciliation path intact. Preserved failing U11 assertion; strengthened same variant with valid lower-level prepare bypass, authenticated continuation guard before callback, full snapshot/counter retention, and positive actual owner receipt/reconciliation followed by linked admission without any fresh accept. No accepted source/migration/check changes.",
+      "at": "2026-10-07T06:27:02+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-6da90fda7a",
+      "kind": "evidence",
+      "text": "Turn23 final code candidate job-a23efad9f8 passes all nine checks: U111/111(exit0/156695ms), profile14,ledger16,usage16,native18,resource18,C1646,P223,B137. Complete raw streams/TAP and PG+children cleanup fully audited and indexed in docs/evidence/g1-f04-acceptance.md Turn23. U stdout122251 SHA256c645fb35229597b10d98019682d09de61bd39dda40f8604686b8474872b49ab5; stderr0 emptySHA; PGowner0dcfeddf-8cdb-4fee-ad7f-fb41b9e39be7 removed204/204 owned children reaped;17 actual Lock observations incl direct fresh backend496 blockedby489 and8settlement graphs. Remaining comp/P/B raw hashes/owners/counts indexed. Native.fresh now owns existing Space barrier even without load; strengthened U11 valid direct model prepare refuses and callback waits on actual barrier then refuses; owner reconciliation terminal failed Run clears pending without new accept then allows linked admission. No accepted code/migrations/checks/raw changes,1733 guards unchanged. Ready for f04-11 controller completion; E01-E05 remain pending.",
+      "at": "2026-10-07T06:45:56+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-451e3873c4",
+      "kind": "root_cause",
+      "text": "Retained first N run job-1efe711b2c exits1/244386ms ETIMEDOUT at N04: new current-synthetic-top-up child awaited parent t.test for its denial variants, deadlocking sibling scheduling. Changed only to child TestContext sub.test. N01 and N03 completed; N02 exact PG42501 predicate mismatch corrected without changing full rollback/no callback/counters. All raw streams retained. Added supplemental maintenance check to active f04-12 only (original mandatory command/timeout unchanged); final plan re-submitted so controller reviews changed plan digest as required. job-805996f9f9 positively censused the two hash-bound timed-out fixture witnesses9254/9258 already absent; original owned PG removed. No unrelated/historical PID signalled. Frozen full N rerun job-fc93d3b60d running. Other exact harness fixes: tenant-scoped resource census/empty cap setup; proper native refusal codes; single release of adapter gate; genuine stale observedRevision0. No product/accepted source or frozen mandatory check changes.",
+      "at": "2026-10-07T07:03:47+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-43d1242e38",
+      "kind": "root_cause",
+      "text": "Initial operator controller job-247b14f6d0 failed: direct native operator projection queried intentionally forbidden base budget tables; added forward-only 0011 scoped SECURITY DEFINER view, keeping all existing table grants/SQL bytes unchanged. Secondary qualified profile fixture wrongly probed the base exact-digest adapter, so now each trusted extra profile launches its own exact-profile deterministic owned adapter; no qualification imported. Second job65c2c1f672 reached resource accounting and exposed fixture assumptions: accepted ACK can precede usage; add actual owner lost-ack barrier/completeUsage before ACK for known-complete journeys; unknown remains separately exercised. Corrected only incorrect literal replay action, current allowance revision inputs, and contender resume expectation (must refuse), preserving exact snapshots/no-dispatch. Existing model wait cannot resume after a permitted switch; test retains explicit separate resume requirement; awaiting runtime reproduction after harness repairs. All raw failed streams and synthetic cleanup retained; no accepted checks/migrations or external actions changed.",
+      "at": "2026-10-07T07:33:51+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-fba9969ca5",
+      "kind": "root_cause",
+      "text": "A02 job-8452cd5115 real late-source resume assertion failed: NativeSession.resume/switch checked complete source capsule before sensitive writes but only target repository freshness after awaited audit/outbox hooks; source revision change inside transaction was not caught before commit. Repaired only new F04 native-session by repeating assertControl against reloaded session and selected profile after recordCommand before final currentScope/expiry/commit. Original negative source assertions retained and strengthened. This is development suite finding, not independent security verdict. Same job later failures are retained root build-cache overlap (standalone build cleared emitted directory while controller running); serialize all emitted builds/checks from now on.",
+      "at": "2026-10-07T08:00:10+00:00",
+      "status": "recorded",
+      "updates": [
+        {
+          "at": "2026-10-07T08:06:31+00:00",
+          "kind": "evidence",
+          "text": "Clean current-source controller job-3769b1b1cd suite authority-output PASS111/111 A01-A06+105namedvariants, exit0/169874ms,0fail/cancel/skip/TODO and1733guards unchanged. Original late-source resume/switch negative now catches actual post-audit source change/rolls back; shipped pure installed owner guard handles prepare/claim/control resource quarantine. Verified repair by original retained assertion. This is implementation evidence only; independent security review still mandatory. Running affected unchanged F04 native/P/U/N/J regression commands cache-exclusively before task completion.",
+          "by": "agent",
+          "task": "f04-14"
+        }
+      ]
+    },
+    {
+      "id": "f-1b13888a29",
+      "kind": "root_cause",
+      "text": "Affected regression job-da5bede331 native component retains rejection on unrelated owner's control but fails authorized profile switch while approval wait. Root's added pure current-owner control read was too strict: harmless switch must preserve existing approval wait and dispatch0, not require work approval. Corrected F04 assertControl to deny permission loss/current-owner exception while allowing an unresolved approval/resource wait; currentRequest actual work still requires owner reason null, resume still separately requires admission null. Original native component assertion unchanged. Synthetic quarantined resource owner throws STALE_FENCE so its switch denial remains enforced. Fresh current-code controller regressions and task A rerun required.",
+      "at": "2026-10-07T08:08:47+00:00",
+      "status": "recorded",
+      "updates": [
+        {
+          "at": "2026-10-07T08:17:42+00:00",
+          "kind": "evidence",
+          "text": "Final-source native component job-ff9a76c811 PASS18/18 exit0/23230ms,0fail/cancel/skip/TODO, preserves unchanged safe-switch approval-wait/no-dispatch assertion and all other native pending/fence/accounting controls. Confirms local repair of overly strict control admission; actual work still requires current owner null/no-wait. Same controller job final P/A still running; no product code edits since start. Previous rejected native regression/complete raw retains failure, all PG/children cleaned. Independent security verdict and f04-15/final gates remain pending.",
+          "by": "agent",
+          "task": "f04-14"
+        }
+      ]
+    },
+    {
+      "id": "f-db8529ac87",
+      "kind": "root_cause",
+      "text": "SEC-F04-001 confirmed: model2 resolves only child leaf; parentTaskId fence walk never reserves parent Task/Run limits. Added failing tight-parent Task/Run PG regressions to B01 while preserving all existing tests. Forward model12 will install immutable parent-Run lineage and atomically reserve deduplicated family allowances, preserving frozen membership through recovery.",
+      "at": "2026-10-07T09:47:02+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-1329c164c7",
+      "kind": "root_cause",
+      "text": "Turn34 confirms CODE-F04-001 and CODE-F04-002. Added U04 owner atomicity assertion and removed test-side owner installation workaround; added P07 completed A/currently unavailable A/qualified B explicit-switch and user/policy-equivalent continuation cases retaining all prior assertions. Running controller negative cases against unchanged implementation before repair.",
+      "at": "2026-10-07T10:46:22+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-4a6f77dd4f",
+      "kind": "root_cause",
+      "text": "Completed red job-9659955865: P226=222pass/4fail, all three unavailable-A regressions QUALIFICATION_MISMATCH; U111=108pass/3fail, both committed/lostACK prepare owner atomicity assertions 0 != 1 plus U04 parent; 0cancel/skip/TODO, owned PG cleanup complete. Fixed service prepare by borrowing initial reservation transaction for usage.installInTransaction before attempt hook and receipt COMMIT; prior immutable owner comparison retained. Split historical capsule authorization (exact recorded integrity + current native/source/audience/fence/version/payer authority) from next-route current qualification. Added explicit native dispatchPrepared resolving session/op to unclaimed original only, no caller owner/receipt/replay. Added real separate-process PG lostACK/post-COMMIT-before-prepare-return crash/restart native cases, duplicate replay/noI/O, wrong identity/schema/actor, concurrent first dispatch once, original settlement and resume. Strict source+tests build passes,1733 preserved inputs unchanged; targeted controller verification next.",
+      "at": "2026-10-07T10:52:42+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-f1a0eca833",
+      "kind": "root_cause",
+      "text": "SEC-F04-002 confirmed: operator allowlist omits dispatchPrepared while native handler supports it. U04 direct n.call bypass masked missing command wiring. Strengthened U04 to use actual operatorCommand across changed-PID recovery, schema refusal before carrier, foreign actor, two native-process contenders, original exact request, once settlement/cleared liability, consumed-original denial and zero-I/O replay/duplicate/resume. Controller red slice job-6213766fdb launched before source repair. Controller finding update by ID returned Unknown finding; this note records the diagnosis without changing controller findings.",
+      "at": "2026-10-07T11:33:05+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-9f38ff756d",
+      "kind": "evidence",
+      "text": "Controller red job-6213766fdb strictly builds and executes U113:110 pass/3 fail (two new actual operator recovery variants plus U04 parent), zero cancelled/skip/TODO. Both fail specifically REQUIRED_CAPABILITY_UNSUPPORTED at operatorCommand missing branch. Complete stdout138908 bytes SHA256c0a50c53180f811fb732e0c7675e61db18442fed1ba73c140bfad21aeccaf11b; stderr1276 bytes SHA256adf4e3c86ae7343a277b5990945ee981cb4a12ecdf1d03be65e7af1c0ee42bc2. Added only the closed dispatchPrepared sessionId/operationId branch; operator schema tests refuse missing/malformed fields and owner/receipt/request/actor/payer overrides before carrier. Two separate qualified native-process contenders will exercise one original acceptance; qualification explicitly precedes measured counter baseline.",
+      "at": "2026-10-07T11:36:09+00:00",
+      "status": "recorded"
+    },
+    {
+      "id": "f-5a0795f0da",
+      "kind": "evidence",
+      "text": "SEC-F04-002 repaired targeted controller job-c296ce209d passes U113/113; independently parsed complete TAP with zero fail/cancel/skip/TODO. Full stdout143596 bytes SHA256f7608e5cc4a3fa9cd25987ee86a11bd28bd12e5919d9af252017eb6119756b0d; stderr0. All394 reported cleanup records removed=true. All1733 preserved input hashes unchanged; changed executable inputs since reviewed candidate only operator.ts,retry-usage-recovery.test.ts,OPERATIONS.md, no removed inputs/migration/check/lock changes. Immutable red and green raw streams retained via collector, docs disclose scope. Launching four registered f04-15 behavior checks together on fresh candidate319fb4b8e2a670ffee274493c7ea748104428fc5378b4069617f46d1aa54b3bb; specifically approved original SSH inventory only; no provider/spend/new external qualification.",
+      "at": "2026-10-07T11:39:51+00:00",
+      "status": "recorded"
+    }
+  ],
+  "incidents": []
+}

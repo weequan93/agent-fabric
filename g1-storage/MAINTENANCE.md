@@ -1,0 +1,23 @@
+# Admitted deterministic maintenance builders
+
+`MaintenanceBuildersRepository` installs three declared local recipes:
+
+| Recipe | Class | Behavior |
+| --- | --- | --- |
+| summary-v1 | summary | First2048 Unicode scalars from ordered UTF-8 inputs |
+| keywords-v1 | index | Up to128 sorted unique NFKC lowercase letter/number words |
+| cache-v1 | cache | Versioned JSON of ordered inputs, output <=512KiB |
+
+The closed existing DerivedCommandSchema accepts only key/session/expiry/materialId/expected head. Installed MaintenanceAdmissionOwner resolves control-only prepared source refs, result identity/version/expiry, current processing policy and existing F04 logical-service receipt. Only `local-deterministic-v1`, `local-fixture`, provider:none is implemented. Unknown profiles, regions, builders, changed preparations or denied source policy fail closed. The module has no supplier, model, embedding, runtime or budget-creation port. These recipes are not semantic recall quality or external processing qualification.
+
+Every build requires current read/write/maintenance/Task grants, an installed current native service-only maintenance Ask origin with no computer/target effect and an existing allowance. Cleanup/control-only maintenance never confers content-read authority; Forget remains a separate grant. Destination CAS, every parent's exact current ancestry, expiry, eligible knowledge status/validity/conflict, key/generation, independent authority and full source audience are checked before the first read. Processing policy is checked after metering waits, around each input read and again at publication. Canonical readers use the SAME authenticated transaction through BorrowedUnitOfWork. F04 prepare/settle operates inside this transaction; output opens no Space computer and never creates a budget.
+
+Migration25 adds immutable forced-RLS `storage_maintenance_admissions` and `storage_maintenance_receipts`. Admission requires a newly enrolled F04 interval in this transaction and binds current native session/Run/revision, opaque preparation, recipe, policy/plan digests and local processing profile/region. Each interval may fund only one projection. A deferred exact head FK and deferred completeness trigger require the settled F04 reconciliation and matching graph result before COMMIT. The result's exact graph witness FK prevents an unrelated projection receipt. Content remains in the existing encrypted graph payload; neither maintenance table contains descriptive content.
+
+The existing graph publisher remains the sole head/ciphertext/lineage owner. Optional installed owner checks are additive; predecessor graph callers keep all previous checks. The pending independent witness is checked against the own transaction's exact head publication and is ACKed only through the existing original-key lookup after the real outer COMMIT. A failure rolls back budget and all content/control rows; unresolved witness state blocks serving until original-key lookup. Exact recovery and repeated lookup read metadata, never rebuild, decrypt, create another reservation or charge twice. Different writers can see a temporary authority-unavailable outcome while the winning COMMIT awaits witness ACK; after reconciliation the stale destination is refused.
+
+Apply with `migrateStorageMaintenanceAdmission` after24. Failed application rolls back to24, preserves representative canonical content and installed owner catalogs; repeated application verifies the full migration/catalog lineage. Installed immutable history is forward-only; no destructive down migration is supplied.
+
+Run the fixed component with `node g1-storage/scripts/check-component.mjs maintenance-admission`. Full lifecycle imports exactly these assertions; no case-ID filtering or skipped Node tests are used. The runner, strict build, observation gates, owned PG/OIDC fixture and cleanup seam are unchanged. All28 mandatory variants cover useful nested encrypted projections, actual F04 charge/origin, no new budget, denied profile/region/source/Stop/receipt/cleanup, stale source/destination, all-current audience, actual waits, partial/deferred rollback, two writers, and real lost COMMIT/rollback recreation.
+
+Only the repository-owned local deterministic environment is qualified by these checks. Enterprise service identity, remote isolation, source connectors, real processing regions/provider/KMS, production quotas/load, paid billing, cleanup leases/retries, physical erasure, backup capture, actual restore and full G1 acceptance remain pending. Existing graph serving guards source restrictions; the maintenance processing-policy callback is not a grant to serve revoked data. Already delivered information cannot be recalled.

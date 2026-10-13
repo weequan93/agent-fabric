@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "predecessorDigest": "sha256:cded8f915867243852b8dc25e626fd808c4574fe52404904bdabeef011cc4db9",
+  "currentDigest": "sha256:13429e36c0d36881958e91d4fe99c486021b2ef78fdca9c5905c406f40cefe30",
+  "extension": "\n,\n\"verify-volume\": {\n  \"positives\": [\n    \"write\",\n    \"read\",\n    \"conflict\"\n  ],\n  \"file\": \"components/verify-volume.component.test.js\",\n  \"cases\": [\n    \"V01\",\n    \"V02\",\n    \"V03\",\n    \"V04\",\n    \"V05\"\n  ],\n  \"integration\": true,\n  \"variants\": {\n    \"V01\": [\n      \"V01/live-written\",\n      \"V01/draft-saved\",\n      \"V01/checkpoint-confirmed\",\n      \"V01/canonical-committed\",\n      \"V01/unsaved-lost\",\n      \"V01/kill-live-fsync\",\n      \"V01/kill-checkpoint-confirmation\"\n    ],\n    \"V02\": [\n      \"V02/promoter-a-wins\",\n      \"V02/promoter-b-wins\",\n      \"V02/recreated-loser\",\n      \"V02/validated-promotion\"\n    ],\n    \"V03\": [\n      \"V03/recreated-saved-draft\",\n      \"V03/stale-comparable\",\n      \"V03/retain-variant\",\n      \"V03/private-group-denied\",\n      \"V03/guest-denied\"\n    ],\n    \"V04\": [\n      \"V04/stop-fences-writer\",\n      \"V04/replacement-fences-writer\",\n      \"V04/space-switch-immutable\",\n      \"V04/recreated-stale-writer\",\n      \"V04/kill-before-publication\"\n    ],\n    \"V05\": [\n      \"V05/exact-binary\",\n      \"V05/manifest-binding\",\n      \"V05/missing-byte-blocked\",\n      \"V05/cross-scope-denied\",\n      \"V05/checkpoint-not-knowledge-commit\"\n    ]\n  }\n}\n",
+  "predecessorPins": {
+    "schemaVersion": 1,
+    "files": {
+      "scripts/check-volume-schedule.mjs": "sha256:8c873bd0af17c7fc509bace3333b2c078d40847ed88c9cf1abc60f161a723d6d",
+      "scripts/schedule/verification.mjs": "sha256:985a5c1f361118a8c0915edc3c66cef6ebe2745c17bf63fc4a27aa21557acac5",
+      "scripts/schedule/supervisor.mjs": "sha256:88676ae35a824d88b3f581420febf8ca2df16d4d0dffa5f5e706fea44b580b7d",
+      "scripts/schedule/custodian-process.mjs": "sha256:5f57b929303078301461296ca6cfcdd3ea6689f9e6506927ad1ac140753d7bac",
+      "scripts/schedule/full-worker.mjs": "sha256:38b59d2ddeec2092f3ab6f473f31a188b5c4a1ac96866592fb3f59dd769c930b",
+      "scripts/schedule/descendants.mjs": "sha256:5b2a30ada97a6402dac426cbada9ff5f7f2f45af38524473fe50f1a9ccd27a2a",
+      "scripts/schedule/schedule.test.mjs": "sha256:2acdd0561703cc7f10f7be9d087f5a50ca8df0f69b450da82cb7a37c03488a80",
+      "tests/helpers/volume-component.ts": "sha256:52a3e9498f35f4f35816dc6c7035768308071e25d84408d79231e6a1595d1678",
+      "scripts/manifest.mjs": "sha256:cded8f915867243852b8dc25e626fd808c4574fe52404904bdabeef011cc4db9"
+    }
+  },
+  "predecessorPinsDigest": "sha256:2027aa509abbcf9ca151639ce3805e1df13b348c96801dcb40434ae5651c76b1"
+}

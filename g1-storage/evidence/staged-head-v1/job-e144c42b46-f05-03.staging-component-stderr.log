@@ -1,0 +1,31 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52
+ if(errors.length)throw new AggregateError(errors,'Storage check failed; behavior and final guards retained');
+                        ^
+
+AggregateError: Storage check failed; behavior and final guards retained
+    at check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:1 {
+  [errors]: [
+    AggregateError: Owned storage fixture execution/cleanup failed
+        at Module.withStorageFixture (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/fixture.mjs:63:27)
+        at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at async check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:38:5)
+        at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:1 {
+      [errors]: [
+        Error: node:test failed (ETIMEDOUT)
+            at requireExit (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/process-result.mjs:4:75)
+            at parseTap (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/process-result.mjs:20:2)
+            at executeSuite (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/suite-execution.mjs:19:16)
+            at execute (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:28:19)
+            at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:40:6
+            at Module.withStorageFixture (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/fixture.mjs:52:16)
+            at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+            at async check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:38:5)
+            at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:1
+      ]
+    }
+  ]
+}
+
+Node.js v22.22.3

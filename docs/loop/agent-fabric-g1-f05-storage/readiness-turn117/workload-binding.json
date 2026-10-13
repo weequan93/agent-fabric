@@ -1,0 +1,121 @@
+{
+  "candidate": {
+    "digest": "sha256:ce6fdecfbcb498a53d81ba8583cc43a386c4040f56e02cac14b869156e9f5725",
+    "files": 1116
+  },
+  "officialAttempt": {
+    "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn115/official-attempt.json",
+    "bytes": 1505201,
+    "sha256": "3ddee0d4991fd259c3b684207e41d56f8740bd29f5374c3433bf440b90cdd2da"
+  },
+  "seal": {
+    "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn115/seal.json",
+    "bytes": 46710,
+    "sha256": "8ab00743886ccd85ae658f3fce79b36cdff9bf41accaada29e144d894945df59"
+  },
+  "diagnosis": {
+    "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn115/diagnosis.json",
+    "bytes": 4538,
+    "sha256": "a0130fd41510ae88f6ad06be75e7c00c36e688a0079ec0c45ecc7c28c8315bbb"
+  },
+  "finishedJob": {
+    "id": "job-5b010df098",
+    "checks": [
+      "f05-11-full-receipt-transport.complete-lifecycle-native-receipts",
+      "f05-11-full-receipt-transport.complete-volume-native-receipts",
+      "f05-11-full-receipt-transport.hostile-native-receipt-composition",
+      "f05-11-full-receipt-transport.hostile-harness-receipt-regression"
+    ],
+    "status": "finished",
+    "actor": "agent",
+    "started_at": "2026-10-09T08:00:01+00:00",
+    "pid": 11970,
+    "identity": "11970@1791532802.53",
+    "purpose": {
+      "type": "task",
+      "task": "f05-11-full-receipt-transport"
+    },
+    "finished_at": "2026-10-09T08:22:55+00:00",
+    "results": {
+      "f05-11-full-receipt-transport.complete-lifecycle-native-receipts": "fail",
+      "f05-11-full-receipt-transport.complete-volume-native-receipts": "pass",
+      "f05-11-full-receipt-transport.hostile-native-receipt-composition": "fail",
+      "f05-11-full-receipt-transport.hostile-harness-receipt-regression": "fail"
+    }
+  },
+  "allFourResults": [
+    {
+      "seq": 2819,
+      "at": "2026-10-09T08:12:05+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f05-11-full-receipt-transport.complete-lifecycle-native-receipts",
+        "status": "fail",
+        "exit": 1
+      },
+      "state": "sha256:5d42f90e954557cf7570e1454ba8a877bd750238f6efeaac4947bf330e454b95",
+      "prev": "sha256:da4405b6c2b651dca862d463ce00a1ef80732ff54f8220bba880468eccd21fb0",
+      "hash": "sha256:ef113212ec21e32a52e736fc64a0725f374faf8c1c9ed565ac838ab3256b6d7f"
+    },
+    {
+      "seq": 2820,
+      "at": "2026-10-09T08:20:04+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f05-11-full-receipt-transport.complete-volume-native-receipts",
+        "status": "pass",
+        "exit": 0
+      },
+      "state": "sha256:10e5cf09231e798e42a64f0b799f35224b27404cf36040b94a0557e57f5d60d9",
+      "prev": "sha256:ef113212ec21e32a52e736fc64a0725f374faf8c1c9ed565ac838ab3256b6d7f",
+      "hash": "sha256:7020f4f8db7653621b8f15099265c31355239094c7c43d76f667f4b1826748f7"
+    },
+    {
+      "seq": 2821,
+      "at": "2026-10-09T08:20:33+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f05-11-full-receipt-transport.hostile-native-receipt-composition",
+        "status": "fail",
+        "exit": 1
+      },
+      "state": "sha256:4f2a01e9c5e910bb8e7d4734c68893bac2167c35e034bc3d180f02bd7b6d7dec",
+      "prev": "sha256:7020f4f8db7653621b8f15099265c31355239094c7c43d76f667f4b1826748f7",
+      "hash": "sha256:b0e9818d0ac64ff5f40854c07ce6207b600e800c160c68ca386db3be3e5bac91"
+    },
+    {
+      "seq": 2822,
+      "at": "2026-10-09T08:22:54+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f05-11-full-receipt-transport.hostile-harness-receipt-regression",
+        "status": "fail",
+        "exit": 1
+      },
+      "state": "sha256:c48aaa0ee1158d14f12d41a21e72f9db78b83853e78e8d6d2066736cde8ae801",
+      "prev": "sha256:b0e9818d0ac64ff5f40854c07ce6207b600e800c160c68ca386db3be3e5bac91",
+      "hash": "sha256:11a2597853dc4d79b4d312f6785b55e85107214ce97bae78135d08f937a5831c"
+    }
+  ],
+  "LPlusVDispatchMs": 1186302.7134170001,
+  "dispatchMs": [
+    715721.910625,
+    470580.802792
+  ],
+  "completeCommandMs": [
+    722563.0756249999,
+    477659.79358299996
+  ],
+  "fullHarnessOwner": "f05-14-harness",
+  "fullHarnessSeconds": 900,
+  "aggregateOwner": "f05-15-schedule",
+  "aggregateSeconds": 1800,
+  "fullHarnessQualified": false,
+  "aggregateQualified": false,
+  "harnessRequiredChildReceipts": 63,
+  "harnessActualChildren": 61,
+  "nativeChildrenRetained": 13,
+  "default240000Removed": true,
+  "noGlobalCapacityGate": true,
+  "futureTimingRisk": "Failed-candidate L+V dispatch alone exceed H900s; actual H/full public aggregate feasibility pending. No capacity/deadline amendment requested."
+}

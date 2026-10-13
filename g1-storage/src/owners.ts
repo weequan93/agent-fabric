@@ -1,0 +1,25 @@
+/** Direct installed owners. No copied identity/native/budget implementation. */
+export { AuthenticatedUnitOfWork } from '../../g1-identity/src/authenticated-uow.js';
+export { CurrentAudienceVerifier } from '../../g1-identity/src/audience.js';
+export { createIdentityScopeVerifier } from '../../g1-identity/src/current-authority.js';
+export { NativeRepository, AdmissionSchema } from '../../g1-model/src/native-repository.js';
+export type { NativeSnapshot, NativeAdmission } from '../../g1-model/src/native-repository.js';
+export { ResourceRepository } from '../../g1-model/src/resource-repository.js';
+export { ResourceReceiptSchema } from '../../g1-model/src/resource-contract.js';
+export type { SyntheticResourceOwner, ResourceReceipt } from '../../g1-model/src/resource-contract.js';
+export { lockSpaceBarrier, assertRunUnfenced } from '../../g1-recovery/src/fence-guard.js';
+export { FoundationError, assertVerifiedScope, revalidateScope } from '../../g1-foundations/src/contracts.js';
+export type { VerifiedScope, SqlTransaction, AsyncUnitOfWork } from '../../g1-foundations/src/contracts.js';
+export { migrateFoundation } from '../../g1-foundations/src/migration.js';
+export { migrateIdentity } from '../../g1-identity/src/migration.js';
+export { migrateRecovery } from '../../g1-recovery/src/migration.js';
+export { migrateFences } from '../../g1-recovery/src/fence-migration.js';
+export { migrateNativeHistory } from '../../g1-recovery/src/native-migration.js';
+export { migrateEffectHistory } from '../../g1-recovery/src/effect-migration.js';
+export { migrateReceipts } from '../../g1-model/src/receipt-migration.js';
+export { migrateModelLedger } from '../../g1-model/src/ledger-migration.js';
+export { migrateModelUsage } from '../../g1-model/src/usage-migration.js';
+export { migrateNativeControls } from '../../g1-model/src/native-migration.js';
+export { migrateResourceIntervals } from '../../g1-model/src/resource-migration.js';
+export { migrateFamilyBudget } from '../../g1-model/src/family-budget-migration.js';
+export { migratePreparedSeal } from '../../g1-model/src/prepared-seal-migration.js';

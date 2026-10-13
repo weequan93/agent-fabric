@@ -1,0 +1,3173 @@
+{
+  "schemaVersion": 1,
+  "profile": "deterministic-local-only",
+  "qualification": "pending-controller-final-acceptance",
+  "sourceInventory": {
+    "CONTROL_INVENTORY": {
+      "storage_volume_versions": "logical volume/draft owner: migration18 immutable forced-service-RLS exact tenant/Space/kind/logical ID/revision/artifact ID/actor/original key/session/Task/Run/workerGeneration/baseRevision/checkpointFileCount/scoped keyed index witness/epoch/confirmedAt/expiry; FK to exact same-transaction artifact and original native session; independently witnessed command/outbox set detects missing index, installed keyed proof detects substituted logical mapping before current-version selection; narrow CAS function and deferred evidence require exact logical row and included count at COMMIT; no filenames, paths, body bytes or global content digests; content reads still require current original head/audience/expiry/source authority; later logical delete propagation and archive/import qualification remain pending",
+      "storage_checkpoint_files": "storage confirmed-set owner: migration18 immutable forced-service-RLS tenant/Space/checkpoint ID/revision/exact live ID/revision/artifact ID/cipher confirmation witness; exact scoped logical-live and artifact witness FKs; full exact byte length/content digest/finite expiry inventory is encrypted in confirmed checkpoint artifact; does not select later live C2 or unsent editor memory; count is mandatory at COMMIT and reads revalidate every included body/current authority; no canonical knowledge commit, promotion or completed backup/restore implication",
+      "storage_artifact_versions": "artifact owner: migration17 immutable forced-service-RLS scoped exact head/AAD/expiry/Task/original key/epoch, owned root/upload and logical object/manifest IDs, exact cipher confirmation digests/sizes composite FK and nullable exact source witness FK; descriptive FileManifest and original binary are encrypted in owned objects; installed validator requires exact scoped keyed command binding, no caller-minted validation authority; same authenticated UoW publishes head/version/receipt/event/outbox, deferred reverse receipt FK forbids partial COMMIT; current canonical/source/audience/expiry plus exact bytes/manifest checks before serving, Stop blocks writers but preserves eligible committed reads; creation only, no live/draft/checkpoint/promotion or backup/restore guarantee",
+      "storage_artifact_receipts": "artifact canonical owner: immutable forced-service-RLS original actor/key/binding/receipt/job/event/id/revision/epoch/time with exact command/event/outbox/version composite FKs; artifact-committed only after acknowledged COMMIT and independent epoch reconciliation; unknown keeps original key and forbids automatic replay; no descriptive payload, worker dispatch, editor checkpoint or new protected verifier authority",
+      "storage_artifact_events": "artifact canonical owner: immutable artifact-committed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact version and receipt evidence, durable pending outbox intent only; no file descriptions or runtime/worker capability",
+      "storage_sources": "memory source-content owner: migration13 immutable forced-service-RLS encrypted SourcePayload; exact composite source Task/accepted head/all AAD/epoch/acceptance-expiry/original-publication FKs, witness hashes exact canonical ciphertext; narrow function requires original head xmin to equal current transaction, no postcommit body publication; explicit SourceCommand saveReusable admission with local-fixture-v1 finite secret/retention rules and verified narrative digest; current same-Space authenticated reads recheck full audience/restrictions/head/expiry after decryption; source-accepted is provenance only, never a canonical knowledge receipt, check authority, history/share disclosure or backup/restore attestation",
+      "storage_knowledge_revisions": "memory canonical owner: migration14 immutable forced-service-RLS encrypted KnowledgeSchema user-asserted revision; exact source witness/Task FK and accepted head/AAD/time/original publication FKs; scoped keyed subject fingerprint, no plaintext descriptions; source currentness/audience/expiry before sealing and after all waits; every row requires its exact receipt through deferred reverse FK; same authenticated head UoW, no post-COMMIT publication; migration15 expands all seven statuses via new immutable typed revisions; protected source checker, exact claim/source/time admission, same-value status transitions and currently eligible recall; migration16 adds exact targeted correction lineage, current witness CAS, original-key append/correction dedup and bounded scope/source/subject claim groups; conflicting current values deny accepted recall before decryption; HTTP successor remains pending",
+      "storage_knowledge_corrections": "memory correction owner: migration16 immutable forced-service-RLS tenant/Space/target ID/new revision/exact previous revision-witness-author-original-key/new actor-original-key; exact composite FKs preserve both original and correcting authorship and canonical evidence; separate narrow same-transaction corrected-knowledge function, deferred COMMIT requires lineage on changed claim or same-status successor; no plaintext subject/value, control/verification promotion, restore authority or worker dispatch; no destructive down migration",
+      "storage_save_receipts": "canonical memory owner: immutable exact scoped actor/original key/binding/receipt/job/event/target revision/epoch/time and saved-here/pending-review metadata; composite FKs require the exact canonical revision, original command, event and outbox; neither credentials nor descriptive result; excluded from restore authority, minimal original-key recovery is a current authorized read",
+      "storage_save_events": "canonical memory owner: immutable knowledge-committed/knowledge-proposed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact revision and receipt binding, no descriptive content or worker dispatch capability; pending outbox is intent only",
+      "storage_source_checks": "independent local-source-exact-v1 verifier: immutable forced-service-RLS tenant/Space/check UUID, fixed checker/definition digest, exact source ID/revision/Task/witness, source narrative digest, per-source keyed subject/value claim digest, database checkedAt and finite source expiry; checker-only function EXECUTE, serving/worker/IdP/PUBLIC have no minting or direct write authority; these are source-support receipts, never protected product CheckReceipt, behavior release, approval, task completion or a real-world truth claim; not restored as new verifier authority",
+      "storage_knowledge_admissions": "memory typed-status owner: immutable forced-service-RLS tenant/Space/knowledge ID/revision/status/check UUID/source ID/revision/witness/source narrative digest/keyed claim digest/validFrom/validUntil/previous revision; exact scoped FK to canonical status/source and composite source-check/claim binding; plaintext temporal/routing/digest metadata duplicates only these declared controls, while subject/value/audience/classification/verification details and supersedes remain sealed; existing v14 assertions remain untouched and have no backfilled admission; deferred commit trigger requires every newly inserted revision to have an admission; canonical function and final reader validate exact bindings; no external verifier/control/evidence promotion",
+      "storage_rooms": "fixture enrollment: immutable tenant/Space/personal-group-share kind; no content or authority inferred from navigation",
+      "storage_shares": "trusted enrollment or authenticated share creation owner: immutable exact tenant/source-Space/source-ID/revision/Task/destination-Space/relation/revision/status/source-epoch/destination-epoch; active to revoked only; incoming relations are current-control witnessed, excluded from backup; no historical audience authorization",
+      "storage_entities": "canonical owner: immutable scoped class/ID/revision/source Task routing registry; no payload and no accepted-head authority",
+      "storage_heads": "memory/artifact/storage: restorable pointers; no accepted-head authority",
+      "storage_current_heads": "canonical owner: current accepted revision/keyed witness; not replaced by restore",
+      "storage_commands": "command owner: original key/keyed digest/receipt IDs/status/epoch/time; encrypted descriptive result; not replaced by restore",
+      "storage_events": "canonical owner: EventSchema only; no descriptive payload",
+      "storage_outbox": "canonical owner: job ID/exact dependency edges/version/actor/epoch/status/lease/retries/code; no descriptive payload",
+      "storage_dependencies": "lifecycle: scoped ancestor/descendant IDs/revisions and explicit sharing relation ID",
+      "storage_restrictions": "lifecycle: source ID/revision/restriction kind/epoch/time; monotonic",
+      "storage_tombstones": "lifecycle: ID/class/revision/epoch/time/command key; monotonic",
+      "storage_policy": "enrolled policy owner: revision/finite per-class fixture periods and operation grants; only closed authenticated synthetic reductions; no client anchors or expansion authority",
+      "storage_authority_epoch": "lifecycle: immutable consecutive epoch/anchor ID/policy revision/current-control digest/time, compared with independently installed witness capability; neither comes from backup",
+      "storage_share_publications": "share-control owner: immutable original scoped actor/key/material/relation/revision/exact source scope-ID-revision-witness-Task/status/source and destination epochs; exact composite relation/head/original epoch receipt FKs; sorted two-Space barriers and current full F02 audience/source sender share permission; installed opaque material resolver; incoming destination controls witnessed, outgoing source controls unchanged; excluded from backup/controlDigest protocol marker; no content copy/publication exception or worker/replay authority",
+      "storage_head_publications": "control-only head owner: immutable original scope/actor/key/material ID and class/ID/revision/witness/key ID/generation/installed Task lineage/epoch/acceptance-expiry/expected prior revision-witness; exact head/lineage/previous-head/original-epoch composite FKs; excluded from backup and controlDigest protocol marker; material resolver is installed, not request/archive authority; no ciphertext/content save/outbox/restore completion attestation",
+      "storage_forget_work": "forget-control owner: immutable original scope/actor/key/binding/receipt/job/target/epoch/time; exact composite command and outbox FKs, original tombstone publication FK; excluded from backup/controlDigest protocol marker; original command and pending outbox remain in controlDigest; no worker execution, physical erasure, descendant completion or replay authority",
+      "storage_tombstone_publications": "synthetic exact-record tombstone owner: immutable original actor/key/class/ID/revision/witness/time with composite FKs to original epoch, accepted head and current tombstone; protocol marker excluded from backup/controlDigest; no payload erasure, descendant completion or undelete authority",
+      "storage_source_revocations": "synthetic source revocation owner: immutable exact original actor/key/source ID/revision/witness/kind/time; FKs to original epoch publication, accepted head and monotonic restriction; protocol marker excluded from backup/controlDigest; no unrevoke, payload deletion or propagation authority",
+      "storage_policy_changes": "synthetic policy reduction owner: immutable exact original actor/key/previous-next policy revision with FKs to original epoch publication and both policies; protocol marker excluded from backup/controlDigest; no content or expansion authority",
+      "storage_epoch_publications": "control owner: immutable authenticated actor/original UUID key/binding digest/native maintenance session/previous epoch/next epoch/anchor ID/expiry/time; protocol receipt only, excluded from content backup and controlDigest to avoid circular witness; no payload or replay authority",
+      "independent-epoch-journal": "installed control capability: separate owned authority root; per-tenant/Space immutable sequence/hash-chain/anchor/pending original actor/key/binding/session/expiry/previous-next anchors; version2 policy-reduction reserves exact previous/next closed policies; version3 source-revocation pins exact source ID/revision/witness/time; version4 tombstone pins class/ID/revision/witness/time; version5 forget-work additionally pins independent receipt/job IDs; version6 head-publication pins installed material ID/exact scoped material controls/expected prior reference/acceptance time; version7 share-publication pins exact installed scoped route/material ID/source Task/source independent anchor; bounded validated headPublication history distinguishes pending/committed/rolled-back exact original actor/key and refuses reuse after committed transition; consumed staging verifies this independent exact head transition and cannot downgrade when PG protocol rows disappear; versions3-7 require same policy and changed control digest; fsynced temporary file plus hard-link CAS and directory fsync; no keys/descriptive content, never archived/restored/automatically bootstrapped",
+      "storage_generations": "storage: owner/root/generation/operation IDs/state/epoch; absolute path installed in memory only",
+      "storage_staging_reservations": "storage preparation: immutable tenant/Space/actor/original command/material/upload/root/class/entity/revision/generation/key/native session/source Task/expiry/lease/time IDs and metadata only; forced service RLS and scoped Task/session FKs; installed current material resolver and native maintenance/current audience checks; excluded from backup; unconsumed original remains pending; exact witnessed authenticated head consumes staging with nonpending/reachable state; consumed original requires scoped PG head/epoch protocol rows and independently committed journal transition plus exact cipher-confirmation witness, never a canonical receipt or GC deletion permit",
+      "storage_staging_confirmations": "storage preparation: immutable exact scoped upload FK, authenticated encrypted object/manifest digests and byte sizes/time only; no descriptions or keys; excluded from backup; durable byte preparation confirmation, never canonical publication/serving authority",
+      "storage_staging_abandonments": "storage preparation/recovery: immutable exact tenant/Space/actor/original-key/upload terminal time with reservation FK; forced service RLS; excluded from backup; current maintenance authority and full audience required even after original expiry/native Stop, same Space/original locks and current reachability; no content/key, canonical receipt, run resurrection, replay or serving authority; compared with installed independent enrollment/intent/settled terminal witness before effects",
+      "independent-staging-witness": "installed storage preparation authority: separate owned authority root, opaque original namespace and immutable enrollment/abandonment intent/settled exact PostgreSQL microsecond terminal time; exact scoped actor/original key/material/upload/root/cipher binding/native session/source Task/expiry; no content/keys, never archived/restored or bootstrapped from PG; bounded nofollow/one-link reads, exclusive fsynced hard-link publication; pending intent protects and forbids confirmation/publication; settlement only after fresh committed observation under current Space/original locks; surviving witness refuses missing/altered PG terminal; root loss/rollback/whole-owner crash and compaction remain unqualified",
+      "storage_restore_operations": "recovery: original key/binding/generation/phase/counts/codes/checkpoint/epoch; encrypted descriptive inventory",
+      "storage_query_controls": "native conversation query: immutable session scope/revision/3 independent booleans",
+      "storage_ask_receipts": "native conversation query owner: migration21 immutable forced-service-RLS scoped actor/original key/opaque receipt ID/session/Task/Run/native revision/control revision/key/generation/epoch/current finite expiry/keyed command-query fingerprints; AES256-GCM AskPayload contains every retained question, answer and descriptive retrieval manifest; exact native session/control and installed settled resource receipt FKs, one original and one Ask per interval; narrow publisher requires the service interval prepared in this exact authenticated transaction and actual installed settlement; replay reauthorizes canonical selection/dependencies before opening old answer, never reuses obsolete source content or spends another interval; no model request/response/history, ComputerAssignment, approval, Task completion, paid/model inference or runtime qualification",
+      "storage_native_ask_refs": "native query transcript references: immutable forced-service-RLS exact scoped actor/session/Task/Run/original key/opaque Ask receipt ID/native revision only; exact composite Ask FK and deferred reverse receipt FK require one matching native reference at commit; no retained plaintext question, answer, source description or alternate session owner, and no continuation/execution authority",
+      "storage_ask_dependencies": "native query provenance: immutable forced-service-RLS exact ordered Ask receipt ID/knowledge ID/revision/cipher witness/source ID/revision; canonical scoped knowledge and source FKs, exact current broker-selected relationship checked by publisher; metadata gates old-answer decryption after correction/delete/revocation, never a source grant; later transitive propagation/disclosure/cache/capture/import qualification remains pending",
+      "storage_service_resources": "F05 enrollment: tenant/Space/resource/owner/origin Run/actor/payer/department/allowance IDs, generation, ask/maintenance purpose and original installed cost center accounting metadata; existing allowance, no copied ceiling or content body",
+      "storage_resource_identities": "F05 relational subtype registry: computer OR logical-service; exact scope/resource IDs; never native admission",
+      "fabric_storage_migrations-and-fixture-markers": "fixture-only migration owner/instance/version/digest/definition fingerprints/time and owned root/device/inode markers; no content, secrets or serving authority; excluded from backup",
+      "staging-leases-and-owned-markers": "storage: opaque owner/instance/root/operation/object IDs/deadline/publication state; no content or keys",
+      "diagnostics-and-operator-status": "allowlisted codes/IDs/counts/times/class/status/digests only; descriptive content requires authorized encrypted delivery"
+    },
+    "ENVELOPE_METADATA": [
+      "schemaVersion",
+      "algorithm",
+      "tenantId",
+      "spaceId",
+      "class",
+      "id",
+      "revision",
+      "generation",
+      "keyId",
+      "nonce",
+      "tag",
+      "ciphertextSize"
+    ],
+    "EXCLUDED_FROM_BACKUP": [
+      "keys",
+      "credentials",
+      "sessions",
+      "identity",
+      "membership",
+      "current-policy",
+      "current-head-witnesses",
+      "epoch-anchor",
+      "tombstones",
+      "source-restrictions",
+      "original-command-authority",
+      "independent-staging-witness",
+      "staging-original-authority",
+      "pending-job-authority",
+      "task-control",
+      "run-control",
+      "approvals",
+      "budget-balances",
+      "runtime",
+      "source-check-minting-authority",
+      "protected-evidence",
+      "methods",
+      "external-effects",
+      "unsent-editor-work"
+    ],
+    "RECORD_INVENTORY": {
+      "source": {
+        "owner": "memory",
+        "store": "storage_sources",
+        "schema": "SourcePayloadSchema",
+        "encrypted": [
+          "title",
+          "uri",
+          "narrative",
+          "contentDigest",
+          "assertedBy",
+          "recordedAt"
+        ],
+        "opaque": [
+          "sourceId",
+          "sourceTaskId",
+          "revision",
+          "status",
+          "expiresAt",
+          "class",
+          "witness",
+          "keyId",
+          "generation",
+          "epoch",
+          "acceptedAt",
+          "actorId",
+          "commandKey"
+        ],
+        "commit": "canonical-transaction",
+        "recovery": "included-content-current-authority",
+        "retention": "finite-expiry-and-source-restriction"
+      },
+      "knowledge": {
+        "owner": "memory",
+        "store": "storage_knowledge_revisions",
+        "schema": "KnowledgeSchema",
+        "encrypted": [
+          "subject",
+          "value",
+          "source",
+          "assertedBy",
+          "recordedAt",
+          "validFrom",
+          "validUntil",
+          "classification",
+          "verification",
+          "supersedes"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "status",
+          "expiresAt",
+          "subjectFingerprint",
+          "sourceId",
+          "sourceRevision",
+          "sourceWitness",
+          "sourceTaskId",
+          "witness",
+          "keyId",
+          "generation",
+          "epoch",
+          "acceptedAt",
+          "actorId",
+          "commandKey"
+        ],
+        "commit": "canonical-transaction",
+        "recovery": "included-content-current-head",
+        "retention": "finite-expiry-forget-source-restriction"
+      },
+      "artifact": {
+        "owner": "artifact",
+        "store": "storage_artifact_versions + owned objects",
+        "schema": "FileManifestSchema",
+        "encrypted": [
+          "filename",
+          "logicalPath",
+          "entry",
+          "source",
+          "base",
+          "validationId",
+          "artifactBytes"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "rootId",
+          "uploadId",
+          "objectId",
+          "manifestObjectId",
+          "confirmedAt",
+          "expiresAt",
+          "sourceId",
+          "sourceRevision",
+          "sourceWitness",
+          "sourceTaskId",
+          "witness",
+          "keyId",
+          "generation",
+          "epoch",
+          "acceptedAt",
+          "actorId",
+          "commandKey",
+          "objectDigest",
+          "manifestDigest",
+          "objectSize",
+          "manifestSize"
+        ],
+        "commit": "durable-bytes-before-canonical-publication",
+        "recovery": "included-confirmed-bytes-current-head",
+        "retention": "finite-expiry-forget-source-restriction"
+      },
+      "live-file": {
+        "owner": "storage",
+        "store": "storage_volume_versions(kind=live-file) + storage_artifact_versions + owned objects",
+        "schema": "packed VolumeCommand envelope + FileManifestSchema",
+        "encrypted": [
+          "filename",
+          "logicalPath",
+          "entry",
+          "liveBytes"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "objectId",
+          "manifestObjectId",
+          "confirmedAt",
+          "expiresAt",
+          "artifactId",
+          "actorId",
+          "commandKey",
+          "sessionId",
+          "taskId",
+          "runId",
+          "workerGeneration",
+          "baseRevision",
+          "checkpointFileCount",
+          "indexWitness",
+          "epoch"
+        ],
+        "commit": "durable-version-before-live-cas",
+        "recovery": "last-included-checkpoint",
+        "retention": "finite-expiry-forget"
+      },
+      "draft": {
+        "owner": "artifact",
+        "store": "storage_volume_versions(kind=draft) + storage_artifact_versions + owned objects",
+        "schema": "packed VolumeCommand envelope + FileManifestSchema",
+        "encrypted": [
+          "filename",
+          "logicalPath",
+          "entry",
+          "source",
+          "base",
+          "validationId",
+          "draftBytes"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "objectId",
+          "manifestObjectId",
+          "taskId",
+          "runId",
+          "workerGeneration",
+          "baseRevision",
+          "expiresAt",
+          "sourceId",
+          "sourceRevision"
+        ],
+        "commit": "durable-version-before-draft-receipt",
+        "recovery": "included-saved-version-no-auto-promotion",
+        "retention": "finite-expiry-forget-source-restriction"
+      },
+      "checkpoint": {
+        "owner": "storage",
+        "store": "storage_volume_versions(kind=checkpoint) + storage_checkpoint_files + storage_artifact_versions + owned objects",
+        "schema": "packed exact checkpoint entry inventory + FileManifestSchema",
+        "encrypted": [
+          "files"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "generation",
+          "confirmedAt",
+          "expiresAt",
+          "artifactId",
+          "actorId",
+          "commandKey",
+          "sessionId",
+          "taskId",
+          "runId",
+          "workerGeneration",
+          "baseRevision",
+          "checkpointFileCount",
+          "indexWitness",
+          "epoch"
+        ],
+        "commit": "confirmed-file-set-before-checkpoint-receipt",
+        "recovery": "last-included-confirmed-checkpoint",
+        "retention": "finite-expiry-forget-dependency"
+      },
+      "summary": {
+        "owner": "memory-projection",
+        "store": "storage_derived",
+        "schema": "DerivedPayloadSchema",
+        "encrypted": [
+          "title",
+          "body",
+          "manifest"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "watermark",
+          "sourceId",
+          "sourceRevision",
+          "expiresAt",
+          "invalidatedAt"
+        ],
+        "commit": "admitted-current-dependencies-transaction",
+        "recovery": "rebuild-current-only",
+        "retention": "finite-expiry-transitive-invalidation"
+      },
+      "index": {
+        "owner": "memory-projection",
+        "store": "storage_derived",
+        "schema": "DerivedPayloadSchema",
+        "encrypted": [
+          "title",
+          "body",
+          "manifest"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "watermark",
+          "sourceId",
+          "sourceRevision",
+          "expiresAt",
+          "invalidatedAt"
+        ],
+        "commit": "admitted-current-dependencies-transaction",
+        "recovery": "rebuild-current-only",
+        "retention": "finite-expiry-transitive-invalidation"
+      },
+      "cache": {
+        "owner": "memory-projection",
+        "store": "storage_derived",
+        "schema": "DerivedPayloadSchema",
+        "encrypted": [
+          "title",
+          "body",
+          "manifest"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "watermark",
+          "audienceFingerprint",
+          "queryFingerprint",
+          "expiresAt",
+          "invalidatedAt"
+        ],
+        "commit": "admitted-current-dependencies-transaction",
+        "recovery": "rebuild-current-only",
+        "retention": "finite-expiry-transitive-invalidation"
+      },
+      "ask": {
+        "owner": "native-conversation-query",
+        "store": "storage_ask_receipts",
+        "schema": "AskPayloadSchema",
+        "encrypted": [
+          "question",
+          "answer",
+          "manifest"
+        ],
+        "opaque": [
+          "id",
+          "revision",
+          "sessionId",
+          "taskId",
+          "runId",
+          "resourceReceiptId",
+          "expiresAt",
+          "queryFingerprint"
+        ],
+        "commit": "same-transaction-accounting-and-receipt",
+        "recovery": "included-receipt-reauthorize-no-replay",
+        "retention": "finite-expiry-transitive-invalidation"
+      },
+      "backup": {
+        "owner": "storage-recovery",
+        "store": "storage_backups + separate owned backup root",
+        "schema": "BackupInventorySchema",
+        "encrypted": [
+          "items",
+          "inventory",
+          "archiveManifest",
+          "descriptiveMetadata"
+        ],
+        "opaque": [
+          "backupId",
+          "generation",
+          "capturedEpoch",
+          "confirmedAt",
+          "expiresAt",
+          "lastSuccessfulCheckpoint",
+          "objectId",
+          "ciphertextSize"
+        ],
+        "commit": "durable-coherent-archive-before-confirmation",
+        "recovery": "confirmed-backup-only-current-authority",
+        "retention": "finite-expiry-no-direct-serving"
+      }
+    },
+    "RESTORE_ACTIVATION_RECORD_INVENTORY": {
+      "schemaVersion": 1,
+      "predecessor": {
+        "originalClaim": {
+          "owner": "storage-restore",
+          "store": "owned restore root / k-<scoped-original-key-digest>",
+          "schema": "RestoreStageProgressSchema inside AES backup binding",
+          "encrypted": [
+            "tenantId",
+            "spaceId",
+            "actorId",
+            "operationId",
+            "backupId",
+            "originalKey",
+            "commandFingerprint",
+            "archiveDigest",
+            "rootId",
+            "generation",
+            "keyId",
+            "serving=false",
+            "expectedItems",
+            "decodedBytes",
+            "completed"
+          ],
+          "opaque": [
+            "schemaVersion",
+            "algorithm",
+            "tenantId",
+            "spaceId",
+            "class",
+            "id",
+            "revision",
+            "generation",
+            "keyId",
+            "nonce",
+            "tag",
+            "ciphertextSize"
+          ],
+          "commit": "exclusive-file-fsync-directory-fsync",
+          "retention": "blocked-original-operation-until-owned-cleanup"
+        },
+        "progress": {
+          "owner": "storage-restore",
+          "store": "owned restore root / r-<scoped actor-operation digest> / progress",
+          "schema": "RestoreStageProgressSchema inside AES backup binding",
+          "encrypted": [
+            "originalKey",
+            "commandFingerprint",
+            "archiveDigest",
+            "per-item-index-digest-byte-progress",
+            "serving=false",
+            "expectedItems",
+            "decodedBytes",
+            "rootId",
+            "generation"
+          ],
+          "opaque": [
+            "schemaVersion",
+            "algorithm",
+            "tenantId",
+            "spaceId",
+            "class",
+            "id",
+            "revision",
+            "generation",
+            "keyId",
+            "nonce",
+            "tag",
+            "ciphertextSize"
+          ],
+          "commit": "temp-file-fsync-rename-directory-fsync",
+          "retention": "blocked-original-operation-until-owned-cleanup"
+        },
+        "items": {
+          "owner": "storage-restore",
+          "store": "owned restore root / r-<scoped actor-operation digest> / i-<bounded index>",
+          "schema": "RestoreStageItemSchema",
+          "encrypted": [
+            "original envelope payload",
+            "original manifest payload",
+            "target envelope payload",
+            "target manifest description and payload"
+          ],
+          "opaque": [
+            "schemaVersion",
+            "original cipher envelope metadata",
+            "target cipher envelope metadata"
+          ],
+          "commit": "durable-item-before-encrypted-progress",
+          "retention": "blocked-original-operation-until-owned-cleanup"
+        }
+      },
+      "activation": {
+        "owner": "storage-restore",
+        "store": "storage_restore_activations",
+        "schema": "immutable original operation/key/root/generation/stage digest; encrypted MetadataSchema; RestoreResultSchema",
+        "encrypted": [
+          "captured content inventory/envelopes/provenance",
+          "per-item reconciliation states"
+        ],
+        "opaque": [
+          "tenant_id",
+          "space_id",
+          "actor_id",
+          "original_key",
+          "operation_id",
+          "backup_id",
+          "generation",
+          "key_id",
+          "root_id",
+          "command_fingerprint",
+          "stage_digest",
+          "restriction_epoch",
+          "eligible exact scoped refs",
+          "result statuses/excluded IDs",
+          "activated_at"
+        ],
+        "commit": "authenticated Space barrier, independent anchor/current-policy/head/ancestry checks, owned stage bytes and same-transaction SQL activation",
+        "retention": "live policy/expiry/grants/current full audience and ancestry before target open and release",
+        "excludedFromBackupAuthority": true,
+        "canonicalHeadReplacement": false,
+        "externalReplay": false,
+        "localBoundary": "actual artifact filesystem and derived PG payload loss; surviving PG control/typed canonical metadata and held keys",
+        "unknown": "whole-host/control/typed canonical row loss, external KMS, production object custody and durability"
+      }
+    },
+    "RESTORE_IMPORT_INVENTORY": {
+      "originalClaim": {
+        "owner": "storage-restore",
+        "store": "owned restore root / k-<scoped-original-key-digest>",
+        "schema": "RestoreStageProgressSchema inside AES backup binding",
+        "encrypted": [
+          "tenantId",
+          "spaceId",
+          "actorId",
+          "operationId",
+          "backupId",
+          "originalKey",
+          "commandFingerprint",
+          "archiveDigest",
+          "rootId",
+          "generation",
+          "keyId",
+          "serving=false",
+          "expectedItems",
+          "decodedBytes",
+          "completed"
+        ],
+        "opaque": [
+          "schemaVersion",
+          "algorithm",
+          "tenantId",
+          "spaceId",
+          "class",
+          "id",
+          "revision",
+          "generation",
+          "keyId",
+          "nonce",
+          "tag",
+          "ciphertextSize"
+        ],
+        "commit": "exclusive-file-fsync-directory-fsync",
+        "retention": "blocked-original-operation-until-owned-cleanup"
+      },
+      "progress": {
+        "owner": "storage-restore",
+        "store": "owned restore root / r-<scoped actor-operation digest> / progress",
+        "schema": "RestoreStageProgressSchema inside AES backup binding",
+        "encrypted": [
+          "originalKey",
+          "commandFingerprint",
+          "archiveDigest",
+          "per-item-index-digest-byte-progress",
+          "serving=false",
+          "expectedItems",
+          "decodedBytes",
+          "rootId",
+          "generation"
+        ],
+        "opaque": [
+          "schemaVersion",
+          "algorithm",
+          "tenantId",
+          "spaceId",
+          "class",
+          "id",
+          "revision",
+          "generation",
+          "keyId",
+          "nonce",
+          "tag",
+          "ciphertextSize"
+        ],
+        "commit": "temp-file-fsync-rename-directory-fsync",
+        "retention": "blocked-original-operation-until-owned-cleanup"
+      },
+      "items": {
+        "owner": "storage-restore",
+        "store": "owned restore root / r-<scoped actor-operation digest> / i-<bounded index>",
+        "schema": "RestoreStageItemSchema",
+        "encrypted": [
+          "original envelope payload",
+          "original manifest payload",
+          "target envelope payload",
+          "target manifest description and payload"
+        ],
+        "opaque": [
+          "schemaVersion",
+          "original cipher envelope metadata",
+          "target cipher envelope metadata"
+        ],
+        "commit": "durable-item-before-encrypted-progress",
+        "retention": "blocked-original-operation-until-owned-cleanup"
+      }
+    },
+    "RESTORE_PROGRESS_RECORD_INVENTORY": {
+      "schemaVersion": 1,
+      "predecessor": {
+        "schemaVersion": 1,
+        "predecessor": {
+          "originalClaim": {
+            "owner": "storage-restore",
+            "store": "owned restore root / k-<scoped-original-key-digest>",
+            "schema": "RestoreStageProgressSchema inside AES backup binding",
+            "encrypted": [
+              "tenantId",
+              "spaceId",
+              "actorId",
+              "operationId",
+              "backupId",
+              "originalKey",
+              "commandFingerprint",
+              "archiveDigest",
+              "rootId",
+              "generation",
+              "keyId",
+              "serving=false",
+              "expectedItems",
+              "decodedBytes",
+              "completed"
+            ],
+            "opaque": [
+              "schemaVersion",
+              "algorithm",
+              "tenantId",
+              "spaceId",
+              "class",
+              "id",
+              "revision",
+              "generation",
+              "keyId",
+              "nonce",
+              "tag",
+              "ciphertextSize"
+            ],
+            "commit": "exclusive-file-fsync-directory-fsync",
+            "retention": "blocked-original-operation-until-owned-cleanup"
+          },
+          "progress": {
+            "owner": "storage-restore",
+            "store": "owned restore root / r-<scoped actor-operation digest> / progress",
+            "schema": "RestoreStageProgressSchema inside AES backup binding",
+            "encrypted": [
+              "originalKey",
+              "commandFingerprint",
+              "archiveDigest",
+              "per-item-index-digest-byte-progress",
+              "serving=false",
+              "expectedItems",
+              "decodedBytes",
+              "rootId",
+              "generation"
+            ],
+            "opaque": [
+              "schemaVersion",
+              "algorithm",
+              "tenantId",
+              "spaceId",
+              "class",
+              "id",
+              "revision",
+              "generation",
+              "keyId",
+              "nonce",
+              "tag",
+              "ciphertextSize"
+            ],
+            "commit": "temp-file-fsync-rename-directory-fsync",
+            "retention": "blocked-original-operation-until-owned-cleanup"
+          },
+          "items": {
+            "owner": "storage-restore",
+            "store": "owned restore root / r-<scoped actor-operation digest> / i-<bounded index>",
+            "schema": "RestoreStageItemSchema",
+            "encrypted": [
+              "original envelope payload",
+              "original manifest payload",
+              "target envelope payload",
+              "target manifest description and payload"
+            ],
+            "opaque": [
+              "schemaVersion",
+              "original cipher envelope metadata",
+              "target cipher envelope metadata"
+            ],
+            "commit": "durable-item-before-encrypted-progress",
+            "retention": "blocked-original-operation-until-owned-cleanup"
+          }
+        },
+        "activation": {
+          "owner": "storage-restore",
+          "store": "storage_restore_activations",
+          "schema": "immutable original operation/key/root/generation/stage digest; encrypted MetadataSchema; RestoreResultSchema",
+          "encrypted": [
+            "captured content inventory/envelopes/provenance",
+            "per-item reconciliation states"
+          ],
+          "opaque": [
+            "tenant_id",
+            "space_id",
+            "actor_id",
+            "original_key",
+            "operation_id",
+            "backup_id",
+            "generation",
+            "key_id",
+            "root_id",
+            "command_fingerprint",
+            "stage_digest",
+            "restriction_epoch",
+            "eligible exact scoped refs",
+            "result statuses/excluded IDs",
+            "activated_at"
+          ],
+          "commit": "authenticated Space barrier, independent anchor/current-policy/head/ancestry checks, owned stage bytes and same-transaction SQL activation",
+          "retention": "live policy/expiry/grants/current full audience and ancestry before target open and release",
+          "excludedFromBackupAuthority": true,
+          "canonicalHeadReplacement": false,
+          "externalReplay": false,
+          "localBoundary": "actual artifact filesystem and derived PG payload loss; surviving PG control/typed canonical metadata and held keys",
+          "unknown": "whole-host/control/typed canonical row loss, external KMS, production object custody and durability"
+        }
+      },
+      "rollback": {
+        "owner": "storage-restore",
+        "store": "storage_restore_rollbacks",
+        "encrypted": [],
+        "opaque": [
+          "tenant_id",
+          "space_id",
+          "actor_id",
+          "original_key",
+          "operation_id",
+          "backup_id",
+          "generation",
+          "key_id",
+          "root_id",
+          "command_fingerprint",
+          "safe status/checkpoint/item counts",
+          "rolled_back_at"
+        ],
+        "commit": "authenticated original-key lock and Space barrier; cancellation COMMIT precedes ownership-checked cleanup",
+        "retention": "forward-only cancellation never removed by content cleanup; original encrypted key claim retained",
+        "excludes": [
+          "private source text",
+          "keys",
+          "credential or approval replay",
+          "external effect or job replay"
+        ]
+      },
+      "recovery": {
+        "checkpoint": "atomic item file fsync/rename/directory fsync followed by encrypted progress fsync/rename/directory fsync",
+        "unrecordedItem": "authenticated against original archive and fresh generation AAD, reused without rewrite",
+        "restart": "current authority/native fencing and item eligibility revalidated; same original generation only",
+        "unknownCommit": "original-key lock/lookup, exact original receipt, no automatic replay",
+        "unsupported": "power loss; pre-progress claim gap; partial temp writes; control/host/region loss; production RPO/RTO"
+      }
+    },
+    "GRAPH_RECORD_INVENTORY": {
+      "schemaVersion": 1,
+      "predecessor": {
+        "source": {
+          "owner": "memory",
+          "store": "storage_sources",
+          "schema": "SourcePayloadSchema",
+          "encrypted": [
+            "title",
+            "uri",
+            "narrative",
+            "contentDigest",
+            "assertedBy",
+            "recordedAt"
+          ],
+          "opaque": [
+            "sourceId",
+            "sourceTaskId",
+            "revision",
+            "status",
+            "expiresAt",
+            "class",
+            "witness",
+            "keyId",
+            "generation",
+            "epoch",
+            "acceptedAt",
+            "actorId",
+            "commandKey"
+          ],
+          "commit": "canonical-transaction",
+          "recovery": "included-content-current-authority",
+          "retention": "finite-expiry-and-source-restriction"
+        },
+        "knowledge": {
+          "owner": "memory",
+          "store": "storage_knowledge_revisions",
+          "schema": "KnowledgeSchema",
+          "encrypted": [
+            "subject",
+            "value",
+            "source",
+            "assertedBy",
+            "recordedAt",
+            "validFrom",
+            "validUntil",
+            "classification",
+            "verification",
+            "supersedes"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "status",
+            "expiresAt",
+            "subjectFingerprint",
+            "sourceId",
+            "sourceRevision",
+            "sourceWitness",
+            "sourceTaskId",
+            "witness",
+            "keyId",
+            "generation",
+            "epoch",
+            "acceptedAt",
+            "actorId",
+            "commandKey"
+          ],
+          "commit": "canonical-transaction",
+          "recovery": "included-content-current-head",
+          "retention": "finite-expiry-forget-source-restriction"
+        },
+        "artifact": {
+          "owner": "artifact",
+          "store": "storage_artifact_versions + owned objects",
+          "schema": "FileManifestSchema",
+          "encrypted": [
+            "filename",
+            "logicalPath",
+            "entry",
+            "source",
+            "base",
+            "validationId",
+            "artifactBytes"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "rootId",
+            "uploadId",
+            "objectId",
+            "manifestObjectId",
+            "confirmedAt",
+            "expiresAt",
+            "sourceId",
+            "sourceRevision",
+            "sourceWitness",
+            "sourceTaskId",
+            "witness",
+            "keyId",
+            "generation",
+            "epoch",
+            "acceptedAt",
+            "actorId",
+            "commandKey",
+            "objectDigest",
+            "manifestDigest",
+            "objectSize",
+            "manifestSize"
+          ],
+          "commit": "durable-bytes-before-canonical-publication",
+          "recovery": "included-confirmed-bytes-current-head",
+          "retention": "finite-expiry-forget-source-restriction"
+        },
+        "live-file": {
+          "owner": "storage",
+          "store": "storage_volume_versions(kind=live-file) + storage_artifact_versions + owned objects",
+          "schema": "packed VolumeCommand envelope + FileManifestSchema",
+          "encrypted": [
+            "filename",
+            "logicalPath",
+            "entry",
+            "liveBytes"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "objectId",
+            "manifestObjectId",
+            "confirmedAt",
+            "expiresAt",
+            "artifactId",
+            "actorId",
+            "commandKey",
+            "sessionId",
+            "taskId",
+            "runId",
+            "workerGeneration",
+            "baseRevision",
+            "checkpointFileCount",
+            "indexWitness",
+            "epoch"
+          ],
+          "commit": "durable-version-before-live-cas",
+          "recovery": "last-included-checkpoint",
+          "retention": "finite-expiry-forget"
+        },
+        "draft": {
+          "owner": "artifact",
+          "store": "storage_volume_versions(kind=draft) + storage_artifact_versions + owned objects",
+          "schema": "packed VolumeCommand envelope + FileManifestSchema",
+          "encrypted": [
+            "filename",
+            "logicalPath",
+            "entry",
+            "source",
+            "base",
+            "validationId",
+            "draftBytes"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "objectId",
+            "manifestObjectId",
+            "taskId",
+            "runId",
+            "workerGeneration",
+            "baseRevision",
+            "expiresAt",
+            "sourceId",
+            "sourceRevision"
+          ],
+          "commit": "durable-version-before-draft-receipt",
+          "recovery": "included-saved-version-no-auto-promotion",
+          "retention": "finite-expiry-forget-source-restriction"
+        },
+        "checkpoint": {
+          "owner": "storage",
+          "store": "storage_volume_versions(kind=checkpoint) + storage_checkpoint_files + storage_artifact_versions + owned objects",
+          "schema": "packed exact checkpoint entry inventory + FileManifestSchema",
+          "encrypted": [
+            "files"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "generation",
+            "confirmedAt",
+            "expiresAt",
+            "artifactId",
+            "actorId",
+            "commandKey",
+            "sessionId",
+            "taskId",
+            "runId",
+            "workerGeneration",
+            "baseRevision",
+            "checkpointFileCount",
+            "indexWitness",
+            "epoch"
+          ],
+          "commit": "confirmed-file-set-before-checkpoint-receipt",
+          "recovery": "last-included-confirmed-checkpoint",
+          "retention": "finite-expiry-forget-dependency"
+        },
+        "summary": {
+          "owner": "memory-projection",
+          "store": "storage_derived",
+          "schema": "DerivedPayloadSchema",
+          "encrypted": [
+            "title",
+            "body",
+            "manifest"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "watermark",
+            "sourceId",
+            "sourceRevision",
+            "expiresAt",
+            "invalidatedAt"
+          ],
+          "commit": "admitted-current-dependencies-transaction",
+          "recovery": "rebuild-current-only",
+          "retention": "finite-expiry-transitive-invalidation"
+        },
+        "index": {
+          "owner": "memory-projection",
+          "store": "storage_derived",
+          "schema": "DerivedPayloadSchema",
+          "encrypted": [
+            "title",
+            "body",
+            "manifest"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "watermark",
+            "sourceId",
+            "sourceRevision",
+            "expiresAt",
+            "invalidatedAt"
+          ],
+          "commit": "admitted-current-dependencies-transaction",
+          "recovery": "rebuild-current-only",
+          "retention": "finite-expiry-transitive-invalidation"
+        },
+        "cache": {
+          "owner": "memory-projection",
+          "store": "storage_derived",
+          "schema": "DerivedPayloadSchema",
+          "encrypted": [
+            "title",
+            "body",
+            "manifest"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "watermark",
+            "audienceFingerprint",
+            "queryFingerprint",
+            "expiresAt",
+            "invalidatedAt"
+          ],
+          "commit": "admitted-current-dependencies-transaction",
+          "recovery": "rebuild-current-only",
+          "retention": "finite-expiry-transitive-invalidation"
+        },
+        "ask": {
+          "owner": "native-conversation-query",
+          "store": "storage_ask_receipts",
+          "schema": "AskPayloadSchema",
+          "encrypted": [
+            "question",
+            "answer",
+            "manifest"
+          ],
+          "opaque": [
+            "id",
+            "revision",
+            "sessionId",
+            "taskId",
+            "runId",
+            "resourceReceiptId",
+            "expiresAt",
+            "queryFingerprint"
+          ],
+          "commit": "same-transaction-accounting-and-receipt",
+          "recovery": "included-receipt-reauthorize-no-replay",
+          "retention": "finite-expiry-transitive-invalidation"
+        },
+        "backup": {
+          "owner": "storage-recovery",
+          "store": "storage_backups + separate owned backup root",
+          "schema": "BackupInventorySchema",
+          "encrypted": [
+            "items",
+            "inventory",
+            "archiveManifest",
+            "descriptiveMetadata"
+          ],
+          "opaque": [
+            "backupId",
+            "generation",
+            "capturedEpoch",
+            "confirmedAt",
+            "expiresAt",
+            "lastSuccessfulCheckpoint",
+            "objectId",
+            "ciphertextSize"
+          ],
+          "commit": "durable-coherent-archive-before-confirmation",
+          "recovery": "confirmed-backup-only-current-authority",
+          "retention": "finite-expiry-no-direct-serving"
+        }
+      },
+      "payload": {
+        "owner": "memory-projection",
+        "store": "storage_graph_payloads",
+        "classes": [
+          "summary",
+          "index",
+          "cache"
+        ],
+        "schema": "GraphDerivedPayloadSchema",
+        "encrypted": [
+          "bytes",
+          "dependencies"
+        ],
+        "opaque": [
+          "tenant_id",
+          "space_id",
+          "class",
+          "id",
+          "revision",
+          "witness"
+        ],
+        "maxDecodedBytes": 524288,
+        "commit": "same-transaction-head-graph-and-ciphertext",
+        "recovery": "exact-original-head-lookup-no-replay",
+        "retention": "current-ancestry-before-open-and-release"
+      },
+      "controls": {
+        "storage_graph_nodes": [
+          "tenant_id",
+          "space_id",
+          "class",
+          "id",
+          "revision",
+          "witness",
+          "source_task_id",
+          "key_id",
+          "generation",
+          "expires_at",
+          "backing_class",
+          "backing_id",
+          "backing_revision",
+          "backing_witness",
+          "ask_id",
+          "dependency_count",
+          "dependency_digest"
+        ],
+        "storage_graph_edges": [
+          "tenant_id",
+          "space_id",
+          "child_class",
+          "child_id",
+          "child_revision",
+          "child_witness",
+          "parent_class",
+          "parent_id",
+          "parent_revision",
+          "parent_witness"
+        ],
+        "storage_graph_payloads": [
+          "tenant_id",
+          "space_id",
+          "class",
+          "id",
+          "revision",
+          "witness",
+          "envelope"
+        ],
+        "storage_graph_ask_extras": [
+          "tenant_id",
+          "space_id",
+          "ask_id",
+          "parent_class",
+          "parent_id",
+          "parent_revision",
+          "parent_witness"
+        ],
+        "storage_graph_events": [
+          "tenant_id",
+          "space_id",
+          "actor_id",
+          "command_key",
+          "reason",
+          "class",
+          "id",
+          "revision"
+        ],
+        "storage_graph_jobs": [
+          "tenant_id",
+          "space_id",
+          "actor_id",
+          "command_key",
+          "job_id",
+          "status",
+          "class",
+          "id",
+          "revision",
+          "witness"
+        ]
+      },
+      "predecessorControls": {
+        "storage_volume_versions": "logical volume/draft owner: migration18 immutable forced-service-RLS exact tenant/Space/kind/logical ID/revision/artifact ID/actor/original key/session/Task/Run/workerGeneration/baseRevision/checkpointFileCount/scoped keyed index witness/epoch/confirmedAt/expiry; FK to exact same-transaction artifact and original native session; independently witnessed command/outbox set detects missing index, installed keyed proof detects substituted logical mapping before current-version selection; narrow CAS function and deferred evidence require exact logical row and included count at COMMIT; no filenames, paths, body bytes or global content digests; content reads still require current original head/audience/expiry/source authority; later logical delete propagation and archive/import qualification remain pending",
+        "storage_checkpoint_files": "storage confirmed-set owner: migration18 immutable forced-service-RLS tenant/Space/checkpoint ID/revision/exact live ID/revision/artifact ID/cipher confirmation witness; exact scoped logical-live and artifact witness FKs; full exact byte length/content digest/finite expiry inventory is encrypted in confirmed checkpoint artifact; does not select later live C2 or unsent editor memory; count is mandatory at COMMIT and reads revalidate every included body/current authority; no canonical knowledge commit, promotion or completed backup/restore implication",
+        "storage_artifact_versions": "artifact owner: migration17 immutable forced-service-RLS scoped exact head/AAD/expiry/Task/original key/epoch, owned root/upload and logical object/manifest IDs, exact cipher confirmation digests/sizes composite FK and nullable exact source witness FK; descriptive FileManifest and original binary are encrypted in owned objects; installed validator requires exact scoped keyed command binding, no caller-minted validation authority; same authenticated UoW publishes head/version/receipt/event/outbox, deferred reverse receipt FK forbids partial COMMIT; current canonical/source/audience/expiry plus exact bytes/manifest checks before serving, Stop blocks writers but preserves eligible committed reads; creation only, no live/draft/checkpoint/promotion or backup/restore guarantee",
+        "storage_artifact_receipts": "artifact canonical owner: immutable forced-service-RLS original actor/key/binding/receipt/job/event/id/revision/epoch/time with exact command/event/outbox/version composite FKs; artifact-committed only after acknowledged COMMIT and independent epoch reconciliation; unknown keeps original key and forbids automatic replay; no descriptive payload, worker dispatch, editor checkpoint or new protected verifier authority",
+        "storage_artifact_events": "artifact canonical owner: immutable artifact-committed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact version and receipt evidence, durable pending outbox intent only; no file descriptions or runtime/worker capability",
+        "storage_sources": "memory source-content owner: migration13 immutable forced-service-RLS encrypted SourcePayload; exact composite source Task/accepted head/all AAD/epoch/acceptance-expiry/original-publication FKs, witness hashes exact canonical ciphertext; narrow function requires original head xmin to equal current transaction, no postcommit body publication; explicit SourceCommand saveReusable admission with local-fixture-v1 finite secret/retention rules and verified narrative digest; current same-Space authenticated reads recheck full audience/restrictions/head/expiry after decryption; source-accepted is provenance only, never a canonical knowledge receipt, check authority, history/share disclosure or backup/restore attestation",
+        "storage_knowledge_revisions": "memory canonical owner: migration14 immutable forced-service-RLS encrypted KnowledgeSchema user-asserted revision; exact source witness/Task FK and accepted head/AAD/time/original publication FKs; scoped keyed subject fingerprint, no plaintext descriptions; source currentness/audience/expiry before sealing and after all waits; every row requires its exact receipt through deferred reverse FK; same authenticated head UoW, no post-COMMIT publication; migration15 expands all seven statuses via new immutable typed revisions; protected source checker, exact claim/source/time admission, same-value status transitions and currently eligible recall; migration16 adds exact targeted correction lineage, current witness CAS, original-key append/correction dedup and bounded scope/source/subject claim groups; conflicting current values deny accepted recall before decryption; HTTP successor remains pending",
+        "storage_knowledge_corrections": "memory correction owner: migration16 immutable forced-service-RLS tenant/Space/target ID/new revision/exact previous revision-witness-author-original-key/new actor-original-key; exact composite FKs preserve both original and correcting authorship and canonical evidence; separate narrow same-transaction corrected-knowledge function, deferred COMMIT requires lineage on changed claim or same-status successor; no plaintext subject/value, control/verification promotion, restore authority or worker dispatch; no destructive down migration",
+        "storage_save_receipts": "canonical memory owner: immutable exact scoped actor/original key/binding/receipt/job/event/target revision/epoch/time and saved-here/pending-review metadata; composite FKs require the exact canonical revision, original command, event and outbox; neither credentials nor descriptive result; excluded from restore authority, minimal original-key recovery is a current authorized read",
+        "storage_save_events": "canonical memory owner: immutable knowledge-committed/knowledge-proposed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact revision and receipt binding, no descriptive content or worker dispatch capability; pending outbox is intent only",
+        "storage_source_checks": "independent local-source-exact-v1 verifier: immutable forced-service-RLS tenant/Space/check UUID, fixed checker/definition digest, exact source ID/revision/Task/witness, source narrative digest, per-source keyed subject/value claim digest, database checkedAt and finite source expiry; checker-only function EXECUTE, serving/worker/IdP/PUBLIC have no minting or direct write authority; these are source-support receipts, never protected product CheckReceipt, behavior release, approval, task completion or a real-world truth claim; not restored as new verifier authority",
+        "storage_knowledge_admissions": "memory typed-status owner: immutable forced-service-RLS tenant/Space/knowledge ID/revision/status/check UUID/source ID/revision/witness/source narrative digest/keyed claim digest/validFrom/validUntil/previous revision; exact scoped FK to canonical status/source and composite source-check/claim binding; plaintext temporal/routing/digest metadata duplicates only these declared controls, while subject/value/audience/classification/verification details and supersedes remain sealed; existing v14 assertions remain untouched and have no backfilled admission; deferred commit trigger requires every newly inserted revision to have an admission; canonical function and final reader validate exact bindings; no external verifier/control/evidence promotion",
+        "storage_rooms": "fixture enrollment: immutable tenant/Space/personal-group-share kind; no content or authority inferred from navigation",
+        "storage_shares": "trusted enrollment or authenticated share creation owner: immutable exact tenant/source-Space/source-ID/revision/Task/destination-Space/relation/revision/status/source-epoch/destination-epoch; active to revoked only; incoming relations are current-control witnessed, excluded from backup; no historical audience authorization",
+        "storage_entities": "canonical owner: immutable scoped class/ID/revision/source Task routing registry; no payload and no accepted-head authority",
+        "storage_heads": "memory/artifact/storage: restorable pointers; no accepted-head authority",
+        "storage_current_heads": "canonical owner: current accepted revision/keyed witness; not replaced by restore",
+        "storage_commands": "command owner: original key/keyed digest/receipt IDs/status/epoch/time; encrypted descriptive result; not replaced by restore",
+        "storage_events": "canonical owner: EventSchema only; no descriptive payload",
+        "storage_outbox": "canonical owner: job ID/exact dependency edges/version/actor/epoch/status/lease/retries/code; no descriptive payload",
+        "storage_dependencies": "lifecycle: scoped ancestor/descendant IDs/revisions and explicit sharing relation ID",
+        "storage_restrictions": "lifecycle: source ID/revision/restriction kind/epoch/time; monotonic",
+        "storage_tombstones": "lifecycle: ID/class/revision/epoch/time/command key; monotonic",
+        "storage_policy": "enrolled policy owner: revision/finite per-class fixture periods and operation grants; only closed authenticated synthetic reductions; no client anchors or expansion authority",
+        "storage_authority_epoch": "lifecycle: immutable consecutive epoch/anchor ID/policy revision/current-control digest/time, compared with independently installed witness capability; neither comes from backup",
+        "storage_share_publications": "share-control owner: immutable original scoped actor/key/material/relation/revision/exact source scope-ID-revision-witness-Task/status/source and destination epochs; exact composite relation/head/original epoch receipt FKs; sorted two-Space barriers and current full F02 audience/source sender share permission; installed opaque material resolver; incoming destination controls witnessed, outgoing source controls unchanged; excluded from backup/controlDigest protocol marker; no content copy/publication exception or worker/replay authority",
+        "storage_head_publications": "control-only head owner: immutable original scope/actor/key/material ID and class/ID/revision/witness/key ID/generation/installed Task lineage/epoch/acceptance-expiry/expected prior revision-witness; exact head/lineage/previous-head/original-epoch composite FKs; excluded from backup and controlDigest protocol marker; material resolver is installed, not request/archive authority; no ciphertext/content save/outbox/restore completion attestation",
+        "storage_forget_work": "forget-control owner: immutable original scope/actor/key/binding/receipt/job/target/epoch/time; exact composite command and outbox FKs, original tombstone publication FK; excluded from backup/controlDigest protocol marker; original command and pending outbox remain in controlDigest; no worker execution, physical erasure, descendant completion or replay authority",
+        "storage_tombstone_publications": "synthetic exact-record tombstone owner: immutable original actor/key/class/ID/revision/witness/time with composite FKs to original epoch, accepted head and current tombstone; protocol marker excluded from backup/controlDigest; no payload erasure, descendant completion or undelete authority",
+        "storage_source_revocations": "synthetic source revocation owner: immutable exact original actor/key/source ID/revision/witness/kind/time; FKs to original epoch publication, accepted head and monotonic restriction; protocol marker excluded from backup/controlDigest; no unrevoke, payload deletion or propagation authority",
+        "storage_policy_changes": "synthetic policy reduction owner: immutable exact original actor/key/previous-next policy revision with FKs to original epoch publication and both policies; protocol marker excluded from backup/controlDigest; no content or expansion authority",
+        "storage_epoch_publications": "control owner: immutable authenticated actor/original UUID key/binding digest/native maintenance session/previous epoch/next epoch/anchor ID/expiry/time; protocol receipt only, excluded from content backup and controlDigest to avoid circular witness; no payload or replay authority",
+        "independent-epoch-journal": "installed control capability: separate owned authority root; per-tenant/Space immutable sequence/hash-chain/anchor/pending original actor/key/binding/session/expiry/previous-next anchors; version2 policy-reduction reserves exact previous/next closed policies; version3 source-revocation pins exact source ID/revision/witness/time; version4 tombstone pins class/ID/revision/witness/time; version5 forget-work additionally pins independent receipt/job IDs; version6 head-publication pins installed material ID/exact scoped material controls/expected prior reference/acceptance time; version7 share-publication pins exact installed scoped route/material ID/source Task/source independent anchor; bounded validated headPublication history distinguishes pending/committed/rolled-back exact original actor/key and refuses reuse after committed transition; consumed staging verifies this independent exact head transition and cannot downgrade when PG protocol rows disappear; versions3-7 require same policy and changed control digest; fsynced temporary file plus hard-link CAS and directory fsync; no keys/descriptive content, never archived/restored/automatically bootstrapped",
+        "storage_generations": "storage: owner/root/generation/operation IDs/state/epoch; absolute path installed in memory only",
+        "storage_staging_reservations": "storage preparation: immutable tenant/Space/actor/original command/material/upload/root/class/entity/revision/generation/key/native session/source Task/expiry/lease/time IDs and metadata only; forced service RLS and scoped Task/session FKs; installed current material resolver and native maintenance/current audience checks; excluded from backup; unconsumed original remains pending; exact witnessed authenticated head consumes staging with nonpending/reachable state; consumed original requires scoped PG head/epoch protocol rows and independently committed journal transition plus exact cipher-confirmation witness, never a canonical receipt or GC deletion permit",
+        "storage_staging_confirmations": "storage preparation: immutable exact scoped upload FK, authenticated encrypted object/manifest digests and byte sizes/time only; no descriptions or keys; excluded from backup; durable byte preparation confirmation, never canonical publication/serving authority",
+        "storage_staging_abandonments": "storage preparation/recovery: immutable exact tenant/Space/actor/original-key/upload terminal time with reservation FK; forced service RLS; excluded from backup; current maintenance authority and full audience required even after original expiry/native Stop, same Space/original locks and current reachability; no content/key, canonical receipt, run resurrection, replay or serving authority; compared with installed independent enrollment/intent/settled terminal witness before effects",
+        "independent-staging-witness": "installed storage preparation authority: separate owned authority root, opaque original namespace and immutable enrollment/abandonment intent/settled exact PostgreSQL microsecond terminal time; exact scoped actor/original key/material/upload/root/cipher binding/native session/source Task/expiry; no content/keys, never archived/restored or bootstrapped from PG; bounded nofollow/one-link reads, exclusive fsynced hard-link publication; pending intent protects and forbids confirmation/publication; settlement only after fresh committed observation under current Space/original locks; surviving witness refuses missing/altered PG terminal; root loss/rollback/whole-owner crash and compaction remain unqualified",
+        "storage_restore_operations": "recovery: original key/binding/generation/phase/counts/codes/checkpoint/epoch; encrypted descriptive inventory",
+        "storage_query_controls": "native conversation query: immutable session scope/revision/3 independent booleans",
+        "storage_ask_receipts": "native conversation query owner: migration21 immutable forced-service-RLS scoped actor/original key/opaque receipt ID/session/Task/Run/native revision/control revision/key/generation/epoch/current finite expiry/keyed command-query fingerprints; AES256-GCM AskPayload contains every retained question, answer and descriptive retrieval manifest; exact native session/control and installed settled resource receipt FKs, one original and one Ask per interval; narrow publisher requires the service interval prepared in this exact authenticated transaction and actual installed settlement; replay reauthorizes canonical selection/dependencies before opening old answer, never reuses obsolete source content or spends another interval; no model request/response/history, ComputerAssignment, approval, Task completion, paid/model inference or runtime qualification",
+        "storage_native_ask_refs": "native query transcript references: immutable forced-service-RLS exact scoped actor/session/Task/Run/original key/opaque Ask receipt ID/native revision only; exact composite Ask FK and deferred reverse receipt FK require one matching native reference at commit; no retained plaintext question, answer, source description or alternate session owner, and no continuation/execution authority",
+        "storage_ask_dependencies": "native query provenance: immutable forced-service-RLS exact ordered Ask receipt ID/knowledge ID/revision/cipher witness/source ID/revision; canonical scoped knowledge and source FKs, exact current broker-selected relationship checked by publisher; metadata gates old-answer decryption after correction/delete/revocation, never a source grant; later transitive propagation/disclosure/cache/capture/import qualification remains pending",
+        "storage_service_resources": "F05 enrollment: tenant/Space/resource/owner/origin Run/actor/payer/department/allowance IDs, generation, ask/maintenance purpose and original installed cost center accounting metadata; existing allowance, no copied ceiling or content body",
+        "storage_resource_identities": "F05 relational subtype registry: computer OR logical-service; exact scope/resource IDs; never native admission",
+        "fabric_storage_migrations-and-fixture-markers": "fixture-only migration owner/instance/version/digest/definition fingerprints/time and owned root/device/inode markers; no content, secrets or serving authority; excluded from backup",
+        "staging-leases-and-owned-markers": "storage: opaque owner/instance/root/operation/object IDs/deadline/publication state; no content or keys",
+        "diagnostics-and-operator-status": "allowlisted codes/IDs/counts/times/class/status/digests only; descriptive content requires authorized encrypted delivery"
+      },
+      "excludedAsRestoreAuthority": [
+        "keys",
+        "credentials",
+        "sessions",
+        "identity",
+        "membership",
+        "current-policy",
+        "current-head-witnesses",
+        "epoch-anchor",
+        "tombstones",
+        "source-restrictions",
+        "original-command-authority",
+        "independent-staging-witness",
+        "staging-original-authority",
+        "pending-job-authority",
+        "task-control",
+        "run-control",
+        "approvals",
+        "budget-balances",
+        "runtime",
+        "source-check-minting-authority",
+        "protected-evidence",
+        "methods",
+        "external-effects",
+        "unsent-editor-work",
+        "graph-original-event-authority",
+        "graph-pending-jobs",
+        "graph-ancestry-read-authority"
+      ],
+      "backupCaptureQualification": "pending",
+      "externalCopies": null,
+      "completedErasure": false
+    }
+  },
+  "owners": {
+    "canonical": [
+      "KnowledgeSaveRepository",
+      "KnowledgeStatusAdmission",
+      "SourceContentRepository"
+    ],
+    "artifact": [
+      "ArtifactPublicationRepository"
+    ],
+    "volume": [
+      "VolumeDraftRepository"
+    ],
+    "derived": [
+      "DependencyGraphRepository",
+      "MaintenanceBuildersRepository"
+    ],
+    "ask": [
+      "SourceRecallBroker",
+      "NativeAskRepository",
+      "StorageServiceAccounting"
+    ],
+    "lifecycle": [
+      "ForgetWorkRepository",
+      "RetentionWorkRepository",
+      "PropagationRetryRepository"
+    ],
+    "backup": [
+      "BackupCaptureRepository",
+      "BackupConfirmationRepository"
+    ],
+    "restore": [
+      "RestoreImportRepository",
+      "RestoreActivationRepository",
+      "RestoreProgressRepository"
+    ],
+    "identity": "accepted F02 IdentityScopeVerifier/current identity and full audience",
+    "native": "accepted F03/F04 NativeRepository; F04 ResourceRepository owns reserve/settle",
+    "controller": "Loop owns requirements/checks/reviews/final/product acceptance"
+  },
+  "sourceFiles": {
+    "g1-storage/src/record-inventory.ts": "sha256:5dbd9ed33464d10fe0a2f2932604724d2afe868a5ac6ccf6e38f3649fa5bbc02",
+    "g1-storage/src/dependency-graph-inventory.ts": "sha256:a952db95e0b75f947241df1b61eb1ce4682dc8d5a83f6a05dd39351eb74ab9b6",
+    "g1-storage/dependencies.json": "sha256:8e2488b60f0d16c39c605d90d2e25b81a9a03998f72ad94b30b6748f01b781e2",
+    "g1-storage/pnpm-lock.yaml": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+    "g1-storage/verification/test-design-v1.json": "sha256:582d92a9317bdba9a58dd182b2fec552444f9f36735b939ba2dbb525f3fd2ef5",
+    "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/requirements.json": "sha256:f1b9e8e4f2fc991b665b07cfa6f96e303d8aea425a5cf0994c4680df040d9edd",
+    "docs/planning/g1-remaining-ledger.csv": "sha256:fd7396151001fdb6b9d56fe108a796f9688d7fa6a38a2b33ca6db8d5e8d7d994",
+    "infra/migrations/0001_core_records.sql": "sha256:3976b9d7d6c877b17c91296cf19cf728cf1a378f284b58b554e546950e4bb027"
+  },
+  "retention": {
+    "policy": "synthetic-local-fixture-v1; finite periods and reductions only; no enterprise legal hold or SLA",
+    "keys": "ephemeral harness-held AES-256-GCM data key and scoped HMAC digest key; separate target restore key; no keys in HTTP/archive/logs; no KMS/rotation qualification",
+    "minimalControls": "original-key receipts, tombstones, current restrictions and independent epoch journal survive content cleanup; no down migration or undelete",
+    "stop": "Stop fences writers/dispatch; eligible committed reads survive; storage reservation/custody remains until confirmed suspension/deletion, so storage can still be charged after Stop",
+    "unsaved": "editor memory is not covered; live writes are not knowledge commits; recover only included confirmed checkpoint/backup",
+    "logicalVsPhysical": "logical refusal and descendant invalidation precede bounded physical propagation; repository erase is local owned payload only, not provider/backup/external copy erasure"
+  },
+  "dependencies": {
+    "inventory": "g1-storage/dependencies.json",
+    "lock": "g1-storage/pnpm-lock.yaml",
+    "noticeMissing": [
+      "pg-types",
+      "pgpass"
+    ],
+    "securityStatus": "unknown; independent review pending",
+    "legalStatus": "declarations and retained notices only; legal sufficiency pending",
+    "update": "explicit reviewed pin/lock/image change, offline frozen install scripts disabled, complete relevant concurrency/recovery/authority and unchanged regression requalification; no automatic update/image pull"
+  },
+  "threats": [
+    {
+      "boundary": "client to identity/UoW",
+      "threat": "forged scope/current audience or stale grants",
+      "controls": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "Q04",
+        "L03"
+      ]
+    },
+    {
+      "boundary": "ciphertext and owned file to reader",
+      "threat": "AAD substitution, missing keys or root/path substitution",
+      "controls": [
+        "E01",
+        "E02",
+        "E04",
+        "R05"
+      ]
+    },
+    {
+      "boundary": "canonical to derived/Ask",
+      "threat": "stale/conflicting/deleted data or content laundering into control",
+      "controls": [
+        "K08",
+        "K09",
+        "Q02",
+        "Q03",
+        "L04",
+        "L05",
+        "L07"
+      ]
+    },
+    {
+      "boundary": "archive to activation",
+      "threat": "stale authority resurrection, credential/approval/effect replay",
+      "controls": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R06"
+      ]
+    },
+    {
+      "boundary": "tool/service to external environment",
+      "threat": "unapproved paid/remote model, VM, credential or recipient action",
+      "controls": [
+        "Q05",
+        "Q08",
+        "D04",
+        "D05"
+      ]
+    }
+  ],
+  "rollback": {
+    "procedure": "RestoreProgressRepository.rollback commits forward-only cancellation then deletes only owned staging; recreate status/lookup using exact original key after unknown; preserve canonical heads, receipts, pending jobs, tombstones/restrictions and backup",
+    "global": "Disable new F05 admission/serving/publication through authorized lifecycle route; no destructive down migration",
+    "cannotUndo": [
+      "already delivered bytes",
+      "completed external effects",
+      "lost unsaved editor memory",
+      "real provider/host/region loss"
+    ]
+  },
+  "requirementsHistory": {
+    "id": "R-079",
+    "classification": "historical-requirements-only-audit",
+    "registry": "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/requirements.json",
+    "controllerEvent": {
+      "seq": 17,
+      "type": "requirements.updated",
+      "at": "2026-10-07T20:32:40+00:00",
+      "requirements": 96,
+      "final": true,
+      "hash": "sha256:a6cfd1eb024ddc02a424f80543db8bcde59e0a83183626301a63b5c339a1e9b0"
+    },
+    "notReperformed": true
+  },
+  "approvalGates": [
+    "deploy or release to a shared or production environment",
+    "delete or overwrite data that is not reproducible from the repository",
+    "spend money or start paid resources",
+    "send messages, emails or posts to people",
+    "change credentials, secrets, access control or security settings",
+    "force-push, rewrite published git history or delete branches"
+  ],
+  "external": [
+    {
+      "id": "X01",
+      "status": "pending",
+      "guarantee": "Managed KMS custody/rotation; provider object/volume encryption and region/payload/log handling",
+      "missingEnvironmentEvidence": "Approved real provider account, KMS keys, encrypted storage and independent custody/rotation evidence",
+      "owner": "runtime/SRE and data/security",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Create approved provider resources; use real credentials/keys and change key or access policies",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X02",
+      "status": "pending",
+      "guarantee": "Power/host/multi-host/region durability, whole-cluster current-authority recovery and production recovery objectives",
+      "missingEnvironmentEvidence": "Approved target filesystem/cluster and power-loss/load/disaster-recovery trials; per-class objectives and fresh authority feed",
+      "owner": "runtime/SRE and data/recovery",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Start paid resources or deploy a shared environment; approve any nonreproducible destructive recovery drill",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X03",
+      "status": "pending",
+      "guarantee": "Enterprise retention/legal hold/region/key/backup erasure and real-data handling",
+      "missingEnvironmentEvidence": "Named authorized enterprise policy decision maker; actual holds, erasure workflows and provider/backup-copy evidence",
+      "owner": "enterprise data governance and security",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve exact real-data handling, deletion/overwrite, retention policy and security/key setting changes",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X04",
+      "status": "pending",
+      "guarantee": "Production download/stream/direct-link revocation exposure window",
+      "missingEnvironmentEvidence": "Actual authorization-checking broker, external copy inventory and measured stream/link races; delivered bytes cannot be recalled",
+      "owner": "delivery broker and security",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve remote/shared broker deployment and any real recipient messages or external data delivery",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X05",
+      "status": "pending",
+      "guarantee": "F06 Linux host/kernel/image and service/runtime/egress/no-VM containment",
+      "missingEnvironmentEvidence": "Approved remote Linux runtime and qualified worker/tool/network isolation trials",
+      "owner": "runtime/SRE and independent security",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve shared/remote deployment, paid compute and exact credentials, ACL or security setting changes",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X06",
+      "status": "pending",
+      "guarantee": "Enterprise SSO/current directory and independent human approval judgment",
+      "missingEnvironmentEvidence": "Formal enterprise IdP/directory, real membership lifecycle and named independent approvers",
+      "owner": "identity/security and authorized enterprise approver",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve real credentials/IdP access/security settings and exact messages to human participants",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X07",
+      "status": "pending",
+      "guarantee": "Real model suppliers/profiles/regions, encrypted request/response, answer quality and invoices",
+      "missingEnvironmentEvidence": "Approved supplier/profile/region, real API integration, independent quality trials and invoice reconciliation",
+      "owner": "model gateway/evaluation and FinOps",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve paid API calls/resources, exact supplier credentials/security settings and approved data/region",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X08",
+      "status": "pending",
+      "guarantee": "F07 signed physical desktop sleep/phone/accessibility/three-client journey",
+      "missingEnvironmentEvidence": "Actual signed distribution and physical desktop/phone with real sleep, reconnect, steering and accessibility evidence",
+      "owner": "clients/design and evaluation",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve shared release/distribution and exact signing credential/security changes; authorize participant messages",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    },
+    {
+      "id": "X09",
+      "status": "pending",
+      "guarantee": "G2 semantic/no-memory quality, curation/connectors/JML/holds/billing/schedule/Fleet; G3 creation, G4 Reflect release, G5 adapters",
+      "missingEnvironmentEvidence": "Later approved increments and their real environment/profile-specific qualification and independent verdicts",
+      "owner": "data/memory plus relevant G2–G5 module owners",
+      "approval": {
+        "method": "loop_ask",
+        "kind": "approval",
+        "action": "Approve each concrete deployment/release, paid resource, credential/ACL, real-data deletion and message action before that task",
+        "requiredBeforeAction": true
+      },
+      "localPassQualifies": false
+    }
+  ],
+  "observedRecovery": {
+    "assurance": "owned-local-PG-and-content-roots; historical source result, not current candidate pass",
+    "job": "job-98cd6d907b",
+    "check": "f05-13.backup-restore-suite",
+    "stdout": {
+      "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-98cd6d907b/f05-13.backup-restore-suite/stdout.log",
+      "bytes": 326615,
+      "sha256": "sha256:7387438e0a161c00056c81610b443355cda5fc4913b594aca746c72677eaeff3"
+    },
+    "report": "docs/loop/agent-fabric-g1-f05-storage/develop-turn225/report.md",
+    "r07": {
+      "measurement": "restore-completed-sample",
+      "case": "R07",
+      "clock": "monotonic",
+      "startMs": 532252.743375,
+      "finishMs": 542551.430834,
+      "elapsedMs": 10298.687459000037,
+      "contentLoss": true,
+      "survivingCurrentControl": true,
+      "lossFiles": 4,
+      "classes": {
+        "source": 6,
+        "knowledge": 6,
+        "artifact": 1,
+        "live-file": 1,
+        "draft": 1,
+        "checkpoint": 1,
+        "summary": 1,
+        "index": 0,
+        "cache": 0,
+        "ask": 0
+      },
+      "itemCount": 17,
+      "decodedBytes": 17034,
+      "archiveBytes": 57381,
+      "lastSuccessfulBackup": "2026-10-12T21:10:38.642Z",
+      "lastSuccessfulCheckpoint": "2026-10-12T21:10:31.884Z",
+      "capturedEpoch": 18,
+      "currentEpoch": 20,
+      "acceptedRevisions": [
+        {
+          "class": "source",
+          "id": "0ecb9f57-c17d-4840-aaf8-4545a543f1e7",
+          "revision": 1
+        },
+        {
+          "class": "source",
+          "id": "1a6dba52-7688-4c5c-8d7e-9ee8f28dffd1",
+          "revision": 1
+        },
+        {
+          "class": "source",
+          "id": "3c886392-092e-48bd-80e9-3b9943973351",
+          "revision": 1
+        },
+        {
+          "class": "source",
+          "id": "6c6c4fa7-c886-4d97-a632-855caecac69e",
+          "revision": 1
+        },
+        {
+          "class": "source",
+          "id": "8dd6d4fb-2047-441b-ac05-c104194b133a",
+          "revision": 1
+        },
+        {
+          "class": "source",
+          "id": "afe72b1c-0fa1-4818-ac51-8b3748fc82d5",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "2d4bea22-7d30-4ea1-a4cb-bb0b10d5c4c1",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "a6ee4e03-540f-4958-aea7-8c9418e0e183",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "ac4dc1b9-1299-4803-8798-b05c69025617",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "b8af4cb4-8b2d-460b-933d-35b36ff1bcd3",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "ea0087c5-5d1c-497e-b0b2-cb4ee6485dd0",
+          "revision": 1
+        },
+        {
+          "class": "knowledge",
+          "id": "f0aef3c5-f9eb-4c6e-8012-7c8ced96b7eb",
+          "revision": 1
+        },
+        {
+          "class": "live-file",
+          "id": "91171b5a-77ae-4dcf-9308-acec6a5170a8",
+          "revision": 1
+        },
+        {
+          "class": "checkpoint",
+          "id": "13226352-f56d-4d13-9089-0978d1bcf0ab",
+          "revision": 1
+        },
+        {
+          "class": "artifact",
+          "id": "ac2d1ed7-19c1-4d05-8784-bcff0d5a30d6",
+          "revision": 1
+        },
+        {
+          "class": "draft",
+          "id": "379f211c-999c-46f2-8565-f577b72a135e",
+          "revision": 1
+        },
+        {
+          "class": "summary",
+          "id": "83d56130-d503-4822-bd0d-9ed0224c44fa",
+          "revision": 1
+        }
+      ],
+      "generation": "d8fc3c55-e4fd-44dd-ba8a-d90e79945d76",
+      "unavailableEntityIds": [],
+      "interruptionPhases": [
+        "staging-created",
+        "item-recorded",
+        "import-validated",
+        "metadata-imported",
+        "restrictions-reconciled",
+        "before-activation-commit",
+        "after-activation-commit"
+      ],
+      "sampleEnvironment": "owned-local-PG-and-content-roots",
+      "unsavedEditorWork": "not-covered"
+    },
+    "contention": [
+      {
+        "measurement": "restore-contention-sample",
+        "clock": "monotonic",
+        "elapsedMs": 3744.8473330000415,
+        "observedBlockers": 2,
+        "readOutcome": "useful-current-content",
+        "writeOutcome": "saved-here",
+        "generation": "42346970-4ead-4b03-b1f3-22490022dc5f"
+      }
+    ],
+    "interruptions": [
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "staging-created",
+        "startMs": 354381.231875,
+        "finishMs": 357387.196792,
+        "elapsedMs": 3005.9649169999757,
+        "completedItems": 0,
+        "generation": "ff128c98-68ed-4b6b-bf9e-9a50a8eba520",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-staged",
+        "originalKey": "b66d9eaf-c650-477e-90fc-e06ae703a738",
+        "operationId": "09492afd-7c6e-47d3-8e11-4eea1fc66a42",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "item-recorded",
+        "startMs": 357390.231625,
+        "finishMs": 360438.969334,
+        "elapsedMs": 3048.737709000008,
+        "completedItems": 1,
+        "generation": "976fdeb1-6c02-4e34-bae5-36ee4dcd7989",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-item-written",
+        "originalKey": "1a467bd0-7506-435a-9519-e4792f567b88",
+        "operationId": "a00186c6-3935-40a4-89ce-f8d4b98da90e",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "import-validated",
+        "startMs": 360441.894209,
+        "finishMs": 363483.967167,
+        "elapsedMs": 3042.0729580000043,
+        "completedItems": 2,
+        "generation": "0e20b40f-688b-4ba1-bb96-1b3bd79075f8",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-inventory-validated",
+        "originalKey": "0a491ed9-f39a-48eb-b58e-1df34a55a834",
+        "operationId": "fafa8f91-f3e8-4e4f-b1b6-465729524aae",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "metadata-imported",
+        "startMs": 363486.845375,
+        "finishMs": 367365.45275,
+        "elapsedMs": 3878.6073750000214,
+        "completedItems": 2,
+        "generation": "c1318dfb-fa40-4b31-b813-4aac2410de45",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-metadata-imported",
+        "originalKey": "89e0a5b8-04ce-4171-9fa8-cd37dddf3fcf",
+        "operationId": "d51c5f3f-9724-4800-af2e-8acabf34a72e",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "restrictions-reconciled",
+        "startMs": 367368.049167,
+        "finishMs": 371136.115792,
+        "elapsedMs": 3768.066625000036,
+        "completedItems": 2,
+        "generation": "bb019a7e-3a3f-4dab-a2cb-9a47b358071c",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-restrictions-reconciled",
+        "originalKey": "7695eed5-ae55-4767-bd66-88d6f67dbd16",
+        "operationId": "3c2c62e0-82c6-4763-aa3a-7fa0315bea64",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "before-activation-commit",
+        "startMs": 371138.642042,
+        "finishMs": 375316.74975,
+        "elapsedMs": 4178.107707999996,
+        "completedItems": 2,
+        "generation": "64f83f73-e80a-4d12-af3c-e6e245246cf8",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-before-activation-commit",
+        "originalKey": "8f3bf1ee-9542-4090-b3c3-c5a13f4f83f2",
+        "operationId": "c1e34a9d-32e1-45ed-9f86-726b4fe3ea44",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      },
+      {
+        "measurement": "restore-interruption-recovery",
+        "clock": "monotonic",
+        "phase": "after-activation-commit",
+        "startMs": 375319.746709,
+        "finishMs": 378064.486667,
+        "elapsedMs": 2744.739957999962,
+        "completedItems": 2,
+        "generation": "962f8a2a-9e00-4f4a-a033-4c751bc71905",
+        "currentEpoch": 4,
+        "unavailableEntityIds": [],
+        "itemCount": 2,
+        "classes": {
+          "source": 1,
+          "knowledge": 1,
+          "artifact": 0,
+          "live-file": 0,
+          "draft": 0,
+          "checkpoint": 0,
+          "summary": 0,
+          "index": 0,
+          "cache": 0,
+          "ask": 0
+        },
+        "decodedBytes": 1538,
+        "archiveBytes": 6833,
+        "capturedEpoch": 3,
+        "lastSuccessfulBackup": "2026-10-12T21:07:41.733Z",
+        "lastSuccessfulCheckpoint": null,
+        "acceptedHeads": [
+          {
+            "class": "backup",
+            "id": "d78cbf97-417d-a8a3-9f80-5888b9c12b95",
+            "revision": "1",
+            "witness": "sha256:29651d184c66f5bc6ac57e5e3acea5c98f42b56b7d9af4e22532fdf7deaf2eea"
+          },
+          {
+            "class": "knowledge",
+            "id": "82d3009f-3ae5-4805-8cde-a81a5e12f61c",
+            "revision": "1",
+            "witness": "sha256:07737f6459dee411ef282a18774692e9df0be25c48ab44f1fbac76d6791a522e"
+          },
+          {
+            "class": "source",
+            "id": "e3fc8c0b-ed4e-4b50-8a36-dec22a8eb568",
+            "revision": "1",
+            "witness": "sha256:4020e99f12dc7108ae2c8e0377b1e6efa89a1477cc8f31bf9fb436308b464f78"
+          }
+        ],
+        "contentLoss": false,
+        "survivingCurrentControl": true,
+        "variant": "R04/kill-after-activation-commit",
+        "originalKey": "32683c41-d0f1-46b2-b863-ef64c35a4edd",
+        "operationId": "3c544ae7-a99e-48ab-8b1f-daec5bcce393",
+        "activationRows": 1,
+        "exactReceipt": true,
+        "stagedServing": false,
+        "jobsEnabled": false,
+        "canonicalEffectsUnchanged": true
+      }
+    ],
+    "productionRpoRtoSla": null
+  },
+  "delivery": {
+    "implementedCases": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06"
+    ],
+    "pendingSuccessorCases": [],
+    "successor": "f05-15-evidence",
+    "fullGate": "node g1-storage/scripts/check.mjs",
+    "component": "node g1-storage/scripts/check-component.mjs delivery-operations",
+    "noAuthorVerdict": true
+  },
+  "installedTables": {
+    "storage_artifact_events": {
+      "migration": "g1-storage/migrations/0017_artifact_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "event_id",
+        "actor_id",
+        "command_key",
+        "mutation_id",
+        "job_id",
+        "target_id",
+        "revision",
+        "epoch",
+        "at",
+        "kind"
+      ],
+      "owner": "artifact canonical owner: immutable artifact-committed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact version and receipt evidence, durable pending outbox intent only; no file descriptions or runtime/worker capability"
+    },
+    "storage_artifact_receipts": {
+      "migration": "g1-storage/migrations/0017_artifact_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "receipt_id",
+        "job_id",
+        "event_id",
+        "id",
+        "revision",
+        "epoch",
+        "at",
+        "status",
+        "class"
+      ],
+      "owner": "artifact canonical owner: immutable forced-service-RLS original actor/key/binding/receipt/job/event/id/revision/epoch/time with exact command/event/outbox/version composite FKs; artifact-committed only after acknowledged COMMIT and independent epoch reconciliation; unknown keeps original key and forbids automatic replay; no descriptive payload, worker dispatch, editor checkpoint or new protected verifier authority"
+    },
+    "storage_artifact_versions": {
+      "migration": "g1-storage/migrations/0017_artifact_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "source_task_id",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "accepted_at",
+        "expires_at",
+        "actor_id",
+        "command_key",
+        "root_id",
+        "upload_id",
+        "object_id",
+        "manifest_object_id",
+        "object_digest",
+        "manifest_digest",
+        "object_size",
+        "manifest_size",
+        "source_id",
+        "source_revision",
+        "source_witness"
+      ],
+      "owner": "artifact owner: migration17 immutable forced-service-RLS scoped exact head/AAD/expiry/Task/original key/epoch, owned root/upload and logical object/manifest IDs, exact cipher confirmation digests/sizes composite FK and nullable exact source witness FK; descriptive FileManifest and original binary are encrypted in owned objects; installed validator requires exact scoped keyed command binding, no caller-minted validation authority; same authenticated UoW publishes head/version/receipt/event/outbox, deferred reverse receipt FK forbids partial COMMIT; current canonical/source/audience/expiry plus exact bytes/manifest checks before serving, Stop blocks writers but preserves eligible committed reads; creation only, no live/draft/checkpoint/promotion or backup/restore guarantee"
+    },
+    "storage_ask_dependencies": {
+      "migration": "g1-storage/migrations/0021_native_ask.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "ask_id",
+        "ordinal",
+        "knowledge_id",
+        "knowledge_revision",
+        "knowledge_witness",
+        "source_id",
+        "source_revision"
+      ],
+      "owner": "native query provenance: immutable forced-service-RLS exact ordered Ask receipt ID/knowledge ID/revision/cipher witness/source ID/revision; canonical scoped knowledge and source FKs, exact current broker-selected relationship checked by publisher; metadata gates old-answer decryption after correction/delete/revocation, never a source grant; later transitive propagation/disclosure/cache/capture/import qualification remains pending"
+    },
+    "storage_ask_disclosure_admissions": {
+      "migration": "g1-storage/migrations/0022_ask_disclosure.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "ask_id",
+        "envelope_digest",
+        "audiences"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_ask_receipts": {
+      "migration": "g1-storage/migrations/0021_native_ask.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "id",
+        "session_id",
+        "task_id",
+        "run_id",
+        "native_revision",
+        "controls_revision",
+        "key_id",
+        "generation",
+        "epoch",
+        "resource_receipt_id",
+        "binding_fingerprint",
+        "query_fingerprint",
+        "envelope",
+        "accepted_at",
+        "expires_at"
+      ],
+      "owner": "native conversation query owner: migration21 immutable forced-service-RLS scoped actor/original key/opaque receipt ID/session/Task/Run/native revision/control revision/key/generation/epoch/current finite expiry/keyed command-query fingerprints; AES256-GCM AskPayload contains every retained question, answer and descriptive retrieval manifest; exact native session/control and installed settled resource receipt FKs, one original and one Ask per interval; narrow publisher requires the service interval prepared in this exact authenticated transaction and actual installed settlement; replay reauthorizes canonical selection/dependencies before opening old answer, never reuses obsolete source content or spends another interval; no model request/response/history, ComputerAssignment, approval, Task completion, paid/model inference or runtime qualification"
+    },
+    "storage_authority_epoch": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "epoch",
+        "anchor_id",
+        "policy_revision",
+        "control_digest",
+        "at"
+      ],
+      "owner": "lifecycle: immutable consecutive epoch/anchor ID/policy revision/current-control digest/time, compared with independently installed witness capability; neither comes from backup"
+    },
+    "storage_backup_confirmations": {
+      "migration": "g1-storage/migrations/0027_backup_confirmation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "class",
+        "id",
+        "revision",
+        "source_task_id",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "at",
+        "expires_at",
+        "captured_epoch",
+        "captured_at",
+        "root_id",
+        "archive_bytes",
+        "decoded_bytes",
+        "item_count",
+        "last_checkpoint",
+        "binding_digest",
+        "receipt_id",
+        "job_id",
+        "event_id"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_backup_events": {
+      "migration": "g1-storage/migrations/0027_backup_confirmation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "id",
+        "revision",
+        "epoch",
+        "at",
+        "event_id",
+        "kind"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_checkpoint_files": {
+      "migration": "g1-storage/migrations/0018_volume_drafts.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "checkpoint_id",
+        "checkpoint_revision",
+        "kind",
+        "live_id",
+        "live_revision",
+        "artifact_id",
+        "witness",
+        "live_kind"
+      ],
+      "owner": "storage confirmed-set owner: migration18 immutable forced-service-RLS tenant/Space/checkpoint ID/revision/exact live ID/revision/artifact ID/cipher confirmation witness; exact scoped logical-live and artifact witness FKs; full exact byte length/content digest/finite expiry inventory is encrypted in confirmed checkpoint artifact; does not select later live C2 or unsent editor memory; count is mandatory at COMMIT and reads revalidate every included body/current authority; no canonical knowledge commit, promotion or completed backup/restore implication"
+    },
+    "storage_commands": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "receipt_id",
+        "epoch",
+        "at"
+      ],
+      "owner": "command owner: original key/keyed digest/receipt IDs/status/epoch/time; encrypted descriptive result; not replaced by restore"
+    },
+    "storage_confirmations": {
+      "migration": "infra/migrations/0001_core_records.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "confirmation_id",
+        "upload_id",
+        "bytes_digest",
+        "manifest_digest",
+        "bytes_receipt",
+        "manifest_receipt",
+        "confirmed_at",
+        "storage_qualification_id"
+      ],
+      "owner": "Inherited G0 storage adapter confirmation owner: scoped confirmation/upload IDs, ciphertext bytes/manifest digests and receipts, confirmed time and exact qualified profile; FK-bound artifact upload evidence, no descriptive plaintext, keys, new content authority or automatic effect replay"
+    },
+    "storage_current_heads": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "accepted_at",
+        "expires_at"
+      ],
+      "owner": "canonical owner: current accepted revision/keyed witness; not replaced by restore"
+    },
+    "storage_entities": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "source_task_id"
+      ],
+      "owner": "canonical owner: immutable scoped class/ID/revision/source Task routing registry; no payload and no accepted-head authority"
+    },
+    "storage_epoch_publications": {
+      "migration": "g1-storage/migrations/0004_epoch_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "session_id",
+        "previous_epoch",
+        "epoch",
+        "anchor_id",
+        "expires_at",
+        "at"
+      ],
+      "owner": "control owner: immutable authenticated actor/original UUID key/binding digest/native maintenance session/previous epoch/next epoch/anchor ID/expiry/time; protocol receipt only, excluded from content backup and controlDigest to avoid circular witness; no payload or replay authority"
+    },
+    "storage_forget_work": {
+      "migration": "g1-storage/migrations/0008_forget_work.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "receipt_id",
+        "job_id",
+        "class",
+        "id",
+        "revision",
+        "epoch",
+        "at"
+      ],
+      "owner": "forget-control owner: immutable original scope/actor/key/binding/receipt/job/target/epoch/time; exact composite command and outbox FKs, original tombstone publication FK; excluded from backup/controlDigest protocol marker; original command and pending outbox remain in controlDigest; no worker execution, physical erasure, descendant completion or replay authority"
+    },
+    "storage_graph_ask_extras": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "ask_id",
+        "parent_class",
+        "parent_id",
+        "parent_revision",
+        "parent_witness"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_edges": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "child_class",
+        "child_id",
+        "child_revision",
+        "child_witness",
+        "parent_class",
+        "parent_id",
+        "parent_revision",
+        "parent_witness"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_events": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "reason",
+        "class",
+        "id",
+        "revision"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_invalidations": {
+      "migration": "g1-storage/migrations/0026_propagation_retry.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "witness",
+        "job_id",
+        "lease_id",
+        "actor_id",
+        "command_key",
+        "at"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_jobs": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "job_id",
+        "status",
+        "class",
+        "id",
+        "revision",
+        "witness"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_nodes": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "witness",
+        "source_task_id",
+        "key_id",
+        "generation",
+        "expires_at",
+        "backing_class",
+        "backing_id",
+        "backing_revision",
+        "backing_witness",
+        "ask_id",
+        "dependency_count",
+        "dependency_digest"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_graph_payloads": {
+      "migration": "g1-storage/migrations/0024_dependency_graph.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "witness",
+        "envelope"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_head_publications": {
+      "migration": "g1-storage/migrations/0009_head_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "material_id",
+        "class",
+        "id",
+        "revision",
+        "source_task_id",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "accepted_at",
+        "expires_at",
+        "expected_revision",
+        "expected_witness"
+      ],
+      "owner": "control-only head owner: immutable original scope/actor/key/material ID and class/ID/revision/witness/key ID/generation/installed Task lineage/epoch/acceptance-expiry/expected prior revision-witness; exact head/lineage/previous-head/original-epoch composite FKs; excluded from backup and controlDigest protocol marker; material resolver is installed, not request/archive authority; no ciphertext/content save/outbox/restore completion attestation"
+    },
+    "storage_knowledge_admissions": {
+      "migration": "g1-storage/migrations/0015_knowledge_status.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "id",
+        "revision",
+        "status",
+        "check_id",
+        "claim_digest",
+        "source_digest",
+        "valid_from",
+        "valid_until",
+        "previous_revision",
+        "source_id",
+        "source_revision",
+        "source_witness"
+      ],
+      "owner": "memory typed-status owner: immutable forced-service-RLS tenant/Space/knowledge ID/revision/status/check UUID/source ID/revision/witness/source narrative digest/keyed claim digest/validFrom/validUntil/previous revision; exact scoped FK to canonical status/source and composite source-check/claim binding; plaintext temporal/routing/digest metadata duplicates only these declared controls, while subject/value/audience/classification/verification details and supersedes remain sealed; existing v14 assertions remain untouched and have no backfilled admission; deferred commit trigger requires every newly inserted revision to have an admission; canonical function and final reader validate exact bindings; no external verifier/control/evidence promotion"
+    },
+    "storage_knowledge_corrections": {
+      "migration": "g1-storage/migrations/0016_knowledge_correction.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "id",
+        "revision",
+        "previous_revision",
+        "previous_witness",
+        "previous_actor",
+        "previous_key",
+        "actor_id",
+        "command_key"
+      ],
+      "owner": "memory correction owner: migration16 immutable forced-service-RLS tenant/Space/target ID/new revision/exact previous revision-witness-author-original-key/new actor-original-key; exact composite FKs preserve both original and correcting authorship and canonical evidence; separate narrow same-transaction corrected-knowledge function, deferred COMMIT requires lineage on changed claim or same-status successor; no plaintext subject/value, control/verification promotion, restore authority or worker dispatch; no destructive down migration"
+    },
+    "storage_knowledge_revisions": {
+      "migration": "g1-storage/migrations/0014_knowledge_save.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "source_task_id",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "accepted_at",
+        "expires_at",
+        "actor_id",
+        "command_key",
+        "status",
+        "source_id",
+        "source_revision",
+        "source_witness",
+        "subject_fingerprint",
+        "cipher_text"
+      ],
+      "owner": "memory canonical owner: migration14 immutable forced-service-RLS encrypted KnowledgeSchema user-asserted revision; exact source witness/Task FK and accepted head/AAD/time/original publication FKs; scoped keyed subject fingerprint, no plaintext descriptions; source currentness/audience/expiry before sealing and after all waits; every row requires its exact receipt through deferred reverse FK; same authenticated head UoW, no post-COMMIT publication; migration15 expands all seven statuses via new immutable typed revisions; protected source checker, exact claim/source/time admission, same-value status transitions and currently eligible recall; migration16 adds exact targeted correction lineage, current witness CAS, original-key append/correction dedup and bounded scope/source/subject claim groups; conflicting current values deny accepted recall before decryption; HTTP successor remains pending"
+    },
+    "storage_maintenance_admissions": {
+      "migration": "g1-storage/migrations/0025_maintenance_admission.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "material_id",
+        "builder",
+        "profile",
+        "region",
+        "policy_digest",
+        "plan_digest",
+        "receipt_id",
+        "session_id",
+        "run_id",
+        "native_revision"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_maintenance_receipts": {
+      "migration": "g1-storage/migrations/0025_maintenance_admission.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "class",
+        "id",
+        "revision",
+        "witness"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_native_ask_refs": {
+      "migration": "g1-storage/migrations/0021_native_ask.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "session_id",
+        "task_id",
+        "run_id",
+        "command_key",
+        "id",
+        "native_revision"
+      ],
+      "owner": "native query transcript references: immutable forced-service-RLS exact scoped actor/session/Task/Run/original key/opaque Ask receipt ID/native revision only; exact composite Ask FK and deferred reverse receipt FK require one matching native reference at commit; no retained plaintext question, answer, source description or alternate session owner, and no continuation/execution authority"
+    },
+    "storage_outbox": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "job_id",
+        "actor_id",
+        "command_key",
+        "class",
+        "target_id",
+        "target_revision",
+        "epoch",
+        "at"
+      ],
+      "owner": "canonical owner: job ID/exact dependency edges/version/actor/epoch/status/lease/retries/code; no descriptive payload"
+    },
+    "storage_policy": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "revision",
+        "periods",
+        "operations"
+      ],
+      "owner": "enrolled policy owner: revision/finite per-class fixture periods and operation grants; only closed authenticated synthetic reductions; no client anchors or expansion authority"
+    },
+    "storage_policy_changes": {
+      "migration": "g1-storage/migrations/0005_policy_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "previous_policy_revision",
+        "policy_revision"
+      ],
+      "owner": "synthetic policy reduction owner: immutable exact original actor/key/previous-next policy revision with FKs to original epoch publication and both policies; protocol marker excluded from backup/controlDigest; no content or expansion authority"
+    },
+    "storage_propagation_leases": {
+      "migration": "g1-storage/migrations/0026_propagation_retry.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "job_id",
+        "lease_id",
+        "actor_id",
+        "worker_id",
+        "session_id",
+        "attempt",
+        "leased_at",
+        "expires_at"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_propagation_results": {
+      "migration": "g1-storage/migrations/0026_propagation_retry.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "job_id",
+        "lease_id",
+        "outcome",
+        "at",
+        "invalidated_class",
+        "invalidated_id",
+        "invalidated_revision",
+        "invalidated_witness"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_query_controls": {
+      "migration": "g1-storage/migrations/0020_query_controls.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "session_id",
+        "task_id",
+        "run_id",
+        "revision",
+        "command_key",
+        "expected_revision",
+        "command_expires_at",
+        "controls",
+        "accepted_at"
+      ],
+      "owner": "native conversation query: immutable session scope/revision/3 independent booleans"
+    },
+    "storage_resource_identities": {
+      "migration": "g1-storage/migrations/0001_resource_identity.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "resource_id",
+        "kind"
+      ],
+      "owner": "F05 relational subtype registry: computer OR logical-service; exact scope/resource IDs; never native admission"
+    },
+    "storage_restore_activations": {
+      "migration": "g1-storage/migrations/0028_restore_activation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "original_key",
+        "operation_id",
+        "backup_id",
+        "generation",
+        "key_id",
+        "root_id",
+        "command_fingerprint",
+        "stage_digest",
+        "restriction_epoch",
+        "eligible",
+        "metadata",
+        "result",
+        "activated_at"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_restore_rollbacks": {
+      "migration": "g1-storage/migrations/0029_restore_progress.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "original_key",
+        "operation_id",
+        "backup_id",
+        "generation",
+        "key_id",
+        "root_id",
+        "command_fingerprint",
+        "status",
+        "rolled_back_at"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_restrictions": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "source_id",
+        "source_revision",
+        "epoch",
+        "kind",
+        "at"
+      ],
+      "owner": "lifecycle: source ID/revision/restriction kind/epoch/time; monotonic"
+    },
+    "storage_retention_events": {
+      "migration": "g1-storage/migrations/0023_retention_work.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "receipt_id",
+        "job_id",
+        "class",
+        "id",
+        "revision",
+        "epoch",
+        "at",
+        "reason",
+        "accepted_at",
+        "expires_at"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_rooms": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "kind"
+      ],
+      "owner": "fixture enrollment: immutable tenant/Space/personal-group-share kind; no content or authority inferred from navigation"
+    },
+    "storage_save_events": {
+      "migration": "g1-storage/migrations/0014_knowledge_save.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "event_id",
+        "actor_id",
+        "command_key",
+        "mutation_id",
+        "job_id",
+        "target_id",
+        "revision",
+        "epoch",
+        "at",
+        "kind"
+      ],
+      "owner": "canonical memory owner: immutable knowledge-committed/knowledge-proposed IDs/actor/original key/mutation/job/target revision/epoch/time only; exact revision and receipt binding, no descriptive content or worker dispatch capability; pending outbox is intent only"
+    },
+    "storage_save_receipts": {
+      "migration": "g1-storage/migrations/0014_knowledge_save.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "binding_digest",
+        "receipt_id",
+        "job_id",
+        "event_id",
+        "id",
+        "revision",
+        "epoch",
+        "at",
+        "status",
+        "class"
+      ],
+      "owner": "canonical memory owner: immutable exact scoped actor/original key/binding/receipt/job/event/target revision/epoch/time and saved-here/pending-review metadata; composite FKs require the exact canonical revision, original command, event and outbox; neither credentials nor descriptive result; excluded from restore authority, minimal original-key recovery is a current authorized read"
+    },
+    "storage_service_resources": {
+      "migration": "g1-storage/migrations/0001_resource_identity.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "resource_id",
+        "owner_id",
+        "generation",
+        "purpose",
+        "origin_run_id",
+        "actor_id",
+        "payer_id",
+        "department_id",
+        "allowance_id",
+        "cost_center"
+      ],
+      "owner": "F05 enrollment: tenant/Space/resource/owner/origin Run/actor/payer/department/allowance IDs, generation, ask/maintenance purpose and original installed cost center accounting metadata; existing allowance, no copied ceiling or content body"
+    },
+    "storage_share_publications": {
+      "migration": "g1-storage/migrations/0010_share_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "material_id",
+        "relation_id",
+        "revision",
+        "source_space_id",
+        "source_id",
+        "source_revision",
+        "source_task_id",
+        "witness",
+        "class",
+        "status",
+        "source_epoch",
+        "destination_epoch"
+      ],
+      "owner": "share-control owner: immutable original scoped actor/key/material/relation/revision/exact source scope-ID-revision-witness-Task/status/source and destination epochs; exact composite relation/head/original epoch receipt FKs; sorted two-Space barriers and current full F02 audience/source sender share permission; installed opaque material resolver; incoming destination controls witnessed, outgoing source controls unchanged; excluded from backup/controlDigest protocol marker; no content copy/publication exception or worker/replay authority"
+    },
+    "storage_shares": {
+      "migration": "g1-storage/migrations/0003_shared_authority.sql",
+      "columns": [
+        "tenant_id",
+        "destination_space_id",
+        "relation_id",
+        "revision",
+        "source_space_id",
+        "class",
+        "source_id",
+        "source_revision",
+        "source_task_id",
+        "status",
+        "source_epoch",
+        "destination_epoch"
+      ],
+      "owner": "trusted enrollment or authenticated share creation owner: immutable exact tenant/source-Space/source-ID/revision/Task/destination-Space/relation/revision/status/source-epoch/destination-epoch; active to revoked only; incoming relations are current-control witnessed, excluded from backup; no historical audience authorization"
+    },
+    "storage_source_checks": {
+      "migration": "g1-storage/migrations/0015_knowledge_status.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "check_id",
+        "checker",
+        "definition_digest",
+        "source_id",
+        "source_revision",
+        "source_task_id",
+        "source_witness",
+        "source_digest",
+        "claim_digest",
+        "checked_at",
+        "expires_at"
+      ],
+      "owner": "independent local-source-exact-v1 verifier: immutable forced-service-RLS tenant/Space/check UUID, fixed checker/definition digest, exact source ID/revision/Task/witness, source narrative digest, per-source keyed subject/value claim digest, database checkedAt and finite source expiry; checker-only function EXECUTE, serving/worker/IdP/PUBLIC have no minting or direct write authority; these are source-support receipts, never protected product CheckReceipt, behavior release, approval, task completion or a real-world truth claim; not restored as new verifier authority"
+    },
+    "storage_source_revocations": {
+      "migration": "g1-storage/migrations/0006_source_revocation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "class",
+        "source_id",
+        "source_revision",
+        "witness",
+        "kind",
+        "at"
+      ],
+      "owner": "synthetic source revocation owner: immutable exact original actor/key/source ID/revision/witness/kind/time; FKs to original epoch publication, accepted head and monotonic restriction; protocol marker excluded from backup/controlDigest; no unrevoke, payload deletion or propagation authority"
+    },
+    "storage_sources": {
+      "migration": "g1-storage/migrations/0013_source_content.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "source_id",
+        "revision",
+        "source_task_id",
+        "witness",
+        "key_id",
+        "generation",
+        "epoch",
+        "accepted_at",
+        "expires_at",
+        "actor_id",
+        "command_key",
+        "cipher_text"
+      ],
+      "owner": "memory source-content owner: migration13 immutable forced-service-RLS encrypted SourcePayload; exact composite source Task/accepted head/all AAD/epoch/acceptance-expiry/original-publication FKs, witness hashes exact canonical ciphertext; narrow function requires original head xmin to equal current transaction, no postcommit body publication; explicit SourceCommand saveReusable admission with local-fixture-v1 finite secret/retention rules and verified narrative digest; current same-Space authenticated reads recheck full audience/restrictions/head/expiry after decryption; source-accepted is provenance only, never a canonical knowledge receipt, check authority, history/share disclosure or backup/restore attestation"
+    },
+    "storage_staging_abandonments": {
+      "migration": "g1-storage/migrations/0012_staging_abandonment.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "upload_id",
+        "at"
+      ],
+      "owner": "storage preparation/recovery: immutable exact tenant/Space/actor/original-key/upload terminal time with reservation FK; forced service RLS; excluded from backup; current maintenance authority and full audience required even after original expiry/native Stop, same Space/original locks and current reachability; no content/key, canonical receipt, run resurrection, replay or serving authority; compared with installed independent enrollment/intent/settled terminal witness before effects"
+    },
+    "storage_staging_confirmations": {
+      "migration": "g1-storage/migrations/0011_staging_preparation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "upload_id",
+        "object_digest",
+        "manifest_digest",
+        "object_size",
+        "manifest_size",
+        "at"
+      ],
+      "owner": "storage preparation: immutable exact scoped upload FK, authenticated encrypted object/manifest digests and byte sizes/time only; no descriptions or keys; excluded from backup; durable byte preparation confirmation, never canonical publication/serving authority"
+    },
+    "storage_staging_reservations": {
+      "migration": "g1-storage/migrations/0011_staging_preparation.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "material_id",
+        "upload_id",
+        "root_id",
+        "class",
+        "id",
+        "revision",
+        "generation",
+        "key_id",
+        "session_id",
+        "source_task_id",
+        "expires_at",
+        "lease_until",
+        "at"
+      ],
+      "owner": "storage preparation: immutable tenant/Space/actor/original command/material/upload/root/class/entity/revision/generation/key/native session/source Task/expiry/lease/time IDs and metadata only; forced service RLS and scoped Task/session FKs; installed current material resolver and native maintenance/current audience checks; excluded from backup; unconsumed original remains pending; exact witnessed authenticated head consumes staging with nonpending/reachable state; consumed original requires scoped PG head/epoch protocol rows and independently committed journal transition plus exact cipher-confirmation witness, never a canonical receipt or GC deletion permit"
+    },
+    "storage_tombstone_publications": {
+      "migration": "g1-storage/migrations/0007_tombstone_publication.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "actor_id",
+        "command_key",
+        "class",
+        "id",
+        "revision",
+        "witness",
+        "at"
+      ],
+      "owner": "synthetic exact-record tombstone owner: immutable original actor/key/class/ID/revision/witness/time with composite FKs to original epoch, accepted head and current tombstone; protocol marker excluded from backup/controlDigest; no payload erasure, descendant completion or undelete authority"
+    },
+    "storage_tombstones": {
+      "migration": "g1-storage/migrations/0002_current_authority.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "class",
+        "id",
+        "revision",
+        "epoch",
+        "command_key",
+        "at"
+      ],
+      "owner": "lifecycle: ID/class/revision/epoch/time/command key; monotonic"
+    },
+    "storage_volume_promotions": {
+      "migration": "g1-storage/migrations/0019_volume_promotion.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "id",
+        "revision",
+        "kind",
+        "artifact_id",
+        "actor_id",
+        "command_key",
+        "base_revision",
+        "draft_id",
+        "draft_revision",
+        "draft_kind",
+        "draft_artifact_id",
+        "validation_id"
+      ],
+      "owner": "F05 installed storage owner; see named migration and executable class bindings"
+    },
+    "storage_volume_versions": {
+      "migration": "g1-storage/migrations/0018_volume_drafts.sql",
+      "columns": [
+        "tenant_id",
+        "space_id",
+        "kind",
+        "id",
+        "revision",
+        "artifact_id",
+        "actor_id",
+        "command_key",
+        "session_id",
+        "task_id",
+        "run_id",
+        "worker_generation",
+        "base_revision",
+        "checkpoint_file_count",
+        "index_witness",
+        "epoch",
+        "confirmed_at",
+        "expires_at"
+      ],
+      "owner": "logical volume/draft owner: migration18 immutable forced-service-RLS exact tenant/Space/kind/logical ID/revision/artifact ID/actor/original key/session/Task/Run/workerGeneration/baseRevision/checkpointFileCount/scoped keyed index witness/epoch/confirmedAt/expiry; FK to exact same-transaction artifact and original native session; independently witnessed command/outbox set detects missing index, installed keyed proof detects substituted logical mapping before current-version selection; narrow CAS function and deferred evidence require exact logical row and included count at COMMIT; no filenames, paths, body bytes or global content digests; content reads still require current original head/audience/expiry/source authority; later logical delete propagation and archive/import qualification remain pending"
+    }
+  },
+  "currentImplementations": {
+    "derivedPayloadStore": "fabric.storage_graph_payloads.envelope; summary/index/cache exact encrypted bytes/dependencies; predecessor storage_derived descriptors are historical baseline descriptions",
+    "backupCapture": "actual coherent capture and confirmation tested R09; predecessor graph backupCaptureQualification=pending is historical inventory language",
+    "http": "remember/remember-lookup/Ask/Ask-service/Ask-receipt/query-controls and knowledge save/lookup; lifecycle/recovery use trusted authenticated service API, no advertised public HTTP endpoint",
+    "qualifiedNow": "only separately recorded controller slice results; full E/H/D suites, security/reviews/final/product remain pending"
+  }
+}

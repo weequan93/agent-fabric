@@ -1,0 +1,3594 @@
+{
+  "schemaVersion": 1,
+  "assurance": "deterministic-local-only",
+  "scope": "f05-03 partial: authenticated durable reservation and byte/manifest confirmation only; publication, canonical command outcomes, authenticated GC settlement and process-kill schedules remain pending",
+  "externalQualification": "pending",
+  "precedingIndexes": [
+    {
+      "path": "g1-storage/evidence/f05-03-staging-v1.json",
+      "bytes": 72543,
+      "sha256": "b3f09d16955a4f11e82d77c4092e7196be6c409852bf14f883115007a4ad689e"
+    },
+    {
+      "path": "g1-storage/evidence/f05-02-completion-v1.json",
+      "bytes": 80770,
+      "sha256": "cc2c049c983dfdff2661f8782252a69b51e503e971d9555386df64277e884bc0"
+    }
+  ],
+  "checks": [
+    {
+      "jobId": "job-983623347b",
+      "check": "f05-03.encryption-component",
+      "status": "pass",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-983623347b/f05-03.encryption-component/stdout.log",
+          "bytes": 8279,
+          "sha256": "f3163bf123352afd85423f3df3df8f844f04158e9fa7a75902bf69e39364ea77",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-983623347b/f05-03.encryption-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-983623347b/f05-03.encryption-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-983623347b/f05-03.encryption-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:2067c69c415eec6049710bf0ab9025e51e7e295d8ab30fb595bbffc4bc782621",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "61f30868-04d4-43af-90a5-902a5219dd48",
+          "instance": "a0dc1244-10ed-48e9-b25b-ba57bbef5750",
+          "containerId": "4f97479e7aa1f78af18452c0b34d5746733d3683ffe494d2090b5b81bdc6641f",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "bac30125-8f31-4045-8532-744c70368f5f",
+              "device": 16777238,
+              "inode": 324302596
+            },
+            "backup": {
+              "rootId": "888d14dd-7459-45b3-89a5-f15aac1fc447",
+              "device": 16777238,
+              "inode": 324302598
+            },
+            "restore": {
+              "rootId": "ef7e5cb3-aba7-4f16-acbc-bcb0212f7896",
+              "device": 16777238,
+              "inode": 324302600
+            },
+            "authority": {
+              "rootId": "13d2c772-ec10-46b2-8852-ca05d908c1ce",
+              "device": 16777238,
+              "inode": 324302602
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "3e68ac24-7f2d-4eef-ad3e-1433c9bca9ea",
+            "device": 16777238,
+            "inode": 324302594
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 766,
+            "digest": "1be1ec8f0ceac78ae886beab363e1d6b336841ba65f88a46cbca9bd142b319bc"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 27026,
+          "marker": "f35ae997-b148-461f-b04b-112b7d0c5072",
+          "instance": "26923/Thu Oct  8 08:55:24 2026",
+          "ppid": 27024,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "encryption",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 49,
+            "write": 49,
+            "deny": 59,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 27026,
+          "instance": "26923/Thu Oct  8 08:55:24 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "61f30868-04d4-43af-90a5-902a5219dd48",
+          "instance": "a0dc1244-10ed-48e9-b25b-ba57bbef5750",
+          "containerId": "4f97479e7aa1f78af18452c0b34d5746733d3683ffe494d2090b5b81bdc6641f",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 766,
+            "digest": "7eb00c9900b0a86dfe49dcd4c45d5e7c9df1418a32454e0daa969bb2edba2b54"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "61f30868-04d4-43af-90a5-902a5219dd48",
+          "instance": "a0dc1244-10ed-48e9-b25b-ba57bbef5750",
+          "rootId": "3e68ac24-7f2d-4eef-ad3e-1433c9bca9ea",
+          "rootIds": [
+            "bac30125-8f31-4045-8532-744c70368f5f",
+            "888d14dd-7459-45b3-89a5-f15aac1fc447",
+            "ef7e5cb3-aba7-4f16-acbc-bcb0212f7896",
+            "13d2c772-ec10-46b2-8852-ca05d908c1ce"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "encryption",
+              "tests": 8,
+              "cases": [
+                "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+              ],
+              "variants": [
+                "ENCRYPTION/roundtrip-nonce",
+                "ENCRYPTION/capability-races",
+                "ENCRYPTION/real-pg-file-copies",
+                "ENCRYPTION/all-aad-dimensions",
+                "ENCRYPTION/cipher-and-key-refusals",
+                "ENCRYPTION/scoped-fingerprints",
+                "ENCRYPTION/closed-input-and-bounds"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "ENCRYPTION/roundtrip-nonce",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "ENCRYPTION/capability-races",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "ENCRYPTION/real-pg-file-copies",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "ENCRYPTION/all-aad-dimensions",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "ENCRYPTION/cipher-and-key-refusals",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "ENCRYPTION/scoped-fingerprints",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "ENCRYPTION/closed-input-and-bounds",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "encryption",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 49,
+                  "write": 49,
+                  "deny": 59,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-983623347b",
+      "check": "f05-03.staging-component",
+      "status": "fail",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-983623347b/f05-03.staging-component/stdout.log",
+          "bytes": 14446,
+          "sha256": "cf4f7d59fcc68407af76272a71e322af1bf3bff0197955b52c4df176d9798995",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-983623347b/f05-03.staging-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-983623347b/f05-03.staging-component/stderr.log",
+          "bytes": 2164,
+          "sha256": "cb3399611f82e9c296274b2e7282651bbc99b48a0e2b97ae9db351fb628c4cc2",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-983623347b/f05-03.staging-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 21,
+        "pass": 17,
+        "fail": 4,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:2067c69c415eec6049710bf0ab9025e51e7e295d8ab30fb595bbffc4bc782621",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "10c575f3-7806-4a5f-9e0e-8ee6a9ffc06e",
+          "instance": "5f885069-08d9-4427-b255-74dbb762aba2",
+          "containerId": "eec1bdec9be655cb0025781d6cae1bf4ee4b4165e1cca658ee6dccfb9cc19b85",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "aa17d516-f999-4dad-b304-811cb3a9f685",
+              "device": 16777238,
+              "inode": 324303175
+            },
+            "backup": {
+              "rootId": "d0d7bc9a-c069-4f0a-a60c-2fbe5c4d4a89",
+              "device": 16777238,
+              "inode": 324303177
+            },
+            "restore": {
+              "rootId": "61b0216c-a5b2-4cb5-841b-0d95c20d397d",
+              "device": 16777238,
+              "inode": 324303179
+            },
+            "authority": {
+              "rootId": "31d8dbc2-7361-4241-8a12-9a4e3f64fbd9",
+              "device": 16777238,
+              "inode": 324303181
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "ee158bdb-200b-4e1f-a314-bcf765a85767",
+            "device": 16777238,
+            "inode": 324303173
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 766,
+            "digest": "67d37b9cb1b278e87c88615e3cc3851080d8a294c340a38bebcf5623769e95de"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 27198,
+          "marker": "700c92b0-3012-4969-8199-50862bbe02a7",
+          "instance": "27098/Thu Oct  8 08:55:30 2026",
+          "ppid": 27196,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "staging",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 13,
+            "write": 50,
+            "deny": 68,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 27198,
+          "instance": "27098/Thu Oct  8 08:55:30 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "10c575f3-7806-4a5f-9e0e-8ee6a9ffc06e",
+          "instance": "5f885069-08d9-4427-b255-74dbb762aba2",
+          "containerId": "eec1bdec9be655cb0025781d6cae1bf4ee4b4165e1cca658ee6dccfb9cc19b85",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 766,
+            "digest": "26099aabd06411611f9205f5fdb8b3b76a83ceb461337cb7cce0cd684056f836"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "10c575f3-7806-4a5f-9e0e-8ee6a9ffc06e",
+          "instance": "5f885069-08d9-4427-b255-74dbb762aba2",
+          "rootId": "ee158bdb-200b-4e1f-a314-bcf765a85767",
+          "rootIds": [
+            "aa17d516-f999-4dad-b304-811cb3a9f685",
+            "d0d7bc9a-c069-4f0a-a60c-2fbe5c4d4a89",
+            "61b0216c-a5b2-4cb5-841b-0d95c20d397d",
+            "31d8dbc2-7361-4241-8a12-9a4e3f64fbd9"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-158e8be95f",
+      "check": "f05-03.encryption-component",
+      "status": "pass",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-158e8be95f/f05-03.encryption-component/stdout.log",
+          "bytes": 8278,
+          "sha256": "3c58d13ada36ae1621a30bec94c6ce058513aad2d301b0f5a43a15d742684904",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-158e8be95f/f05-03.encryption-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-158e8be95f/f05-03.encryption-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-158e8be95f/f05-03.encryption-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:902cabb68ab83bc4900154fca09f6d9618be7a8be0dde442abc21447f179419a",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "fe44b4d5-6fb0-4d37-b3e3-39e97a286429",
+          "instance": "f38b9f40-0688-4a67-8c46-7fd34c482141",
+          "containerId": "0eedbde7132cf11f1af5e62b3450e4b03aecc2aa273f6ca107db5b002abbde5f",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "e40a526d-20bc-44a0-af72-905dff6b24a0",
+              "device": 16777238,
+              "inode": 324304527
+            },
+            "backup": {
+              "rootId": "5bc7c275-3ee3-4050-a561-39db54ae2d8a",
+              "device": 16777238,
+              "inode": 324304529
+            },
+            "restore": {
+              "rootId": "cfa921ae-1840-425d-92b9-4a91fb242d5b",
+              "device": 16777238,
+              "inode": 324304531
+            },
+            "authority": {
+              "rootId": "2336ae75-3a6c-40b4-a3c9-be4b51d57b79",
+              "device": 16777238,
+              "inode": 324304533
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "57809738-f185-445d-ac2a-08047be81952",
+            "device": 16777238,
+            "inode": 324304525
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 765,
+            "digest": "fd3f7b3abd68a2149b563da2dc35bb2bda6329a00c7126ec4f1b4954323a9d90"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 27430,
+          "marker": "4a9dffa1-0dc8-45bd-b893-a96fab9cffe5",
+          "instance": "27330/Thu Oct  8 08:56:27 2026",
+          "ppid": 27428,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "encryption",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 49,
+            "write": 49,
+            "deny": 59,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 27430,
+          "instance": "27330/Thu Oct  8 08:56:27 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "fe44b4d5-6fb0-4d37-b3e3-39e97a286429",
+          "instance": "f38b9f40-0688-4a67-8c46-7fd34c482141",
+          "containerId": "0eedbde7132cf11f1af5e62b3450e4b03aecc2aa273f6ca107db5b002abbde5f",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 765,
+            "digest": "5129a9714060e7ea9d8e4bda2e19d64d0adf28cc6d9e4da71e163f9cac82d419"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "fe44b4d5-6fb0-4d37-b3e3-39e97a286429",
+          "instance": "f38b9f40-0688-4a67-8c46-7fd34c482141",
+          "rootId": "57809738-f185-445d-ac2a-08047be81952",
+          "rootIds": [
+            "e40a526d-20bc-44a0-af72-905dff6b24a0",
+            "5bc7c275-3ee3-4050-a561-39db54ae2d8a",
+            "cfa921ae-1840-425d-92b9-4a91fb242d5b",
+            "2336ae75-3a6c-40b4-a3c9-be4b51d57b79"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "encryption",
+              "tests": 8,
+              "cases": [
+                "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+              ],
+              "variants": [
+                "ENCRYPTION/roundtrip-nonce",
+                "ENCRYPTION/capability-races",
+                "ENCRYPTION/real-pg-file-copies",
+                "ENCRYPTION/all-aad-dimensions",
+                "ENCRYPTION/cipher-and-key-refusals",
+                "ENCRYPTION/scoped-fingerprints",
+                "ENCRYPTION/closed-input-and-bounds"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "ENCRYPTION/roundtrip-nonce",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "ENCRYPTION/capability-races",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "ENCRYPTION/real-pg-file-copies",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "ENCRYPTION/all-aad-dimensions",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "ENCRYPTION/cipher-and-key-refusals",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "ENCRYPTION/scoped-fingerprints",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "ENCRYPTION/closed-input-and-bounds",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "encryption",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 49,
+                  "write": 49,
+                  "deny": 59,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-158e8be95f",
+      "check": "f05-03.staging-component",
+      "status": "pass",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-158e8be95f/f05-03.staging-component/stdout.log",
+          "bytes": 13805,
+          "sha256": "c1adb4e65608f1a35e7d9fd3ebafdf04cf5072ab1a7d88310ccb3380635b65fa",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-158e8be95f/f05-03.staging-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-158e8be95f/f05-03.staging-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-158e8be95f/f05-03.staging-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:902cabb68ab83bc4900154fca09f6d9618be7a8be0dde442abc21447f179419a",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "2730eba4-3029-421e-8633-fa9a39ea87f1",
+          "instance": "07182d6c-b36e-4682-b619-e58ad2e8e85a",
+          "containerId": "6b547c69789346d7a3ac6bafa5a09d96fa4724b7e2a33bc07adabc1cc17447e1",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "49e144cc-94e7-4144-906f-bc494f806b1f",
+              "device": 16777238,
+              "inode": 324305106
+            },
+            "backup": {
+              "rootId": "b55564b6-3ccc-4c14-ac53-7eea0f7d268c",
+              "device": 16777238,
+              "inode": 324305108
+            },
+            "restore": {
+              "rootId": "d9de6b78-ee63-4da7-ad85-19d2ec34d700",
+              "device": 16777238,
+              "inode": 324305110
+            },
+            "authority": {
+              "rootId": "47cb308b-03e9-4214-8e56-328369e5bc97",
+              "device": 16777238,
+              "inode": 324305112
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "8fdf5b28-7017-4bf2-af14-c3fbc09150e8",
+            "device": 16777238,
+            "inode": 324305104
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 765,
+            "digest": "0697333a1d2aed6795b792628280e684b7414a7ba57613ed3b054693ae3a222b"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 27589,
+          "marker": "2aa68325-bd93-416a-a5cd-1f20666eacc2",
+          "instance": "27490/Thu Oct  8 08:56:32 2026",
+          "ppid": 27587,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "staging",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 14,
+            "write": 50,
+            "deny": 70,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 27589,
+          "instance": "27490/Thu Oct  8 08:56:32 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "2730eba4-3029-421e-8633-fa9a39ea87f1",
+          "instance": "07182d6c-b36e-4682-b619-e58ad2e8e85a",
+          "containerId": "6b547c69789346d7a3ac6bafa5a09d96fa4724b7e2a33bc07adabc1cc17447e1",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 765,
+            "digest": "c36390796f57e4d4b206729c578f208fa1c58cde21b5e078eda061fb01fb2dab"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "2730eba4-3029-421e-8633-fa9a39ea87f1",
+          "instance": "07182d6c-b36e-4682-b619-e58ad2e8e85a",
+          "rootId": "8fdf5b28-7017-4bf2-af14-c3fbc09150e8",
+          "rootIds": [
+            "49e144cc-94e7-4144-906f-bc494f806b1f",
+            "b55564b6-3ccc-4c14-ac53-7eea0f7d268c",
+            "d9de6b78-ee63-4da7-ad85-19d2ec34d700",
+            "47cb308b-03e9-4214-8e56-328369e5bc97"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "staging",
+              "tests": 21,
+              "cases": [
+                "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+              ],
+              "variants": [
+                "STAGING/durable-confirmation-recreated",
+                "STAGING/exact-empty-and-scoped-files",
+                "STAGING/corrupt-missing-manifest-byte-key",
+                "STAGING/leases-pending-unknown-orphan",
+                "STAGING/gc-stage-first-observed-wait",
+                "STAGING/gc-publication-first-observed-wait",
+                "STAGING/gc-first-blocks-publication",
+                "STAGING/partial-phase-and-quarantine-recovery",
+                "STAGING/ownership-symlink-hardlink-cleanup-failures",
+                "STAGING/real-cleanup-syscall-failure",
+                "STAGING/owner-uncertain-ack-no-replay",
+                "STAGING/verified-byte-snapshot",
+                "STAGING/retained-copies-no-content-keys",
+                "STAGING/authenticated-preparation-migration",
+                "STAGING/authenticated-preparation-exact-and-original",
+                "STAGING/authenticated-preparation-boundaries",
+                "STAGING/authenticated-preparation-current-generation-and-authority",
+                "STAGING/authenticated-preparation-native-stop-and-purpose",
+                "STAGING/authenticated-preparation-concurrent-original",
+                "STAGING/authenticated-preparation-after-file-wait"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "STAGING/durable-confirmation-recreated",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "STAGING/exact-empty-and-scoped-files",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "STAGING/corrupt-missing-manifest-byte-key",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "STAGING/leases-pending-unknown-orphan",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "STAGING/gc-stage-first-observed-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "STAGING/gc-publication-first-observed-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "STAGING/gc-first-blocks-publication",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "STAGING/partial-phase-and-quarantine-recovery",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "STAGING/ownership-symlink-hardlink-cleanup-failures",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "STAGING/real-cleanup-syscall-failure",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "STAGING/owner-uncertain-ack-no-replay",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 12,
+                  "name": "STAGING/verified-byte-snapshot",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 13,
+                  "name": "STAGING/retained-copies-no-content-keys",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 14,
+                  "name": "STAGING/authenticated-preparation-migration",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 15,
+                  "name": "STAGING/authenticated-preparation-exact-and-original",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 16,
+                  "name": "STAGING/authenticated-preparation-boundaries",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 17,
+                  "name": "STAGING/authenticated-preparation-current-generation-and-authority",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 18,
+                  "name": "STAGING/authenticated-preparation-native-stop-and-purpose",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 19,
+                  "name": "STAGING/authenticated-preparation-concurrent-original",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 20,
+                  "name": "STAGING/authenticated-preparation-after-file-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "staging",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 14,
+                  "write": 50,
+                  "deny": 70,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-67e0c00d55",
+      "check": "f05-02.authority-component",
+      "status": "pass",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-67e0c00d55/f05-02.authority-component/stdout.log",
+          "bytes": 44078,
+          "sha256": "f0e32664b542a1e6015bec6ed6cddc4f8921f8be4d8268ab96293f013be9415f",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-67e0c00d55/f05-02.authority-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-67e0c00d55/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-67e0c00d55/f05-02.authority-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 118,
+        "pass": 118,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:902cabb68ab83bc4900154fca09f6d9618be7a8be0dde442abc21447f179419a",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "aa3697d5-aed9-4baf-a3fc-0288cb95a2b4",
+          "instance": "4a9585c9-10f1-430c-b5b3-ad03067002c5",
+          "containerId": "6dde7ce6ebd84e3afbe808d548c648ebfefcf74cc0e233eed48d1bf491818437",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "debee242-8f6e-405d-bc2e-df41c0b167c0",
+              "device": 16777238,
+              "inode": 324305887
+            },
+            "backup": {
+              "rootId": "4b3553fd-fcce-4588-a84f-be2caa1276a6",
+              "device": 16777238,
+              "inode": 324305889
+            },
+            "restore": {
+              "rootId": "1a5ae258-23a8-4a17-bef2-26d7394eaaef",
+              "device": 16777238,
+              "inode": 324305891
+            },
+            "authority": {
+              "rootId": "154835e4-55c4-454b-912c-dd6ba3656604",
+              "device": 16777238,
+              "inode": 324305893
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "38af1fde-03c3-4161-8131-d26f25308578",
+            "device": 16777238,
+            "inode": 324305885
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 766,
+            "digest": "1334424cc9f3c6c7d49b54fe3e574780ee169c7f8de1e3894b308d96e461f519"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 27824,
+          "marker": "6e8c088b-7d58-4bbc-863f-00ef9c1f4834",
+          "instance": "27663/Thu Oct  8 08:57:00 2026",
+          "ppid": 27811,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "authority",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 289,
+            "write": 0,
+            "deny": 629,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 6,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 27824,
+          "instance": "27663/Thu Oct  8 08:57:00 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "aa3697d5-aed9-4baf-a3fc-0288cb95a2b4",
+          "instance": "4a9585c9-10f1-430c-b5b3-ad03067002c5",
+          "containerId": "6dde7ce6ebd84e3afbe808d548c648ebfefcf74cc0e233eed48d1bf491818437",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 766,
+            "digest": "39503bb5c6c5f8388ed299068805bf63b18a24d7ce8053cbf10576feafe141e2"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "aa3697d5-aed9-4baf-a3fc-0288cb95a2b4",
+          "instance": "4a9585c9-10f1-430c-b5b3-ad03067002c5",
+          "rootId": "38af1fde-03c3-4161-8131-d26f25308578",
+          "rootIds": [
+            "debee242-8f6e-405d-bc2e-df41c0b167c0",
+            "4b3553fd-fcce-4588-a84f-be2caa1276a6",
+            "1a5ae258-23a8-4a17-bef2-26d7394eaaef",
+            "154835e4-55c4-454b-912c-dd6ba3656604"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "authority",
+              "tests": 118,
+              "cases": [
+                "AUTHORITY/behavior / real authenticated current control ledger"
+              ],
+              "variants": [
+                "AUTHORITY/migration",
+                "AUTHORITY/live-owners",
+                "AUTHORITY/scope-negative",
+                "AUTHORITY/database-roles",
+                "AUTHORITY/grants-policy",
+                "AUTHORITY/anchor-recovery",
+                "AUTHORITY/expiry-after-wait",
+                "AUTHORITY/shared-live",
+                "AUTHORITY/shared-negative",
+                "AUTHORITY/shared-roles",
+                "AUTHORITY/shared-current",
+                "AUTHORITY/shared-lock-order",
+                "AUTHORITY/accounting-ask",
+                "AUTHORITY/accounting-maintenance",
+                "AUTHORITY/accounting-rollback",
+                "AUTHORITY/accounting-negative",
+                "AUTHORITY/accounting-expiry-wait",
+                "AUTHORITY/shared-accounting-order",
+                "AUTHORITY/shared-accounting-grant-wait",
+                "AUTHORITY/shared-accounting-dependencies",
+                "AUTHORITY/maintenance-grant-wait",
+                "AUTHORITY/epoch-publication",
+                "AUTHORITY/epoch-rollback",
+                "AUTHORITY/epoch-ack-gap",
+                "AUTHORITY/epoch-wire-unknown",
+                "AUTHORITY/epoch-wire-rollback",
+                "AUTHORITY/epoch-journal-cas",
+                "AUTHORITY/epoch-concurrency",
+                "AUTHORITY/epoch-journal-integrity",
+                "AUTHORITY/epoch-roles",
+                "AUTHORITY/policy-publication",
+                "AUTHORITY/policy-negative",
+                "AUTHORITY/policy-rollback",
+                "AUTHORITY/policy-ack-gap",
+                "AUTHORITY/policy-wire-outcomes",
+                "AUTHORITY/policy-concurrency",
+                "AUTHORITY/policy-expiry",
+                "AUTHORITY/policy-roles",
+                "AUTHORITY/policy-admin-grant-wait",
+                "AUTHORITY/policy-current",
+                "AUTHORITY/source-publication",
+                "AUTHORITY/source-negative",
+                "AUTHORITY/source-rollback",
+                "AUTHORITY/source-ack-gap",
+                "AUTHORITY/source-wire-outcomes",
+                "AUTHORITY/source-concurrency",
+                "AUTHORITY/source-expiry",
+                "AUTHORITY/source-roles",
+                "AUTHORITY/source-grant-wait",
+                "AUTHORITY/source-journal-branches",
+                "AUTHORITY/tombstone-publication",
+                "AUTHORITY/tombstone-class-lineage",
+                "AUTHORITY/tombstone-negative",
+                "AUTHORITY/tombstone-rollback",
+                "AUTHORITY/tombstone-ack-gap",
+                "AUTHORITY/tombstone-wire-outcomes",
+                "AUTHORITY/tombstone-concurrency",
+                "AUTHORITY/tombstone-expiry",
+                "AUTHORITY/tombstone-roles",
+                "AUTHORITY/tombstone-grant-wait",
+                "AUTHORITY/tombstone-journal-branches",
+                "AUTHORITY/forget-work-publication",
+                "AUTHORITY/forget-work-class-lineage",
+                "AUTHORITY/forget-work-negative",
+                "AUTHORITY/forget-work-rollback",
+                "AUTHORITY/forget-work-partial-write",
+                "AUTHORITY/forget-work-original-isolation",
+                "AUTHORITY/forget-work-ack-gap",
+                "AUTHORITY/forget-work-wire-outcomes",
+                "AUTHORITY/forget-work-concurrency",
+                "AUTHORITY/forget-work-expiry",
+                "AUTHORITY/forget-work-roles",
+                "AUTHORITY/forget-work-grant-wait",
+                "AUTHORITY/forget-work-journal-branches",
+                "AUTHORITY/control-read-preparation",
+                "AUTHORITY/control-read-audience",
+                "AUTHORITY/control-read-audience-wait",
+                "AUTHORITY/control-read-lineage",
+                "AUTHORITY/control-read-pending-audience",
+                "AUTHORITY/control-read-native-stop",
+                "AUTHORITY/entity-read-preparation",
+                "AUTHORITY/entity-read-audience",
+                "AUTHORITY/entity-read-audience-wait",
+                "AUTHORITY/entity-read-lineage",
+                "AUTHORITY/entity-read-scope",
+                "AUTHORITY/entity-read-expiry-wait",
+                "AUTHORITY/entity-read-remaining-audience",
+                "AUTHORITY/shared-revocation",
+                "AUTHORITY/remaining-audience",
+                "AUTHORITY/restriction-session",
+                "AUTHORITY/head-publication",
+                "AUTHORITY/head-correction",
+                "AUTHORITY/head-negative",
+                "AUTHORITY/head-rollback",
+                "AUTHORITY/head-partial-write",
+                "AUTHORITY/head-ack-gap",
+                "AUTHORITY/head-wire-outcomes",
+                "AUTHORITY/head-concurrency",
+                "AUTHORITY/head-expiry",
+                "AUTHORITY/head-roles",
+                "AUTHORITY/head-audience-wait",
+                "AUTHORITY/head-restricted-reuse",
+                "AUTHORITY/head-shared-controls",
+                "AUTHORITY/head-grant-wait",
+                "AUTHORITY/head-journal-branches",
+                "AUTHORITY/share-publication",
+                "AUTHORITY/share-publication-anchor-loss",
+                "AUTHORITY/share-publication-negative",
+                "AUTHORITY/share-publication-rollback",
+                "AUTHORITY/share-publication-ack-gap",
+                "AUTHORITY/share-publication-wire-outcomes",
+                "AUTHORITY/share-publication-lock-order",
+                "AUTHORITY/share-publication-expiry",
+                "AUTHORITY/share-publication-roles",
+                "AUTHORITY/share-publication-current-audience",
+                "AUTHORITY/share-publication-source-restriction",
+                "AUTHORITY/share-publication-journal-branches"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "AUTHORITY/migration",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "AUTHORITY/live-owners",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "AUTHORITY/scope-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "AUTHORITY/database-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "AUTHORITY/grants-policy",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "AUTHORITY/anchor-recovery",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "AUTHORITY/expiry-after-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "AUTHORITY/shared-live",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "AUTHORITY/shared-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "AUTHORITY/shared-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "AUTHORITY/shared-current",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 12,
+                  "name": "AUTHORITY/shared-lock-order",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 13,
+                  "name": "AUTHORITY/accounting-ask",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 14,
+                  "name": "AUTHORITY/accounting-maintenance",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 15,
+                  "name": "AUTHORITY/accounting-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 16,
+                  "name": "AUTHORITY/accounting-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 17,
+                  "name": "AUTHORITY/accounting-expiry-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 18,
+                  "name": "AUTHORITY/shared-accounting-order",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 19,
+                  "name": "AUTHORITY/shared-accounting-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 20,
+                  "name": "AUTHORITY/shared-accounting-dependencies",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 21,
+                  "name": "AUTHORITY/maintenance-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 22,
+                  "name": "AUTHORITY/epoch-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 23,
+                  "name": "AUTHORITY/epoch-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 24,
+                  "name": "AUTHORITY/epoch-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 25,
+                  "name": "AUTHORITY/epoch-wire-unknown",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 26,
+                  "name": "AUTHORITY/epoch-wire-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 27,
+                  "name": "AUTHORITY/epoch-journal-cas",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 28,
+                  "name": "AUTHORITY/epoch-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 29,
+                  "name": "AUTHORITY/epoch-journal-integrity",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 30,
+                  "name": "AUTHORITY/epoch-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 31,
+                  "name": "AUTHORITY/policy-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 32,
+                  "name": "AUTHORITY/policy-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 33,
+                  "name": "AUTHORITY/policy-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 34,
+                  "name": "AUTHORITY/policy-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 35,
+                  "name": "AUTHORITY/policy-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 36,
+                  "name": "AUTHORITY/policy-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 37,
+                  "name": "AUTHORITY/policy-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 38,
+                  "name": "AUTHORITY/policy-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 39,
+                  "name": "AUTHORITY/policy-admin-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 40,
+                  "name": "AUTHORITY/policy-current",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 41,
+                  "name": "AUTHORITY/source-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 42,
+                  "name": "AUTHORITY/source-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 43,
+                  "name": "AUTHORITY/source-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 44,
+                  "name": "AUTHORITY/source-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 45,
+                  "name": "AUTHORITY/source-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 46,
+                  "name": "AUTHORITY/source-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 47,
+                  "name": "AUTHORITY/source-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 48,
+                  "name": "AUTHORITY/source-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 49,
+                  "name": "AUTHORITY/source-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 50,
+                  "name": "AUTHORITY/source-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 51,
+                  "name": "AUTHORITY/tombstone-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 52,
+                  "name": "AUTHORITY/tombstone-class-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 53,
+                  "name": "AUTHORITY/tombstone-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 54,
+                  "name": "AUTHORITY/tombstone-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 55,
+                  "name": "AUTHORITY/tombstone-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 56,
+                  "name": "AUTHORITY/tombstone-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 57,
+                  "name": "AUTHORITY/tombstone-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 58,
+                  "name": "AUTHORITY/tombstone-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 59,
+                  "name": "AUTHORITY/tombstone-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 60,
+                  "name": "AUTHORITY/tombstone-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 61,
+                  "name": "AUTHORITY/tombstone-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 62,
+                  "name": "AUTHORITY/forget-work-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 63,
+                  "name": "AUTHORITY/forget-work-class-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 64,
+                  "name": "AUTHORITY/forget-work-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 65,
+                  "name": "AUTHORITY/forget-work-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 66,
+                  "name": "AUTHORITY/forget-work-partial-write",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 67,
+                  "name": "AUTHORITY/forget-work-original-isolation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 68,
+                  "name": "AUTHORITY/forget-work-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 69,
+                  "name": "AUTHORITY/forget-work-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 70,
+                  "name": "AUTHORITY/forget-work-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 71,
+                  "name": "AUTHORITY/forget-work-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 72,
+                  "name": "AUTHORITY/forget-work-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 73,
+                  "name": "AUTHORITY/forget-work-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 74,
+                  "name": "AUTHORITY/forget-work-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 75,
+                  "name": "AUTHORITY/control-read-preparation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 76,
+                  "name": "AUTHORITY/control-read-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 77,
+                  "name": "AUTHORITY/control-read-audience-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 78,
+                  "name": "AUTHORITY/control-read-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 79,
+                  "name": "AUTHORITY/control-read-pending-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 80,
+                  "name": "AUTHORITY/control-read-native-stop",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 81,
+                  "name": "AUTHORITY/entity-read-preparation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 82,
+                  "name": "AUTHORITY/entity-read-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 83,
+                  "name": "AUTHORITY/entity-read-audience-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 84,
+                  "name": "AUTHORITY/entity-read-lineage",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 85,
+                  "name": "AUTHORITY/entity-read-scope",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 86,
+                  "name": "AUTHORITY/entity-read-expiry-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 87,
+                  "name": "AUTHORITY/entity-read-remaining-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 88,
+                  "name": "AUTHORITY/shared-revocation",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 89,
+                  "name": "AUTHORITY/remaining-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 90,
+                  "name": "AUTHORITY/restriction-session",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 91,
+                  "name": "AUTHORITY/head-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 92,
+                  "name": "AUTHORITY/head-correction",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 93,
+                  "name": "AUTHORITY/head-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 94,
+                  "name": "AUTHORITY/head-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 95,
+                  "name": "AUTHORITY/head-partial-write",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 96,
+                  "name": "AUTHORITY/head-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 97,
+                  "name": "AUTHORITY/head-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 98,
+                  "name": "AUTHORITY/head-concurrency",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 99,
+                  "name": "AUTHORITY/head-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 100,
+                  "name": "AUTHORITY/head-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 101,
+                  "name": "AUTHORITY/head-audience-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 102,
+                  "name": "AUTHORITY/head-restricted-reuse",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 103,
+                  "name": "AUTHORITY/head-shared-controls",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 104,
+                  "name": "AUTHORITY/head-grant-wait",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 105,
+                  "name": "AUTHORITY/head-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 106,
+                  "name": "AUTHORITY/share-publication",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 107,
+                  "name": "AUTHORITY/share-publication-anchor-loss",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 108,
+                  "name": "AUTHORITY/share-publication-negative",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 109,
+                  "name": "AUTHORITY/share-publication-rollback",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 110,
+                  "name": "AUTHORITY/share-publication-ack-gap",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 111,
+                  "name": "AUTHORITY/share-publication-wire-outcomes",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 112,
+                  "name": "AUTHORITY/share-publication-lock-order",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 113,
+                  "name": "AUTHORITY/share-publication-expiry",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 114,
+                  "name": "AUTHORITY/share-publication-roles",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 115,
+                  "name": "AUTHORITY/share-publication-current-audience",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 116,
+                  "name": "AUTHORITY/share-publication-source-restriction",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 4,
+                  "number": 117,
+                  "name": "AUTHORITY/share-publication-journal-branches",
+                  "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "AUTHORITY/behavior / real authenticated current control ledger",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "authority",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 289,
+                  "write": 0,
+                  "deny": 629,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 6,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-67e0c00d55",
+      "check": "f05-02.migration-component",
+      "status": "pass",
+      "currentImplementationCheck": false,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-67e0c00d55/f05-02.migration-component/stdout.log",
+          "bytes": 8933,
+          "sha256": "983c6560c215c04e61891cc75a4d643dc491727b04ec12fb8944b5c971994ba0",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-67e0c00d55/f05-02.migration-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-67e0c00d55/f05-02.migration-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-67e0c00d55/f05-02.migration-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:902cabb68ab83bc4900154fca09f6d9618be7a8be0dde442abc21447f179419a",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "5d0d2fae-014a-49ab-b427-bb1f9064b520",
+          "instance": "8aa055e7-19cc-4848-9bd6-e568e4af9d9c",
+          "containerId": "c36240e68014487f79eec20311afc1e5c33606cc89eaff49a86c6f7aa02eb023",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "1b0f21f6-4619-4686-93fc-e3b248767ff5",
+              "device": 16777238,
+              "inode": 324307132
+            },
+            "backup": {
+              "rootId": "28d8e463-c526-423a-8e47-5a0d5e444a23",
+              "device": 16777238,
+              "inode": 324307134
+            },
+            "restore": {
+              "rootId": "fde17316-3715-4f18-8b42-e086aeeacc6b",
+              "device": 16777238,
+              "inode": 324307136
+            },
+            "authority": {
+              "rootId": "ff62b3ea-743d-4ff0-a811-186724a6aa0a",
+              "device": 16777238,
+              "inode": 324307138
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "69f77368-1c7d-4add-a601-9053eb8fa987",
+            "device": 16777238,
+            "inode": 324307130
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 776,
+            "digest": "3c71c684fc1dafd5251a679fbdf012d00453c37ebcda7e0da7e8ff2136f2e69f"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 28034,
+          "marker": "b5dc76a0-e25a-487c-8f6a-e906c128274b",
+          "instance": "27914/Thu Oct  8 08:58:24 2026",
+          "ppid": 28032,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "migration",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 0,
+            "write": 0,
+            "deny": 60,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 2,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 28034,
+          "instance": "27914/Thu Oct  8 08:58:24 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "5d0d2fae-014a-49ab-b427-bb1f9064b520",
+          "instance": "8aa055e7-19cc-4848-9bd6-e568e4af9d9c",
+          "containerId": "c36240e68014487f79eec20311afc1e5c33606cc89eaff49a86c6f7aa02eb023",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 776,
+            "digest": "8aee8d64d83fed67436eb935237f73b40a172c1e78794faac7a75fc04516e23e"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "5d0d2fae-014a-49ab-b427-bb1f9064b520",
+          "instance": "8aa055e7-19cc-4848-9bd6-e568e4af9d9c",
+          "rootId": "69f77368-1c7d-4add-a601-9053eb8fa987",
+          "rootIds": [
+            "1b0f21f6-4619-4686-93fc-e3b248767ff5",
+            "28d8e463-c526-423a-8e47-5a0d5e444a23",
+            "fde17316-3715-4f18-8b42-e086aeeacc6b",
+            "ff62b3ea-743d-4ff0-a811-186724a6aa0a"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "migration",
+              "tests": 8,
+              "cases": [
+                "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              ],
+              "variants": [
+                "rollback leaves original FK, schema and ledgers",
+                "unexpected installed FK refuses atomically",
+                "repeat, identity substitution and digest tamper",
+                "forced RLS and no enrollment/mutation grants",
+                "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                "original computer relation remains independently available"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "rollback leaves original FK, schema and ledgers",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "unexpected installed FK refuses atomically",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "repeat, identity substitution and digest tamper",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "forced RLS and no enrollment/mutation grants",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "original computer relation remains independently available",
+                  "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "MIGRATION/behavior / real owned subtype migration and installed accounting",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "migration",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 0,
+                  "write": 0,
+                  "deny": 60,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 2,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-618ef41f44",
+      "check": "f05-03.encryption-component",
+      "status": "pass",
+      "currentImplementationCheck": true,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-618ef41f44/f05-03.encryption-component/stdout.log",
+          "bytes": 8278,
+          "sha256": "03966b98227d2fa3f6c3649e4587a44ba67cd239fd88a8568f976c174a3f76a2",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-618ef41f44/f05-03.encryption-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-618ef41f44/f05-03.encryption-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-618ef41f44/f05-03.encryption-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:85bc06a94f71fd0fdd5ff1556cc35fa7508aacddeb68cc740819f75c4bdc44fb",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "a664ebea-691c-4e62-9376-2235d2a5066e",
+          "instance": "c645a038-d798-41c6-88cf-600a5af225aa",
+          "containerId": "681a9c4fce11646a8c9c29d0f64730a7d7aa059f6755424338d0779358654e20",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "dc5b584c-6e2d-497d-afbc-95c2eff178b4",
+              "device": 16777238,
+              "inode": 324308294
+            },
+            "backup": {
+              "rootId": "b2683921-bf9f-4857-a487-7cd1fb12de64",
+              "device": 16777238,
+              "inode": 324308296
+            },
+            "restore": {
+              "rootId": "608cb274-1715-41f0-a5cd-e892f9525fc0",
+              "device": 16777238,
+              "inode": 324308298
+            },
+            "authority": {
+              "rootId": "273d4f70-158d-42d0-be39-6855239096a7",
+              "device": 16777238,
+              "inode": 324308300
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "bb1c6074-0ef6-44da-ae2c-57b5425d8146",
+            "device": 16777238,
+            "inode": 324308292
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 776,
+            "digest": "d4452ccaee0b33c00a9a1cb659d13f5f9087f628f431fe4f04cfd909bfcb3d12"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 28248,
+          "marker": "85bd61b8-3efc-4f6f-a7a8-5c6b68f49323",
+          "instance": "28146/Thu Oct  8 08:58:50 2026",
+          "ppid": 28246,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "encryption",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 49,
+            "write": 49,
+            "deny": 59,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 28248,
+          "instance": "28146/Thu Oct  8 08:58:50 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "a664ebea-691c-4e62-9376-2235d2a5066e",
+          "instance": "c645a038-d798-41c6-88cf-600a5af225aa",
+          "containerId": "681a9c4fce11646a8c9c29d0f64730a7d7aa059f6755424338d0779358654e20",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 776,
+            "digest": "6405f77af65503ee860687a4b3d5be68baa44f014b2de8c892698d9f066d74a0"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "a664ebea-691c-4e62-9376-2235d2a5066e",
+          "instance": "c645a038-d798-41c6-88cf-600a5af225aa",
+          "rootId": "bb1c6074-0ef6-44da-ae2c-57b5425d8146",
+          "rootIds": [
+            "dc5b584c-6e2d-497d-afbc-95c2eff178b4",
+            "b2683921-bf9f-4857-a487-7cd1fb12de64",
+            "608cb274-1715-41f0-a5cd-e892f9525fc0",
+            "273d4f70-158d-42d0-be39-6855239096a7"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "encryption",
+              "tests": 8,
+              "cases": [
+                "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+              ],
+              "variants": [
+                "ENCRYPTION/roundtrip-nonce",
+                "ENCRYPTION/capability-races",
+                "ENCRYPTION/real-pg-file-copies",
+                "ENCRYPTION/all-aad-dimensions",
+                "ENCRYPTION/cipher-and-key-refusals",
+                "ENCRYPTION/scoped-fingerprints",
+                "ENCRYPTION/closed-input-and-bounds"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "ENCRYPTION/roundtrip-nonce",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "ENCRYPTION/capability-races",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "ENCRYPTION/real-pg-file-copies",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "ENCRYPTION/all-aad-dimensions",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "ENCRYPTION/cipher-and-key-refusals",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "ENCRYPTION/scoped-fingerprints",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "ENCRYPTION/closed-input-and-bounds",
+                  "parent": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "ENCRYPTION/behavior / primitive ciphertext, real retained copies and recreated readers",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "encryption",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 49,
+                  "write": 49,
+                  "deny": 59,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "jobId": "job-618ef41f44",
+      "check": "f05-03.staging-component",
+      "status": "pass",
+      "currentImplementationCheck": true,
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/job-618ef41f44/f05-03.staging-component/stdout.log",
+          "bytes": 13799,
+          "sha256": "07e156519074d2c102c15f2018003c284e287ab7a6249c1af23c0c96fe792601",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-618ef41f44/f05-03.staging-component/stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/job-618ef41f44/f05-03.staging-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-618ef41f44/f05-03.staging-component/stderr.log"
+        }
+      },
+      "tapTotals": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:85bc06a94f71fd0fdd5ff1556cc35fa7508aacddeb68cc740819f75c4bdc44fb",
+          "files": 370,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "761aecdb-00ae-4144-ad2a-caa60f01bbe1",
+          "instance": "161f400b-b804-408f-9e49-1fce75b39942",
+          "containerId": "00ba223f255aee82f62eaa3f6fa5dfb08fe292c0597bd35d023e4c2201c151dd",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "30ce7c28-d4a3-4272-abf3-a67266727d69",
+              "device": 16777238,
+              "inode": 324308874
+            },
+            "backup": {
+              "rootId": "69d0712c-199a-4f20-a822-751bfd59c8bc",
+              "device": 16777238,
+              "inode": 324308876
+            },
+            "restore": {
+              "rootId": "e7ba6f34-d430-4c7c-b4cf-fb25f481060d",
+              "device": 16777238,
+              "inode": 324308878
+            },
+            "authority": {
+              "rootId": "16e621eb-43c4-415a-8fa1-f7e0d2b12b21",
+              "device": 16777238,
+              "inode": 324308880
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "00113eec-c176-4923-b5b2-56020f5e7d88",
+            "device": 16777238,
+            "inode": 324308872
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 776,
+            "digest": "a2e553df4ce28436b090c789eb987d6a83f051ebd5be5ac917ae357a73312e0f"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "model-owned-process",
+          "pid": 28408,
+          "marker": "f2817485-33a3-471b-adf2-532384de8e01",
+          "instance": "28308/Thu Oct  8 08:58:56 2026",
+          "ppid": 28406,
+          "loopback": true
+        },
+        {
+          "schemaVersion": 1,
+          "measurement": "storage-observations",
+          "suite": "staging",
+          "positives": {
+            "save": 0,
+            "ask": 0,
+            "forget": 0,
+            "restore": 0,
+            "read": 14,
+            "write": 50,
+            "deny": 70,
+            "conflict": 0,
+            "propagate": 0,
+            "backup": 0,
+            "owner": 0,
+            "harness": 0
+          },
+          "violations": {
+            "unauthorizedDisclosure": 0,
+            "unauthorizedMutation": 0,
+            "silentLostUpdate": 0,
+            "duplicateCanonicalEffect": 0,
+            "restrictedResurrection": 0,
+            "askComputerStart": 0
+          }
+        },
+        {
+          "measurement": "model-owned-process-cleanup",
+          "pid": 28408,
+          "instance": "28308/Thu Oct  8 08:58:56 2026",
+          "signal": "SIGTERM",
+          "removed": true
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "761aecdb-00ae-4144-ad2a-caa60f01bbe1",
+          "instance": "161f400b-b804-408f-9e49-1fce75b39942",
+          "containerId": "00ba223f255aee82f62eaa3f6fa5dfb08fe292c0597bd35d023e4c2201c151dd",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 776,
+            "digest": "97e799f41de7bb0be482cb5953fa0b315871d2127bd2bd356bbee05106f00bac"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "761aecdb-00ae-4144-ad2a-caa60f01bbe1",
+          "instance": "161f400b-b804-408f-9e49-1fce75b39942",
+          "rootId": "00113eec-c176-4923-b5b2-56020f5e7d88",
+          "rootIds": [
+            "30ce7c28-d4a3-4272-abf3-a67266727d69",
+            "69d0712c-199a-4f20-a822-751bfd59c8bc",
+            "e7ba6f34-d430-4c7c-b4cf-fb25f481060d",
+            "16e621eb-43c4-415a-8fa1-f7e0d2b12b21"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "staging",
+              "tests": 21,
+              "cases": [
+                "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+              ],
+              "variants": [
+                "STAGING/durable-confirmation-recreated",
+                "STAGING/exact-empty-and-scoped-files",
+                "STAGING/corrupt-missing-manifest-byte-key",
+                "STAGING/leases-pending-unknown-orphan",
+                "STAGING/gc-stage-first-observed-wait",
+                "STAGING/gc-publication-first-observed-wait",
+                "STAGING/gc-first-blocks-publication",
+                "STAGING/partial-phase-and-quarantine-recovery",
+                "STAGING/ownership-symlink-hardlink-cleanup-failures",
+                "STAGING/real-cleanup-syscall-failure",
+                "STAGING/owner-uncertain-ack-no-replay",
+                "STAGING/verified-byte-snapshot",
+                "STAGING/retained-copies-no-content-keys",
+                "STAGING/authenticated-preparation-migration",
+                "STAGING/authenticated-preparation-exact-and-original",
+                "STAGING/authenticated-preparation-boundaries",
+                "STAGING/authenticated-preparation-current-generation-and-authority",
+                "STAGING/authenticated-preparation-native-stop-and-purpose",
+                "STAGING/authenticated-preparation-concurrent-original",
+                "STAGING/authenticated-preparation-after-file-wait"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "STAGING/durable-confirmation-recreated",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "STAGING/exact-empty-and-scoped-files",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "STAGING/corrupt-missing-manifest-byte-key",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "STAGING/leases-pending-unknown-orphan",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "STAGING/gc-stage-first-observed-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "STAGING/gc-publication-first-observed-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "STAGING/gc-first-blocks-publication",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "STAGING/partial-phase-and-quarantine-recovery",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "STAGING/ownership-symlink-hardlink-cleanup-failures",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "STAGING/real-cleanup-syscall-failure",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "STAGING/owner-uncertain-ack-no-replay",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 12,
+                  "name": "STAGING/verified-byte-snapshot",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 13,
+                  "name": "STAGING/retained-copies-no-content-keys",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 14,
+                  "name": "STAGING/authenticated-preparation-migration",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 15,
+                  "name": "STAGING/authenticated-preparation-exact-and-original",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 16,
+                  "name": "STAGING/authenticated-preparation-boundaries",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 17,
+                  "name": "STAGING/authenticated-preparation-current-generation-and-authority",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 18,
+                  "name": "STAGING/authenticated-preparation-native-stop-and-purpose",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 19,
+                  "name": "STAGING/authenticated-preparation-concurrent-original",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 4,
+                  "number": 20,
+                  "name": "STAGING/authenticated-preparation-after-file-wait",
+                  "parent": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "STAGING/behavior / owned durable ciphertext, locked leases and orphan quarantine",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "staging",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 14,
+                  "write": 50,
+                  "deny": 70,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ]
+    }
+  ],
+  "localDiagnostics": [
+    {
+      "check": "f05-turn25-staging-sandbox",
+      "status": "fail-before-resources",
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/turn25-local/f05-turn25-staging-sandbox/stdout.log",
+          "bytes": 2006,
+          "sha256": "72d697b16dd5c60f0584215310570ebbbbd1680cd3422ff48251e0e69008eca2",
+          "sourcePath": "/private/tmp/f05-turn25-staging-sandbox.stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/turn25-local/f05-turn25-staging-sandbox/stderr.log",
+          "bytes": 1006,
+          "sha256": "6ac458e55697617758f497ce97ceb5cd8104fd1e85a2dfdd1f9eef08a913907d",
+          "sourcePath": "/private/tmp/f05-turn25-staging-sandbox.stderr.log"
+        }
+      },
+      "controllerEvidence": false
+    },
+    {
+      "check": "f05-turn25-build",
+      "status": "pass",
+      "streams": {
+        "stdout": {
+          "path": "g1-storage/evidence/raw/turn25-local/f05-turn25-build/stdout.log",
+          "bytes": 1148,
+          "sha256": "438b559207b81b8a93e8e4b3f905fc5ac8d908f4e5af50098ed75591ea81b977",
+          "sourcePath": "/private/tmp/f05-turn25-build.stdout.log"
+        },
+        "stderr": {
+          "path": "g1-storage/evidence/raw/turn25-local/f05-turn25-build/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourcePath": "/private/tmp/f05-turn25-build.stderr.log"
+        }
+      },
+      "controllerEvidence": false
+    }
+  ],
+  "limitations": [
+    "No canonical save receipt or user-serving read",
+    "Unconsumed reservations conservatively remain pending; no GC deletion permit",
+    "Installed material resolver is synthetic current-generation/root/original binding capability; no independent staging-command rollback witness or command outcome qualification",
+    "No genuine staging wire-COMMIT uncertainty or filesystem process-kill qualification",
+    "No paid/shared/external resources or production credential/policy change"
+  ]
+}

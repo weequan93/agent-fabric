@@ -1,0 +1,882 @@
+{
+  "schemaVersion": 1,
+  "assurance": "deterministic-local-only",
+  "scope": "interim actual current-authority StorageServiceAccounting and sorted dependency diagnostics; f05-02 remains active",
+  "externalQualification": "pending",
+  "precedingIndex": {
+    "path": "g1-storage/evidence/f05-02-sharing-v2.json",
+    "bytes": 12463,
+    "sha256": "3fbede99fa9d4bf2a77aa453089c5aa764e2238c7b0a6f688857a2932fbb39e0"
+  },
+  "checks": [
+    {
+      "jobId": "job-38b47ab774",
+      "check": "f05-02.authority-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-38b47ab774/f05-02.authority-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-38b47ab774/f05-02.authority-component/stdout.log",
+          "bytes": 17982,
+          "sha256": "01a182ae8dbbc4bbb29ba9d7ee5e875d6c5b716ceba14b0e0666c37df9848936"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-38b47ab774/f05-02.authority-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-38b47ab774/f05-02.authority-component/stderr.log",
+          "bytes": 2164,
+          "sha256": "cb3399611f82e9c296274b2e7282651bbc99b48a0e2b97ae9db351fb628c4cc2"
+        }
+      },
+      "storageCandidateDigest": "sha256:58733f8ac13e1a91c7a6f359da72b927448f0421c9e57671dd6bc976601a1144",
+      "status": "fail"
+    },
+    {
+      "jobId": "job-38b47ab774",
+      "check": "f05-02.migration-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-38b47ab774/f05-02.migration-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-38b47ab774/f05-02.migration-component/stdout.log",
+          "bytes": 8796,
+          "sha256": "49a4999dce64a9e8f5bc16c16e85fbec5fd4d82441d52a2fac66687da38d8a37"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-38b47ab774/f05-02.migration-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-38b47ab774/f05-02.migration-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "storageCandidateDigest": "sha256:58733f8ac13e1a91c7a6f359da72b927448f0421c9e57671dd6bc976601a1144",
+      "report": {
+        "measurement": "storage-test-report",
+        "scope": "component",
+        "diagnosticOnly": true,
+        "externalQualification": "pending",
+        "reports": [
+          {
+            "suite": "migration",
+            "tests": 8,
+            "cases": [
+              "MIGRATION/behavior / real owned subtype migration and installed accounting"
+            ],
+            "variants": [
+              "rollback leaves original FK, schema and ledgers",
+              "unexpected installed FK refuses atomically",
+              "repeat, identity substitution and digest tamper",
+              "forced RLS and no enrollment/mutation grants",
+              "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+              "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+              "original computer relation remains independently available"
+            ],
+            "executions": [
+              {
+                "indent": 4,
+                "number": 1,
+                "name": "rollback leaves original FK, schema and ledgers",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 2,
+                "name": "unexpected installed FK refuses atomically",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 3,
+                "name": "repeat, identity substitution and digest tamper",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 4,
+                "name": "forced RLS and no enrollment/mutation grants",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 5,
+                "name": "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 6,
+                "name": "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 7,
+                "name": "original computer relation remains independently available",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 0,
+                "number": 1,
+                "name": "MIGRATION/behavior / real owned subtype migration and installed accounting",
+                "parent": null
+              }
+            ],
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "observations": {
+              "schemaVersion": 1,
+              "measurement": "storage-observations",
+              "suite": "migration",
+              "positives": {
+                "save": 0,
+                "ask": 0,
+                "forget": 0,
+                "restore": 0,
+                "read": 0,
+                "write": 0,
+                "deny": 60,
+                "conflict": 0,
+                "propagate": 0,
+                "backup": 0,
+                "owner": 2,
+                "harness": 0
+              },
+              "violations": {
+                "unauthorizedDisclosure": 0,
+                "unauthorizedMutation": 0,
+                "silentLostUpdate": 0,
+                "duplicateCanonicalEffect": 0,
+                "restrictedResurrection": 0,
+                "askComputerStart": 0
+              }
+            }
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "jobId": "job-ec8a5cbecd",
+      "check": "f05-02.authority-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-ec8a5cbecd/f05-02.authority-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-ec8a5cbecd/f05-02.authority-component/stdout.log",
+          "bytes": 12526,
+          "sha256": "53e643f01ab2f14358601c19e97e2510da1ca757b563e473f8f764adc4029f3c"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-ec8a5cbecd/f05-02.authority-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-ec8a5cbecd/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "storageCandidateDigest": "sha256:a352ec5287bb5e30ca2908c8208d874010488215b8157f0d442663afc9f90e11",
+      "report": {
+        "measurement": "storage-test-report",
+        "scope": "component",
+        "diagnosticOnly": true,
+        "externalQualification": "pending",
+        "reports": [
+          {
+            "suite": "authority",
+            "tests": 23,
+            "cases": [
+              "AUTHORITY/behavior / real authenticated current control ledger"
+            ],
+            "variants": [
+              "AUTHORITY/migration",
+              "AUTHORITY/live-owners",
+              "AUTHORITY/scope-negative",
+              "AUTHORITY/database-roles",
+              "AUTHORITY/grants-policy",
+              "AUTHORITY/anchor-recovery",
+              "AUTHORITY/expiry-after-wait",
+              "AUTHORITY/shared-live",
+              "AUTHORITY/shared-negative",
+              "AUTHORITY/shared-roles",
+              "AUTHORITY/shared-current",
+              "AUTHORITY/shared-lock-order",
+              "AUTHORITY/accounting-ask",
+              "AUTHORITY/accounting-maintenance",
+              "AUTHORITY/accounting-rollback",
+              "AUTHORITY/accounting-negative",
+              "AUTHORITY/accounting-expiry-wait",
+              "AUTHORITY/shared-accounting-order",
+              "AUTHORITY/shared-accounting-grant-wait",
+              "AUTHORITY/shared-revocation",
+              "AUTHORITY/remaining-audience",
+              "AUTHORITY/restriction-session"
+            ],
+            "executions": [
+              {
+                "indent": 4,
+                "number": 1,
+                "name": "AUTHORITY/migration",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 2,
+                "name": "AUTHORITY/live-owners",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 3,
+                "name": "AUTHORITY/scope-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 4,
+                "name": "AUTHORITY/database-roles",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 5,
+                "name": "AUTHORITY/grants-policy",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 6,
+                "name": "AUTHORITY/anchor-recovery",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 7,
+                "name": "AUTHORITY/expiry-after-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 8,
+                "name": "AUTHORITY/shared-live",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 9,
+                "name": "AUTHORITY/shared-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 10,
+                "name": "AUTHORITY/shared-roles",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 11,
+                "name": "AUTHORITY/shared-current",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 12,
+                "name": "AUTHORITY/shared-lock-order",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 13,
+                "name": "AUTHORITY/accounting-ask",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 14,
+                "name": "AUTHORITY/accounting-maintenance",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 15,
+                "name": "AUTHORITY/accounting-rollback",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 16,
+                "name": "AUTHORITY/accounting-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 17,
+                "name": "AUTHORITY/accounting-expiry-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 18,
+                "name": "AUTHORITY/shared-accounting-order",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 19,
+                "name": "AUTHORITY/shared-accounting-grant-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 20,
+                "name": "AUTHORITY/shared-revocation",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 21,
+                "name": "AUTHORITY/remaining-audience",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 22,
+                "name": "AUTHORITY/restriction-session",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 0,
+                "number": 1,
+                "name": "AUTHORITY/behavior / real authenticated current control ledger",
+                "parent": null
+              }
+            ],
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "observations": {
+              "schemaVersion": 1,
+              "measurement": "storage-observations",
+              "suite": "authority",
+              "positives": {
+                "save": 0,
+                "ask": 0,
+                "forget": 0,
+                "restore": 0,
+                "read": 27,
+                "write": 0,
+                "deny": 122,
+                "conflict": 0,
+                "propagate": 0,
+                "backup": 0,
+                "owner": 4,
+                "harness": 0
+              },
+              "violations": {
+                "unauthorizedDisclosure": 0,
+                "unauthorizedMutation": 0,
+                "silentLostUpdate": 0,
+                "duplicateCanonicalEffect": 0,
+                "restrictedResurrection": 0,
+                "askComputerStart": 0
+              }
+            }
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "jobId": "job-ec8a5cbecd",
+      "check": "f05-02.migration-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-ec8a5cbecd/f05-02.migration-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-ec8a5cbecd/f05-02.migration-component/stdout.log",
+          "bytes": 8795,
+          "sha256": "f11a7b58d496e72c9962a87b6a3141c85a912acdceff5f6b19067aa53d28ded0"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-ec8a5cbecd/f05-02.migration-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-ec8a5cbecd/f05-02.migration-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "storageCandidateDigest": "sha256:a352ec5287bb5e30ca2908c8208d874010488215b8157f0d442663afc9f90e11",
+      "report": {
+        "measurement": "storage-test-report",
+        "scope": "component",
+        "diagnosticOnly": true,
+        "externalQualification": "pending",
+        "reports": [
+          {
+            "suite": "migration",
+            "tests": 8,
+            "cases": [
+              "MIGRATION/behavior / real owned subtype migration and installed accounting"
+            ],
+            "variants": [
+              "rollback leaves original FK, schema and ledgers",
+              "unexpected installed FK refuses atomically",
+              "repeat, identity substitution and digest tamper",
+              "forced RLS and no enrollment/mutation grants",
+              "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+              "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+              "original computer relation remains independently available"
+            ],
+            "executions": [
+              {
+                "indent": 4,
+                "number": 1,
+                "name": "rollback leaves original FK, schema and ledgers",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 2,
+                "name": "unexpected installed FK refuses atomically",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 3,
+                "name": "repeat, identity substitution and digest tamper",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 4,
+                "name": "forced RLS and no enrollment/mutation grants",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 5,
+                "name": "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 6,
+                "name": "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 7,
+                "name": "original computer relation remains independently available",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 0,
+                "number": 1,
+                "name": "MIGRATION/behavior / real owned subtype migration and installed accounting",
+                "parent": null
+              }
+            ],
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "observations": {
+              "schemaVersion": 1,
+              "measurement": "storage-observations",
+              "suite": "migration",
+              "positives": {
+                "save": 0,
+                "ask": 0,
+                "forget": 0,
+                "restore": 0,
+                "read": 0,
+                "write": 0,
+                "deny": 60,
+                "conflict": 0,
+                "propagate": 0,
+                "backup": 0,
+                "owner": 2,
+                "harness": 0
+              },
+              "violations": {
+                "unauthorizedDisclosure": 0,
+                "unauthorizedMutation": 0,
+                "silentLostUpdate": 0,
+                "duplicateCanonicalEffect": 0,
+                "restrictedResurrection": 0,
+                "askComputerStart": 0
+              }
+            }
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "jobId": "job-262be03f20",
+      "check": "f05-02.authority-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-262be03f20/f05-02.authority-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-262be03f20/f05-02.authority-component/stdout.log",
+          "bytes": 13234,
+          "sha256": "a97a0a98628b81468d4f46c1d00c87c1751449ec79e63967bd73be0acedb0c64"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-262be03f20/f05-02.authority-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-262be03f20/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "storageCandidateDigest": "sha256:578b7d55c9ced029ffb810e27ad41d9a8fb2c9bb1475116c4985d67910d1ef62",
+      "report": {
+        "measurement": "storage-test-report",
+        "scope": "component",
+        "diagnosticOnly": true,
+        "externalQualification": "pending",
+        "reports": [
+          {
+            "suite": "authority",
+            "tests": 25,
+            "cases": [
+              "AUTHORITY/behavior / real authenticated current control ledger"
+            ],
+            "variants": [
+              "AUTHORITY/migration",
+              "AUTHORITY/live-owners",
+              "AUTHORITY/scope-negative",
+              "AUTHORITY/database-roles",
+              "AUTHORITY/grants-policy",
+              "AUTHORITY/anchor-recovery",
+              "AUTHORITY/expiry-after-wait",
+              "AUTHORITY/shared-live",
+              "AUTHORITY/shared-negative",
+              "AUTHORITY/shared-roles",
+              "AUTHORITY/shared-current",
+              "AUTHORITY/shared-lock-order",
+              "AUTHORITY/accounting-ask",
+              "AUTHORITY/accounting-maintenance",
+              "AUTHORITY/accounting-rollback",
+              "AUTHORITY/accounting-negative",
+              "AUTHORITY/accounting-expiry-wait",
+              "AUTHORITY/shared-accounting-order",
+              "AUTHORITY/shared-accounting-grant-wait",
+              "AUTHORITY/shared-accounting-dependencies",
+              "AUTHORITY/maintenance-grant-wait",
+              "AUTHORITY/shared-revocation",
+              "AUTHORITY/remaining-audience",
+              "AUTHORITY/restriction-session"
+            ],
+            "executions": [
+              {
+                "indent": 4,
+                "number": 1,
+                "name": "AUTHORITY/migration",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 2,
+                "name": "AUTHORITY/live-owners",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 3,
+                "name": "AUTHORITY/scope-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 4,
+                "name": "AUTHORITY/database-roles",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 5,
+                "name": "AUTHORITY/grants-policy",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 6,
+                "name": "AUTHORITY/anchor-recovery",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 7,
+                "name": "AUTHORITY/expiry-after-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 8,
+                "name": "AUTHORITY/shared-live",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 9,
+                "name": "AUTHORITY/shared-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 10,
+                "name": "AUTHORITY/shared-roles",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 11,
+                "name": "AUTHORITY/shared-current",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 12,
+                "name": "AUTHORITY/shared-lock-order",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 13,
+                "name": "AUTHORITY/accounting-ask",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 14,
+                "name": "AUTHORITY/accounting-maintenance",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 15,
+                "name": "AUTHORITY/accounting-rollback",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 16,
+                "name": "AUTHORITY/accounting-negative",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 17,
+                "name": "AUTHORITY/accounting-expiry-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 18,
+                "name": "AUTHORITY/shared-accounting-order",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 19,
+                "name": "AUTHORITY/shared-accounting-grant-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 20,
+                "name": "AUTHORITY/shared-accounting-dependencies",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 21,
+                "name": "AUTHORITY/maintenance-grant-wait",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 22,
+                "name": "AUTHORITY/shared-revocation",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 23,
+                "name": "AUTHORITY/remaining-audience",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 4,
+                "number": 24,
+                "name": "AUTHORITY/restriction-session",
+                "parent": "AUTHORITY/behavior / real authenticated current control ledger"
+              },
+              {
+                "indent": 0,
+                "number": 1,
+                "name": "AUTHORITY/behavior / real authenticated current control ledger",
+                "parent": null
+              }
+            ],
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "observations": {
+              "schemaVersion": 1,
+              "measurement": "storage-observations",
+              "suite": "authority",
+              "positives": {
+                "save": 0,
+                "ask": 0,
+                "forget": 0,
+                "restore": 0,
+                "read": 27,
+                "write": 0,
+                "deny": 126,
+                "conflict": 0,
+                "propagate": 0,
+                "backup": 0,
+                "owner": 6,
+                "harness": 0
+              },
+              "violations": {
+                "unauthorizedDisclosure": 0,
+                "unauthorizedMutation": 0,
+                "silentLostUpdate": 0,
+                "duplicateCanonicalEffect": 0,
+                "restrictedResurrection": 0,
+                "askComputerStart": 0
+              }
+            }
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "jobId": "job-262be03f20",
+      "check": "f05-02.migration-component",
+      "streams": {
+        "stdout": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-262be03f20/f05-02.migration-component/stdout.log",
+          "retainedPath": "g1-storage/evidence/raw/job-262be03f20/f05-02.migration-component/stdout.log",
+          "bytes": 8796,
+          "sha256": "b8f0c5cc0852a4fe889cf3f735a8f2efabf61d1b3489dcec6776ef5c6627588f"
+        },
+        "stderr": {
+          "controllerPath": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-262be03f20/f05-02.migration-component/stderr.log",
+          "retainedPath": "g1-storage/evidence/raw/job-262be03f20/f05-02.migration-component/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "storageCandidateDigest": "sha256:578b7d55c9ced029ffb810e27ad41d9a8fb2c9bb1475116c4985d67910d1ef62",
+      "report": {
+        "measurement": "storage-test-report",
+        "scope": "component",
+        "diagnosticOnly": true,
+        "externalQualification": "pending",
+        "reports": [
+          {
+            "suite": "migration",
+            "tests": 8,
+            "cases": [
+              "MIGRATION/behavior / real owned subtype migration and installed accounting"
+            ],
+            "variants": [
+              "rollback leaves original FK, schema and ledgers",
+              "unexpected installed FK refuses atomically",
+              "repeat, identity substitution and digest tamper",
+              "forced RLS and no enrollment/mutation grants",
+              "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+              "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+              "original computer relation remains independently available"
+            ],
+            "executions": [
+              {
+                "indent": 4,
+                "number": 1,
+                "name": "rollback leaves original FK, schema and ledgers",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 2,
+                "name": "unexpected installed FK refuses atomically",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 3,
+                "name": "repeat, identity substitution and digest tamper",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 4,
+                "name": "forced RLS and no enrollment/mutation grants",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 5,
+                "name": "ask logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 6,
+                "name": "maintenance logical resource uses unchanged prepare/settle with zero computer assignment",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 4,
+                "number": 7,
+                "name": "original computer relation remains independently available",
+                "parent": "MIGRATION/behavior / real owned subtype migration and installed accounting"
+              },
+              {
+                "indent": 0,
+                "number": 1,
+                "name": "MIGRATION/behavior / real owned subtype migration and installed accounting",
+                "parent": null
+              }
+            ],
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0,
+            "observations": {
+              "schemaVersion": 1,
+              "measurement": "storage-observations",
+              "suite": "migration",
+              "positives": {
+                "save": 0,
+                "ask": 0,
+                "forget": 0,
+                "restore": 0,
+                "read": 0,
+                "write": 0,
+                "deny": 60,
+                "conflict": 0,
+                "propagate": 0,
+                "backup": 0,
+                "owner": 2,
+                "harness": 0
+              },
+              "violations": {
+                "unauthorizedDisclosure": 0,
+                "unauthorizedMutation": 0,
+                "silentLostUpdate": 0,
+                "duplicateCanonicalEffect": 0,
+                "restrictedResurrection": 0,
+                "askComputerStart": 0
+              }
+            }
+          }
+        ]
+      },
+      "status": "pass"
+    }
+  ]
+}

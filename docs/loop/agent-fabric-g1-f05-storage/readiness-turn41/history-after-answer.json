@@ -1,0 +1,86 @@
+{
+  "observedAt": "2026-10-08T03:46:20.698539+00:00",
+  "goalId": "agent-fabric-g1-f05-storage",
+  "iteration": 41,
+  "iterationBase": 0,
+  "startedAt": "2026-10-07T20:19:27+00:00",
+  "usage": {
+    "turns": 40,
+    "cost_usd": 0.0,
+    "cost_complete": false,
+    "input_tokens": 122281453,
+    "output_tokens": 861628,
+    "agent_seconds": 26459.665000000005
+  },
+  "eventsBytes": 289030,
+  "eventsSha256": "48b2fabd72d2286b58488c0c74de7b1f48c6ad1d3f4d9f458f47381c8032ff1f",
+  "eventsHead": {
+    "seq": 731,
+    "at": "2026-10-08T03:44:05+00:00",
+    "type": "turn.started",
+    "data": {
+      "turn": 41,
+      "action": "resources",
+      "adapter": "codex"
+    },
+    "state": "sha256:762e4c56441ea506ee30d90d97fc4fa4bb6d32ef483bd0253ef00feffa0a6107",
+    "prev": "sha256:ae0fbc81a57562a84835b98643c8819ba655e9cdb6b6027a4673a31c9753b2b8",
+    "hash": "sha256:1980eb3a0f3c41ad9e569d698069a0de664e22b8dec37668c79ee08886a36f93"
+  },
+  "checkpointEvent": {
+    "seq": 726,
+    "at": "2026-10-08T03:36:09+00:00",
+    "type": "turn.started",
+    "data": {
+      "turn": 40,
+      "action": "resources",
+      "adapter": "codex"
+    },
+    "state": "sha256:acfb6b7dedf80aa5146a13321d083ef1c17b672c3471ddb56bc7f8fce0670256",
+    "prev": "sha256:f76b43f5e5e189dd904f310e046e09519471f403e5605d4d303fe95ca124aa8e",
+    "hash": "sha256:677b917cc9ccdc07e498b3e85e08bae877427889c95c54c69b9c3f7bf40e614e"
+  },
+  "checkpointPrefixByteIdentical": true,
+  "all55TaskHistoriesUnchanged": true,
+  "usageMonotonic": true,
+  "policy": {
+    "max_iterations": 60,
+    "max_hours": 24.0,
+    "turn_timeout_minutes": 120,
+    "stagnation_limit": 3,
+    "max_task_attempts": 4,
+    "max_repair_rounds": 5,
+    "max_cost_usd": null,
+    "approval_required": [
+      "deploy or release to a shared or production environment",
+      "delete or overwrite data that is not reproducible from the repository",
+      "spend money or start paid resources",
+      "send messages, emails or posts to people",
+      "change credentials, secrets, access control or security settings",
+      "force-push, rewrite published git history or delete branches"
+    ],
+    "allow_network": true,
+    "fresh_session_each_turn": true,
+    "pause_on_interrupt": false,
+    "check_timeout_seconds": 3600
+  },
+  "approvedPolicyMatchesActual": true,
+  "approvalRecord": {
+    "id": "q-3336b91016",
+    "kind": "approval",
+    "text": "RESOURCE39-01 blocks readiness: at turn40, 52 unfinished bounded tasks need at least52 turns but only20 remain; their estimates total61h45m versus about16h40m remaining under the24h limit. Approve 120 total turns / 144 total wall-clock hours for this same goal and arrange audited controller-policy application preserving cumulative history? The proposal reserves52 work turns +8 required pipeline turns +20 repair turns; elapsed time plus future estimates is about128.1h. Details: docs/loop/agent-fabric-g1-f05-storage/readiness-turn40/continuation-request.md. Approval alone does not change the policy; readiness remains unresolved until actual limits and preserved history are verified. No external action, paid resource or scope expansion is authorized.",
+    "options": [
+      "approve",
+      "deny"
+    ],
+    "blocking": true,
+    "asked_at": "2026-10-08T03:40:34+00:00",
+    "by": "agent",
+    "action": "Authorize an audited controller-policy change for the existing agent-fabric-g1-f05-storage goal only: max_iterations 60 -> 120 total turns and max_hours 24 -> 144 total wall-clock hours, preserving original started_at, iteration_base=0, cumulative iterations/usage, all task histories and the event chain. Controller policy owner must apply and authorize the contract through a history-preserving process; the agent must not edit .loop or reset accounting. Preserve all other limits, scope, checks, mandatory variants and approval boundaries.",
+    "answer": "approve",
+    "answered_at": "2026-10-08T03:44:03+00:00",
+    "answered_by": "human (telegram)",
+    "approved": true
+  },
+  "readyToSubmit": false
+}

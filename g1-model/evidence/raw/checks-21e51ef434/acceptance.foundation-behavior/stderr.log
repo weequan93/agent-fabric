@@ -1,0 +1,12 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/check.mjs:5
+function run(command,args,env=process.env,timeout=60000){const r=spawnSync(command,args,{cwd,env,encoding:'utf8',timeout,maxBuffer:16*1024*1024});process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');if(r.error||r.status!==0)throw r.error??new Error(command+' failed '+r.status);return r.stdout;}
+                                                                                                                                                                                                                                                                ^
+
+Error: /Users/super/.nvm/versions/node/v20.12.2/bin/node failed 1
+    at run (file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/check.mjs:5:257)
+    at file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/check.mjs:16:15
+    at withPgFixture (file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/pg-fixture.mjs:18:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/check.mjs:15:1
+
+Node.js v20.12.2

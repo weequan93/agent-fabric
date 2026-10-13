@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "cases": {
+    "C01": [
+      "C01/roundtrip",
+      "C01/closed-negative",
+      "C01/restore-state"
+    ],
+    "C02": [
+      "C02/bounds",
+      "C02/graph",
+      "C02/overflow"
+    ],
+    "C03": [
+      "C03/controls",
+      "C03/service-separation",
+      "C03/borrowed-owner"
+    ],
+    "A01": [
+      "A01/same-scope",
+      "A01/shared-source",
+      "A01/cross-tenant-denied",
+      "A01/share-forward-first",
+      "A01/share-reverse-first"
+    ],
+    "A02": [
+      "A02/private-group-denied",
+      "A02/full-audience",
+      "A02/guest-denied",
+      "A02/permitted-group"
+    ],
+    "A03": [
+      "A03/forgery",
+      "A03/source-payer-revoked",
+      "A03/destination-payer-revoked",
+      "A03/membership-revoked",
+      "A03/space-revoked",
+      "A03/session-expiry-after-lock",
+      "A03/token-expiry-after-effects",
+      "A03/share-forward-first",
+      "A03/share-reverse-first"
+    ],
+    "A04": [
+      "A04/role-ownership",
+      "A04/forced-rls",
+      "A04/direct-worker-denied",
+      "A04/direct-idp-denied",
+      "A04/public-denied",
+      "A04/cross-scope-denied"
+    ],
+    "A05": [
+      "A05/authority-offline",
+      "A05/cache-offline",
+      "A05/save-offline",
+      "A05/derived-offline",
+      "A05/restore-offline",
+      "A05/authority-recovered"
+    ],
+    "A06": [
+      "A06/reader-denied",
+      "A06/contributor-denied",
+      "A06/operator-allowed",
+      "A06/grant-revoked-after-wait",
+      "A06/policy-extension-denied"
+    ],
+    "E01": [
+      "E01/all-classes",
+      "E01/recreated-reader",
+      "E01/exact-binary"
+    ],
+    "E02": [
+      "E02/body",
+      "E02/tag",
+      "E02/nonce",
+      "E02/truncated",
+      "E02/algorithm",
+      "E02/version",
+      "E02/tenant",
+      "E02/space",
+      "E02/class",
+      "E02/id",
+      "E02/revision",
+      "E02/generation",
+      "E02/key-id",
+      "E02/wrong-key",
+      "E02/missing-key",
+      "E02/original-allowed"
+    ],
+    "E03": [
+      "E03/pg-all-retained",
+      "E03/files-archives",
+      "E03/logs-streams",
+      "E03/native-model-task",
+      "E03/every-inventoried-field"
+    ],
+    "E04": [
+      "E04/same-value-different-scopes",
+      "E04/scope-keyed-fingerprint",
+      "E04/wrong-scope-key",
+      "E04/key-export-denied"
+    ],
+    "K01": [
+      "K01/assertion",
+      "K01/registered-check",
+      "K01/correction",
+      "K01/unrelated-survives",
+      "K01/recreated-history"
+    ],
+    "K02": [
+      "K02/discussion",
+      "K02/proposal",
+      "K02/proposal-repeated",
+      "K02/disputed",
+      "K02/forged-check",
+      "K02/secret",
+      "K02/indefinite-retention",
+      "K02/explicit-save"
+    ],
+    "K03": [
+      "K03/kill-revision",
+      "K03/kill-head",
+      "K03/kill-receipt",
+      "K03/kill-event",
+      "K03/kill-outbox",
+      "K03/committed-recreated",
+      "K03/response-after-commit"
+    ],
+    "K04": [
+      "K04/kill-staged",
+      "K04/kill-file-fsynced",
+      "K04/kill-renamed",
+      "K04/kill-directory-fsynced",
+      "K04/kill-manifest-confirmed",
+      "K04/kill-before-publication",
+      "K04/kill-after-publication",
+      "K04/corrupt-published"
+    ],
+    "K05": [
+      "K05/active-lease",
+      "K05/published-reachable",
+      "K05/unknown-protected",
+      "K05/expired-orphan",
+      "K05/gc-stage-first",
+      "K05/gc-publish-first",
+      "K05/kill-gc",
+      "K05/unowned-sentinel"
+    ],
+    "K06": [
+      "K06/same-key-identical-concurrent",
+      "K06/same-key-changed-concurrent",
+      "K06/recreated-retry",
+      "K06/exact-effect-counts"
+    ],
+    "K07": [
+      "K07/observed-commit-wait",
+      "K07/observed-rollback-wait",
+      "K07/observed-timeout",
+      "K07/lost-commit-ack",
+      "K07/serialized-absence-no-replay"
+    ],
+    "K08": [
+      "K08/writer-a-wins",
+      "K08/writer-b-wins",
+      "K08/recreated-loser",
+      "K08/independent-facts-both-succeed"
+    ],
+    "K09": [
+      "K09/no-control-promotion",
+      "K09/no-method-release",
+      "K09/no-check-authority",
+      "K09/archive-no-authority"
+    ],
+    "Q01": [
+      "Q01/persisted-random-decision",
+      "Q01/changed-value",
+      "Q01/recreated-service",
+      "Q01/no-computer"
+    ],
+    "Q02": [
+      "Q02/full-audience-eligible",
+      "Q02/unauthorized-no-decrypt",
+      "Q02/proposal-excluded",
+      "Q02/stale-excluded",
+      "Q02/disputed-uncertain",
+      "Q02/evidence-gap"
+    ],
+    "Q03": [
+      "Q03/index-unavailable-exact",
+      "Q03/index-lag-tail",
+      "Q03/current-overlay",
+      "Q03/cache-version-bound"
+    ],
+    "Q04": [
+      "Q04/forget-before-disclosure",
+      "Q04/forget-after-disclosure",
+      "Q04/source-revoke-before-disclosure",
+      "Q04/source-revoke-after-disclosure",
+      "Q04/membership-remove-before-disclosure",
+      "Q04/membership-remove-after-disclosure",
+      "Q04/correction-before-disclosure",
+      "Q04/correction-after-disclosure",
+      "Q04/remaining-member-allowed"
+    ],
+    "Q05": [
+      "Q05/allowed",
+      "Q05/denied",
+      "Q05/index-unavailable",
+      "Q05/service-failure",
+      "Q05/concurrent",
+      "Q05/restored",
+      "Q05/live-inspection-denied",
+      "Q05/no-fallback-ports"
+    ],
+    "Q06": [
+      "Q06/controls-000",
+      "Q06/controls-001",
+      "Q06/controls-010",
+      "Q06/controls-011",
+      "Q06/controls-100",
+      "Q06/controls-101",
+      "Q06/controls-110",
+      "Q06/controls-111",
+      "Q06/file-grants-independent",
+      "Q06/group-personal-export-denied"
+    ],
+    "Q07": [
+      "Q07/immutable-session-space",
+      "Q07/foreign-session-denied",
+      "Q07/queued-space-switch",
+      "Q07/billing-no-merge"
+    ],
+    "Q08": [
+      "Q08/installed-native-owner",
+      "Q08/installed-resource-owner",
+      "Q08/budget-denied-before-disclosure",
+      "Q08/same-key-single-charge",
+      "Q08/stopped",
+      "Q08/replacement",
+      "Q08/unknown-effect",
+      "Q08/no-plaintext-model-history"
+    ],
+    "Q09": [
+      "Q09/safe-denial",
+      "Q09/live-state-unsupported",
+      "Q09/evidence-gap-guidance",
+      "Q09/no-restricted-diagnostics"
+    ],
+    "L01": [
+      "L01/every-class-expiry",
+      "L01/expiry-read",
+      "L01/expiry-publication",
+      "L01/durable-tombstone"
+    ],
+    "L02": [
+      "L02/durable-forget",
+      "L02/repeat-forget",
+      "L02/active-derived-counts",
+      "L02/delivered-not-recalled",
+      "L02/pending-retry"
+    ],
+    "L03": [
+      "L03/source-revoke-before-disclosure",
+      "L03/source-revoke-after-disclosure",
+      "L03/membership-remove-before-disclosure",
+      "L03/membership-remove-after-disclosure",
+      "L03/remaining-member-allowed",
+      "L03/cache-blocked"
+    ],
+    "L04": [
+      "L04/nested-descendants",
+      "L04/unaffected-branch",
+      "L04/cycle-denied",
+      "L04/missing-ancestor",
+      "L04/depth-bound",
+      "L04/fanout-bound",
+      "L04/correction-current"
+    ],
+    "L05": [
+      "L05/delete-restriction-first",
+      "L05/delete-publication-first",
+      "L05/expiry-restriction-first",
+      "L05/expiry-publication-first",
+      "L05/source-revoke-restriction-first",
+      "L05/source-revoke-publication-first",
+      "L05/correction-restriction-first",
+      "L05/correction-publication-first",
+      "L05/worker-restart",
+      "L05/duplicate-job"
+    ],
+    "L06": [
+      "L06/kill-invalidation-persisted",
+      "L06/kill-descendant-written",
+      "L06/kill-watermark",
+      "L06/durable-pending",
+      "L06/recreated-retry"
+    ],
+    "L07": [
+      "L07/delete-restriction-first",
+      "L07/delete-publication-first",
+      "L07/expiry-restriction-first",
+      "L07/expiry-publication-first",
+      "L07/source-revoke-restriction-first",
+      "L07/source-revoke-publication-first",
+      "L07/correction-restriction-first",
+      "L07/correction-publication-first",
+      "L07/session-expiry-after-lock",
+      "L07/member-expiry-after-lock",
+      "L07/share-forward-first",
+      "L07/share-reverse-first",
+      "L07/kill-publication"
+    ],
+    "L08": [
+      "L08/late-summary-old-revision",
+      "L08/late-index",
+      "L08/late-cache",
+      "L08/canonical-preserved",
+      "L08/stop-retains-storage"
+    ],
+    "L09": [
+      "L09/summary-admission",
+      "L09/index-admission",
+      "L09/cache-admission",
+      "L09/budget-denied",
+      "L09/blocked-wait-revalidation",
+      "L09/duplicate-single-charge"
+    ],
+    "V01": [
+      "V01/live-written",
+      "V01/draft-saved",
+      "V01/checkpoint-confirmed",
+      "V01/canonical-committed",
+      "V01/unsaved-lost",
+      "V01/kill-live-fsync",
+      "V01/kill-checkpoint-confirmation"
+    ],
+    "V02": [
+      "V02/promoter-a-wins",
+      "V02/promoter-b-wins",
+      "V02/recreated-loser",
+      "V02/validated-promotion"
+    ],
+    "V03": [
+      "V03/recreated-saved-draft",
+      "V03/stale-comparable",
+      "V03/retain-variant",
+      "V03/private-group-denied",
+      "V03/guest-denied"
+    ],
+    "V04": [
+      "V04/stop-fences-writer",
+      "V04/replacement-fences-writer",
+      "V04/space-switch-immutable",
+      "V04/recreated-stale-writer",
+      "V04/kill-before-publication"
+    ],
+    "V05": [
+      "V05/exact-binary",
+      "V05/manifest-binding",
+      "V05/missing-byte-blocked",
+      "V05/cross-scope-denied",
+      "V05/checkpoint-not-knowledge-commit"
+    ],
+    "R01": [
+      "R01/actual-source-loss",
+      "R01/fresh-root-restore",
+      "R01/recreated-knowledge-read",
+      "R01/recreated-artifact-read",
+      "R01/saved-decision-ask",
+      "R01/no-computer"
+    ],
+    "R02": [
+      "R02/post-backup-forget",
+      "R02/post-backup-expiry",
+      "R02/post-backup-source-revoke",
+      "R02/post-backup-membership-remove",
+      "R02/post-backup-correction",
+      "R02/restriction-during-wait",
+      "R02/restriction-before-activation",
+      "R02/stale-writer",
+      "R02/unchanged-survivor"
+    ],
+    "R03": [
+      "R03/authority-missing",
+      "R03/authority-unavailable",
+      "R03/authority-empty",
+      "R03/authority-rolled-back",
+      "R03/head-missing",
+      "R03/epoch-anchor-missing",
+      "R03/archive-authority-denied",
+      "R03/current-authority-recovered"
+    ],
+    "R04": [
+      "R04/kill-staged",
+      "R04/kill-item-written",
+      "R04/kill-inventory-validated",
+      "R04/kill-metadata-imported",
+      "R04/kill-restrictions-reconciled",
+      "R04/kill-before-activation-commit",
+      "R04/kill-after-activation-commit",
+      "R04/concurrent-original-repeat",
+      "R04/lost-activation-ack",
+      "R04/observed-commit-wait",
+      "R04/observed-rollback-wait",
+      "R04/observed-timeout"
+    ],
+    "R05": [
+      "R05/missing-item",
+      "R05/truncated",
+      "R05/tag",
+      "R05/body",
+      "R05/digest",
+      "R05/length",
+      "R05/reference",
+      "R05/foreign-key",
+      "R05/class",
+      "R05/version",
+      "R05/wrong-key",
+      "R05/missing-key",
+      "R05/traversal",
+      "R05/symlink",
+      "R05/sql",
+      "R05/control-class",
+      "R05/decoded-size-bound",
+      "R05/file-count-bound",
+      "R05/staged-item-replaced",
+      "R05/fresh-target-aad"
+    ],
+    "R06": [
+      "R06/no-external-replay",
+      "R06/no-model-replay",
+      "R06/no-computer-replay",
+      "R06/no-credential-restore",
+      "R06/no-approval-restore",
+      "R06/no-method-restore",
+      "R06/unsent-stays-unsent",
+      "R06/forbidden-class-denied"
+    ],
+    "R07": [
+      "R07/actual-monotonic-timing",
+      "R07/class-byte-item-counts",
+      "R07/last-backup-checkpoint",
+      "R07/competing-reads-writes",
+      "R07/interruption-measurements"
+    ],
+    "R08": [
+      "R08/operator-journey",
+      "R08/recovery-status",
+      "R08/revoked-grant-denied",
+      "R08/invalid-destination-denied",
+      "R08/owned-cleanup",
+      "R08/rollback-preserves-authority"
+    ],
+    "R09": [
+      "R09/capture-first",
+      "R09/writer-first",
+      "R09/kill-inventory-fsync",
+      "R09/kill-archive-fsync",
+      "R09/lost-confirmation-ack",
+      "R09/recreated-original-key",
+      "R09/backup-expiry"
+    ],
+    "H01": [
+      "H01/fresh-build",
+      "H01/compiler-failure",
+      "H01/deleted-source",
+      "H01/stale-output",
+      "H01/owner-emission",
+      "H01/dependency-pins"
+    ],
+    "H02": [
+      "H02/removed-suite",
+      "H02/removed-case",
+      "H02/empty-suite",
+      "H02/failure",
+      "H02/cancellation",
+      "H02/skip",
+      "H02/todo",
+      "H02/forged-label",
+      "H02/forged-totals",
+      "H02/missing-variant",
+      "H02/unknown-argument",
+      "H02/good-full-run"
+    ],
+    "H03": [
+      "H03/real-census",
+      "H03/loopback",
+      "H03/owned-child",
+      "H03/cached-pg",
+      "H03/census-denied",
+      "H03/loopback-denied",
+      "H03/pg-unavailable",
+      "H03/child-cleanup-failed",
+      "H03/root-cleanup-failed",
+      "H03/container-cleanup-failed",
+      "H03/symlink-cache",
+      "H03/instance-substitution",
+      "H03/guards-on-failure"
+    ],
+    "H04": [
+      "H04/exact-executed-identities",
+      "H04/missing-positive",
+      "H04/unauthorized-disclosure",
+      "H04/unauthorized-mutation",
+      "H04/silent-lost-update",
+      "H04/duplicate-canonical-effect",
+      "H04/restricted-resurrection",
+      "H04/ask-computer-start"
+    ],
+    "D01": [
+      "D01/documented-http-journey",
+      "D01/package-plan-evidence-paths",
+      "D01/requirements-case-matrix"
+    ],
+    "D02": [
+      "D02/candidate-check-lock-binding",
+      "D02/complete-controller-streams",
+      "D02/pending-review-visible",
+      "D02/historical-failures-retained"
+    ],
+    "D03": [
+      "D03/all-fields-inventory",
+      "D03/retention-inventory",
+      "D03/operations-recovery",
+      "D03/dependency-license-update",
+      "D03/measured-boundary",
+      "D03/rollback-limitations"
+    ],
+    "D04": [
+      "D04/local-only-action-audit",
+      "D04/exact-approval-gates",
+      "D04/requirements-history",
+      "D04/controller-owned-state",
+      "D04/fault-gates-no-substitution"
+    ],
+    "D05": [
+      "D05/X01",
+      "D05/X02",
+      "D05/X03",
+      "D05/X04",
+      "D05/X05",
+      "D05/X06",
+      "D05/X07",
+      "D05/X08",
+      "D05/X09",
+      "D05/finite-profile-claim"
+    ],
+    "D06": [
+      "D06/severe-finding-blocks",
+      "D06/missing-current-acceptance-blocks",
+      "D06/no-author-verdict"
+    ]
+  }
+}

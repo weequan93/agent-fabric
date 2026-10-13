@@ -1,0 +1,367 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:254d7c577b4b12b466a74735e39592db7310bec36229c2534ca5a202049e6275","files":788,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 158ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"67e1624e-572c-4dec-9e27-e7031e731cf6","instance":"e19d5f38-c6ec-4e75-9258-bb32ff607296","containerId":"64b8c761af1f7a3db32c38d909d7b897969b18272e0e34c0d37f2260f4acd35a","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"4860fbba-1f69-410c-a54a-e2cabcf4f322","device":16777238,"inode":336603103},"backup":{"rootId":"199ad04d-443b-4319-8852-105541795e00","device":16777238,"inode":336603105},"restore":{"rootId":"69efe4f8-b171-4a10-bc8f-d36188caedd8","device":16777238,"inode":336603107},"authority":{"rootId":"9dd696ae-d3f0-4add-bfc6-63482f9ea0a3","device":16777238,"inode":336603109}},"fixtureRoot":{"rootId":"10ddeab9-b5b4-4586-b9ca-4e87e90721ef","device":16777238,"inode":336603101},"preexistingContainers":[],"processBefore":{"rows":815,"digest":"e02b62429fb50521b38d1148dfa2a538bb2c17e96090daba3575bf298fc8effc"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":43737,"marker":"b5462edb-00c2-4d94-b65d-9466e507922f","instance":"43638/Thu Oct  8 16:03:27 2026","ppid":43735,"loopback":true}
+# Subtest: VOLUME-PROMOTION/behavior / exact validated CAS and installed writer fences
+    # Subtest: VOLUME-PROMOTION/exact-canonical-bytes-manifest-recreation
+    not ok 1 - VOLUME-PROMOTION/exact-canonical-bytes-manifest-recreation
+      ---
+      duration_ms: 5585.388542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:111:21'
+      failureType: 'testCodeFailure'
+      error: 'INVALID_SCHEMA'
+      code: 'INVALID_SCHEMA'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:113:17)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:111:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/promoter-a-wins-observed-CAS
+    not ok 2 - VOLUME-PROMOTION/promoter-a-wins-observed-CAS
+      ---
+      duration_ms: 34.745958
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:140:25'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:141:41)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:140:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/promoter-b-wins-observed-CAS
+    not ok 3 - VOLUME-PROMOTION/promoter-b-wins-observed-CAS
+      ---
+      duration_ms: 26.085959
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:140:25'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:141:41)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:140:17)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/stale-compare-retained-variant-and-path-binding
+    not ok 4 - VOLUME-PROMOTION/stale-compare-retained-variant-and-path-binding
+      ---
+      duration_ms: 25.342833
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:196:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:197:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:196:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/closed-command-and-scope-denials
+    not ok 5 - VOLUME-PROMOTION/closed-command-and-scope-denials
+      ---
+      duration_ms: 25.274292
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:222:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:223:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:222:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/validator-current-storage-and-atomic-rollback
+    not ok 6 - VOLUME-PROMOTION/validator-current-storage-and-atomic-rollback
+      ---
+      duration_ms: 26.670792
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:230:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:231:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:230:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/Stop-fences-recreated-writer-keeps-comparable-draft
+    not ok 7 - VOLUME-PROMOTION/Stop-fences-recreated-writer-keeps-comparable-draft
+      ---
+      duration_ms: 27.823458
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:273:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:274:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:273:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/installed-Task-Run-cancellation-worker-fences
+    not ok 8 - VOLUME-PROMOTION/installed-Task-Run-cancellation-worker-fences
+      ---
+      duration_ms: 27.192958
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:295:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:297:41)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:295:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/installed-runtime-generation-and-mode-fences
+    not ok 9 - VOLUME-PROMOTION/installed-runtime-generation-and-mode-fences
+      ---
+      duration_ms: 23.572667
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:323:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:325:41)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:323:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/source-revocation-before-promotion-and-after-commit
+    not ok 10 - VOLUME-PROMOTION/source-revocation-before-promotion-and-after-commit
+      ---
+      duration_ms: 23.339125
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:342:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:343:34)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:342:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/unknown-ACK-exact-original-no-replay
+    not ok 11 - VOLUME-PROMOTION/unknown-ACK-exact-original-no-replay
+      ---
+      duration_ms: 20.967208
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:381:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:382:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:381:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: VOLUME-PROMOTION/membership-revocation-after-preparation
+    not ok 12 - VOLUME-PROMOTION/membership-revocation-after-preparation
+      ---
+      duration_ms: 23.448542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:403:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'live-written'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'live-written'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        pair (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:81:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:404:37)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:403:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"volume-promotion","positives":{"save":2,"ask":0,"forget":0,"restore":0,"read":0,"write":2,"deny":0,"conflict":0,"propagate":0,"backup":0,"owner":1,"harness":0},"violations":{"unauthorizedDisclosure":0,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+# {"measurement":"model-owned-process-cleanup","pid":43737,"instance":"43638/Thu Oct  8 16:03:27 2026","signal":"SIGTERM","removed":true}
+    1..12
+not ok 1 - VOLUME-PROMOTION/behavior / exact validated CAS and installed writer fences
+  ---
+  duration_ms: 7390.257625
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-volume-promotion-tests.js:23:12'
+  failureType: 'subtestsFailed'
+  error: '12 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 13
+# suites 0
+# pass 0
+# fail 13
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7467.452292
+{"measurement":"storage-container-cleanup","owner":"67e1624e-572c-4dec-9e27-e7031e731cf6","instance":"e19d5f38-c6ec-4e75-9258-bb32ff607296","containerId":"64b8c761af1f7a3db32c38d909d7b897969b18272e0e34c0d37f2260f4acd35a","removed":true,"censusUnchanged":true,"processAfter":{"rows":814,"digest":"0fe9588a228e621c1504cb5952ac816b09c93d5e8fba4922a7d940dd4c576eff"}}
+{"measurement":"storage-root-cleanup","owner":"67e1624e-572c-4dec-9e27-e7031e731cf6","instance":"e19d5f38-c6ec-4e75-9258-bb32ff607296","rootId":"10ddeab9-b5b4-4586-b9ca-4e87e90721ef","rootIds":["4860fbba-1f69-410c-a54a-e2cabcf4f322","199ad04d-443b-4319-8852-105541795e00","69efe4f8-b171-4a10-bc8f-d36188caedd8","9dd696ae-d3f0-4add-bfc6-63482f9ea0a3"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

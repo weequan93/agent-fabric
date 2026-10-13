@@ -2,10 +2,10 @@
   "schema": "loop.state/2",
   "goal_id": "agent-fabric-g1-f07-clients",
   "status": "ready",
-  "status_reason": "Approved by human. Start with `loop start`.",
-  "approved_digest": "sha256:72e98ebbff167c9a544c9f6c551ddf88fdccda529dc5d8bd2899467c1bdb883b",
-  "approved_by": "human",
-  "approved_at": "2026-10-06T17:15:31+00:00",
+  "status_reason": "Approved by human (via Claude): gpt-6.1-sol max effort. Start with `loop start`.",
+  "approved_digest": "sha256:60e16288cf4220e13d7739901e1332a752d7491fe186c030e7a476129333cacb",
+  "approved_by": "human (via Claude): gpt-6.1-sol max effort",
+  "approved_at": "2026-10-13T03:42:11+00:00",
   "tasks": [],
   "questions": [],
   "checks": {},
@@ -35,6 +35,118 @@
   "next_cycle_at": null,
   "integrity": "ok",
   "created_at": "2026-10-06T15:59:25+00:00",
-  "updated_at": "2026-10-06T17:15:31+00:00",
-  "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1"
+  "updated_at": "2026-10-13T03:42:11+00:00",
+  "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1",
+  "approved_contract": {
+    "objective": "Deliver the G1-F07 increment of Agent Fabric G1: Web/Electron/mobile operating the same Task: shared events/reconnect, desktop sleep → mobile steer/Stop → web/desktop result, distinct pilot timing measurements, then complete G1 independent acceptance.\n\nLedger requirements in scope (docs/planning/g1-remaining-ledger.csv):\n- AF-04: 桌面移动网页操作同一Task — remaining: 共享事件/重连契约；真实desktop sleep/mobile steer/web result/stale Stop\n- UX-04: Act preflight后桌面睡眠远端继续移动端同任务 — remaining: accepted/reconnect契约；真实desktop sleep/mobile steer/结果\n\nCreate g1-clients/ with a build and g1-clients/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f07-plan.md and docs/evidence/g1-f07-acceptance.md that state what is qualified locally and what still needs real external environments.",
+    "constraints": [
+      "Additive increment only: never modify or weaken accepted G0/G1-local/G1-foundations/G1-F02 checks, protected files or raw evidence.",
+      "Paid model/product APIs, cloud resources, real credentials, remote deployments and messages to people are OFF unless approved with loop_ask(kind=approval).",
+      "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
+      "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
+      "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger."
+    ],
+    "acceptance": [
+      {
+        "id": "g1-clients-behavior",
+        "argv": [
+          "node",
+          "g1-clients/scripts/check.mjs"
+        ],
+        "timeout": 1800,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "G1-F07 increment behavior check (created by this goal).",
+        "stage": "integration"
+      },
+      {
+        "id": "identity-behavior",
+        "argv": [
+          "node",
+          "g1-identity/scripts/check.mjs"
+        ],
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "G1-F02 accepted increment must keep passing (regression).",
+        "stage": "regression"
+      },
+      {
+        "id": "foundation-behavior",
+        "argv": [
+          "node",
+          "g1-foundations/scripts/check.mjs"
+        ],
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "G1 foundations must keep passing (regression).",
+        "stage": "regression"
+      },
+      {
+        "id": "retained-baselines",
+        "argv": [
+          "node",
+          "g1-foundations/scripts/check-retained.mjs"
+        ],
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Original G0/G1-local protected files, raw evidence and checks unchanged (regression).",
+        "stage": "regression"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "security",
+        "by": "agent",
+        "instructions": "Independent review of the G1-F07 increment against its ledger requirements, the master specification and the increment check. Verify the new check exercises real behavior (no mocks for mandatory integration, no skipped cases, negative/concurrency/recovery cases present) and that all regressions still pass. Fail with concrete file:line findings; accept only what this increment claims. Focus: security, authorization, isolation, data leakage.",
+        "role": "security",
+        "timeout_minutes": 15
+      },
+      {
+        "id": "code",
+        "by": "agent",
+        "instructions": "Independent review of the G1-F07 increment against its ledger requirements, the master specification and the increment check. Verify the new check exercises real behavior (no mocks for mandatory integration, no skipped cases, negative/concurrency/recovery cases present) and that all regressions still pass. Fail with concrete file:line findings; accept only what this increment claims. Focus: correctness, failure handling, maintainability.",
+        "role": "reviewer",
+        "timeout_minutes": 15
+      },
+      {
+        "id": "devices",
+        "by": "human",
+        "instructions": "On real devices: start an Act task on desktop, put the desktop to sleep, steer and Stop it from the phone, then confirm web/desktop show the same authoritative result. Approve only if every step behaves as specified.",
+        "timeout_minutes": 60
+      }
+    ],
+    "policy": {
+      "max_iterations": 60,
+      "max_hours": 24.0,
+      "turn_timeout_minutes": 120,
+      "stagnation_limit": 3,
+      "max_task_attempts": 4,
+      "max_repair_rounds": 5,
+      "max_cost_usd": null,
+      "approval_required": [
+        "deploy or release to a shared or production environment",
+        "delete or overwrite data that is not reproducible from the repository",
+        "spend money or start paid resources",
+        "send messages, emails or posts to people",
+        "change credentials, secrets, access control or security settings",
+        "force-push, rewrite published git history or delete branches"
+      ],
+      "allow_network": true,
+      "fresh_session_each_turn": true,
+      "pause_on_interrupt": false,
+      "check_timeout_seconds": 3600
+    },
+    "schedule": null,
+    "agent": {
+      "adapter": "codex",
+      "model": "gpt-6.1-sol",
+      "permission_mode": null,
+      "extra_args": [],
+      "effort": "max"
+    },
+    "pipeline": "full"
+  }
 }

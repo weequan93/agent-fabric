@@ -1,0 +1,406 @@
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 152ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 163ms using pnpm v10.18.0
+{"measurement":"model-owned-postgres","owner":"0e6a8db9-891d-447e-bd06-ec8cf2cb7ae8","containerId":"0040f1b7dbede2c9a536604345d4b77a6fb7d291534708b079bff7e872e2e61f","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":21394,"marker":"29d0386f-7fd3-4a5c-ba3c-b63cb7091d5d","instance":"21275/Wed Oct  7 11:54:13 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process","pid":21397,"marker":"5352ef95-eefd-4925-82d8-337b1b7fcc96","instance":"21275/Wed Oct  7 11:54:13 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process","pid":21415,"marker":"3fa5e816-db50-4dcd-9f05-6397d358b0df","instance":"21275/Wed Oct  7 11:54:14 2026","ppid":21393,"loopback":true}
+# Subtest: NATIVE/wait-stop
+    # Subtest: owned-native-process-no-choice-Ask-actual-compiler-and-service-receipt
+    not ok 1 - owned-native-process-no-choice-Ask-actual-compiler-and-service-receipt
+      ---
+      duration_ms: 1099.781042
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:19:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:24:89)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:19:5)
+      ...
+    # Subtest: actual-native-budget-wait-no-fictitious-reservation-restart-and-32-polls
+    not ok 2 - actual-native-budget-wait-no-fictitious-reservation-restart-and-32-polls
+      ---
+      duration_ms: 28.038417
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:44:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:45:66)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:44:5)
+      ...
+    # Subtest: authorized-idempotent-top-up-is-separate-from-resume-and-smaller-scope
+    not ok 3 - authorized-idempotent-top-up-is-separate-from-resume-and-smaller-scope
+      ---
+      duration_ms: 24.864083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:71:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:72:96)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:71:5)
+      ...
+    # Subtest: approval-wait-preserves-result-expiry-and-ongoing-cost-policy-zero-turns
+    not ok 4 - approval-wait-preserves-result-expiry-and-ongoing-cost-policy-zero-turns
+      ---
+      duration_ms: 24.658208
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:101:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:103:59)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:101:5)
+      ...
+    # Subtest: model-permission-resource-connection-waits-use-native-state-not-model-text
+    not ok 5 - model-permission-resource-connection-waits-use-native-state-not-model-text
+      ---
+      duration_ms: 24.569834
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:128:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:136:68)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:128:5)
+      ...
+    # Subtest: unknown-usage-holds-original-reserve-top-up-and-resume-cannot-clear-it
+    not ok 6 - unknown-usage-holds-original-reserve-top-up-and-resume-cannot-clear-it
+      ---
+      duration_ms: 23.408708
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:144:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:146:137)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:144:5)
+      ...
+    # Subtest: Stop-first-burns-fresh-claim-blocks-every-continuation-and-survives-restart
+    not ok 7 - Stop-first-burns-fresh-claim-blocks-every-continuation-and-survives-restart
+      ---
+      duration_ms: 25.459625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:169:13'
+      failureType: 'testCodeFailure'
+      error: 'QUALIFICATION_MISMATCH'
+      code: 'QUALIFICATION_MISMATCH'
+      name: 'ModelError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/errors.js:15:15)
+        Object.authorize (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-runtime.js:19:13)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async AuthorizedContextCompiler.binding (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:80:9)
+        async AuthorizedContextCompiler.compileInTransaction (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/context.js:89:9)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async NativeContext.encode (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-context.js:20:25)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:170:234)
+        async Test.run (node:internal/test_runner/test:1054:7)
+      ...
+# {"measurement":"model-owned-process","pid":21432,"marker":"a1375731-abaf-476e-a0f9-164e6c27947b","instance":"21275/Wed Oct  7 11:54:15 2026","ppid":21393,"loopback":true}
+    # Subtest: accept-first-Stop-is-actually-blocked-then-fences-with-retained-liability
+    not ok 8 - accept-first-Stop-is-actually-blocked-then-fences-with-retained-liability
+      ---
+      duration_ms: 205.424833
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:201:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:204:52)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:201:5)
+      ...
+    # Subtest: parent-Stop-fences-a-separately-admitted-child-before-model-acceptance
+    not ok 9 - parent-Stop-fences-a-separately-admitted-child-before-model-acceptance
+      ---
+      duration_ms: 70.79625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:226:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:230:64)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:226:5)
+      ...
+    # Subtest: zero-port-pure-replay-does-not-encode-select-authorize-output-or-publish
+    not ok 10 - zero-port-pure-replay-does-not-encode-select-authorize-output-or-publish
+      ---
+      duration_ms: 26.818625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:234:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:236:45)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:234:5)
+      ...
+    # Subtest: boundary-forgery-expiry-conflicts-and-cost-view-redaction
+    not ok 11 - boundary-forgery-expiry-conflicts-and-cost-view-redaction
+      ---
+      duration_ms: 21.238417
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:246:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:247:46)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:246:5)
+      ...
+    # Subtest: required-native-checkpoint-audit-failure-rolls-back-without-new-dispatch
+    not ok 12 - required-native-checkpoint-audit-failure-rolls-back-without-new-dispatch
+      ---
+      duration_ms: 37.323334
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:264:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:271:63)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:264:5)
+      ...
+# {"measurement":"model-owned-process","pid":21436,"marker":"24639295-4e1d-47d7-b2ec-a747ad5b4cf1","instance":"21275/Wed Oct  7 11:54:16 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process","pid":21439,"marker":"378314bd-cbb7-4e43-b2eb-36d84dc80ace","instance":"21275/Wed Oct  7 11:54:16 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process-cleanup","pid":21436,"instance":"21275/Wed Oct  7 11:54:16 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":21439,"instance":"21275/Wed Oct  7 11:54:16 2026","signal":"SIGTERM","removed":true}
+    # Subtest: revoked-in-flight-audience-blocks-output-but-original-cost-remains-settled
+    not ok 13 - revoked-in-flight-audience-blocks-output-but-original-cost-remains-settled
+      ---
+      duration_ms: 1562.218625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:276:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:283:133)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:276:5)
+      ...
+# {"measurement":"model-owned-process","pid":21465,"marker":"3e54da5a-3d44-4c62-a23a-96a09cfdc762","instance":"21275/Wed Oct  7 11:54:17 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process","pid":21468,"marker":"059d08a0-136f-4b9c-b388-20d971e9fc9a","instance":"21275/Wed Oct  7 11:54:18 2026","ppid":21393,"loopback":true}
+# {"measurement":"model-owned-process-cleanup","pid":21465,"instance":"21275/Wed Oct  7 11:54:17 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":21468,"instance":"21275/Wed Oct  7 11:54:18 2026","signal":"SIGTERM","removed":true}
+    # Subtest: revocation-between-broker-chunks-denies-subsequent-disclosure
+    not ok 14 - revocation-between-broker-chunks-denies-subsequent-disclosure
+      ---
+      duration_ms: 1615.633833
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:302:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:316:68)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:302:5)
+      ...
+    # Subtest: switch-and-resume-are-fresh-safe-controls-never-replay-an-original
+    not ok 15 - switch-and-resume-are-fresh-safe-controls-never-replay-an-original
+      ---
+      duration_ms: 30.212292
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:329:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:331:45)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:329:5)
+      ...
+    # Subtest: native-controls-rls-history-and-current-stop-do-not-erase-accounting
+    not ok 16 - native-controls-rls-history-and-current-stop-do-not-erase-accounting
+      ---
+      duration_ms: 43.523375
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:351:13'
+      failureType: 'testCodeFailure'
+      error: 'permission denied for table budget_reservations'
+      code: '42501'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Object.query (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:28:74)
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/src/native-session.js:49:27
+        async file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-identity/src/authenticated-uow.js:16:27
+        async PostgresUnitOfWork.withScope (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-foundations/src/postgres-uow.js:29:27)
+        async Object.command (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/helpers/native-fixture.js:67:95)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:360:45)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:351:5)
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":21415,"instance":"21275/Wed Oct  7 11:54:14 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":21432,"instance":"21275/Wed Oct  7 11:54:15 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":21394,"instance":"21275/Wed Oct  7 11:54:13 2026","signal":"SIGTERM","removed":true}
+# {"measurement":"model-owned-process-cleanup","pid":21397,"instance":"21275/Wed Oct  7 11:54:13 2026","signal":"SIGTERM","removed":true}
+    1..16
+not ok 1 - NATIVE/wait-stop
+  ---
+  duration_ms: 6944.873875
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-model/node_modules/.cache/model-build/g1-model/tests/components/native.component.test.js:13:1'
+  failureType: 'subtestsFailed'
+  error: '16 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 17
+# suites 0
+# pass 0
+# fail 17
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7013.703417
+{"measurement":"model-owned-postgres-cleanup","owner":"0e6a8db9-891d-447e-bd06-ec8cf2cb7ae8","containerId":"0040f1b7dbede2c9a536604345d4b77a6fb7d291534708b079bff7e872e2e61f","removed":true}
+{"measurement":"preserved-inputs","files":1733,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3},"unchanged":true}

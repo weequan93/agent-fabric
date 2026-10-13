@@ -1,0 +1,772 @@
+{
+  "observedAt": "2026-10-08T03:38:58.115879+00:00",
+  "goalId": "agent-fabric-g1-f05-storage",
+  "iteration": 40,
+  "iterationBase": 0,
+  "startedAt": "2026-10-07T20:19:27+00:00",
+  "usage": {
+    "turns": 39,
+    "cost_usd": 0.0,
+    "cost_complete": false,
+    "input_tokens": 121290126,
+    "output_tokens": 850636,
+    "agent_seconds": 26150.362000000005
+  },
+  "stateSha256": "37310bd91338950f3ec8ad7b134607216df84f054ba3dd1b37356d56ea7ad9c3",
+  "goalSha256": "a949c86b4b6432990a0c0be975039718a848fc692b4c431a7c76dcaa080d8efd",
+  "eventsBytes": 287063,
+  "eventsSha256": "92cbdfc430852955e6c373ff2f69d47d24dd1215b16ecff88e8958469fd6260b",
+  "eventsHead": {
+    "seq": 726,
+    "at": "2026-10-08T03:36:09+00:00",
+    "type": "turn.started",
+    "data": {
+      "turn": 40,
+      "action": "resources",
+      "adapter": "codex"
+    },
+    "state": "sha256:acfb6b7dedf80aa5146a13321d083ef1c17b672c3471ddb56bc7f8fce0670256",
+    "prev": "sha256:f76b43f5e5e189dd904f310e046e09519471f403e5605d4d303fe95ca124aa8e",
+    "hash": "sha256:677b917cc9ccdc07e498b3e85e08bae877427889c95c54c69b9c3f7bf40e614e"
+  },
+  "tasks": [
+    {
+      "id": "f05-01",
+      "status": "done",
+      "attempts": 0,
+      "started_at": "2026-10-07T21:19:31+00:00",
+      "notes": [
+        {
+          "at": "2026-10-07T21:43:37+00:00",
+          "kind": "decision",
+          "text": "F05 structure/contract implementation only. Installed F04 resource binding FK points to model_computer_assignments (0009_resource_intervals.sql); a borrowed UoW alone cannot admit a logical service without consuming the one-computer assignment. Updated g1-f05-plan.md with exact additive f05-02 relational extension: closed immutable forced-RLS computer OR logical-service identity union, exact legacy-assignment registration, separate service enrollment to existing origin/allowance, validated replacement of only that computer-only FK plus strict subtype integrity/service-category checks. Preserve all installed columns/functions/ledgers/digests/immutable triggers/grants and all accepted files/checks; reject unexpected installed FK and incompatible rows. No DB or ACL migration applied this task. f05-02 must exercise real unchanged ResourceRepository.prepare/settle on BOTH Ask/maintenance with zero matching ComputerAssignment and original computer relation positives/negatives. StorageServiceAccounting uses pinned installed owner receipts, same exact authenticated transaction, no BEGIN/COMMIT/nested UoW; native/current policy/expiry checks repeat around waits/settlement/publication. Unit SQL-shape orchestration is explicitly not real PG qualification.",
+          "by": "agent",
+          "task": "f05-01"
+        },
+        {
+          "at": "2026-10-07T21:44:15+00:00",
+          "kind": "handoff",
+          "text": "f05-01 is controller DONE (1/15): job-32e145670c passes strict-build and contracts-component; component12/12 = C01-C03 plus9 mandatory children, zero fail/cancel/skip/TODO. Added only g1-storage files and appended/updated g1-f05-plan.md. Own strict offline pinned build compiles F01-F04/native sources, copies24 migration assets byte-identically, and guards2581 installed/protected/raw inputs; no sibling caches/source/locks/checks regenerated. Frozen10 suites/64 local IDs/420 required variants (digest-pinned snapshot),96 requirements,3 separate G cases and9 pending X gates. Closed schemas/errors/bounds/inventory, actual-result/variant/positive+zero-violation shared gates, direct installed owners and same-transaction borrowed resource adapter for BOTH Ask and maintenance. Negative result-probe streams retained base64+bytes+SHA256 inside controller stdout. Initial nested NODE_TEST_CONTEXT protocol failure was corrected by fresh test-child context, without relaxed gate. Local aggregate negative probe strictly builds then refuses missing authority BEFORE any product suite; unknown/selective/extra args refuse. Full aggregate/evidence/PG/encryption/Ask/retention/restore still unqualified. NEXT f05-02: owned real PG/IdP/current authority fixture + migration, including exact documented closed resource-domain extension. TRAP: F04 resource-binding FK currently references model_computer_assignments; adapter-only is insufficient. Implement validated computer OR separately enrolled logical-service registry/FK extension with all original computer relation invariants/functions/ledgers/grants/digests preserved; service receipts use existing allowance/origin Run, no fake ComputerAssignment/no copied budget/no SQL interception. Real f05-02 tests must prove installed ResourceRepository prepare/settle for Ask AND maintenance with zero matching assignment and independent computer-positive/negative relations. CurrentStorageAuthority guard and pre/post-wait native checks are contract seams, not PG qualification from SQL-shape unit probe. No private F05 payload may enter F04 Task/model/native plaintext history. Behavioral suites must emit actual closed storage-observations via tests/helpers/observations.ts, not canned zero/positive counts. Raw task logs: .loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-32e145670c/{f05-01.strict-build,f05-01.contracts-component}/{stdout,stderr}.log. No agents or paid/external/credential/ACL/GUI actions performed; acceptance and external X01-X09 remain pending.",
+          "by": "agent",
+          "task": "f05-01"
+        },
+        {
+          "at": "2026-10-07T21:44:45+00:00",
+          "kind": "evidence",
+          "text": "Controller task-only candidate git:4145579698fd4da3aea9c044, job-32e145670c. Complete immutable raw streams under .loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-32e145670c/: f05-01.strict-build/stdout.log 1148 bytes sha256 20a7cb423455495b5674fb172df1836001532f010181fee775aff269e28c0edd; f05-01.contracts-component/stdout.log 10336 bytes sha256 d63bc23af18aca386f5747541c56ebeacbb34fa72111efde8e4ba0d8d5e50768. Both stderr.log are 0 bytes sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. No raw files edited/copied. Results establish f05-01 gates only, not PG/encryption/Ask/restore/aggregate acceptance. Controller state records finished command cleanup=zombie for the controller-owned wrapper; this task did not claim a full runtime census. Real fixture process census/owned cleanup remains required through controller in later harness tasks.",
+          "by": "agent",
+          "task": "f05-01",
+          "finding": "f-081b05ec40"
+        },
+        {
+          "at": "2026-10-07T21:44:45+00:00",
+          "kind": "handoff",
+          "text": "f05-01 DONE,1/15: controller job-32e145670c passes strict-build+contracts12/12; guards2581 unchanged, own-cache F01-F04/native compile+24 exact SQL assets. NEXT f05-02 real PG/IdP/current authority+migration. CRITICAL: F04 resource bindings FK requires ComputerAssignment; adapter alone is insufficient. Implement docs/planning/g1-f05-plan.md's closed computer OR logical-service subtype registry/FK extension, preserve original computer relation/functions/ledgers/grants/digests, prove actual unchanged ResourceRepository reserve/settle for BOTH Ask+maintenance with zero service ComputerAssignment. StorageServiceAccounting borrows SAME authenticated transaction; no copied budget/nested COMMIT/private F04 history. Frozen64 cases+420 variants; behavior suites require actual positives/6 zero-violation observations. Unit SQL-shape probe is NOT PG qualification; aggregate refuses missing authority before any suite. Raw stream/candidate hashes in preceding evidence note. No external actions/agents; acceptance/X gates pending.",
+          "by": "agent",
+          "task": "f05-01"
+        }
+      ]
+    },
+    {
+      "id": "f05-02",
+      "status": "done",
+      "attempts": 1,
+      "started_at": "2026-10-07T21:44:53+00:00",
+      "notes": [
+        {
+          "at": "2026-10-07T23:27:00+00:00",
+          "kind": "handoff",
+          "text": "Turn17 completed ONLY exact accepted-record tombstone control-owner slice; f05-02 ACTIVE, plan1/15. Controller final job-cc6f80a63a PASS authority65/65(read78/deny310/owner6),migration8/8(owner2/deny60), all6 violations0/all2581 inputs unchanged. New0007 pin51ed3fa8316877aa425a1a44c9c4fc4e5ebffded0fe170aa6308c47a0539e274; src/tombstone-publication.ts TombstonePublicationRepository.forget exact closed class/ID/revision/witness control only, requires installed same-Space source Task/full current audience+real native maintenance+forget/task/maintenance authority. Immutable forcedRLS marker original+head+tombstone compositeFKs/controllerSELECT+fixedrevokedPUBLIC EXECUTE only; v1-v6/catalog/oldledgers unchanged. Journal4 exact entity/time/old-new samepolicy changeddigest, projection prior reserve + actual current digest after SQL; lookup reconstructs markerbinding/headwitness/tombstonecommand/epoch/time beforeACK. 11mandatorychildren include source+knowledge suppression/unaffected positives, sameID source/knowledge class isolation, missinglineage/method/changedclass/scope negatives; realwire bothUNKNOWN_COMMIT outcomes, reserve/SQLrollback, ACKgap+corrupttime+observed lookup timeout, actual2waiters/singleeffect, expiryafterSQL+barrierwait, actualforgetgrant removal/stalenative/newnative. Additive lifecycle group bootstrap fixture. All8streams2passingjobs retained tombstone-v1.json SHAcc9b377c90d5aa2d768f47eddbd816d7de2a6cbcfdcd5853f75e7adb6d55a9c7 linked9priorindexes (10inclnew allverified). Earlierjob37b53106a0 pass64/64 beforeclasscase/inventory. Localcontracts12/12; localsandbox authority census unavailable beforefixture, raw diagnostic retained, notcontroller evidence. README/plan/acceptance/controlinventory updated, no paid/external/realaccesssetting change. NEXT: f05-02 canonical acceptedhead/contentcommand/outbox and two-sidedsharing mutation+independent changedcontrol recovery; notdone. Encryption/real recall/conflict/fullforget/descendant propagation/Ask/source-lossrestore/aggregate/regressions/reviews/Xgates pending. Tombstone method returns control status+anchor only, NOT erasure/full forget receipt; no payloads/outbox jobs are deleted/completed. CurrentJournal onehost1024events no compaction; originalnative revocation duringpending staysblocked; multi-host/KMS/disk/powerloss unqualified. Run local/controller cachebuilding sequentially; retain scopes for existing source(policy personal/group/secondary) and new lifecycle journal installs, never auto bootstrap replacements.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:36:18+00:00",
+          "kind": "handoff",
+          "text": "Turn18 completed ONLY atomic exact tombstone + original command control receipt + pending propagation intent slice; f05-02 remains ACTIVE, plan1/15. New migration0008_forget_work.sql pin eb0161fd3a2d1bd981cb1507ebba3b8e280918fc19529e9e8887e9432aa30c88; src/forget-work.ts, helpers/register-forget-work-tests.ts,13mandatorychildren. SQL fixed revoked-PUBLIC function/immutable forcedRLS storage_forget_work marker; exact composite command(binding/receipt/epoch/time) and outbox(actor/key/class/target/revision/epoch/time) FKs plus original tombstone marker/scoped tombstone; controller SELECT+EXECUTE only. All tombstone/command/job/epoch/original markers commit on actual F02UoW/current source+native full audience/F03barrier/nativefresh, service-generated receipt/job/at/epoch. Journal5 exact target/witness/time/receipt/job with samepolicy+changeddigest preserves1-4; controlDigest projects actual PG command/outbox/tombstone rows before reserve and checks actual digest afterSQL. Lookup validates exact original marker/binding/head/tombstone and command/job fields+independent reservation beforeACK; pendingWork metadata status only propagation-pending, no worker consumption/erasure/descendant completion/full forget. Controller final job-a1188914fd PASSauthority78/78(read95/deny390/owner6),migration8/8(owner2/deny60),no fail/cancel/skip/TODO/all6violations0/all2581inputs unchanged. Prior job-f5443a07d3 also PASS78/78+8/8 before missingjob/crossprotocol/journal malformed refinement. Real wire bothUNKNOWN_COMMIT directions, actual2PGwaiters/singlecommand+job+tombstone, receipt-before-job trigger interruption rollback, missing persistedoutbox and legacyv4reconciliation refuse with pending retained, corruptedtime/ACKgap/lookup timeout, source+knowledge/class/lineage/actor/scope/role/history/native/grant/expiry negatives all pass. Added separate same-tenant pending fixture Space; fixture bootstrap journals before product controls; no rebootstrap recovery. New evidence/f05-02-forget-work-v1.json SHA16af1cd05761c8001cb612f8fe0def14bd37ec67ff6aa777fee2cdcdd171ee9a keeps8complete controller streams+4localdiagnostic streams and verifies10prior indexhashlinks; all streams/hashbytes verified. Local strictbuild and contracts12/12 pass; sandboxauthority processcensus fails beforefixture (retained), controller works. Sequential builds/checks avoid cache collision. Docs plan/acceptance/README/inventory updated; index/docs follow passingcandidate and do not certifyfinal. NEXT f05-02 canonical accepted-head publication + authenticated two-sided sharing mutation with independentlyACKed changed controls. F05encryption/recall/conflict/physicalforget/descendantpropagation/Ask/actualcontentrestore/frozen64/420/regressions/reviews remainpending; allX01-X09,enterpriseholds/deadlineapplication/original-native-revocationrecovery/multihost/KMS/antirollback/powerloss/journalcompaction unqualified. OldSQL1-7/oldledger/installedowner catalog unchanged. Do not mark taskdone yet; paid/shared/external actions OFF.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:43:04+00:00",
+          "kind": "root_cause",
+          "text": "Turn19 confirmed current control-read authorization gap with new mandatory real PG/IdP regressions before repair. Controller job-9514dfb02e failed 4 control-read children (audience, observed wait, lineage, stopped native), 5 total TAP failures and unauthorizedDisclosure=9. Resolved EpochPublicationRepository.reconcile bypassed native/full audience checks; ForgetWorkRepository.pendingWork bypassed native freshness; restriction/tombstone receipt inspection did not require exact installed lineage. Repaired both witness branches, including serialized absence, and pendingWork with full installed native service shape/freshness/all-party audience, final native freshness after digest waits, plus exact entity Task lineage/current source audience without reopening deleted content. Controller job-90d73f3571 now passes authority84/84 read119/deny416/owner6 and migration8/8 owner2/deny60, all 6 violations0 and 2581 preserved inputs unchanged. Task remains active; no accepted suite, SQL migration or raw evidence changed.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-e2367a4588"
+        },
+        {
+          "at": "2026-10-07T23:44:37+00:00",
+          "kind": "handoff",
+          "text": "Turn19 completed ONLY current-authority control-read repair; f05-02 ACTIVE, plan1/15. Six additive mandatory children register-control-read-tests.ts cover all5 publication owners/recreated positives, all-party recipient task:read removal/restoration, actual6 PGblocked readers(1 audience +5Spacebarrier)thenCOMMITdenial, exact missingknowledgeTasklineage, pendingACKgap audience denial preserving journal, actual NativeRepository.Stop then original/newkey/pendingWork denial. Base reconcile always controlNative exact maintenance/service/noresource/nocomputer/noeffect/noapproval + currentAudience before both witness branches, final nativefresh after digestcheck; source/tombstone/forgetWork inspect exact installed entityTask currentAudience; pendingWork repeats same native+currentauthority. Historical deadline remains receipt-readable/no replay; original-native revocation recovery unsupported failclosed. Pre-repair controllerjob-9514dfb02e intentionally FAIL79/84(4children+parent, unauthorizedDisclosure9). Repaired job-90d73f3571 PASSauthority84/84(read119/deny416/owner6),migration8/8(owner2/deny60),all6 violations0/all2581preservedinputsunchanged. SQL1-8/pins/oldledger/catalog/acceptedchecks untouched. g1-storage/evidence/f05-02-control-read-v1.json SHAac9d034011015ccb5d61cc8a745bc2e2a89487db65c72876e080f56774906731 retains6complete failed+passingstreams/candidates/actualcleanup; all12priorindexes+150priorreferencesverified; docsplan+acceptance appended. Local first captures under candidate rightly failed Candidatechanged; authority also processcensusrefusal before fixture; retained unchanged diagnostics. Subsequent /tmpcontracts stable PASS12/12 not controller evidence. Trap: capture outputs outside g1-storage then copy AFTERcheck; sequential checks/builds; never weaken snapshotguard. Next: canonical accepted-head/contentcommand publication + authenticated2sided sharing mutation with independentchangedcontrolACK, then f05-03-15. Fullencryptedcontent/recall/conflict/physicalforget/propagation/Ask/actualrestore/frozen64/420aggregate/finalregression/reviews and allX01-X09 pending. Index/docs added after executed passingcandidate, finalcurrentcandidateacceptance pending. No paid/shared/external action or realaccesssettingchange.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:48:24+00:00",
+          "kind": "root_cause",
+          "text": "Turn20 intentional pre-repair controller job-3e04f40b83 confirms StorageAuthorityRepository.entity only verifies currentAudience for source class; all ten other classes can disclose accepted-head controls despite a remaining recipient lacking task:read or absent installed source Task lineage, and bypass actual audience lock/late expiry checks. New seven mandatory children: all11 sameID/class-distinct origin Task positives, all-party denial,6 observed PGwaiters,10 missing-lineage refusal+exact restoration, scope/extra fields, real audience wait beyond expiry, remaining-member positive. Pre-repair authority86/91 pass,4child+parent failures,unauthorizedDisclosure26; cleanup and preserved2581 guards pass. Repair scope: require exact installed origin Task/full current audience for every accepted-head class; no migration/pin/control digest change and no actual content/derived dependency claim.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-7528f6ae86"
+        },
+        {
+          "at": "2026-10-07T23:50:12+00:00",
+          "kind": "progress",
+          "text": "Turn20 repaired candidate controller job-3fdd96aacf authority89/91 (one expiry fixture child+parent failed),migration8/8. All audience/observed6waiters/missing10lineage/scope/remainingmember children pass. Expiry fixture used membership SELECT FOR UPDATE, which holds compatible ROW SHARE and no conflicting audience table lock; installed identity_audience uses LOCK TABLE memberships IN SHARE MODE. Corrected synthetic fixture to actual same-grants+revision membership UPDATE holding ROW EXCLUSIVE; still requires observed pg_blocking_pids exact observer and delay beyond500ms before COMMIT/retention refusal. No product guard/check weakening; failed full streams will be retained.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:52:11+00:00",
+          "kind": "evidence",
+          "text": "Turn20 all11 accepted-head audience/lineage repair verified by final controller job-451ff4722a authority91/91(read219/deny488/owner6),migration8/8(owner2/deny60),no fail/cancel/skip/TODO,all6violations0,2581protected inputs unchanged. Complete10streams from3jobs (including intentional pre-repair and expiry fixture failure),owned PG/IdP/process/root cleanup and candidate digests retained in g1-storage/evidence/f05-02-entity-read-v1.json SHA256 9637b2900c5974eee835b6a9239bc08d2c5f6ac281b30ef33418d3aaa21aa847;13prior indexes+154prior reference hashes verified; localbuild+contracts12/12 diagnostic logs retained. Plan/evidence appended precise local controls-only boundary, all X01-X09 and content/dependency/Ask/propagation/restore/final qualification pending. Evidence additions follow passing candidate; no final acceptance claim.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:52:30+00:00",
+          "kind": "handoff",
+          "text": "Turn20 completed ONLY all-class accepted-head current-audience/lineage read repair; f05-02 ACTIVE,plan1/15. authority.entity now requires exact installed origin Task+F02 currentAudience for all11 classes, not only source; nullable historical non-source metadata fails AUTHORITY_UNAVAILABLE, optional payload source attribution distinct. Seven new mandatory register-entity-read-tests.ts children: sameID distinct realTask all11/recreated exact class positives; allparty taskread denial; actual6PG waiters(1 audience table+5Spacebarrier)denyafterCOMMIT;10null-lineage denial+exact synthetic restoration/source unaffected; wrongSpace/tenant+extraTask field; real audience wait500ms expiry; removedmember denied/remainingreader all11 positive. SQL1-8/pins/oldledgers/catalog/acceptedchecks untouched. Pre-repair job-3e04f40b83 intentional FAIL86/91+26disclosures. Intermediate job-3fdd96aacf FAIL89/91+1disclosure (expiry fixture row FOR UPDATE compatible with identity_audience tableSHARE); corrected actualsamegrants+revision UPDATE gives ROWEXCLUSIVE and observedwait before delay. Final job-451ff4722a PASSauthority91/91(read219/deny488/owner6),migration8/8(owner2/deny60),all6violations0/2581protectedinputsunchanged. Localstrictbuild+contracts12/12 pass, captures outsidecandidate. All10controllerstreams3jobs retained entity-read-v1.json SHA9637b2900c5974eee835b6a9239bc08d2c5f6ac281b30ef33418d3aaa21aa847;13priorindices154refs verified; appended plan/acceptance. Next canonical accepted-head/content-command publication and authenticatedtwo-sided sharing mutation with independentwitness changed digest; do not claim f05-02 done yet. No actualcontent/encryption/Ask/descendant/delete/restore qualification; allX gates/final reviews pending. Avoid local/controller overlapping cachebuild; do not write captures/evidence insidecandidate during checks. Evidence/docs added afterpassingcandidate,final current acceptancepending. No paid/external/realaccess actions.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:57:57+00:00",
+          "kind": "progress",
+          "text": "Turn21 implementing only control-only accepted-head publication: installed opaque HeadMaterialResolver, closed expected class/ID/revision/witness, all11 installed Task lineage, current native/full audience/policy retention, additive migration9 exact head/lineage/expected composite FKs and immutable forcedRLS marker, journal6 reservation with scope/transition binding. Full ciphertext material preparation and canonical payload command/outbox remain later slices. Adding14 mandatory authority children with all11 sameID positives/corrections/negatives/partial SQL rollback/ACKgap/actual wire outcomes/concurrency/expiry/audience/grant/restricted-reuse/roles/journal, preserving all prior check identities and SQL1-8 pins.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-07T23:59:42+00:00",
+          "kind": "root_cause",
+          "text": "Turn21 initial controller job-2f6365154f FAILauthority91/105(migration8/8). All11 head initial publication passes. Correction passed expected EntityRef incl witness to closed controlAudience(class,id,revision), causing correct INVALID_SCHEMA rollback + pending independent reservation; subsequent12children cascade fail. Repair projects exact closed lineage fields both postpublication and original lookup. Fixture head tests now use independently authenticated actor1share scope; dedicated write-grant race changes that caller only, preserving earlier actor0destination sharing scope unchanged. All prior mandatory checks/assertions preserved; no allowance widening. Complete raw failure/cleanup to retain.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-0da93b6091"
+        },
+        {
+          "at": "2026-10-08T00:03:48+00:00",
+          "kind": "root_cause",
+          "text": "Second controller job-9ce5e057e0 authority101/105(migration8/8). All head children except concurrency pass, zero violation counters. Concurrency competitor legitimately sees pending independent witness before queued lookup; test now forces explicit post-COMMIT ACKgap and observes lookup enqueued first, then competing write, retaining exact two PG waiters and exact STALE_REVISION after reconciliation. Added suite extended elapsed time beyond earlier60s content fixture; move only new head registration after unchanged existing lifecycle checks (no deadline/assertion changes). Add head-shared-controls mandatory child to check installed cross-Space JSON bridge still enforces real earlier source restriction after all-class service heads. Added journal6 state scope binding check; existing branches unchanged.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-037a8377e4"
+        },
+        {
+          "at": "2026-10-08T00:05:45+00:00",
+          "kind": "root_cause",
+          "text": "Third controller job-5bcbcad816 authority103/106,migration8/8,zero violation counters. All old checks, ordered concurrency and other headchildren pass. Two new test setups used actor0 scopeFor after unchanged legacy restriction-session child actually revoked its original fixture-held IdP session globally; scopeFor does not reissue that bound session. Preserve genuine revocation and original verifier; use actor1secondary real Task for wrong-lineage negative and current actor2group readonly recipient for head-shared-controls. No product/SQL/check expectations change.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-33051f92f8"
+        },
+        {
+          "at": "2026-10-08T00:08:46+00:00",
+          "kind": "hypothesis",
+          "text": "Fourth controller job-a2b2981035 authority104/106,migration8/8,all prior+14head children pass,zero violation counters. Sole head-shared-controls child after all-class publication returns AUTHORITY_UNAVAILABLE before real earlier source restriction, confirming earlier cross-Space failure not merely fixture elapsed time. Preserve strict expected RETENTION_RESTRICTED and installed SQL1-8 bytes. Add exact scoped-PG versus unchanged installed SQL JSON projections and latest epoch assertions to locate encoding/digest mismatch; test controls opaque metadata only. No bypass or weakened digest.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-3e8e2d3fa2"
+        },
+        {
+          "at": "2026-10-08T00:11:56+00:00",
+          "kind": "root_cause",
+          "text": "Fifth controller job-f458b145c5 authority104/106,migration8/8 confirms installed sharing bridge picks stale source epoch, before JSON encoding. Original migration3 storage_shared_controls SELECT epoch::text AS epoch ORDER BY epoch DESC sorts output text alias; with service head epochs10+ returns9. Preserve original SQL1-8/pins/old function definition and all historical digest encodings. Add storage_shared_controls_v2 in migration9 with ORDER BY storage_authority_epoch.epoch DESC, fixed/revokedPUBLIC/controller EXECUTE only. StorageAuthority.sharedEntity requires installedv2 failclosed. Mandatory head-shared-controls asserts legacyv1 returns9 andv2 latest, exact all8 scopedPG/projection bytes, then real earlier source restriction denial. Head roles exercise v2 direct unprivileged/no-context denial; original checks unchanged.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-08T00:14:46+00:00",
+          "kind": "evidence",
+          "text": "Turn21 final controller job-36ae0ee784 PASS authority106/106(read269/deny568/owner6),migration8/8(owner2/deny60),no failures/cancellations/skips/TODO,six zero violations,all2581 protectedinputs unchanged. Head control-only metadata publication all11 classes and actual recovery/negative/concurrency children verified. Migration9 pin23e52909335b8349bab825d7f247eee3a1b14d3320646441746694aa474c90f1 adds immutable exact head/lineage/expected/original marker FKs and numeric epoch shared-controls-v2. Old SQL1-8/pins/ledgers/functionv1 remain intact; originalv1 epoch9 lexical failure remains reproduced. g1-storage/evidence/f05-02-head-v1.json retains24 complete streams from6jobs incl all failed candidates, exact current candidate digests and actualowned cleanup;14 precedingindexes+202 references verified. Plan/evidence/README/inventory updated with explicit control-only/material-capability and all external limitations; those additions follow passing diagnostic candidate. f05-02 remainsACTIVE,1/15; no paid/shared/external action.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-8f5b4c109a"
+        },
+        {
+          "at": "2026-10-08T00:15:25+00:00",
+          "kind": "handoff",
+          "text": "Turn21 completed ONLY authenticated control-only accepted-head publication + numeric shared-epoch bridge repair; f05-02 ACTIVE,plan1/15. HeadPublicationRepository via installed opaque HeadMaterialResolver (synthetic metadata,no ciphertext attestation), closed expected class/ID/revision/witness; all11 real Task/current full source+native audience, F02UoW/F03barrier/fences/F04maintenance, actual finite policy deadlines. SQL9 pin23e52909335b8349bab825d7f247eee3a1b14d3320646441746694aa474c90f1 immutable forcedRLS marker/exact full-head+lineage+expected+original4FKs,controller SELECT/fixedrevokedPUBLIC EXECUTE only; SQL1-8/pins/oldledgers/originalv1 definitions preserved. Journal6 exact scoped materialID/material/expected/time,samepolicy changeddigest; actualPG projection then full marker/currentcontrols beforeACK, materialowner unnecessary forrecovery; no replay/payload/outbox/restore claims. 15mandatory headchildren including all11 sameID distinctTask+corrections/restrictedreuse,missing/foreign/material/native/policy/roles/history/FK negatives,actual reserve/SQL/entity-before-head rollback,ACKgap+marker corruption+observedtimeout,bothgenuine wireUNKNOWN_COMMIT outcomes,2observed FIFOlookup-first waiters/1winninghead,latecommand/materialexpiry+audience/grantwait,newnativeafterrevisionrestoration. Discovered old SQL3 bridge ORDERBY epoch textalias selecting9before10; additive storage_shared_controls_v2 qualified numericorder requiredforserving, preserves8field/numeric/time projections. Test retainsv1 actual9 vs latestv2 + exact scopedPG bytes + actualsource restriction. Finalcontroller job-36ae0ee784 PASSauthority106/106(read269/deny568/owner6),migration8/8(owner2/deny60),all6violations0/all2581inputs unchanged. Evidence f05-02-head-v1.json retains24streams/6jobs(all5failures),14priorindexes/202refs verified,owned IdP/process/container/roots; final12/12localcontracts after docs/inventory passes and separatelyretained(no controlleracceptance). Traps:new children run AFTER untouchedlegacy lifecyclechecks to avoid extending their60s fixtures; actor0 originalIdPsession then revokedglobal, scopeFor never reissues; usevalidactor1share/secondary + actor2group. Originalnative revocation/status recovery remains failclosed/unqualified. Next: authenticated two-sidedsharing mutation and canonical content-command/outboxcontrol publication. Encryption/recall/conflict/propagation/usefulAsk/contentrestore/frozen64/420/finalregressions/reviews/allXgates pending. No paid/shared/externalaction or real accesssettings changed. Evidence/docs additions follow passing diagnostic candidate; finalcurrent acceptance pending.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-08T00:23:48+00:00",
+          "kind": "root_cause",
+          "text": "Turn22 controller job-85cdc18064 passes all prior106 and ten of11 new sharing children, authority115/117, six violations0. Sole lock-order fixture reused reverseMaterial relation_id on its second schedule; immutable active relation correctly returns STALE_REVISION. Use new opaque reverse relation ID per direction/order; preserve strict expected bounded AUTHORITY_UNAVAILABLE recovery and all product/legacy guards. Initial job-fa8a1771e8 authority cache ENOTEMPTY caused by my overlapping local/controller builds; migration8/8 passed, overlap ended; retained streams will include both failures.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-9e3dc3a1af"
+        },
+        {
+          "at": "2026-10-08T00:25:57+00:00",
+          "kind": "decision",
+          "text": "Turn22 controller job-280c43de62 passes authority117/117(read287/deny625/owner6),migration8/8(owner2/deny60),all six violations0,2581 preserved inputs unchanged. f05-02 approved outcome now has installed current control ledger, authenticated service head/restriction/tombstone/original forget-command/pending-work/epoch/policy mutations plus trusted two-sided same-tenant share creation with sorted barriers. Canonical payload save/correction and encrypted commands/events/outbox remain explicitly f05-04 in approved plan; lifecycle consumption/descendant propagation and serving relation revoke are f05-07. Prior notes listing these as f05-02 next work were overbroad; preserve them as history and submit bounded f05-02 after current evidence/docs updates. No encrypted persistence/Ask/restore/full acceptance claims.",
+          "by": "agent",
+          "task": "f05-02"
+        },
+        {
+          "at": "2026-10-08T00:30:32+00:00",
+          "kind": "root_cause",
+          "text": "Current task check job-e503582fb1 authority116/118,migration8/8,all six violations0 and2581 unchanged. New real source-journal-loss child and physically tampered schema7-reader scope both pass. Sole share-negative fails cloned-scope expected UNAUTHORIZED because my redundant pre-UoW assertion emitted raw Foundation UNVERIFIED_SCOPE; unchanged F02 AuthenticatedUnitOfWork already verifies before entering any callback/material resolver and maps scope refusal. Remove redundant outer assertion, keep actual UoW scope verification and twoSpaces assertions unchanged; preserve exact UNAUTHORIZED expectation and rerun task done. No new-scope or authority bypass.",
+          "by": "agent",
+          "task": "f05-02",
+          "finding": "f-619d838c98"
+        },
+        {
+          "at": "2026-10-08T00:33:34+00:00",
+          "kind": "handoff",
+          "text": "Turn22 COMPLETED f05-02 via controller task job-d2159738e1: authority118/118(read289/deny629/owner6),migration8/8(owner2/deny60),no fail/cancel/skip/TODO,six zero violations,all2581 protectedinputs unchanged; plan2/15,nextf05-03(no active task). SharePublicationRepository+installed opaque ShareMaterialResolver controls-only: same-tenant group/share routes,source sender taskwrite/share+destination maintenance/share,actual full F02 audience/payers/F03sorted twoSpacebarriers/F04maintenance-native; incoming destination changed digest+epoch,source unchanged. Migration10 pin066f7f9c413f83961c58e7fc4590d429c4a48e56204eaff77f8b5a76cb3f777c immutable forcedRLS exact originalreceipt/fullrelation/sourcewitness3FKs,fixed revokedPUBLIC narrow bridge/publication;SQL1-9/pins/oldledger/catalog preserved. Journal7 exact scoped materialID/route/sourceTask/source independent anchor;state reader also validates scope7. Real source namespace loss/emptyrefusal/restoration and isolated last-event scope tamper verified; both wireCOMMIT outcomes,partialSQLrollbacks,ACKcorruption/observedtimeouts,oppositedirection sorted PGwaits+bounded retry,expiry/grant/audience/sourceRestriction/Stop/roles negatives. Index f05-02-share-publication-v1.json10streams+15priorindexes260references;f05-02-completion-v1.json8taskstreams+prior38references,complete actual cleanup;all earlier evidence unchanged. Retained failed cacheoverlap fa8a,reverse relationreuse85cdc,and redundant outer scopeerror e503; exact relation fresh eachschedule; removed redundant outer assert since F02UoW verifies before callback and maps clone UNAUTHORIZED; strict negatives unchanged. Final contracts12/12,10pins/frozen64/420verified. Docs/README status now2/15; appended evidence follows checked taskcandidate,whole finalacceptance pending. Next implement approved f05-03 crypto-store/envelope/owned fs staging/keys/GC; canonical encrypted payloadcommand/event/outbox is f05-04 per approvedplan (older handoffs overassigned to02); service relationrevoke/workerconsumption/descendant propagation f05-07. Preserve native stale bindings after real membershiprevision (new native admission required),original actor0 IdP session genuine revocation,and sharedcontrols-v2 numeric encoding. Fullcontent/Ask/restore/aggregate/regressions/reviews andallX01-X09/provider/KMS/multihost/antirollback/powerloss/holds/deadlines/journalcompaction/admin original-native recovery unqualified. No paid/shared/external action;stop this assignment.",
+          "by": "agent",
+          "task": "f05-02"
+        }
+      ]
+    },
+    {
+      "id": "f05-03",
+      "status": "done",
+      "attempts": 0,
+      "started_at": "2026-10-08T00:33:47+00:00",
+      "notes": [
+        {
+          "at": "2026-10-08T01:00:57+00:00",
+          "kind": "handoff",
+          "text": "Turn25 completed ONLY authenticated durable PREPARATION slice; f05-03 ACTIVE, plan2/15. New src/staging-preparation.ts AuthenticatedStagingPreparation uses installed closed StagingMaterialResolver, actual F02 authenticated UoW/current all-party audience, F03 Space-first original-key advisory lock excluding binding, native maintenance/fresh/actual Stop and anchored current storage policy/write grant. Exact root/generation/AAD/sourceTask/session/originalkey/finiteexpiry checks before+after waits/files; typed redacted Identity/Model/Foundation owner errors, genuine UNKNOWN_COMMIT preserved. Migration11 immutable forcedRLS scoped original reservation+upload confirmation, opaque metadata only; historical SQL/pins/ledger1-10+installed owner catalog preserved. Recreated original lookup including absence never permits replay. Every unconsumed upload conservatively stays pending/GC-protected; publish deliberately refuses REQUIRED_CAPABILITY_UNSUPPORTED, inspect remains unavailable: NOT full installed publication/outcome/GC owner and NOT canonical save. Final job618ef41f44 PASS encryption8/8(read49/write49/deny59),staging21/21(read14/write50/deny70),sixviolations0/no skips. Compatibility job67e0c00d55 PASS authority118/118(read289/deny629/owner6),migration8/8(owner2/deny60);all2581protected unchanged. Initial job983623347b failures(error type adaptation and wrong new SQLSTATE assertion) retained; repaired job158e8be95f also passes. All20 complete controller+local streams byte-identical/SHA256 with prior-indexlinks in evidence/f05-03-preparation-v1.json; docs/README/control inventory updated after final checked candidate, require later aggregate current-candidate acceptance. Strict builds pass; local sandbox attempt fails before resources at unchanged process census; use controller outside sandbox. Next within f05-03: authenticated publication/reachability + exact current original command pending/unknown/settled/abandoned outcomes/rollback protection, GC only verified abandonment/unreachability, actual staging wireCOMMIT uncertainty and filesystem process-kill recovery. Present installed material is synthetic resolver capability; no independently witnessed staging-command outcome ledger. Canonical encrypted payload/save/event/outbox remains f05-04, every-class E01-E04 f05-14; Ask/lifecycle/backup/restore/aggregate/fullAF07UX01 and X01-X09 unqualified. No paid/shared/external or approval-required action; no taskdone claim.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:09:42+00:00",
+          "kind": "progress",
+          "text": "Turn26 implements additive migration12 exact-original immutable forced-RLS abandonment and authenticated outcome()/abandon() under unchanged Space-first original-command locking; current head/command/outbox reachability conservatively protects bytes. Explicit committed preparation-only abandonment cancels the file lease; pending/missing/COMMIT-uncertain state never permits replay/deletion. Fixed filesystem cleanup classification inside authenticated owner callback, preserving native/identity errors for owner mapping. Initial controller job-17f1b16a31 retained: staging26/29 with cleanup classification and FK-fixture failures. Repair job-ef7a0f93e0 passes8/8+29/29. Final job-dcab49b526 passes encryption8/8(read49/write49/deny59),staging31/31(read29/write60/deny89),six violations0,no skips/TODO/all2581protected unchanged. Genuine abandon wireCOMMIT commit/rollback, actual authenticated PG stage/GC blockers, recreated partial/confirmed/quarantine recovery, real ENOTEMPTY, late-expiry rollback, audience/Stop and current reachability are exercised. Compatibility job-cda177aed2 is running. Publication, expired-original/native recovery, independent terminal antirollback and actual filesystem process-kill schedules remain pending; f05-03 stays ACTIVE.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:11:19+00:00",
+          "kind": "handoff",
+          "text": "Turn26 completed ONLY authenticated preparation-only abandonment/current-authority orphan GC slice; f05-03 ACTIVE,plan2/15. Migration12 pin32dc507d874f77f5b56553d9ee46190620544981be5691a6db2878fc2ed06993 immutable forcedRLS exact tenant/Space/actor/originalkey/uploadFK; historicalSQL1-11/pins/ledger+installed catalog preserved. AuthenticatedStagingPreparation.outcome()/abandon() retain Space-first original locks,currentF02all-party/native maintenance/Stop/current material/root/generation/source/session/deadline/write policy/anchor. Matching head/originalcommand/outbox reachability protects; explicit committed abandonment caps lease,permits actual quarantineGC of partial/confirmed uploads; every absent/pending/uncertain original keeps no-replay and pending protection. Future canonical publication MUST use same Space/original locks and reject terminal; currently publish remains UNSUPPORTED/inspect unavailable. Fixed OwnedCipherFiles cleanup raw syscall/hook classification INSIDE authenticated owner callback; withinOwner preserves Model/Identity/Foundation errors for outer owner mapping (do not regress this). Initial job17f1b16a31 staging26/29 confirmed misclassified cleanup plus FK-test unique shadow; repaired jobef7a0f93e0 passes8/8+29/29. Final jobdcab49b526 passes encryption8/8(read49/write49/deny59),staging31/31(read29/write60/deny89); compatibility jobcda177aed2 authority118/118,migration8/8. No fail/cancel/skip/TODO,six violations0,all2581protected unchanged,actualPG16.12/IdP/container/root cleanup. New10 mandatory children: migrationrollback/repeat,partial/confirmed recreatedGC,history/roles/exactFK,SQLrollback after terminalINSERT,both genuine wireCOMMIT outcomes,exactPGobserved stage-first/GC-first waiters,quarantine recovery/audience/Stop,before+afterterminal currenthead protection,realENOTEMPTY/retry,currentdeadline expiry afterINSERT =>rollback/protectedbytes. Complete16 controller+8local streams byte-identically retained in g1-storage/evidence/f05-03-abandonment-v1.json; all21 indexes/195links verified. Docs plan/acceptance append only; evidence-added candidate3fcb3084af208a75df15df4fcdaf2b32ff47c0ce44e1e9527b4631088df9c513 follows checked code98150bd7dedccf1f7ecdeea0b668e0b67a71a52cd99a4c32d22ae6d4909657f2,not full acceptance. Next f03: authenticated publication/settled content outcome integration,post-original/native expiry recovery without revived authority,actual filesystem SIGKILL schedules; don't mark task done on partial components. Canonical encryptedpayload/save/event/outbox f04; allclassE01-E04 f14. CurrentPG survives,fixturematerial/keys independently installed,trusted singlehost custody only; terminal antirollback/KMS/providers/multihost/hardware/hostadmin/enterprise/allX gates unqualified. No paid/shared/external/real credential or approval-required action.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:17:08+00:00",
+          "kind": "handoff",
+          "text": "Turn27 completed ONLY filesystem-worker real SIGKILL recovery slice; f05-03 ACTIVE,plan2/15. Added private-IPC installed-parent authenticated StagingControl/held-PG transaction worker helper; no child args/env/credential/key files or stdout/stderr. 10mandatory cases actual allocated/object-written/fsynced/renamed/dirfsynced/manifest-fsynced/renamed/dirfsynced/confirmed/quarantined observed real files+PG then exactchild SIGKILL/close. Childexit aborts parent heldauth tx; recreated owner preserves originalpending/no committed confirmation even confirmedhook, no replay/inspect/publication/duplicate-stage; protects pending; explicitcommitted abandonment actualGC; quarantine exactciphertext survives,currentallparty denial refuses,recovery cleans. Controller job-b45f8c1aeb PASS encryption8/8(read49/write49/deny59),staging41/41(read49/write80/deny118),sixviolations0/no failures/cancel/skips/TODO,2581protected unchanged,realPG16.12/container/IdP/rootscleaned; strictlocalbuildPASS. Additive f05-03-process-kill-v1.json retains4controller+2localstreams/exactcandidate/TAP/10killmeasurements; verified21precedingindexes+195linkedrefs unchanged; plan/evidenceappend. Scope explicitly filesystemworker death with SURVIVING authenticatedparentPGowner,currentcontrol/material/keys; NOT whole-service/PGhost/host/powerloss crash. NEXT installedauthenticatedpublication/settledoriginalcontentcommand integration SAME Space/original locks rejectabandoned,terminal antirollback,expired/revokednative recovery; canonicalencrypted save/event/outbox f05-04. Publish still UNSUPPORTED/inspect refuses unpublished. Do NOT mark f05-03 done yet or weaken guards. Do not regress withinOwner rawcleanup normalization/preserved nativeidentityfoundation errors. No approval-required action.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:18:45+00:00",
+          "kind": "decision",
+          "text": "Turn28 slice: install explicit preparation-only recovery capability for original/native expiry or Stop. Current authenticated scope, storage:maintenance policy/independent current epoch, original actor + exact immutable maintenance admission/source Task/full audience, material/root/generation and Space/original locks remain mandatory. Recovery cannot reserve/confirm/publish/disclose/replay; only reconciles pending/abandoned and commits unreachable abandonment/GC. No implicit fallback from live command authority, no changes to native owner/checks/migrations. Terminal anti-rollback/publication/canonical content integration remain pending.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:22:49+00:00",
+          "kind": "root_cause",
+          "text": "Initial turn28 job-1613fa0581: encryption8/8 and staging49/49 behaviors passed, but staging command correctly failed candidate-stability guard because I edited reachable-recovery refusal while the check was running. Preserve complete failed streams; rerun unchanged candidate after changes. Review found recovery StagingControl could otherwise make admin inspect eligible if a canonical head made an upload reachable: recovery lock now refuses reachable uploads entirely; collect also refuses safely, leaving bytes with canonical owner. Added explicit reachable inspect/collect refusals. No gate weakened.",
+          "by": "agent",
+          "task": "f05-03",
+          "finding": "f-50b0fc76fb"
+        },
+        {
+          "at": "2026-10-08T01:25:01+00:00",
+          "kind": "evidence",
+          "text": "Turn28 job-bcd2b0d31d passes strict encryption8/8 and staging50/50 (49 mandatory children, 9 new recovery variants), all six violations0/no fail/cancel/skip/TODO. Staging read64/write99/deny154; encryption49/49/59. All2581 protected inputs unchanged; actual PG16.12/container/IdP/marked roots cleaned. Explicit recovery for original expiry/native Stop remains current authenticated maintenance-only; no reserve/confirm/publish/reachable inspect/replay/resume. Initial job-1613fa0581 failed only candidate-stability due concurrent edit, retained; final implementation candidate stable. Inventory/docs/evidence additions follow diagnostic run; aggregate/current-candidate final acceptance pending. f05-03 stays active,2/15.",
+          "by": "agent",
+          "task": "f05-03",
+          "finding": "f-ca27da167a"
+        },
+        {
+          "at": "2026-10-08T01:26:52+00:00",
+          "kind": "handoff",
+          "text": "Turn28 completed ONLY explicit preparation recovery after original expiry/actual native Stop; f05-03 ACTIVE,plan2/15. AuthenticatedStagingPreparation.recovery() frozen capability uses unchanged authenticated UoW, current maintenance policy/independent epoch, original actor/exact historical native maintenance admission/sourceTask/allparty audience, current material/root/generation and same Space-first original locks; no native fresh/resume. Outcome/abandon existing unreachable original; pending/absent/UNKNOWN_COMMIT never replay/GC until committed terminal. Control reserve/confirm/publish unsupported; lock REFUSES reachable entirely so admin inspect cannot disclose. Live preparation expiry/write/fresh/Stop unchanged. Nine mandatory recoverychildren real expiry/confirmed+partial Stop/no resume,currentactor/tenant/material/audience/anchor negatives,maintenancewithoutwrite,PGobserved original wait+postwait material refusal,both stage/recovery races,postINSERT rollback,genuine wirecommit/rollback under Stop,reachable/quarantine recovery. Final job-bcd2b0d31d PASS encryption8/8(49/49/59),staging50/50(read64/write99/deny154),sixviolations0/no skips;2581protected unchanged,PG16.12/container/IdP/rootscleaned. Initial job1613fa0581 behaviors8/8+49/49 passed but command FAIL candidatechanged because edit duringrun; retained, no weakening. f05-03-recovery-v1.json8controller+8localstreams exactcandidates/TAP/cleanup,22priorindexes+137unique linkedrefs verifiedunchanged; newstream bytes/hash/source verified. LocalbuildsPASS/contracts12/12PASS; inventory now includes existing abandonment; README/plan/evidence appended aftercheckedcandidate. NEXT installed authenticated durable publication/settled-original integration and independent stagingterminal antirollback under SAMElocks rejectabandoned; canonical encrypted save/event/outbox f05-04,whole-service crash afterownerexists,remaining Ask/lifecycle/actualbackuprestore/E01-E04/aggregate/independent/externalX gates pending. CurrentPG/materialauthority/fixturekeys/singlehostcustody survive; current revokedidentity/audience/maintenance refuses, replacementadmin recovery unimplemented. No real external/paid/security settings actions.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:30:59+00:00",
+          "kind": "progress",
+          "text": "Turn29 slice: mandatory installed independent staging witness outside content/backup roots. Immutable enrollment before reservation blocks rollback/absence replay; abandonment intent precedes PG INSERT and blocks confirm/publication/GC until fresh committed observation settles exact terminal timestamp. Current authority/material/source/all-party and Space/original locks retained; reachable+intent refuses. Add real owned PG snapshot rollback/altered terminal, committed ack gap, rollback intent, enrollment rollback, filesystem integrity and hard-link CAS cases. Canonical publication remains unsupported and f05-03 active.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:37:36+00:00",
+          "kind": "progress",
+          "text": "Turn29 job-c16de14761 passes strict encryption8/8 and staging55/55(read69/write107/deny187), six violation counters0, all2581 protected inputs unchanged and owned realPG16.12/IdP/container/roots cleaned. Five new mandatory witness cases: exact settled PG snapshot rollback and one-microsecond timestamp change refusal; ack gap/rollback intent protection; reservation rollback no restaging; bounded nofollow/single-link witness integrity and CAS; current postwait material refusal + actual GC/settlement blocker. Initial job-5d49efe621 failed ONLY old reachable+abandoned diagnostic expectation, strengthened to AUTHORITY_UNAVAILABLE/inspect+GC refusal/exact retained bytes. Final integrated job-bcb9fd46d7 running after record inventory/README and deterministic CAS observation hook additions; no edits during check.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:41:04+00:00",
+          "kind": "handoff",
+          "text": "Turn29 completed ONLY mandatory independent preparation terminal-witness slice; f05-03 ACTIVE,plan2/15. New StagingWitnessJournal installed authority root outside content/backup; constructor AuthenticatedStagingPreparation now REQUIRES witness (all current call sites updated). Immutable enrollment BEFORE reservation survives rollback and rejects restaging/no replay; intent BEFORE PG abandonment INSERT blocks confirm/publication and protects GC; settlement ONLY fresh committed exact original/upload/material + full PG microsecond timestamp in separate authenticated transaction under current authority and same Space-first original locks. Independent settled witness refuses PG terminal snapshot rollback/one-microsecond alteration; intent+reachable refuses entire current owner including inspect. Missing/malformed/root/symlink/hardlink/bounded witness reads fail closed; CAS tested with two actual same-absence recreated contenders. Explicit expiry/Stop recovery remains current maintenance/original actor/exact native maintenance lineage/allparty/material/root/generation; no serving/resume/replay. No SQL/migration/pin/ledger/serving ACL changes. Final job-bcb9fd46d7 PASS encryption8/8(49/49/59),staging55/55(69/107/187),six violations0,no skips;2581protected unchanged,actualPG16.12/IdP/container/roots clean. Stable candidate c10a79d4fe7a2404eee467ab2d6e63ce4b35f0eb8c20546593af82e9cee52dca. Local strictbuild+contracts12/12 pass. Initial job-5d49efe621 fail ONLY stale reachable+terminal diagnostic expectation strengthened to AUTHORITY_UNAVAILABLE/alloperation refusal/exact retained ciphertext; job-c16de14761 alsoPASS. Failed generic test decorator build retained. Additive evidence/f05-03-witness-v1.json retains12controller+6combinedlocal streams/exactcandidates/TAP/measurements;23precedingindexes+154uniquelinkedrefs unchanged;41newindex artifactsverified; plan/evidence/README/inventory updated. Next f05-03 authenticated durable publication/settled original content-command integration MUST acquire same locks and reject ANY intent/terminal; canonical encrypted save/event/outbox remains f05-04. PG snapshot test is reproducible terminal-table restore only, NOT contentbackup product restore. Surviving independent witness/currentidentity/control/material/ephemeralkeys/trustedlocalcustody required. Witness bound1024originals/4KiB; no compaction, witness-append SIGKILL/temp-hardlink repair/whole-service/PGhost/rootloss-or-rollback/hardware/multihost/hostadmin qualification; interrupted witness append can fail closed with no auto authority repair. UsefulAsk/lifecycle/actualencryptedcontentlossrestore/E01-E04/frozenaggregate/independentacceptance and allX01-X09 remainpending. Docs/index after stablediagnostics are not finalcurrentcandidate acceptance. No paid/shared/external/nonreproducible deletion.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:48:08+00:00",
+          "kind": "handoff",
+          "text": "Turn30 completed ONLY administrative verified snapshot refusal cleanup slice; f05-03 ACTIVE, plan2/15. OwnedCipherFiles.inspect now owns exact decrypted Buffer through entire StagingControl.lock/UoW completion, rechecks current binding/root/reachability/unknown/exact confirmation after decrypt and owned root, clears held bytes on callback/postread/final-owner/rollback/UNKNOWN_COMMIT/untyped failure; successful read transfers same confirmed snapshot, no second file read. Four new mandatory children actual PG confirmation change+rollback, admin owner rollback/postCOMMIT ack/untyped completion, authenticated postdecrypt material change, authenticated final material refusal after successful callback; observe held exact bytes zero, recreated exact read and retained files. Controller job-a2f2d01054 PASS encryption8/8(read49/write49/deny59),staging59/59(read75/write113/deny193), sixviolations0/no fail/cancel/skip/TODO,2581protected unchanged,actualPG16.12/IdP/container/rootscleaned. Local strictbuild and contracts12/12PASS; initial new-test typing failures retained. Additive f05-03-inspect-v1.json includes4completecontroller+6localstreams/stablecandidate sha256:4b911eddd34e72151b23e3341cba79b4592620773fbca07f40e9ed6992b666ec; verified24precedingindexes/174totalpreservedfiles and all10newstreamrefs hashes. Plan/evidenceappend follows check, future fresh currentcandidate acceptance required. No SQL/migration/pin/ledger/ACL/protectedchecks changed. Administrative fixture reachability is NOT canonical save/serving authority; bytesclear does NOT promise JS descriptive-string/processmemoryzeroization. New read ackgap is injected after realPGCOMMIT, existing genuinewirecommit schedules remain mandatory. NEXT f05-03 installed authenticated durable publication/settled original content-command under same Space/original locks, reject all witness intent/terminal; canonical encrypted save/event/outbox stays f05-04. Whole-service/witnessappenddeath, usefulAsk/lifecycle/actualbackupcontentlossrestore/E01-E04/aggregate/independentacceptance pending; allX01-X09 externalKMS/rotation/hardware/multihost/enterprisehold/remote unqualified; survivingcurrentPG/witness/material,independentephemeralkeys,trustedlocalcustody required. No paid/shared/external action or nonreproducible deletion. Do NOT mark f05-03 done yet.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:50:25+00:00",
+          "kind": "progress",
+          "text": "Turn31 slice: strengthen existing durable file adapter callback postconditions before authenticated publisher integration. New mandatory real-PG diagnostic children require actual retained confirmation after confirm, exact unchanged confirmation after decrypt before publisher entry, reachable/nonpending/nonunknown/exact result after publish plus owned-root recheck, and observed GC contention after publication effect. Tests installed first; strict build passes. Controller red run job-cc993eb587 exercises production omission. This remains admin file contract, not canonical save/serving or authenticated publication; f05-03 ACTIVE.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T01:59:10+00:00",
+          "kind": "progress",
+          "text": "Turn31 first verified slice job-06ca5175df encryption8/8 staging63/63(read85/write136/deny208), zero violations,2581protected unchanged; pre-fix job-cc993eb587 fails three newly mandatory groups, all raw preserved in additive f05-03-publication-postconditions-v1.json. Local contracts12/12 pass after correcting self-mutating in-tree capture (failed guard retained). Follow-up inspection found mutable confirmation alias across owner callbacks; verified confirmation now copied/frozen and runtime Object.assign mutation cases added. Initial new-test readonly assignments fail strict type checking (local/controller job-b540e1db62 retained); corrected runtime mutation method preserves readonly contract. Current strict build passes, final controller job-541bbeaddc running. Authenticated canonical publication remains unsupported; no task done claimed.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:01:01+00:00",
+          "kind": "handoff",
+          "text": "Turn31 completes ONLY durable file-adapter callback postconditions, f05-03 ACTIVE plan2/15. Stage rereads exact confirmation after confirm+hook and active/current binding/root; publish rechecks exact confirmation after decrypt BEFORE owner entry, then same binding/root, reachable&&!pending&&!unknown and exact confirmation + sentinel AFTER effect/hook before transaction exits. Verified proof copied/frozen for both callbacks; runtime mutation cannot alter comparison baseline. Four mandatory new groups actual PG no-op/altered/mutated confirmation, postdecrypt change with0publisher entries, no-op/contradictory/mutated publication rollback with retained ciphertext and recreated exact reads, PG-observed GC post-effect wait. Final controller job-541bbeaddc PASS encryption8/8(49/49/59),staging63/63(read86/write139/deny211),sixviolations0/no skips,2581protected unchanged,actualPG16.12/IdP/container/rootscleaned. Pre-fix job-cc993eb587 correctly failed3negativegroups; interim job-06ca5175df PASS; initial local in-tree log capture contract integrity refusal (12tests pass) corrected via external logs; static-readonly new-test assignments failed local/controller job-b540e1db62, corrected to actual Object.assign runtime mutation. All raw preserved additive postconditions-v1/v2 indexes (16controller+12localstreams); v2 preserves26precedingindexes/200linkedfiles; stablefinalcandidate sha256:601377fbc74bad306cd48fedc6c3bccfe1be0440166731dbf3d26a9ba059c8ff. Local strictbuild and contracts12/12pass. Docs/evidence changes follow diagnostic candidate, need integrated acceptance. New positives use ADMIN diagnostic owner; AuthenticatedStagingPreparation.lock.publish still UNSUPPORTED. NEXT actual authenticated durable publication/original content-command outcome integration same held Space/original transaction, rejecting all independent witness intent/terminal. TRAP do not call HeadPublicationRepository.publish nested inside StagingControl.lock (it opens another committing UoW); add shared-tx owner composition. Canonical encryptedsave/event/outbox f05-04; serving/Ask/retention/descendants/backup/contentlossrestore/fullE01-E04/aggregate/independent and ALL external gates remain pending. No historicalSQL/pins/ledger/ACL/protectedchecks changed, no paid/shared/remote/messages/nonreproducible deletion.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:09:37+00:00",
+          "kind": "progress",
+          "text": "Turn32 adds installed headPrerequisite: verify exact confirmed encrypted object/manifest before head epoch reservation and after pointer effect in HeadPublicationRepository's SAME authenticated transaction, with Space/original staging locks retained through COMMIT. No nested UoW. Head witness hashes exact canonical FileConfirmation; head/staging material/command/session/source/root/AAD controls match. Independent abandonment intent/terminal refuses. New six mandatory real-PG children cover exact bytes/same backend/uncommitted visibility, command/material+object/manifest negatives, intent/terminal, post-effect material/root/byte rollback, GC+duplicate observed waits and genuine wire commit/rollback. Strict local build passes after correcting contextual typing (failed streams retained). f05-03 remains active; canonical save receipt/event/outbox and settled content command integration remain next.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:18:11+00:00",
+          "kind": "progress",
+          "text": "Turn32 controller jobs retained: job-c14e095070 encryption PASS, all preexisting staging PASS but six new setups refused closed shared journal namespace; fixed with independently marked epoch/staging witness namespaces outside content/backup. job-e144c42b46 passes staged-head exact/binding/terminal, then wrong expected byte-integrity error caused negative test assertion and unbounded next phase wait until unchanged 240s child timeout; all fixture container/roots cleaned. Fixed exact INTEGRITY_FAILED expectation, finally restore/epoch reconcile on negative assertion, race phase entry with publisher completion, and use SAME independent journal authority for prep+head so rollback-side pending epoch cannot be bypassed by fixture anchor map. Added seventh mandatory exact original-lock observed wait+postwait material refusal. Strict local build PASS, job-c2e3650d2f running stable.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:31:03+00:00",
+          "kind": "handoff",
+          "text": "Turn32 completes ONLY installed authenticated staged ciphertext head prerequisite; f05-03 ACTIVE, plan2/15. HeadPublicationRepository optional installed prerequisite prepare/recheck runs in SAME authenticated committing UoW; preparation.headPrerequisite uses Space-first same staging-original locks through COMMIT, matches exact scope/command/material/session/source/root/all AAD, hashes canonical actual FileConfirmation into head.witness, rejects independent intent/terminal, verifies real object+manifest before epoch reserve and near completion after native/full audience/identity/control checks; final lease+confirmation/material/readability rechecked AFTER decryption. OwnedCipherFiles.verifyConfirmation content-free frozen proof clears plaintext. No nested committing UoW. Separate CLOSED marked epoch/staging authority namespaces required outside content/backup; SAME independent current epoch authority on prep+head. Nine mandatory groups realPG same backend/uncommitted invisibility/exact bytes, durable files but missing PG confirm, binding+corruption, intent/terminal, post-effect material/root/byte rollback, observed GC+duplicate waits, exact original-lock postwait changed material, genuine wire commit/rollback and real30s lease expiry during final object decrypt while command live (all captured buffers zero, pending protection, explicit abandon/GC). Final job-b32fc954d6 PASS encryption8/8(49/49/59),staging72/72(107/159/235),sixviolations0/no skips,2581protected unchanged,actualPG16.12/IdP/container/rootscleaned; stable sha256:05b8a7d556b3d6f07007e5d2edec4fc1ed41e301ea2627997cb4ffad53dca6d4. job-5131ecccbd PASS authority118/118(289/629/owner6) before final lease addition; same job staging71/71. Strict builds+contracts12/12PASS. Additive evidence f05-03-staged-head-v1.json retains22completecontroller+14localstreams from5jobs incl failures; all27indexes/all397prior evidence unchanged,439indexed refs verified. First c14 setup rejects shared closed root; e144 wrong expected byte error left fixture unreconciled causing subsequent phase wait240s timeout; fixed separate roots, exact error, finally restore/reconcile, phase race; no guards weakened. Initial contextual implicit-any localbuild retained. README/plan/acceptance appended; docs/evidence additions after stable diagnostics need fresh integrated final acceptance. NEXT: canonical content owner MUST require installed gate (old control-only head path retained, not caller-selectable omission), complete settled original content-command integration/consume outcome. Preparation lock().publish still unsupported; outcome pending/replayAllowed:false; reachable bytes GC protected; Headlookup control receipt only, not save/serving. Canonical encrypted PG save/event/outbox f05-04; Ask/noVM/propagation/content-loss encrypted restore/E01-E04/aggregate/independent acceptance later. Wholehost/witness-append/independentrootloss/hardware/multihost/hostadmin and every externalX01-X09 remain unqualified. No SQL/pin/ledger/ACL/protected change, paid/shared/credentials/nonrepro deletion.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:39:46+00:00",
+          "kind": "progress",
+          "text": "Turn33 tests-first controller job-92d0d86d50 preserves expected failures: encryption8/8 PASS, staging75 total with 4 failing children (new consumed-head recreated/marker/wait groups plus wire outcome extension), 70 pass, 5 failures including parent, no skips/cancellations/TODO and owned cleanup/protected2581 unchanged. Implemented exact staged-consumption check against bounded validated independent head epoch history, scoped original PG head+epoch+entity+accepted-head metadata, original command binding and authenticated byte/manifest witness; missing both PG protocol rows cannot downgrade committed original to pending. Final-owner/postwait material retained; staging outcome consumed grants no canonical save or replay. Green controller job-05178584c4 runs encryption/staging plus unchanged authority regression.",
+          "by": "agent",
+          "task": "f05-03"
+        },
+        {
+          "at": "2026-10-08T02:50:29+00:00",
+          "kind": "handoff",
+          "text": "Turn33 COMPLETES f05-03; controller status verified done, plan3/15, next f05-04 (not started). New EpochWitnessJournal.headPublication reads SAME bounded validated immutable chain as current(): exact original actor/key pending/committed/rolled-back, no reuse after committed. AuthenticatedStagingPreparation #consumed validates committed independent exact head original plus scoped PG head+epoch protocol rows, entity/accepted-head lineage, canonical command binding/expected prior, material/AAD/key/generation/source/session/expiry and microsecond publication timestamps, actual confirmation witness hash. Missing even BOTH PG protocol rows cannot downgrade consumed to pending. Published post-effect gate validates same pending transition inside SAME authenticated head UoW; ordinary outcomes require original head ACK reconciliation. Nonpending consumed remains reachable/GC protected; actual Stop recovery may report consumed control status but refuses reachable inspect/GC/abandon/resume/replay. Final #outcome rechecks current before returning. Three mandatory new children plus wire extensions pass; tests-first job-92d0d86d50 correctly fails4groups, full failure+cleanup preserved. Green job-05178584c4 PASS encryption8/8, staging75/75(read121/write165/deny254), unchanged authority118/118. Final task-completion job-96e4c3903b PASS8/8+75/75 same counters, sixviolations0/no fail/cancel/skip/TODO,2581protected unchanged,actualPG16.12/IdP/container/roots cleaned; stable candidate sha256:fb7317b8bbbe989f2684232f13579165b8f7ffd840b9e0464df24f65c57df58c. Local strictbuild and contracts12/12 PASS. Additive consumed-head-v1/v2 indexes retain14completecontroller+8local streams,29preceding indexes453evidence files unchanged;457final hashes checked. Plan/evidence/README/current inventory updated; final raw/docs capture follows task candidate, no source/tests changed afterward. No SQL/migration/pin/ledger/installed ACL/protected check/raw changes or paid/shared/external action. Next f05-04 canonical encrypted source/knowledge PG payload/save/event/outbox/original CONTENT receipts; consumed staging is ONLY substrate/head-control acknowledgment, NOT user save/serving receipt. Require installed ciphertext prerequisite behind canonical owner without request-selectable omission; keep old control-only head diagnostics distinct, preparation.lock().publish unsupported. Do not nest HeadPublicationRepository.publish inside file lock (own committing UoW); integrate content effects/receipts and head/control digest/witness in one authenticated committing transaction. Class-specific file/draft/checkpoint owner f05-05, complete every-class E01-E04 f05-14. Ask/no-VM, propagation/delete/revocation, actual content-loss encrypted backup/restore, aggregate/reviews/final/fullAF07UX01 and allX01-X09 remain pending. Surviving currentPG/independent epoch+staging witness/material/ephemeral keys + trusted single-host custody required; whole-host/PG-host/witness append/rootloss rollback repair/distributed atomicity/hardware/hostilehost/external provider KMS rotation holds remote remain unqualified.",
+          "by": "agent",
+          "task": "f05-03"
+        }
+      ]
+    },
+    {
+      "id": "f05-04",
+      "status": "active",
+      "attempts": 0,
+      "started_at": "2026-10-08T02:50:36+00:00",
+      "notes": [
+        {
+          "at": "2026-10-08T03:07:30+00:00",
+          "kind": "handoff",
+          "text": "Turn34 implements ONLY encrypted source provenance prerequisite/current same-Space source reads; f05-04 ACTIVE, plan3/15, do not start f05-05. New source-content.ts seals closed attributed source payloads; installed SourceContentPrerequisite rechecks exact original/material/AAD/actor/time + mandatory admission and persists checked encrypted PG source in SAME authenticated head UoW. Additive migration13 forced RLS/immutable history/exact composite scoped sourceTask/head/all controls/original FKs, hash of canonical ciphertext, narrow function (no direct mutation grants) requires head xmin = current tx; no postCOMMIT body insertion. Reader rechecks independent current head/policy/allparty audience/restrictions/expiry and exact ciphertext after decrypt, clears buffers; no canonical save receipt. Existing head publisher unchanged. Controller job-fc48a1cc96 PASS source12/12(read4/write3/deny37/save0), source malformed envelopes actually tested inside original tx. Previous job-52a2afb24d PASS source11/11, unchanged authority118/118 and staging75/75; all six violations0/no fail/cancel/skip/TODO,2581 protected unchanged,actualPG16.12/IdP/container/roots cleaned. Local strictbuild/contracts12/12 PASS; sandbox source attempt fails unavailable real census (retained, controller runs used). Full initial malformed-revocation failure job-ffd7d99f42 and active kill connection-listener failure job-88877540c7 retained; dedicated killed nonprivileged pool + observed transport handler fixes test without simulating termination. Evidence f05-04-source-content-v1/v2 preserve14 controller+5local streams and all prior hashes; docs/README/inventory updated explicit local-only/pending. Added source-content-component diagnostic via loop_plan; original knowledge+commands checks unchanged and NOT implemented yet. Next implement explicit SourceCommand/save/propose/registered-check, all7 knowledge states/CAS/source-subject dedup/authorized history/selective correction/conflict; atomic current witness+canonical receipt/event/outbox; typed real Foundation UNKNOWN_COMMIT HTTP503 replayAllowed:false + same actor/scope/original lock fresh receipt/authority/time, serialized absence/timeout no replay. Existing controlDigest supports both headOverride and workOverride forecast: receipt/outbox change controls, cannot append them after existing head-only digest/COMMIT; compose same UoW and independent exact transition properly. Source material is installed trusted capability, fixture secret-marker admission not production policy/source check. Source lookup absent-safe is control-only NOT user-command replay authority. Aggregate/independent/final/allX external/Ask/noVM/propagation/restore pending. No task-done submission, no paid/shared/external action, real secret/security setting change or nonreproducible deletion.",
+          "by": "agent",
+          "task": "f05-04"
+        },
+        {
+          "at": "2026-10-08T03:09:06+00:00",
+          "kind": "decision",
+          "text": "Turn35 follows controller plan assignment rather than implementing product code. Read finalized requirements, original approved brief/solution/test design/readiness, prior independent plan review, current plan/task registry and installed runners. Read-only audit passes 96/96 requirement coverage, 15 unique dependency-ordered single-lead tasks, 35 concrete staged node checks, empty teams. Root cause of plan assignment: Turn34 event665 loop_plan updated f05-04 adding source-content-component with final:false, resetting plan_final. Existing knowledge-component and commands-component stay mandatory; source diagnostic cannot complete f05-04. Resubmit existing plan final:true without replacing tasks, changing checks/roles/coverage/dependencies/statuses or marking active task done. Independent controller review decides advancement; no behavior or external qualification claimed.",
+          "by": "agent",
+          "task": "f05-04"
+        },
+        {
+          "at": "2026-10-08T03:09:23+00:00",
+          "kind": "handoff",
+          "text": "Turn35 completes ONLY controller plan-finalization assignment. Source: Turn34 plan.updated event665 added source-content-component final:false, reopening plan; no product implementation was authorized by current plan assignment. Read-only audit of finalized registry/current tasks and stage docs passed 96/96 requirements,15 unique ordered single-lead tasks,35 concrete staged checks,empty teams,all prior done/active statuses preserved. Called loop_plan(final:true) without task replacement/weakening; controller reports plan_final:true and uncovered_requirements:[]. No repository/source/check/SQL/evidence files edited, no tests run or new behavioral qualification claimed, no external actions. f05-01..03 DONE; f05-04 ACTIVE; do not start f05-05. Continue according to loop_next after controller review/advancement. f05-04 remains explicit SourceCommand/save/proposal/verified-check APIs,seven persisted knowledge statuses,source/subject dedup,expected-head CAS/history/selective correction,atomic canonical revision/witness/receipt/event/outbox and Saved here/Pending review/Not saved,typed original-key UNKNOWN_COMMIT HTTP503 replayAllowed:false actual commit/rollback/serialized-absence/timeout. Preserve mandatory knowledge-component+commands-component alongside source-content diagnostic. Reuse Turn34 source-content-v1/v2 evidence only for their checked diagnostic candidates,not aggregate/final acceptance; all Ask/no-VM,lifecycle,backup/content-loss restore,independent/final/external qualification stays pending. For later plan edits submit final:true when complete to avoid unintentionally reopening plan stage.",
+          "by": "agent",
+          "task": "f05-04"
+        },
+        {
+          "at": "2026-10-08T03:22:54+00:00",
+          "kind": "handoff",
+          "text": "Turn37 completes ONLY plan-revision assignment for PLAN36-01/02. Submitted loop_plan(final:true):55 tasks,zero uncovered;3done/1active/51pending. docs/planning/g1-f05-plan.md v2 + g1-f05-task-plan-v2.json contain bounded single-lead/empty-team deliverables, exact deps/covers/checks and40 fixed diagnostic contracts. Exact prior plan archived g1-f05-plan-v1-preserved.md with SHA256. f05-01..03 entire controller history unchanged; f05-04 active start/attempts/notes/status preserved and narrowed to real admission+atomic save (atomic-save + original source-content gates). Original knowledge/commands checks relocated VERBATIM to mandatory f05-04-gate, which also reruns source-content; all later owners require this canonical gate. Status,correction/CAS/history/dedup,original-key HTTP/wire recovery each separate predecessor; source save0 cannot close canonical save. Volume/Ask/lifecycle/backup/restore split into bounded owners and terminal original gates. A/K/L/V/Q/R/E cases partitioned into fixed tester groups with ALL per-case mandatory variants; all original35 checks,96 requirements,64local/3controller/9external cases and420variant bytes preserved. FullH02 good aggregate dependency fixed by implementing real D01-D06 in f05-15-docs/evidence BEFORE f05-14; f05-15 final controller gate remains last. Planning-only audit passes:55 unique DAG/topological tasks,76 checks; installed read-only guards2581 unchanged; registry64/3/9/96/420;596 product/stage/evidence files unchanged. No product/SQL/runner/tests/frozen manifest/lock/raw evidence edited or behavioral check run; no new qualification/external actions. Existing component runner requires future fixed registrations/nonempty shared assertion wrappers in each owning task; unknown component currently fails, no skip/selector/aggregate bypass. Current loop_status NEXT=resources readiness revision, then independent plan_review; do NOT start development before approved review. After review, activef05-04 then recorded ready order04-status->04-correction->04-recovery->04-gate. Estimates75–95m/20–45m under120m ceiling;52work turns exceed remaining23 max60 allowance,explicit risk recorded,no controller limit change. All aggregate/independent/final/external qualification pending.",
+          "by": "agent",
+          "task": "f05-04"
+        }
+      ]
+    },
+    {
+      "id": "f05-05",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-06",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-07",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-08",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-09",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-10",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-12",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-13",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-14",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-15",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-04-status",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-04-correction",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-04-recovery",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-04-gate",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-05-artifacts",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-05-drafts",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-05-promotion",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-06-recall",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-06-native",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-06-disclosure",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-07-retention",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-07-graph",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-07-maintenance",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-07-retry",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-08-capture",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-09-import",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-09-activation",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-09-progress",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-10-build",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-10-cleanup",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-authority",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-atomic",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-knowledge",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-artifact",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-volume",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-lifecycle",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-retry",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-maintenance",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-11-races",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-12-recall",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-12-disclosure",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-12-routing",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-13-current",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-13-interruption",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-13-integrity",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-13-measurement",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-15-docs",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-15-evidence",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-14-cipher",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    },
+    {
+      "id": "f05-14-copies",
+      "status": "pending",
+      "attempts": 0,
+      "started_at": null,
+      "notes": []
+    }
+  ],
+  "readinessTurn38Sha256": "00f57ed924398f5f59da723fc1768569f6ebc4447d3f1cd834fde59ae13f8d86"
+}

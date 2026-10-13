@@ -1,0 +1,32 @@
+usage: loop goal [-h] [--project PROJECT] [--goal GOAL] [--json]
+                 [--kind {develop,operate,investigate}] [--title TITLE]
+                 [--objective OBJECTIVE] [--from-file FROM_FILE]
+                 [--check CHECKS] [--context CONTEXT]
+                 [--constraint CONSTRAINT] [--adapter ADAPTER] [--model MODEL]
+                 [--every EVERY] [--pipeline {full,none}]
+                 [--max-iterations MAX_ITERATIONS] [--max-hours MAX_HOURS]
+                 [--max-cost MAX_COST] [--enqueue]
+
+options:
+  -h, --help            show this help message and exit
+  --project PROJECT     Project root (default: search upward from cwd)
+  --goal GOAL           Goal id (default: current goal)
+  --json                Print JSON
+  --kind {develop,operate,investigate}
+  --title TITLE
+  --objective OBJECTIVE
+                        Text, or @path to read it from a file
+  --from-file FROM_FILE
+                        Full goal JSON
+  --check CHECKS        Acceptance check id=command (repeatable)
+  --context CONTEXT
+  --constraint CONSTRAINT
+  --adapter ADAPTER     claude | codex | configured command adapter
+  --model MODEL
+  --every EVERY         operate: health check interval in minutes
+  --pipeline {full,none}
+                        develop goals default to the full pipeline
+  --max-iterations MAX_ITERATIONS
+  --max-hours MAX_HOURS
+  --max-cost MAX_COST
+  --enqueue             Append to the goal queue; keep the current goal

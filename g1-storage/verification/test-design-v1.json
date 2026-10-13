@@ -1,0 +1,1031 @@
+{
+  "schemaVersion": 1,
+  "source": "docs/loop/agent-fabric-g1-f05-storage/test-plan.md",
+  "sourceSha256": "7d3d2cc4f033332f70f8a8930be3604fff57367bfc05ec223fe1b5362e437888",
+  "cases": {
+    "C01": {
+      "id": "C01",
+      "suite": "S-C",
+      "level": "unit",
+      "preconditions": "Valid examples of every exposed command, envelope, manifest, status/result/event and all seven knowledge statuses",
+      "steps": "Round-trip each; change version/enum; omit required field; add actor/payer/grant/verified/path/SQL/URL; inject getter/function/undefined/cycle, malformed UUID/time, negative/fractional/unsafe revision, duplicate recipient; try `serving=true` before ready",
+      "oracle": "Exact valid values survive; each invalid field rejects without coercion/discard. Create expected revision=0; correct/forget/promote nonzero. No parsed client object is trusted authority."
+    },
+    "C02": {
+      "id": "C02",
+      "suite": "S-C",
+      "level": "unit",
+      "preconditions": "Solution bounds: 1MiB commands, 64 selected records, 256 recipients, depth16/nodes512, 1,024 files/64MiB decoded backup",
+      "steps": "For each bound, exercise legal maximum, maximum+1 and malformed lengths; overflow arithmetic; graph cycle/missing ancestor; empty selection separately",
+      "oracle": "Bounded valid fixture accepted; oversize/malformed refuses before mutation or expansion. Cycles/missing ancestry fail closed. Limits are local test parameters, not SLA. Actual integration expansion is also checked by L04/R05."
+    },
+    "C03": {
+      "id": "C03",
+      "suite": "S-C",
+      "level": "unit",
+      "preconditions": "Independent attachment/older-recall/save controls; service admission and logical accounting resource",
+      "steps": "Parse all 8 boolean control combinations, Ask with attachment IDs; try mixing service admission with computer assignment/effect, or passing fixture clock/keys/epoch/root from client",
+      "oracle": "Controls remain independent; service accounting is separate from `ComputerAssignment`; unknown authority/capability fields reject. Integration consequences checked by Q06/Q08."
+    },
+    "A01": {
+      "id": "A01",
+      "suite": "S-A",
+      "level": "integration",
+      "preconditions": "F-A/F-P; personal/group saves and explicit same-tenant source share with all-party grants",
+      "steps": "Authenticate over HTTP; save/read every supported class and relation in its own scope; share via installed relation; remove the relation or substitute tenant/Space/manifest/checkpoint/source IDs",
+      "oracle": "Allowed exact bytes/provenance returned; cross-tenant and ungranted cross-Space edges refuse. Composite relationships hold in actual PG. Denied publication has no unauthorized durable state or orphan serving."
+    },
+    "A02": {
+      "id": "A02",
+      "suite": "S-A",
+      "level": "security",
+      "preconditions": "Private title/value, group files, restricted-history guest, partially eligible full audience",
+      "steps": "Ask with private source as group requester; omit one member from client audience; private-to-group volume write; guest file read; permitted group counterpart",
+      "oracle": "Full destination audience resolved by owner; private bytes never reach decryption/extractor/disclosure. Denied title/snippet/existence hidden. Group file grants work independently of recall settings."
+    },
+    "A03": {
+      "id": "A03",
+      "suite": "S-A",
+      "level": "security",
+      "preconditions": "Real IdP tokens; forged actor/payer/scope/session and trusted service scope; F-T lock",
+      "steps": "Attempt unauthenticated/forged tokens and cloned verified-scope object; revoke/expire identity, source/destination payer, membership or Space lifecycle before admission and after lock wait; force late expiry after partial transaction work",
+      "oracle": "Current accepted identity/UoW refuses affected operations and rolls back all unauthorized changes. Fresh DB time after locks/effects matters. Valid same-scope request remains useful."
+    },
+    "A04": {
+      "id": "A04",
+      "suite": "S-A",
+      "level": "security",
+      "preconditions": "Installed tables/functions/roles plus worker, IdP, PUBLIC and non-owner controller connections",
+      "steps": "Inspect ownership, SUPERUSER/BYPASSRLS, forced RLS, grants and fixed function search paths; attempt direct reads/writes/schema/function creation, forged GUC assertions via worker; cross-scope controller query",
+      "oracle": "Roles remain restricted; worker/IdP/PUBLIC cannot read ciphertext catalogs, keys or mint authority; controller RLS/composite constraints enforce scope. Actual denial, not SQL-text inspection alone."
+    },
+    "A05": {
+      "id": "A05",
+      "suite": "S-A",
+      "level": "integration",
+      "preconditions": "Populated answer/index caches; current authorization provider unavailable",
+      "steps": "Stop/fail current authority; read, save, Ask, fetch cache, process derived job and request restore; then restore authority and retry authorized operations",
+      "oracle": "No affected body/extractor input/publication while unavailable; restore serving blocked; safe current-authority error. Canonical committed data preserved, authorized operations recover when authority returns."
+    },
+    "A06": {
+      "id": "A06",
+      "suite": "S-A",
+      "level": "security",
+      "preconditions": "Reader/member/contributor, operator with separate forget/backup/restore grants, forged/revoked operator",
+      "steps": "Attempt each lifecycle action with insufficient grant and with operator; revoke operator during wait; request retention/legal-hold policy alteration through content API",
+      "oracle": "Specific operation powers required. No member-derived lifecycle/policy authority; approved fixture actions succeed; unauthorized changes absent. Unknown policy extension reports restriction."
+    },
+    "E01": {
+      "id": "E01",
+      "suite": "S-E",
+      "level": "security",
+      "preconditions": "Every class in solution inventory, F-P/F-E and recreated process",
+      "steps": "Save real source/knowledge/artifact/draft/live version/checkpoint/derived/cache/Ask/backup; stop writer, start fresh reader with harness-held keys; decrypt permitted exact payloads; inspect file/PG envelopes",
+      "oracle": "Every declared durable payload survives exactly; stored bytes are real authenticated ciphertext, titles/filenames included. Status-specific unsaved/checkpoint limits remain explicit. No copied plaintext native history."
+    },
+    "E02": {
+      "id": "E02",
+      "suite": "S-E",
+      "level": "security",
+      "preconditions": "Valid persisted copies; binding tuple and independent keys",
+      "steps": "On owned variants flip body/tag, truncate, replace nonce, algorithm/version; substitute each tenant/Space/class/id/revision/generation/key-ID field or whole ciphertext between objects; read/restore with wrong/missing keys, then original",
+      "oracle": "All altered/wrong/unavailable material refuses before payload, false Saved/recovered status or publication. Original still works. Fresh nonces and expected tag/nonce sizes verified across distinct writes; no envelope relabeling on restore."
+    },
+    "E03": {
+      "id": "E03",
+      "suite": "S-E",
+      "level": "security",
+      "preconditions": "Unique canaries across successful save/Ask/correct/delete/restore and failures; full retained inventory",
+      "steps": "Scan actual PG values including F04 task/model/native history, event/outbox/audit/resource rows, all owned files/archive interiors, stdout/stderr/PG logs and diagnostic export; compare implementation class/column inventory to declared encrypted/opaque/excluded fields",
+      "oracle": "No plaintext private payload/key copy anywhere retained. Opaque IDs/traffic metadata exclusions documented. Logs are allowlisted/redacted; denied shared diagnostics contain no restricted canary. Missing store from scan fails inventory assertion."
+    },
+    "E04": {
+      "id": "E04",
+      "suite": "S-E",
+      "level": "security",
+      "preconditions": "Same value in different sources, tenants and rooms; scope keyed tokens",
+      "steps": "Save/inspect similar and identical content; query with foreign source/keyed token/digest; recreate keys in allowed scope only; attempt backup key export or HTTP key/root provision",
+      "oracle": "No cross-scope merge or file-existence leak; exact allowed retries reuse their receipt. Keys stay outside content/backup/logs; real secret/KMS/rotation claims absent."
+    },
+    "K01": {
+      "id": "K01",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Explicit authorized save, F-P source/provenance, registered exact source check, unrelated claim U",
+      "steps": "Save user assertion and separately source-verified record; recreate service, inspect canonical history and Ask; correct one claim and inspect supersession",
+      "oracle": "Exact author/source revision/digest/times/validity/classification/status/verification/lineage persist. Permitted history preserved; U unchanged; current head only changes in owner's commit."
+    },
+    "K02": {
+      "id": "K02",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Discussion, inferred preference proposal, disputed claim, forged verification, secret and indefinite-retention inputs",
+      "steps": "Record ordinary discussion and proposal; repeatedly summarize proposal; attempt caller `verified=true` or unrelated check; Ask accepted decision; explicitly save eligible assertion",
+      "oracle": "Pending review is durable but never approved by repetition; disputed uncertainty visible; invalid secret/retention/fabricated verification denied. Saved here/Pending review/Not saved map to actual different durable outcomes."
+    },
+    "K03": {
+      "id": "K03",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Real PG transaction, receipt/event/outbox/head and response observer",
+      "steps": "Interrupt before/after revision, head, receipt, event and outbox writes but before COMMIT; terminate process; separately complete COMMIT and recreate reader; observe response ordering",
+      "oracle": "Atomic complete commit or complete rollback. No Saved here before confirmed COMMIT; acknowledged exact revision readable after restart. Derived outage does not erase canonical success."
+    },
+    "K04": {
+      "id": "K04",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Artifact upload with encrypted bytes and manifest; owned F-E root",
+      "steps": "Crash after partial bytes, file fsync, rename, directory fsync, manifest confirmation and before/after PG publication; read via fresh process at each point",
+      "oracle": "Publication only after confirmed bytes and manifest; exact bytes/digest on success. Earlier staged/orphan files not served; no dangling accepted manifest. Later corrupt published bytes block entity."
+    },
+    "K05": {
+      "id": "K05",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Orphan, active staging lease, reachable object, pending unknown command, unrelated sentinel",
+      "steps": "Run ownership/lease-aware janitor; race cleanup with publication; retry after crash; attempt cleanup via symlink/traversal/unowned root",
+      "oracle": "Only expired unreachable owned uploads cleaned/quarantined; active/unknown/reachable and unrelated data untouched. No serving through staging filename. Cleanup refusal is explicit and fails overall check if unresolved."
+    },
+    "K06": {
+      "id": "K06",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Two separate authenticated callers, same actor/scope/original key; F-T",
+      "steps": "Race identical save/correct/forget/promote; restart caller and repeat. Change action/target/session/expected revision/expiry/audience/body/generation under same key; same key in independent allowed namespaces",
+      "oracle": "Exactly one canonical result/receipt/event/required outbox set for identical operations, no duplicate resource charge. Changed binding conflicts. Duplicate retrieval reauthorizes before any payload; namespaces do not accidentally collide."
+    },
+    "K07": {
+      "id": "K07",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Actual PG COMMIT transport interception, original command lock",
+      "steps": "Lose acknowledgement after real committed transaction; recreate caller; original-key lookup. Hold uncommitted partial writes, observe lookup blocked, then COMMIT; repeat ROLLBACK; keep lock until timeout; revoke permission before lookup",
+      "oracle": "HTTP503 typed Unknown with original key and `replayAllowed:false`; committed window returns exact original receipt; rollback returns serialized safe absence; timeout stays unknown; no automatic new-key/replay. One canonical set; unauthorized receipt body denied. Spoofed ordinary error code does not become trusted UNKNOWN_COMMIT."
+    },
+    "K08": {
+      "id": "K08",
+      "suite": "S-K",
+      "level": "integration",
+      "preconditions": "Two writers read same revision N; independent facts F/G and similar claims",
+      "steps": "Observe incompatible corrections contending in PG in both winner orders; retry recreated stale writer; concurrently append F/G; inspect history/current head",
+      "oracle": "Exactly one correction wins and other has inspectable stale conflict/review; no silent overwrite. Both independent facts persist. Similar claims remain separate; unresolved contradictions visible."
+    },
+    "K09": {
+      "id": "K09",
+      "suite": "S-K",
+      "level": "security",
+      "preconditions": "Poisoned value/context file claiming approval, budget top-up, method release, CheckReceipt or task completion",
+      "steps": "Save/correct/retrieve hostile data; submit generated-context edit as proposal; inspect installed owner tables/events/control pins and actual ports",
+      "oracle": "Content remains data. No approval/budget/control/behavior/protected evidence/completion minted; no executable dispatch. Explicit valid knowledge correction still succeeds. Snapshot/context file cannot replace canonical commit."
+    },
+    "Q01": {
+      "id": "Q01",
+      "suite": "S-Q",
+      "level": "e2e",
+      "preconditions": "Real Personal native session and service resource allowance; F-P random decision A",
+      "steps": "Save via authenticated route; terminate service, recreate; Ask by exact ID/subject; correct to random B, recreate and Ask again; run eligible group/shared-source counterpart",
+      "oracle": "Answer contains actual selected persisted A then B with `local-extractive-v1`, not canned value. Manifest matches real scope/audience/current authority/source and knowledge revisions/digests/watermark/inclusion reason. Useful positive has zero computer/model/effect calls."
+    },
+    "Q02": {
+      "id": "Q02",
+      "suite": "S-Q",
+      "level": "security",
+      "preconditions": "Eligible and forbidden candidates, statuses proposed/disputed/superseded/expired/deleted; highly similar stale value",
+      "steps": "Query and observe broker metadata/decrypt/extractor boundaries, authorized history separately; mutate source revision/validity/head with old context/index retained",
+      "oracle": "Only currently eligible records reach extractor; current source revision/digest verified. Proposed or stale similarity is no confident current decision. Disputed/gaps yield uncertainty/next source action. Old history may be inspected only with explicit permission."
+    },
+    "Q03": {
+      "id": "Q03",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "New canonical commit, index worker paused, old watermark/cache",
+      "steps": "Ask by ID/subject/tail with index delayed/unavailable; crash indexing after save, recreate; change billing-linked room and audience/source revision; repair index",
+      "oracle": "Exact eligible bytes available before index repair; correct watermark/limitation and source manifest. Caches/scope fingerprints separate tenant/Space/audience/versions; billing team does not merge rooms. Authority outage never uses fallback."
+    },
+    "Q04": {
+      "id": "Q04",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "F-T eligible context paused before output; concurrent forget/revoke/member removal/correction",
+      "steps": "Hold real eligibility/disclosure barrier; execute both orders for each restriction. First schedule commits restriction before disclosure; second completes disclosure before restriction commit; fetch historical answer after commit",
+      "oracle": "Restriction-first blocks all body/manifest publication; disclosure-first was authorized and later deliveries stop. Remaining authorized members still retrieve eligible group survivors with updated audience revision. Membership change does not freeze all group knowledge."
+    },
+    "Q05": {
+      "id": "Q05",
+      "suite": "S-Q",
+      "level": "security",
+      "preconditions": "Actual service-only composition and observed boundary ports; allowed/denied/index-outage/service-failure/concurrent/restore journeys",
+      "steps": "Run each journey; request shell/file/live machine state/target effect; fail service/source/required audit, attempt unapproved region/local-host fallback",
+      "oracle": "Provision/wake/mount/computer dispatch/live-volume/shell/target/external writes all zero for every Ask journey; inference/embedding/rerank/supplier enrichment zero. Safe unsupported live capability response with next action. No hidden fallback."
+    },
+    "Q06": {
+      "id": "Q06",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "Attachments, older conversation decision and same-Space file grant; 8 control combinations",
+      "steps": "Through authenticated controls route independently toggle attachment/recall/save; Ask each combination; explicit Remember here where enabled; task-only/no-save; group Remember for me",
+      "oracle": "Selection follows independent controls; Ask never implicitly saves. No-save blocks reusable promotion without silently changing transcript/audit retention or file grants. Here targets recorded Space; group-to-personal export is explicitly unsupported, zero copy/grant."
+    },
+    "Q07": {
+      "id": "Q07",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "Session/task A and B; queued A Ask/save/attachment; F-T",
+      "steps": "Queue request from A; switch caller tab to B; release queued work and recreate; inject `currentSpace`, actor/payer or B target on A command",
+      "oracle": "Original A binding remains; B sees only B-permitted data. Client retarget hints reject. No migrated credentials/history/bytes or second session control owner."
+    },
+    "Q08": {
+      "id": "Q08",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "Installed F04 NativeRepository and ResourceRepository/SyntheticResourceOwner, service resource linked to origin Run",
+      "steps": "Load/fresh actual session; Ask and inspect reserve/settle/receipt/budget. Exhaust/remove allowance, change payer/owner/profile need, Stop Task, stale Run/worker/cancellation generation, pending/unresolved native model/effect continuation; repeat key after recreation",
+      "oracle": "Admitted query has conserved installed-owner synthetic accounting with opaque receipt and no duplicate charge; no new budget tables/ceiling. Each unavailable/stale/unsupported admission fails before disclosure/extraction as applicable. No manufactured inference receipt or plaintext native payload. Local extraction uses no inference profile; attempted unsupported supplier/profile route denied before invocation."
+    },
+    "Q09": {
+      "id": "Q09",
+      "suite": "S-Q",
+      "level": "integration",
+      "preconditions": "Allowed missing-source, permission, stale revision, expiry, index outage, encryption and restore errors",
+      "steps": "Call public and operator routes; inspect typed statuses and preserved/unexecuted/next action/resolver fields; test denial with hidden titles and internal exception strings",
+      "oracle": "Safe actionable gap/conflict/blocked state, no invented completed action/empty-success masking. Unknown commit and absence retain replay prohibition. Restricted operational details and private canaries absent."
+    },
+    "L01": {
+      "id": "L01",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "Real persisted instance of every retained class plus minimal current tombstone/head metadata; F-T",
+      "steps": "Test just before validity/expiry, exact expiry and just after; delay sweep; read/publish; then sweep, recreate and inspect tombstones/outbox",
+      "oracle": "All classes enforce synchronous current validity/expiry; no delayed-sweep disclosure. Durable expiry invalidation exists after restart. Minimal current restriction history cannot expire while old backups could resurrect content; duration is fixture-only."
+    },
+    "L02": {
+      "id": "L02",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "F-D active graph and unrelated U; forget grant, propagation paused",
+      "steps": "Forget root; inspect transaction/tombstones/current head/event/jobs and impact response; recreate, recall/cache/inspect/fetch descendant; repeat same key and already-tombstoned different key",
+      "oracle": "Canonical restriction and durable job commit together. All affected reads denied immediately even while cleanup pending; U survives. Exact active/derived/pending counts, backup/external/retention limitations truthful; no universal erase claim or incompatible duplicates."
+    },
+    "L03": {
+      "id": "L03",
+      "suite": "S-L",
+      "level": "security",
+      "preconditions": "Source grant and two group members with populated caches; no independent publication exception",
+      "steps": "Revoke source and remove member before retrieval and during Q04 disclosure schedule; restart; remaining member asks unaffected group content",
+      "oracle": "Source-dependent copies suppressed; removed member blocked for new reads/context/publication; caches do not retain authority. Remaining member positive works. No unsupported publication exception inferred. Already delivered bytes explicitly not recalled."
+    },
+    "L04": {
+      "id": "L04",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "F-D nested summaries/index/cache/Ask/artifact/draft, independent U; depth/fanout limits",
+      "steps": "Apply delete, expiry, source revoke and correction in separate runs; traverse actual descendants, read bodies and index entries; try cyclic/missing ancestry and depth16/17, nodes512/513",
+      "oracle": "Every supported descendant invalidated/rebuilt or blocked; current correction exposed, U unchanged. No sensitive descendant omitted; bounds/missing ancestry refuse before forbidden expansion. Unsupported candidate/fixture/procedure classes documented."
+    },
+    "L05": {
+      "id": "L05",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "Jobs queued at revision N; processor stopped; then restriction or N+1 correction",
+      "steps": "Release queued jobs after delete/revoke/expiry/correction, recreate processor and deliver duplicates; pause after eligible read then restrict before derived write",
+      "oracle": "Current recheck blocks stale publication/resurrection or marks obsolete; original accepted knowledge not overwritten by late summary. Mutation/job identity is idempotent; no private source read by cleanup-only maintenance grant."
+    },
+    "L06": {
+      "id": "L06",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "Actual invalidation graph partially processed",
+      "steps": "Fail after claim/lease and after first descendant mutation; stop processor, inspect pending status and blocked reads; restart/retry/duplicate; expire lease",
+      "oracle": "Durable pending work survives, immediate serving still denied; completed work not duplicated, remaining descendants converge. Failure cannot falsely mark complete. Truthful impact and pending counts before/after."
+    },
+    "L07": {
+      "id": "L07",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "F-T and authenticated read/save/promote/job/forget/source restriction",
+      "steps": "For each operation pair, observe contested PG lock and both orders: restriction before publication, publication before restriction. Repeat with session/member expiry after wait; crash before/after tombstone transaction; duplicate delete",
+      "oracle": "Restriction-first prevents mutation/disclosure; publication-first is followed by durable invalidation. Tombstones monotonic, no resurrection or deadlock-induced success. Uncertain lock timeout reports unknown/denial. Partial transaction rolls back atomically; pending jobs survive committed tombstone."
+    },
+    "L08": {
+      "id": "L08",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "Source N and derived old answer/profile; correction N+1; actual installed resource lifecycle",
+      "steps": "Correct, inspect canonical recall before/after projection repair; Stop/archive/simulated suspension through existing owners; inspect retained content/status and synthetic retained-storage accounting",
+      "oracle": "Current accepted revision unaffected by stale projection. Stop/archive/suspension do not claim deletion or zero storage charge; actual data persists unless explicit lifecycle policy restricts it. No auto-resume/replay."
+    },
+    "L09": {
+      "id": "L09",
+      "suite": "S-L",
+      "level": "integration",
+      "preconditions": "Supported deterministic summary/index/cache worker with installed service identity and existing F04 maintenance service allowance",
+      "steps": "Build actual F-D projections with explicit installed-owner maintenance admission/accounting; remove/exhaust allowance or revoke service grant/profile/region eligibility before read and after waiting; restart and retry original job identity",
+      "oracle": "Valid projections use the existing accounting owner; denied invocation cannot read/emit restricted payload or publish derived success. No new budget ceiling, double charge, or supplier call. Pure invalidation cleanup is separately authorized and cannot gain model/read authority. If a builder is unsupported, explicitly refuse it and preserve required F-D nested summaries using the declared supported path; do not silently waive R-037."
+    },
+    "V01": {
+      "id": "V01",
+      "suite": "S-V",
+      "level": "integration",
+      "preconditions": "Unsaved editor memory, durable live version, draft, checkpoint C1 and separate knowledge/artifact",
+      "steps": "Persist each in turn and inspect receipt/state; later live edit C2 without checkpoint; crash/recreate; take volume checkpoint with knowledge transaction deliberately rolled back",
+      "oracle": "Exact class save statuses: live-written, draft-saved, checkpoint-confirmed, canonical Saved here. Unsaved editor memory lost/explained; live C2 may survive local recreation but is excluded from C1 backup. Checkpoint cannot assert canonical knowledge commit or all editor work saved."
+    },
+    "V02": {
+      "id": "V02",
+      "suite": "S-V",
+      "level": "integration",
+      "preconditions": "Two authorized promotions share base N; encrypted different files/validation",
+      "steps": "Contend through PG both winner orders; attempt unauthorized/unvalidated promotion; restart loser and retain/compare variant",
+      "oracle": "One exact canonical bytes/manifest N+1; stale conflict, no overwrite. Authorized draft variant retained without promotion; invalid write changes no canonical state."
+    },
+    "V03": {
+      "id": "V03",
+      "suite": "S-V",
+      "level": "security",
+      "preconditions": "Saved task draft/base/audience and private draft; other writer promotes new canonical revision",
+      "steps": "Recreate service and read original draft; reconnect stale draft; compare/retain explicit variant; private/guest read attempt",
+      "oracle": "Acknowledged draft exact bytes/binding recover; stale draft never auto-promotes, remains comparable/retainable. Correct audience only; draft is not private from eligible group members."
+    },
+    "V04": {
+      "id": "V04",
+      "suite": "S-V",
+      "level": "integration",
+      "preconditions": "Staged old writer with actual F03 Task/Run/runtime generation and F04 native binding",
+      "steps": "Crash/recreate writer, fence/replace or Stop Run, advance file revision, revoke grant; release old publication before and after restore activation",
+      "oracle": "Current revision/Task/Run/cancellation/worker/runtime/storage generations checked; stale publication denied and canonical state unchanged. No revived authority from restored draft/command."
+    },
+    "V05": {
+      "id": "V05",
+      "suite": "S-V",
+      "level": "integration",
+      "preconditions": "Confirmed files and interrupted unconfirmed writes; fresh reader and separate roots",
+      "steps": "Recreate processes/clients and fetch bytes/manifests; corrupt one confirmed object; query checkpoint/status; attempt foreign root/file path",
+      "oracle": "Exact committed data survives; corrupt/missing object integrity-blocked; uncommitted work not called saved. Ownership/path refusal safe. Restore class behavior independently tested by R01."
+    },
+    "R01": {
+      "id": "R01",
+      "suite": "S-R",
+      "level": "integration",
+      "preconditions": "F-B, independent keys, surviving current PG control; source/backup/target roots physically separate",
+      "steps": "Create real encrypted backup with metadata inventory and C1; apply all post-backup restrictions/correction; terminate service and remove only owned reproducible content payload store/canonical content generation while preserving current control/head/tombstones; restore to fresh root/generation; recreate reader and use public routes",
+      "oracle": "Exact eligible survivor knowledge/source/artifact/draft/C1 bytes and provenance recovered, then useful restored Ask. No retained live object references stand in for fresh-root recovery. Backup/current authority remain distinct. Restricted entities unavailable; status lists missing/freshness blocks and work excluded since checkpoint."
+    },
+    "R02": {
+      "id": "R02",
+      "suite": "S-R",
+      "level": "security",
+      "preconditions": "F-B old backup, post-backup forgotten/revoked/expired/corrected N",
+      "steps": "Pause restore before reconciliation/activation; attempt user reads, live rehydration and index/cache jobs; apply additional restriction while restore waits, then activate; fetch old answers/jobs and recreated stale writer",
+      "oracle": "No partial staged generation serves or rebuilds forbidden bytes. Current restrictions applied before disclosure/rehydration/derived rebuild and again at activation; no resurrected body/title/manifest. For N+1 missing bytes entity is `blocked-freshness`; verified surviving current bytes may supply N+1, never present N as current. Unchanged survivors still useful."
+    },
+    "R03": {
+      "id": "R03",
+      "suite": "S-R",
+      "level": "security",
+      "preconditions": "Valid backup plus separate fixtures with missing/unavailable/empty/rolled-back current authority/head/epoch anchor",
+      "steps": "Attempt restore and reader start; try backup-provided or caller-provided authority epoch/policy/tombstone replacement; restore authority via installed trusted fixture owner",
+      "oracle": "Missing/stale unenrolled current authority blocks affected serving and inspectable restore status. Archive cannot restore authority; empty ledger not treated as unrestricted new install. Serving resumes only after independently current authority/integrity verified. Whole-cluster-loss positive is not claimed."
+    },
+    "R04": {
+      "id": "R04",
+      "suite": "S-R",
+      "level": "integration",
+      "preconditions": "Durable restore original operation/progress; real files and PG phase gates",
+      "steps": "Terminate/recreate restore at staged, item-written, inventory-validated, metadata-imported, restrictions-reconciled and pre/post activation COMMIT phases; resume identical operation; concurrent duplicate; lose activation ACK; lookup original key under commit/rollback/timeout",
+      "oracle": "Same owned operation/generation resumes; progress idempotent, no duplicate canonical effects/events beyond declared phase records; no partial serving. Exact activated result recovered by original key; unknown never new-key replay. Restriction checks repeat after restart."
+    },
+    "R05": {
+      "id": "R05",
+      "suite": "S-R",
+      "level": "security",
+      "preconditions": "Archive variants: missing/truncated file, corrupt tag/body, bad digest/length/reference/FK, class/version, wrong/unavailable key, traversal/symlink/extra SQL/control class; F-C bounds",
+      "steps": "Validate and attempt import/activation on each owned variant, including max decoded size/count and +1; concurrently replace staged item before activation; good archive afterward",
+      "oracle": "Integrity failures block affected serving/activation with safe state. No SQL execution/root escape/unowned overwrite; declared immutable IDs/FKs preserved. Bound enforced on decoded data, not only compressed input. Every re-encrypted target envelope authenticates original binding then uses fresh nonce/target AAD."
+    },
+    "R06": {
+      "id": "R06",
+      "suite": "S-R",
+      "level": "security",
+      "preconditions": "Old Task/approval/credentials/method/browser references, unsent draft and external-effect records; prohibited class archive variant",
+      "steps": "Restore permitted content archive; inspect original owners and actual ports; try archive insertion of forbidden control records; reconnect queued old inputs",
+      "oracle": "No effect, model, computer or credential/session/approval/method replay, no authority restore. Unsent draft stays unsent. Forbidden archive classes reject. Protected check/completion unchanged."
+    },
+    "R07": {
+      "id": "R07",
+      "suite": "S-R",
+      "level": "performance",
+      "preconditions": "Actual R01/R04 runs with finite fixture inventory",
+      "steps": "Measure monotonic restore start/finish, byte/item/class counts, backup/checkpoint times/epochs, accepted revisions, unavailable entities and each interruption phase; repeat bounded competing reads/writes during restore",
+      "oracle": "Measurements derive from actual work and identify content-loss/surviving-control boundary, samples and contention outcome. All positives/negatives still pass; no invented throughput/p95/production RPO/RTO/SLA threshold. Required metadata absent or inconsistent fails record completeness."
+    },
+    "R08": {
+      "id": "R08",
+      "suite": "S-R",
+      "level": "integration",
+      "preconditions": "API operator with exact backup/destination ownership and grants; interrupted operation, neighboring sentinel",
+      "steps": "Follow documented operator restore/status procedure; retry failure, revoked grant and invalid destination; bounded staging cleanup; attempt destructive rollback",
+      "oracle": "Understandable preserved/not-executed/blocked/next action and last checkpoint. Owned target only, no overwrite/unowned deletion. Rollback disables F05 serving/admission/jobs while preserving canonical receipts/heads/tombstones/current ledger; cannot activate older authority or imply external undo."
+    },
+    "R09": {
+      "id": "R09",
+      "suite": "S-R",
+      "level": "integration",
+      "preconditions": "Actual backup capture with concurrent canonical save/correction/restriction/artifact/checkpoint and F-T gates",
+      "steps": "Observe captured Space barrier/epoch while a writer waits; execute both capture-first and writer-first; interrupt encrypted inventory/archive fsync before PG confirmation and lose backup confirmation ACK; recreate and retry original backup key; expire backup policy",
+      "oracle": "Each confirmed backup has one coherent referenced canonical revision/checkpoint/file inventory and actual captured epoch, never a mix of missing/unconfirmed bytes. Partial backup is unavailable, exact original confirmed identity recoverable without duplicate effect. Expired backup cannot be directly read/restored outside policy. Current restrictions remain live independent authority."
+    },
+    "H01": {
+      "id": "H01",
+      "suite": "S-H",
+      "level": "integration",
+      "preconditions": "F-H candidate copy, pinned independent package/lock",
+      "steps": "Clean build/check; plant stale emitted success then cause actual TS error or delete source; inspect own cache, source/test/imported-owner emission, installed dependency versions and lock",
+      "oracle": "Current strict build required; stale outputs never execute as pass. Own cache cleared safely; no sibling cache/source/lock regeneration. Node22.22.3/pnpm10.18.0/TS5.9.3/@types-node22.18.6/pg8.16.3/@types-pg8.15.5 and license/update inventory match."
+    },
+    "H02": {
+      "id": "H02",
+      "suite": "S-H",
+      "level": "integration",
+      "preconditions": "All F-H failure variants, required case registry",
+      "steps": "In isolated copies independently remove suite or required case, return empty suite, actual failure/cancellation/skip/TODO, forged labels/TAP totals, missing mandatory variant and unknown argument; then good full run",
+      "oracle": "Each bad full check exits nonzero and retains complete raw failure. Structured executed results and per-case/group assertions, not label presence, prove coverage. Known full nonempty suite passes. No option weakens mandatory suite or protected guard."
+    },
+    "H03": {
+      "id": "H03",
+      "suite": "S-H",
+      "level": "security",
+      "preconditions": "Real process census/loopback/owned child/cached PG preflight, F-E roots, preexisting fixture census",
+      "steps": "Exercise actual preflight/cleanup; deny census/loopback/cached PG and inject owned child/root/container cleanup failure; symlink cache; substitute instance identity",
+      "oracle": "Missing capability fails without skip, cloud pull or destructive fallback. Cleanup verifies actual owner/instance, not historical PID; unowned sentinels/preexisting census unchanged. Guards run on success and failure. Failed cleanup makes overall check fail."
+    },
+    "H04": {
+      "id": "H04",
+      "suite": "S-H",
+      "level": "integration",
+      "preconditions": "Catalog IDs/mandatory variants and F-O counters",
+      "steps": "Parse actual executed cases and violation observations; remove one useful positive or introduce forbidden call/duplicate/lost-update/leak in owned harness mutation probe",
+      "oracle": "Missing execution/positive or nonzero violation fails. Finite observed counts report accurately, including failures/cancellations; no canned zero counters or refusal-only pass."
+    },
+    "D01": {
+      "id": "D01",
+      "suite": "S-D",
+      "level": "integration",
+      "preconditions": "Implemented package and requested plan/evidence/operator docs",
+      "steps": "Assert requested paths/build/check exist; run same documented HTTP/operator save\u2192Ask\u2192conflict\u2192forget\u2192restore journey; compare class/owner/requirements matrix to actual suites and records",
+      "oracle": "User entry point usable, source/status/resolver clear; AF-07/UX-01 mapping separates canonical/derived/volume/external assertions; every required case implemented. Documentation alone cannot close local behavioral gaps."
+    },
+    "D02": {
+      "id": "D02",
+      "suite": "S-D",
+      "level": "security",
+      "preconditions": "Current controller jobs/source fingerprint/definitions/raw streams and actual reviews",
+      "steps": "Audit acceptance index against candidate/check/lock/environment identities, full stdout/stderr paths/byte counts/digests, exact tests/failures, independent verdicts when issued",
+      "oracle": "No stale-candidate result, truncated raw evidence, fabricated review signature or author COMPLETE. Missing/failed/pending review visible. Existing raw failures preserved. Executable metadata checks plus independent audit needed."
+    },
+    "D03": {
+      "id": "D03",
+      "suite": "S-D",
+      "level": "integration",
+      "preconditions": "Encryption/retention/commit/class inventory, F05 schema/owners/dependencies and R07 observations",
+      "steps": "Compare every store/class against E03, operations recovery/threat/rollback docs, dependency/license/notice/update pins and tested procedure; inspect current tombstone/epoch retention and inherited storage charge explanation",
+      "oracle": "No hidden plaintext/unsupported class or invented retention/legal-hold/key/region/SLA. Exact last checkpoint/backup and recoverable/unsaved boundaries reflected. Rollback preserves restrictions/external effects."
+    },
+    "D04": {
+      "id": "D04",
+      "suite": "S-D",
+      "level": "security",
+      "preconditions": "Scripts/tool history/approval records, source fixtures and registered requirements stage history",
+      "steps": "Audit actions: external URLs/providers/deploy/messaging/history/secret/ACL destructive paths; compare requirements final registry count/IDs/sources/verify and stage-2 diff/history; inspect failure gates",
+      "oracle": "Synthetic local-only actions; restricted actions OFF without exact prior approval. R-079 is checked as historical requirements-only stage, not re-performed in development. `.loop` mutations controller-owned. Optional fault gates map existing obligations, do not replace real PG/file/network cases."
+    },
+    "D05": {
+      "id": "D05",
+      "suite": "S-D",
+      "level": "integration",
+      "preconditions": "Final increment evidence and S-X missing environment inventory",
+      "steps": "For each X01\u2013X09 require explicit pending guarantee, missing environment/evidence, authorized owner/gate and no advertised unsupported combination; compare historical ledger unchanged",
+      "oracle": "Local finite profile only; full G1/G2/AF-07/UX-12\u201317 not claimed. All external gates below visible. High-severity issue blocks affected qualification even if useful journeys pass."
+    },
+    "D06": {
+      "id": "D06",
+      "suite": "S-D",
+      "level": "security",
+      "preconditions": "Actual findings/defect registry and candidate release claim; isolated evidence-negative fixture",
+      "steps": "Insert unresolved high-severity auth/isolation/stale-approval/duplicate-effect finding into owned evidence fixture; try marking profile qualified; audit author versus controller/reviewer verdicts",
+      "oracle": "Affected qualification cannot pass with unresolved severe finding or absent current acceptance. No publication or deployment occurs in test. Independent security/code/final/product acceptance remain separate controller stages."
+    },
+    "G01": {
+      "id": "G01",
+      "suite": "S-G",
+      "level": "integration",
+      "preconditions": "Current candidate; unchanged accepted baseline hashes",
+      "steps": "Controller executes `node g1-identity/scripts/check.mjs`; inspect complete fresh raw results",
+      "oracle": "All original identity/current-audience/UNKNOWN_COMMIT checks pass unmodified, nonempty/no skips/TODO and accepted source guards hold."
+    },
+    "G02": {
+      "id": "G02",
+      "suite": "S-G",
+      "level": "integration",
+      "preconditions": "Current candidate; unchanged F01 and original G0/G1-local",
+      "steps": "Controller executes foundation and retained commands, with native GUI outside sandbox",
+      "oracle": "Original PG UoW/roles/outbox and original G0/G1-local including Electron checks all pass; protected/raw hash guards unchanged. Sandbox GUI abort is not a waived test."
+    },
+    "G03": {
+      "id": "G03",
+      "suite": "S-G",
+      "level": "integration",
+      "preconditions": "F05 installed over exact F01/F02/F03/F04 migration ledgers",
+      "steps": "F05 focused check snapshots owner ledgers/grants/source hashes before/after; re-run unchanged migration functions; incompatible installed digest variant in owned DB; run imported native/resource/fence behavior Q08/V04/K07",
+      "oracle": "Existing ledgers/digests/functions/grants remain intact, incompatible migration refuses; F05 has separate additive ledger, no owner duplication or permission weakening. Real installed-owner behavior exercised."
+    }
+  },
+  "requirements": {
+    "AF-07": [
+      "A01",
+      "A02",
+      "A03",
+      "K01",
+      "K08",
+      "L02",
+      "L03"
+    ],
+    "R-001": [
+      "A01",
+      "A02",
+      "V05"
+    ],
+    "R-002": [
+      "A03",
+      "Q08",
+      "G01"
+    ],
+    "R-003": [
+      "A02",
+      "Q02",
+      "Q04"
+    ],
+    "R-004": [
+      "A02",
+      "E03",
+      "Q02",
+      "Q09"
+    ],
+    "R-005": [
+      "A02",
+      "Q06",
+      "V03"
+    ],
+    "R-006": [
+      "A04",
+      "G02",
+      "G03"
+    ],
+    "R-007": [
+      "A05",
+      "R03"
+    ],
+    "R-008": [
+      "K09",
+      "Q08",
+      "G03",
+      "D03"
+    ],
+    "R-009": [
+      "E01",
+      "E03",
+      "R01"
+    ],
+    "R-010": [
+      "E02",
+      "R05"
+    ],
+    "R-011": [
+      "E03",
+      "D03"
+    ],
+    "R-012": [
+      "E04",
+      "D03",
+      "D04"
+    ],
+    "R-013": [
+      "E03",
+      "Q09",
+      "D03"
+    ],
+    "R-014": [
+      "K01",
+      "K03",
+      "K09",
+      "V01",
+      "L05"
+    ],
+    "R-015": [
+      "K01",
+      "Q01"
+    ],
+    "R-016": [
+      "C01",
+      "K02",
+      "Q02",
+      "L01",
+      "L02"
+    ],
+    "R-017": [
+      "K02",
+      "Q06"
+    ],
+    "R-018": [
+      "A03",
+      "K02",
+      "K03"
+    ],
+    "R-019": [
+      "K02",
+      "K03",
+      "K07"
+    ],
+    "R-020": [
+      "K04",
+      "V05"
+    ],
+    "R-021": [
+      "K05",
+      "H03"
+    ],
+    "R-022": [
+      "C01",
+      "C02",
+      "A03",
+      "K06",
+      "V04"
+    ],
+    "R-023": [
+      "K06",
+      "Q08",
+      "R04"
+    ],
+    "R-024": [
+      "K07",
+      "R04"
+    ],
+    "R-025": [
+      "K08"
+    ],
+    "R-026": [
+      "K08"
+    ],
+    "R-027": [
+      "K01",
+      "K08",
+      "Q02",
+      "L08"
+    ],
+    "R-028": [
+      "E04",
+      "K08"
+    ],
+    "R-029": [
+      "K09",
+      "R06"
+    ],
+    "R-030": [
+      "A02",
+      "Q02",
+      "Q05"
+    ],
+    "R-031": [
+      "Q04",
+      "L07"
+    ],
+    "R-032": [
+      "Q01",
+      "Q03",
+      "R01",
+      "R02"
+    ],
+    "R-033": [
+      "Q03"
+    ],
+    "R-034": [
+      "Q02",
+      "Q09"
+    ],
+    "R-035": [
+      "E04",
+      "Q03",
+      "Q07",
+      "L03"
+    ],
+    "R-036": [
+      "K03",
+      "Q03",
+      "L05",
+      "L08"
+    ],
+    "R-037": [
+      "Q05",
+      "Q08",
+      "L09",
+      "D05",
+      "X07"
+    ],
+    "UX-01": [
+      "Q01",
+      "Q05",
+      "R01"
+    ],
+    "R-038": [
+      "Q05",
+      "Q08"
+    ],
+    "R-039": [
+      "Q01",
+      "Q03",
+      "Q04",
+      "Q05",
+      "R01"
+    ],
+    "R-040": [
+      "Q05",
+      "Q09"
+    ],
+    "R-041": [
+      "Q07",
+      "V04"
+    ],
+    "R-042": [
+      "C03",
+      "Q06"
+    ],
+    "R-043": [
+      "Q06",
+      "Q07"
+    ],
+    "R-044": [
+      "L01",
+      "E03",
+      "R02"
+    ],
+    "R-045": [
+      "A06",
+      "R08"
+    ],
+    "R-046": [
+      "L01",
+      "L02",
+      "L07"
+    ],
+    "R-047": [
+      "L03",
+      "Q04",
+      "L05"
+    ],
+    "R-048": [
+      "A03",
+      "L03",
+      "Q04"
+    ],
+    "R-049": [
+      "C02",
+      "L04",
+      "L06",
+      "R02"
+    ],
+    "R-050": [
+      "L05",
+      "L07",
+      "R02"
+    ],
+    "R-051": [
+      "L06",
+      "L02"
+    ],
+    "R-052": [
+      "K01",
+      "L04",
+      "L08"
+    ],
+    "R-053": [
+      "L02",
+      "L06",
+      "R08",
+      "D03"
+    ],
+    "R-054": [
+      "L07",
+      "Q04",
+      "L05"
+    ],
+    "R-055": [
+      "V01",
+      "D03"
+    ],
+    "R-056": [
+      "V02",
+      "V04"
+    ],
+    "R-057": [
+      "V03"
+    ],
+    "R-058": [
+      "K03",
+      "K04",
+      "V05"
+    ],
+    "R-059": [
+      "V04",
+      "Q08",
+      "R02"
+    ],
+    "R-060": [
+      "R01",
+      "R09"
+    ],
+    "R-061": [
+      "C02",
+      "R05",
+      "E02",
+      "V05",
+      "R09"
+    ],
+    "R-062": [
+      "R01",
+      "R02",
+      "R03"
+    ],
+    "R-063": [
+      "R02"
+    ],
+    "R-064": [
+      "R03",
+      "R04"
+    ],
+    "R-065": [
+      "R04",
+      "R02"
+    ],
+    "R-066": [
+      "R06",
+      "K09"
+    ],
+    "R-067": [
+      "V01",
+      "R07",
+      "R08",
+      "R09",
+      "D03"
+    ],
+    "R-068": [
+      "Q09",
+      "R08"
+    ],
+    "R-069": [
+      "D01",
+      "H01"
+    ],
+    "R-070": [
+      "H01",
+      "H02",
+      "H04"
+    ],
+    "R-071": [
+      "H01",
+      "H02",
+      "H03"
+    ],
+    "R-072": [
+      "H04",
+      "Q01",
+      "K08",
+      "L07",
+      "R01"
+    ],
+    "R-073": [
+      "G01",
+      "G02",
+      "G03",
+      "H03",
+      "D02"
+    ],
+    "R-074": [
+      "G01",
+      "G02",
+      "D02"
+    ],
+    "R-075": [
+      "D02",
+      "D05",
+      "D06"
+    ],
+    "R-076": [
+      "D01",
+      "D03",
+      "G03"
+    ],
+    "R-077": [
+      "D04",
+      "Q05",
+      "H03"
+    ],
+    "R-078": [
+      "H03",
+      "K05",
+      "R08"
+    ],
+    "R-079": [
+      "D04"
+    ],
+    "R-080": [
+      "D01",
+      "Q09",
+      "R08"
+    ],
+    "R-081": [
+      "D01",
+      "D05"
+    ],
+    "R-082": [
+      "V01",
+      "L08",
+      "R07",
+      "D03"
+    ],
+    "R-083": [
+      "D04",
+      "H04"
+    ],
+    "R-084": [
+      "D05",
+      "R03",
+      "X01",
+      "X02"
+    ],
+    "R-085": [
+      "D03",
+      "D05",
+      "X03"
+    ],
+    "R-086": [
+      "D05",
+      "Q04",
+      "L03",
+      "X04"
+    ],
+    "R-087": [
+      "D05",
+      "Q05",
+      "X05"
+    ],
+    "R-088": [
+      "D05",
+      "G01",
+      "X06"
+    ],
+    "R-089": [
+      "D05",
+      "Q01",
+      "Q08",
+      "X07"
+    ],
+    "R-090": [
+      "D05",
+      "G02",
+      "X08"
+    ],
+    "R-091": [
+      "D05",
+      "L04",
+      "X09"
+    ],
+    "R-092": [
+      "D03",
+      "D05",
+      "R07",
+      "X02"
+    ],
+    "R-093": [
+      "D05",
+      "D06",
+      "H04"
+    ],
+    "R-094": [
+      "Q02",
+      "Q03",
+      "Q04",
+      "R02"
+    ]
+  },
+  "external": {
+    "X01": "pending; approved real environment and independent verdict required",
+    "X02": "pending; approved real environment and independent verdict required",
+    "X03": "pending; approved real environment and independent verdict required",
+    "X04": "pending; approved real environment and independent verdict required",
+    "X05": "pending; approved real environment and independent verdict required",
+    "X06": "pending; approved real environment and independent verdict required",
+    "X07": "pending; approved real environment and independent verdict required",
+    "X08": "pending; approved real environment and independent verdict required",
+    "X09": "pending; approved real environment and independent verdict required"
+  }
+}

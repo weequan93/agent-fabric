@@ -1,0 +1,383 @@
+[
+  {
+    "id": "f05-11-full-receipt-transport",
+    "status": "pending",
+    "role": "tester",
+    "team": [],
+    "engineeringEstimateMinutes": 65,
+    "depends_on": [
+      "f05-11-measurement-drain",
+      "f05-11-races",
+      "f05-10"
+    ],
+    "checks": [
+      {
+        "id": "complete-lifecycle-native-receipts",
+        "run": "node g1-storage/scripts/check-slice.mjs lifecycle-propagation",
+        "timeout": 1800,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "EXEC110 native receipt transport on same frozen candidate; Actual complete sequential4original+4verification groups,13parents/113predecessor+61frozen leaves, all8current actual source records exactly bound, no failures/cancel/skips/TODO/violations; strict build/current candidate/full clocks/exact census/LIFO cleanup.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/lifecycle-propagation.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/lifecycle-propagation.test.ts",
+            "bytes": 2405,
+            "sha256": "ee0b18861ee04c4562d97db14c495e22fb1e7d52de58313e81afd1731bf6672f"
+          }
+        ],
+        "outputOwner": "f05-11-full-receipt-transport",
+        "sourceOwnership": "Only four authorized new thin sources plus additive protocol/reader/extension; native transport and hostile guard repair. Existing assertion bodies/runner/helpers stay exact"
+      },
+      {
+        "id": "complete-volume-native-receipts",
+        "run": "node g1-storage/scripts/check-slice.mjs volume-draft",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "EXEC110 native receipt transport on same frozen candidate; Actual complete original2+verification registration,7parents/28predecessor+26frozen leaves, all3current actual source records exactly bound and independent235000ms volume schedule unchanged; no omissions/failed/skipped/TODO/cancel/violations, exact cleanup.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/volume-draft.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/volume-draft.test.ts",
+            "bytes": 939,
+            "sha256": "e639574cb79c5fca694a67bf8655c32c2a26a9cec7a95752640aa7398b8ee6bc"
+          }
+        ],
+        "outputOwner": "f05-11-full-receipt-transport",
+        "sourceOwnership": "Only four authorized new thin sources plus additive protocol/reader/extension; native transport and hostile guard repair. Existing assertion bodies/runner/helpers stay exact"
+      },
+      {
+        "id": "hostile-native-receipt-composition",
+        "run": "node g1-storage/scripts/check-full-predecessor-composition.mjs",
+        "timeout": 120,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "EXEC110 native receipt transport on same frozen candidate; Strict build/exact reversible descriptors/wrappers; actual parent/leaf/source/registration/binding and nonzero-violation/zero-positive/failed/cancelled/skipped/TODO corruption refusals using exact shipped gates; no product stand-in or cached acceptance.",
+        "stage": "unit",
+        "script": "g1-storage/scripts/check-full-predecessor-composition.mjs",
+        "scriptExists": true,
+        "registryPresent": null,
+        "sourceFile": null,
+        "sourceFilePresent": null,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-full-predecessor-composition.mjs",
+            "bytes": 12538,
+            "sha256": "7a223cfb376d454f8c78429ba2385bf82002c04420af8d2edbcdd20e73a23151"
+          }
+        ],
+        "outputOwner": "f05-11-full-receipt-transport",
+        "sourceOwnership": "Only four authorized new thin sources plus additive protocol/reader/extension; native transport and hostile guard repair. Existing assertion bodies/runner/helpers stay exact"
+      },
+      {
+        "id": "hostile-harness-receipt-regression",
+        "run": "node g1-storage/scripts/check-component.mjs harness",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "EXEC110 native receipt transport on same frozen candidate; Complete original HARNESS42/all41 leaves and source/compiler/result/fixture/observation/ownership controls on the same repaired candidate, complete fatal streams and exact owned cleanup; no changed assertion.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-component.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/components/harness.component.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-component.mjs",
+            "bytes": 87,
+            "sha256": "9b46cb450d8645749b70f8c595bb0d7150987b76f516a90ea4e0843c2bf48e44"
+          },
+          {
+            "path": "g1-storage/tests/components/harness.component.test.ts",
+            "bytes": 104,
+            "sha256": "5e3318e1d71048f49018ce2a13e8020bb50b781a4d764a727b36647cea0e0231"
+          }
+        ],
+        "outputOwner": "f05-11-full-receipt-transport",
+        "sourceOwnership": "Only four authorized new thin sources plus additive protocol/reader/extension; native transport and hostile guard repair. Existing assertion bodies/runner/helpers stay exact"
+      }
+    ]
+  },
+  {
+    "id": "f05-11-full-predecessors",
+    "status": "active",
+    "role": "tester",
+    "team": [],
+    "engineeringEstimateMinutes": 110,
+    "depends_on": [
+      "f05-11-races",
+      "f05-10",
+      "f05-11-measurement-drain",
+      "f05-11-full-receipt-transport"
+    ],
+    "checks": [
+      {
+        "id": "complete-lifecycle-isolation-admission",
+        "run": "node g1-storage/scripts/check-slice.mjs lifecycle-propagation",
+        "timeout": 1800,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual complete sequential4original+4verification groups,13parents/113predecessor+61frozen leaves, all8current actual source records exactly bound, no failures/cancel/skips/TODO/violations; strict build/current candidate/full clocks/exact census/LIFO cleanup.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/lifecycle-propagation.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/lifecycle-propagation.test.ts",
+            "bytes": 2405,
+            "sha256": "ee0b18861ee04c4562d97db14c495e22fb1e7d52de58313e81afd1731bf6672f"
+          }
+        ],
+        "outputOwner": "f05-11-full-predecessors",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      },
+      {
+        "id": "complete-volume-isolation-admission",
+        "run": "node g1-storage/scripts/check-slice.mjs volume-draft",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Actual complete original2+verification registration,7parents/28predecessor+26frozen leaves, all3current actual source records exactly bound and independent235000ms volume schedule unchanged; no omissions/failed/skipped/TODO/cancel/violations, exact cleanup.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/volume-draft.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/volume-draft.test.ts",
+            "bytes": 939,
+            "sha256": "e639574cb79c5fca694a67bf8655c32c2a26a9cec7a95752640aa7398b8ee6bc"
+          }
+        ],
+        "outputOwner": "f05-11-full-predecessors",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      },
+      {
+        "id": "hostile-full-composition",
+        "run": "node g1-storage/scripts/check-full-predecessor-composition.mjs",
+        "timeout": 120,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict build/exact reversible descriptors/wrappers; actual parent/leaf/source/registration/binding and nonzero-violation/zero-positive/failed/cancelled/skipped/TODO corruption refusals using exact shipped gates; no product stand-in or cached acceptance.",
+        "stage": "unit",
+        "script": "g1-storage/scripts/check-full-predecessor-composition.mjs",
+        "scriptExists": true,
+        "registryPresent": null,
+        "sourceFile": null,
+        "sourceFilePresent": null,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-full-predecessor-composition.mjs",
+            "bytes": 12538,
+            "sha256": "7a223cfb376d454f8c78429ba2385bf82002c04420af8d2edbcdd20e73a23151"
+          }
+        ],
+        "outputOwner": "f05-11-full-predecessors",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      },
+      {
+        "id": "hostile-harness-composition-regression",
+        "run": "node g1-storage/scripts/check-component.mjs harness",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Complete original HARNESS42/all41 leaves and source/compiler/result/fixture/observation/ownership controls on the same repaired candidate, complete fatal streams and exact owned cleanup; no changed assertion.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-component.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/components/harness.component.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-component.mjs",
+            "bytes": 87,
+            "sha256": "9b46cb450d8645749b70f8c595bb0d7150987b76f516a90ea4e0843c2bf48e44"
+          },
+          {
+            "path": "g1-storage/tests/components/harness.component.test.ts",
+            "bytes": 104,
+            "sha256": "5e3318e1d71048f49018ce2a13e8020bb50b781a4d764a727b36647cea0e0231"
+          }
+        ],
+        "outputOwner": "f05-11-full-predecessors",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      }
+    ]
+  },
+  {
+    "id": "f05-11-suite-execution",
+    "status": "active",
+    "role": "tester",
+    "team": [],
+    "engineeringEstimateMinutes": 110,
+    "depends_on": [
+      "f05-11-races",
+      "f05-10",
+      "f05-11-full-predecessors"
+    ],
+    "checks": [
+      {
+        "id": "lifecycle-propagation-full-proof",
+        "run": "node g1-storage/scripts/check-slice.mjs lifecycle-propagation",
+        "timeout": 1800,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Strict build; all four retained components plus all L01-L09/all61 mandatory leaves in identical shared bodies, zero failed/cancelled/skipped/TODO/violations, parent wall timing, exact census and bounded cleanup. No240000ms child cap; entire controller command<=1800s.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/lifecycle-propagation.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/lifecycle-propagation.test.ts",
+            "bytes": 2405,
+            "sha256": "ee0b18861ee04c4562d97db14c495e22fb1e7d52de58313e81afd1731bf6672f"
+          }
+        ],
+        "outputOwner": "f05-11-suite-execution",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      },
+      {
+        "id": "volume-draft-full-proof",
+        "run": "node g1-storage/scripts/check-slice.mjs volume-draft",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Current candidate complete original S-V, both retained draft/promotion components and all26 frozen V leaves; preserve independent volume schedule235000ms target and all ownership/current-fence/integrity assertions.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-slice.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/volume-draft.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-slice.mjs",
+            "bytes": 83,
+            "sha256": "6be17be6e0e0527174e31f3df416a3d7e421d29cc6d483ad8bf6c5a738692d86"
+          },
+          {
+            "path": "g1-storage/tests/volume-draft.test.ts",
+            "bytes": 939,
+            "sha256": "e639574cb79c5fca694a67bf8655c32c2a26a9cec7a95752640aa7398b8ee6bc"
+          }
+        ],
+        "outputOwner": "f05-11-suite-execution",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      },
+      {
+        "id": "hostile-harness-regression",
+        "run": "node g1-storage/scripts/check-component.mjs harness",
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Complete installed harness-build and harness-cleanup predecessor assertions, real compiler/source/stale-output/TAP/observation/ownership sabotage. Reversible seam guard rejects all changes except authorized default-timeout removal and additive measurement wiring; no removed assertion.",
+        "stage": "integration",
+        "script": "g1-storage/scripts/check-component.mjs",
+        "scriptExists": true,
+        "registryPresent": true,
+        "sourceFile": "g1-storage/tests/components/harness.component.test.ts",
+        "sourceFilePresent": true,
+        "missingOutputOwner": null,
+        "missingIsImplementationOutput": false,
+        "resourceState": "ready; future current-candidate behavioral proof required",
+        "sourceBindings": [
+          {
+            "path": "g1-storage/scripts/check-component.mjs",
+            "bytes": 87,
+            "sha256": "9b46cb450d8645749b70f8c595bb0d7150987b76f516a90ea4e0843c2bf48e44"
+          },
+          {
+            "path": "g1-storage/tests/components/harness.component.test.ts",
+            "bytes": 104,
+            "sha256": "5e3318e1d71048f49018ce2a13e8020bb50b781a4d764a727b36647cea0e0231"
+          }
+        ],
+        "outputOwner": "f05-11-suite-execution",
+        "sourceOwnership": "Receipt transport repair must complete first; this task separately repeats its unchanged original gates and owns its fresh result",
+        "implementationRepairOwner": "f05-11-full-receipt-transport"
+      }
+    ]
+  }
+]

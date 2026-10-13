@@ -1,0 +1,88 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:56e4e898e4244ffcc24ff1d1c9a0c83bbfac58b0b73fa1a0a11880757bbedf72","files":72,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 144ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"d40e31e2-5141-4ea6-b626-1382b2a514d8","instance":"b20be22e-9a6f-4133-8526-ab3b7837d9e5","containerId":"4cb3bf72c0f901ea6ed9a596c3e780c1ef9da68329ac96f3c1e0bc7bb3dbfb9d","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"0725c2b2-9ea3-4be9-bdd5-cbbdc45312e6","device":16777238,"inode":324206486},"backup":{"rootId":"ae2b981e-7f12-4e8e-adca-ebaafdfa6836","device":16777238,"inode":324206488},"restore":{"rootId":"d4e3520b-3ff5-408d-8d2c-d53501eca237","device":16777238,"inode":324206490}},"fixtureRoot":{"rootId":"95a80056-9cc8-4f5b-a670-fea223cdb668","device":16777238,"inode":324206484},"preexistingContainers":[],"processBefore":{"rows":762,"digest":"1ffff20726c028b3931b165af48b239e662b58300ea9fc149d77d0241b3b1e80"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":87378,"marker":"f210158c-a870-4b80-b220-0bc7bddb550c","instance":"87278/Thu Oct  8 06:06:11 2026","ppid":87376,"loopback":true}
+# Subtest: AUTHORITY/behavior / real authenticated current control ledger
+    # Subtest: new migration rolls back, repeats and preserves original owner lineage
+    ok 1 - new migration rolls back, repeats and preserves original owner lineage
+      ---
+      duration_ms: 164.253541
+      type: 'test'
+      ...
+    # Subtest: persisted metadata, full live audience, native service and maintenance checks
+    ok 2 - persisted metadata, full live audience, native service and maintenance checks
+      ---
+      duration_ms: 136.641625
+      type: 'test'
+      ...
+    # Subtest: scope forgery, wrong witness/revision and cross-Space metadata refuse
+    ok 3 - scope forgery, wrong witness/revision and cross-Space metadata refuse
+      ---
+      duration_ms: 103.55325
+      type: 'test'
+      ...
+    # Subtest: forced RLS, nonowner role, direct worker/IdP/PUBLIC and admin-UoW denial
+    ok 4 - forced RLS, nonowner role, direct worker/IdP/PUBLIC and admin-UoW denial
+      ---
+      duration_ms: 259.082916
+      type: 'test'
+      ...
+    # Subtest: specific storage grants and installed policy are required
+    ok 5 - specific storage grants and installed policy are required
+      ---
+      duration_ms: 120.137209
+      type: 'test'
+      ...
+    # Subtest: independent anchor missing/offline/stale, rolled-back epoch and missing head fail closed
+    not ok 6 - independent anchor missing/offline/stale, rolled-back epoch and missing head fail closed
+      ---
+      duration_ms: 21.889542
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:125:17'
+      failureType: 'testCodeFailure'
+      error: 'duplicate key value violates unique constraint "storage_authority_epoch_pkey"'
+      code: '23505'
+      name: 'error'
+      stack: |-
+        /Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.pnpm/pg@8.16.3/node_modules/pg/lib/client.js:545:17
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async removeAndRestore (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:153:21)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:163:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/components/authority.component.test.js:125:9)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: PG-observed barrier wait rechecks command expiry at the fresh database time
+    ok 7 - PG-observed barrier wait rechecks command expiry at the fresh database time
+      ---
+      duration_ms: 605.803833
+      type: 'test'
+      ...
+    # Subtest: removed member denied while remaining full group audience stays usable
+    ok 8 - removed member denied while remaining full group audience stays usable
+      ---
+      duration_ms: 87.623125
+      type: 'test'
+      ...
+    # Subtest: anchored source restriction and current session revocation refuse persisted heads
+    ok 9 - anchored source restriction and current session revocation refuse persisted heads
+      ---
+      duration_ms: 27.505958
+      type: 'test'
+      ...
+# {"measurement":"model-owned-process-cleanup","pid":87378,"instance":"87278/Thu Oct  8 06:06:11 2026","signal":"SIGTERM","removed":true}
+{"measurement":"storage-container-cleanup","owner":"d40e31e2-5141-4ea6-b626-1382b2a514d8","instance":"b20be22e-9a6f-4133-8526-ab3b7837d9e5","containerId":"4cb3bf72c0f901ea6ed9a596c3e780c1ef9da68329ac96f3c1e0bc7bb3dbfb9d","removed":true,"censusUnchanged":true,"processAfter":{"rows":771,"digest":"07b1ee94bdf6d447c34889c7fb3284edadda33d184f15f66fa380520fcc588fd"}}
+{"measurement":"storage-root-cleanup","owner":"d40e31e2-5141-4ea6-b626-1382b2a514d8","instance":"b20be22e-9a6f-4133-8526-ab3b7837d9e5","rootId":"95a80056-9cc8-4f5b-a670-fea223cdb668","rootIds":["0725c2b2-9ea3-4be9-bdd5-cbbdc45312e6","ae2b981e-7f12-4e8e-adca-ebaafdfa6836","d4e3520b-3ff5-408d-8d2c-d53501eca237"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

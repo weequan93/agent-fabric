@@ -1,0 +1,45 @@
+node:fs:1193
+  binding.rmdir(path);
+          ^
+
+Error: ENOTEMPTY: directory not empty, rmdir '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src'
+    at Object.rmdirSync (node:fs:1193:11)
+    at _rmdirSync (node:internal/fs/rimraf:261:21)
+    at rimrafSync (node:internal/fs/rimraf:194:7)
+    at node:internal/fs/rimraf:254:9
+    at Array.forEach (<anonymous>)
+    at _rmdirSync (node:internal/fs/rimraf:251:7)
+    at rimrafSync (node:internal/fs/rimraf:194:7)
+    at node:internal/fs/rimraf:254:9
+    at Array.forEach (<anonymous>)
+    at _rmdirSync (node:internal/fs/rimraf:251:7) {
+  errno: -66,
+  code: 'ENOTEMPTY',
+  syscall: 'rmdir',
+  path: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-model/src'
+}
+
+Node.js v22.22.3
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52
+ if(errors.length)throw new AggregateError(errors,'Storage check failed; behavior and final guards retained');
+                        ^
+
+AggregateError: Storage check failed; behavior and final guards retained
+    at check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52:25)
+    at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:7
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  [errors]: [
+    Error: /Users/super/.hermes/node/bin/node failed (1)
+        at requireExit (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/process-result.mjs:4:75)
+        at run (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/process-result.mjs:11:9)
+        at check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:21:3)
+        at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:7
+        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+  ]
+}
+
+Node.js v22.22.3

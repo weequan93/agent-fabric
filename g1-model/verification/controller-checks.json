@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "taskChecks": [
+    {
+      "id": "suite-qualification",
+      "run": "node g1-model/scripts/check-slice.mjs qualification",
+      "timeout": 900,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Q01-Q09 actual build/parser/migration/ownership/evidence/blocker/rollback/scope/refusal guards",
+      "stage": "integration"
+    },
+    {
+      "id": "full-model-behavior",
+      "run": "node g1-model/scripts/check.mjs",
+      "timeout": 1800,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Strict clean build plus all eight mandatory suites and65 case identities/variants, observed zero violations",
+      "stage": "acceptance"
+    },
+    {
+      "id": "identity-retained",
+      "run": "node g1-identity/scripts/check.mjs",
+      "timeout": 300,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Unchanged F02 current-candidate regression through controller",
+      "stage": "regression"
+    },
+    {
+      "id": "foundation-retained",
+      "run": "node g1-foundations/scripts/check.mjs",
+      "timeout": 300,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Unchanged foundation current-candidate regression through controller",
+      "stage": "regression"
+    },
+    {
+      "id": "original-retained",
+      "run": "node g1-foundations/scripts/check-retained.mjs",
+      "timeout": 1200,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Unchanged G0/G1-local/protected/raw/GUI checks controller outside sandbox",
+      "stage": "regression"
+    },
+    {
+      "id": "controller-evidence-index",
+      "run": "node g1-model/scripts/check-evidence.mjs controller-behavior",
+      "timeout": 120,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Verify complete actual four-check controller streams/byte hashes and unchanged executable candidate/check/environment bindings; disclose post-index edits and pending independent judgment",
+      "stage": "acceptance"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "g1-model-behavior",
+      "argv": [
+        "node",
+        "g1-model/scripts/check.mjs"
+      ],
+      "timeout": 1800,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1-F04 increment behavior check (created by this goal).",
+      "stage": "integration"
+    },
+    {
+      "id": "identity-behavior",
+      "argv": [
+        "node",
+        "g1-identity/scripts/check.mjs"
+      ],
+      "timeout": 600,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1-F02 accepted increment must keep passing (regression).",
+      "stage": "regression"
+    },
+    {
+      "id": "foundation-behavior",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check.mjs"
+      ],
+      "timeout": 600,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "G1 foundations must keep passing (regression).",
+      "stage": "regression"
+    },
+    {
+      "id": "retained-baselines",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check-retained.mjs"
+      ],
+      "timeout": 900,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Original G0/G1-local protected files, raw evidence and checks unchanged (regression).",
+      "stage": "regression"
+    }
+  ]
+}

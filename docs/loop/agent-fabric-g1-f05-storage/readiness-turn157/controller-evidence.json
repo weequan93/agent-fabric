@@ -1,0 +1,164 @@
+[
+  {
+    "job": "job-c019aee3c6",
+    "check": "f05-01.strict-build",
+    "definition": {
+      "id": "strict-build",
+      "run": "node g1-storage/scripts/build.mjs",
+      "timeout": 180,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Compile current own sources/tests and imported owners with pinned offline frozen dependencies; refuse stale/symlinked emission.",
+      "stage": "unit"
+    },
+    "result": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 7308,
+      "started_at": "2026-10-11T01:38:15+00:00",
+      "finished_at": "2026-10-11T01:38:22+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-c019aee3c6/f05-01.strict-build",
+      "tail": "{\"measurement\":\"preserved-inputs\",\"files\":2581,\"categories\":{\"g0-local-protected\":613,\"foundations\":42,\"identity\":19,\"recovery\":1056,\"approved-design\":3,\"installedF03F04\":\"all source, migrations, checks, inventories and notices; excludes reproducible node_modules\"},\"unchanged\":true}\n10.18.0\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\nDone in 199ms using pnpm v10.18.0\n{\"measurement\":\"dependency-metadata\",\"dependencies\":18,\"notices\":17,\"securityAssessment\":\"unknown\",\"missingInstalledNotices\":[\"pg-types\",\"pgpass\"]}\n{\"measurement\":\"strict-build\",\"sourceAndTests\":true,\"node\":\"v22.22.3\",\"pins\":{\"pg\":\"8.16.3\",\"@types/pg\":\"8.15.5\",\"@types/node\":\"22.18.6\",\"typescript\":\"5.9.3\"},\"dependencyLockDigest\":\"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4\",\"cacheCleared\":true,\"install\":\"offline/frozen/ignore-scripts\"}\n{\"measurement\":\"preserved-inputs\",\"files\":2581,\"categories\":{\"g0-local-protected\":613,\"foundations\":42,\"identity\":19,\"recovery\":1056,\"approved-design\":3,\"installedF03F04\":\"all source, migrations, checks, inventories and notices; excludes reproducible node_modules\"},\"unchanged\":true}\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:11724d3bfd3bbff53f1d7905",
+      "actor": "agent",
+      "workspace_changed": true
+    },
+    "streams": [
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-c019aee3c6/f05-01.strict-build/stdout.log",
+          "bytes": 1148,
+          "sha256": "sha256:6fc69d5d87423d1d4d5012fb25fd01833bc78f92d7f1b70b7d7e7201f6156a05"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-c019aee3c6/f05-01.strict-build/stdout.log",
+          "bytes": 1148,
+          "sha256": "sha256:6fc69d5d87423d1d4d5012fb25fd01833bc78f92d7f1b70b7d7e7201f6156a05"
+        }
+      },
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-c019aee3c6/f05-01.strict-build/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-c019aee3c6/f05-01.strict-build/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "qualification": "resource availability / original historical failure admission only"
+  },
+  {
+    "job": "job-cc21a2b995",
+    "check": "f05-02.authority-component",
+    "definition": {
+      "id": "authority-component",
+      "run": "node g1-storage/scripts/check-component.mjs authority",
+      "timeout": 600,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Actual local IdP/HTTP/non-owner PG authorization, relation/RLS/grant negatives, lifecycle grants and surviving-current-ledger boundary.",
+      "stage": "integration"
+    },
+    "result": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 80948,
+      "started_at": "2026-10-11T01:39:44+00:00",
+      "finished_at": "2026-10-11T01:41:05+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-02.authority-component",
+      "tail": "\u2026Z7vad1vK7LsJVC//nTyfwzCqK4iq+FUV5cn5S3HHLAbMl4a2cUIjIZ9xwA8Y8trKWpm0yHjA3EpEbsshxmGcYUWC5pgiNSDheYLpMGKZ78tNJzQtXnJz////86STPslL+8++fTlTknSwv38RpBNqS8/862dzxQpycnwA3N5cv4SFPoxh06Q0u0wuEERm2w6NVtORRFHDhrwy+ckMhVith2qaITG/lidBccWByNIJVFEXcWfrCiDyJS5V//l8noqaxODk/6T5h34l8LYqzXW90nt9CHU7oASf3jPmKL/M4PLs15zqGwZl64wcjTRHez8OKs+d0/S/w8wKX3yyPyyfok/Ax2sVDijj5+6cTfTJrahRn6XwteLHN1Y4MMuom9B3DdZzAFxF3XJOvfM/iYmW6UWRYVuSw0DPdJefCC1ae5y1F5DqBy+yQh9zjYQCOya2y53VXdqU4BhMMzF14GETuaunarrUKDLFarkK+injk2aZpm1FkQVAW07CWq1UQ2cto5buWZ0D359s0FXm3WMM0VpYVmsbKtkzTClloCzdyPMEEfLG5Z3lLZjih6TvM9uzlyl25gRsKZ2ktgyV0YbGNSzGvG6pbfhgFlrditrH0DcdnnjAdIwh8sWSMm0HE7KXt+jxcRuGSccfkLOKmK8QyCMSKMQbjfrmNk6hbasQsYbgMWP5FGArX55FvOyvDEszzXZ8ZZrhaWtz3jWVomuEyWNkm91eWYyxN27H9k3qeznNRbJPdHg39kEeRsCyDmTxigTAFD2HsC+YCztC2uGGZNve4cINIcMu1l0wsAzNygiA8+fvvv/8bE6NeEgOQBgA=\"}\n{\"measurement\":\"storage-measurement-transport\",\"version\":1,\"binding\":{\"phase\":\"command\",\"candidate\":\"sha256:179e0d045adfdbadd9ae8f0af6ceeffe141ed17f7ec1fa390709fddda5b8e0d7\",\"command\":{\"executable\":\"/Users/super/.hermes/node/bin/node\",\"args\":[\"/Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs\",\"authority\"],\"cwd\":\"/Users/super/Documents/ai/agent-fabric\"},\"sources\":{\"execution-measurement.mjs\":\"sha256:85065598eda561af872aef16dd022d53c716baae79f777bed659634caca7ac9a\",\"measurement-transport.mjs\":\"sha256:503e30586ac9d6fb6462f90efbfcafdad741141dd20475102bff9d4bdf86270d\",\"runner.mjs\":\"sha256:010f22c10f42112c3c4e6d57e3e10f24a727b305c1853474bf6f696ce5b2b9be\",\"suite-execution.mjs\":\"sha256:cd927f340b805837e150998eb33a19d34b468acbdcb3a51a3da16eeb99ef3336\",\"build.mjs\":\"sha256:d32e0631133ecce68ad845f02e37868301cfb2a880bc11cb9f41a8f250b14548\",\"process-result.mjs\":\"sha256:8c8cadde22031ad39e1eac9070e36b3a5c42a0214a7ae69dea264b3eb91d599c\"}},\"bindingDigest\":\"sha256:235ac4a290fb9437fb6f43a769060937a4328e0f0ccaccab0d10e6b0ef815e60\",\"digest\":\"sha256:2599a9018bd71a42780e92d0012aa5c8e289ee1f58ae6f94935fe743131d5821\",\"bytes\":430083,\"compressedDigest\":\"sha256:0e11f8f9f059374b2e36ce0e48bbe5d1d9ded72e00fc34f4dda397764ceac317\",\"compressedBytes\":63577,\"count\":8,\"kind\":\"final\"}\n{\"measurement\":\"storage-parent-return\",\"phase\":\"command\",\"clock\":\"parent-monotonic\",\"startedMs\":767.761166,\"returnedMs\":80835.21125,\"elapsedMs\":80067.450084,\"mode\":\"component\",\"candidate\":\"sha256:179e0d045adfdbadd9ae8f0af6ceeffe141ed17f7ec1fa390709fddda5b8e0d7\",\"success\":true,\"censusReceipt\":\"sha256:2599a9018bd71a42780e92d0012aa5c8e289ee1f58ae6f94935fe743131d5821\"}\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:8cb960ea38d8a33ff3ff1f6d",
+      "actor": "agent",
+      "workspace_changed": true
+    },
+    "streams": [
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-02.authority-component/stdout.log",
+          "bytes": 196004,
+          "sha256": "sha256:fc12f427ae0b72eb91b06e569e37c6ecb652d8ad2b022f2aed145b414546d195"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-cc21a2b995/f05-02.authority-component/stdout.log",
+          "bytes": 196004,
+          "sha256": "sha256:fc12f427ae0b72eb91b06e569e37c6ecb652d8ad2b022f2aed145b414546d195"
+        }
+      },
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-cc21a2b995/f05-02.authority-component/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "qualification": "resource availability / original historical failure admission only"
+  },
+  {
+    "job": "job-cc21a2b995",
+    "check": "f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused",
+    "definition": {
+      "id": "original-maintenance-failure-still-refused",
+      "run": "node docs/loop/agent-fabric-g1-f05-storage/develop-turn150/check-retained-failure.mjs",
+      "timeout": 120,
+      "cwd": ".",
+      "expect_exit": 0,
+      "description": "Unchanged original historical failure/current1132 candidate binding and actual shipped TAP/zero-violation refusal remain exact.",
+      "stage": "regression"
+    },
+    "result": {
+      "status": "pass",
+      "exit_code": 0,
+      "outcome": "completed",
+      "duration_ms": 224,
+      "started_at": "2026-10-11T01:41:05+00:00",
+      "finished_at": "2026-10-11T01:41:05+00:00",
+      "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused",
+      "tail": "{\"candidate\":{\"digest\":\"sha256:179e0d045adfdbadd9ae8f0af6ceeffe141ed17f7ec1fa390709fddda5b8e0d7\",\"files\":1132},\"runs\":[{\"suite\":\"lifecycle-propagation\",\"receipts\":16,\"failed\":true},{\"suite\":\"volume-draft\",\"receipts\":6,\"failed\":false}],\"rootCauseConfirmed\":false,\"controllerTaskQualification\":false,\"productQualification\":false}\n",
+      "cleanup": "zombie",
+      "fingerprint": "git:8cb960ea38d8a33ff3ff1f6d",
+      "actor": "agent",
+      "workspace_changed": true
+    },
+    "streams": [
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused/stdout.log",
+          "bytes": 328,
+          "sha256": "sha256:048fe842d7bba80fd3d2373193dbd0fb995c69ce242c69e886ecb8914cd7c958"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-cc21a2b995/f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused/stdout.log",
+          "bytes": 328,
+          "sha256": "sha256:048fe842d7bba80fd3d2373193dbd0fb995c69ce242c69e886ecb8914cd7c958"
+        }
+      },
+      {
+        "original": {
+          "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-cc21a2b995/f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "copy": {
+          "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn157/controller/job-cc21a2b995/f05-11-maintenance-failure-capture.original-maintenance-failure-still-refused/stderr.log",
+          "bytes": 0,
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "qualification": "resource availability / original historical failure admission only"
+  }
+]

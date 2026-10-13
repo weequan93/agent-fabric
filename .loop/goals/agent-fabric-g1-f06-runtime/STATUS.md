@@ -1,11 +1,11 @@
 # Loop · agent-fabric: G1-F06 runtime
 
-**READY** — Approved by human. Start with `loop start`.
+**READY** — Approved by human (via Claude): gpt-6.1-sol max effort. Start with `loop start`.
 
-- Goal `agent-fabric-g1-f06-runtime` · kind **develop** · updated 2026-10-06T17:15:31+00:00
+- Goal `agent-fabric-g1-f06-runtime` · kind **develop** · updated 2026-10-13T03:42:11+00:00
 - Next: **intake** (agent) — Write the product brief: problem, users, journeys, goals, success metrics, scope and non-scope.
 - Runner: not running
-- Turns 0/60 · agent time 0.0 min · reported cost $0.00
+- Turns 0 (0/60) · agent time 0.0 min · reported cost $0.00
 
 ## Pipeline
 
@@ -53,8 +53,8 @@ Create g1-runtime/ with a build and g1-runtime/scripts/check.mjs that strictly b
 
 ## Goal queue
 
-- ○ 1. `agent-fabric-g1-f03-recovery` agent-fabric: G1-F03 recovery — running · approved
-- ○ 2. `agent-fabric-g1-f04-model-finops` agent-fabric: G1-F04 model — ready · approved
+- ✓ 1. `agent-fabric-g1-f03-recovery` agent-fabric: G1-F03 recovery — done
+- ✓ 2. `agent-fabric-g1-f04-model-finops` agent-fabric: G1-F04 model — done
 - ○ 3. `agent-fabric-g1-f05-storage` agent-fabric: G1-F05 storage — ready · approved
 - ▶ 4. `agent-fabric-g1-f06-runtime` agent-fabric: G1-F06 runtime — ready · approved
 - ○ 5. `agent-fabric-g1-f07-clients` agent-fabric: G1-F07 clients — ready · approved

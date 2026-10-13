@@ -1,0 +1,3572 @@
+{
+  "schemaVersion": 3,
+  "stage": "plan",
+  "reviewFindings": [
+    "PLAN54-01",
+    "PLAN54-02"
+  ],
+  "qualification": "plan revision only; behavior, recovery and external qualification pending",
+  "originalPlanSha256": "51faaf844b524d2cea1f442267bf6d2e71fde38313843660c900be8a448cacf6",
+  "originalPlan": "docs/planning/g1-f05-plan-v1-preserved.md",
+  "requiredVariantsSha256": "31e8e23b8f3c96a244378d94c0676b054365d3a2c0dc204989ba8a037a11dd30",
+  "localCases": 64,
+  "controllerCases": 3,
+  "externalGates": 9,
+  "requiredVariants": 420,
+  "requirements": 96,
+  "tasks": [
+    {
+      "id": "f05-01",
+      "title": "Freeze executable contracts, owner composition and independent build",
+      "detail": "Create only additive g1-storage package, pinned lock/dependency/license/update inventory, strict own-cache build, closed schemas/errors and direct installed-owner imports. Update docs/planning/g1-f05-plan.md with per-record owners, every retained class/field encryption and retention inventory, command/envelope/result contracts and per-class commit/checkpoint/recovery states. Implement fixed component/slice/aggregate manifests and diagnostic runners sharing strict gate functions: aggregate accepts no arguments and fails until every frozen suite/variant exists. Freeze C01-C03 and 64 executable local case IDs, 3 separately controller-run G cases, 9 pending X gates from test-plan v1; components never count as aggregate acceptance. Resolve ResourceRepository composition for Ask and deterministic summary/index/cache maintenance: bind the installed owner to the same authenticated transaction without independent/nested COMMIT; maintain policy/native fence/allowance checks before and after waits. Logical service-accounting resource is separate from NativeAdmission.resourceId/ComputerAssignment. Compile imported F01-F04/native sources and byte-identical required migration assets in own cache without sibling source/lock/check edits or sibling cache regeneration. Do not route private content into existing plaintext F04 Task/model history.",
+      "covers": [
+        "R-008",
+        "R-011",
+        "R-012",
+        "R-022",
+        "R-037",
+        "R-042",
+        "R-055",
+        "R-067",
+        "R-069",
+        "R-070",
+        "R-073",
+        "R-076",
+        "R-077",
+        "R-085"
+      ],
+      "depends_on": [],
+      "role": "architect",
+      "team": [],
+      "checks": [
+        {
+          "id": "strict-build",
+          "run": "node g1-storage/scripts/build.mjs",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Compile current own sources/tests and imported owners with pinned offline frozen dependencies; refuse stale/symlinked emission.",
+          "stage": "unit"
+        },
+        {
+          "id": "contracts-component",
+          "run": "node g1-storage/scripts/check-component.mjs contracts",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual closed command/envelope/state positive and invalid-security-field/bounds probes; inspect direct owner composition contracts.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f05-02",
+      "title": "Install scoped PG authority, authenticated fixture and current control ledger",
+      "detail": "Add independent storage migrations/schema repository plus real owned cached PG/IdP/process/filesystem fixture. Apply unchanged owner migrations with original ledgers/digests and narrow path adapter from f05-01; force RLS, composite scope FKs and immutable history, fixed-path/revoked-PUBLIC functions, no worker/IdP/admin serving grants. Use actual F02 token verification, AuthenticatedUnitOfWork and CurrentAudienceVerifier, F03 Space barriers/fences and F04 native bindings. Enroll two tenants, Personal/group/share rooms, all-party payer/membership authority and specific synthetic lifecycle grants. Keep current epoch anchor, policy, tombstone/source restriction, accepted-head witness and original-command/pending-work authority outside restorable content generations. Add trusted same-tenant two-sided sharing only, sorted source/destination locks; no cross-tenant sharing. Component checks prove actual scoped persisted metadata, current revocation/outage/forgery/direct-worker denial, remaining-member positive, authority rollback/missing anchor refusal and migration compatibility. Fixture cleanup records actual owner/instance/container/root identities and preexisting census; secrets remain fixture-held.",
+      "covers": [
+        "AF-07",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-014",
+        "R-045",
+        "R-059",
+        "R-064",
+        "R-073",
+        "R-078"
+      ],
+      "depends_on": [
+        "f05-01"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "authority-component",
+          "run": "node g1-storage/scripts/check-component.mjs authority",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual local IdP/HTTP/non-owner PG authorization, relation/RLS/grant negatives, lifecycle grants and surviving-current-ledger boundary.",
+          "stage": "integration"
+        },
+        {
+          "id": "migration-component",
+          "run": "node g1-storage/scripts/check-component.mjs migration",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Rerun unchanged F01-F04 migrations, exact ledgers/grants/hash equality and refusal of changed installed digest in an owned DB.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-03",
+      "title": "Persist authenticated ciphertext with owned staging and redacted copies",
+      "detail": "Implement crypto-store and bounded exclusive filesystem adapter using AES-256-GCM fresh nonce/tag and canonical tenant/Space/class/id/revision/generation/key AAD; scope-keyed fingerprints and opaque random filenames. Encrypt descriptive PG payloads and stored object/manifest/diagnostic copies, minimize content-free audits. Keys are ephemeral installed resolver capabilities outside content/backup roots, never caller fields, argv, stdout or archives. Stage/fsync/rename/directory-fsync actual files; publication requires durable byte+manifest confirmation, current ownership and reachability. Implement lease-aware orphan quarantine/GC with current pending/unknown command protection, sentinel/symlink/path checks and cleanup failure surfacing. Component assertions inspect real PG/files, recreate decrypting client, compare exact UTF-8/binary bytes, alter every AAD dimension/tag/body/key, test wrong/missing keys and race GC with staging/publication. Full every-class scan remains E01-E04 in f05-14 after all consumers exist.",
+      "covers": [
+        "R-009",
+        "R-010",
+        "R-011",
+        "R-012",
+        "R-013",
+        "R-020",
+        "R-021",
+        "R-028",
+        "R-044",
+        "R-061",
+        "R-078"
+      ],
+      "depends_on": [
+        "f05-02"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "encryption-component",
+          "run": "node g1-storage/scripts/check-component.mjs encryption",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Real encrypted file and PG round-trip after recreation; AAD/tag/body/key substitution negatives and no private/log/key plaintext.",
+          "stage": "integration"
+        },
+        {
+          "id": "staging-component",
+          "run": "node g1-storage/scripts/check-component.mjs staging",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual interrupted byte/manifest writes and scope/lease-aware orphan cleanup protect reachable/unknown and foreign sentinel data.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-04",
+      "title": "Admit explicit source-backed save and commit canonical pieces",
+      "detail": "One controller turn; budget 95 minutes including strict build, diagnostic and bounded repair. Extend SourceCommand and the authenticated source/head UoW with explicit save admission, finite fixture secret/retention rules, encrypted canonical user-asserted revision, current witness, immutable receipt, event and required outbox in ONE transaction. Forecast both headOverride and workOverride in the exact controls digest; no post-COMMIT insertion. The public save response is Saved here only after confirmed COMMIT, and Not saved after rollback. Add focused actual PG partial-write rollback and recreated exact committed read probes; source-only save0 cannot pass this gate. Interfaces: schema/source-content/head publication, additive scoped SQL and knowledge-save repository. Register the fixed atomic-save component using the existing strict component runner; no new skip/selector API. Status verification, correction and HTTP uncertainty belong to successors. Preserve the active task identity, started_at, attempts and all historical notes; original broad knowledge/commands checks move verbatim to f05-04-gate. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "AF-07",
+        "R-014",
+        "R-015",
+        "R-018",
+        "R-019",
+        "R-022",
+        "R-058"
+      ],
+      "depends_on": [
+        "f05-03"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "atomic-save-component",
+          "run": "node g1-storage/scripts/check-component.mjs atomic-save",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        },
+        {
+          "id": "source-content-component",
+          "run": "node g1-storage/scripts/check-component.mjs source-content",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Additive prerequisite diagnostic: real encrypted provenance, migration, role denial, rollback, concurrent original and genuine COMMIT wire outcomes; does not replace knowledge or commands gates.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-04-status",
+      "title": "Persist proposals, seven statuses and registered verification",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend the knowledge repository/status transitions and installed-check admission only. Persist proposed/user-asserted/source-verified/disputed/superseded/expired/deleted and exact checker/time/source binding. Discussion and repeated proposal stay Pending review; fabricated/unrelated checks and content-to-method/control/evidence promotion refuse. Exercise actual persisted transitions, recreated history and recall eligibility via the repository; no correction contention or wire schedules in this task. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-019",
+        "R-029",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-04"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "knowledge-status-component",
+          "run": "node g1-storage/scripts/check-component.mjs knowledge-status",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-04-correction",
+      "title": "Apply selective correction with CAS, lineage and scoped dedup",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend correction/history and scope-source-subject dedup against the existing atomic-save boundary. Expected-head CAS supersedes only the target and retains evidence/authorship/permitted history and unresolved contradiction. Two PG-observed writers from one base produce one winner and visible stale conflict; independent claims both append. Similar content in another source/subject/tenant is not merged or existence-disclosed; identical original retry returns one identity, changed payload conflicts. Recreated loser obeys current head. Add focused diagnostic fixtures only; exhaustive K schedules later. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "AF-07",
+        "R-015",
+        "R-022",
+        "R-023",
+        "R-025",
+        "R-026",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-036",
+        "R-058",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-04-status"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "knowledge-correction-component",
+          "run": "node g1-storage/scripts/check-component.mjs knowledge-correction",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-04-recovery",
+      "title": "Expose original-key HTTP save and commit recovery",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Add authenticated loopback save/lookup HTTP adapter and typed actual Foundation UNKNOWN_COMMIT -> HTTP503, original-key resolver and replayAllowed:false. Execute/lookup use the same actor/scope/original-key lock excluding payload digest; fresh READ COMMITTED receipt and current authority/time after waits. Exercise installed wire proxy for actual lost COMMIT reply plus commit/rollback/timeout and serialized absence; no new-key or blind replay, spoofed error cannot claim unknown. Reuse existing IdP/PG/wire fixtures and repository; do not suppress HTTP to fake uncertain commit. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-068"
+      ],
+      "depends_on": [
+        "f05-04-correction"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "command-recovery-component",
+          "run": "node g1-storage/scripts/check-component.mjs command-recovery",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-04-gate",
+      "title": "Integrate canonical knowledge, commands and source content",
+      "detail": "One controller turn; budget 20 minutes including strict build, diagnostic and bounded repair. Rerun the complete original knowledge-component and commands-component definitions unchanged after all four bounded canonical deliverables. Source-content-component stays mandatory on f05-04 and is rerun here alongside knowledge/commands. No new feature or schedule implementation: verify composition and canonical useful save outcomes. The original active-task history is retained on f05-04, and this gate blocks every volume/Ask/lifecycle/restore successor. A source-only diagnostic cannot satisfy it. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "AF-07",
+        "R-014",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-018",
+        "R-019",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-036",
+        "R-058",
+        "R-068",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-04-recovery"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "knowledge-component",
+          "run": "node g1-storage/scripts/check-component.mjs knowledge",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        },
+        {
+          "id": "commands-component",
+          "run": "node g1-storage/scripts/check-component.mjs commands",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        },
+        {
+          "id": "source-content-component",
+          "run": "node g1-storage/scripts/check-component.mjs source-content",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Additive prerequisite diagnostic: real encrypted provenance, migration, role denial, rollback, concurrent original and genuine COMMIT wire outcomes; does not replace knowledge or commands gates.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-05-artifacts",
+      "title": "Publish durable encrypted artifacts and quarantine orphans",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Implement artifact byte/manifest publication over accepted owned staging and authenticated current authority. Confirm exact encrypted bytes plus descriptive manifest before serving; orphan lease/reachability/unknown-operation quarantine/cleanup cannot remove published or unowned files. Focused actual fsync/publication interruption and recreated exact binary/integrity negatives. No editable draft/checkpoint adapter in this task. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-001",
+        "R-005",
+        "R-020",
+        "R-021",
+        "R-022",
+        "R-058",
+        "R-061",
+        "R-068"
+      ],
+      "depends_on": [
+        "f05-04-gate"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "artifact-publication-component",
+          "run": "node g1-storage/scripts/check-component.mjs artifact-publication",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-05-drafts",
+      "title": "Persist live versions, recoverable drafts and distinct checkpoints",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Add encrypted logical live-file/draft adapters and confirmed checkpoint inventory using artifact durability primitives. Report live-written/draft-saved/checkpoint-confirmed separately; unsaved editor memory has no receipt, live C2 is excluded from C1 backup. Recreated draft exact bytes/audience and explicit stale comparison/retain-variant work. Personal/group/guest/foreign ownership denied. Keep canonical promotion out of this task. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-001",
+        "R-005",
+        "R-041",
+        "R-055",
+        "R-057",
+        "R-058",
+        "R-067",
+        "R-068",
+        "R-082"
+      ],
+      "depends_on": [
+        "f05-05-artifacts"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-drafts-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume-drafts",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-05-promotion",
+      "title": "Validate CAS file promotion and current writer fences",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Add canonical merge/apply operation only: expected base revision, validator and installed Task/Run/runtime/cancellation/worker/storage generation checks before publication. Two real promoters from one base have one exact accepted bytes/manifest and visible loser; stale recreated writer after Stop/replacement/revocation cannot publish, variant remains comparable. Reuse immutable conversation binding and artifact adapter. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-022",
+        "R-041",
+        "R-056",
+        "R-057",
+        "R-059",
+        "R-061"
+      ],
+      "depends_on": [
+        "f05-05-drafts"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-promotion-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume-promotion",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-05-recovery",
+      "title": "Prove exact owned recovery and recover the interrupted Turn53 fixture",
+      "detail": "One controller turn; budget 75 minutes including build, controller checks and bounded repair. Add a separate ownership-proving recovery command/check, with fresh current container owner+instance+ID+image+loopback+mount and root marker+device+inode proofs, and current process PID+birth+command+nonce+recorded parent lineage. Preserve existing assertContainerOwned/assertRootOwned/process guards unchanged. Exercise real instance/root/process substitution refusal and preserve unowned container/file/process sentinels. Recover only job-27c90a1221 reproducible leaked fixture after all applicable proofs; if a recorded resource already disappeared, prove exact absence and no substitute mutation instead. Bind complete original raw hashes and actual current before/after observations to a new receipt, including any remaining refusal. Never count an intent/proposed receipt as executed recovery. Exact mechanism and mandatory variants: docs/planning/g1-f05-volume-schedule-v3.md; do not signal/delete on historical IDs alone, change protected sources, relax guards/timeouts, omit assertions or expand external scope. Retain complete raw outputs and frozen candidate bindings; failure leaves this task incomplete.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-075",
+        "R-076",
+        "R-078",
+        "R-081"
+      ],
+      "depends_on": [
+        "f05-05-promotion"
+      ],
+      "role": "devops",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-owned-recovery",
+          "run": "node g1-storage/scripts/check-volume-owned-recovery.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "description": "Strict build plus OWNED-RECOVERY/behavior and its 8 mandatory actual proof/refusal/sentinel variants; no skips/TODO and unchanged guard hashes.",
+          "stage": "security",
+          "expect_exit": 0
+        },
+        {
+          "id": "volume-interrupted-receipt",
+          "run": "node g1-storage/scripts/check-volume-interrupted-receipt.mjs",
+          "timeout": 180,
+          "cwd": ".",
+          "description": "Fail unless byte/hash-bound job-27c90a1221 actual current recovery receipt and both immutable original streams reconcile every leaked container/root/IdP identity, absence/refusal and sentinel preservation.",
+          "stage": "integration",
+          "expect_exit": 0
+        }
+      ]
+    },
+    {
+      "id": "f05-05-custodian",
+      "title": "Keep fixture custodian alive across worker loss with exact LIFO cleanup",
+      "detail": "One controller turn; budget 90 minutes including build, controller checks and bounded repair. Add an external local custodian process and private fsynced ownership journal, using unchanged withStorageFixture nested A->B->C lifetimes, independent complete worker environments and captured child birth/nonces. Hold all fixtures until all workers settle; stop only ownership-proved descendants before LIFO C->B->A fixture finally. Parent IPC loss/watchdog fails work, never success; surviving custodian cleans. Reparented children require recorded birth+command+nonce plus proven parent death, never a relaxed original stopOwned predicate. Exercise actual SIGKILL and actual expired worker/suite-owner deadline after durable synthetic work and live IdP handshake, then prove no owned child/container/root remains and exact global censuses and unowned sentinels preserved. Missing/substituted journal/instance/root/process fail closed. This task implements lifetime/recovery primitives and small real failure fixtures only; no predecessor scheduling changes. Exact mechanism and mandatory variants: docs/planning/g1-f05-volume-schedule-v3.md; do not signal/delete on historical IDs alone, change protected sources, relax guards/timeouts, omit assertions or expand external scope. Retain complete raw outputs and frozen candidate bindings; failure leaves this task incomplete.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-075",
+        "R-078",
+        "R-083"
+      ],
+      "depends_on": [
+        "f05-05-recovery"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-custodian",
+          "run": "node g1-storage/scripts/check-volume-custodian.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "description": "Strict build, real nested container lifetimes, worker SIGKILL/deadline/owner disconnect after durable work+IdP, cleanup failure and journal substitution; exact 8 mandatory variants and byte/hash-bound phase/identity/census receipts.",
+          "stage": "integration",
+          "expect_exit": 0
+        }
+      ]
+    },
+    {
+      "id": "f05-05-schedule",
+      "title": "Execute all complete volume predecessors concurrently within nested fixture lifetimes",
+      "detail": "One controller turn; budget 90 minutes including build, controller checks and bounded repair. Replace only thin volume composition with the concrete nested fixture/custodian schedule. Create fresh A artifact, B draft, C promotion fixtures sequentially before releasing any full test worker; run the 3 unchanged emitted predecessor test files concurrently in independent processes/env, then join all before reverse cleanup. Keep original migration starts, registration source assertions, byte confirmation, observations, original executeSuite 240000ms and original volume controller 600s command. Add mandatory 3 predecessor child identities to volume manifest, strengthen only by addition. Supervisor parses every child via unchanged strict parseTap and schema observations, requires pinned 17+15+13 leaf identities and 3 parent identities exactly once, zero failures/cancellations/skips/TODO, same candidate and fixture bindings before summing actual effects. New schedule proof gate executes the original volume command and verifies complete fresh child raw receipts plus completeness sabotage refusal. Require all three original predecessor gates on the same frozen current candidate as the volume gate; prior passes do not substitute. Target <=235000ms full suite including cleanup; fail unchanged 240000ms bound if unattainable, retain evidence and use a new bounded repair rather than omit work. No product/owner logic changes. Exact mechanism and mandatory variants: docs/planning/g1-f05-volume-schedule-v3.md; do not signal/delete on historical IDs alone, change protected sources, relax guards/timeouts, omit assertions or expand external scope. Retain complete raw outputs and frozen candidate bindings; failure leaves this task incomplete.",
+      "covers": [
+        "R-001",
+        "R-005",
+        "R-020",
+        "R-021",
+        "R-022",
+        "R-041",
+        "R-055",
+        "R-056",
+        "R-057",
+        "R-058",
+        "R-059",
+        "R-061",
+        "R-067",
+        "R-068",
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-074",
+        "R-075",
+        "R-076",
+        "R-078",
+        "R-081",
+        "R-082",
+        "R-083"
+      ],
+      "depends_on": [
+        "f05-05-promotion",
+        "f05-05-custodian"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-schedule-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Complete original volume gate under unchanged suite limit; all predecessor assertions and observed useful positives, final owned cleanup/census and preservation guards pass.",
+          "stage": "integration"
+        },
+        {
+          "id": "volume-schedule-proof",
+          "run": "node g1-storage/scripts/check-volume-schedule.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "description": "Strict build and original volume run: 3 complete frozen child TAP/observations/raw hashes, LIFO cleanup/census and <=235s measured target; 8 required proof/refusal variants. Never closes on old receipts or only VOLUME/behavior.",
+          "stage": "integration",
+          "expect_exit": 0
+        },
+        {
+          "id": "artifact-publication-component",
+          "run": "node g1-storage/scripts/check-component.mjs artifact-publication",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        },
+        {
+          "id": "volume-drafts-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume-drafts",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        },
+        {
+          "id": "volume-promotion-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume-promotion",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-05",
+      "title": "Integrate commit artifacts, encrypted live files, drafts and checkpoints",
+      "detail": "One controller turn; budget 20 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original volume component over assembled artifact/live/draft/checkpoint/promotion adapters. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "R-001",
+        "R-005",
+        "R-020",
+        "R-021",
+        "R-022",
+        "R-041",
+        "R-055",
+        "R-056",
+        "R-057",
+        "R-058",
+        "R-059",
+        "R-061",
+        "R-067",
+        "R-068",
+        "R-082"
+      ],
+      "depends_on": [
+        "f05-05-promotion",
+        "f05-05-schedule"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "volume-component",
+          "run": "node g1-storage/scripts/check-component.mjs volume",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual encrypted file/artifact/draft/checkpoint states and recreation, expected-base contention, stale variant/fence and private audience negatives.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-06-recall",
+      "title": "Retrieve current eligible canonical sources before decryption",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Implement source broker/recall exact ID, scope-keyed subject and bounded tail retrieval. Before decrypt/selection/ranking check current full audience/source validity/status/head/dependencies/generation; unavailable or stale authority blocks populated cache. Index lag/failure leaves canonical exact/tail useful with explicit gap. Attachment/recall/save controls remain independent and immutable conversation/task binding governs; unsupported group-personal export refuses. Repository diagnostic consumes random persisted A/B across recreation without invoking answer generation. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-003",
+        "R-004",
+        "R-007",
+        "R-030",
+        "R-033",
+        "R-034",
+        "R-035",
+        "R-036",
+        "R-041",
+        "R-042",
+        "R-043",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-05"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "recall-broker-component",
+          "run": "node g1-storage/scripts/check-component.mjs recall-broker",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-06-native",
+      "title": "Compose useful native Ask with installed resource admission",
+      "detail": "One controller turn; budget 95 minutes including strict build, diagnostic and bounded repair. Install authenticated native query HTTP handler with NativeRepository.load/fresh, F03 origin fences and borrowed-UoW F04 ResourceRepository/SyntheticResourceOwner admission/settlement. local-extractive-v1 answers from actual eligible bytes; logical service resource is not ComputerAssignment. Random save A/recreate/Ask A/correct B/recreate/Ask B must work; budget/Stop/replacement/unknown continuation refuse before content. Reachable computer/shell/model/enrichment/effect ports fail-on-call with actual counters. Retain encrypted query/answer, opaque native references only, no F04 plaintext model history. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "UX-01",
+        "R-037",
+        "R-038",
+        "R-039",
+        "R-040",
+        "R-041",
+        "R-068",
+        "R-089"
+      ],
+      "depends_on": [
+        "f05-06-recall"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "native-ask-component",
+          "run": "node g1-storage/scripts/check-component.mjs native-ask",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-06-disclosure",
+      "title": "Publish reauthorized answers and versioned retrieval manifests",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Add bounded sorted disclosure barrier/current full-audience recheck and encrypted answer/manifest receipt/cache read reauthorization. Manifest identifies actual scope/audience/policy/membership/head/source digest/index watermark/profile/inclusion. Focused source-revoke during paused answer prevents disclosure, allowed counterpart useful; safe missing-evidence/live-unsupported/current-authority outcomes give preserved/unexecuted/resolver fields. No remote link/stream qualification. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-003",
+        "R-004",
+        "R-031",
+        "R-032",
+        "R-035",
+        "R-039",
+        "R-042",
+        "R-068",
+        "R-086"
+      ],
+      "depends_on": [
+        "f05-06-native"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "ask-disclosure-component",
+          "run": "node g1-storage/scripts/check-component.mjs ask-disclosure",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-06",
+      "title": "Integrate serve useful authorized Ask through installed native owners",
+      "detail": "One controller turn; budget 20 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original ask and admission components; both useful saved-decision answers and installed-owner refusal outcomes required. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "UX-01",
+        "R-003",
+        "R-004",
+        "R-007",
+        "R-030",
+        "R-031",
+        "R-032",
+        "R-033",
+        "R-034",
+        "R-035",
+        "R-036",
+        "R-037",
+        "R-038",
+        "R-039",
+        "R-040",
+        "R-041",
+        "R-042",
+        "R-043",
+        "R-068",
+        "R-086",
+        "R-089",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-06-disclosure"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "ask-component",
+          "run": "node g1-storage/scripts/check-component.mjs ask",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Real native/IdP/HTTP saved decision A/B answers and exact manifests, independent controls/tab binding; zero actual computer/model/effect calls.",
+          "stage": "integration"
+        },
+        {
+          "id": "admission-component",
+          "run": "node g1-storage/scripts/check-component.mjs admission",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Installed native freshness/fence and resource allowance conservation, same-key recreation, exhausted/revoked maintenance/service admission; no new owner/plaintext history.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-07-retention",
+      "title": "Commit expiry and forget restrictions with truthful impact",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Implement per-class expiry validation/sweep and separately authorized forget operation. Atomically persist monotonic tombstone+original-key receipt/event/invalidation work using accepted restriction owners. Current source/member restriction blocks future retrieval immediately while work pending. Truthful active/pending/backup/external/retention counts, already delivered bytes not recalled. Recreated canonical ledger and one permitted/denied/repeated/expiry fixture; no transitive graph processing yet. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-013",
+        "R-044",
+        "R-045",
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-053",
+        "R-054",
+        "R-068",
+        "R-082"
+      ],
+      "depends_on": [
+        "f05-06"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "retention-forget-component",
+          "run": "node g1-storage/scripts/check-component.mjs retention-forget",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-07-graph",
+      "title": "Track nested sensitive dependencies and block descendants",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Persist canonical source->knowledge->summary1->summary2->index/cache->Ask receipt edges plus source-dependent artifact/draft and independent survivor. Add current ancestry check before derived read/disclosure; depth16/nodes512/cycle/missing ancestor bounds fail closed. Restriction/correction traversal generates exact durable affected jobs and current-head overlay; no worker admission or retry protocol in this task. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-031",
+        "R-035",
+        "R-049",
+        "R-052",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-07-retention"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "dependency-graph-component",
+          "run": "node g1-storage/scripts/check-component.mjs dependency-graph",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-07-maintenance",
+      "title": "Build encrypted projections under existing maintenance allowance",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Implement declared deterministic summary/keyword index/cache builders using installed current service identity/native maintenance origin and F04 allowance/receipts in borrowed authenticated transaction. Check profile/region/source policy/current head/authority before read and publication; refused maintenance cannot decrypt or produce result. Valid nested projections populate graph, no supplier call/new budget/double charge. Cleanup-only grant separate and cannot read sensitive content. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-036",
+        "R-037",
+        "R-049",
+        "R-050",
+        "R-052",
+        "R-059"
+      ],
+      "depends_on": [
+        "f05-07-graph"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "maintenance-admission-component",
+          "run": "node g1-storage/scripts/check-component.mjs maintenance-admission",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-07-retry",
+      "title": "Resume durable invalidation leases without resurrection",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Add bounded leased outbox processing/current revalidation/idempotent original job progress. Kill/fail after one real descendant mutation, recreate, recover pending work and converge once; obsolete jobs after delete/revoke/expiry/correction cannot resurrect or replace canonical head. Focused observed restriction/publication race in both orders; full Cartesian schedules owned by tester tasks. Preserve truthful partial/retry status. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-036",
+        "R-050",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-054",
+        "R-059",
+        "R-068"
+      ],
+      "depends_on": [
+        "f05-07-maintenance"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "propagation-retry-component",
+          "run": "node g1-storage/scripts/check-component.mjs propagation-retry",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-07",
+      "title": "Integrate propagate retention, forget and revocation through durable descendants",
+      "detail": "One controller turn; budget 20 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original lifecycle and maintenance components over canonical restrictions, dependency DAG, admitted builders and retry processor. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "R-013",
+        "R-031",
+        "R-035",
+        "R-036",
+        "R-037",
+        "R-044",
+        "R-045",
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-049",
+        "R-050",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-054",
+        "R-059",
+        "R-068",
+        "R-082",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-07-retry"
+      ],
+      "role": "data",
+      "team": [],
+      "checks": [
+        {
+          "id": "lifecycle-component",
+          "run": "node g1-storage/scripts/check-component.mjs lifecycle",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Real nested encrypted graph delete/expiry/revoke/correct invalidation, partial failure/restart, observed two-sided write/read/job races and truthful forget counts.",
+          "stage": "integration"
+        },
+        {
+          "id": "maintenance-component",
+          "run": "node g1-storage/scripts/check-component.mjs maintenance",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual installed F04 maintenance reserve/settle admission, allowance exhaustion/revocation/late job rechecks and one-charge duplicate processing.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-08-capture",
+      "title": "Capture coherent encrypted backup inventory under Space barrier",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Implement backup inventory/cipher archive writer only: current specific grant and original key, one locked canonical revision/checkpoint/byte set, physical separate owned root, captured epoch/class counts and original binding. Exclude identity/control/restriction/head/command authority/keys/credentials/unsaved work; provenance copies cannot become authority or execute SQL. Focused writer-first/capture-first PG contention and exact archive inspection. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-009",
+        "R-010",
+        "R-012",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-044",
+        "R-045",
+        "R-060",
+        "R-061",
+        "R-066",
+        "R-067",
+        "R-078"
+      ],
+      "depends_on": [
+        "f05-07"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "backup-capture-component",
+          "run": "node g1-storage/scripts/check-component.mjs backup-capture",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-08",
+      "title": "Confirm durable backup and recover original confirmation",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Finish backup owner confirmation over predecessor archive capture: file/directory fsync before PG confirmation; partial inventory/archive unavailable; expiry blocks restoration. Reuse canonical original-key recovery for lost confirmation ACK, no new state machine. Focused interruption at the two archive durability boundaries and exact original confirmation after recreation. Run original backup component as full integration gate; no new restore implementation.",
+      "covers": [
+        "R-009",
+        "R-010",
+        "R-012",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-044",
+        "R-045",
+        "R-060",
+        "R-061",
+        "R-066",
+        "R-067",
+        "R-078"
+      ],
+      "depends_on": [
+        "f05-08-capture"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "backup-component",
+          "run": "node g1-storage/scripts/check-component.mjs backup",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Actual coherent encrypted archive, exact inventory/checkpoint/epoch, concurrent capture orders, expiry and original-key interrupted/ACK-loss recovery.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-09-import",
+      "title": "Validate archive and import into a fresh blocked generation",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Implement archive validator and restore staging/import only, with serving=false. Check class/schema/count/decoded bounds and immutable composite references; verify original envelope AAD before fresh nonce/target-generation re-encryption. Refuse corrupt/missing/wrong-key/traversal/symlink/control/SQL and unowned target. Persist per-item staging progress in fresh owned root; no activation until successor. Inspect exact copied encrypted bytes and current authority unchanged. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-010",
+        "R-060",
+        "R-061",
+        "R-066",
+        "R-078"
+      ],
+      "depends_on": [
+        "f05-08"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "restore-import-component",
+          "run": "node g1-storage/scripts/check-component.mjs restore-import",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-09-activation",
+      "title": "Reconcile current restrictions and activate useful restored content",
+      "detail": "One controller turn; budget 95 minutes including strict build, diagnostic and bounded repair. Add current-policy/head/anchored-epoch/grant/revocation/tombstone/retention reconciliation and locked serving activation. Old N after N+1 cannot be current; missing current bytes gives blocked-freshness, missing/stale authority blocks generation. Positive backup->owned synthetic content loss->fresh restore->recreate exact survivor read and useful Ask with surviving PG control and held keys. No staged reads/rehydration/index rebuild before barrier; one post-backup delete and correction negative. No external/control/credential/effect replay. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-007",
+        "R-045",
+        "R-059",
+        "R-060",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-066",
+        "R-068",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-09-import"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "restore-activation-component",
+          "run": "node g1-storage/scripts/check-component.mjs restore-activation",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-09-progress",
+      "title": "Recover interrupted restore and activation uncertainty",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Finish resumable original restore operation/phase status and ownership-checked staging cleanup, rollback disables serving/admission/jobs while preserving current restrictions. Reuse original-key lock/lookup for activation ACK uncertainty; staged/item/reconcile restart resumes one generation and revalidates authority, stale writer denied. Add focused mid-item kill and activation-ACK-loss probes; seven-phase/commit-rollback-timeout exhaustive schedules later. Record actual checkpoint boundary, no production RPO/RTO. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-024",
+        "R-059",
+        "R-065",
+        "R-067",
+        "R-068",
+        "R-078",
+        "R-084",
+        "R-092"
+      ],
+      "depends_on": [
+        "f05-09-activation"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "restore-progress-component",
+          "run": "node g1-storage/scripts/check-component.mjs restore-progress",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-09",
+      "title": "Integrate restore actual content into a fresh owned generation behind current authority",
+      "detail": "One controller turn; budget 20 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original restore and restore-recovery components over actual content loss/fresh-root recovery and blocked-serving state machine. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "R-060",
+        "R-061",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-065",
+        "R-066",
+        "R-067",
+        "R-068",
+        "R-010",
+        "R-024",
+        "R-045",
+        "R-059",
+        "R-078",
+        "R-084",
+        "R-092",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-09-progress"
+      ],
+      "role": "backend",
+      "team": [],
+      "checks": [
+        {
+          "id": "restore-component",
+          "run": "node g1-storage/scripts/check-component.mjs restore",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Real source-content loss, fresh-root byte/metadata recovery and restored useful Ask; post-backup restrictions/freshness and corrupt/missing/stale-authority negatives.",
+          "stage": "integration"
+        },
+        {
+          "id": "restore-recovery-component",
+          "run": "node g1-storage/scripts/check-component.mjs restore-recovery",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Persisted staged/import/reconcile/activation process-loss resume, original-key duplicate/COMMIT windows, stale generation and zero effect/control replay.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-10-build",
+      "title": "Verify hostile build and executed-result harness schedules",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend existing isolated F-H copies and structured execution gate probes for fresh build/emission and real failed/missing/empty/skip/TODO/cancel/forged test outcomes. H02 good-full-run remains mandatory and may only pass once full suite content exists: implement negative schedules now, retain its full positive at f05-15 and do not omit it from H02 subset. To avoid circular completion, execute this task as an implementation harness diagnostic independent of frozen H02 good-full-run; full H01/H02 variants checked terminally. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-069",
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073"
+      ],
+      "depends_on": [
+        "f05-09"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "harness-build-component",
+          "run": "node g1-storage/scripts/check-component.mjs harness-build",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f05-10-cleanup",
+      "title": "Verify owned fixture cleanup and observation sabotage",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Implement F-H preflight/census/loopback/child/PG cleanup fault probes with unowned sentinels, plus actual positive/violation sabotage at shared observation gate. Distinguish missing fixture from skipped test, enforce owner+instance identity in success/failure paths. Focused diagnostic checks only until final full harness suite; all frozen H03/H04 variants later required unchanged. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-021",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-077",
+        "R-078",
+        "R-083",
+        "R-093"
+      ],
+      "depends_on": [
+        "f05-10-build"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "harness-cleanup-component",
+          "run": "node g1-storage/scripts/check-component.mjs harness-cleanup",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f05-10",
+      "title": "Integrate complete unit contracts and hostile harness probes",
+      "detail": "One controller turn; budget 30 minutes. Terminal integration only: predecessors own implementation and all new schedules. Complete frozen C01-C03 and original harness component; H01-H04 full harness suite remains f05-14, good-full-run also f05-15. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Complete only thin original component wrapper wiring over predecessor assertions (nonempty real behavior), not new product logic.",
+      "covers": [
+        "R-016",
+        "R-021",
+        "R-022",
+        "R-042",
+        "R-049",
+        "R-061",
+        "R-069",
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-077",
+        "R-078",
+        "R-083",
+        "R-093"
+      ],
+      "depends_on": [
+        "f05-10-cleanup"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "contracts-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs contracts",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen contracts suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "unit"
+        },
+        {
+          "id": "harness-component",
+          "run": "node g1-storage/scripts/check-component.mjs harness",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Execute owned-copy failure variants and actual good driver results with strict gate/cleanup oracles; aggregate negative probe included.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-authority",
+      "title": "Exercise authority and source-eligibility schedules",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend accepted authority fixture into public supported-class routes and installed grants. One boundary-focused schedule family: two-sided shares/current actor/payer/session expiry and full audience; retain role/outage/operator checks in same authority wrapper. No new product owners. Fixed diagnostic verify-authority executes A01, A02, A03, A04, A05, A06 with ALL 35 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "AF-07",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-018",
+        "R-022",
+        "R-030",
+        "R-045",
+        "R-048"
+      ],
+      "depends_on": [
+        "f05-10"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-authority-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-authority",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-atomic",
+      "title": "Exercise atomic knowledge commit and wire uncertainty",
+      "detail": "One controller turn; budget 80 minutes including strict build, diagnostic and bounded repair. Extend canonical repository/HTTP/wire helpers only: observed partial revision/head/receipt/event/outbox kills, identical/changed original retries and COMMIT/ROLLBACK/timeout lookup. Inspect actual PG rows and response order; no canned acknowledgement failures. Fixed diagnostic verify-atomic executes K03, K06, K07 with ALL 16 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-014",
+        "R-018",
+        "R-019",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-036",
+        "R-058"
+      ],
+      "depends_on": [
+        "f05-11-authority"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-atomic-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-atomic",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-knowledge",
+      "title": "Exercise knowledge lineage, statuses and conflict writers",
+      "detail": "One controller turn; budget 80 minutes including strict build, diagnostic and bounded repair. Extend existing knowledge fixtures only: source-check attribution/proposal/dispute/secret admission, two correction winner orders and independent facts, scoped dedup/history and adversarial no-control promotion. Installed owner state compared before/after. Fixed diagnostic verify-knowledge executes K01, K02, K08, K09 with ALL 21 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "AF-07",
+        "R-008",
+        "R-014",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-018",
+        "R-019",
+        "R-025",
+        "R-026",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-052",
+        "R-066"
+      ],
+      "depends_on": [
+        "f05-11-atomic"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-knowledge-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-knowledge",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-artifact",
+      "title": "Exercise artifact durability and orphan cleanup schedules",
+      "detail": "One controller turn; budget 80 minutes including strict build, diagnostic and bounded repair. Extend owned file process phase gates: seven artifact publication durability boundaries and quarantine leases/reachability/unknown-op/GC winner orders, crash and sentinels. Kill only currently owned observed processes and assert fresh exact serving behavior. Fixed diagnostic verify-artifact executes K04, K05 with ALL 16 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-020",
+        "R-021",
+        "R-058"
+      ],
+      "depends_on": [
+        "f05-11-knowledge"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-artifact-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-artifact",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-volume",
+      "title": "Exercise file promotion, draft and checkpoint schedules",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend volume adapter fixtures: class-specific receipt states, both promotion winners, stale comparable drafts, Stop/replacement/current fences, durable recreation/integrity/ownership. Reuse K artifact phase helper; no unrelated authority or lifecycle suite implementation. Fixed diagnostic verify-volume executes V01, V02, V03, V04, V05 with ALL 26 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-001",
+        "R-005",
+        "R-014",
+        "R-020",
+        "R-022",
+        "R-041",
+        "R-055",
+        "R-056",
+        "R-057",
+        "R-058",
+        "R-059",
+        "R-061",
+        "R-067",
+        "R-082"
+      ],
+      "depends_on": [
+        "f05-11-artifact"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-volume-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-volume",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-lifecycle",
+      "title": "Exercise every-class expiry, forget and dependency graph",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend only class clock/forget/graph fixture: durable every-class expiry, repeated truthful forget, nested descendants/unaffected survivor/cycle/missing/depth/fanout/current correction. Fixed diagnostic verify-lifecycle executes L01, L02, L04 with ALL 16 frozen mandatory variants, original steps/oracles and real existing fixtures. Missing/failed/cancelled/skipped/TODO/absent observation/cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "AF-07",
+        "R-016",
+        "R-044",
+        "R-046",
+        "R-049",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-091"
+      ],
+      "depends_on": [
+        "f05-11-volume"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-lifecycle-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-lifecycle",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-retry",
+      "title": "Exercise late jobs and interrupted propagation retry",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend only outbox/lease/process fixture: delayed restriction/correction jobs both orders, duplicates/restart, three durable kill phases, current overlay and retained-storage-after-Stop. No new graph or admission implementation. Fixed diagnostic verify-propagation-retry executes L05, L06, L08 with ALL 20 frozen mandatory variants, original steps/oracles and real existing fixtures. Missing/failed/cancelled/skipped/TODO/absent observation/cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-014",
+        "R-027",
+        "R-036",
+        "R-047",
+        "R-049",
+        "R-050",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-054",
+        "R-082"
+      ],
+      "depends_on": [
+        "f05-11-lifecycle"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-propagation-retry-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-propagation-retry",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-maintenance",
+      "title": "Exercise admitted maintenance and single-charge refusals",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend only installed maintenance-origin/resource allowance fixture: useful actual summary/index/cache builds, denied allowance before read, grant/region/profile after-lock revalidation and original-key single charge. Fixed diagnostic verify-maintenance executes L09 with ALL 6 frozen mandatory variants, original steps/oracles and real existing fixtures. Missing/failed/cancelled/skipped/TODO/absent observation/cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-037"
+      ],
+      "depends_on": [
+        "f05-11-retry"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-maintenance-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-maintenance",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11-races",
+      "title": "Exercise revocation and lifecycle publication races",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Extend shared PG-observed lock/disclosure fixtures only: source/member restriction races and remaining-member positive; delete/expiry/revoke/correction against read/save/promotion/jobs both publication orders, after-wait session/member expiry, opposite sharing locks and actual publication kill. Each variant inspects durable monotonic restrictions and no unauthorized effects. Fixed diagnostic verify-lifecycle-races executes L03, L07 with ALL 19 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "AF-07",
+        "R-031",
+        "R-035",
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-050",
+        "R-054",
+        "R-086"
+      ],
+      "depends_on": [
+        "f05-11-maintenance"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-lifecycle-races-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-lifecycle-races",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-11",
+      "title": "Integrate qualify authority, commit, lifecycle and volume integration schedules",
+      "detail": "One controller turn; budget 30 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run unchanged complete authority, commit-conflict, lifecycle-propagation and volume-draft suites (29 cases/175 variants). Fixed diagnostic wrappers and full-suite wrappers import the same assertions; no duplicated weaker implementation. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Full-suite entry points must be created as thin shared-assertion wrappers by schedule-owning predecessor tasks, not first implemented in this integration turn.",
+      "covers": [
+        "AF-07",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-014",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-018",
+        "R-019",
+        "R-020",
+        "R-021",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-030",
+        "R-031",
+        "R-035",
+        "R-036",
+        "R-037",
+        "R-041",
+        "R-044",
+        "R-045",
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-049",
+        "R-050",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-054",
+        "R-055",
+        "R-056",
+        "R-057",
+        "R-058",
+        "R-059",
+        "R-061",
+        "R-066",
+        "R-067",
+        "R-072",
+        "R-073",
+        "R-076",
+        "R-078",
+        "R-082",
+        "R-086",
+        "R-091"
+      ],
+      "depends_on": [
+        "f05-11-races"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "authority-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs authority",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen authority suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "integration"
+        },
+        {
+          "id": "commit-conflict-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs commit-conflict",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen commit-conflict suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "integration"
+        },
+        {
+          "id": "lifecycle-propagation-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs lifecycle-propagation",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen lifecycle-propagation suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "integration"
+        },
+        {
+          "id": "volume-draft-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs volume-draft",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen volume-draft suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-12-recall",
+      "title": "Exercise useful persisted Ask and recall gaps",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend public installed native service journey: random persisted A/B across recreation, eligible/stale/proposal/disputed cases, index lag/current overlay/version cache and safe gaps. No fabricated restored flag or label-derived no-VM claim. Fixed diagnostic verify-ask-recall executes Q01, Q02, Q03, Q09 with ALL 18 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-003",
+        "R-004",
+        "R-013",
+        "R-015",
+        "R-016",
+        "R-027",
+        "R-030",
+        "R-032",
+        "R-033",
+        "R-034",
+        "R-035",
+        "R-036",
+        "UX-01",
+        "R-039",
+        "R-040",
+        "R-068",
+        "R-080",
+        "R-089",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-11"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-ask-recall-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-ask-recall",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f05-12-disclosure",
+      "title": "Exercise answer disclosure races and immutable Space binding",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Extend same disclosure helper: all full-audience forget/source/member/correction winner orders and remaining-member useful answer. Immutable session/task queued Space A/tab B and billing-room isolation. Assert actual pre-generator and pre-publication inputs/manifests. Fixed diagnostic verify-ask-disclosure executes Q04, Q07 with ALL 13 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-003",
+        "R-031",
+        "R-035",
+        "R-039",
+        "R-041",
+        "R-043",
+        "R-047",
+        "R-048",
+        "R-054",
+        "R-086",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-12-recall"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-ask-disclosure-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-ask-disclosure",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f05-12-routing",
+      "title": "Exercise no-VM routing, controls and installed admission",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend reachable computer/shell/model/effect observers over allowed/denied/index failure/service failure/concurrent/ACTUAL restored routes; independent controls all eight combinations and installed F04 resource budget/single-charge/Stop/replacement/unknown-effect outcomes. Reuse already working real restore helper, never synthesize restored state. Fixed diagnostic verify-ask-routing executes Q05, Q06, Q08 with ALL 26 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-002",
+        "R-005",
+        "R-008",
+        "R-017",
+        "R-023",
+        "R-030",
+        "R-037",
+        "UX-01",
+        "R-038",
+        "R-039",
+        "R-040",
+        "R-042",
+        "R-043",
+        "R-059",
+        "R-077",
+        "R-087",
+        "R-089"
+      ],
+      "depends_on": [
+        "f05-12-disclosure"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-ask-routing-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-ask-routing",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f05-12",
+      "title": "Integrate qualify native saved-decision e2e and disclosure races",
+      "detail": "One controller turn; budget 25 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original full recall-ask suite after three e2e schedule groups; no new schedule development. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Full-suite entry points must be created as thin shared-assertion wrappers by schedule-owning predecessor tasks, not first implemented in this integration turn.",
+      "covers": [
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-008",
+        "R-013",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-023",
+        "R-027",
+        "R-030",
+        "R-031",
+        "R-032",
+        "R-033",
+        "R-034",
+        "R-035",
+        "R-036",
+        "R-037",
+        "UX-01",
+        "R-038",
+        "R-039",
+        "R-040",
+        "R-041",
+        "R-042",
+        "R-043",
+        "R-047",
+        "R-048",
+        "R-054",
+        "R-059",
+        "R-068",
+        "R-072",
+        "R-077",
+        "R-080",
+        "R-086",
+        "R-087",
+        "R-089",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-12-routing"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "recall-ask-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs recall-ask",
+          "timeout": 1200,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen recall-ask suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f05-13-current",
+      "title": "Exercise actual restore usefulness and current-authority gates",
+      "detail": "One controller turn; budget 95 minutes including strict build, diagnostic and bounded repair. Extend existing physically separate roots/content-loss helper: exact restored surviving classes and useful saved-decision Ask; all post-backup delete/expiry/source/member/correction restrictions and current unavailable/missing/empty/rolled-back control, before-reconcile/activation waits and stale writers. Fixed diagnostic verify-restore-current executes R01, R02, R03 with ALL 23 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-007",
+        "R-009",
+        "R-032",
+        "UX-01",
+        "R-039",
+        "R-044",
+        "R-049",
+        "R-050",
+        "R-059",
+        "R-060",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-065",
+        "R-084",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-12"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-restore-current-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-restore-current",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-13-interruption",
+      "title": "Exercise seven restore kill phases and wire recovery",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Extend resumable restore process gates only: ownership-verified kills at seven durable phases, duplicate original requests, real activation ACK loss and observed original-key commit/rollback/timeout. Exact original generation/receipt recovered, no staged serving or new-key replay. Fixed diagnostic verify-restore-interruption executes R04 with ALL 12 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-023",
+        "R-024",
+        "R-064",
+        "R-065"
+      ],
+      "depends_on": [
+        "f05-13-current"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-restore-interruption-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-restore-interruption",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-13-integrity",
+      "title": "Exercise poisoned archives and forbidden authority replay",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend owned archive mutation fixtures only: all original R05 integrity/class/AAD/binding/count/decoded/path/concurrent replacement negatives plus R06 forbidden control/credential/approval/model/computer/external/unsent-input cases. Reuse shared mutation constructors, good archive useful afterward; no live credential or external resource touched. Fixed diagnostic verify-restore-integrity executes R05, R06 with ALL 28 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-010",
+        "R-029",
+        "R-061",
+        "R-066"
+      ],
+      "depends_on": [
+        "f05-13-interruption"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-restore-integrity-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-restore-integrity",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-13-measurement",
+      "title": "Exercise coherent backup/operator schedules and measure restore",
+      "detail": "One controller turn; budget 90 minutes including strict build, diagnostic and bounded repair. Extend backup barrier and operator helper: both capture writer orders, inventory/archive interruption/original ACK/expiry, exact grants/destination/owned cleanup/rollback restriction preservation. Instrument completed real R01/R04 helpers for monotonic timings/item-byte-class counts/last successful backup/checkpoint/epoch/head/unavailable/interruption/contending outcome. Publish observed samples only, never SLA/production RPO/RTO. Fixed diagnostic verify-restore-measurement executes R07, R08, R09 with ALL 18 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-045",
+        "R-053",
+        "R-060",
+        "R-061",
+        "R-067",
+        "R-068",
+        "R-080",
+        "R-082",
+        "R-092"
+      ],
+      "depends_on": [
+        "f05-13-integrity"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-restore-measurement-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-restore-measurement",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f05-13",
+      "title": "Integrate qualify restore/recovery and measure actual local boundary",
+      "detail": "One controller turn; budget 25 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run original full backup-restore suite (R01-R09/all81 variants) with useful content-loss restore and complete measured boundaries. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Full-suite entry points must be created as thin shared-assertion wrappers by schedule-owning predecessor tasks, not first implemented in this integration turn.",
+      "covers": [
+        "R-007",
+        "R-009",
+        "R-010",
+        "R-023",
+        "R-024",
+        "R-029",
+        "R-032",
+        "UX-01",
+        "R-039",
+        "R-044",
+        "R-045",
+        "R-049",
+        "R-050",
+        "R-053",
+        "R-059",
+        "R-060",
+        "R-061",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-065",
+        "R-066",
+        "R-067",
+        "R-068",
+        "R-072",
+        "R-078",
+        "R-080",
+        "R-082",
+        "R-084",
+        "R-092",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-13-measurement"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "backup-restore-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs backup-restore",
+          "timeout": 1200,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen backup-restore suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f05-15-docs",
+      "title": "Deliver executable operator journey and evidence inventories",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Write/update OPERATIONS, acceptance inventory and versioned obligation-to-test matrix against final implemented owners/classes and observed R07 samples; follow authenticated save/Ask/conflict/forget/backup/restore/status entry point. Record X01-X09 pending guarantee/environment/owner/approval gates, fixture policy-only durations/keys and future G2/F06/F07 depth. Requirements-only R-079 is historical audit. Implement real D01/D03/D04/D05 assertions and full delivery audit fixture; do not claim controller COMPLETE. This prepares D-case assertions and pending evidence before final security/full-H02 checks; it grants no security/acceptance verdict. Its registry must include D02/D06 wrappers supplied by successor. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-069",
+        "R-075",
+        "R-076",
+        "R-079",
+        "R-080",
+        "R-081",
+        "R-082",
+        "R-084",
+        "R-085",
+        "R-086",
+        "R-087",
+        "R-088",
+        "R-089",
+        "R-090",
+        "R-091",
+        "R-092"
+      ],
+      "depends_on": [
+        "f05-13"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "delivery-operations-component",
+          "run": "node g1-storage/scripts/check-component.mjs delivery-operations",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-15-evidence",
+      "title": "Bind evidence to candidate and block unsupported qualification",
+      "detail": "One controller turn; budget 75 minutes including strict build, diagnostic and bounded repair. Implement D02/D06 current candidate/check-definition/raw-stream hashes/index and severe-finding negative fixture plus check-evidence local/controller-behavior validators. Preserve historical raw success/failure streams and actual controller review states. Prepare evidence-local metadata without fabricating final/review signatures; pending independent reviews remain visible. Existing inherited read-only approval applies only to exact unchanged foundation command, no new remote action. No full regression run in this bounded evidence implementation task; terminal f05-15 controller runs them. This completes actual D02/D06 before f05-14 full harness good aggregate, removing a dependency cycle. D02 must distinguish current diagnostic controller evidence from pending final evidence, not require an invented author acceptance. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-073",
+        "R-074",
+        "R-075",
+        "R-076",
+        "R-077",
+        "R-081",
+        "R-083",
+        "R-093"
+      ],
+      "depends_on": [
+        "f05-15-docs"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "delivery-evidence-component",
+          "run": "node g1-storage/scripts/check-component.mjs delivery-evidence",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-14-cipher",
+      "title": "Exercise every-class ciphertext integrity and recreated reads",
+      "detail": "One controller turn; budget 80 minutes including strict build, diagnostic and bounded repair. Extend implemented per-class encrypted fixtures: full class roundtrip and all AAD/cipher/key tampering; inspect actual PG/files/archive and independently held keys. Existing current-authority checks precede sensitive reads. No external KMS/provider claims. Fixed diagnostic verify-encryption executes E01, E02 with ALL 19 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-009",
+        "R-010",
+        "R-061"
+      ],
+      "depends_on": [
+        "f05-15-evidence"
+      ],
+      "role": "security",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-encryption-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-encryption",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f05-14-copies",
+      "title": "Scan all retained private copies and scoped equality probes",
+      "detail": "One controller turn; budget 85 minutes including strict build, diagnostic and bounded repair. Extend inventory scanner/canaries only: F05 PG and installed native/model/task/resource/audit/event/outbox rows, files/archive interiors/logs/raw diagnostics. Compare every actual retained field and no plaintext/key canary; scope-source equality/existence probes cannot merge/reveal foreign records. Retain supported serving-path and external limits. Fixed diagnostic verify-retained-copies executes E03, E04 with ALL 9 frozen mandatory variants; use existing real fixtures/helpers, not a new behavior implementation. Each case retains its original test-design steps and oracle. Missing case/variant, failed/cancelled/skipped/TODO, absent useful observation or cleanup fails. Subset success is diagnostic only. Own the additive fixed component manifest registration and nonempty component test wrapper for this gate. The existing runner/build/observation/fixture/cleanup seam is reused unchanged; unknown/extra CLI args still fail. Full suites import the same assertions, and no case-ID filtering or Node skipped tests is allowed.",
+      "covers": [
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-078",
+        "R-004",
+        "R-009",
+        "R-011",
+        "R-012",
+        "R-013",
+        "R-028",
+        "R-035",
+        "R-044"
+      ],
+      "depends_on": [
+        "f05-14-cipher"
+      ],
+      "role": "security",
+      "team": [],
+      "checks": [
+        {
+          "id": "verify-retained-copies-component",
+          "run": "node g1-storage/scripts/check-component.mjs verify-retained-copies",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f05-14",
+      "title": "Integrate qualify encryption inventory and adversarial security gates",
+      "detail": "One controller turn; budget 30 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run unchanged owned-encryption, full harness, authority and security component definitions after bounded scan/integrity tasks. All H01-H04 variants required; good full harness fixture includes every suite already implemented, with all real D01-D06 assertions implemented by f05-15-docs/evidence; no stand-in delivery suite or skip. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks. Full-suite entry points must be created as thin shared-assertion wrappers by schedule-owning predecessor tasks, not first implemented in this integration turn.",
+      "covers": [
+        "AF-07",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-009",
+        "R-010",
+        "R-011",
+        "R-012",
+        "R-013",
+        "R-014",
+        "R-016",
+        "R-018",
+        "R-021",
+        "R-022",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-030",
+        "R-031",
+        "R-032",
+        "R-034",
+        "R-035",
+        "R-037",
+        "UX-01",
+        "R-038",
+        "R-039",
+        "R-040",
+        "R-041",
+        "R-044",
+        "R-045",
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-049",
+        "R-050",
+        "R-054",
+        "R-056",
+        "R-057",
+        "R-059",
+        "R-061",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-065",
+        "R-066",
+        "R-069",
+        "R-070",
+        "R-071",
+        "R-072",
+        "R-073",
+        "R-077",
+        "R-078",
+        "R-083",
+        "R-084",
+        "R-086",
+        "R-087",
+        "R-093",
+        "R-094"
+      ],
+      "depends_on": [
+        "f05-14-copies"
+      ],
+      "role": "security",
+      "team": [],
+      "checks": [
+        {
+          "id": "owned-encryption-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs owned-encryption",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen owned-encryption suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "security"
+        },
+        {
+          "id": "harness-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs harness",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen harness suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "security"
+        },
+        {
+          "id": "authority-suite",
+          "run": "node g1-storage/scripts/check-slice.mjs authority",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current build and nonempty frozen authority suite; require every listed case/variant, no failure/cancellation/skip/TODO, owned cleanup.",
+          "stage": "security"
+        },
+        {
+          "id": "security-component",
+          "run": "node g1-storage/scripts/check-component.mjs security",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Adversarial memory/control injection, real serving-path/source/restore barriers and encrypted retained-copy inventory fail on leakage or privilege promotion.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f05-15",
+      "title": "Integrate deliver operator/evidence package and unchanged controller regressions",
+      "detail": "One controller turn; budget 45 minutes. Terminal integration only: predecessors own implementation and all new schedules. Run all original six task checks: local evidence, aggregate storage, unchanged identity/foundation/retained GUI through controller, final evidence-controller validator. Recheck full harness/all mandatory delivery D01-D06. Append complete current output references after loop_check and rerun evidence-dependent checks. Independent reviews/final/product completion remain controller assignments. Retain the original integration checks unchanged; missing predecessors or a failed full gate prevents completion. Diagnose bounded wiring/registration defects here; route new behavior or schedule repairs to a new bounded controller task, never weaken checks.",
+      "covers": [
+        "R-002",
+        "R-006",
+        "R-008",
+        "R-011",
+        "R-012",
+        "R-013",
+        "R-037",
+        "R-053",
+        "R-055",
+        "R-067",
+        "R-069",
+        "R-073",
+        "R-074",
+        "R-075",
+        "R-076",
+        "R-077",
+        "R-079",
+        "R-080",
+        "R-081",
+        "R-082",
+        "R-083",
+        "R-084",
+        "R-085",
+        "R-086",
+        "R-087",
+        "R-088",
+        "R-089",
+        "R-090",
+        "R-091",
+        "R-092",
+        "R-093"
+      ],
+      "depends_on": [
+        "f05-14",
+        "f05-15-evidence"
+      ],
+      "role": "tester",
+      "team": [],
+      "checks": [
+        {
+          "id": "evidence-local",
+          "run": "node g1-storage/scripts/check-evidence.mjs local",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Artifact/matrix/source/pins/nonclaim/raw-stream validation; no self-certification or stale implementation fingerprint.",
+          "stage": "integration"
+        },
+        {
+          "id": "full-storage-behavior",
+          "run": "node g1-storage/scripts/check.mjs",
+          "timeout": 1800,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current clean build then every frozen local suite/case/variant, real positives and six finite zero violations, cleanup/guards including failure paths.",
+          "stage": "integration"
+        },
+        {
+          "id": "identity-retained",
+          "run": "node g1-identity/scripts/check.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Exact unchanged current-candidate F02 check through controller.",
+          "stage": "regression"
+        },
+        {
+          "id": "foundation-retained",
+          "run": "node g1-foundations/scripts/check.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Exact unchanged current-candidate F01 check through controller.",
+          "stage": "regression"
+        },
+        {
+          "id": "original-retained",
+          "run": "node g1-foundations/scripts/check-retained.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Exact unchanged G0/G1-local/client/Electron checks through controller outside sandbox.",
+          "stage": "regression"
+        },
+        {
+          "id": "evidence-controller",
+          "run": "node g1-storage/scripts/check-evidence.mjs controller-behavior",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Inspect complete actual four controller streams/job/definition/candidate bindings, current executable fingerprint, executed coverage, cleanup and unresolved severe findings.",
+          "stage": "acceptance"
+        }
+      ]
+    }
+  ],
+  "plannedDiagnosticGroups": [
+    {
+      "name": "atomic-save",
+      "task": "f05-04",
+      "cases": [],
+      "positives": [
+        "save",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "knowledge-status",
+      "task": "f05-04-status",
+      "cases": [],
+      "positives": [
+        "save",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "knowledge-correction",
+      "task": "f05-04-correction",
+      "cases": [],
+      "positives": [
+        "save",
+        "read",
+        "conflict"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "command-recovery",
+      "task": "f05-04-recovery",
+      "cases": [],
+      "positives": [
+        "save",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "artifact-publication",
+      "task": "f05-05-artifacts",
+      "cases": [],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "volume-drafts",
+      "task": "f05-05-drafts",
+      "cases": [],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "volume-promotion",
+      "task": "f05-05-promotion",
+      "cases": [],
+      "positives": [
+        "write",
+        "read",
+        "conflict"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "recall-broker",
+      "task": "f05-06-recall",
+      "cases": [],
+      "positives": [
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "native-ask",
+      "task": "f05-06-native",
+      "cases": [],
+      "positives": [
+        "ask",
+        "owner",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "ask-disclosure",
+      "task": "f05-06-disclosure",
+      "cases": [],
+      "positives": [
+        "ask",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "retention-forget",
+      "task": "f05-07-retention",
+      "cases": [],
+      "positives": [
+        "forget",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "dependency-graph",
+      "task": "f05-07-graph",
+      "cases": [],
+      "positives": [
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "maintenance-admission",
+      "task": "f05-07-maintenance",
+      "cases": [],
+      "positives": [
+        "propagate",
+        "owner",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "propagation-retry",
+      "task": "f05-07-retry",
+      "cases": [],
+      "positives": [
+        "propagate",
+        "forget",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "backup-capture",
+      "task": "f05-08-capture",
+      "cases": [],
+      "positives": [
+        "backup",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "restore-import",
+      "task": "f05-09-import",
+      "cases": [],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "restore-activation",
+      "task": "f05-09-activation",
+      "cases": [],
+      "positives": [
+        "restore",
+        "read",
+        "ask",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "restore-progress",
+      "task": "f05-09-progress",
+      "cases": [],
+      "positives": [
+        "restore",
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "harness-build",
+      "task": "f05-10-build",
+      "cases": [],
+      "positives": [
+        "harness"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "harness-cleanup",
+      "task": "f05-10-cleanup",
+      "cases": [],
+      "positives": [
+        "harness"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "verify-authority",
+      "task": "f05-11-authority",
+      "cases": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06"
+      ],
+      "positives": [
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "A01": [
+          "A01/same-scope",
+          "A01/shared-source",
+          "A01/cross-tenant-denied",
+          "A01/share-forward-first",
+          "A01/share-reverse-first"
+        ],
+        "A02": [
+          "A02/private-group-denied",
+          "A02/full-audience",
+          "A02/guest-denied",
+          "A02/permitted-group"
+        ],
+        "A03": [
+          "A03/forgery",
+          "A03/source-payer-revoked",
+          "A03/destination-payer-revoked",
+          "A03/membership-revoked",
+          "A03/space-revoked",
+          "A03/session-expiry-after-lock",
+          "A03/token-expiry-after-effects",
+          "A03/share-forward-first",
+          "A03/share-reverse-first"
+        ],
+        "A04": [
+          "A04/role-ownership",
+          "A04/forced-rls",
+          "A04/direct-worker-denied",
+          "A04/direct-idp-denied",
+          "A04/public-denied",
+          "A04/cross-scope-denied"
+        ],
+        "A05": [
+          "A05/authority-offline",
+          "A05/cache-offline",
+          "A05/save-offline",
+          "A05/derived-offline",
+          "A05/restore-offline",
+          "A05/authority-recovered"
+        ],
+        "A06": [
+          "A06/reader-denied",
+          "A06/contributor-denied",
+          "A06/operator-allowed",
+          "A06/grant-revoked-after-wait",
+          "A06/policy-extension-denied"
+        ]
+      },
+      "variantCount": 35,
+      "suites": [
+        "S-A"
+      ]
+    },
+    {
+      "name": "verify-atomic",
+      "task": "f05-11-atomic",
+      "cases": [
+        "K03",
+        "K06",
+        "K07"
+      ],
+      "positives": [
+        "save",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "K03": [
+          "K03/kill-revision",
+          "K03/kill-head",
+          "K03/kill-receipt",
+          "K03/kill-event",
+          "K03/kill-outbox",
+          "K03/committed-recreated",
+          "K03/response-after-commit"
+        ],
+        "K06": [
+          "K06/same-key-identical-concurrent",
+          "K06/same-key-changed-concurrent",
+          "K06/recreated-retry",
+          "K06/exact-effect-counts"
+        ],
+        "K07": [
+          "K07/observed-commit-wait",
+          "K07/observed-rollback-wait",
+          "K07/observed-timeout",
+          "K07/lost-commit-ack",
+          "K07/serialized-absence-no-replay"
+        ]
+      },
+      "variantCount": 16,
+      "suites": [
+        "S-K"
+      ]
+    },
+    {
+      "name": "verify-knowledge",
+      "task": "f05-11-knowledge",
+      "cases": [
+        "K01",
+        "K02",
+        "K08",
+        "K09"
+      ],
+      "positives": [
+        "save",
+        "conflict",
+        "owner"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "K01": [
+          "K01/assertion",
+          "K01/registered-check",
+          "K01/correction",
+          "K01/unrelated-survives",
+          "K01/recreated-history"
+        ],
+        "K02": [
+          "K02/discussion",
+          "K02/proposal",
+          "K02/proposal-repeated",
+          "K02/disputed",
+          "K02/forged-check",
+          "K02/secret",
+          "K02/indefinite-retention",
+          "K02/explicit-save"
+        ],
+        "K08": [
+          "K08/writer-a-wins",
+          "K08/writer-b-wins",
+          "K08/recreated-loser",
+          "K08/independent-facts-both-succeed"
+        ],
+        "K09": [
+          "K09/no-control-promotion",
+          "K09/no-method-release",
+          "K09/no-check-authority",
+          "K09/archive-no-authority"
+        ]
+      },
+      "variantCount": 21,
+      "suites": [
+        "S-K"
+      ]
+    },
+    {
+      "name": "verify-artifact",
+      "task": "f05-11-artifact",
+      "cases": [
+        "K04",
+        "K05"
+      ],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "K04": [
+          "K04/kill-staged",
+          "K04/kill-file-fsynced",
+          "K04/kill-renamed",
+          "K04/kill-directory-fsynced",
+          "K04/kill-manifest-confirmed",
+          "K04/kill-before-publication",
+          "K04/kill-after-publication",
+          "K04/corrupt-published"
+        ],
+        "K05": [
+          "K05/active-lease",
+          "K05/published-reachable",
+          "K05/unknown-protected",
+          "K05/expired-orphan",
+          "K05/gc-stage-first",
+          "K05/gc-publish-first",
+          "K05/kill-gc",
+          "K05/unowned-sentinel"
+        ]
+      },
+      "variantCount": 16,
+      "suites": [
+        "S-K"
+      ]
+    },
+    {
+      "name": "verify-volume",
+      "task": "f05-11-volume",
+      "cases": [
+        "V01",
+        "V02",
+        "V03",
+        "V04",
+        "V05"
+      ],
+      "positives": [
+        "write",
+        "read",
+        "conflict"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "V01": [
+          "V01/live-written",
+          "V01/draft-saved",
+          "V01/checkpoint-confirmed",
+          "V01/canonical-committed",
+          "V01/unsaved-lost",
+          "V01/kill-live-fsync",
+          "V01/kill-checkpoint-confirmation"
+        ],
+        "V02": [
+          "V02/promoter-a-wins",
+          "V02/promoter-b-wins",
+          "V02/recreated-loser",
+          "V02/validated-promotion"
+        ],
+        "V03": [
+          "V03/recreated-saved-draft",
+          "V03/stale-comparable",
+          "V03/retain-variant",
+          "V03/private-group-denied",
+          "V03/guest-denied"
+        ],
+        "V04": [
+          "V04/stop-fences-writer",
+          "V04/replacement-fences-writer",
+          "V04/space-switch-immutable",
+          "V04/recreated-stale-writer",
+          "V04/kill-before-publication"
+        ],
+        "V05": [
+          "V05/exact-binary",
+          "V05/manifest-binding",
+          "V05/missing-byte-blocked",
+          "V05/cross-scope-denied",
+          "V05/checkpoint-not-knowledge-commit"
+        ]
+      },
+      "variantCount": 26,
+      "suites": [
+        "S-V"
+      ]
+    },
+    {
+      "name": "verify-lifecycle",
+      "task": "f05-11-lifecycle",
+      "cases": [
+        "L01",
+        "L02",
+        "L04"
+      ],
+      "positives": [
+        "forget",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "L01": [
+          "L01/every-class-expiry",
+          "L01/expiry-read",
+          "L01/expiry-publication",
+          "L01/durable-tombstone"
+        ],
+        "L02": [
+          "L02/durable-forget",
+          "L02/repeat-forget",
+          "L02/active-derived-counts",
+          "L02/delivered-not-recalled",
+          "L02/pending-retry"
+        ],
+        "L04": [
+          "L04/nested-descendants",
+          "L04/unaffected-branch",
+          "L04/cycle-denied",
+          "L04/missing-ancestor",
+          "L04/depth-bound",
+          "L04/fanout-bound",
+          "L04/correction-current"
+        ]
+      },
+      "variantCount": 16,
+      "suites": [
+        "S-L"
+      ]
+    },
+    {
+      "name": "verify-propagation-retry",
+      "task": "f05-11-retry",
+      "cases": [
+        "L05",
+        "L06",
+        "L08"
+      ],
+      "positives": [
+        "propagate",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "L05": [
+          "L05/delete-restriction-first",
+          "L05/delete-publication-first",
+          "L05/expiry-restriction-first",
+          "L05/expiry-publication-first",
+          "L05/source-revoke-restriction-first",
+          "L05/source-revoke-publication-first",
+          "L05/correction-restriction-first",
+          "L05/correction-publication-first",
+          "L05/worker-restart",
+          "L05/duplicate-job"
+        ],
+        "L06": [
+          "L06/kill-invalidation-persisted",
+          "L06/kill-descendant-written",
+          "L06/kill-watermark",
+          "L06/durable-pending",
+          "L06/recreated-retry"
+        ],
+        "L08": [
+          "L08/late-summary-old-revision",
+          "L08/late-index",
+          "L08/late-cache",
+          "L08/canonical-preserved",
+          "L08/stop-retains-storage"
+        ]
+      },
+      "variantCount": 20,
+      "suites": [
+        "S-L"
+      ]
+    },
+    {
+      "name": "verify-maintenance",
+      "task": "f05-11-maintenance",
+      "cases": [
+        "L09"
+      ],
+      "positives": [
+        "propagate",
+        "owner",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "L09": [
+          "L09/summary-admission",
+          "L09/index-admission",
+          "L09/cache-admission",
+          "L09/budget-denied",
+          "L09/blocked-wait-revalidation",
+          "L09/duplicate-single-charge"
+        ]
+      },
+      "variantCount": 6,
+      "suites": [
+        "S-L"
+      ]
+    },
+    {
+      "name": "verify-lifecycle-races",
+      "task": "f05-11-races",
+      "cases": [
+        "L03",
+        "L07"
+      ],
+      "positives": [
+        "forget",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "L03": [
+          "L03/source-revoke-before-disclosure",
+          "L03/source-revoke-after-disclosure",
+          "L03/membership-remove-before-disclosure",
+          "L03/membership-remove-after-disclosure",
+          "L03/remaining-member-allowed",
+          "L03/cache-blocked"
+        ],
+        "L07": [
+          "L07/delete-restriction-first",
+          "L07/delete-publication-first",
+          "L07/expiry-restriction-first",
+          "L07/expiry-publication-first",
+          "L07/source-revoke-restriction-first",
+          "L07/source-revoke-publication-first",
+          "L07/correction-restriction-first",
+          "L07/correction-publication-first",
+          "L07/session-expiry-after-lock",
+          "L07/member-expiry-after-lock",
+          "L07/share-forward-first",
+          "L07/share-reverse-first",
+          "L07/kill-publication"
+        ]
+      },
+      "variantCount": 19,
+      "suites": [
+        "S-L"
+      ]
+    },
+    {
+      "name": "verify-ask-recall",
+      "task": "f05-12-recall",
+      "cases": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q09"
+      ],
+      "positives": [
+        "ask",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "Q01": [
+          "Q01/persisted-random-decision",
+          "Q01/changed-value",
+          "Q01/recreated-service",
+          "Q01/no-computer"
+        ],
+        "Q02": [
+          "Q02/full-audience-eligible",
+          "Q02/unauthorized-no-decrypt",
+          "Q02/proposal-excluded",
+          "Q02/stale-excluded",
+          "Q02/disputed-uncertain",
+          "Q02/evidence-gap"
+        ],
+        "Q03": [
+          "Q03/index-unavailable-exact",
+          "Q03/index-lag-tail",
+          "Q03/current-overlay",
+          "Q03/cache-version-bound"
+        ],
+        "Q09": [
+          "Q09/safe-denial",
+          "Q09/live-state-unsupported",
+          "Q09/evidence-gap-guidance",
+          "Q09/no-restricted-diagnostics"
+        ]
+      },
+      "variantCount": 18,
+      "suites": [
+        "S-Q"
+      ]
+    },
+    {
+      "name": "verify-ask-disclosure",
+      "task": "f05-12-disclosure",
+      "cases": [
+        "Q04",
+        "Q07"
+      ],
+      "positives": [
+        "ask",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "Q04": [
+          "Q04/forget-before-disclosure",
+          "Q04/forget-after-disclosure",
+          "Q04/source-revoke-before-disclosure",
+          "Q04/source-revoke-after-disclosure",
+          "Q04/membership-remove-before-disclosure",
+          "Q04/membership-remove-after-disclosure",
+          "Q04/correction-before-disclosure",
+          "Q04/correction-after-disclosure",
+          "Q04/remaining-member-allowed"
+        ],
+        "Q07": [
+          "Q07/immutable-session-space",
+          "Q07/foreign-session-denied",
+          "Q07/queued-space-switch",
+          "Q07/billing-no-merge"
+        ]
+      },
+      "variantCount": 13,
+      "suites": [
+        "S-Q"
+      ]
+    },
+    {
+      "name": "verify-ask-routing",
+      "task": "f05-12-routing",
+      "cases": [
+        "Q05",
+        "Q06",
+        "Q08"
+      ],
+      "positives": [
+        "ask",
+        "deny",
+        "owner"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "Q05": [
+          "Q05/allowed",
+          "Q05/denied",
+          "Q05/index-unavailable",
+          "Q05/service-failure",
+          "Q05/concurrent",
+          "Q05/restored",
+          "Q05/live-inspection-denied",
+          "Q05/no-fallback-ports"
+        ],
+        "Q06": [
+          "Q06/controls-000",
+          "Q06/controls-001",
+          "Q06/controls-010",
+          "Q06/controls-011",
+          "Q06/controls-100",
+          "Q06/controls-101",
+          "Q06/controls-110",
+          "Q06/controls-111",
+          "Q06/file-grants-independent",
+          "Q06/group-personal-export-denied"
+        ],
+        "Q08": [
+          "Q08/installed-native-owner",
+          "Q08/installed-resource-owner",
+          "Q08/budget-denied-before-disclosure",
+          "Q08/same-key-single-charge",
+          "Q08/stopped",
+          "Q08/replacement",
+          "Q08/unknown-effect",
+          "Q08/no-plaintext-model-history"
+        ]
+      },
+      "variantCount": 26,
+      "suites": [
+        "S-Q"
+      ]
+    },
+    {
+      "name": "verify-restore-current",
+      "task": "f05-13-current",
+      "cases": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "positives": [
+        "restore",
+        "read",
+        "ask",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "R01": [
+          "R01/actual-source-loss",
+          "R01/fresh-root-restore",
+          "R01/recreated-knowledge-read",
+          "R01/recreated-artifact-read",
+          "R01/saved-decision-ask",
+          "R01/no-computer"
+        ],
+        "R02": [
+          "R02/post-backup-forget",
+          "R02/post-backup-expiry",
+          "R02/post-backup-source-revoke",
+          "R02/post-backup-membership-remove",
+          "R02/post-backup-correction",
+          "R02/restriction-during-wait",
+          "R02/restriction-before-activation",
+          "R02/stale-writer",
+          "R02/unchanged-survivor"
+        ],
+        "R03": [
+          "R03/authority-missing",
+          "R03/authority-unavailable",
+          "R03/authority-empty",
+          "R03/authority-rolled-back",
+          "R03/head-missing",
+          "R03/epoch-anchor-missing",
+          "R03/archive-authority-denied",
+          "R03/current-authority-recovered"
+        ]
+      },
+      "variantCount": 23,
+      "suites": [
+        "S-R"
+      ]
+    },
+    {
+      "name": "verify-restore-interruption",
+      "task": "f05-13-interruption",
+      "cases": [
+        "R04"
+      ],
+      "positives": [
+        "restore",
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "R04": [
+          "R04/kill-staged",
+          "R04/kill-item-written",
+          "R04/kill-inventory-validated",
+          "R04/kill-metadata-imported",
+          "R04/kill-restrictions-reconciled",
+          "R04/kill-before-activation-commit",
+          "R04/kill-after-activation-commit",
+          "R04/concurrent-original-repeat",
+          "R04/lost-activation-ack",
+          "R04/observed-commit-wait",
+          "R04/observed-rollback-wait",
+          "R04/observed-timeout"
+        ]
+      },
+      "variantCount": 12,
+      "suites": [
+        "S-R"
+      ]
+    },
+    {
+      "name": "verify-restore-integrity",
+      "task": "f05-13-integrity",
+      "cases": [
+        "R05",
+        "R06"
+      ],
+      "positives": [
+        "restore",
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "R05": [
+          "R05/missing-item",
+          "R05/truncated",
+          "R05/tag",
+          "R05/body",
+          "R05/digest",
+          "R05/length",
+          "R05/reference",
+          "R05/foreign-key",
+          "R05/class",
+          "R05/version",
+          "R05/wrong-key",
+          "R05/missing-key",
+          "R05/traversal",
+          "R05/symlink",
+          "R05/sql",
+          "R05/control-class",
+          "R05/decoded-size-bound",
+          "R05/file-count-bound",
+          "R05/staged-item-replaced",
+          "R05/fresh-target-aad"
+        ],
+        "R06": [
+          "R06/no-external-replay",
+          "R06/no-model-replay",
+          "R06/no-computer-replay",
+          "R06/no-credential-restore",
+          "R06/no-approval-restore",
+          "R06/no-method-restore",
+          "R06/unsent-stays-unsent",
+          "R06/forbidden-class-denied"
+        ]
+      },
+      "variantCount": 28,
+      "suites": [
+        "S-R"
+      ]
+    },
+    {
+      "name": "verify-restore-measurement",
+      "task": "f05-13-measurement",
+      "cases": [
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "positives": [
+        "backup",
+        "restore",
+        "read",
+        "ask"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "R07": [
+          "R07/actual-monotonic-timing",
+          "R07/class-byte-item-counts",
+          "R07/last-backup-checkpoint",
+          "R07/competing-reads-writes",
+          "R07/interruption-measurements"
+        ],
+        "R08": [
+          "R08/operator-journey",
+          "R08/recovery-status",
+          "R08/revoked-grant-denied",
+          "R08/invalid-destination-denied",
+          "R08/owned-cleanup",
+          "R08/rollback-preserves-authority"
+        ],
+        "R09": [
+          "R09/capture-first",
+          "R09/writer-first",
+          "R09/kill-inventory-fsync",
+          "R09/kill-archive-fsync",
+          "R09/lost-confirmation-ack",
+          "R09/recreated-original-key",
+          "R09/backup-expiry"
+        ]
+      },
+      "variantCount": 18,
+      "suites": [
+        "S-R"
+      ]
+    },
+    {
+      "name": "verify-encryption",
+      "task": "f05-14-cipher",
+      "cases": [
+        "E01",
+        "E02"
+      ],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "E01": [
+          "E01/all-classes",
+          "E01/recreated-reader",
+          "E01/exact-binary"
+        ],
+        "E02": [
+          "E02/body",
+          "E02/tag",
+          "E02/nonce",
+          "E02/truncated",
+          "E02/algorithm",
+          "E02/version",
+          "E02/tenant",
+          "E02/space",
+          "E02/class",
+          "E02/id",
+          "E02/revision",
+          "E02/generation",
+          "E02/key-id",
+          "E02/wrong-key",
+          "E02/missing-key",
+          "E02/original-allowed"
+        ]
+      },
+      "variantCount": 19,
+      "suites": [
+        "S-E"
+      ]
+    },
+    {
+      "name": "verify-retained-copies",
+      "task": "f05-14-copies",
+      "cases": [
+        "E03",
+        "E04"
+      ],
+      "positives": [
+        "write",
+        "read",
+        "deny"
+      ],
+      "kind": "frozen-case-subset",
+      "variants": {
+        "E03": [
+          "E03/pg-all-retained",
+          "E03/files-archives",
+          "E03/logs-streams",
+          "E03/native-model-task",
+          "E03/every-inventoried-field"
+        ],
+        "E04": [
+          "E04/same-value-different-scopes",
+          "E04/scope-keyed-fingerprint",
+          "E04/wrong-scope-key",
+          "E04/key-export-denied"
+        ]
+      },
+      "variantCount": 9,
+      "suites": [
+        "S-E"
+      ]
+    },
+    {
+      "name": "delivery-operations",
+      "task": "f05-15-docs",
+      "cases": [],
+      "positives": [
+        "save",
+        "ask",
+        "forget",
+        "restore"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "delivery-evidence",
+      "task": "f05-15-evidence",
+      "cases": [],
+      "positives": [
+        "read",
+        "deny"
+      ],
+      "kind": "implementation-diagnostic"
+    },
+    {
+      "name": "volume-owned-recovery",
+      "task": "f05-05-recovery",
+      "kind": "mandatory-additive-repair",
+      "cases": [
+        "OWNED-RECOVERY/behavior"
+      ],
+      "variants": {
+        "OWNED-RECOVERY/behavior": [
+          "OWNED-RECOVERY/container-instance-substitution",
+          "OWNED-RECOVERY/root-marker-substitution",
+          "OWNED-RECOVERY/root-inode-symlink-substitution",
+          "OWNED-RECOVERY/process-birth-nonce-substitution",
+          "OWNED-RECOVERY/unowned-container-preserved",
+          "OWNED-RECOVERY/unowned-root-bytes-preserved",
+          "OWNED-RECOVERY/unowned-process-alive",
+          "OWNED-RECOVERY/exact-legacy-recovery-or-proven-absence"
+        ]
+      },
+      "variantCount": 8
+    },
+    {
+      "name": "volume-custodian",
+      "task": "f05-05-custodian",
+      "kind": "mandatory-additive-repair",
+      "cases": [
+        "VOLUME-CUSTODIAN/behavior"
+      ],
+      "variants": {
+        "VOLUME-CUSTODIAN/behavior": [
+          "VOLUME-CUSTODIAN/nested-before-after-census",
+          "VOLUME-CUSTODIAN/worker-SIGKILL-after-durable-work-and-IdP",
+          "VOLUME-CUSTODIAN/worker-deadline-after-durable-work-and-IdP",
+          "VOLUME-CUSTODIAN/suite-owner-disconnect-surviving-custodian",
+          "VOLUME-CUSTODIAN/reparented-child-exact-proof",
+          "VOLUME-CUSTODIAN/missing-substituted-journal-refused",
+          "VOLUME-CUSTODIAN/cleanup-failure-is-failure",
+          "VOLUME-CUSTODIAN/unowned-sentinels-preserved"
+        ]
+      },
+      "variantCount": 8
+    },
+    {
+      "name": "volume-schedule",
+      "task": "f05-05-schedule",
+      "kind": "mandatory-additive-repair",
+      "cases": [
+        "VOLUME-SCHEDULE/behavior"
+      ],
+      "variants": {
+        "VOLUME-SCHEDULE/behavior": [
+          "VOLUME-SCHEDULE/all-three-complete-fresh-child-reports",
+          "VOLUME-SCHEDULE/fresh-migration-starts-distinct-env",
+          "VOLUME-SCHEDULE/LIFO-cleanup-exact-global-census",
+          "VOLUME-SCHEDULE/monotonic-complete-runtime",
+          "VOLUME-SCHEDULE/missing-duplicate-child-refused",
+          "VOLUME-SCHEDULE/missing-duplicate-leaf-refused",
+          "VOLUME-SCHEDULE/failed-skipped-TODO-cancelled-child-refused",
+          "VOLUME-SCHEDULE/stale-unbound-observation-receipt-refused"
+        ]
+      },
+      "variantCount": 8
+    }
+  ],
+  "previousPlan": "docs/planning/g1-f05-task-plan-v2.json",
+  "previousPlanSha256": "4a801bc33914057575f754359ab7978a28161d7fed0bc4db141630a128925bae",
+  "taskCount": 58,
+  "checkCount": 84,
+  "taskBudgetsMinutes": {
+    "f05-04": 95,
+    "f05-04-status": 75,
+    "f05-04-correction": 90,
+    "f05-04-recovery": 90,
+    "f05-04-gate": 20,
+    "f05-05-artifacts": 85,
+    "f05-05-drafts": 90,
+    "f05-05-promotion": 75,
+    "f05-05": 20,
+    "f05-06-recall": 85,
+    "f05-06-native": 95,
+    "f05-06-disclosure": 75,
+    "f05-06": 20,
+    "f05-07-retention": 85,
+    "f05-07-graph": 75,
+    "f05-07-maintenance": 90,
+    "f05-07-retry": 85,
+    "f05-07": 20,
+    "f05-08-capture": 85,
+    "f05-08": 75,
+    "f05-09-import": 85,
+    "f05-09-activation": 95,
+    "f05-09-progress": 85,
+    "f05-09": 20,
+    "f05-10-build": 75,
+    "f05-10-cleanup": 75,
+    "f05-10": 30,
+    "f05-11-authority": 90,
+    "f05-11-atomic": 80,
+    "f05-11-knowledge": 80,
+    "f05-11-artifact": 80,
+    "f05-11-volume": 90,
+    "f05-11-lifecycle": 75,
+    "f05-11-retry": 75,
+    "f05-11-maintenance": 75,
+    "f05-11-races": 85,
+    "f05-11": 30,
+    "f05-12-recall": 75,
+    "f05-12-disclosure": 75,
+    "f05-12-routing": 90,
+    "f05-12": 25,
+    "f05-13-current": 95,
+    "f05-13-interruption": 85,
+    "f05-13-integrity": 90,
+    "f05-13-measurement": 90,
+    "f05-13": 25,
+    "f05-15-docs": 85,
+    "f05-15-evidence": 75,
+    "f05-14-cipher": 80,
+    "f05-14-copies": 85,
+    "f05-14": 30,
+    "f05-15": 45,
+    "f05-05-recovery": 75,
+    "f05-05-custodian": 90,
+    "f05-05-schedule": 90
+  },
+  "repairCaseAllocation": "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/repair-case-allocation.json",
+  "capacityBinding": "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/capacity-binding.json",
+  "currentInputBinding": "docs/loop/agent-fabric-g1-f05-storage/plan-turn55/inputs.json",
+  "schedule": "docs/planning/g1-f05-volume-schedule-v3.md",
+  "testDesignSupplement": "docs/loop/agent-fabric-g1-f05-storage/test-plan-v3-repair-supplement.md"
+}

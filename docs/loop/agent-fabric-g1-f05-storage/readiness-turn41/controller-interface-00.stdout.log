@@ -1,0 +1,70 @@
+usage: loop [-h] [--project PROJECT] [--goal GOAL] [--json] [--version]
+            {install,goal,approve,queue,list,use,status,next,plan,stage-done,requirements,task,check,verify,note,ask,answer,block,unblock,finish,pause,resume,stop,start,run,dashboard,statusline,roles,notify,telegram-bot,telegram-setup,log,audit,repair,mcp,request,propose,review,migrate-legacy,_job} ...
+
+Loop Engineering 2: autonomous goal loops with verified completion and visible
+status.
+
+positional arguments:
+  {install,goal,approve,queue,list,use,status,next,plan,stage-done,requirements,task,check,verify,note,ask,answer,block,unblock,finish,pause,resume,stop,start,run,dashboard,statusline,roles,notify,telegram-bot,telegram-setup,log,audit,repair,mcp,request,propose,review,migrate-legacy,_job}
+    install             Connect this project to Claude Code / Codex / other
+                        agents
+    goal                Create a goal (or edit .loop/goals/<id>/goal.json and
+                        run `loop approve`)
+    approve             Approve the current goal contract (you, the human);
+                        --goal <id> for a queued one
+    queue               Show or edit the ordered goal queue (the runner
+                        continues with approved queued goals)
+    list                List goals
+    use                 Make a goal the current one
+    status              Show status
+    next                Show the next assignment
+    plan                Add/update tasks from JSON (list of tasks) or one
+                        --add
+    stage-done          Full pipeline: record the document of a stage (intake,
+                        solution, test_design, resources)
+    requirements        Full pipeline: record requirements from a JSON list,
+                        or show them
+    task                start or finish a task
+    check               Run checks through the controller
+    verify              Controller runs acceptance now and applies the result
+    note                Record a note
+    ask                 Ask the human (or request approval)
+    answer              Answer an open question
+    block               Block the goal for a human
+    unblock             Clear a blocker after resolving it
+    finish              Submit the final report; the controller verifies
+                        acceptance
+    pause               Pause the goal
+    resume              Resume the goal
+    stop                Stop the goal
+    start               Start the autonomous runner in the background
+    run                 Run the autonomous runner in the foreground
+    dashboard           Serve a read-only local status page
+    statusline          One status line (Claude Code statusLine command)
+    roles               List specialist roles and where each guide comes from
+                        (.loop/roles/<role>.md overrides)
+    notify              Send a test notification; --progress on|off toggles
+                        per-turn progress messages
+    telegram-bot        Run the two-way Telegram bot (answer/approve/unblock
+                        from the chat); `start` launches it
+    telegram-setup      Connect Telegram notifications (asks for the bot token
+                        in this terminal)
+    log                 Show recent events
+    audit               Verify the event hash chain and state integrity
+    repair              Accept an inspected external state edit
+    mcp                 Run the MCP server on stdio
+    request             Submit a new requirement: the planning agent drafts it
+                        as a queued goal for your approval
+    propose             Run the planning agent: it drafts and queues the next
+                        goals for your approval
+    review              Record a review verdict yourself (human override)
+    migrate-legacy      Migrate a Loop Engineering v1 project and state into
+                        this version
+    _job                ==SUPPRESS==
+
+options:
+  -h, --help            show this help message and exit
+  --project PROJECT     Project root (default: search upward from cwd)
+  --goal GOAL           Goal id (default: current goal)
+  --json                Print JSON
+  --version             show program's version number and exit

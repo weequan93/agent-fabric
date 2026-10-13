@@ -1,0 +1,41 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:25
+if(failures.length)throw new AggregateError(failures,'Interrupted recovery receipt check failed');
+                         ^
+
+AggregateError: Interrupted recovery receipt check failed
+    at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:25:26 {
+  [errors]: [
+    AssertionError [ERR_ASSERTION]: Candidate changed during recovery check
+    + actual - expected
+    
+    + 'sha256:f9450dac77bbf0d14f1d2a20823459cd99fc9aafc81d44aa98e7dba6a0c2d839'
+    - 'sha256:69c955e80024570dd0b2bfc69e5a9ccbc96921624c792e49b98a46745450453c'
+    
+        at finalGuards (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/recovery/verification.mjs:45:47)
+        at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:20:2 {
+      generatedMessage: false,
+      code: 'ERR_ASSERTION',
+      actual: 'sha256:f9450dac77bbf0d14f1d2a20823459cd99fc9aafc81d44aa98e7dba6a0c2d839',
+      expected: 'sha256:69c955e80024570dd0b2bfc69e5a9ccbc96921624c792e49b98a46745450453c',
+      operator: 'strictEqual',
+      diff: 'simple'
+    },
+    AssertionError [ERR_ASSERTION]: Candidate changed during recovery check
+    + actual - expected
+    
+    + 'sha256:f9450dac77bbf0d14f1d2a20823459cd99fc9aafc81d44aa98e7dba6a0c2d839'
+    - 'sha256:69c955e80024570dd0b2bfc69e5a9ccbc96921624c792e49b98a46745450453c'
+    
+        at finalGuards (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/recovery/verification.mjs:45:47)
+        at file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-volume-interrupted-receipt.mjs:24:49 {
+      generatedMessage: false,
+      code: 'ERR_ASSERTION',
+      actual: 'sha256:f9450dac77bbf0d14f1d2a20823459cd99fc9aafc81d44aa98e7dba6a0c2d839',
+      expected: 'sha256:69c955e80024570dd0b2bfc69e5a9ccbc96921624c792e49b98a46745450453c',
+      operator: 'strictEqual',
+      diff: 'simple'
+    }
+  ]
+}
+
+Node.js v22.22.3

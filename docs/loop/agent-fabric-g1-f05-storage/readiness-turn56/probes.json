@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "assurance": "resource-readiness-only",
+  "results": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "time": "2026-10-08T09:24:09.442418+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-00.stdout.log",
+        "bytes": 9,
+        "sha256": "28d5d468fcfe77594f84d719d1550610e3ff0904f1601e7d0e93325244965451"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-00.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "pnpm",
+        "--version"
+      ],
+      "time": "2026-10-08T09:24:09.442964+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-01.stdout.log",
+        "bytes": 8,
+        "sha256": "c6475fc58e69de8a119f10bd312b307b0c32357f962487b35990c1d18cd00a0b"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-01.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        "g1-storage/node_modules/typescript/bin/tsc",
+        "--version"
+      ],
+      "time": "2026-10-08T09:24:09.443147+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-02.stdout.log",
+        "bytes": 14,
+        "sha256": "4985b444236c5acdb5b850e5d754975e130eed5b033c53f201cdf471e83d7f13"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-02.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "time": "2026-10-08T09:24:09.443943+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-03.stdout.log",
+        "bytes": 1093,
+        "sha256": "8053cb1253533c3f1a832ab9c93b78ced5b6b433efc31dabc75749c7c942a080"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-03.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "docker",
+        "info",
+        "--format",
+        "{{json .NCPU}} {{json .MemTotal}} {{json .OperatingSystem}}"
+      ],
+      "time": "2026-10-08T09:24:09.453511+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-04.stdout.log",
+        "bytes": 32,
+        "sha256": "48edd04945e5f3bb9d9c9e1a69ae4c3db4f97c8f722702f79130d34b476a3a99"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-04.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+        "--format",
+        "{{.Id}} {{.Os}} {{.Architecture}}"
+      ],
+      "time": "2026-10-08T09:24:09.464070+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-05.stdout.log",
+        "bytes": 84,
+        "sha256": "26204a78955526464d1fa3239df0be91dfedc725decc02b948c0ceac5bd15c75"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-05.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "docker",
+        "ps",
+        "-a",
+        "--filter",
+        "label=agent-fabric.storage-fixture-owner",
+        "--format",
+        "{{.ID}}"
+      ],
+      "time": "2026-10-08T09:24:09.485072+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-06.stdout.log",
+        "bytes": 13,
+        "sha256": "0d24926bd616fa4c8a2a7f72fdfced32e7052a9159dbaf00af5974a1d7f2f3d0"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-06.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "df",
+        "-h",
+        ".",
+        "/private/tmp"
+      ],
+      "time": "2026-10-08T09:24:09.505091+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-07.stdout.log",
+        "bytes": 251,
+        "sha256": "f089180eb42bad09c9090912f61177ef23a145df44a67b7d6b4573fa769cf9dc"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-07.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        ".loop/bin/loop",
+        "audit"
+      ],
+      "time": "2026-10-08T09:24:09.507097+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-08.stdout.log",
+        "bytes": 35,
+        "sha256": "f7ccf510f83e79e9a3bd25f28ba6e8a26a50681c9ace2536f80026eb26fff2f5"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-08.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        ".loop/bin/loop",
+        "status",
+        "--json"
+      ],
+      "time": "2026-10-08T09:24:09.508197+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-09.stdout.log",
+        "bytes": 21576,
+        "sha256": "5711e4555f14114e3c897185c80dcb56f3f3211343d207216915b8e9fd65beb8"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-09.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        "docs/loop/agent-fabric-g1-f05-storage/readiness-turn38/probe.mjs"
+      ],
+      "time": "2026-10-08T09:24:09.583074+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-10.stdout.log",
+        "bytes": 1064,
+        "sha256": "fb9111d05cb72c73967dd2750988beb6c8a1b5e00d6c2c0a3ae640848d99843e"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-10.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": [
+        "node",
+        "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/container-envelope.mjs"
+      ],
+      "time": "2026-10-08T09:24:09.729815+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-11.stdout.log",
+        "bytes": 4348,
+        "sha256": "b6ce4eefa9cc4c0c4068c83e4592ea2e4a028cad67ae9e62e031c95dc7abe479"
+      },
+      "stderr": {
+        "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn56/probe-11.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"frozen-storage-registry","localCases":64,"controllerCases":3,"externalGates":9,"requirements":96,"requiredVariants":420}
+{"measurement":"storage-candidate","digest":"sha256:46a2ca37587e55ea62dbb0c64fc50e391e65df880ebe538f9647948269f5f085","files":685,"diagnosticOnly":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+10.18.0
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 146ms using pnpm v10.18.0
+{"measurement":"dependency-metadata","dependencies":18,"notices":17,"securityAssessment":"unknown","missingInstalledNotices":["pg-types","pgpass"]}
+{"measurement":"strict-build","sourceAndTests":true,"node":"v22.22.3","pins":{"pg":"8.16.3","@types/pg":"8.15.5","@types/node":"22.18.6","typescript":"5.9.3"},"dependencyLockDigest":"sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4","cacheCleared":true,"install":"offline/frozen/ignore-scripts"}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}
+{"measurement":"storage-owned-fixture","owner":"70c23b22-787b-4421-8b20-d28c50ba83b5","instance":"7de40354-e273-463f-8eba-2ba48aa226fe","containerId":"1ebcaeedf284cf1e15066d7a269f80dad0d1a547156ffb545c512d03d39a7e11","image":"postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333","version":"PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","loopback":true,"roots":{"content":{"rootId":"25471156-3f3b-47b9-a6a2-5411542df9a4","device":16777238,"inode":336541699},"backup":{"rootId":"62a63fbd-a72d-4107-b4ad-bf5552109c18","device":16777238,"inode":336541701},"restore":{"rootId":"876909ca-cb57-4ab7-a9c3-6675a5f69ec8","device":16777238,"inode":336541703},"authority":{"rootId":"8bfd8e5b-2d16-44a6-993f-82f5fc62c41d","device":16777238,"inode":336541705}},"fixtureRoot":{"rootId":"58f6e835-56de-4ccb-84f9-814bc1ded3a0","device":16777238,"inode":336541697},"preexistingContainers":[],"processBefore":{"rows":821,"digest":"fbd7ef97515cf3070bce244ff4ba56299e5bf41738138556c93964ca95f92193"},"paidCallsAllowed":false,"assurance":"deterministic-local-only"}
+TAP version 13
+# {"measurement":"model-owned-process","pid":24659,"marker":"2023d249-31e2-4537-9868-9f41903c9a2a","instance":"24560/Thu Oct  8 14:14:13 2026","ppid":24657,"loopback":true}
+# Subtest: COMMAND-RECOVERY/behavior / authenticated HTTP and serialized original-key outcomes
+    # Subtest: COMMAND-RECOVERY/http-original-recreated
+    ok 1 - COMMAND-RECOVERY/http-original-recreated
+      ---
+      duration_ms: 562.061375
+      type: 'test'
+      ...
+    # Subtest: COMMAND-RECOVERY/http-closed-auth-boundaries
+    ok 2 - COMMAND-RECOVERY/http-closed-auth-boundaries
+      ---
+      duration_ms: 64.387125
+      type: 'test'
+      ...
+    # Subtest: COMMAND-RECOVERY/changed-binding-and-namespaces
+    not ok 3 - COMMAND-RECOVERY/changed-binding-and-namespaces
+      ---
+      duration_ms: 767.661625
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:117:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        403 !== 200
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 200
+      actual: 403
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:134:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:117:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/actual-lost-commit-and-rollback
+    not ok 4 - COMMAND-RECOVERY/actual-lost-commit-and-rollback
+      ---
+      duration_ms: 33.990083
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:142:21'
+      failureType: 'testCodeFailure'
+      error: 'CLEANUP_UNPROVEN'
+      code: 'CLEANUP_UNPROVEN'
+      name: 'StorageError'
+      stack: |-
+        demand (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js:19:15)
+        Object.close (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/commit-wire-proxy.js:70:117)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:196:25)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:142:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/serialized-commit-rollback
+    not ok 5 - COMMAND-RECOVERY/serialized-commit-rollback
+      ---
+      duration_ms: 24.653416
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:200:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        The expression evaluated to a falsy value:
+        
+          assert.ok(pid)
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: 0
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:211:28)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:200:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/lock-timeout-stays-unknown
+    not ok 6 - COMMAND-RECOVERY/lock-timeout-stays-unknown
+      ---
+      duration_ms: 23.980416
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:249:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        The expression evaluated to a falsy value:
+        
+          assert.ok(pid)
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: 0
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:257:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:249:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/original-lock-excludes-digest
+    not ok 7 - COMMAND-RECOVERY/original-lock-excludes-digest
+      ---
+      duration_ms: 2077.782875
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:279:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'not-saved'
+        - 'absent-safe'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'absent-safe'
+      actual: 'not-saved'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:297:28)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:279:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/same-key-concurrent-http
+    not ok 8 - COMMAND-RECOVERY/same-key-concurrent-http
+      ---
+      duration_ms: 1526.142709
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:308:21'
+      failureType: 'testCodeFailure'
+      error: 'Observed actual PostgreSQL lock contention'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        blocked (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:64:22)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:320:21)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:308:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/spoofed-unknown-is-denial
+    not ok 9 - COMMAND-RECOVERY/spoofed-unknown-is-denial
+      ---
+      duration_ms: 73.458708
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:335:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'AUTHORITY_UNAVAILABLE'
+        - 'UNAUTHORIZED'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'UNAUTHORIZED'
+      actual: 'AUTHORITY_UNAVAILABLE'
+      operator: 'strictEqual'
+      stack: |-
+        denied (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:77:24)
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:339:21)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:335:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/expired-original-receipt
+    not ok 10 - COMMAND-RECOVERY/expired-original-receipt
+      ---
+      duration_ms: 42.56825
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:349:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        403 !== 200
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 200
+      actual: 403
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:351:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:349:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/read-committed-required
+    not ok 11 - COMMAND-RECOVERY/read-committed-required
+      ---
+      duration_ms: 8.500291
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:364:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'UNAUTHORIZED'
+        - 'REQUIRED_CAPABILITY_UNSUPPORTED'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'REQUIRED_CAPABILITY_UNSUPPORTED'
+      actual: 'UNAUTHORIZED'
+      operator: 'strictEqual'
+      stack: |-
+        denied (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:77:24)
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:372:21)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:364:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: COMMAND-RECOVERY/authority-after-wait
+    not ok 12 - COMMAND-RECOVERY/authority-after-wait
+      ---
+      duration_ms: 28.437042
+      type: 'test'
+      location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:381:21'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        403 !== 200
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 200
+      actual: 403
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:383:24)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:381:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+# {"schemaVersion":1,"measurement":"storage-observations","suite":"command-recovery","positives":{"save":2,"ask":0,"forget":0,"restore":0,"read":6,"write":3,"deny":29,"conflict":5,"propagate":0,"backup":0,"owner":1,"harness":0},"violations":{"unauthorizedDisclosure":0,"unauthorizedMutation":0,"silentLostUpdate":0,"duplicateCanonicalEffect":0,"restrictedResurrection":0,"askComputerStart":0}}
+# {"measurement":"model-owned-process-cleanup","pid":24659,"instance":"24560/Thu Oct  8 14:14:13 2026","signal":"SIGTERM","removed":true}
+    1..12
+not ok 1 - COMMAND-RECOVERY/behavior / authenticated HTTP and serialized original-key outcomes
+  ---
+  duration_ms: 6854.966
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/tests/helpers/register-command-recovery-tests.js:21:5'
+  failureType: 'subtestsFailed'
+  error: '10 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 13
+# suites 0
+# pass 2
+# fail 11
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6935.675208
+{"measurement":"storage-container-cleanup","owner":"70c23b22-787b-4421-8b20-d28c50ba83b5","instance":"7de40354-e273-463f-8eba-2ba48aa226fe","containerId":"1ebcaeedf284cf1e15066d7a269f80dad0d1a547156ffb545c512d03d39a7e11","removed":true,"censusUnchanged":true,"processAfter":{"rows":823,"digest":"4c27778eb93b925baf94c45f465626e8db8f04e1238766fbf539bbbbb871d061"}}
+{"measurement":"storage-root-cleanup","owner":"70c23b22-787b-4421-8b20-d28c50ba83b5","instance":"7de40354-e273-463f-8eba-2ba48aa226fe","rootId":"58f6e835-56de-4ccb-84f9-814bc1ded3a0","rootIds":["25471156-3f3b-47b9-a6a2-5411542df9a4","62a63fbd-a72d-4107-b4ad-bf5552109c18","876909ca-cb57-4ab7-a9c3-6675a5f69ec8","8bfd8e5b-2d16-44a6-993f-82f5fc62c41d"],"removed":true}
+{"measurement":"preserved-inputs","files":2581,"categories":{"g0-local-protected":613,"foundations":42,"identity":19,"recovery":1056,"approved-design":3,"installedF03F04":"all source, migrations, checks, inventories and notices; excludes reproducible node_modules"},"unchanged":true}

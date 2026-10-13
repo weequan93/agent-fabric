@@ -1,0 +1,13 @@
+import pg from 'pg';
+import { startTestIdp } from '../../../g1-identity/src/test-idp.js';
+import { createPostgresIdpSessionStore } from '../../../g1-identity/src/authenticated-uow.js';
+import { object, text, uuid, list } from '../../src/decoder.js';
+import { demand } from '../../src/errors.js';
+const schema=object({dsn:text,marker:uuid,subjects:list(uuid,8,1)});
+const config=schema.parse(JSON.parse(process.env['FABRIC_MODEL_IDP']??'null'));delete process.env['FABRIC_MODEL_IDP'];demand(config.marker===process.argv[2]);
+for(const key of Object.keys(process.env))if(!['PATH','LC_ALL'].includes(key))delete process.env[key];
+const dsn=new URL(config.dsn);demand(dsn.hostname==='127.0.0.1'&&dsn.pathname==='/model_test'&&/^m_[a-f0-9]+_idp$/.test(dsn.username));
+const pool=new pg.Pool({connectionString:config.dsn,max:2});
+const idp=await startTestIdp({clientId:'model-test',apiAudience:'model-api',redirectUri:'http://127.0.0.1/callback',accessTokenSeconds:600,users:config.subjects.map(subject=>({subject,password:'synthetic'})),sessionStore:createPostgresIdpSessionStore(pool)});
+process.stdout.write(JSON.stringify({marker:config.marker,pid:process.pid,issuer:idp.issuer,jwksUrl:idp.jwksUrl,authorizationEndpoint:idp.authorizationEndpoint,tokenEndpoint:idp.tokenEndpoint})+'\n');
+let closing=false;process.on('SIGTERM',async()=>{if(closing)return;closing=true;await idp.close();await pool.end();process.exit(0);});

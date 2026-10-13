@@ -1,0 +1,27 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/build.mjs:12
+ if (process.version !== 'v22.22.3') throw new Error('Pinned Node22.22.3 required');
+                                           ^
+
+Error: Pinned Node22.22.3 required
+    at file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/build.mjs:12:44
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12)
+
+Node.js v20.12.2
+file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:4
+ if (result.error || result.signal !== null || result.status !== 0) throw new Error(label + ' failed (' + (result.error?.code ?? result.signal ?? result.status) + ')');
+                                                                          ^
+
+Error: /Users/super/.nvm/versions/node/v20.12.2/bin/node failed (1)
+    at requireExit (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:4:75)
+    at run (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/process-result.mjs:11:9)
+    at check (file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/runner.mjs:19:3)
+    at file:///Users/super/Documents/ai/agent-fabric/g1-model/scripts/check-slice.mjs:2:7
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12)
+
+Node.js v20.12.2

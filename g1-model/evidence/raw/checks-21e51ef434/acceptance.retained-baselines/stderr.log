@@ -1,0 +1,30 @@
+file:///Users/super/Documents/ai/agent-fabric/scripts/check-g0.mjs:21
+if (process.versions.node.split('.')[0] !== '22') throw new Error('Qualified baseline requires Node 22');
+                                                        ^
+
+Error: Qualified baseline requires Node 22
+    at file:///Users/super/Documents/ai/agent-fabric/scripts/check-g0.mjs:21:57
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12)
+
+Node.js v20.12.2
+node:internal/process/esm_loader:34
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+AssertionError [ERR_ASSERTION]: Original regression failed: scripts/check-g0.mjs
+    at file:///Users/super/Documents/ai/agent-fabric/g1-foundations/scripts/check-retained.mjs:9:309
+    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual'
+}
+
+Node.js v20.12.2

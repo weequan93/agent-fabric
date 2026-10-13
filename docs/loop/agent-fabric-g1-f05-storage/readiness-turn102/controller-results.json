@@ -1,0 +1,508 @@
+{
+  "jobId": "job-f11187f2a7",
+  "scope": "Prerequisite resource checks only; no task or F05 acceptance",
+  "checks": {
+    "f05-01.strict-build": {
+      "definition": {
+        "id": "strict-build",
+        "run": "node g1-storage/scripts/build.mjs",
+        "timeout": 180,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Compile current own sources/tests and imported owners with pinned offline frozen dependencies; refuse stale/symlinked emission.",
+        "stage": "unit"
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 4804,
+        "started_at": "2026-10-09T05:10:37+00:00",
+        "finished_at": "2026-10-09T05:10:42+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-01.strict-build",
+        "cleanup": "zombie",
+        "fingerprint": "git:ecd1d6df6851a41310aebd62",
+        "actor": "agent",
+        "workspace_changed": true
+      },
+      "streams": [
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-01.strict-build/stdout.log",
+            "bytes": 1148,
+            "sha256": "fcdd405a481dc505361bd6bb8165706484385cee2fdb591a10157838d9361769"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/f05-01.strict-build/stdout.log",
+            "bytes": 1148,
+            "sha256": "fcdd405a481dc505361bd6bb8165706484385cee2fdb591a10157838d9361769"
+          }
+        },
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-01.strict-build/stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/f05-01.strict-build/stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ],
+      "fullStreamsRead": true
+    },
+    "f05-04.source-content-component": {
+      "definition": {
+        "id": "source-content-component",
+        "run": "node g1-storage/scripts/check-component.mjs source-content",
+        "timeout": 600,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Additive prerequisite diagnostic: real encrypted provenance, migration, role denial, rollback, concurrent original and genuine COMMIT wire outcomes; does not replace knowledge or commands gates.",
+        "stage": "integration"
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 12770,
+        "started_at": "2026-10-09T05:10:42+00:00",
+        "finished_at": "2026-10-09T05:10:54+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-04.source-content-component",
+        "cleanup": "zombie",
+        "fingerprint": "git:ecd1d6df6851a41310aebd62",
+        "actor": "agent",
+        "workspace_changed": true
+      },
+      "streams": [
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-04.source-content-component/stdout.log",
+            "bytes": 9955,
+            "sha256": "9033c48a38366ceb61473079cafd3b96456771f270eef551e8b320210e60df00"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/f05-04.source-content-component/stdout.log",
+            "bytes": 9955,
+            "sha256": "9033c48a38366ceb61473079cafd3b96456771f270eef551e8b320210e60df00"
+          }
+        },
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/f05-04.source-content-component/stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/f05-04.source-content-component/stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "measurements": [
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "frozen-storage-registry",
+          "localCases": 64,
+          "controllerCases": 3,
+          "externalGates": 9,
+          "requirements": 96,
+          "requiredVariants": 420
+        },
+        {
+          "measurement": "storage-candidate",
+          "digest": "sha256:9045fec758c96f4139dd3751c5c0bb004351935bf65a63aa5a9f5011646ae5f9",
+          "files": 1100,
+          "diagnosticOnly": true
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "dependency-metadata",
+          "dependencies": 18,
+          "notices": 17,
+          "securityAssessment": "unknown",
+          "missingInstalledNotices": [
+            "pg-types",
+            "pgpass"
+          ]
+        },
+        {
+          "measurement": "strict-build",
+          "sourceAndTests": true,
+          "node": "v22.22.3",
+          "pins": {
+            "pg": "8.16.3",
+            "@types/pg": "8.15.5",
+            "@types/node": "22.18.6",
+            "typescript": "5.9.3"
+          },
+          "dependencyLockDigest": "sha256:ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+          "cacheCleared": true,
+          "install": "offline/frozen/ignore-scripts"
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        },
+        {
+          "measurement": "storage-owned-fixture",
+          "owner": "4baa4188-f7ef-4b0d-b431-8175d23493e8",
+          "instance": "bb63add9-0abe-483d-93c2-02a8717382a7",
+          "containerId": "a8373e8898b7b09eb794373b4dc84c373f8aca1ceea4965f004a707d42c76554",
+          "image": "postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333",
+          "version": "PostgreSQL 16.12 (Debian 16.12-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+          "loopback": true,
+          "roots": {
+            "content": {
+              "rootId": "21e1a948-38b6-45b8-9e97-e870283f7c6d",
+              "device": 16777238,
+              "inode": 340380057
+            },
+            "backup": {
+              "rootId": "c2175b4d-079c-4840-8172-32aa26f9aa63",
+              "device": 16777238,
+              "inode": 340380059
+            },
+            "restore": {
+              "rootId": "68c6e696-9ec8-4776-b12c-5c070a4e574e",
+              "device": 16777238,
+              "inode": 340380061
+            },
+            "authority": {
+              "rootId": "38bd2162-734a-4df5-a1f0-bb2a1e4694a5",
+              "device": 16777238,
+              "inode": 340380063
+            }
+          },
+          "fixtureRoot": {
+            "rootId": "e83f9266-716e-446f-ab28-e146131a00c3",
+            "device": 16777238,
+            "inode": 340380055
+          },
+          "preexistingContainers": [],
+          "processBefore": {
+            "rows": 846,
+            "digest": "e43ea284bf1bf101ea7978fdb93c363e3e8cbb9121bfb7ade458b6197f526452"
+          },
+          "paidCallsAllowed": false,
+          "assurance": "deterministic-local-only"
+        },
+        {
+          "measurement": "storage-container-cleanup",
+          "owner": "4baa4188-f7ef-4b0d-b431-8175d23493e8",
+          "instance": "bb63add9-0abe-483d-93c2-02a8717382a7",
+          "containerId": "a8373e8898b7b09eb794373b4dc84c373f8aca1ceea4965f004a707d42c76554",
+          "removed": true,
+          "censusUnchanged": true,
+          "processAfter": {
+            "rows": 837,
+            "digest": "73d46843156c277d7a2d88023ab3829b19efba362f7eba58a6fa2d87969578a4"
+          }
+        },
+        {
+          "measurement": "storage-root-cleanup",
+          "owner": "4baa4188-f7ef-4b0d-b431-8175d23493e8",
+          "instance": "bb63add9-0abe-483d-93c2-02a8717382a7",
+          "rootId": "e83f9266-716e-446f-ab28-e146131a00c3",
+          "rootIds": [
+            "21e1a948-38b6-45b8-9e97-e870283f7c6d",
+            "c2175b4d-079c-4840-8172-32aa26f9aa63",
+            "68c6e696-9ec8-4776-b12c-5c070a4e574e",
+            "38bd2162-734a-4df5-a1f0-bb2a1e4694a5"
+          ],
+          "removed": true
+        },
+        {
+          "measurement": "storage-test-report",
+          "scope": "component",
+          "diagnosticOnly": true,
+          "externalQualification": "pending",
+          "reports": [
+            {
+              "suite": "source-content",
+              "tests": 12,
+              "cases": [
+                "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+              ],
+              "variants": [
+                "SOURCE-CONTENT/migration",
+                "SOURCE-CONTENT/exact-recreated-and-retained",
+                "SOURCE-CONTENT/material-admission-boundaries",
+                "SOURCE-CONTENT/roles-and-integrity",
+                "SOURCE-CONTENT/same-transaction-envelope-refusals",
+                "SOURCE-CONTENT/partial-rollback-and-original",
+                "SOURCE-CONTENT/killed-partial-transaction",
+                "SOURCE-CONTENT/postinsert-owner-change",
+                "SOURCE-CONTENT/current-revocation",
+                "SOURCE-CONTENT/concurrent-original",
+                "SOURCE-CONTENT/wire-outcomes"
+              ],
+              "executions": [
+                {
+                  "indent": 4,
+                  "number": 1,
+                  "name": "SOURCE-CONTENT/migration",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 2,
+                  "name": "SOURCE-CONTENT/exact-recreated-and-retained",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 3,
+                  "name": "SOURCE-CONTENT/material-admission-boundaries",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 4,
+                  "name": "SOURCE-CONTENT/roles-and-integrity",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 5,
+                  "name": "SOURCE-CONTENT/same-transaction-envelope-refusals",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 6,
+                  "name": "SOURCE-CONTENT/partial-rollback-and-original",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 7,
+                  "name": "SOURCE-CONTENT/killed-partial-transaction",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 8,
+                  "name": "SOURCE-CONTENT/postinsert-owner-change",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 9,
+                  "name": "SOURCE-CONTENT/current-revocation",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 10,
+                  "name": "SOURCE-CONTENT/concurrent-original",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 4,
+                  "number": 11,
+                  "name": "SOURCE-CONTENT/wire-outcomes",
+                  "parent": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction"
+                },
+                {
+                  "indent": 0,
+                  "number": 1,
+                  "name": "SOURCE-CONTENT/behavior / encrypted provenance in authenticated head transaction",
+                  "parent": null
+                }
+              ],
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0,
+              "observations": {
+                "schemaVersion": 1,
+                "measurement": "storage-observations",
+                "suite": "source-content",
+                "positives": {
+                  "save": 0,
+                  "ask": 0,
+                  "forget": 0,
+                  "restore": 0,
+                  "read": 4,
+                  "write": 3,
+                  "deny": 37,
+                  "conflict": 0,
+                  "propagate": 0,
+                  "backup": 0,
+                  "owner": 0,
+                  "harness": 0
+                },
+                "violations": {
+                  "unauthorizedDisclosure": 0,
+                  "unauthorizedMutation": 0,
+                  "silentLostUpdate": 0,
+                  "duplicateCanonicalEffect": 0,
+                  "restrictedResurrection": 0,
+                  "askComputerStart": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "measurement": "preserved-inputs",
+          "files": 2581,
+          "categories": {
+            "g0-local-protected": 613,
+            "foundations": 42,
+            "identity": 19,
+            "recovery": 1056,
+            "approved-design": 3,
+            "installedF03F04": "all source, migrations, checks, inventories and notices; excludes reproducible node_modules"
+          },
+          "unchanged": true
+        }
+      ],
+      "fullStreamsRead": true
+    },
+    "acceptance.retained-baselines": {
+      "definition": {
+        "id": "retained-baselines",
+        "argv": [
+          "node",
+          "g1-foundations/scripts/check-retained.mjs"
+        ],
+        "timeout": 900,
+        "cwd": ".",
+        "expect_exit": 0,
+        "description": "Original G0/G1-local protected files, raw evidence and checks unchanged (regression).",
+        "stage": "regression"
+      },
+      "result": {
+        "status": "pass",
+        "exit_code": 0,
+        "outcome": "completed",
+        "duration_ms": 19160,
+        "started_at": "2026-10-09T05:10:54+00:00",
+        "finished_at": "2026-10-09T05:11:14+00:00",
+        "log": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/acceptance.retained-baselines",
+        "cleanup": "zombie",
+        "fingerprint": "git:ecd1d6df6851a41310aebd62",
+        "actor": "agent",
+        "workspace_changed": true
+      },
+      "streams": [
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/acceptance.retained-baselines/stdout.log",
+            "bytes": 50294,
+            "sha256": "60b80def6d4adca07b5ecf1fe7ac0eb2e2db5b73fb7e6f8018c60c40d1b94f04"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/acceptance.retained-baselines/stdout.log",
+            "bytes": 50294,
+            "sha256": "60b80def6d4adca07b5ecf1fe7ac0eb2e2db5b73fb7e6f8018c60c40d1b94f04"
+          }
+        },
+        {
+          "original": {
+            "path": ".loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-f11187f2a7/acceptance.retained-baselines/stderr.log",
+            "bytes": 155,
+            "sha256": "231c075d0c0700d9a07d3ce50cfbd01afd9552e47d3814d90022195a746ca6a0"
+          },
+          "copy": {
+            "path": "docs/loop/agent-fabric-g1-f05-storage/readiness-turn102/controller-raw/job-f11187f2a7/acceptance.retained-baselines/stderr.log",
+            "bytes": 155,
+            "sha256": "231c075d0c0700d9a07d3ce50cfbd01afd9552e47d3814d90022195a746ca6a0"
+          }
+        }
+      ],
+      "measurements": [],
+      "fullStreamsRead": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52
+ if(errors.length)throw new AggregateError(errors,'Storage check failed; behavior and final guards retained');
+                        ^
+
+AggregateError: Storage check failed; behavior and final guards retained
+    at check (file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/runner.mjs:52:25)
+    at async file:///Users/super/Documents/ai/agent-fabric/g1-storage/scripts/check-component.mjs:2:1 {
+  [errors]: [
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/contracts.js' imported from /Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-storage/src/errors.js
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///Users/super/Documents/ai/agent-fabric/g1-storage/node_modules/.cache/storage-build/g1-foundations/src/contracts.js'
+    }
+  ]
+}
+
+Node.js v22.22.3

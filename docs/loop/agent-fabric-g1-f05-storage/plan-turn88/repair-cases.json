@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 2,
+  "caseCatalog": "atomic-disconnect-v2",
+  "covers": [
+    "R-019",
+    "R-070",
+    "R-071",
+    "R-072",
+    "R-078"
+  ],
+  "rounds": 5,
+  "phasesPerRound": 10,
+  "realPhaseCount": 50,
+  "hostileProbeCount": 10,
+  "mandatoryLeafCount": 60,
+  "disconnectBoundMs": 2000,
+  "testDeadlineMs": 240000,
+  "controllerCommand": "node g1-storage/scripts/check-component.mjs verify-atomic-disconnect",
+  "retryCount": 0,
+  "realPhases": [
+    {
+      "id": "AD01/r01/revision-before",
+      "round": 1,
+      "table": "storage_knowledge_revisions",
+      "timing": "BEFORE",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r01/revision-after",
+      "round": 1,
+      "table": "storage_knowledge_revisions",
+      "timing": "AFTER",
+      "expectedMask": 3
+    },
+    {
+      "id": "AD01/r01/head-before",
+      "round": 1,
+      "table": "storage_current_heads",
+      "timing": "BEFORE",
+      "expectedMask": 0
+    },
+    {
+      "id": "AD01/r01/head-after",
+      "round": 1,
+      "table": "storage_current_heads",
+      "timing": "AFTER",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r01/receipt-before",
+      "round": 1,
+      "table": "storage_save_receipts",
+      "timing": "BEFORE",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r01/receipt-after",
+      "round": 1,
+      "table": "storage_save_receipts",
+      "timing": "AFTER",
+      "expectedMask": 63
+    },
+    {
+      "id": "AD01/r01/event-before",
+      "round": 1,
+      "table": "storage_save_events",
+      "timing": "BEFORE",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r01/event-after",
+      "round": 1,
+      "table": "storage_save_events",
+      "timing": "AFTER",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r01/outbox-before",
+      "round": 1,
+      "table": "storage_outbox",
+      "timing": "BEFORE",
+      "expectedMask": 7
+    },
+    {
+      "id": "AD01/r01/outbox-after",
+      "round": 1,
+      "table": "storage_outbox",
+      "timing": "AFTER",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r02/revision-before",
+      "round": 2,
+      "table": "storage_knowledge_revisions",
+      "timing": "BEFORE",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r02/revision-after",
+      "round": 2,
+      "table": "storage_knowledge_revisions",
+      "timing": "AFTER",
+      "expectedMask": 3
+    },
+    {
+      "id": "AD01/r02/head-before",
+      "round": 2,
+      "table": "storage_current_heads",
+      "timing": "BEFORE",
+      "expectedMask": 0
+    },
+    {
+      "id": "AD01/r02/head-after",
+      "round": 2,
+      "table": "storage_current_heads",
+      "timing": "AFTER",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r02/receipt-before",
+      "round": 2,
+      "table": "storage_save_receipts",
+      "timing": "BEFORE",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r02/receipt-after",
+      "round": 2,
+      "table": "storage_save_receipts",
+      "timing": "AFTER",
+      "expectedMask": 63
+    },
+    {
+      "id": "AD01/r02/event-before",
+      "round": 2,
+      "table": "storage_save_events",
+      "timing": "BEFORE",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r02/event-after",
+      "round": 2,
+      "table": "storage_save_events",
+      "timing": "AFTER",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r02/outbox-before",
+      "round": 2,
+      "table": "storage_outbox",
+      "timing": "BEFORE",
+      "expectedMask": 7
+    },
+    {
+      "id": "AD01/r02/outbox-after",
+      "round": 2,
+      "table": "storage_outbox",
+      "timing": "AFTER",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r03/revision-before",
+      "round": 3,
+      "table": "storage_knowledge_revisions",
+      "timing": "BEFORE",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r03/revision-after",
+      "round": 3,
+      "table": "storage_knowledge_revisions",
+      "timing": "AFTER",
+      "expectedMask": 3
+    },
+    {
+      "id": "AD01/r03/head-before",
+      "round": 3,
+      "table": "storage_current_heads",
+      "timing": "BEFORE",
+      "expectedMask": 0
+    },
+    {
+      "id": "AD01/r03/head-after",
+      "round": 3,
+      "table": "storage_current_heads",
+      "timing": "AFTER",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r03/receipt-before",
+      "round": 3,
+      "table": "storage_save_receipts",
+      "timing": "BEFORE",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r03/receipt-after",
+      "round": 3,
+      "table": "storage_save_receipts",
+      "timing": "AFTER",
+      "expectedMask": 63
+    },
+    {
+      "id": "AD01/r03/event-before",
+      "round": 3,
+      "table": "storage_save_events",
+      "timing": "BEFORE",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r03/event-after",
+      "round": 3,
+      "table": "storage_save_events",
+      "timing": "AFTER",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r03/outbox-before",
+      "round": 3,
+      "table": "storage_outbox",
+      "timing": "BEFORE",
+      "expectedMask": 7
+    },
+    {
+      "id": "AD01/r03/outbox-after",
+      "round": 3,
+      "table": "storage_outbox",
+      "timing": "AFTER",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r04/revision-before",
+      "round": 4,
+      "table": "storage_knowledge_revisions",
+      "timing": "BEFORE",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r04/revision-after",
+      "round": 4,
+      "table": "storage_knowledge_revisions",
+      "timing": "AFTER",
+      "expectedMask": 3
+    },
+    {
+      "id": "AD01/r04/head-before",
+      "round": 4,
+      "table": "storage_current_heads",
+      "timing": "BEFORE",
+      "expectedMask": 0
+    },
+    {
+      "id": "AD01/r04/head-after",
+      "round": 4,
+      "table": "storage_current_heads",
+      "timing": "AFTER",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r04/receipt-before",
+      "round": 4,
+      "table": "storage_save_receipts",
+      "timing": "BEFORE",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r04/receipt-after",
+      "round": 4,
+      "table": "storage_save_receipts",
+      "timing": "AFTER",
+      "expectedMask": 63
+    },
+    {
+      "id": "AD01/r04/event-before",
+      "round": 4,
+      "table": "storage_save_events",
+      "timing": "BEFORE",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r04/event-after",
+      "round": 4,
+      "table": "storage_save_events",
+      "timing": "AFTER",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r04/outbox-before",
+      "round": 4,
+      "table": "storage_outbox",
+      "timing": "BEFORE",
+      "expectedMask": 7
+    },
+    {
+      "id": "AD01/r04/outbox-after",
+      "round": 4,
+      "table": "storage_outbox",
+      "timing": "AFTER",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r05/revision-before",
+      "round": 5,
+      "table": "storage_knowledge_revisions",
+      "timing": "BEFORE",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r05/revision-after",
+      "round": 5,
+      "table": "storage_knowledge_revisions",
+      "timing": "AFTER",
+      "expectedMask": 3
+    },
+    {
+      "id": "AD01/r05/head-before",
+      "round": 5,
+      "table": "storage_current_heads",
+      "timing": "BEFORE",
+      "expectedMask": 0
+    },
+    {
+      "id": "AD01/r05/head-after",
+      "round": 5,
+      "table": "storage_current_heads",
+      "timing": "AFTER",
+      "expectedMask": 1
+    },
+    {
+      "id": "AD01/r05/receipt-before",
+      "round": 5,
+      "table": "storage_save_receipts",
+      "timing": "BEFORE",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r05/receipt-after",
+      "round": 5,
+      "table": "storage_save_receipts",
+      "timing": "AFTER",
+      "expectedMask": 63
+    },
+    {
+      "id": "AD01/r05/event-before",
+      "round": 5,
+      "table": "storage_save_events",
+      "timing": "BEFORE",
+      "expectedMask": 15
+    },
+    {
+      "id": "AD01/r05/event-after",
+      "round": 5,
+      "table": "storage_save_events",
+      "timing": "AFTER",
+      "expectedMask": 31
+    },
+    {
+      "id": "AD01/r05/outbox-before",
+      "round": 5,
+      "table": "storage_outbox",
+      "timing": "BEFORE",
+      "expectedMask": 7
+    },
+    {
+      "id": "AD01/r05/outbox-after",
+      "round": 5,
+      "table": "storage_outbox",
+      "timing": "AFTER",
+      "expectedMask": 15
+    }
+  ],
+  "hostileProbes": [
+    {
+      "id": "AD02/omitted-repetition",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/duplicate-repetition",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/unmatched-worker-nonce",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/changed-backend-start",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/wrong-observed-mask",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/exit-only-disconnection",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/late-disconnection",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/saved-response",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/rollback-mismatch",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    },
+    {
+      "id": "AD02/lookup-mismatch",
+      "expectedExit": "nonzero",
+      "input": "one deliberate mutation of an otherwise complete live-current-run record set"
+    }
+  ],
+  "preservedOriginalVariants": {
+    "verify-atomic": 16,
+    "verify-knowledge": 21
+  },
+  "repairPredecessorFiles": [
+    {
+      "path": "g1-storage/tests/helpers/atomic-verification-fixture.ts",
+      "bytes": 16211,
+      "sha256": "95d5efacf541bf0887ebfa66d2be131531a5fe7fa54e2f691816eb9464abef9d"
+    },
+    {
+      "path": "g1-storage/tests/helpers/atomic-command-worker.ts",
+      "bytes": 3162,
+      "sha256": "c7dd4d36c60349bf0d41e1f2fac547fb03f5ccc9be6492a69bd84905a1f6460a"
+    }
+  ],
+  "failedStreams": [
+    {
+      "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn83/qualified-raw/job-b12cd36fd2/f05-11-atomic.verify-atomic-component/stdout.log",
+      "bytes": 39953,
+      "sha256": "f0ff515ab8618771f3b94d9349f49337169af9105b5f672b2480dba7c4d56712"
+    },
+    {
+      "path": "docs/loop/agent-fabric-g1-f05-storage/develop-turn83/qualified-raw/job-b12cd36fd2/f05-11-atomic.verify-atomic-component/stderr.log",
+      "bytes": 2164,
+      "sha256": "cb3399611f82e9c296274b2e7282651bbc99b48a0e2b97ae9db351fb628c4cc2"
+    }
+  ],
+  "qualification": "Frozen specification only; no new behavior executed.",
+  "predecessor": {
+    "path": "docs/loop/agent-fabric-g1-f05-storage/plan-turn85/repair-cases.json",
+    "bytes": 11307,
+    "sha256": "f053ca8b571e4e86df7ba0dcde2df64c829ff963edd67f5331334baa8077691c"
+  },
+  "suite": "atomic-disconnect",
+  "emittedFile": "atomic-disconnect.test.js",
+  "placement": "separate mandatory subprocess immediately after original commit-conflict",
+  "parentSubprocessSuccessBoundMs": 235000,
+  "allocationMs": {
+    "freshFixtureSetupClose": 30000,
+    "originalRealPhases": 150000,
+    "addedIndependentObservations": 35000,
+    "verifierAndHostileProbes": 15000,
+    "importTapAccounting": 5000
+  }
+}
