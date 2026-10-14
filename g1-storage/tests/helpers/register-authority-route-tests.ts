@@ -16,7 +16,7 @@ import {enrollServiceAccounting} from './accounting-fixture.js';
 import {PolicyPublicationRepository} from '../../src/policy-publication.js';
 import {KnowledgeSaveRepository} from '../../src/knowledge-save.js';
 import {KnowledgeStatusAdmission} from '../../src/knowledge-status.js';
-import {NativeRepository,type VerifiedScope} from '../../src/owners.js';
+import {NativeRepository,type VerifiedScope,type SqlTransaction} from '../../src/owners.js';
 import {installedOwnerSnapshot} from '../../src/migration.js';
 import {startTestIdp,beginTestAuthorization,completeTestAuthorization} from '../../../g1-identity/src/test-idp.js';
 import {createPostgresIdpSessionStore,createPostgresAuthorityLookup,AuthenticatedUnitOfWork} from '../../../g1-identity/src/authenticated-uow.js';
@@ -25,6 +25,45 @@ import {verifyAccessToken} from '../../../g1-identity/src/token-verifier.js';
 import {demand} from '../../src/errors.js';
 import {controlDigest} from '../../src/authority.js';
 import {transaction} from './authority-fixture.js';
+import {assertEpochJournalReadBoundaries} from './register-epoch-tests.js';
+
+export type PublicationOverrides=[policy?:Parameters<typeof controlDigest>[4],restriction?:Parameters<typeof controlDigest>[5],
+ tombstone?:Parameters<typeof controlDigest>[6],work?:Parameters<typeof controlDigest>[7],head?:Parameters<typeof controlDigest>[8],share?:Parameters<typeof controlDigest>[9]];
+/** Independent historical typed driver projections. These intentionally remain
+ * separate queries: batching, bind remapping and JSON decoding are under test. */
+export async function historicalPublicationRows(tx:SqlTransaction,tenantId:string,spaceId:string,revision:number,
+ [policy,restriction,tombstone,work,head,relation]:PublicationOverrides=[],allowMissingSharing=false){
+ const rows:Record<string,unknown>[][]=[];
+ const query=async(sql:string,args:readonly unknown[]=[tenantId,spaceId])=>{rows.push((await tx.query(sql,args)).rows);};
+ await query('SELECT kind FROM fabric.storage_rooms WHERE tenant_id=$1 AND space_id=$2 LIMIT 513');
+ if(policy)await query('SELECT $1::numeric AS revision,$2::jsonb AS periods,$3::jsonb AS operations',[revision,JSON.stringify(policy.periods),JSON.stringify(policy.operations)]);
+ else await query('SELECT revision,periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3 LIMIT 513',[tenantId,spaceId,revision]);
+ if(head)await query('SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM (SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::text,$7::uuid,$8::uuid,$9::numeric,$10::timestamptz,$11::timestamptz) h ORDER BY class,id,revision LIMIT 513',
+  [tenantId,spaceId,head.class,head.id,head.revision,head.witness,head.keyId,head.generation,head.epoch,head.at,head.expiresAt]);
+ else await query('SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 ORDER BY class,id,revision LIMIT 513');
+ if(tombstone)await query('SELECT class,id,revision,epoch,command_key,at FROM (SELECT class,id,revision,epoch,command_key,at FROM fabric.storage_tombstones WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::numeric,$7::uuid,$8::timestamptz) d ORDER BY class,id,revision LIMIT 513',
+  [tenantId,spaceId,tombstone.entity.class,tombstone.entity.id,tombstone.entity.revision,tombstone.epoch,tombstone.key,tombstone.at]);
+ else await query('SELECT class,id,revision,epoch,command_key,at FROM fabric.storage_tombstones WHERE tenant_id=$1 AND space_id=$2 ORDER BY class,id,revision LIMIT 513');
+ if(restriction)await query("SELECT source_id,source_revision,epoch,kind,at FROM (SELECT source_id,source_revision,epoch,kind,at FROM fabric.storage_restrictions WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::numeric,$5::numeric,'revoked'::text,$6::timestamptz) r ORDER BY source_id,source_revision,kind LIMIT 513",
+  [tenantId,spaceId,restriction.sourceId,restriction.revision,restriction.epoch,restriction.at]);
+ else await query('SELECT source_id,source_revision,epoch,kind,at FROM fabric.storage_restrictions WHERE tenant_id=$1 AND space_id=$2 ORDER BY source_id,source_revision,kind LIMIT 513');
+ if(work){
+  await query('SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM (SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::text,$6::uuid,$7::numeric,$8::timestamptz) c ORDER BY actor_id,command_key LIMIT 513',
+   [tenantId,spaceId,work.actorId,work.key,work.binding,work.receiptId,work.epoch,work.at]);
+  await query('SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM (SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::uuid,$6::text,$7::uuid,$8::numeric,$9::numeric,$10::timestamptz) j ORDER BY job_id LIMIT 513',
+   [tenantId,spaceId,work.jobId,work.actorId,work.key,work.entity.class,work.entity.id,work.entity.revision,work.epoch,work.at]);
+ }else{
+  await query('SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 ORDER BY actor_id,command_key LIMIT 513');
+  await query('SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 ORDER BY job_id LIMIT 513');
+ }
+ const installed=(await tx.query("SELECT to_regclass('fabric.storage_shares') IS NOT NULL AS installed")).rows[0]?.['installed'];
+ if(allowMissingSharing){assert.equal(typeof installed,'boolean');if(!installed)assert.equal(relation,undefined);}else assert.equal(installed,true);
+ if(installed&&relation)await query("SELECT relation_id,revision,source_space_id,source_id,source_revision,source_task_id,status,source_epoch,destination_epoch FROM (SELECT relation_id,revision,source_space_id,source_id,source_revision,source_task_id,status,source_epoch,destination_epoch FROM fabric.storage_shares WHERE tenant_id=$1 AND destination_space_id=$2 UNION ALL SELECT $3::uuid,1::numeric,$4::uuid,$5::uuid,$6::numeric,$7::uuid,'active'::text,$8::numeric,$9::numeric) r ORDER BY relation_id,revision LIMIT 513",
+  [tenantId,spaceId,relation.relationId,relation.sourceSpaceId,relation.sourceId,relation.sourceRevision,relation.sourceTaskId,relation.sourceEpoch,relation.destinationEpoch]);
+ else if(installed)await query('SELECT relation_id,revision,source_space_id,source_id,source_revision,source_task_id,status,source_epoch,destination_epoch FROM fabric.storage_shares WHERE tenant_id=$1 AND destination_space_id=$2 ORDER BY relation_id,revision LIMIT 513');
+ return rows;
+}
+export const historicalDigest=(rows:Record<string,unknown>[][])=>'sha256:'+createHash('sha256').update(JSON.stringify(rows)).digest('hex');
 
 async function waitBlocked(f:AuthorityRouteFixture,c:PoolClient,n=1,advisory=false,zeroHeld=false){
  const pid=Number((await c.query('SELECT pg_backend_pid() AS pid')).rows[0].pid),deadline=Date.now()+1400;let rows:Record<string,unknown>[]=[];
@@ -70,6 +109,7 @@ export async function registerAuthorityRouteTests(suite:'authority'|'verify-auth
   await t.test('A01/same-scope',async()=>{
    const guard=await import(pathToFileURL(resolve(f.f.root,'g1-storage/scripts/authority-route-registration.mjs')).href);guard.assertAuthorityRouteRegistration();const manifest=await readFile(resolve(f.f.root,'g1-storage/scripts/manifest.mjs'),'utf8');for(const bad of [manifest+'\n',manifest.replace('\"A01/same-scope\"','\"A01/forged\"'),manifest.replace('\"verify-authority\":','\"dynamic-authority\":')])assert.throws(()=>guard.assertAuthorityRouteAdditiveRegistry(bad));
    for(const args of [['verify-authority','extra'],['verify-authority-unknown']]){const r=spawnSync(process.execPath,[resolve(f.f.root,'g1-storage/scripts/check-component.mjs'),...args],{encoding:'utf8'});assert.equal(r.status,1);assert.match(r.stderr,/Unknown\/extra checker argument/);}
+   const shareOrigin=(await f.task(p.right.s)).binding.taskId;
    // Independent Personal/group current identity, actual encrypted bytes and all
    // eleven supported class routes. Check provenance as well as payload values.
    for(const x of [p.left,await f.core(await f.f.scopeFor(f.f.actors[0],f.f.spaces.personal))]){
@@ -80,7 +120,7 @@ export async function registerAuthorityRouteTests(suite:'authority'|'verify-auth
     routeTimes['files']=performance.now()-phaseStarted;phaseStarted=performance.now();
     for(const builder of ['summary-v1','keywords-v1','cache-v1'] as const){const d=await f.derived(x,builder),b=await d.read();routes.push({class:d.class,read:d.read});try{assert.ok(b.equals(d.expected),'Exact installed deterministic builder output');d.expected.fill(0);}finally{b.fill(0);}f.count.read++;}
     routeTimes['derived']=performance.now()-phaseStarted;phaseStarted=performance.now();
-    const ask=await f.ask(x),r=await ask.read();routes.push({class:'ask',read:ask.read});assert.deepEqual(r,ask.result);f.count.read++;routeTimes['ask']=performance.now()-phaseStarted;phaseStarted=performance.now();const backup=await f.backupOf(x),b=await backup.read();assert.equal(b.confirmed,true);assert.equal(b.serving,false);assert.ok(b.inventory.items.some(i=>i.binding.id===x.save.targetId));f.count.read++;routes.push({class:'backup',read:backup.read});routeTimes['backup']=performance.now()-phaseStarted;console.log(JSON.stringify({measurement:'authority-route-phase-times',clock:'child-monotonic',spaceKind,...routeTimes}));files.bytes.fill(0);console.log(JSON.stringify({measurement:'authority-supported-routes',spaceKind:x.s.spaceId===f.f.spaces.personal?'personal':'group',classes:['source','knowledge','artifact','draft','live-file','checkpoint','summary','index','cache','ask','backup'],exactContentAndLineage:true}));
+    const ask=await f.ask(x),r=await ask.read();routes.push({class:'ask',read:ask.read});assert.deepEqual(r,ask.result);f.count.read++;routeTimes['ask']=performance.now()-phaseStarted;phaseStarted=performance.now();const backup=await f.backupOf(x),b=await backup.read();assert.equal(b.confirmed,true);assert.equal(b.serving,false);assert.ok(b.inventory.items.some(i=>i.binding.id===x.save.targetId));f.count.read++;routes.push({class:'backup',read:backup.read});routeTimes['backup']=performance.now()-phaseStarted;files.bytes.fill(0);console.log(JSON.stringify({measurement:'authority-supported-routes',spaceKind:x.s.spaceId===f.f.spaces.personal?'personal':'group',classes:['source','knowledge','artifact','draft','live-file','checkpoint','summary','index','cache','ask','backup'],exactContentAndLineage:true}));
     // Compare the optimized ordinary scan to the historical driver projections,
     // independently of the anchor producer. Includes real heads, commands, outbox,
     // timestamp encoding, empty slots and (for group) a nonempty share relation.
@@ -97,7 +137,33 @@ export async function registerAuthorityRouteTests(suite:'authority'|'verify-auth
       'SELECT relation_id,revision,source_space_id,source_id,source_revision,source_task_id,status,source_epoch,destination_epoch FROM fabric.storage_shares WHERE tenant_id=$1 AND destination_space_id=$2 ORDER BY relation_id,revision'
      ])data.push((await tx.query(sql+' LIMIT 513',sql.includes('$3')?[x.s.tenantId,x.s.spaceId,anchor.policyRevision]:[x.s.tenantId,x.s.spaceId])).rows);
      assert.equal(await controlDigest(tx,x.s.tenantId,x.s.spaceId,anchor.policyRevision),'sha256:'+createHash('sha256').update(JSON.stringify(data)).digest('hex'),'Historical pg row/field/numeric/Date encoding is unchanged');
+     // Actual PostgreSQL UNION casts, ordering and driver types independently
+     // qualify each prospective publication and useful combined publications.
+     const at='2026-10-13T08:00:00.123456+08:00',entity={class:'source',id:x.sourceRef.id,revision:10};
+     const policy:NonNullable<PublicationOverrides[0]>={periods:{...f.a.policy.periods,source:37,knowledge:11},operations:['read','write','maintenance']};
+     const restriction={sourceId:x.sourceRef.id,revision:2,epoch:10,at},tombstone={entity:{...entity,revision:2},epoch:10,key:randomUUID(),at};
+     const work={actorId:x.s.actorId,key:randomUUID(),binding:'sha256:'+'1'.repeat(64),receiptId:randomUUID(),jobId:randomUUID(),entity,epoch:10,at};
+     const head={...entity,witness:'sha256:'+'2'.repeat(64),keyId:randomUUID(),generation:randomUUID(),epoch:10,at,expiresAt:'2026-10-13T08:00:37.654321+08:00'};
+     const relation={relationId:randomUUID(),sourceSpaceId:p.right.s.spaceId,sourceId:p.right.sourceRef.id,sourceRevision:2,sourceTaskId:shareOrigin,sourceEpoch:2,destinationEpoch:10};
+     const publications:[string,PublicationOverrides][]=[['policy',[policy]],['restriction',[undefined,restriction]],
+      ['tombstone',[undefined,undefined,tombstone]],['work',[undefined,undefined,undefined,work]],
+      ['head',[undefined,undefined,undefined,undefined,head]],['share',[undefined,undefined,undefined,undefined,undefined,relation]],
+      ['save',[policy,undefined,undefined,work,head]],['forget',[undefined,restriction,tombstone,work]],
+      ['combined',[policy,restriction,tombstone,work,head,relation]]];
+     routeTimes['publicationSamples']=0;routeTimes['historicalPublicationMs']=0;routeTimes['batchedPublicationMs']=0;
+     for(const [name,overrides] of publications){
+      const oldStarted=performance.now(),expected=await historicalPublicationRows(tx,x.s.tenantId,x.s.spaceId,anchor.policyRevision,overrides);
+      routeTimes['historicalPublicationMs']!+=performance.now()-oldStarted;
+      assert.equal(expected.length,8);for(const rows of expected)assert.ok(rows.length<=512);
+      const digest=historicalDigest(expected);assert.notEqual(digest,'sha256:'+createHash('sha256').update(JSON.stringify(data)).digest('hex'),name+' changes its historical publication controls');
+      const newStarted=performance.now(),actual=await controlDigest(tx,x.s.tenantId,x.s.spaceId,anchor.policyRevision,...overrides);
+      routeTimes['batchedPublicationMs']!+=performance.now()-newStarted;routeTimes['publicationSamples']!++;
+      assert.equal(actual,digest,name+' retains historical typed UNION digest in '+spaceKind);
+      if(overrides[4]){const h=expected[2]!.find(row=>row['key_id']===head.keyId);assert.ok(h);assert.equal(h['revision'],'10');assert.equal(h['epoch'],'10');assert.ok(h['accepted_at'] instanceof Date);assert.equal(h['accepted_at'].toISOString(),'2026-10-13T00:00:00.123Z');assert.equal((h['expires_at'] as Date).toISOString(),'2026-10-13T00:00:37.654Z');}
+      if(overrides[3]){const command=expected[5]!.find(row=>row['command_key']===work.key);assert.ok(command);assert.equal(command['epoch'],'10');assert.ok(command['at'] instanceof Date);const job=expected[6]!.find(row=>row['job_id']===work.jobId);assert.ok(job);assert.equal(job['target_revision'],'10');}
+     }
     });
+    console.log(JSON.stringify({measurement:'authority-route-phase-times',clock:'child-monotonic',spaceKind,...routeTimes}));
    }
    // Real bounded control rows: accept exactly512, reject513, with rollback so
    // subsequent authority/retention/concurrency cases retain their original data.
@@ -105,15 +171,36 @@ export async function registerAuthorityRouteTests(suite:'authority'|'verify-auth
    try{
     await c.query('BEGIN');
     const n=Number((await c.query('SELECT count(*)::int AS n FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2',[p.left.s.tenantId,p.left.s.spaceId])).rows[0].n);assert.ok(n<512);
-    await c.query("INSERT INTO fabric.storage_commands SELECT $1,$2,$3,gen_random_uuid(),$4,gen_random_uuid(),CASE WHEN i%2=0 THEN 2 ELSE 10 END,'2026-10-13T08:00:00.123456+08:00'::timestamptz FROM generate_series(1,$5::int) i",[p.left.s.tenantId,p.left.s.spaceId,p.left.s.actorId,'sha256:'+'0'.repeat(64),512-n]);
     const tx=transaction(c),revision=(await f.journal.current(p.left.s.tenantId,p.left.s.spaceId))!.policyRevision;
+    await c.query('SAVEPOINT publication_boundary');
+    await c.query("INSERT INTO fabric.storage_commands SELECT $1,$2,$3,gen_random_uuid(),$4,gen_random_uuid(),CASE WHEN i%2=0 THEN 2 ELSE 10 END,'2026-10-13T08:00:00.123456+08:00'::timestamptz FROM generate_series(1,$5::int) i",[p.left.s.tenantId,p.left.s.spaceId,p.left.s.actorId,'sha256:'+'0'.repeat(64),511-n]);
+    const work:NonNullable<PublicationOverrides[3]>={actorId:p.left.s.actorId,key:randomUUID(),binding:'sha256:'+'3'.repeat(64),receiptId:randomUUID(),jobId:randomUUID(),entity:{class:'source',id:p.left.sourceRef.id,revision:1},epoch:10,at:'2026-10-13T08:00:00.123456+08:00'};
+    const overrides:PublicationOverrides=[undefined,undefined,undefined,work];
+    const accepted=await historicalPublicationRows(tx,p.left.s.tenantId,p.left.s.spaceId,revision,overrides);assert.equal(accepted[5]!.length,512);
+    assert.equal(await controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision,...overrides),historicalDigest(accepted),'511 stored commands plus prospective work accepts the exact historical512 controls');
+    await c.query('INSERT INTO fabric.storage_commands SELECT tenant_id,space_id,actor_id,gen_random_uuid(),binding_digest,gen_random_uuid(),epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 LIMIT 1',[p.left.s.tenantId,p.left.s.spaceId]);
+    const refused=await historicalPublicationRows(tx,p.left.s.tenantId,p.left.s.spaceId,revision,overrides);assert.equal(refused[5]!.length,513);
+    await assert.rejects(()=>controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision,...overrides),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    // A real revision2 under the same head identity distinguishes numeric1/2/10
+    // ordering from lexical1/10/2; the entire fixture addition is rolled back.
+    await c.query("INSERT INTO fabric.storage_entities SELECT tenant_id,space_id,class,id,2,source_task_id FROM fabric.storage_entities WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[p.left.s.tenantId,p.left.s.spaceId,p.left.sourceRef.id]);
+    await c.query("INSERT INTO fabric.storage_current_heads SELECT tenant_id,space_id,class,id,2,witness,gen_random_uuid(),gen_random_uuid(),epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[p.left.s.tenantId,p.left.s.spaceId,p.left.sourceRef.id]);
+    const head:NonNullable<PublicationOverrides[4]>={class:'source',id:p.left.sourceRef.id,revision:10,witness:'sha256:'+'4'.repeat(64),keyId:randomUUID(),generation:randomUUID(),epoch:10,at:'2026-10-13T08:00:00.123456+08:00',expiresAt:'2026-10-13T08:00:37.654321+08:00'};
+    const headOverrides:PublicationOverrides=[undefined,undefined,undefined,undefined,head];
+    const ordered=await historicalPublicationRows(tx,p.left.s.tenantId,p.left.s.spaceId,revision,headOverrides);
+    assert.deepEqual(ordered[2]!.filter(row=>row['class']==='source'&&row['id']===head.id).map(row=>row['revision']),['1','2','10']);
+    assert.equal(await controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision,...headOverrides),historicalDigest(ordered),'Batch retains typed numeric ordering before JSON text projection');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query("INSERT INTO fabric.storage_commands SELECT $1,$2,$3,gen_random_uuid(),$4,gen_random_uuid(),CASE WHEN i%2=0 THEN 2 ELSE 10 END,'2026-10-13T08:00:00.123456+08:00'::timestamptz FROM generate_series(1,$5::int) i",[p.left.s.tenantId,p.left.s.spaceId,p.left.s.actorId,'sha256:'+'0'.repeat(64),512-n]);
     assert.match(await controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision),/^sha256:[0-9a-f]{64}$/);
-    // The typed policy override takes the original scan path without changing
-    // policy values; its digest must match this same512-row live state exactly.
+    // A typed policy override preserving policy values must match this same
+    //512-row live state exactly, regardless of projection transport.
     const policy=(await c.query('SELECT periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3',[p.left.s.tenantId,p.left.s.spaceId,revision])).rows[0];
     assert.equal(await controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision),await controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision,policy));
     await c.query('INSERT INTO fabric.storage_commands SELECT tenant_id,space_id,actor_id,gen_random_uuid(),binding_digest,gen_random_uuid(),epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 LIMIT 1',[p.left.s.tenantId,p.left.s.spaceId]);
     await assert.rejects(()=>controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await assert.rejects(()=>controlDigest(tx,p.left.s.tenantId,p.left.s.spaceId,revision,policy),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
    }finally{await c.query('ROLLBACK');c.release();}
   });
   await t.test('A01/shared-source',async()=>{const h=await p.forward.read();assert.equal(h.id,p.left.sourceRef.id);assert.equal((h as Record<string,unknown>)['witness'],p.left.sourceRef.witness);assert.equal(h.source_task_id,(await f.task(p.left.s)).binding.taskId);assert.equal(h.space_id,p.left.s.spaceId);assert.equal((await p.reverse.read()).id,p.right.sourceRef.id);f.count.read+=2;
@@ -191,7 +278,42 @@ export async function registerAuthorityRouteTests(suite:'authority'|'verify-auth
   await t.test('A05/save-offline',async()=>{await denied(f,()=>f.canonical().save(x.s,{...x.save,key:randomUUID(),targetId:randomUUID()}),['AUTHORITY_UNAVAILABLE']);await denied(f,()=>f.canonical().source(x.s,{...x.source,key:randomUUID(),targetId:randomUUID()}),['AUTHORITY_UNAVAILABLE']);await unchanged(f,before);});
   await t.test('A05/derived-offline',async()=>{await denied(f,()=>cache.repository().publish(x.s,{...cache.command,key:randomUUID()}),['AUTHORITY_UNAVAILABLE']);await unchanged(f,before);});
   await t.test('A05/restore-offline',async()=>{await denied(f,()=>backup.read(),['AUTHORITY_UNAVAILABLE']);await denied(f,()=>f.importer().import(x.s,{...backup.command,action:'restore',key:randomUUID(),targetId:randomUUID(),backupId:backup.c.backupId}),['AUTHORITY_UNAVAILABLE','RESTORE_BLOCKED']);await unchanged(f,before);});
-  await t.test('A05/authority-recovered',async()=>{f.setOnline(true);assert.equal((await x.readKnowledge()).value,x.save.assertion.value);await denied(f,()=>ask.read(),['CONTENT_UNAVAILABLE']);const freshAsk=await f.ask(x);assert.deepEqual(await freshAsk.read(),freshAsk.result);const b=await cache.read();assert.ok(b.toString().includes(x.save.assertion.value));b.fill(0);assert.equal((await backup.read()).confirmed,true);f.count.read+=4;const saved=await f.core(await f.f.scopeFor(f.f.actors[0],f.f.spaces.personal));assert.equal((await saved.readKnowledge()).value,saved.save.assertion.value);f.count.read++;});
+  await t.test('A05/authority-recovered',async()=>{
+   f.setOnline(true);const stable=await f.snapshot(),opens=f.opens();
+   await assertEpochJournalReadBoundaries(f.roots['authority']!,x.s,(work,codes)=>denied(f,work,codes));
+   assert.equal(f.opens(),opens,'Journal file refusals never open a private payload');await unchanged(f,stable);
+   const anchor=await f.journal.current(x.s.tenantId,x.s.spaceId);assert(anchor);
+   // Real committed absence must refuse before decryption even when the
+   // independently owned journal still supplies a valid current anchor.
+   for(const table of ['storage_authority_epoch','storage_policy'] as const){
+    const params:(string|number)[]=table==='storage_policy'?[x.s.tenantId,x.s.spaceId,anchor.policyRevision]:[x.s.tenantId,x.s.spaceId];
+    const where='tenant_id=$1 AND space_id=$2'+(table==='storage_policy'?' AND revision=$3':'');
+    const order=table==='storage_policy'?'revision':'epoch';
+    const select=`SELECT coalesce(json_agg(row_to_json(r) ORDER BY r.${order}),'[]'::json)::text AS original FROM fabric.${table} r WHERE ${where}`;
+    const original=String((await f.f.admin.query(select,params)).rows[0].original),rows=JSON.parse(original) as unknown[];
+    assert(rows.length>0);if(table==='storage_policy')assert.equal(rows.length,1);
+    const c=await f.f.admin.connect(),priorOpens=f.opens();
+    try{
+     await c.query('BEGIN');await c.query("SET LOCAL session_replication_role='replica'");
+     assert.equal((await c.query(`DELETE FROM fabric.${table} WHERE ${where}`,params)).rowCount,rows.length);
+     await c.query('COMMIT');
+     assert.equal(String((await f.f.admin.query(select,params)).rows[0].original),'[]','The owned SQL authority rows are actually absent');
+     await denied(f,()=>x.readKnowledge(),['AUTHORITY_UNAVAILABLE']);
+     await denied(f,()=>x.readSource(),['AUTHORITY_UNAVAILABLE']);
+     assert.equal(f.opens(),priorOpens,'Missing SQL epoch or requested policy refuses before a private payload open');
+    }finally{
+     try{
+      await c.query('ROLLBACK');await c.query('BEGIN');await c.query("SET LOCAL session_replication_role='replica'");
+      await c.query(`DELETE FROM fabric.${table} WHERE ${where}`,params);
+      await c.query(`INSERT INTO fabric.${table} SELECT * FROM json_populate_recordset(null::fabric.${table},$1::json)`,[original]);
+      await c.query('COMMIT');
+     }catch(e){await c.query('ROLLBACK');throw e;}finally{c.release();}
+    }
+    assert.equal(String((await f.f.admin.query(select,params)).rows[0].original),original,'Exact original numeric and timestamp authority rows are restored');
+    await unchanged(f,stable);assert.equal((await x.readKnowledge()).value,x.save.assertion.value);f.count.read++;
+   }
+   assert.equal((await x.readKnowledge()).value,x.save.assertion.value);await denied(f,()=>ask.read(),['CONTENT_UNAVAILABLE']);const freshAsk=await f.ask(x);assert.deepEqual(await freshAsk.read(),freshAsk.result);const b=await cache.read();assert.ok(b.toString().includes(x.save.assertion.value));b.fill(0);assert.equal((await backup.read()).confirmed,true);f.count.read+=4;const saved=await f.core(await f.f.scopeFor(f.f.actors[0],f.f.spaces.personal));assert.equal((await saved.readKnowledge()).value,saved.save.assertion.value);f.count.read++;
+  });
  });
  await family('A06',async(t,f)=>{
   const x=await f.core(f.f.scope),backup=await f.backupOf(x),operator=f.f.scope,reader=await f.f.scopeFor(f.f.actors[2]),contributor=await f.f.scopeFor(f.f.actors[1]),readerTask=await f.task(operator),contributorTask=await f.task(contributor);

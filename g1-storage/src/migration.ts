@@ -6,7 +6,7 @@ import { demand } from './errors.js';
 import { uuid } from './decoder.js';
 import { modelMigrationPins } from '../../g1-model/src/migration-pins.js';
 export const STORAGE_MIGRATIONS = Object.freeze({1:{file:'0001_resource_identity.sql',digest:'e26197ddce314fc9d1523f3374e6a24b409810d5e7f3a84fcab0d90dcc6e71ee'},
- 2:{file:'0002_current_authority.sql',digest:'11fb935cc82f2f81f5dcd9f20a5489d9d274347546950dc442733a4f1556ab74'},
+ 2:{file:'0002_current_authority.sql',digest:'1cfda632d88afeb4bb679aaaf807e8d30f6f3afeafc0f72a6afb51135ecec456'},
  3:{file:'0003_shared_authority.sql',digest:'2679071575b61a2203097456d76d7441b220d3f6e135ae0dfeab8d47e67d8e5a'},
  4:{file:'0004_epoch_publication.sql',digest:'5655dcfbfdb2412713df2562c8e8ad32537ce0036540ef74c5542b9b790568fe'},
  5:{file:'0005_policy_publication.sql',digest:'cdacba2dd4ebd6043c9f1d1a262263269445bb7ad73fa69086464c8dc5e4d62b'},

@@ -145,22 +145,22 @@ try{
  // Actual unchanged copied compiler and missing-fixture regressions also retain
  // their original stdout diagnostics and the final failing parent clock.
  const {HarnessCopy}=await import(pathToFileURL(resolve(cache,'g1-storage/tests/helpers/harness-copy.js')).href);
- const copy=new HarnessCopy();try{
+ const copy=await HarnessCopy.create();try{
   const {rmSync}=await import('node:fs');rmSync(resolve(copy.storage,'src/contracts.ts'));
-  const r=copy.run('measurement-actual-compiler-failure','scripts/check.mjs');assert.equal(r.status,1);assert.match(r.stdout,/TS2307/);
+  const r=await copy.run('measurement-actual-compiler-failure','scripts/check.mjs');assert.equal(r.status,1);assert.match(r.stdout,/TS2307/);
   const {decoded}=censusReceipts(r.stdout),last=decoded.at(-1).record;
   assert.equal(last.measurement,'storage-parent-return');assert.equal(last.phase,'command');assert.equal(last.success,false);
   assert(last.elapsedMs>0);assert.match(r.stderr,/Storage check failed; behavior and final guards retained/);
   proof.compiler={status:r.status,diagnostic:'TS2307',stdoutBytes:Buffer.byteLength(r.stdout),finalClockMs:last.elapsedMs};
   writeFileSync(resolve(copy.storage,'src/contracts.ts'),readFileSync(resolve(cwd,'src/contracts.ts')));
   rmSync(resolve(copy.storage,'scripts/fixture.mjs'));
-  const missing=copy.run('measurement-actual-missing-fixture','scripts/check-component.mjs',['commands']);
+  const missing=await copy.run('measurement-actual-missing-fixture','scripts/check-component.mjs',['commands']);
   assert.equal(missing.status,1);assert.match(missing.stdout,/strict-build/);assert.match(missing.stderr,/ERR_MODULE_NOT_FOUND/);
   assert.equal(missing.stdout.split('"measurement":"preserved-inputs"').length-1,4);
   const final=censusReceipts(missing.stdout).decoded.at(-1).record;
   assert.equal(final.measurement,'storage-parent-return');assert.equal(final.phase,'command');assert.equal(final.success,false);
   assert(final.elapsedMs>0);proof.missingFixture={status:missing.status,stdoutBytes:Buffer.byteLength(missing.stdout),finalClockMs:final.elapsedMs};
- }finally{copy.close();}
+ }finally{await copy.close();}
  proof.predecessorFiles=predecessor.length;proof.originalFiles=original.length;proof.recoveryPins=14;
 } catch(error){errors.push(error);}
 finally{

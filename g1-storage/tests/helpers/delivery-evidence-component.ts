@@ -11,16 +11,18 @@ import type {ComponentTest} from './canonical-component.js';
 export async function registerDeliveryEvidenceTests(register:ComponentTest=test){
  const root=process.env['STORAGE_REPO_ROOT']??process.cwd();
  const modulePath=pathToFileURL(resolve(root,'g1-storage/scripts/delivery-evidence.mjs')).href;
- const m=await import(modulePath),audit=m.inspectEvidence();
+ const m=await import(modulePath),audit=await m.inspectEvidence(),origin=await m.evidenceOrigin();
  const original=audit.latest.find((r:{id:string})=>r.id==='f05-15-docs.delivery-operations-component');assert(original);
  await register('D02 / actual candidate, definitions, raw streams and independent status',async t=>{
   await t.test('D02/candidate-check-lock-binding',async()=>{
+   assert.equal(origin.executionRoot,root);assert.equal(audit.executionRoot,root);assert.equal(audit.originRoot,origin.originRoot);
+   assert.deepEqual(await m.evidenceOrigin(),{executionRoot:root,originRoot:audit.originRoot});
    assert.match(audit.current.candidate.digest,/^sha256:[a-f0-9]{64}$/);const current=await import(pathToFileURL(resolve(root,'g1-storage/scripts/candidate.mjs')).href);assert.deepEqual(audit.current.candidate,current.candidateSnapshot());
    for(const file of ['tests/helpers/delivery-evidence-component.ts','tests/components/delivery-evidence.test.ts','tests/delivery-audit.test.ts','scripts/delivery-evidence.mjs','scripts/check-evidence.mjs']){const stat=lstatSync(resolve(root,'g1-storage',file));assert(stat.isFile()&&!stat.isSymbolicLink());assert(stat.size>0);}
    assert.match(audit.current.controllerFingerprint,/^git:[a-f0-9]{24}$/);
    const dependencies=JSON.parse(readFileSync(resolve(root,'g1-storage/dependencies.json'),'utf8'));assert.equal(audit.current.lock.sha256,'sha256:'+dependencies.lockSha256);
    assert.equal(original.command,'node g1-storage/scripts/check-component.mjs delivery-operations');assert.match(original.candidate,/^sha256:[a-f0-9]{64}$/);assert.equal(original.status,'pass');assert.equal(original.exitCode,0);assert.equal(original.outcome,'completed');assert(original.elapsedMs>0);
-   const transport=original.rows.find((r:{measurement:string;binding?:{phase:string}})=>r.measurement==='storage-measurement-transport'&&r.binding?.phase==='command');assert(transport);assert.equal(transport.binding.candidate,original.candidate);assert.equal(transport.binding.command.args.at(-1),'delivery-operations');assert.equal(transport.binding.command.args.at(-2),resolve(root,'g1-storage/scripts/check-component.mjs'));
+   const transport=m.outerRecords(original.rows).find((r:{measurement:string;binding?:{phase:string}})=>r.measurement==='storage-measurement-transport'&&r.binding?.phase==='command');assert(transport);assert.equal(transport.binding.candidate,original.candidate);assert.equal(transport.binding.command.args.at(-1),'delivery-operations');assert.equal(transport.binding.command.args.at(-2),resolve(audit.originRoot,'g1-storage/scripts/check-component.mjs'));assert.equal(transport.binding.command.cwd,audit.originRoot);
    for(const [id,path] of [['g1-storage-behavior','g1-storage/scripts/check.mjs'],['identity-behavior','g1-identity/scripts/check.mjs'],['foundation-behavior','g1-foundations/scripts/check.mjs'],['retained-baselines','g1-foundations/scripts/check-retained.mjs']])assert.deepEqual(audit.definitions['acceptance.'+id].argv,['node',path]);
    assert.equal(original.candidateCurrent,original.candidate===audit.current.candidate.digest);assert.equal(original.workspaceCurrent,original.controllerFingerprint===audit.current.controllerFingerprint);
    assert.throws(()=>m.assertCurrentRun({...original,candidate:audit.current.candidate.digest,controllerFingerprint:'git:000000000000000000000000'},audit.current),/Stale controller workspace/);
@@ -28,12 +30,142 @@ export async function registerDeliveryEvidenceTests(register:ComponentTest=test)
   });
   await t.test('D02/complete-controller-streams',async()=>{
    for(const stream of [original.stdout,original.stderr]){const bytes=readFileSync(resolve(root,stream.path));m.assertStream(bytes,stream);assert.throws(()=>m.assertStream(Buffer.concat([bytes,Buffer.from('changed')]),stream));if(bytes.length)assert.throws(()=>m.assertStream(bytes.subarray(0,-1),stream),/Complete stream byte count/);assert.throws(()=>m.assertStream(bytes,{...stream,sha256:'sha256:'+'0'.repeat(64)}),/Original stream SHA256/);}
-   const output=original.rows.filter((r:{measurement:string})=>r.measurement==='storage-test-report');assert.equal(output.length,1);assert.equal(output[0].scope,'component');assert.equal(output[0].diagnosticOnly,true);const r=output[0].reports[0];assert.equal(r.suite,'delivery-operations');assert.equal(r.tests,28);assert.equal(r.cases.length,4);assert.equal(r.variants.length,24);
+   const output=m.outerRecords(original.rows).filter((r:{measurement:string})=>r.measurement==='storage-test-report');assert.equal(output.length,1);assert.equal(output[0].scope,'component');assert.equal(output[0].diagnosticOnly,true);const r=output[0].reports[0];assert.equal(r.suite,'delivery-operations');assert.equal(r.tests,28);assert.equal(r.cases.length,4);assert.equal(r.variants.length,24);
    const required=JSON.parse(readFileSync(resolve(root,'g1-storage/verification/required-variants-v1.json'),'utf8'));for(const id of ['D01','D03','D04','D05'])for(const leaf of required.cases[id])assert.equal(r.executions.filter((e:{name:string;indent:number;parent:string|null})=>e.indent===4&&e.name===leaf&&e.parent?.startsWith(id+' / ')).length,1,leaf);
    const fixtures=original.rows.filter((r:{measurement:string})=>r.measurement==='storage-owned-fixture');assert.equal(fixtures.length,1);
    for(const f of fixtures){for(const name of ['storage-container-cleanup','storage-root-cleanup']){const entries=original.rows.filter((r:{measurement:string;owner:string;instance:string})=>r.measurement===name&&r.owner===f.owner&&r.instance===f.instance);assert.equal(entries.length,1);assert.equal(entries[0].removed,true);if(name==='storage-container-cleanup')assert.equal(entries[0].censusUnchanged,true);}}
    const children=original.rows.filter((r:{measurement:string})=>r.measurement==='model-owned-process');assert.equal(children.length,4);for(const child of children){const cleanup=original.rows.filter((r:{measurement:string;pid:number})=>r.measurement==='model-owned-process-cleanup'&&r.pid===child.pid);assert.equal(cleanup.length,1);assert.equal(cleanup[0].removed,true);}
-   assert.equal(original.rows.filter((r:{measurement:string})=>r.measurement==='strict-build').length,1);const guards=original.rows.filter((r:{measurement:string})=>r.measurement==='preserved-inputs');assert(guards.length>=2);for(const g of guards){assert.equal(g.files,2581);assert.equal(g.unchanged,true);}
+   assert.equal(m.outerRecords(original.rows).filter((r:{measurement:string})=>r.measurement==='strict-build').length,1);const guards=original.rows.filter((r:{measurement:string})=>r.measurement==='preserved-inputs');assert(guards.length>=2);for(const g of guards){assert.equal(g.files,2581);assert.equal(g.unchanged,true);}
+   // These bounded in-memory controls exercise the shipped raw reader and
+   // coverage gate. They create no controller job, fixture or product verdict.
+   const registry=await import(pathToFileURL(resolve(root,'g1-storage/scripts/registry.mjs')).href);
+   const {fullDescriptor}=await import(pathToFileURL(resolve(root,'g1-storage/scripts/full-composition.mjs')).href);
+   const {encodeMeasurement,decodeMeasurement}=await import(pathToFileURL(resolve(root,'g1-storage/scripts/measurement-transport.mjs')).href);
+   const dependencies=JSON.parse(readFileSync(resolve(root,'g1-storage/dependencies.json'),'utf8'));
+   const candidate=audit.current.candidate.digest,copyRoot=resolve('/private/tmp/agent-fabric-storage-stream-format/candidate');
+   const sources=Object.fromEntries(['execution-measurement.mjs','measurement-transport.mjs','runner.mjs','suite-execution.mjs','build.mjs','process-result.mjs'].map(file=>[file,m.digest(readFileSync(resolve(root,'g1-storage/scripts',file)))]));
+   const outerCommand={executable:process.execPath,args:[resolve(root,'g1-storage/scripts/check.mjs')],cwd:root};
+   const nestedCommand={executable:process.execPath,args:[resolve(copyRoot,'g1-storage/scripts/runner.mjs'),'00000000-0000-4000-8000-000000000001'],cwd:copyRoot};
+   type StreamEntry={prefix:string;value:Record<string,unknown>};
+   type ControlSuite={cases:string[];variants:Record<string,string[]>;positives:string[]|null};
+   type ObservationSource={component:string;suite?:string};
+   type Execution={indent:number;number:number;name:string;parent:string|null};
+   const clone=<T>(value:T):T=>JSON.parse(JSON.stringify(value));
+   const entry=(value:Record<string,unknown>,prefix=''):StreamEntry=>({prefix,value});
+   const positiveNames=['save','ask','forget','restore','read','write','deny','conflict','propagate','backup','owner','harness'];
+   const violationNames=['unauthorizedDisclosure','unauthorizedMutation','silentLostUpdate','duplicateCanonicalEffect','restrictedResurrection','askComputerStart'];
+   const observation=(suite:string)=>({schemaVersion:1,measurement:'storage-observations',suite,positives:Object.fromEntries(positiveNames.map(name=>[name,1])),violations:Object.fromEntries(violationNames.map(name=>[name,0]))});
+   let fixtureSequence=0;
+   const uuid=()=>`00000000-0000-4000-8000-${String(++fixtureSequence).padStart(12,'0')}`;
+   const fixture=()=>{
+    const owner=uuid(),instance=uuid(),fixtureRoot={rootId:uuid(),device:1,inode:fixtureSequence};
+    const roots=Object.fromEntries(['content','backup','restore','authority'].map(name=>[name,{rootId:uuid(),device:1,inode:fixtureSequence}]));
+    const containerId=m.digest(owner).slice(7);
+    return {origin:{measurement:'storage-owned-fixture',owner,instance,containerId,fixtureRoot,roots},cleanup:[
+     {measurement:'storage-container-cleanup',owner,instance,containerId,removed:true,censusUnchanged:true},
+     {measurement:'storage-root-cleanup',owner,instance,rootId:fixtureRoot.rootId,rootIds:Object.values(roots).map(r=>r.rootId),removed:true}]};
+   };
+   const suiteReport=(id:string,suite:ControlSuite)=>{
+    const descriptor=fullDescriptor(id);
+    const components:ControlSuite[]=id==='recall-ask'?registry.recallAskObservationSources.map((s:ObservationSource)=>registry.executionComponents[s.component]):id==='backup-restore'?registry.backupRestoreObservationSources.map((s:ObservationSource)=>registry.executionComponents[s.component]):id==='commit-conflict'?[...registry.commitConflictPredecessors.map((name:string)=>registry.executionComponents[name]),suite]:[suite];
+    const cases:string[]=descriptor?clone(descriptor.parents):components.flatMap(component=>component.cases);
+    const variants:Record<string,string[]>=Object.assign({},...components.map(component=>component.variants));
+    const executions:Execution[]=descriptor?clone(descriptor.executions):cases.flatMap((parent,index)=>[...(variants[parent]??[]).map((name,leaf)=>({indent:4,number:leaf+1,name,parent})),{indent:0,number:index+1,name:parent,parent:null}]);
+    let observations:unknown=suite.positives===null?null:observation(id);
+    if(descriptor)observations={measurement:'storage-full-observation-composition',suite:id,candidate,sources:descriptor.registrations.map((spec:{id:string;suite:string;fixtures:number})=>{
+     const owned=Array.from({length:spec.fixtures},fixture);
+     return {registration:spec.id,observation:observation(spec.suite),fixtures:owned.map(f=>f.origin),cleanup:owned.flatMap(f=>f.cleanup)};
+    }),diagnostics:[]};
+    else if(['commit-conflict','recall-ask','backup-restore'].includes(id)){
+     const expected:ObservationSource[]=id==='commit-conflict'?registry.commitConflictObservationSources:id==='recall-ask'?registry.recallAskObservationSources:registry.backupRestoreObservationSources;
+     observations=expected.map(source=>observation(source.suite??source.component));
+    }
+    return {suite:id,tests:executions.length,cases,variants:executions.filter(e=>e.indent>0).map(e=>e.name),executions,fail:0,cancelled:0,skipped:0,todo:0,observations};
+   };
+   const reports=Object.entries(registry.executionSuites).map(([id,suite])=>suiteReport(id,suite as ControlSuite));
+   const prerequisite=Object.entries(registry.executionSuites).filter(([id])=>id!=='harness').map(([id,suite])=>suiteReport(id,suite as ControlSuite));
+   assert.equal(reports.length,11);assert.equal(prerequisite.length,10);assert.equal(prerequisite.findIndex(report=>report.suite==='atomic-disconnect'),prerequisite.findIndex(report=>report.suite==='commit-conflict')+1);
+   const build={measurement:'strict-build',sourceAndTests:true,node:'v22.22.3',pins:{pg:'8.16.3','@types/pg':'8.15.5','@types/node':'22.18.6',typescript:'5.9.3'},dependencyLockDigest:'sha256:'+dependencies.lockSha256,cacheCleared:true,install:'offline/frozen/ignore-scripts'};
+   const guard={measurement:'preserved-inputs',files:2581,unchanged:true};
+   const commandRows=(mode:string,command:typeof outerCommand,returning:boolean,prefix='')=>{
+    const binding={phase:'command',candidate,command,sources};
+    const value={measurement:returning?'storage-parent-return':'storage-parent-start',phase:'command',clock:'parent-monotonic',mode,candidate,startedMs:1,...(returning?{returnedMs:2,elapsedMs:1,success:true}:{}),transportBinding:binding};
+    return encodeMeasurement(value,binding).map((row:Record<string,unknown>)=>entry(row,prefix));
+   };
+   const nestedFixture=fixture(),outerFixture=fixture();
+   const nested:StreamEntry[]=[entry({measurement:'storage-candidate',digest:candidate,diagnosticOnly:true},'# '),...commandRows('harness-prerequisite',nestedCommand,false,'# '),entry(guard,'# '),entry(build,'# '),entry(nestedFixture.origin,'# '),...nestedFixture.cleanup.map(row=>entry(row,'# ')),entry({measurement:'storage-test-report',scope:'harness-prerequisite',diagnosticOnly:true,externalQualification:'pending',reports:prerequisite},'# '),entry(guard,'# '),...commandRows('harness-prerequisite',nestedCommand,true,'# ')];
+   const diagnosticCommand={executable:process.execPath,args:[resolve(copyRoot,'g1-storage/scripts/check-component.mjs'),'harness-build'],cwd:copyRoot};
+   const diagnostic:StreamEntry[]=[...commandRows('component',diagnosticCommand,false,'# '),entry(guard,'# '),entry(build,'# '),entry({measurement:'storage-test-report',scope:'component',diagnosticOnly:true,externalQualification:'pending',reports:[]},'# '),entry(guard,'# '),...commandRows('component',diagnosticCommand,true,'# ')];
+   const stream:StreamEntry[]=[entry({measurement:'storage-candidate',digest:candidate,diagnosticOnly:false}),...commandRows('aggregate',outerCommand,false),entry(guard),entry(build),...diagnostic,...nested,entry(outerFixture.origin),...outerFixture.cleanup.map(row=>entry(row)),entry({measurement:'storage-test-report',scope:'aggregate',diagnosticOnly:false,externalQualification:'pending',reports}),entry(guard),...commandRows('aggregate',outerCommand,true)];
+   const read=(entries:StreamEntry[])=>m.records(Buffer.from(entries.map(({prefix,value})=>prefix+JSON.stringify(value)).join('\n')+'\n'));
+   const coverage=(entries:StreamEntry[])=>m.assertAggregateCoverage({rows:read(entries),candidate,command:'node g1-storage/scripts/check.mjs',commandBinding:outerCommand},registry);
+   const isRecord=(row:StreamEntry,prefix:string,measurement:string)=>row.prefix===prefix&&row.value['measurement']===measurement;
+   const refuse=(name:string,change:(entries:StreamEntry[])=>StreamEntry[])=>assert.throws(()=>coverage(change(clone(stream))),name);
+   coverage(stream);
+   // Identical payloads retain their actual line prefix, depth and order. TAP
+   // escaping and indentation cannot elevate a nested record to outer scope.
+   const payload={measurement:'stream-format-control',scope:'aggregate',depth:0,prefix:''};
+   const prefixes=['','# ','# \\# ','    # '];
+   const scoped=read(prefixes.map(prefix=>entry(payload,prefix)));
+   assert.equal(scoped.length,4);for(const row of scoped)assert.deepEqual(row,payload);
+   assert.deepEqual(scoped.map((row:object)=>m.recordContext(row).prefix),prefixes);
+   assert.deepEqual(scoped.map((row:object)=>m.recordContext(row).depth),[0,1,2,1]);
+   const orders:number[]=scoped.map((row:object)=>m.recordContext(row).order);assert(orders.every((order,index)=>index===0||order>orders[index-1]!));
+   assert.deepEqual(m.outerRecords(scoped),[scoped[0]]);assert.throws(()=>m.outerRecords([payload]),/raw|context|record/i);
+   for(const measurement of ['storage-candidate','storage-test-report','strict-build']){
+    refuse('missing outer '+measurement,rows=>rows.filter(row=>!isRecord(row,'',measurement)));
+    refuse('duplicate outer '+measurement,rows=>{const index=rows.findIndex(row=>isRecord(row,'',measurement));rows.splice(index,0,clone(rows[index]!));return rows;});
+   }
+   refuse('nested-only success',rows=>rows.filter(row=>row.prefix!==''));
+   refuse('nested aggregate payload cannot supply missing outer',rows=>rows.filter(row=>!isRecord(row,'','storage-test-report')).map(row=>{if(isRecord(row,'# ','storage-test-report'))Object.assign(row.value,{scope:'aggregate',diagnosticOnly:false});return row;}));
+   for(const property of ['sourceAndTests','cacheCleared'])refuse('nonfresh outer '+property,rows=>{const row=rows.find(row=>isRecord(row,'','strict-build'))!;row.value[property]=false;return rows;});
+   for(const [property,value] of [['node','v22.0.0'],['dependencyLockDigest','sha256:'+'0'.repeat(64)],['install','online']] as const)refuse('unbound outer build '+property,rows=>{rows.find(row=>isRecord(row,'','strict-build'))!.value[property]=value;return rows;});
+   const inPrerequisite=(rows:StreamEntry[],row:StreamEntry)=>rows.indexOf(row)>=rows.findIndex(row=>isRecord(row,'# ','storage-candidate'));
+   for(const measurement of ['storage-candidate','storage-test-report','strict-build']){
+    refuse('missing nested '+measurement,rows=>rows.filter(row=>!isRecord(row,'# ',measurement)||!inPrerequisite(rows,row)));
+    refuse('duplicate nested '+measurement,rows=>{const index=rows.findIndex(row=>isRecord(row,'# ',measurement)&&inPrerequisite(rows,row));rows.splice(index,0,clone(rows[index]!));return rows;});
+   }
+   const changeNestedReport=(rows:StreamEntry[],change:(report:typeof prerequisite)=>void)=>{const report=rows.find(row=>isRecord(row,'# ','storage-test-report')&&inPrerequisite(rows,row))!;change(report.value['reports'] as typeof prerequisite);return rows;};
+   refuse('incomplete nested workload',rows=>changeNestedReport(rows,reports=>{reports.pop();}));
+   refuse('nested suite order',rows=>changeNestedReport(rows,reports=>{[reports[0],reports[1]]=[reports[1]!,reports[0]!];}));
+   refuse('incomplete nested execution',rows=>changeNestedReport(rows,reports=>{reports[0]!.executions.pop();}));
+   for(const field of ['fail','cancelled','skipped','todo'] as const)refuse('nested '+field,rows=>changeNestedReport(rows,reports=>{reports[0]![field]=1;}));
+   refuse('nested aggregate payload with genuine outer',rows=>{Object.assign(rows.find(row=>isRecord(row,'# ','storage-test-report')&&inPrerequisite(rows,row))!.value,{scope:'aggregate',diagnosticOnly:false});return rows;});
+   refuse('nonfresh nested build',rows=>{rows.find(row=>isRecord(row,'# ','strict-build')&&inPrerequisite(rows,row))!.value['cacheCleared']=false;return rows;});
+   refuse('different-depth nested build',rows=>{rows.find(row=>isRecord(row,'# ','strict-build')&&inPrerequisite(rows,row))!.prefix='# \\# ';return rows;});
+   refuse('standalone nested build cannot supply workload',rows=>{const index=rows.findIndex(row=>isRecord(row,'# ','strict-build')&&inPrerequisite(rows,row));const [build]=rows.splice(index,1);const start=rows.findIndex(row=>inPrerequisite(rows,row)&&row.prefix==='# '&&row.value['kind']==='start'&&(row.value['binding'] as {phase?:string}|undefined)?.phase==='command');rows.splice(start,0,build!);return rows;});
+   refuse('different copied candidate',rows=>{rows.find(row=>isRecord(row,'# ','storage-candidate'))!.value['digest']='sha256:'+'0'.repeat(64);return rows;});
+   for(const position of ['before','after'])refuse('prerequisite outside outer command '+position,rows=>{
+    const start=rows.findIndex(row=>isRecord(row,'# ','storage-candidate'));
+    const complete=rows.splice(start,nested.length);
+    if(position==='before')rows.unshift(...complete);else rows.push(...complete);
+    return rows;
+   });
+   const alterNestedTransport=(rows:StreamEntry[],returning:boolean,change:(record:Record<string,unknown>)=>void)=>{
+    const headers=rows.map((row,index)=>({row,index})).filter(({row})=>inPrerequisite(rows,row)&&row.prefix==='# '&&row.value['measurement']==='storage-measurement-transport'&&row.value['kind']==='start'&&(row.value['binding'] as {phase?:string}|undefined)?.phase==='command');
+    const header=headers[returning?1:0]!;
+    const count=(header.row.value['count'] as number)+2,transport=rows.slice(header.index,header.index+count).map(row=>row.value);
+    const value=decodeMeasurement(transport,header.row.value['binding']).record;
+    change(value);const replacement=encodeMeasurement(value,value.transportBinding).map((row:Record<string,unknown>)=>entry(row,'# '));
+    rows.splice(header.index,count,...replacement);return rows;
+   };
+   refuse('unsuccessful nested command',rows=>alterNestedTransport(rows,true,value=>{value['success']=false;}));
+   refuse('nested command mode',rows=>alterNestedTransport(rows,false,value=>{value['mode']='component';}));
+   for(const returning of [false,true])refuse('missing nested command '+(returning?'return':'start'),rows=>{
+    const headers=rows.map((row,index)=>({row,index})).filter(({row})=>inPrerequisite(rows,row)&&row.prefix==='# '&&row.value['kind']==='start'&&(row.value['binding'] as {phase?:string}|undefined)?.phase==='command');
+    const header=headers[returning?1:0]!;rows.splice(header.index,(header.row.value['count'] as number)+2);return rows;
+   });
+   const changeNestedObservation=(rows:StreamEntry[],change:(value:ReturnType<typeof observation>)=>void)=>changeNestedReport(rows,reports=>{change(reports.find(report=>report.suite==='authority')!.observations as ReturnType<typeof observation>);});
+   refuse('nested positive omitted',rows=>changeNestedObservation(rows,observation=>{observation.positives['read']=0;}));
+   refuse('nested violation',rows=>changeNestedObservation(rows,observation=>{observation.violations['unauthorizedDisclosure']=1;}));
+   refuse('nested descriptor source omitted',rows=>changeNestedReport(rows,reports=>{(reports.find(report=>report.suite==='lifecycle-propagation')!.observations as {sources:unknown[]}).sources.pop();}));
+   refuse('nested descriptor root cleanup omitted',rows=>changeNestedReport(rows,reports=>{const source=(reports.find(report=>report.suite==='lifecycle-propagation')!.observations as {sources:{cleanup:{measurement:string}[]}[]}).sources[0]!;source.cleanup=source.cleanup.filter(row=>row.measurement!=='storage-root-cleanup');}));
+   refuse('missing nested root cleanup',rows=>rows.filter(row=>!(isRecord(row,'# ','storage-root-cleanup')&&row.value['owner']===nestedFixture.origin.owner)));
+   refuse('nested cleanup failure',rows=>{rows.find(row=>isRecord(row,'# ','storage-container-cleanup')&&row.value['owner']===nestedFixture.origin.owner)!.value['removed']=false;return rows;});
+   refuse('nested cleanup order',rows=>{const index=rows.findIndex(row=>isRecord(row,'# ','storage-container-cleanup')&&row.value['owner']===nestedFixture.origin.owner);[rows[index],rows[index+1]]=[rows[index+1]!,rows[index]!];return rows;});
+   // A later complete fresh control demonstrates refusal did not poison the
+   // reader; it cannot retrospectively qualify any deliberately damaged stream.
+   coverage(clone(stream));
    // Controller-wrapper cleanup stays distinct from these owned fixture records.
    assert(original.cleanup==='zombie'||original.cleanup==='clean'||original.cleanup==='reaped');assert.equal(audit.qualification.authorVerdict,false);
   });

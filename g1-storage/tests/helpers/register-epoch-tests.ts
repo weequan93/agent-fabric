@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import type { TestContext } from 'node:test';
 import { randomUUID,createHash } from 'node:crypto';
-import { readFile,readdir,writeFile,rename,symlink,unlink } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
+import { readFile,readdir,writeFile,rename,symlink,unlink,lstat,utimes,mkdir,rmdir,chmod } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import pg from 'pg';
 import { EpochWitnessJournal,type OwnedAnchorRoot } from '../../src/epoch-journal.js';
@@ -14,6 +15,123 @@ import type { createStorageFixture } from './pg-fixture.js';
 import type { enrollAuthority } from './authority-fixture.js';
 type Fixture=Awaited<ReturnType<typeof createStorageFixture>>;
 type Authority=Awaited<ReturnType<typeof enrollAuthority>>;
+/** Direct real reader cases shared by the original epoch component and full
+ * authority route. Only owned reproducible paths/events are changed, and every
+ * refusal settles before exact original paths, modes and bytes are restored. */
+export async function assertEpochJournalReadBoundaries(root:OwnedAnchorRoot,scope:{tenantId:string;spaceId:string},refuse:(work:()=>Promise<unknown>,codes:readonly string[])=>Promise<void>){
+ const journal=new EpochWitnessJournal(root),path=resolve(root.path,scope.tenantId,scope.spaceId);
+ const names=(await readdir(path)).filter(n=>/^\d{8}\.json$/.test(n)).sort();assert(names.length>0);
+ const last=resolve(path,names.at(-1)!),bytes=await readFile(last),current=await journal.current(scope.tenantId,scope.spaceId);
+ assert(current);assert(bytes.length>0&&bytes.length<=16384);
+ const marker=resolve(root.path,'.storage-owner.json'),markerBytes=await readFile(marker),tenant=resolve(root.path,scope.tenantId);
+ const identity={owner:root.owner,instance:root.instance,rootId:root.rootId,device:root.device,inode:root.inode};
+ assert.deepEqual(JSON.parse(markerBytes.toString()),identity);
+ const nodes=[{name:'root',path:root.path,directory:true},{name:'marker',path:marker,directory:false},{name:'tenant',path:tenant,directory:true},{name:'Space',path,directory:true}];
+ const metadata:{path:string;device:number;inode:number;mode:number}[]=[];for(const node of nodes){const st=await lstat(node.path);assert.equal(st.isSymbolicLink(),false);assert.equal(st.isDirectory(),node.directory);metadata.push({path:node.path,device:st.dev,inode:st.ino,mode:st.mode});}
+ const rootNames=(await readdir(root.path)).sort(),tenantNames=(await readdir(tenant)).sort(),spaceNames=(await readdir(path)).sort();
+ // The same already-used journal must observe each actual replacement on its
+ // next read. Rename preserves the original directory/marker inode and bytes;
+ // a symlink to that useful original still cannot supply directory authority.
+ for(const node of nodes)for(const variant of ['wrong-type','symlink'] as const){
+  assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+  const held=resolve(node.path,'..','.epoch-held-'+randomUUID());await rename(node.path,held);
+  try{
+   if(variant==='symlink')await symlink(held,node.path);
+   else if(node.directory)await writeFile(node.path,'owned epoch metadata fault',{flag:'wx',mode:0o600});
+   else await mkdir(node.path,{mode:0o700});
+   const substituted=await lstat(node.path);assert.equal(substituted.isSymbolicLink(),variant==='symlink',node.name+' actual '+variant);
+   if(variant==='wrong-type')assert.equal(substituted.isDirectory(),!node.directory,node.name+' actual wrong type');
+   await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);
+  }finally{
+   try{try{const st=await lstat(node.path);if(st.isDirectory()&&!st.isSymbolicLink())await rmdir(node.path);else await unlink(node.path);}catch(error){if((error as {code?:string}).code!=='ENOENT')throw error;}}
+   finally{await rename(held,node.path);}
+  }
+  assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+  assert.deepEqual(await new EpochWitnessJournal(root).current(scope.tenantId,scope.spaceId),current);
+ }
+ // Capability identities are compared to real fresh root metadata. A lexical
+ // alias reaches the canonical-realpath refusal with unchanged device/inode.
+ for(const forged of [{...root,device:root.device+1},{...root,inode:root.inode+1},{...root,path:root.path+'/.'}]){
+  await refuse(()=>new EpochWitnessJournal(forged).current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);
+  assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ }
+ const missing=resolve(root.path,'.epoch-marker-'+randomUUID());await rename(marker,missing);
+ try{await assert.rejects(()=>journal.current(scope.tenantId,scope.spaceId),{code:'ENOENT'});}
+ finally{await rename(missing,marker);}
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ try{await writeFile(marker,'{');await assert.rejects(()=>journal.current(scope.tenantId,scope.spaceId),SyntaxError);}
+ finally{await writeFile(marker,markerBytes);}
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ assert(markerBytes.length<=1024);
+ const boundedMarker=Buffer.concat([markerBytes,Buffer.alloc(1024-markerBytes.length,0x20)]),largeMarker=Buffer.concat([boundedMarker,Buffer.from(' ')]);
+ assert.equal(boundedMarker.length,1024);assert.deepEqual(JSON.parse(boundedMarker.toString()),identity);
+ assert.equal(largeMarker.length,1025);assert.deepEqual(JSON.parse(largeMarker.toString()),identity);
+ try{
+  await writeFile(marker,boundedMarker);assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+  await writeFile(marker,largeMarker);await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);
+ }
+ finally{await writeFile(marker,markerBytes);}
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ for(const changed of [{owner:root.owner+'-other'},{instance:randomUUID()},{rootId:randomUUID()},{device:root.device+1},{inode:root.inode+1}]){
+  try{await writeFile(marker,JSON.stringify({...identity,...changed}));await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);}
+  finally{await writeFile(marker,markerBytes);}
+  assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ }
+ // Prove a distinguishable later directory syscall fault first. Fresh root
+ // and marker refusals must win before that actual permission-denied mkdir.
+ const tenantMode=(await lstat(tenant)).mode&0o7777;
+ try{
+  await chmod(tenant,0);await assert.rejects(()=>journal.current(scope.tenantId,scope.spaceId),{code:'EACCES'});
+  await refuse(()=>new EpochWitnessJournal({...root,device:root.device+1}).current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);
+  await writeFile(marker,JSON.stringify({...identity,rootId:randomUUID()}));
+  await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['CLEANUP_UNPROVEN']);
+ }finally{try{await writeFile(marker,markerBytes);}finally{await chmod(tenant,tenantMode);}}
+ assert.deepEqual(await readFile(marker),markerBytes);assert.deepEqual(await readFile(last),bytes);
+ assert.deepEqual((await readdir(root.path)).sort(),rootNames);assert.deepEqual((await readdir(tenant)).sort(),tenantNames);assert.deepEqual((await readdir(path)).sort(),spaceNames);
+ for(const original of metadata){const st=await lstat(original.path);assert.equal(st.dev,original.device);assert.equal(st.ino,original.inode);assert.equal(st.mode,original.mode);assert.equal(st.isSymbolicLink(),false);}
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ assert.deepEqual(await new EpochWitnessJournal(root).current(scope.tenantId,scope.spaceId),current);
+ const oversized=Buffer.concat([bytes,Buffer.alloc(16385-bytes.length,0x20)]);
+ assert.equal(oversized.length,16385);assert.deepEqual(JSON.parse(oversized.toString()),JSON.parse(bytes.toString()));
+ try{await writeFile(last,oversized);await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['AUTHORITY_UNAVAILABLE']);}
+ finally{await writeFile(last,bytes);}
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ // No writer is installed. A blocking open would never reach the actual
+ // isFile refusal; the shipped nonblocking reader must reject the real FIFO.
+ await unlink(last);
+ try{
+  execFileSync('mkfifo',[last],{stdio:'pipe'});assert.equal((await lstat(last)).isFIFO(),true);
+  await refuse(()=>journal.current(scope.tenantId,scope.spaceId),['AUTHORITY_UNAVAILABLE']);
+ }finally{
+  try{await unlink(last);}catch(error){if((error as {code?:string}).code!=='ENOENT')throw error;}
+  await writeFile(last,bytes,{flag:'wx',mode:0o600});
+ }
+ assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ const entry=JSON.parse(bytes.toString()),reordered=Buffer.from(JSON.stringify({pending:entry.pending,anchor:entry.anchor,previousDigest:entry.previousDigest,sequence:entry.sequence}));
+ assert.equal(reordered.length,bytes.length);assert.equal(reordered.equals(bytes),false);assert.deepEqual(JSON.parse(reordered.toString()),entry);
+ const schedules=[
+  {name:'growth',initial:bytes,changed:oversized},
+  {name:'truncation',initial:Buffer.concat([bytes,Buffer.alloc(8,0x20)]),changed:bytes},
+  {name:'same-size',initial:bytes,changed:reordered}
+ ];
+ for(const schedule of schedules){
+  assert(schedule.initial.length<=16384);let reached=0;
+  try{
+   await writeFile(last,schedule.initial);assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+   const before=await lstat(last),changed=new EpochWitnessJournal(root,{afterEventStat:async sequence=>{
+    if(sequence!==names.length)return;assert.equal(++reached,1,schedule.name+' actual event-stat boundary');
+    await writeFile(last,schedule.changed);
+    // A semantically identical same-size rewrite must still be refused. Set
+    // a different real mtime rather than relying on filesystem clock precision.
+    if(schedule.name==='same-size')await utimes(last,before.atime,new Date(before.mtimeMs+1000));
+   }});
+   await refuse(()=>changed.current(scope.tenantId,scope.spaceId),['AUTHORITY_UNAVAILABLE']);
+   assert.equal(reached,1,schedule.name+' must mutate the actual opened event after stat');
+  }finally{await writeFile(last,bytes);}
+  assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+ }
+ assert.deepEqual(await readFile(last),bytes);
+}
 export async function registerEpochTests(t:TestContext,f:Fixture,a:Authority,deny:(work:()=>Promise<unknown>,codes:readonly string[])=>Promise<void>){
  const roots=JSON.parse(process.env['STORAGE_OWNED_ROOTS']!) as Record<string,OwnedAnchorRoot>,root=roots['authority']!;
  const journal=new EpochWitnessJournal(root),scope=f.scope,task=await f.task('maintenance');
@@ -122,6 +240,7 @@ export async function registerEpochTests(t:TestContext,f:Fixture,a:Authority,den
   // Exercise corruption in earlier and later I/O batches, including the
   // hash-chain boundary. Restoration must produce the exact useful anchor.
   assert(names.length>4);const current=await journal.current(scope.tenantId,scope.spaceId);
+  await assertEpochJournalReadBoundaries(root,scope,deny);
   for(const index of [0,3,4]){
    const file=resolve(path,names[index]!),original=await readFile(file),entry=JSON.parse(original.toString());
    for(const malformed of [{}, {...entry,sequence:entry.sequence+1}, {...entry,previousDigest:'sha256:'+'0'.repeat(64)}]){
@@ -136,6 +255,33 @@ export async function registerEpochTests(t:TestContext,f:Fixture,a:Authority,den
   try{await writeFile(first,'{}');await unlink(fourth);await symlink(resolve(root.path,'.storage-owner.json'),fourth);await deny(()=>journal.current(scope.tenantId,scope.spaceId),['INVALID_SCHEMA']);}
   finally{await writeFile(first,firstBytes);await unlink(fourth);await writeFile(fourth,fourthBytes,{flag:'wx',mode:0o600});}
   assert.deepEqual(await journal.current(scope.tenantId,scope.spaceId),current);
+  // Hold the first four actual descriptors at their post-stat hook. A later
+  // growth refusal must settle every sibling before the first malformed
+  // event wins in name order; the fifth event must never start another batch.
+  assert(fourthBytes.length>0&&fourthBytes.length<=16384);
+  const grownFourth=Buffer.concat([fourthBytes,Buffer.alloc(16385-fourthBytes.length,0x20)]);
+  assert.equal(grownFourth.length,16385);assert.deepEqual(JSON.parse(grownFourth.toString()),JSON.parse(fourthBytes.toString()));
+  let active=0,peak=0,release!:()=>void,entered!:()=>void;
+  const sequences:number[]=[],gate=new Promise<void>(accept=>release=accept),fourEntered=new Promise<void>(accept=>entered=accept);
+  const held=new EpochWitnessJournal(root,{afterEventStat:async sequence=>{
+   sequences.push(sequence);active++;peak=Math.max(peak,active);
+   try{if(sequences.length===4)entered();await gate;}finally{active--;}
+  }});
+  let reading:ReturnType<EpochWitnessJournal['current']>|undefined;
+  try{
+   await writeFile(first,'{}');reading=held.current(scope.tenantId,scope.spaceId);reading.catch(()=>{});
+   await Promise.race([fourEntered,reading]);
+   assert.deepEqual(sequences,[1,2,3,4]);assert.equal(active,4);assert.equal(peak,4);
+   assert.deepEqual(await readFile(first),Buffer.from('{}'));
+   await writeFile(fourth,grownFourth);assert.deepEqual(await readFile(fourth),grownFourth);
+   release();await deny(()=>reading!,['INVALID_SCHEMA']);
+   assert.equal(active,0);assert.equal(peak,4);assert.deepEqual(sequences,[1,2,3,4]);
+  }finally{
+   release();await reading?.catch(()=>{});
+   try{await writeFile(first,firstBytes);}finally{await writeFile(fourth,fourthBytes);}
+  }
+  assert.deepEqual(await readFile(first),firstBytes);assert.deepEqual(await readFile(fourth),fourthBytes);
+  const recovered=await new EpochWitnessJournal(root).current(scope.tenantId,scope.spaceId);assert(recovered);assert.deepEqual(recovered,current);
   await writeFile(last,'{}');await deny(()=>repo.lookup(scope,fresh()),['INVALID_SCHEMA']);await writeFile(last,bytes);
   const hidden=resolve(path,'.stage-'+randomUUID());await rename(last,hidden);
   await deny(()=>f.uow.withScope(scope,tx=>repo.authority.check(tx,scope,'read')),['AUTHORITY_UNAVAILABLE']);await rename(hidden,last);

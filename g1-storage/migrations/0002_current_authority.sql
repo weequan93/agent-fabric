@@ -86,6 +86,65 @@ BEGIN
  IF NEW.epoch<>previous+1 THEN RAISE EXCEPTION 'storage epoch sequence denied' USING ERRCODE='23514';END IF;
  RETURN NEW;
 END $$;
+-- Fixed, bounded transport for the existing current-control digest. Invoker
+-- rights and existing table RLS remain the authority; this installs no new
+-- table privilege, scope assertion, caller SQL or mutating capability.
+CREATE FUNCTION fabric.storage_current_controls(p_tenant uuid,p_space uuid,p_policy_revision numeric)
+RETURNS TABLE(controls json,sharing_error json)
+LANGUAGE plpgsql STABLE SECURITY INVOKER SET search_path=pg_catalog,fabric AS $$
+DECLARE core json[];sharing json;error_code text;error_message text;error_detail text;error_hint text;error_context text;
+BEGIN
+ SELECT ARRAY[
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT kind FROM fabric.storage_rooms WHERE tenant_id=p_tenant AND space_id=p_space LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT revision::text AS revision,periods,operations FROM fabric.storage_policy
+    WHERE tenant_id=p_tenant AND space_id=p_space AND revision=p_policy_revision LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT class,id,revision::text AS revision,witness,key_id,generation,epoch::text AS epoch,accepted_at,expires_at
+    FROM fabric.storage_current_heads WHERE tenant_id=p_tenant AND space_id=p_space
+    ORDER BY class,id,storage_current_heads.revision LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT class,id,revision::text AS revision,epoch::text AS epoch,command_key,at
+    FROM fabric.storage_tombstones WHERE tenant_id=p_tenant AND space_id=p_space
+    ORDER BY class,id,storage_tombstones.revision LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT source_id,source_revision::text AS source_revision,epoch::text AS epoch,kind,at
+    FROM fabric.storage_restrictions WHERE tenant_id=p_tenant AND space_id=p_space
+    ORDER BY source_id,storage_restrictions.source_revision,kind LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT actor_id,command_key,binding_digest,receipt_id,epoch::text AS epoch,at
+    FROM fabric.storage_commands WHERE tenant_id=p_tenant AND space_id=p_space
+    ORDER BY actor_id,command_key LIMIT 513) q),
+  (SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM
+   (SELECT job_id,actor_id,command_key,class,target_id,target_revision::text AS target_revision,epoch::text AS epoch,at
+    FROM fabric.storage_outbox WHERE tenant_id=p_tenant AND space_id=p_space ORDER BY job_id LIMIT 513) q)
+ ] INTO core;
+ controls=json_build_array(core[1],core[2],core[3],core[4],core[5],core[6],core[7]);
+ sharing_error=NULL;
+ -- Sharing is optional until 0003 is installed. Its only dynamic statement is
+ -- fixed text with typed bind parameters, so 0002 also works without the table.
+ -- Defer errors so the client can reject oversized/nonfinite core controls
+ -- first, exactly as the historical seven-projection then sharing sequence did.
+ BEGIN
+  IF to_regclass('fabric.storage_shares') IS NOT NULL THEN
+   EXECUTE 'SELECT coalesce(json_agg(row_to_json(q)),''[]''::json) FROM
+    (SELECT relation_id,revision::text AS revision,source_space_id,source_id,source_revision::text AS source_revision,
+     source_task_id,status,source_epoch::text AS source_epoch,destination_epoch::text AS destination_epoch
+     FROM fabric.storage_shares WHERE tenant_id=$1 AND destination_space_id=$2
+     ORDER BY relation_id,storage_shares.revision LIMIT 513) q'
+    INTO sharing USING p_tenant,p_space;
+   controls=json_build_array(core[1],core[2],core[3],core[4],core[5],core[6],core[7],sharing);
+  END IF;
+ EXCEPTION WHEN OTHERS THEN
+  GET STACKED DIAGNOSTICS error_code=RETURNED_SQLSTATE,error_message=MESSAGE_TEXT,
+   error_detail=PG_EXCEPTION_DETAIL,error_hint=PG_EXCEPTION_HINT,error_context=PG_EXCEPTION_CONTEXT;
+  sharing_error=json_build_object('code',error_code,'message',error_message,'detail',error_detail,'hint',error_hint,'where',error_context);
+ END;
+ RETURN NEXT;
+END $$;
+REVOKE ALL ON FUNCTION fabric.storage_current_controls(uuid,uuid,numeric) FROM PUBLIC,fabric_controller,fabric_worker,fabric_test_idp;
+GRANT EXECUTE ON FUNCTION fabric.storage_current_controls(uuid,uuid,numeric) TO fabric_controller;
 CREATE TRIGGER storage_epoch_append_guard BEFORE INSERT ON fabric.storage_authority_epoch
  FOR EACH ROW EXECUTE FUNCTION fabric.storage_epoch_append_guard();
 REVOKE ALL ON FUNCTION fabric.storage_epoch_append_guard() FROM PUBLIC,fabric_controller,fabric_worker,fabric_test_idp;

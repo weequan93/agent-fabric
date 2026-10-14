@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {DatabaseError} from 'pg';
 import { randomUUID,createHash } from 'node:crypto';
 import { createStorageFixture } from '../helpers/pg-fixture.js';
 import { enrollAuthority,transaction } from '../helpers/authority-fixture.js';
 import { migrateStorage,migrateStorageAuthority,migrateStorageSharing,migrateStorageEpochPublication,migrateStoragePolicyPublication,migrateStorageSourceRevocation,migrateStorageTombstonePublication,migrateStorageForgetWork,migrateStorageHeadPublication,migrateStorageSharePublication,installedOwnerSnapshot,storageSchemaSnapshot } from '../../src/migration.js';
-import { StorageAuthorityRepository } from '../../src/authority.js';
+import { StorageAuthorityRepository,controlDigest } from '../../src/authority.js';
+import {historicalPublicationRows,historicalDigest,type PublicationOverrides} from '../helpers/register-authority-route-tests.js';
 import type { VerifiedScope } from '../../src/owners.js';
 import { emitObservations } from '../helpers/observations.js';
 import { registerAccountingTests } from '../helpers/register-accounting-tests.js';
@@ -36,6 +38,21 @@ test('AUTHORITY/behavior / real authenticated current control ledger',async t=>{
    assert.equal(await storageSchemaSnapshot(f.admin),after);assert.equal(await installedOwnerSnapshot(f.admin),ownerBefore);
    assert.deepEqual((await f.admin.query('SELECT * FROM public.fabric_storage_migrations WHERE version=1')).rows,v1);
    const ledgers=(await f.admin.query('SELECT version FROM public.fabric_storage_migrations ORDER BY version')).rows;assert.deepEqual(ledgers,[{version:1},{version:2}]);
+   const functionRow=(await f.admin.query("SELECT prosecdef,provolatile,proconfig,oidvectortypes(proargtypes) AS arguments,pg_get_function_result(oid) AS result,pg_get_functiondef(oid) AS definition FROM pg_proc WHERE oid='fabric.storage_current_controls(uuid,uuid,numeric)'::regprocedure")).rows[0];
+   assert.equal(functionRow.prosecdef,false);assert.equal(functionRow.provolatile,'s');assert.deepEqual(functionRow.proconfig,['search_path=pg_catalog, fabric']);assert.equal(functionRow.arguments,'uuid, uuid, numeric');assert.equal(functionRow.result,'TABLE(controls json, sharing_error json)');
+   const seven=(await f.admin.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,1::numeric)',[f.tenant,f.spaces.group])).rows;
+   assert.equal(seven.length,1);assert.equal(seven[0].sharing_error,null);assert.deepEqual(seven[0].controls,[[],[],[],[],[],[],[]]);
+   const c=await f.admin.connect();try{const tx=transaction(c),expected=await historicalPublicationRows(tx,f.tenant,f.spaces.group,1,[],true);assert.equal(expected.length,7);assert.equal(await controlDigest(tx,f.tenant,f.spaces.group,1),historicalDigest(expected));}finally{c.release();}
+   const beforeFault=(await f.admin.query('SELECT * FROM public.fabric_storage_migrations ORDER BY version')).rows;
+   // The real migration must detect drift in this function. Make the owned
+   // fixture fault visible to its transaction, then restore the exact catalog.
+   try{
+    await f.admin.query('ALTER FUNCTION fabric.storage_current_controls(uuid,uuid,numeric) SET search_path=pg_catalog');
+    assert.notEqual(await storageSchemaSnapshot(f.admin),after);
+    await assert.rejects(()=>migrateStorageAuthority(f.admin,options),{code:'CHECK_BINDING_MISMATCH'});
+   }finally{await f.admin.query(String(functionRow.definition));}
+   assert.equal(await storageSchemaSnapshot(f.admin),after);assert.equal(await installedOwnerSnapshot(f.admin),ownerBefore);assert.deepEqual((await f.admin.query('SELECT * FROM public.fabric_storage_migrations ORDER BY version')).rows,beforeFault);
+   await migrateStorageAuthority(f.admin,options);assert.equal(await storageSchemaSnapshot(f.admin),after);
    const v2=(await f.admin.query('SELECT * FROM public.fabric_storage_migrations')).rows;
    await assert.rejects(migrateStorageSharing(f.admin,{...options,injectBeforeCommit:true}),{message:'Injected sharing migration rollback'});
    assert.equal((await f.admin.query("SELECT to_regclass('fabric.storage_shares') AS relation")).rows[0].relation,null);
@@ -122,9 +139,120 @@ test('AUTHORITY/behavior / real authenticated current control ledger',async t=>{
    const intent={purpose:'ask' as const,sessionId:task.binding.sessionId,expiresAt:new Date(Date.now()+30_000).toISOString()};
    await f.uow.withScope(f.scope,tx=>a.authority.assertCurrent(tx,f.scope,intent));reads++;
    const maintenance=await f.task('maintenance');await f.uow.withScope(f.scope,tx=>a.authority.assertCurrent(tx,f.scope,{...intent,purpose:'maintenance',sessionId:maintenance.binding.sessionId}));reads++;
+   await f.uow.withScope(f.scope,async tx=>{
+    const revision=a.anchors.get(a.key(f.scope))!.policyRevision,expected=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision);
+    assert.equal(expected.length,8);assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision),historicalDigest(expected));
+    const projected=(await tx.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,f.scope.spaceId,revision])).rows;
+    assert.equal(projected.length,1);assert.equal(projected[0]?.['sharing_error'],null);
+    const controls=projected[0]?.['controls'] as Record<string,unknown>[][];assert.equal(controls.length,8);
+    for(let slot=0;slot<expected.length;slot++){
+     assert.equal(controls[slot]!.length,expected[slot]!.length);
+     for(let row=0;row<expected[slot]!.length;row++){
+      const old=expected[slot]![row]!,actual=controls[slot]![row]!;assert.deepEqual(Object.keys(actual),Object.keys(old));
+      for(const [field,value] of Object.entries(old)){
+       if(value instanceof Date){assert.equal(typeof actual[field],'string');assert.equal(new Date(actual[field] as string).toISOString(),value.toISOString());}
+       else assert.deepEqual(actual[field],value,'slot '+slot+' row '+row+' field '+field);
+      }
+     }
+    }
+    assert.equal(controls[1]![0]?.['revision'],'1');for(const slot of expected.slice(0,7))assert.ok(slot.length>0,'Every historical core projection has actual stored controls');
+    const at='2026-10-13T08:00:00.123456+08:00',entity={class:'source',id,revision:10};
+    const policy:NonNullable<PublicationOverrides[0]>={periods:{...a.policy.periods,source:37,knowledge:11},operations:['read','write','maintenance']};
+    const restriction={sourceId:id,revision:2,epoch:10,at},tombstone={entity:{...entity,revision:2},epoch:10,key:randomUUID(),at};
+    const work={actorId:f.scope.actorId,key:randomUUID(),binding:'sha256:'+'1'.repeat(64),receiptId:randomUUID(),jobId:randomUUID(),entity,epoch:10,at};
+    const head={...entity,witness:'sha256:'+'2'.repeat(64),keyId:randomUUID(),generation:randomUUID(),epoch:10,at,expiresAt:'2026-10-13T08:00:37.654321+08:00'};
+    const relation={relationId:randomUUID(),sourceSpaceId:f.spaces.secondary,sourceId:id,sourceRevision:2,sourceTaskId:task.binding.taskId,sourceEpoch:2,destinationEpoch:10};
+    const publications:[string,PublicationOverrides][]=[['policy',[policy]],['restriction',[undefined,restriction]],['tombstone',[undefined,undefined,tombstone]],['work',[undefined,undefined,undefined,work]],['head',[undefined,undefined,undefined,undefined,head]],['share',[undefined,undefined,undefined,undefined,undefined,relation]],['save',[policy,undefined,undefined,work,head]],['forget',[undefined,restriction,tombstone,work]],['combined',[policy,restriction,tombstone,work,head,relation]]];
+    for(const [name,overrides] of publications){
+     const old=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision,overrides),digest=historicalDigest(old);assert.equal(old.length,8);assert.notEqual(digest,historicalDigest(expected),name+' changes historical controls');
+     assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision,...overrides),digest,name+' preserves historical typed publication override');
+     if(overrides[4]){const row=old[2]!.find(row=>row['key_id']===head.keyId)!;assert.equal(row['revision'],'10');assert.equal(row['epoch'],'10');assert.ok(row['accepted_at'] instanceof Date);assert.equal(row['accepted_at'].toISOString(),'2026-10-13T00:00:00.123Z');assert.equal((row['expires_at'] as Date).toISOString(),'2026-10-13T00:00:37.654Z');}
+    }
+   });
    await deny(()=>f.uow.withScope(f.scope,tx=>a.authority.assertCurrent(tx,f.scope,{...intent,purpose:'maintenance'})),['REQUIRED_CAPABILITY_UNSUPPORTED']);
    assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_commands WHERE receipt_id=$1',[receipt])).rows[0].n,1);
    assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_outbox WHERE job_id=$1',[job])).rows[0].n,1);
+   // Real bounded control rows: accept exactly512, reject513, with rollback so
+   // subsequent authority/retention/concurrency cases retain their original data.
+   const c=await f.admin.connect();
+   try{
+    await c.query('BEGIN');
+    const n=Number((await c.query('SELECT count(*)::int AS n FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2',[f.tenant,f.scope.spaceId])).rows[0].n);assert.ok(n<512);
+    const tx=transaction(c),revision=a.anchors.get(a.key(f.scope))!.policyRevision;
+    await c.query('SAVEPOINT publication_boundary');
+    await c.query("INSERT INTO fabric.storage_commands SELECT $1,$2,$3,gen_random_uuid(),$4,gen_random_uuid(),CASE WHEN i%2=0 THEN 2 ELSE 10 END,'2026-10-13T08:00:00.123456+08:00'::timestamptz FROM generate_series(1,$5::int) i",[f.tenant,f.scope.spaceId,f.scope.actorId,'sha256:'+'0'.repeat(64),511-n]);
+    const work:NonNullable<PublicationOverrides[3]>={actorId:f.scope.actorId,key:randomUUID(),binding:'sha256:'+'3'.repeat(64),receiptId:randomUUID(),jobId:randomUUID(),entity:{class:'source',id:id,revision:1},epoch:10,at:'2026-10-13T08:00:00.123456+08:00'};
+    const overrides:PublicationOverrides=[undefined,undefined,undefined,work];
+    const accepted=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision,overrides);assert.equal(accepted[5]!.length,512);
+    assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision,...overrides),historicalDigest(accepted),'511 stored commands plus prospective work accepts the exact historical512 controls');
+    await c.query('INSERT INTO fabric.storage_commands SELECT tenant_id,space_id,actor_id,gen_random_uuid(),binding_digest,gen_random_uuid(),epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 LIMIT 1',[f.tenant,f.scope.spaceId]);
+    const refused=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision,overrides);assert.equal(refused[5]!.length,513);
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision,...overrides),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    // A real revision2 under the same head identity distinguishes numeric1/2/10
+    // ordering from lexical1/10/2; the entire fixture addition is rolled back.
+    await c.query("INSERT INTO fabric.storage_entities SELECT tenant_id,space_id,class,id,2,source_task_id FROM fabric.storage_entities WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[f.tenant,f.scope.spaceId,id]);
+    await c.query("INSERT INTO fabric.storage_current_heads SELECT tenant_id,space_id,class,id,2,witness,gen_random_uuid(),gen_random_uuid(),epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[f.tenant,f.scope.spaceId,id]);
+    const head:NonNullable<PublicationOverrides[4]>={class:'source',id:id,revision:10,witness:'sha256:'+'4'.repeat(64),keyId:randomUUID(),generation:randomUUID(),epoch:10,at:'2026-10-13T08:00:00.123456+08:00',expiresAt:'2026-10-13T08:00:37.654321+08:00'};
+    const headOverrides:PublicationOverrides=[undefined,undefined,undefined,undefined,head];
+    const ordered=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision,headOverrides);
+    assert.deepEqual(ordered[2]!.filter(row=>row['class']==='source'&&row['id']===head.id).map(row=>row['revision']),['1','2','10']);
+    assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision,...headOverrides),historicalDigest(ordered),'Batch retains typed numeric ordering before JSON text projection');
+    await c.query("INSERT INTO fabric.storage_entities SELECT tenant_id,space_id,class,id,10,source_task_id FROM fabric.storage_entities WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[f.tenant,f.scope.spaceId,id]);
+    await c.query("INSERT INTO fabric.storage_current_heads SELECT tenant_id,space_id,class,id,10,witness,gen_random_uuid(),gen_random_uuid(),epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 AND class='source' AND id=$3 AND revision=1",[f.tenant,f.scope.spaceId,id]);
+    const ordinary=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision);
+    assert.deepEqual(ordinary[2]!.filter(row=>row['class']==='source'&&row['id']===head.id).map(row=>row['revision']),['1','2','10']);
+    assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision),historicalDigest(ordinary),'Fixed ordinary function retains typed head ordering');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query('ALTER TABLE fabric.storage_shares RENAME TO storage_shares_temporarily_absent');
+    const noSharing=await historicalPublicationRows(tx,f.tenant,f.scope.spaceId,revision,[],true);assert.equal(noSharing.length,7);
+    const absent=(await c.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,f.scope.spaceId,revision])).rows;
+    assert.equal(absent.length,1);assert.equal(absent[0].controls.length,7);assert.equal(absent[0].sharing_error,null);
+    assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision),historicalDigest(noSharing),'0002 has the exact historical seven-projection digest before sharing is installed');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query("INSERT INTO fabric.storage_commands SELECT $1,$2,$3,gen_random_uuid(),$4,gen_random_uuid(),CASE WHEN i%2=0 THEN 2 ELSE 10 END,'2026-10-13T08:00:00.123456+08:00'::timestamptz FROM generate_series(1,$5::int) i",[f.tenant,f.scope.spaceId,f.scope.actorId,'sha256:'+'0'.repeat(64),512-n]);
+    assert.match(await controlDigest(tx,f.tenant,f.scope.spaceId,revision),/^sha256:[0-9a-f]{64}$/);
+    // A typed policy override preserving policy values must match this same
+    //512-row live state exactly, regardless of projection transport.
+    const policy=(await c.query('SELECT periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3',[f.tenant,f.scope.spaceId,revision])).rows[0];
+    assert.equal(await controlDigest(tx,f.tenant,f.scope.spaceId,revision),await controlDigest(tx,f.tenant,f.scope.spaceId,revision,policy));
+    await c.query('INSERT INTO fabric.storage_commands SELECT tenant_id,space_id,actor_id,gen_random_uuid(),binding_digest,gen_random_uuid(),epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 LIMIT 1',[f.tenant,f.scope.spaceId]);
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision,policy),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    // Same-candidate refusal order: even an unusable installed sharing
+    // projection must follow a real oversized or nonfinite core refusal.
+    await c.query('ALTER TABLE fabric.storage_shares RENAME COLUMN source_task_id TO temporarily_missing_source_task');
+    const invalidShare=(await c.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,f.scope.spaceId,revision])).rows[0];
+    assert.equal(invalidShare.controls.length,7);assert.equal(invalidShare.controls[5].length,513);assert.equal(invalidShare.sharing_error.code,'42703');
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query('ALTER TABLE fabric.storage_shares RENAME COLUMN source_task_id TO temporarily_missing_source_task');
+    await c.query("INSERT INTO fabric.storage_commands VALUES($1,$2,$3,$4,$5,$6,1,'infinity'::timestamptz)",[f.tenant,f.scope.spaceId,f.scope.actorId,randomUUID(),'sha256:'+'5'.repeat(64),randomUUID()]);
+    const nonfinite=(await c.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,f.scope.spaceId,revision])).rows[0];
+    assert.equal(nonfinite.sharing_error.code,'42703');assert.ok(nonfinite.controls[5].some((row:Record<string,unknown>)=>row['at']==='infinity'));
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query('ALTER TABLE fabric.storage_shares RENAME COLUMN source_task_id TO temporarily_missing_source_task');
+    const unusable=(await c.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,f.scope.spaceId,revision])).rows[0];
+    assert.equal(unusable.sharing_error.code,'42703');
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>e instanceof DatabaseError&&e.code===unusable.sharing_error.code&&e.message===unusable.sharing_error.message&&e.where===unusable.sharing_error.where);
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    const empty=[[],[],[],[],[],[],[]];
+    for(const malformed of [null,{},[],[[],[],[],[],[],[]],[...empty,[],[]],[{},...empty.slice(1)],[[null],...empty.slice(1)],[[[]],...empty.slice(1)],[[{at:4}],...empty.slice(1)],[[{at:'not-a-date'}],...empty.slice(1)],[...empty.slice(0,5),[{at:'-infinity'}],[]],[...empty,{}],[...empty,[null]],[...empty,[[]]],[...empty,[true]]]){
+     // Fault only this owned SQL function and restore it at the savepoint.
+     // The product consumes each malformed real PostgreSQL result directly.
+     await c.query("CREATE OR REPLACE FUNCTION fabric.storage_current_controls(p_tenant uuid,p_space uuid,p_policy_revision numeric) RETURNS TABLE(controls json,sharing_error json) LANGUAGE sql STABLE SECURITY INVOKER SET search_path=pg_catalog,fabric AS $$SELECT '"+JSON.stringify(malformed).replaceAll("'","''")+"'::json,NULL::json$$");
+     await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+     await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    }
+    await c.query('DROP FUNCTION fabric.storage_current_controls(uuid,uuid,numeric)');
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>e instanceof DatabaseError&&e.code==='42883');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+    await c.query('DROP FUNCTION fabric.storage_current_controls(uuid,uuid,numeric)');
+    await c.query("CREATE FUNCTION fabric.storage_current_controls(p_tenant uuid,p_space uuid,p_policy_revision numeric) RETURNS TABLE(controls json) LANGUAGE sql STABLE SECURITY INVOKER SET search_path=pg_catalog,fabric AS $$SELECT '[[],[],[],[],[],[],[],[]]'::json$$");
+    await assert.rejects(()=>controlDigest(tx,f.tenant,f.scope.spaceId,revision),(e:unknown)=>e instanceof DatabaseError&&e.code==='42703');
+    await c.query('ROLLBACK TO SAVEPOINT publication_boundary');
+   }finally{await c.query('ROLLBACK');c.release();}
   });
   await t.test('AUTHORITY/scope-negative',async()=>{
    await deny(()=>read({...f.scope} as VerifiedScope),['UNAUTHORIZED']);
@@ -144,6 +272,14 @@ test('AUTHORITY/behavior / real authenticated current control ledger',async t=>{
    const role=(await f.controller.query("SELECT rolsuper,rolbypassrls,rolcreatedb,rolcreaterole FROM pg_roles WHERE rolname=current_user")).rows[0];assert.deepEqual(Object.values(role),[false,false,false,false]);
    for(const role of [f.worker,f.idpPool,f.client])for(const table of tables)await deny(()=>role.query('SELECT * FROM fabric.'+table),['42501']);
    assert.equal((await f.controller.query('SELECT * FROM fabric.storage_current_heads')).rows.length,0);
+   const controlsSql='SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,1::numeric)';
+   for(const role of [f.worker,f.idpPool,f.client])await deny(()=>role.query(controlsSql,p),['42501']);
+   const publicAcl=(await f.admin.query("SELECT has_function_privilege('public',oid,'EXECUTE') AS public_execute FROM pg_proc WHERE oid='fabric.storage_current_controls(uuid,uuid,numeric)'::regprocedure")).rows[0];assert.equal(publicAcl.public_execute,false);
+   const foreign=await f.scopeFor(f.foreignActor,f.spaces.foreign);
+   for(const rows of [(await f.controller.query(controlsSql,p)).rows,(await f.uow.withScope(foreign,tx=>tx.query(controlsSql,p))).rows]){
+    assert.equal(rows.length,1);assert.equal(rows[0]?.['sharing_error'],null);assert.deepEqual(rows[0]?.['controls'],[[],[],[],[],[],[],[],[]],'Unverified and foreign verified callers cannot obtain a current control scalar');
+   }
+   const current=(await f.uow.withScope(f.scope,tx=>tx.query(controlsSql,p))).rows[0];assert.equal((current?.['controls'] as unknown[][])[0]!.length,1);
    for(const table of tables){const before=(await f.admin.query('SELECT * FROM fabric.'+table)).rows;
     await deny(()=>f.uow.withScope(f.scope,tx=>tx.query('DELETE FROM fabric.'+table)),['42501']);
     await deny(()=>f.admin.query('DELETE FROM fabric.'+table),['P0001']);
@@ -221,6 +357,19 @@ test('AUTHORITY/behavior / real authenticated current control ledger',async t=>{
    const recreated=new StorageAuthorityRepository({current:async(t,s)=>a.anchors.get(t+'/'+s)},f.native);assert.equal((await shared(destination,forwardInput,recreated)).id,id);reads++;
    assert.equal(await f.uow.withScope(destination,async tx=>(await tx.query('SELECT * FROM fabric.storage_current_heads WHERE space_id=$1',[f.spaces.group])).rows.length),0);
    const scope=await f.uow.withScope(destination,async tx=>{await a.authority.sharedEntity(tx,destination,forwardInput);return (await tx.query('SELECT fabric.current_space() AS space')).rows[0]?.['space'];});assert.equal(scope,destination.spaceId);reads++;
+   for(const s of [f.scope,destination])await f.uow.withScope(s,async tx=>{
+    const revision=a.anchors.get(a.key(s))!.policyRevision,expected=await historicalPublicationRows(tx,s.tenantId,s.spaceId,revision);assert.equal(expected.length,8);assert.ok(expected[7]!.length>0);
+    const raw=(await tx.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[s.tenantId,s.spaceId,revision])).rows[0];assert.equal(raw?.['sharing_error'],null);
+    assert.deepEqual((raw?.['controls'] as unknown[])[7],expected[7],'Nonempty eighth projection preserves field order and numeric strings');assert.equal(await controlDigest(tx,s.tenantId,s.spaceId,revision),historicalDigest(expected));
+   });
+   const c=await f.admin.connect();try{
+    await c.query('BEGIN');const tx=transaction(c),revision=a.anchors.get(a.key(destination))!.policyRevision,params=[f.tenant,destination.spaceId,forward];
+    const n=Number((await c.query('SELECT count(*)::int AS n FROM fabric.storage_shares WHERE tenant_id=$1 AND destination_space_id=$2',params.slice(0,2))).rows[0].n);assert.ok(n<512);
+    const clone='INSERT INTO fabric.storage_shares SELECT r.tenant_id,r.destination_space_id,gen_random_uuid(),1,r.source_space_id,r.class,r.source_id,r.source_revision,r.source_task_id,r.status,r.source_epoch,r.destination_epoch FROM fabric.storage_shares r CROSS JOIN generate_series(1,$4::int) WHERE r.tenant_id=$1 AND r.destination_space_id=$2 AND r.relation_id=$3 AND r.revision=1';
+    await c.query(clone,[...params,512-n]);const accepted=await historicalPublicationRows(tx,f.tenant,destination.spaceId,revision);assert.equal(accepted[7]!.length,512);assert.equal(await controlDigest(tx,f.tenant,destination.spaceId,revision),historicalDigest(accepted));
+    await c.query(clone,[...params,1]);const raw=(await c.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[f.tenant,destination.spaceId,revision])).rows[0];assert.equal(raw.controls[7].length,513);assert.equal(raw.sharing_error,null);
+    await assert.rejects(()=>controlDigest(tx,f.tenant,destination.spaceId,revision),(e:unknown)=>(e as {code?:string}).code==='AUTHORITY_UNAVAILABLE');
+   }finally{await c.query('ROLLBACK');c.release();}
   });
   const foreignScope=await f.scopeFor(f.foreignActor,f.spaces.foreign);
   await t.test('AUTHORITY/shared-negative',async()=>{

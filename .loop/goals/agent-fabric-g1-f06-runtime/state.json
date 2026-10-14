@@ -2,10 +2,10 @@
   "schema": "loop.state/2",
   "goal_id": "agent-fabric-g1-f06-runtime",
   "status": "ready",
-  "status_reason": "Approved by human (via Claude): gpt-6.1-sol max effort. Start with `loop start`.",
-  "approved_digest": "sha256:cc0ac4adafe926f8ad3bc26e499d12644021530d32d2eef42ac17d216388484a",
-  "approved_by": "human (via Claude): gpt-6.1-sol max effort",
-  "approved_at": "2026-10-13T03:42:11+00:00",
+  "status_reason": "Approved by human (via Claude): tester role effort high. Start with `loop start`.",
+  "approved_digest": "sha256:f09a07e2da2ca75fe444c06fa3e88ccd1de4396a5b1db78719d3028732a63610",
+  "approved_by": "human (via Claude): tester role effort high",
+  "approved_at": "2026-10-14T14:14:05+00:00",
   "tasks": [],
   "questions": [],
   "checks": {},
@@ -35,7 +35,7 @@
   "next_cycle_at": null,
   "integrity": "ok",
   "created_at": "2026-10-06T15:59:25+00:00",
-  "updated_at": "2026-10-13T03:42:11+00:00",
+  "updated_at": "2026-10-14T14:14:05+00:00",
   "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1",
   "approved_contract": {
     "objective": "Deliver the G1-F06 increment of Agent Fabric G1: Authorized remote test deployment, qualified Linux image and protected worker/tool/egress boundaries (shell/SDK/browser/MCP/egress containment, intent ceilings, single-VM lease queueing, isolated browser profiles). Supervised local development cannot issue this qualification.\n\nLedger requirements in scope (docs/planning/g1-remaining-ledger.csv):\n- AF-13: 所有开放工具路径无法绕过运行时策略 — remaining: 拒绝/能力丢失fixture；实际shell/SDK/browser/MCP/egress containment\n- UX-03: Ask/Plan不修改目标服务器或仓库 — remaining: intent ceiling与target-write拒绝fixture；实际请求无目标修改\n- UX-07: 冲突文件或desktop lease明示排队不偷偷多开VM — remaining: 冲突lease/owner/wait契约；实际single-VM冲突队列与费用\n- UX-10: 敏感登录真实隔离profile cookies input或阻止 — remaining: unsupported拒绝fixture；实际跨进程browser profile/cookies/input/telemetry隔离\n\nCreate g1-runtime/ with a build and g1-runtime/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f06-plan.md and docs/evidence/g1-f06-acceptance.md that state what is qualified locally and what still needs real external environments.",
@@ -45,7 +45,8 @@
       "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
       "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
       "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger.",
-      "First ask the user (loop_ask) for the authorized remote test environment and its limits; implement and verify locally until it is approved."
+      "First ask the user (loop_ask) for the authorized remote test environment and its limits; implement and verify locally until it is approved.",
+      "Human standing approval 2026-10-13 (broad autonomy; supersedes the narrower standing approvals above and the approval step of any AGENTS.md freeze/re-freeze flow, which you still record in the turn report). Proceed WITHOUT asking for: any production code, test, check-script, harness, plan, task, dependency or team change within this goal's scope; re-freezing configurations; installing local dependencies; local builds, containers and test data the project owns; creating and mounting the project's own disposable test fixtures (temporary directories, disk images, permission-denied targets) as stand-ins for physical devices, recording what stays unqualified; running and operating the project's own app through its own code and test hooks; applying the product's own documented retention to its own data. When a choice is open, pick the recommended option, record loop_note(kind=\"decision\") and continue. Ask (loop_ask kind=approval) ONLY for: changing product requirements, scope or acceptance budgets; spending money or paid/remote resources; real credentials, secrets, or system/privacy/security settings; deploying to shared or production environments; messages to people; deleting the user's personal data or anything outside the project; operating other apps; force-push, history rewrite or branch deletion."
     ],
     "acceptance": [
       {
@@ -140,7 +141,12 @@
       "model": "gpt-6.1-sol",
       "permission_mode": null,
       "extra_args": [],
-      "effort": "max"
+      "effort": "xhigh",
+      "roles": {
+        "tester": {
+          "effort": "high"
+        }
+      }
     },
     "pipeline": "full"
   }

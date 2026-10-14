@@ -106,7 +106,8 @@ export class VolumeDraftRepository {
  async #read(tx:SqlTransaction,s:VerifiedScope,ref:VolumeReadRef,depth=0):Promise<VolumeSnapshot>{
   demand(depth<=LIMITS.depth,'INVALID_SCHEMA');
   await this.artifacts.authority.check(tx,s,'read');await this.#index(tx,s);
-  const r=await this.#row(tx,s,ref),value=await this.artifacts.readWithTransaction(tx,s,{class:'artifact',id:r['artifact_id'],revision:1,witness:r['witness']});
+  const r=await this.#row(tx,s,ref);
+  const value=await this.artifacts.readWithTransaction(tx,s,{class:'artifact',id:r['artifact_id'],revision:1,witness:r['witness']});
   try{
    demand(value.manifest.filename==='fabric-volume-v1','INTEGRITY_FAILED');const e=this.#parse(value.bytes);this.#match(s,e,r);
    const audience=await this.artifacts.authority.currentAudience(tx,s,e.taskId);
@@ -244,7 +245,7 @@ export class VolumeDraftRepository {
   const value=await this.#read(tx,s,{kind:kind(c),id:c.targetId,revision:c.expectedRevision+1});try{demand(same(value.command,c),'IDEMPOTENCY_CONFLICT');return value.receipt;}finally{value.bytes.fill(0);}
  });}
  async commit(s:VerifiedScope,raw:unknown){let c:VolumeCommand|undefined,committed=false;
-  try{const commitStarted=performance.now();c=parseCommand(VolumeCommandSchema,raw);const e=await this.#original(s,c);demand(e,'ARTIFACT_NOT_COMMITTED');const originalReturned=performance.now();let volumeSqlMs:number|undefined;
+  try{c=parseCommand(VolumeCommandSchema,raw);const e=await this.#original(s,c);demand(e,'ARTIFACT_NOT_COMMITTED');
    const captured=c;
    const owner=this.#owner(e,{...this.hooks,beforeArtifactPublication:async(tx,scope)=>{
     await this.#fresh(tx,scope,captured);await this.#validateFiles(tx,scope,e);if(promoted(e))await this.#promotionCheck(tx,scope,e,true);
@@ -258,18 +259,12 @@ export class VolumeDraftRepository {
    },afterArtifactWrite:async tx=>{
     const row=(await tx.query('SELECT * FROM fabric.storage_artifact_versions WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3 AND command_key=$4',[s.tenantId,s.spaceId,s.actorId,captured.key])).rows[0];demand(row,'INTEGRITY_FAILED');
     const mac=await this.#indexWitness(s,{...row,artifact_id:row['id'],kind:kind(captured),id:captured.targetId,revision:captured.expectedRevision+1,session_id:captured.sessionId,task_id:e.taskId,run_id:e.runId,worker_generation:e.workerGeneration,base_revision:captured.action==='draft'?captured.baseRevision:0,checkpoint_file_count:e.files.length,confirmed_at:row['accepted_at']});
-    const volumeSqlStarted=performance.now();
     await tx.query('SELECT fabric.storage_commit_volume($1,$2,$3,$4,$5,$6::jsonb,$7)',[captured.key,kind(captured),captured.targetId,captured.expectedRevision,captured.action==='draft'?captured.baseRevision:0,JSON.stringify(e.files.map(publicEntry)),mac]);
-    volumeSqlMs=performance.now()-volumeSqlStarted;
     if(promoted(e))await tx.query('SELECT fabric.storage_commit_promotion($1,$2,$3,$4,$5)',[captured.key,e.command.draftId,e.command.draftRevision,captured.expectedRevision,e.command.validationId]);
     await this.hooks.afterArtifactWrite?.(tx);if(promoted(e)){await this.#promotionRow(tx,s,e);await this.#promotionPostCheck(tx,s,e);}
    }});
-   const r=await owner.commit(s,this.#command(s,e));const ownerReturned=performance.now();
-   if(r.status==='artifact-committed'){committed=true;const receipt=await this.#receipt(s,c);
-    // Direct cost diagnosis of the real publication and receipt paths. The SQL
-    // sample is nested in ownerCommitMs; these durations must not be summed.
-    console.log(JSON.stringify({measurement:'volume-commit-phase-times',clock:'child-monotonic',action:c.action,originalMs:originalReturned-commitStarted,ownerCommitMs:ownerReturned-originalReturned,receiptMs:performance.now()-ownerReturned,volumeSqlMs,nestedSqlSample:true}));
-    return receipt;}
+   const r=await owner.commit(s,this.#command(s,e));
+   if(r.status==='artifact-committed'){committed=true;return await this.#receipt(s,c);}
    return r;
   }catch(error){const failure=safeFailure(error);return c&&(committed||failure.status==='unknown'||(error instanceof DatabaseError&&['55P03','57014'].includes(error.code??'')))?{schemaVersion:1 as const,status:'unknown' as const,key:c.key,replayAllowed:false as const,nextAction:'original-key-lookup' as const}:failure;}
  }
@@ -289,8 +284,7 @@ export class VolumeDraftRepository {
     // unresolved publication. Lookup's absence itself never prepares/replays.
     return safeFailure(new StorageError('ARTIFACT_NOT_COMMITTED'));
    }
-   const prepareStarted=performance.now();await this.prepare(s,c);const prepareReturned=performance.now();const result=await this.commit(s,c);
-   console.log(JSON.stringify({measurement:'volume-execute-phase-times',clock:'child-monotonic',action:c.action,prepareMs:prepareReturned-prepareStarted,commitMs:performance.now()-prepareReturned}));return result;
+   await this.prepare(s,c);return await this.commit(s,c);
   }catch(error){const failure=safeFailure(error);return failure.status==='unknown'||(error instanceof DatabaseError&&['55P03','57014'].includes(error.code??''))?{schemaVersion:1 as const,status:'unknown' as const,key:c.key,replayAllowed:false as const,nextAction:'original-key-lookup' as const}:failure;}
  }
  async writeLive(s:VerifiedScope,raw:unknown){try{return await this.#execute(s,parseCommand(LiveWriteCommandSchema,raw));}catch(e){return safeFailure(e);}}

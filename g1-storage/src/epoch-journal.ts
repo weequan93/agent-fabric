@@ -1,5 +1,5 @@
-import { constants } from 'node:fs';
-import { lstat,readFile,readdir,realpath,mkdir,open,link,unlink } from 'node:fs/promises';
+import { constants,lstatSync,realpathSync,openSync,fstatSync,readSync,closeSync } from 'node:fs';
+import { readFile,readdir,mkdir,open,link,unlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createHash,randomUUID } from 'node:crypto';
 import { object,uuid,digest,positive,nullable,timestamp,literal,type Decoder } from './decoder.js';
@@ -41,7 +41,9 @@ function validateTransition(pending:PendingEpoch){
 }
 const StateSchema=object({sequence:positive,previousDigest:nullable(digest),anchor:EpochAnchorSchema,pending:nullable(PendingSchema)});
 export type EpochJournalState=ReturnType<typeof StateSchema.parse>;
-export interface EpochJournalHooks {afterReservationRead?():Promise<void>}
+export interface EpochJournalHooks {afterReservationRead?():Promise<void>;
+ /** Installed fault seam for a concurrent immutable-event change after stat. */
+ afterEventStat?(sequence:number):Promise<void>}
 export interface OwnedAnchorRoot {readonly path:string;readonly owner:string;readonly instance:string;readonly rootId:string;readonly device:number;readonly inode:number}
 const hash=(v:unknown)=>'sha256:'+createHash('sha256').update(JSON.stringify(v)).digest('hex');
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
@@ -54,15 +56,15 @@ export class EpochWitnessJournal implements EpochAnchorResolver {
  constructor(root:OwnedAnchorRoot,private readonly hooks:EpochJournalHooks={}){this.root=Object.freeze({...root});}
  private async directory(tenantId:string,spaceId:string){
   uuid.parse(tenantId);uuid.parse(spaceId);
-  const r=this.root,s=await lstat(r.path);
-  demand(s.isDirectory()&&!s.isSymbolicLink()&&s.dev===r.device&&s.ino===r.inode&&await realpath(r.path)===r.path,'CLEANUP_UNPROVEN');
-  const marker=resolve(r.path,'.storage-owner.json'),m=await lstat(marker);
+  const r=this.root,s=lstatSync(r.path);
+  demand(s.isDirectory()&&!s.isSymbolicLink()&&s.dev===r.device&&s.ino===r.inode&&realpathSync.native(r.path)===r.path,'CLEANUP_UNPROVEN');
+  const marker=resolve(r.path,'.storage-owner.json'),m=lstatSync(marker);
   demand(m.isFile()&&!m.isSymbolicLink()&&m.size<=1024,'CLEANUP_UNPROVEN');
   demand(same(JSON.parse(await readFile(marker,'utf8')),{owner:r.owner,instance:r.instance,rootId:r.rootId,device:r.device,inode:r.inode}),'CLEANUP_UNPROVEN');
   let path=r.path;
   for(const id of [tenantId,spaceId]){
    const next=resolve(path,id);try{await mkdir(next,{mode:0o700});await this.syncDirectory(path);}catch(e){if((e as {code?:string}).code!=='EEXIST')throw e;}
-   const st=await lstat(next);demand(st.isDirectory()&&!st.isSymbolicLink(),'CLEANUP_UNPROVEN');path=next;
+   const st=lstatSync(next);demand(st.isDirectory()&&!st.isSymbolicLink(),'CLEANUP_UNPROVEN');path=next;
   }return path;
  }
  private async syncDirectory(path:string){const f=await open(path,constants.O_RDONLY|constants.O_NOFOLLOW);try{await f.sync();}finally{await f.close();}}
@@ -71,14 +73,27 @@ export class EpochWitnessJournal implements EpochAnchorResolver {
   demand(all.length<=2048&&all.every(n=>/^\d{8}\.json$/.test(n)||/^\.stage-[0-9a-f-]{36}$/.test(n)),'AUTHORITY_UNAVAILABLE');
   const names=all.filter(n=>/^\d{8}\.json$/.test(n)).sort();demand(names.length<=1024,'AUTHORITY_UNAVAILABLE');
   let prior:EpochJournalState|undefined;const entries:EpochJournalState[]=[];
-  // Reread every immutable event on every call. Only file I/O overlaps: keep
-  // at most four handles/raw events in flight, settle every close on failure,
-  // then validate the chain and report failures in the original name order.
+  // Reread every immutable event on every call. Each bounded descriptor read
+  // uses synchronous syscalls to avoid scheduling each tiny stat/read through
+  // the shared worker pool. Keep at most four handles/raw events in flight at
+  // awaited fault hooks, settle every close on failure, then validate the chain
+  // and report failures in the original name order. No event bytes are cached.
   for(let offset=0;offset<names.length;offset+=4){
    const batch=await Promise.allSettled(names.slice(offset,offset+4).map(async(name,index):Promise<unknown>=>{
     demand(name===String(offset+index+1).padStart(8,'0')+'.json','AUTHORITY_UNAVAILABLE');
-    const f=await open(resolve(path,name),constants.O_RDONLY|constants.O_NOFOLLOW);
-    try{const stat=await f.stat();demand(stat.isFile()&&stat.size<=16384,'AUTHORITY_UNAVAILABLE');return JSON.parse(await f.readFile('utf8'));}finally{await f.close();}
+    // NONBLOCK makes a substituted FIFO reach the file-type refusal instead
+    // of waiting for a writer. Bound allocation and reads even if an event
+    // grows after stat; a changed event never supplies authority.
+    const fd=openSync(resolve(path,name),constants.O_RDONLY|constants.O_NOFOLLOW|constants.O_NONBLOCK);
+    try{
+     const before=fstatSync(fd);demand(before.isFile()&&before.size<=16384,'AUTHORITY_UNAVAILABLE');
+     if(this.hooks.afterEventStat)await this.hooks.afterEventStat(offset+index+1);
+     const bytes=Buffer.alloc(before.size+1);let size=0;
+     while(size<bytes.length){const read=readSync(fd,bytes,size,bytes.length-size,size);if(!read)break;size+=read;}
+     const after=fstatSync(fd);
+     demand(size===before.size&&after.size===before.size&&after.mtimeMs===before.mtimeMs&&after.ctimeMs===before.ctimeMs,'AUTHORITY_UNAVAILABLE');
+     return JSON.parse(bytes.subarray(0,size).toString('utf8'));
+    }finally{closeSync(fd);}
    }));
    for(const [index,result] of batch.entries()){
    const i=offset+index;if(result.status==='rejected')throw result.reason;

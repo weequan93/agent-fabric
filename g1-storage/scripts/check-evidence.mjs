@@ -4,7 +4,7 @@ import * as registry from './registry.mjs';
 import {assertExecutionPreservation} from './execution-preservation.mjs';
 if(process.argv.length!==3||!['local','controller-behavior'].includes(process.argv[2]))throw new Error('Unknown/extra evidence checker argument');
 assertBaseline();registry.assertManifest();assertExecutionPreservation();
-const audit=inspectEvidence();
+const audit=await inspectEvidence();
 if(process.argv[2]==='controller-behavior')console.log(JSON.stringify(requireControllerBehavior(audit,registry)));
 console.log(JSON.stringify(conciseEvidence(audit)));
 assertBaseline();assertExecutionPreservation();

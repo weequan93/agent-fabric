@@ -1,6 +1,521 @@
 # G1-F05 implementation plan: owned encrypted storage and saved-decision Ask
 
-## Current controller bound — Turn246
+## Current implementation — Turn339, H02 registry repair
+
+F05 remains **not accepted**,73/81 tasks done. [Turn339 report](../loop/agent-fabric-g1-f05-storage/develop-turn339/report.md)
+records original job-e179294710 FAIL1/7014842ms within approved14400s. The outer
+nine suites pass947 tests; the freshly built H02-owned copy completes all ten
+suites/984 tests, then H02 crashes while comparing atomic-disconnect through the
+original manifest, which lacks that suite. H01/H03/H04 and H02's first11 leaves
+pass. The direct one-line correction uses the runner's executionSuites registry
+and retains every assertion. The settled tester independently confirms the
+failure, repair and remaining successful child command records. All133 current
+fixtures have matching raw normal container/root removals; controller zombie/full
+process reaping and historical fixtures remain unqualified. No self-seal change,
+new proof/profile/reconstruction task, timing optimization, check/budget change,
+task completion or PASS-only consolidation occurs. Full controller acceptance
+14400s is next; complete repaired local gates and real X01–X09 remain pending.
+Paid/remote/real-secret actions stay OFF. Original streams and limits are in the
+report; the prior FAIL/TIMEOUT histories remain unchanged.
+
+## Historical implementation — Turn335, copied delivery interrupted
+
+F05 remains **not accepted**,73/81 tasks done. [Turn335 report](../loop/agent-fabric-g1-f05-storage/develop-turn335/report.md)
+records original job-df07c43458 TIMEOUT7200095ms under7200s. Fresh original and
+H02-owned-copy builds each execute nine suites/947 passing tests, including
+273-test backup/restore;68 observations have six zero violation counters. H01
+passes6 leaves; H02 passes11 leaves but its actual copied delivery is interrupted
+during D03. Complete H02/H03/H04, outer delivery, aggregate and final guards remain
+unqualified. A settled tester confirms the complete original streams, unchanged
+atomic source/2000ms guards and no demonstrated product assertion failure.
+Raw132 fixtures/130 normal removals remain distinct from separate guarded
+disposal of only the interrupted current two fixtures and positive copy; all
+other containers stay unchanged. Historical fixture/full process settlement and
+real X01–X09 stay unqualified. Human5085/5086 applies/approves14400s and directly
+orders a full rerun; live and approved definitions match14400/600/600/900s.
+No source/seal change, timing optimization, new proof task, task completion or
+PASS-only merge occurs. The prior atomic FAIL and3600s timeout remain in
+[Turn334 report](../loop/agent-fabric-g1-f05-storage/develop-turn334/report.md).
+Paid/remote/real-secret actions stay OFF. Latest original streams and exact
+scope are in the Turn335 report.
+
+## Historical implementation — Turn330, product acceptance incomplete
+
+F05 remains **not accepted**. [Turn330 report](../loop/agent-fabric-g1-f05-storage/develop-turn330/report.md) follows the newer
+human product-first decision at2026-10-14T07:02:50. One settled read-only tester
+finds no supported source defect; source/tests/seals and all2581 accepted hashes
+stay exact. Controller `acceptance.g1-storage-behavior`,job-9d30b47c5e, times out
+at1800152ms under its actual unchanged1800s definition. Fresh build and eight
+complete outer suites pass674 tests with zero fail/cancelled/skipped/TODO;26
+observations have six zero violations. Backup/restore is interrupted, with no
+complete aggregate report, D/H or final cleanup; two current fixture removals
+remain unqualified. Complete original streams and hashes are in the report.
+This incomplete run shows no supported product defect or hang. No timeout-only
+optimization, source repair, new profile/reconstruction/proof task, unchanged
+retry, task-done or finish occurs. The PASS-only four-task merge is not triggered;
+proof-framework work is paused per the human decision. Actual acceptance1800s
+versus authorized full up-to2700s hang guards remains a configuration discrepancy,
+not a performance requirement. No `.loop/` file or raw evidence is edited by hand.
+Earlier interrupted fixtures, full H02/main D-H/aggregate/terminal/security/
+independent/final/product and whole AF-07/UX-01/G1/G2/real X01–X09 remain
+unqualified. Paid/remote/real secrets/shared deployment/messages remain OFF.
+Final status edits occur after terminal settlement and do not refresh its
+workspace fingerprint.
+
+## Historical implementation — Turn329, repair controller-verified
+
+F05 remains **not accepted**. [Turn329 report](../loop/agent-fabric-g1-f05-storage/develop-turn329/report.md) records joined
+read-only tester review and same-turn controller regression of Turn328's source
+repair. Job-fceb1f3adb passes all six repair checks plus measurement120s; task
+verification job-94d4a1c311 passes all six again and controller marks owned-copy
+repair done,81 tasks/73 done. Latest strict6459ms/H-build1657773/H-cleanup89239/
+D-evidence8229/D-operations126737/encryption179757 and measurement35852 pass;
+complete original streams/hashes and empty stderr are in the report. Hbuild19/
+cleanup24/evidence9/operations28/encryption32 have zero fail/cancelled/skipped/
+TODO. Actual prestart and private stream/cancellation close/drain/no later
+dispatch/removal/full fresh recovery pass. Complete copy/origin/raw gates and
+both-scanner TOTAL16/fresh/separate poison/actual-close/recovery remain.
+Source/tests/seals/accepted2581 stay exact; no re-freeze, dependency, new layer/
+history tree, requirement/scope/check/budget/timeout or capacity change occurs.
+No note/doc/lifecycle mutation occurs during copied runs. Candidate1177/f3276bdf
+remains exact. Component/slice reports remain diagnosticOnly=true/external=pending;
+measurement remains structuralOnly=true. These local repair regressions do not
+qualify full H02, main D/H, aggregate, terminal or product acceptance. Next main
+D then H retains actual2700s humanOct14 hang guards; no timeout-only profiling/
+optimization. Earlier interrupted-fixture settlement, security/independent/
+final/product and whole AF-07/UX-01/G1/G2/real X01–X09 remain unqualified. Final
+summary edits follow terminal settlement and do not refresh earlier workspace
+fingerprints. Paid/remote/real-secret/shared-deployment/messages remain OFF.
+
+## Historical implementation — Turn324, coherent six-stage history
+
+[Turn324 report](../loop/agent-fabric-g1-f05-storage/develop-turn324/report.md)
+records joined existing-native8-branch/30-inverse repair and existing3+3 supplied
+staged resets. All earlier calls/assertions stay mandatory; native mismatches
+6→0 and local all1127/1106/1103/1100 history/34 refusals/accepted2581 pass.
+Only existing composition execution inverse9→10/currentDigest and native self
+seal advance under standing approval. All old entries/keysets/pins/tester files/
+transport/receipt/correction records and whole prior native source replay exact.
+Controller build7497ms/measurement120s33899ms/native-proof120s87598ms PASS with
+complete originals/empty stderr; native current all:true and original32 refusal
+controls are structurally qualified, productQualification=false/external=pending.
+No H-cost/full H02 qualification or outer current-run provenance is supplied.
+Next remains supported H-cost/old-fixture/private/full qualification, all six
+repair checks/measurement then unchanged main/terminal/review/product gates.
+No new layer/registry/fallback/variant/interface/buffer/check/budget/scope/
+capacity change, H retry or task-done. Repair active81tasks72done; F05/whole
+AF-07/UX-01/G1/G2/X01–X09 remain unqualified.
+
+## Historical implementation — Turn322, earliest existing inverse placement
+
+[Turn322 report](../loop/agent-fabric-g1-f05-storage/develop-turn322/report.md)
+records joined migration of the same64 strict branches/132 substitutions to the
+existing native-packed reverse, before mandatory older all:true assertions.
+Selected Buffer bytes authenticate before UTF8 conversion; unselected/binary
+bytes and every old loop/keyset/pin stay exact. Standing-approved re-freeze
+advances only existing native-added self digest and composition execution
+inverse8→9/currentDigest; exact full Turn321 source replay/prior8 are preserved.
+Four tester files/whole transport/accepted2581 remain unchanged. Local1103/1100/
+198mutants/64historical-source refusals/manifest/source+seal replay pass.
+Controller build6170ms and measurement120s33475ms PASS with complete original
+streams/empty stderr; structural limits remain. Full native-history mismatches
+fall73→9, and all:true correctly refuses check-execution-measurement first.
+Stage-consistent nine-input history, supported H-cost repair/old-fixture/private/
+full gates remain pending. No new layer/registry/fallback, buffer/interface/
+check/budget/scope/capacity change, H retry or task-done. F05/whole AF-07/UX-01/
+G1/G2/X01–X09 stay unqualified; repair active81tasks72done.
+
+## Historical implementation — Turn321, exact transport history repair
+
+[Turn321 report](../loop/agent-fabric-g1-f05-storage/develop-turn321/report.md)
+records joined strict supplied-byte inverses for all64 later F05 repairs inside
+the existing execution-preservation function. Existing composition source
+entry changes7→8/currentDigest records the standing-approved re-freeze; all
+prior entries,keysets,1103/1100 pins/arrays/digests/history and accepted2581 stay
+exact. Local all1103/1100 and198 mutation controls pass; controller build
+PASS6079ms and unchanged measurement120s PASS33497ms exercise full historical
+mapping, actual compiler/missing-fixture failures and lossless streams/cleanup. No test/buffer/interface/check/budget/
+scope/capacity change or supported H cost reduction, retry/task-done occurs.
+Older composition all:true history, interrupted-fixture settlement, new
+private-controls/full H02 and remaining acceptance sequence stay pending;
+F05/whole AF-07+UX-01/G1/G2/X01–X09 remain unqualified.
+
+## Historical investigation — Turn320, exact predecessor origins available
+
+[Turn320 report](../loop/agent-fabric-g1-f05-storage/develop-turn320/report.md)
+resolves all64 historical byte origins in the existing retained Turn135 tree,
+native-coherent693887bytes matching unchanged pins. Exact runtime reconstruction
+still needs a coherent existing-owner inverse preserving keysets/no new registry
+or fallback. Joined tester leaves four files exact and counts35mandatory observed
+H01pairs/442.421875GiB zero comparisons/904960 stat mirrors; these source counts
+do not locate or explain the900s timeout. Complete original continuations prove
+both first unprepared children passed/removal, no later H01phase. No code/seal/
+re-freeze/check/retry/task-done, omission/coalescing or budget/scope/capacity change.
+Latest build/H/measurement results and private-controls qualification limits
+stay unchanged. Cost/history/old-fixture repair precedes the original repair/
+main/aggregate/terminal/independent/final/product sequence; F05 and all external
+X01–X09/whole AF-07+UX-01/G1/G2 remain unqualified.
+
+## Historical implementation — Turn319, private controls compiled only
+
+[Turn319 report](../loop/agent-fabric-g1-f05-storage/develop-turn319/report.md)
+records joined actual copied-runner cancellation, stream-error and deliberately
+terminated contracts-worker controls inside unchanged H02 leaves. Exact native
+SIGSTOP/state/current-instance barriers, nonce acknowledgement/IPC disconnect,
+normal suite/pipe/process settlement, no later admission/report, removal-only
+and fresh full original/private two-reader recovery are required. No runtime,
+buffer, interface, driver, registry, variant or check changes. All prior660
+Hbuild assertions/order survive (795now); other three owners stay byte-exact.
+Standing-approved exact F05 Hbuild inverse entry78→81 preserves all old fields/
+keysets/history/accepted2581. Controller build PASS6875ms compiles the controls;
+their behavior and full H02 remain unqualified. H-build900090ms timeout,
+measurement1252ms historical refusal, cost/exact64-path history/old-fixture
+repair remain before the unchanged six checks+measurement120s and all main/
+aggregate/terminal/independent/final/product gates. No H retry/task-done or
+acceptance/scope/budget/capacity/external change occurs.
+
+## Historical implementation — Turn318, owned-copy repair active
+
+[Turn318 report](../loop/agent-fabric-g1-f05-storage/develop-turn318/report.md)
+records direct existing HC/runner private nonce/IPC/current intended-operation/
+cancellation source changes and joined H02 copied-runner/build/emission gates.
+Generic/hostile CLI, every predecessor assertion/leaf and accepted2581 inputs
+remain. Exact existing F05 inverse entries advance under Oct13 standing approval;
+old entries/keysets/predecessor arrays/digests/raw history stay exact. Latest
+controller job-16cbff3d65 passes build6166ms/cleanup88323ms/D-evidence7832ms,
+with24/9tests and zero bad counters. These checks do not execute the new H01
+private controls or full H02. Real active-suite cancellation/private-workload
+failure/stream-removal tests, H-build cost repair, same64-path history mapping
+and old interrupted-fixture settlement remain. No H retry/task-done or H02/
+acceptance claim. Original six repair checks+measurement120s precede repair
+done and main TWO D/H900s/aggregate1800s/terminal/independent/final/product;
+all external gaps/budgets and no turn/hour capacity gate remain unchanged.
+
+## Historical investigation — Turn317, owned-copy repair active
+
+[Turn317 report](../loop/agent-fabric-g1-f05-storage/develop-turn317/report.md)
+measures the actual complete public copy guard at4151–4251ms, with a4079-file/
+212469312-byte input closure; the new diagnostic copy settles and is removed.
+The exact whole-history audit finds64 unmapped predecessor paths, not only the
+first SQL refusal, in both1103/1100 historical checks. Existing pins/entries/
+keysets remain unchanged. Tester joins read-only with no deterministic H01
+deadlock established. H02 still executes the original runner, but H-build's
+diagnostic excludes that good leaf. No source/seal change, unchanged H retry,
+task-done or new controller qualification occurs. Private copied IPC/H02,
+supported cost repair and exact complete historical mapping remain required;
+all original checks/bounds and external gaps stay unchanged.
+
+## Historical implementation — Turn316, owned-copy repair active
+
+[Turn316 report](../loop/agent-fabric-g1-f05-storage/develop-turn316/report.md)
+records the joined direct HC/D invocation-local buffer implementation and
+existing H01 total-allocation/fresh-storage/all-three-fault controls after
+Turn315's independent review. Every predecessor assertion/read/recovery remains;
+exact existing F05 inverse entries preserve history and accepted2581. Both actual
+final readers match complete original/private12928-file/418689614-byte controls
+before one supported H retry. No new module/pool export/wrapper/check or budget
+change is introduced; Oct13 standing approval covers the recorded re-freeze.
+
+Latest five repair checks pass; H-build TIMEOUT900090ms/no terminal report leaves
+PLAN312 cases unqualified. Measurement-drain120s fails1252ms at the same historical
+SQL guard. No unchanged retry/task-done occurs. Next supported work measures and
+repairs the incomplete full workload, settles/removes independently proved owned
+failed fixtures, repairs exact historical reconstruction, and completes private
+fixed-ten IPC/nonce/intended-operation/cancellation/H02. All repair checks precede
+main TWO D/H900s, aggregate1800s and terminal/security/code/final/product gates.
+Whole AF-07/UX-01/G1/G2 and real X01–X09 remain unqualified; no capacity gate applies.
+
+## Historical plan correction — Turn313, PLAN312-01/02
+
+[Turn313 report](../loop/agent-fabric-g1-f05-storage/plan-turn313/report.md)
+corrects the two test-prescription gaps from Turn312's independent FAIL. The
+[normative PLAN311 section](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md#plan311-01--invocation-local-erased-buffer-leases)
+now requires an invocation-wide total allocation/backing-storage census≤16 for
+each actual independent HC/D scanner across complete many-file scans, retained
+through close/lease return, plus fresh disjoint backing storage on subsequent
+independent scans. Active-buffer peak≤16 alone cannot satisfy it.
+
+The existing H01 controls must separately inject allocation, initial-zeroing
+and erasure failures for both shipped readers. Erasure includes actual held
+sibling callbacks and observed waiting/later units. Each failure must preserve
+its injected cause, return no good tree, admit zero queued/later fd/read starts
+after poisoning, prevent dirty reuse, settle all started IO/closes/leases before
+rejection/recovery/removal, and then recover through a fresh exact full scan.
+Every prior read/recovery and private-copy/IPC obligation remains required.
+
+Only this prescription, current status documents, one report and the existing
+repair task detail/tester focus change. No code/test/seal/build/check changes,
+new task/module/wrapper/check, requirement/budget/capacity gate or external
+action occur. Oct13 standing approval covers the plan correction; no re-freeze
+is needed. Fresh independent plan review precedes implementation, followed by
+both actual final readers' complete original/private measurements before any
+H retry. Latest H timeout/measurement-history failure, failed-fixture settlement,
+private IPC/cancellation/H02 and all terminal/external gates remain pending;
+F05 and the full ledger/G1/G2 remain unqualified.
+
+## Historical design revision — Turn311
+
+[Turn311 report](../loop/agent-fabric-g1-f05-storage/develop-turn311/report.md)
+counts required H01 reads and measures allocation churn. An invocation-local
+erased-buffer prototype retains every full419MB read/census/native result and
+is about11%/24% faster on eight original/private comparisons, with16 rather
+than12928 buffers allocated per invocation. Generation/erasure/error settlement
+controls pass locally and the fresh actual copy is removed with accepted2581/
+sibling preserved. PLAN311 needs fresh independent review before source edits;
+measure both actual final independent readers before retry. No test/guard/
+recovery is omitted. No runtime/test/seal/build/check/budget change or re-freeze
+occurs; tester joins read-only. Latest Turn309 five repair PASS/H-build timeout
+and measurement SQL-history failure remain. Private fixed-ten IPC/cancellation/
+H02, historical mapping/failed-fixture settlement, all repair/full acceptance
+and external X01–X09 stay pending. Whole ledger/G1/G2 remain unqualified.
+
+## Historical investigation — Turn310
+
+[Turn310 report](../loop/agent-fabric-g1-f05-storage/develop-turn310/report.md)
+corrects Turn309's preparation inference: the timeout owner was recreated and
+restored by later marker controls. Native file timestamps and awaited source
+order support progress beyond the new read schedules; no terminal H verdict
+follows. Actual shipped preparation takes9.84–10.47s locally, and complete
+standalone guards4.66–5.70s. Profiling supports cumulative complete-read cost;
+an O(1) queue prototype has mixed timings and is rejected as retry support.
+No runtime/test/seal/check/budget change or controller retry occurs. Accepted2581
+and1177-file runtime candidate stay unchanged. Latest five repair PASS/H-build
+TIMEOUT900087ms and measurement-drain SQL-history FAIL1293ms remain. Supported
+full-guard cost repair, historical mapping, failed-fixture settlement, private
+fixed-ten IPC/cancellation/H02 and all acceptance/external gates remain pending.
+The correction above supersedes the timing inference in the historical section.
+
+## Historical implementation — Turn309
+
+[Turn309 report](../loop/agent-fabric-g1-f05-storage/develop-turn309/report.md)
+records fresh Turn308 independent review before PLAN307 implementation. Direct
+independent installed readers retain every full read/native/census/origin guard,
+use bounded16 reservations/units,512KiB EOF/descriptor reads and public native
+realpath, with awaited factory/operation state/nine callers. Final actual original/
+private419MB results are exact and save roughly16–20%; no900s promise follows.
+Tester retains611 assertions/order and adds69 within existing H01, with direct
+diagnostic failures/cleanup uncertainty explicitly retained. Existing exact F05
+entries reconstruct; accepted2581/history/keysets remain unchanged.
+
+The unchanged checks settle serially: latest five repair PASS/H-build
+TIMEOUT900087ms, measurement-drain120s FAIL1293ms at the documented Turn270 SQL
+historical predecessor before the awaited caller. Initial H fd reuse test-hook
+failure is repaired with per-open generations; the second H gives no terminal
+report or new schedule qualification. Three pre-fix behavior passes are stale
+and existing currentness gates refuse them. Untouched marker write about2s
+before timeout precedes the final preparation guard; new read schedules are
+unproven entered and static review finds no supported new deadlock. Next
+supported work measures complete-copy/preparation cost and settles the owned
+timeout fixture with independent
+identity proofs, then repairs broader historical mapping without rolling back
+the SQL source fix or altering predecessor arrays. No unchanged retry/task-done.
+Fixed-ten IPC/nonce/cancellation/H02 and repair remain incomplete; main D/H900s,
+aggregate1800s and terminal/independent/final/product stay separate. No scope,
+requirement, dependency/registry/check/budget/capacity/external change occurs.
+Whole ledger/product/real X01–X09 remain unqualified.
+
+## Historical reviewed design — Turn307
+
+The [Turn307 report](../loop/agent-fabric-g1-f05-storage/develop-turn307/report.md)
+supports PLAN307-01's bounded direct async16 full installed scans with exact
+original/owned-copy diagnostic equality and about19–21% mean savings. Nine
+existing interface owners and deterministic operation/settlement/native-race
+controls require fresh independent plan review before implementation. Preserve
+all reads/assertions, hostile spawnSync120s, six repair definitions and unchanged
+measurement-drain caller regression. No source/test/seal/check/budget changes,
+build or controller retry occur. Prototype speed cannot complete repair or H.
+Latest originals stay Turn305 five PASS/H-build TIMEOUT; private IPC/nonce/
+cancellation/H02, full acceptance and external qualification remain pending.
+
+## Historical implementation and original checks — Turn305
+
+The [Turn305 report](../loop/agent-fabric-g1-f05-storage/develop-turn305/report.md)
+records direct prepared copied generic checker dispatch, post-build five-output
+admission before imports and final full original/private guards, with joined
+existing H01 copied D/negative/recovery controls and exact predecessor retention.
+Latest six original checks: five PASS, H-build TIMEOUT900110ms/no terminal H
+report. Partial actual copied behavior cannot complete this repair. Supported
+bounded direct cost repair remains required before retry; small formatting
+savings are rejected. Private ten-suite IPC/nonce/cancellation/H02/intended
+marker binding and positive failure-removal controls remain next. All six repair
+checks/task-done still precede main TWO D/H900s/aggregate1800s/terminal/independent/
+final/product. Scope/budgets/registry/requirements remain unchanged; whole
+AF-07/UX-01/G1/G2 and external X01–X09 remain pending.
+
+## Historical implementation — Turn299
+
+The active owned-copy repair adds closed native timestamp windows to the existing
+metadata validator and exercises private regeneration through H01's two existing
+builds. Joined/controller results and exact scope are recorded in the
+[Turn299 report](../loop/agent-fabric-g1-f05-storage/develop-turn299/report.md).
+This slice does not advance positive-marker hashes or admit positive work;
+parent/copied-runner post-build integration, fixed ten-suite IPC/cancellation
+and H02 remain required. All six repair checks/task-done precede main TWO D/H900s,
+separate aggregate1800s and terminal/independent/final/product acceptance.
+Whole AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified.
+
+## Historical implementation — Turn298
+
+The active owned-copy repair now closes the initial five storage metadata
+inputs using exact pinned templates/fields, lock/version/notice validation and
+direct mutation controls within existing H01. See the [Turn298 report](../loop/agent-fabric-g1-f05-storage/develop-turn298/report.md).
+Original/private installed inventories remain immutable; initial shims remain
+quarantined. Actual five-file admitted build regeneration and copied ten-suite
+IPC/cancellation/H02 remain subsequent work. All six repair commands and main
+D/H900s, aggregate1800s and terminal/independent gates remain unchanged.
+No task completion or F05 acceptance is claimed.
+
+## Historical implementation — Turn294
+
+Resources confirmation and independent round4 plan review passed. The active
+owned-copy repair begins with PLAN290-01 direct delivery record scoping and
+shared D02 controls. See the [Turn294 report](../loop/agent-fabric-g1-f05-storage/develop-turn294/report.md).
+This bounded reader step leaves the owned-copy/metadata/async execution and
+copy-regression work required by the same task. All six repair commands and
+original D/H900s, aggregate1800s, task/team/requirements/acceptance definitions
+remain unchanged. No main-task or F05 completion is claimed.
+
+## Reviewed corrective plan — Turn291, PLAN290-01
+
+Independent round4 plan review identifies a deterministic delivery-reader
+conflict: direct H02 stdout includes nested build/report records, but the
+existing reader removes their TAP prefix and applies unscoped exact-one gates.
+Assign the direct record-scoping correction to the existing seven-file
+`f05-14-owned-copy-repair`, before full D/H, aggregate and terminal integration.
+The [prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md)
+now retains raw prefix/depth/order and unchanged values, requires exactly one
+genuine outer aggregate report and successful fresh outer build, and separately
+validates the complete ten-suite nested prerequisite, its own build/current
+candidate and existing coverage/cleanup gates. Nested success cannot replace
+missing outer evidence; duplicate outer records remain failures.
+
+Tester extends D02/complete-controller-streams in the existing helper with valid
+outer+nested reader control, prefix/depth distinction, missing/duplicate outer
+report/build, nested-only and nested aggregate-payload refusals, nonfresh outer
+build and damaged nested workload/build/coverage/cleanup controls. These bounded
+reader fixtures run the actual reader, issue no controller verdict and cannot
+qualify product behavior. All original actual-stream/hash/currentness/severe/
+pending/independent gates remain. Lead owns delivery-evidence alongside the
+already allocated HarnessCopy/runner files; no owner/file, wrapper, driver,
+receipt layer, dependency, test label or check command is added.
+
+Only the repair, main harness, aggregate-schedule and terminal task details
+change. All81 task check arrays, covers/predecessors/roles/teams,96 requirements
+and four acceptance definitions stay unchanged. The existing delivery-evidence
+component proves focused reader controls; copied D runs the same leaf. The
+complete original D/H900s, aggregate1800s and final evidence-controller check
+must still pass on the actual current candidate. The five exact generated
+metadata rules from PLAN287-01 remain intact. No implementation, build, H
+retry, resource probe or freeze/re-freeze occurs in this plan turn. Standing
+Oct13 approval covers the local choice; no requirement/scope/budget/capacity
+change or restricted external action occurs.
+
+The [Turn291 report](../loop/agent-fabric-g1-f05-storage/plan-turn291/report.md)
+records the static audit and controller plan submission. Latest full original
+D101437msPASS/H900130msTIMEOUT remains blocking. Earlier Turn289 resources
+establish availability only; controller resources confirmation and independent
+plan review precede implementation. Full H/copy/aggregate/terminal/independent/
+final/product acceptance, whole AF-07/UX-01/G1/G2 and real X01–X09 stay unqualified.
+
+Controller records the revised plan final with zero uncovered requirements.
+Before/after comparison confirms only the four detail fields change; all81
+task check arrays and full requirements/acceptance/policy/predecessor/coverage/
+role/team fields remain identical. Resources confirmation is current, followed
+by independent plan review; no new reviewer verdict or check job is claimed.
+
+## Historical corrective plan — Turn281
+
+PLAN281-01 adds a separately reviewed directory-metadata source candidate before
+another changed-candidate full D/H run. In `EpochWitnessJournal.directory`,
+replace only four fresh metadata `lstat` calls and root native `realpath` with
+synchronous counterparts. Keep asynchronous marker data read, mkdir/fsync,
+readdir, event chain/CAS/fault hooks, every validation and refusal order unchanged.
+No cache, admission consolidation, profiler or harness wrapper. Extend real
+root/marker/tenant/Space refusals and recreated-anchor recovery in the existing
+shared epoch helper. Backend owns only epoch-journal source; tester owns only
+register-epoch-tests; join before serialized complete authority/staging/artifact/
+restore/encryption regressions. Source implementation waits independent review.
+
+403 inclusive journal.current calls/555.977ms plus the actual source establish a
+repeated scheduling hypothesis, not directory-exclusive cost or a proven full-H
+cause. Latest direct CPU idle78.96% cannot be assigned to PG/filesystem waits.
+Synchronous metadata blocking and physical-device/path-race guarantees remain
+unqualified. Original D PASS101437ms/H TIMEOUT900130ms still blocks acceptance;
+every H/E/D assertion, fresh ten-suite order/AD after K, D/H900s and separate
+aggregate1800s remain. No unchanged H retry, task-done claim or capacity gate.
+See the [Turn281 plan/report](../loop/agent-fabric-g1-f05-storage/develop-turn281/report.md)
+for exact ownership, scope, checks and retained external qualifications.
+
+Controller submission succeeds:79 tasks/70done/4dropped/5live, all96 requirements
+covered, acyclic dependencies, maximum two seats. Resources remain done;
+independent plan_review is current. The earlier review pass is historical;
+this amendment has no new review verdict, source implementation or behavior pass.
+
+## Historical corrective plan — Turn267
+
+PLAN266-01/02 are addressed by a bounded backend-owned `f05-14-control-scan`
+prerequisite and a refreshed [readiness report](../loop/agent-fabric-g1-f05-storage/readiness.md).
+The source step targets ordinary control projection transport in the existing
+F05 authority owner, preserving exact digest/row/type/bound compatibility and
+every native/current-authority/source/audience/wait/effect/recovery boundary.
+Existing complete authority/staging/artifact/restore component checks prove
+behavior; the unchanged full D/H900s checks determine schedule completion.
+The1800s aggregate proof remains a separate task. Profiler timing does not
+establish a safe consolidation or full-H feasibility. All96 requirements
+remain covered; no scope, workload or acceptance budget changes.
+The old primary readiness is preserved as history, with dropped capture
+machinery removed from current prerequisites. The revised76-task plan is finalized
+and awaits controller resource confirmation, then independent review; no source implementation or acceptance pass occurs this
+turn. See the [Turn267 report](../loop/agent-fabric-g1-f05-storage/plan-turn267/report.md).
+
+## Current admission investigation — Turn265
+
+Original full delivery passes37 tests/107732ms; full H times out900098ms.
+All actual H/E/D workload assertions and both900s prerequisites remain unchanged.
+A completed diagnostic task, `f05-14-admission-profile`, measures existing
+emission through the owned fixture only: five file operations make10285 SQL
+calls and four preparations repeatedly invoke40 staging authority checks plus40
+write checks and80 native loads. Instrumented samples establish no fresh build,
+whole-H feasibility or source repair. Proposed consolidation has unresolved
+refusal-order changes; source/tests/checks remain unchanged. Next design and
+prove a direct F05 repair retaining after-wait/effect currentness and multi-fault/
+recovery behavior. No harness wrapper, cache, skip, retry, changed acceptance
+budget or capacity gate. See the
+[Turn265 report](../loop/agent-fabric-g1-f05-storage/develop-turn265/report.md).
+
+## Historical journal execution — Turn263
+
+The F05 journal reads each bounded immutable event through direct descriptor
+syscalls while preserving fresh full scans, regular-file/size/mutation checks,
+awaited fault hooks, four-name settlement, error order and independent CAS.
+The tester extends the existing integrity leaf with real four-reader held
+growth/error-order/settlement/exact recovery assertions. Original controller
+checks remain required; local timing samples establish no whole-H feasibility.
+Original600s authority `job-b9b34f1451` passes all118 tests/75984ms including
+the extended leaf, zero violations and owned cleanup/census.
+The latest full delivery passes37 tests/104433ms; H times out900137ms during
+nested recall. Both full prerequisites stay900s; full H/later acceptance and
+external device/host/capacity qualification remain pending. See the
+[Turn263 report](../loop/agent-fabric-g1-f05-storage/develop-turn263/report.md).
+
+## Current controller bound — Turn261
+
+The current assignment requires full delivery and harness checks within900s
+each; Turn260 applied that bound through the Loop plan API. The historical
+Turn2462700s extension below is superseded by this current instruction. All
+mandatory H leaves, the fresh sequential ten-suite callback and resource limits
+remain. Latest original delivery passes37 tests; H times out900144ms during
+nested Q04. Full H and later acceptance remain unqualified.
+
+Turn261 combines adjacent epoch/policy reads in the F05 authority owner under
+the existing Space barrier. Every independent anchor comparison, current
+control rescan, policy/grant/retention check and final identity/time recheck
+remains. Focused missing-row/recovery cases extend an existing authority leaf;
+original `job-65da5fc9e7` passes all41 authority tests/87828ms. No claim of
+whole-H throughput or acceptance follows. See the
+[Turn261 report](../loop/agent-fabric-g1-f05-storage/develop-turn261/report.md).
+
+## Historical controller bound — Turn246
 
 The human decision of 2026-10-13 raises the full-harness controller timeout
 from900s to2700s as a hang bound, not a performance requirement. This
@@ -4077,3 +4592,312 @@ remain required. X01–X09 and whole AF-07/UX-01/G1/G2 remain unqualified.
 
 Latest execution and limitations are recorded in the
 [Turn227 report](../loop/agent-fabric-g1-f05-storage/develop-turn227/report.md).
+
+## Turn260 current harness bound and publication scan
+
+The current assignment requires both complete delivery and harness prerequisites
+within900s. The controller still stored2700s for H from its historical extension;
+`loop_plan` now tightens it to900s, preserving the exact command, all H leaves,
+fresh sequential ten-suite workload, AD order and resource limits. The standing
+approval covers this re-freeze; no new approval, scope or budget increase is
+requested. Historical2700s failures remain visible. No turn/hour capacity gate.
+
+Direct F05 owner work batches the seven typed publication-override projections,
+retaining live rescans, UNION/order/row bounds, historical driver encoding,
+optional sharing and all authority checks. Existing A01 compares real PostgreSQL
+historical digests for each override/combination and512/513 boundaries. Full
+authority passes; sampled projection cost does not establish H feasibility.
+The exact full delivery/H checks remain mandatory before task completion, then
+security, aggregate and independent/final/product acceptance remain required.
+See the [Turn260 report](../loop/agent-fabric-g1-f05-storage/develop-turn260/report.md).
+
+
+## Turn270 — f05-14-control-scan complete
+
+The [direct source repair report](../loop/agent-fabric-g1-f05-storage/develop-turn270/report.md)
+records the fixed read-only invoker scan, own migration2 pin update under standing
+approval, preserved digest/admission boundaries, direct existing behavioral
+assertions and first failed fixture correction. Controller `job-d0c79fc6ee`
+passes all four complete current component commands: 247 tests, no skips/TODO,
+accepted guards unchanged and owned cleanup complete. Controller status is
+68/76 done; next is active `f05-14-harness`, unchanged original full D/H900s.
+Separate aggregate1800s, security/terminal and independent/final/product gates
+remain required. No whole AF-07/UX-01/F05/G1/G2 or external X01–X09 qualification
+is inferred from this bounded component task.
+
+## PLAN272-01 — bounded attribution after the current full-H timeout
+
+The [Turn272 report](../loop/agent-fabric-g1-f05-storage/develop-turn272/report.md)
+retains actual changed-candidate job-3d03803295 delivery PASS101437ms and full H
+TIMEOUT900130ms. Add `f05-14-postscan-profile` before active `f05-14-harness`:
+existing current strict build (120s diagnostic compiler bound), then the unchanged
+existing Turn265 direct five-public-method profiler (retained180s diagnostic
+bound). One lead plus one read-only tester joins before serial controller checks.
+Reconstruction bytes/hash remain in the original Turn265 report; no profiler
+extension, source/test/harness change or new verification layer is planned here.
+
+Fresh method/query attribution is required because the original profile predates
+the completed control-scan repair. A successful diagnostic qualifies no behavior,
+full H, production percentile or product acceptance. Any supported source repair
+requires another explicit bounded plan/component regression before a changed
+candidate's original D/H; diagnostic completion does not permit unchanged H retry.
+Every H/E/D leaf, ten sequential non-H files, AD after K, parent H once/public11,
+original D/H900s and separate aggregate1800s remain unchanged. No acceptance
+budget, requirement, scope or remaining-turn/hour-capacity gate changes. Existing
+local standing approval covers the plan/team/fixture work; independent controller
+plan review remains required, and external X01–X09 remain unqualified.
+
+## PLAN275-01 — direct sampling before a supported source prescription
+
+The [Turn275 plan](../loop/agent-fabric-g1-f05-storage/develop-turn275/report.md)
+follows the completed current diagnostic: build PASS5238ms/profile PASS11175ms
+in original job-0a5a7183d7. Repeated staging/artifact admission remains a cost
+seam, but decorated timings do not establish a safe repair or full-H root cause.
+Narrowing installed native load changes resolver error priority and published
+current-scope checks; no such implementation is authorized by this plan.
+
+Add `f05-14-direct-cpu-profile` before active harness: one tester lead/one
+read-only tester, existing strict build120s then one direct in-process V8
+sampling diagnostic180s. Future temporary script calls the same unchanged
+fixture's `x.files(core)` once, retaining five public operations/assertions/
+timers, without old query/method decoration or product/harness edits. Record
+exclusive counts/weighted sampled intervals and idle/GC/program/unresolved
+categories with full totals, not exact CPU/PG-wait/percentile claims. Source
+prescription may remain unsupported. Owned cleanup and all existing limits
+remain; script bytes/hash and latest original run suffice, no raw profile/tree.
+
+Independent controller review precedes implementation/execution. Completion
+does not permit unchanged H retry or main-task done. Any supported source repair
+needs another explicit bounded plan and real component regression before
+changed-candidate original D/H. Latest D PASS101437ms/H TIMEOUT900130ms stays
+visible. All H/E/D leaves, ten sequential non-H/AD after K/H once/public11,
+D/H900s, aggregate1800s, accepted inputs and external X01–X09 gates remain.
+No scope/requirement/budget/capacity gate or freeze/re-freeze changes.
+
+
+## PLAN275-01 outcome — Turn280, direct diagnosis complete
+
+Original job-2183c4010f finishes resource314ms/build5320ms/direct sampling10726ms,
+all PASS/exit0; controller diagnostic task done,70/78tasks with4dropped/4live.
+The [Turn279/280 result](../loop/agent-fabric-g1-f05-storage/develop-turn279/report.md)
+contains exact reconstructible source and latest original streams, reviewed
+exclusive accounting and actual fixture cleanup. All4306 sample IDs resolve;
+F05179544us2.91% versus idle4875407us78.96% supplies no concrete behavior-safe
+repair/full-H root cause. No source/test/harness/check change is prescribed.
+The CPU task is complete; do not repeat its run or unchanged full H.
+
+Current f05-14-harness remains active with original D101437msPASS/H900130msTIMEOUT.
+Next supported repair needs a separate bounded reviewed source plan and complete
+real component regressions before changed-candidate original D/H900s. Every
+H/E/D workload/assertion,ten sequential non-H/AD after K/H once/public11 and
+aggregate1800s remain mandatory. No freeze/re-freeze,budget/capacity gate change.
+Full/local/external qualification limits remain as recorded in current evidence.
+
+## PLAN284-01 — prescribe the missing positive copy boundary
+
+Turn284's role-first tester and lead confirm COPY284-01: H02/good-full-run
+imports the original package runner; fresh build/ten-suite execution therefore
+use the original root. No positive owned current-source copy, copied D inputs,
+stripped outer capabilities or positive-copy cleanup exists. This contradicts
+the live unchanged H check and Turn101's explicit copy requirement. The earlier
+statement that all H implementation is present is incomplete at this boundary.
+All implemented assertions remain; this is not a demonstrated900s timeout cause.
+
+Add design-only `f05-14-owned-copy-design` after completed metadata/copies/evidence
+prerequisites and before active `f05-14-harness`. Lead owns a concrete future
+prescription/report and current plan/evidence/readiness text; one role-first
+read-only tester owns critique only. Its existing input/registry/execution
+integrity and local delivery-evidence checks do not qualify a positive copy.
+
+Prescribe direct correction within existing HarnessCopy/H02/nonrecursive runner
+and directly necessary D origin handling, with exact copied source/docs/dependency
+inputs and complete referenced raw/controller metadata. Resolve consistent
+snapshots/missing/stale refusal and original absolute command roots/git controller
+fingerprint separately from copied executable binding. Preserve raw bytes,
+currentness/provenance/severe-finding/independent-verdict assertions. Do not relax
+D02 to make a copied root appear to be the original controller workspace.
+
+Specify capability stripping, async current child instance ownership, complete
+output/failure settlement, nested LIFO/census/copy cleanup and sentinel protection.
+Retain hostile launcher120s; ten sequential non-H files, AD after K, H once/public11;
+all H6/12/13/8+supplements/E28/D31; every current/native/source/audience/witness/time/
+uncertainty/recovery boundary; at most five PG1CPU/256MiB/128PID fixtures.
+No observer/capture/admission/receipt/proof wrapper, cache, selector, retry,
+omission or retained candidate tree. The ephemeral positive copy is a required
+actual fixture, not an evidence tree.
+
+Outcome must name exact implementation source/test owners, real useful-copy,
+missing/stale/forged-origin/capability/child-failure/concurrency/recovery cleanup
+cases and complete regression commands. Submit a separate explicit bounded
+implementation task/plan for independent review before source edits or full D/H.
+Design completion permits neither an H run nor main-task done. Original two
+D/H900s definitions remain byte-for-byte unchanged; aggregate1800s remains
+separate, then security/terminal/independent/final/product gates. Latest original
+D101437msPASS/H900130msTIMEOUT remains visible. No remaining-turn/hour capacity
+gate, scope/requirement/acceptance-budget or freeze/re-freeze change applies.
+Standing2026-10-13 approval covers in-scope plan/team/task/documents; external
+X01–X09 and full AF-07/UX-01/G1/G2 remain unqualified/OFF.
+
+The [Turn284 report](../loop/agent-fabric-g1-f05-storage/develop-turn284/report.md)
+links the actual finding, joined critique and latest original evidence.
+
+## PLAN286-01 — bounded implementation after owned-copy design
+
+Turn286 delivers the [owned-copy prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md)
+for COPY284-01; no source, harness, pin or dependency changes occur. The design
+binds the complete positive source/docs/dependency/controller/raw input closure,
+original Git/absolute-command evidence origin and actual executing-copy bytes.
+It uses existing HarnessCopy owner metadata and the copied runner's private IPC
+entry, preserves stale/pending/severe/verdict gates, strips outer capabilities,
+and specifies async process-instance/stream settlement and nested LIFO/census/
+copy/sibling cleanup. Its two integrity/local-evidence checks do not prove a copy.
+
+Register separate `f05-14-owned-copy-repair` after completed design and before
+active harness. Lead owns existing HarnessCopy/runner/delivery-evidence; one
+tester owns the four named H/D test files, with no overlapping edits. Lead
+integrates exact necessary F05 preservation entries after join; no new wrapper,
+registry variant, dependency, raw rewrite or retained candidate tree. Standing
+Oct13 approval covers local source/test/task/team and required F05 re-freeze;
+independent plan review precedes edits. Exact files, input rules, forged/missing/
+stale/capability/failure/concurrency/recovery assertions and commands are in the
+prescription. Normal original-root D remains unchanged in meaning.
+
+Task checks, serialized after join: existing strict build120s, harness-build,
+harness-cleanup, delivery-evidence, delivery-operations and owned-encryption900s
+each. Their actual copy primitive/origin regressions are added inside existing
+leaves; they cannot finish H02/good-full-run. After repair is completed, run the
+original TWO main-task D/H checks unchanged900s each. H02 freshly builds one
+owned current copy and executes all ten real non-H suites sequentially, AD after
+K, H once/public11; all H6/12/13/8+supplements/E28/D31 and current/native/source/
+audience/witness/time/uncertainty/recovery gates remain. Maximum five owned
+PG1CPU/256MiB/128PID fixtures, hostile120s, aggregate1800s and subsequent security/
+terminal/independent/final/product gates remain. No capacity gate or product
+scope/requirement/acceptance-budget change occurs. Latest D101437msPASS/
+H900130msTIMEOUT and external X01–X09 limitations remain visible.
+
+The [Turn286 report](../loop/agent-fabric-g1-f05-storage/develop-turn286/report.md)
+records design checks, joined critique and the separate controller submission.
+
+Controller marks design done after original job-0ae9315763 input checks
+PASS212ms/738ms. Separate PLAN286-01 is submitted81tasks/72done/all96covered;
+all80 existing task check arrays and acceptance definitions unchanged. Current
+plan_review precedes implementation; its prior round2 pass is historical. No
+new full-H/copy result or job pending. Follow Loop next, without source edits
+or D/H until the reviewed repair and actual regressions are complete.
+
+## PLAN287-01 correction — Turn288, generated install metadata
+
+Independent round3 plan review sends PLAN286-01 back for a static conflict:
+the unchanged copied build's pnpm10.18.0 offline install regenerates launchers
+containing copy-root NODE_PATH entries, while the old prescription demanded
+equal original/destination dependency hashes after execution. This is a design
+defect, not an executed relocated-build result or an assigned H timeout cause.
+
+Revise the existing `f05-14-owned-copy-repair`, preserving its predecessor,
+covers, lead/one-tester seven-file ownership and all six commands/budgets.
+The [prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md)
+now requires exact immutable package payload/mode/link/path census and original
+installed bytes throughout. Only five literal copied storage metadata files
+may be regenerated by the unchanged private install: `.bin/tsc`, `.bin/tsserver`,
+`.modules.yaml`, `.pnpm-workspace-state-v1.json`, `.pnpm/lock.yaml`. Validate
+complete pinned shell templates with copy-local paths, closed metadata fields
+and native timestamp precision; current/wanted lock bytes stay pinned. Generated
+destination hash transport may advance only those five independently validated
+entries, never captured original/source/origin/fingerprint/verdict fields.
+Recovery installation remains entirely immutable and its launchers uninvoked.
+
+Extend existing H01/HARNESS-BUILD fresh-build leaf with actual relocation using
+the unchanged offline build, private emissions, original/copy package/link
+hashes and exact regenerated metadata, followed by actual implementation-file,
+link substitution, file-census and metadata/path/lock mutation refusals before
+and after install. No test-name/registry change, new wrapper/checker/diagnostic,
+node_modules exemption, second install command or blind snapshot adoption.
+All prior H/E/D assertions, missing/stale/capability/currentness/child/failure/
+recovery and owned nested LIFO/census/sibling cleanup remain mandatory.
+
+Submit `loop_plan(final=true)` for independent review before implementation.
+Repair completion still precedes original full D/H900s; H02 executes ten real
+non-H files in the current owned copy with a fresh build, AD after K/H once/
+public11. Aggregate1800s/security/terminal/independent/final/product gates remain.
+Latest original D101437msPASS/H900130msTIMEOUT remains blocking. This turn
+changes documents and task description only, with no source/pin re-freeze,
+build/copy/H behavior or new resource qualification. Standing Oct13 authorizes
+the local plan/team choice; no requirement/scope/acceptance-budget/capacity
+change. Whole AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified.
+The [Turn288 report](../loop/agent-fabric-g1-f05-storage/plan-turn288/report.md)
+records the static audit and joined tester critique.
+
+Controller accepts final revised plan81tasks/72done/zero uncovered; live
+before/after comparison preserves all81 check arrays, requirement/acceptance
+definitions and task predecessor/coverage/team/role fields. Only the two task
+details change. Next resources confirmation, then independent plan review;
+no new verdict, behavior qualification or pending check job.
+
+
+## Turn295 — generic child and copy cleanup step
+
+The reviewed owned-copy repair remains active. Lead extends existing HarnessCopy
+with generic async known-script execution, a minimal tool environment, current
+PID/parent/birth/exact-command proof, complete stream settlement and independently
+proved cleanup after guard failure. One joined tester adds actual failure/recovery,
+capability, concurrency and root/owner substitution controls inside existing H02/H03
+leaves. No names/counts/registry/checks/budgets change. Source supports Darwin's
+transient startup command and fixed UTF8 census; controlled disposable children
+wait for the parent's current proof without generic IPC/nonce or extra CLI args.
+
+Controller job-cb2a2dc5c1 passes strict build5566ms, harness-build106587ms and
+harness-cleanup84171ms;43tests/41existing leaves, zero fail/cancel/skip/TODO. The
+[Turn295 report](../loop/agent-fabric-g1-f05-storage/develop-turn295/report.md)
+records original failures, latest complete streams/hashes and exact authorized
+F05 seal entries with immutable historical/accepted bytes. This qualifies local
+generic-child/cleanup primitives only. Positive closure, five generated metadata
+transitions, copied D origins and fixed ten-suite IPC/cancellation still precede
+all six repair checks/task-done and original full D/H900s. Latest full H timeout,
+aggregate1800s, terminal/independent/final/product and X01–X09 gaps stay pending.
+
+
+## Turn296 — positive regular closure and original D origin step
+
+The active repair adds complete regular source/docs/allocations/controller/raw
+preparation to HarnessCopy and actual copied D reading with immutable original
+launcher/fingerprint/historical commands. One joined tester adds useful positive,
+missing/mutation/forgery/recovery controls in existing H01/D02 leaves. Existing
+checks/counts/variants/budgets remain. The [Turn296 report](../loop/agent-fabric-g1-f05-storage/develop-turn296/report.md)
+records exact necessary two-helper F05 seal entries and controller job-3068cdcc69
+PASS build6255ms/H-build241513ms/D-evidence7905ms,28tests/25existing leaves
+with zero bad counters. Dependency installation metadata/payload census and fixed
+copied ten-suite IPC/cancellation/H02 still precede all six repair checks/done;
+original full D/H900s and aggregate1800s stay separate. Full ledger/external
+X01–X09/terminal/independent/final/product acceptance remain pending.
+
+## Turn297 — complete initial installed-input binding
+
+The same repair now binds original/private storage and recovery file, directory,
+mode/type and confined-relative-link censuses in the existing positive marker.
+One joined tester adds independent initial equality, mutation/refusal/restoration
+and failed-guard owned-removal controls inside H01/fresh-build. Exact current
+F05 transport inverses/digests preserve historical/accepted bytes. See the
+[Turn297 report](../loop/agent-fabric-g1-f05-storage/develop-turn297/report.md)
+for controller results. Closed original metadata templates, the exact five
+admitted build transitions, actual relocated positive build and fixed copied
+ten-suite IPC/cancellation still precede all six repair checks/task-done. No
+full D/H retry, external X01–X09 or whole-ledger qualification occurs.
+
+Turn297 corrected original job-e494afd9f3 passes6096/808914/8712ms for build/
+H-build/D-evidence,28tests/25existing leaves, zero bad counters. The preceding
+900073ms timeout led to a direct exact-predicate assertion correction for
+pathological full-inventory omission diffs, retaining all snapshots/guards/
+controls. Initial installed inputs alone are qualified; interrupted first-copy
+cleanup, metadata transitions and copied H02 remain pending. The linked report
+contains complete original evidence and precise standing-approved21+9 inverses.
+
+## Turn301 — owned-copy repair checkpoint
+
+[Turn301 report](../loop/agent-fabric-g1-f05-storage/develop-turn301/report.md):
+original stable build/D-evidence pass; H-build reaches actual prepared build and
+successful final copy cleanup but times out900092ms without a terminal report.
+Continue the same direct repair with supported traversal-cost investigation;
+retain every assertion/read/guard and unchanged check budgets, no unchanged
+retry. Fixed copied runner dispatch/IPC/cancellation/H02 remain pending. Six
+repair checks/task-done precede original TWO D/H900s and aggregate1800s; no whole
+AF-07/UX-01/G1/G2, interrupted-copy cleanup or external qualification is claimed.

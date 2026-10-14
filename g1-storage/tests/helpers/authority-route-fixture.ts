@@ -14,7 +14,7 @@ import {StorageAuthorityRepository,controlDigest} from '../../src/authority.js';
 import {currentScope} from '../../../g1-model/src/model-repository.js';
 import {EpochWitnessJournal,type OwnedAnchorRoot} from '../../src/epoch-journal.js';
 import {StagingWitnessJournal} from '../../src/staging-witness.js';
-import {ArtifactPublicationRepository,type ArtifactControlsOwner,type ArtifactValidator,type ArtifactCommand} from '../../src/artifact-publication.js';
+import {ArtifactPublicationRepository,type ArtifactControlsOwner,type ArtifactValidator,type ArtifactCommand,type ArtifactHooks} from '../../src/artifact-publication.js';
 import {VolumeDraftRepository,type VolumeCommand} from '../../src/volume-drafts.js';
 import {DependencyGraphRepository,type GraphRef} from '../../src/dependency-graph.js';
 import {MaintenanceBuildersRepository,MaintenancePlanSchema,MaintenancePolicySchema,buildMaintenance,type MaintenancePlan} from '../../src/maintenance-builders.js';
@@ -74,17 +74,24 @@ export async function createAuthorityRouteFixture(){
   const registered=new Map<string,{scope:VerifiedScope;validation:string;fingerprint?:string;expiry:string}>();
   const controls:ArtifactControlsOwner={current:async()=>({rootId:roots['content']!.rootId,keyId,generation}),resolve:async(_tx,s,c)=>{const r=registered.get(c.key);demand(r&&r.scope===s,'UNAUTHORIZED');return {rootId:roots['content']!.rootId,keyId,generation,retentionExpiresAt:r.expiry};}};
   const validator:ArtifactValidator={require:async(_tx,s,r)=>{const e=[...registered.values()].find(v=>v.validation===r.validationId);demand(e&&e.scope===s,'CHECK_BINDING_MISMATCH');if(e.fingerprint)demand(e.fingerprint===r.commandFingerprint,'CHECK_BINDING_MISMATCH');else e.fingerprint=r.commandFingerprint;}};
-  const artifact=()=>new ArtifactPublicationRepository(f.uow,journal,f.native,cipher(),roots['content']!,new StagingWitnessJournal(witness),controls,validator);
-  const volume=()=>new VolumeDraftRepository(f.uow,journal,f.native,cipher(),roots['content']!,new StagingWitnessJournal(witness),controls,validator);
+  const artifact=(hooks:ArtifactHooks={})=>new ArtifactPublicationRepository(f.uow,journal,f.native,cipher(),roots['content']!,new StagingWitnessJournal(witness),controls,validator,hooks);
+  const volume=(hooks:ArtifactHooks={})=>new VolumeDraftRepository(f.uow,journal,f.native,cipher(),roots['content']!,new StagingWitnessJournal(witness),controls,validator,hooks);
   function enroll(s:VerifiedScope,c:VolumeCommand|ArtifactCommand,expiry:string){registered.set(c.key,{scope:s,validation:c.action==='artifact'?c.validationId:stable(['storage-volume-validation-v1',s.tenantId,s.spaceId,s.actorId,c.key]),expiry});return c;}
   const files=async(x:Awaited<ReturnType<typeof core>>)=>{
    const s=x.s,bytes=randomBytes(97),encoded=bytes.toString('base64'),expiry=x.source.retentionExpiresAt;
-   const fileTimes:Record<string,number>={};let operationStarted=performance.now();
-   const ac=ArtifactCommandSchema.parse({...await base(s),action:'artifact',filename:'display-only',bytes:encoded,sourceId:x.source.targetId,validationId:randomUUID()});enroll(s,ac,expiry);await artifact().prepare(s,ac);fileTimes['artifactPrepare']=performance.now()-operationStarted;operationStarted=performance.now();assert.equal((await artifact().commit(s,ac)).status,'artifact-committed');count.save++;count.write++;fileTimes['artifactCommit']=performance.now()-operationStarted;operationStarted=performance.now();
-   const live={...await base(s),action:'live-write' as const,filename:'live',logicalPath:'docs/live',bytes:encoded};enroll(s,live,expiry);assert.equal((await volume().writeLive(s,live)).status,'live-written');count.save++;count.write++;fileTimes['liveWrite']=performance.now()-operationStarted;operationStarted=performance.now();
-   const draft={...await base(s),action:'draft' as const,filename:'draft',logicalPath:'docs/draft',bytes:encoded,sourceId:null,baseRevision:1};enroll(s,draft,expiry);assert.equal((await volume().saveDraft(s,draft)).status,'draft-saved');count.save++;count.write++;fileTimes['draftSave']=performance.now()-operationStarted;operationStarted=performance.now();
-   const checkpoint={...await base(s),action:'checkpoint' as const,liveIds:[live.targetId]};enroll(s,checkpoint,expiry);assert.equal((await volume().confirmCheckpoint(s,checkpoint)).status,'checkpoint-confirmed');count.save++;count.write++;fileTimes['checkpointConfirm']=performance.now()-operationStarted;
-   console.log(JSON.stringify({measurement:'authority-file-operation-times',clock:'child-monotonic',spaceKind:s.spaceId===f.spaces.personal?'personal':'group',...fileTimes}));
+   const fileTimes:Record<string,number>={},filePhases:Record<string,{phase:string;elapsedMs:number}[]>={};let operation='artifactPrepare',operationStarted=performance.now();
+   // Existing installed hooks only sample clocks. They perform no I/O, waits,
+   // mutation, assertion or gate, and product IPC workers receive no probes.
+   const hooks:ArtifactHooks={files:{phase:async phase=>{(filePhases[operation]??=[]).push({phase,elapsedMs:performance.now()-operationStarted});}},
+    afterReserve:async()=>{(filePhases[operation]??=[]).push({phase:'epoch-reserved',elapsedMs:performance.now()-operationStarted});},
+    beforeArtifactPublication:async()=>{(filePhases[operation]??=[]).push({phase:'artifact-prerequisite',elapsedMs:performance.now()-operationStarted});},
+    afterArtifactWrite:async()=>{(filePhases[operation]??=[]).push({phase:'artifact-written',elapsedMs:performance.now()-operationStarted});},
+    beforeWitnessAck:async()=>{(filePhases[operation]??=[]).push({phase:'before-witness-ack',elapsedMs:performance.now()-operationStarted});}};
+   const ac=ArtifactCommandSchema.parse({...await base(s),action:'artifact',filename:'display-only',bytes:encoded,sourceId:x.source.targetId,validationId:randomUUID()});enroll(s,ac,expiry);await artifact(hooks).prepare(s,ac);fileTimes['artifactPrepare']=performance.now()-operationStarted;operation='artifactCommit';operationStarted=performance.now();assert.equal((await artifact(hooks).commit(s,ac)).status,'artifact-committed');count.save++;count.write++;fileTimes['artifactCommit']=performance.now()-operationStarted;operation='liveWrite';operationStarted=performance.now();
+   const live={...await base(s),action:'live-write' as const,filename:'live',logicalPath:'docs/live',bytes:encoded};enroll(s,live,expiry);assert.equal((await volume(hooks).writeLive(s,live)).status,'live-written');count.save++;count.write++;fileTimes['liveWrite']=performance.now()-operationStarted;operation='draftSave';operationStarted=performance.now();
+   const draft={...await base(s),action:'draft' as const,filename:'draft',logicalPath:'docs/draft',bytes:encoded,sourceId:null,baseRevision:1};enroll(s,draft,expiry);assert.equal((await volume(hooks).saveDraft(s,draft)).status,'draft-saved');count.save++;count.write++;fileTimes['draftSave']=performance.now()-operationStarted;operation='checkpointConfirm';operationStarted=performance.now();
+   const checkpoint={...await base(s),action:'checkpoint' as const,liveIds:[live.targetId]};enroll(s,checkpoint,expiry);assert.equal((await volume(hooks).confirmCheckpoint(s,checkpoint)).status,'checkpoint-confirmed');count.save++;count.write++;fileTimes['checkpointConfirm']=performance.now()-operationStarted;
+   console.log(JSON.stringify({measurement:'authority-file-operation-times',clock:'child-monotonic',spaceKind:s.spaceId===f.spaces.personal?'personal':'group',...fileTimes,filePhases}));
    // Measure the installed authenticated UoW without product work. Keep every
    // transaction/session/role guard active; this isolates their aggregate cost.
    const transactionStarted=performance.now();let enteredMs=transactionStarted,leavingMs=transactionStarted;
@@ -108,6 +115,25 @@ export async function createAuthorityRouteFixture(){
     const originalPlans=originalExplained.rows[0]?.['QUERY PLAN'];demand(Array.isArray(originalPlans)&&originalPlans[0]&&typeof originalPlans[0]==='object','INTEGRITY_FAILED');
     const originalPlan=originalPlans[0] as Record<string,unknown>,originalNode=originalPlan['Plan'] as Record<string,unknown>|undefined;
     console.log(JSON.stringify({measurement:'authority-original-join-plan-times',spaceKind:s.spaceId===f.spaces.personal?'personal':'group',planningMs:originalPlan['Planning Time'],executionMs:originalPlan['Execution Time'],totalCost:originalNode?.['Total Cost'],jit:originalPlan['JIT']??null}));
+    // The staging owner's consumed-original query is a separate FULL JOIN.
+    // Diagnose that exact statement too; the simple reservation join above
+    // cannot attribute its planning, row filtering or execution cost.
+    const consumedExplained=await tx.query(`EXPLAIN (ANALYZE,FORMAT JSON) SELECT p.*,e.binding_digest AS original_binding,e.session_id AS original_session,
+     e.expires_at AS original_expires,e.previous_epoch,e.epoch AS original_epoch,e.anchor_id,
+     x.source_task_id AS installed_task,
+     ROW(p.witness,p.key_id,p.generation,p.epoch,p.accepted_at,p.expires_at)
+      IS NOT DISTINCT FROM ROW(h.witness,h.key_id,h.generation,h.epoch,h.accepted_at,h.expires_at) AS exact_head,
+     to_char(p.accepted_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS exact_at,
+     to_char(p.expires_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS exact_expires,
+     to_char(e.expires_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS exact_original_expires
+     FROM fabric.storage_epoch_publications e FULL JOIN fabric.storage_head_publications p USING(tenant_id,space_id,actor_id,command_key)
+     LEFT JOIN fabric.storage_current_heads h ON h.tenant_id=p.tenant_id AND h.space_id=p.space_id AND h.class=p.class AND h.id=p.id AND h.revision=p.revision
+     LEFT JOIN fabric.storage_entities x ON x.tenant_id=p.tenant_id AND x.space_id=p.space_id AND x.class=p.class AND x.id=p.id AND x.revision=p.revision
+     WHERE coalesce(e.tenant_id,p.tenant_id)=$1 AND coalesce(e.space_id,p.space_id)=$2
+      AND coalesce(e.actor_id,p.actor_id)=$3 AND coalesce(e.command_key,p.command_key)=$4`,[s.tenantId,s.spaceId,s.actorId,live.key]);
+    const consumedPlans=consumedExplained.rows[0]?.['QUERY PLAN'];demand(Array.isArray(consumedPlans)&&consumedPlans[0]&&typeof consumedPlans[0]==='object','INTEGRITY_FAILED');
+    const consumedPlan=consumedPlans[0] as Record<string,unknown>,consumedNode=consumedPlan['Plan'] as Record<string,unknown>|undefined;
+    console.log(JSON.stringify({measurement:'authority-consumed-original-plan-times',spaceKind:s.spaceId===f.spaces.personal?'personal':'group',planningMs:consumedPlan['Planning Time'],executionMs:consumedPlan['Execution Time'],totalCost:consumedNode?.['Total Cost'],actualRows:consumedNode?.['Actual Rows'],jit:consumedPlan['JIT']??null}));
     const receiptExplained=await tx.query(`EXPLAIN (ANALYZE,FORMAT JSON) SELECT v.*,a.witness,a.key_id,a.generation,a.object_id,r.receipt_id FROM fabric.storage_volume_versions v
      JOIN fabric.storage_artifact_versions a ON (a.tenant_id,a.space_id,a.id)=(v.tenant_id,v.space_id,v.artifact_id)
      JOIN fabric.storage_artifact_receipts r ON (r.tenant_id,r.space_id,r.actor_id,r.command_key)=(v.tenant_id,v.space_id,v.actor_id,v.command_key)

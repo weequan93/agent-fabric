@@ -108,6 +108,27 @@ export async function registerStagingPreparationTests(t:TestContext,f:Fixture,cr
   }
   s.set(s.saved);const key=a.key(s.scope),anchor=a.anchors.get(key)!;
   a.anchors.delete(key);await deny(()=>s.control.original(),'AUTHORITY_UNAVAILABLE');a.anchors.set(key,anchor);
+  const actorParams=[f.tenant,s.scope.spaceId,s.scope.actorId],actorRow=(await f.admin.query('SELECT grants,revision FROM fabric.memberships WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',actorParams)).rows[0],actorGrants=actorRow.grants as string[];
+  try{
+   await f.admin.query('UPDATE fabric.memberships SET grants=$4::jsonb,revision=revision+1 WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',[...actorParams,JSON.stringify(actorGrants.filter(g=>g!=='storage:write'))]);
+   // Admit this candidate's native task at the same reduced-grant revision.
+   // Reusing the older task would correctly fail native freshness before the
+   // write boundary, and would not isolate these paired storage refusals.
+   const candidate=await setup(),noWrite=candidate.control;
+   a.anchors.delete(key);await deny(()=>noWrite.original(),'AUTHORITY_UNAVAILABLE');a.anchors.set(key,anchor);
+   await deny(()=>noWrite.original(),'UNAUTHORIZED');
+   candidate.set({...candidate.saved,sourceTaskId:randomUUID()});await deny(()=>noWrite.original(),'UNAUTHORIZED');
+   await f.admin.query('UPDATE fabric.memberships SET grants=$4::jsonb WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',[...actorParams,JSON.stringify(actorGrants)]);
+   const current=new AuthenticatedStagingPreparation(f.uow,a.authority,await f.scopeFor(),candidate.resolver,candidate.materialId,witness);
+   await deny(()=>current.original(),'SCOPE_MISMATCH');
+   candidate.set(candidate.saved);assert.deepEqual(await current.original(),{uploadId:null,replayAllowed:false});reads++;
+   assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_reservations WHERE material_id=$1 OR command_key=$2',[candidate.materialId,candidate.saved.commandKey])).rows[0].n,0);
+   assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE command_key=$1',[candidate.saved.commandKey])).rows[0].n,0);
+   assert.deepEqual(await readdir(candidate.r.path),['.storage-owner.json']);
+  }finally{
+   s.set(s.saved);a.anchors.set(key,anchor);
+   await f.admin.query('UPDATE fabric.memberships SET grants=$4::jsonb,revision=$5 WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',[...actorParams,JSON.stringify(actorGrants),actorRow.revision]);
+  }
   const params=[f.tenant,s.scope.spaceId,f.actors[1]],grants=(await f.admin.query('SELECT grants FROM fabric.memberships WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',params)).rows[0].grants as string[];
   try{
    await f.admin.query('UPDATE fabric.memberships SET grants=$4::jsonb,revision=revision+1 WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',[...params,JSON.stringify(grants.filter(g=>g!=='task:read'))]);
@@ -284,6 +305,65 @@ export async function registerStagingPreparationTests(t:TestContext,f:Fixture,cr
   }
   assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE upload_id=$1',[id])).rows[0].n,abandoned?1:0);
   }
+  const s=await setup(),id=await s.adapter.stage(s.saved.binding,value,description),b=s.saved.binding;
+  const receiptId=randomUUID(),jobId=randomUUID(),otherKey=randomUUID(),otherGeneration=randomUUID(),otherKeyId=randomUUID();
+  const snapshotSql=`SELECT json_build_array(
+   (SELECT coalesce(json_agg(q),'[]'::json) FROM (SELECT * FROM fabric.storage_entities ORDER BY tenant_id,space_id,class,id,revision) q),
+   (SELECT coalesce(json_agg(q),'[]'::json) FROM (SELECT * FROM fabric.storage_current_heads ORDER BY tenant_id,space_id,class,id,revision) q),
+   (SELECT coalesce(json_agg(q),'[]'::json) FROM (SELECT * FROM fabric.storage_commands ORDER BY tenant_id,space_id,actor_id,command_key) q),
+   (SELECT coalesce(json_agg(q),'[]'::json) FROM (SELECT * FROM fabric.storage_outbox ORDER BY tenant_id,space_id,job_id) q)) AS controls`;
+  const before=(await f.admin.query(snapshotSql)).rows[0].controls,anchorDigest=a.anchors.get(a.key(s.scope))!.controlDigest;
+  const retained=await Promise.all(['object','manifest'].map(name=>readFile(resolve(s.r.path,'u-'+id,name))));
+  try{
+   // Exact heads already execute above. Isolate the other two OR predicates:
+   // an outbox FK normally implies a command, so only this owned fixture faults
+   // that command after seeding it. Every live authority digest is re-enrolled.
+   for(const [kind,changed,reachable] of [
+    ['head','generation',false],['head','key-id',false],
+    ['command','exact',true],['command','actor',false],['command','key',false],['command','scope',false],
+    ['outbox','exact',true],['outbox','actor',false],['outbox','key',false],['outbox','scope',false]
+   ] as const){
+    const space=changed==='scope'?f.spaces.secondary:s.scope.spaceId,actor=changed==='actor'?f.actors[1]:s.scope.actorId,
+     key=changed==='key'?otherKey:s.saved.commandKey;
+    await a.publish(s.scope,async(c,epoch)=>{
+     await c.query("SET LOCAL session_replication_role='replica'");
+     await c.query('DELETE FROM fabric.storage_outbox WHERE job_id=$1',[jobId]);
+     await c.query('DELETE FROM fabric.storage_commands WHERE receipt_id=$1',[receiptId]);
+     await c.query('DELETE FROM fabric.storage_current_heads WHERE id=$1',[b.id]);
+     await c.query('DELETE FROM fabric.storage_entities WHERE id=$1',[b.id]);
+     if(kind!=='command')await c.query('INSERT INTO fabric.storage_entities VALUES($1,$2,$3,$4,$5,null)',[f.tenant,space,b.class,b.id,b.revision]);
+     if(kind==='head')await c.query("INSERT INTO fabric.storage_current_heads VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,clock_timestamp(),clock_timestamp()+interval '50 seconds')",
+      [f.tenant,space,b.class,b.id,b.revision,'sha256:'+'b'.repeat(64),changed==='key-id'?otherKeyId:b.keyId,changed==='generation'?otherGeneration:b.generation,epoch]);
+     else{
+      await c.query('INSERT INTO fabric.storage_commands VALUES($1,$2,$3,$4,$5,$6,$7,clock_timestamp())',[f.tenant,space,actor,key,'sha256:'+'c'.repeat(64),receiptId,epoch]);
+      if(kind==='outbox'){
+       await c.query('INSERT INTO fabric.storage_outbox VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,clock_timestamp())',[f.tenant,space,jobId,actor,key,b.class,b.id,b.revision,epoch]);
+       assert.equal((await c.query('DELETE FROM fabric.storage_commands WHERE receipt_id=$1',[receiptId])).rowCount,1);
+      }
+     }
+     await c.query("SET LOCAL session_replication_role='origin'");
+    });
+    if(kind!=='head')assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_current_heads WHERE id=$1',[b.id])).rows[0].n,0);
+    if(kind==='outbox')assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_commands WHERE receipt_id=$1 OR (tenant_id=$2 AND space_id=$3 AND actor_id=$4 AND command_key=$5)',
+     [receiptId,f.tenant,s.scope.spaceId,s.scope.actorId,s.saved.commandKey])).rows[0].n,0,'Outbox reachability executes without a matching head or original command');
+    await s.control.lock(id,async lease=>{const current=await lease.current();assert.equal(current.reachable,reachable,kind+'/'+changed);assert.equal(current.pending,true);assert.ok(current.confirmation);});reads++;
+    assert.deepEqual(await Promise.all(['object','manifest'].map(name=>readFile(resolve(s.r.path,'u-'+id,name)))),retained);
+   }
+  }finally{
+   await a.publish(s.scope,async c=>{
+    await c.query("SET LOCAL session_replication_role='replica'");
+    await c.query('DELETE FROM fabric.storage_outbox WHERE job_id=$1',[jobId]);
+    await c.query('DELETE FROM fabric.storage_commands WHERE receipt_id=$1',[receiptId]);
+    await c.query('DELETE FROM fabric.storage_current_heads WHERE id=$1',[b.id]);
+    await c.query('DELETE FROM fabric.storage_entities WHERE id=$1',[b.id]);
+    await c.query("SET LOCAL session_replication_role='origin'");
+   });
+  }
+  assert.deepEqual((await f.admin.query(snapshotSql)).rows[0].controls,before);
+  assert.equal(a.anchors.get(a.key(s.scope))!.controlDigest,anchorDigest);
+  await s.control.lock(id,async lease=>{assert.equal((await lease.current()).reachable,false);});reads++;
+  assert.deepEqual(await s.control.outcome(),{uploadId:id,status:'pending',replayAllowed:false});
+  assert.deepEqual(await Promise.all(['object','manifest'].map(name=>readFile(resolve(s.r.path,'u-'+id,name)))),retained);
  });
  await t.test('STAGING/authenticated-abandonment-real-cleanup-failure',async()=>{
   const s=await setup(),id=await s.adapter.stage(s.saved.binding,value,description);await s.control.abandon(id);
@@ -397,6 +477,37 @@ export async function registerStagingPreparationTests(t:TestContext,f:Fixture,cr
    assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE upload_id=$1',[id])).rows[0].n,0);
    assert.deepEqual(await s.adapter.collect(),{removed:0,protected:1});reads++;
   }finally{await block.query('ROLLBACK');block.release();}
+  const expiring=await setup('maintenance',1200),expiredId=await expiring.adapter.stage(expiring.saved.binding,value,description),expiryBlock=await f.admin.connect(),nativeBefore=await f.native.snapshot(expiring.scope,expiring.saved.sessionId);let expired:Promise<void>|undefined;
+  try{
+   await expiryBlock.query('BEGIN');const pid=Number((await expiryBlock.query('SELECT pg_backend_pid() AS pid')).rows[0].pid);
+   await expiryBlock.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))',[JSON.stringify(['storage-staging-original',expiring.scope.tenantId,expiring.scope.spaceId,expiring.scope.actorId,expiring.saved.commandKey])]);
+   expired=deny(()=>expiring.control.abandon(expiredId),'EXPIRED_COMMAND');expired.catch(()=>{});
+   await observed(pid);
+   await expiryBlock.query('SELECT pg_sleep(greatest(0,extract(epoch from ($1::timestamptz-clock_timestamp())))+0.05)',[expiring.saved.expiresAt]);
+   assert.equal((await expiryBlock.query('SELECT clock_timestamp()>=$1::timestamptz AS expired',[expiring.saved.expiresAt])).rows[0].expired,true);
+   await expiryBlock.query('COMMIT');await expired;
+  }finally{await expiryBlock.query('ROLLBACK');expiryBlock.release();await expired?.catch(()=>{});}
+  assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE upload_id=$1',[expiredId])).rows[0].n,0);
+  const recreated=new AuthenticatedStagingPreparation(f.uow,a.authority,await f.scopeFor(),expiring.resolver,expiring.materialId,new StagingWitnessJournal(witnessRoot)).recovery(),recoveredFiles=new OwnedCipherFiles(expiring.r,crypto,recreated.control);
+  assert.deepEqual(await recreated.outcome(),{uploadId:expiredId,status:'pending',replayAllowed:false});reads++;
+  await recreated.abandon(expiredId);assert.deepEqual(await recoveredFiles.collect(),{removed:1,protected:0});writes+=2;
+  assert.deepEqual(await f.native.snapshot(expiring.scope,expiring.saved.sessionId),nativeBefore,'Expired original recovery never resumes or mutates its native run');
+  assert.deepEqual(await recreated.outcome(),{uploadId:expiredId,status:'abandoned',replayAllowed:false});reads++;
+  assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_reservations WHERE command_key=$1',[expiring.saved.commandKey])).rows[0].n,1);
+  assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE command_key=$1',[expiring.saved.commandKey])).rows[0].n,1);
+  await deny(()=>expiring.adapter.stage(expiring.saved.binding,value,description),'EXPIRED_COMMAND');
+  const revoked=await setup(),revokedId=await revoked.adapter.stage(revoked.saved.binding,value,description),revocationBlock=await f.admin.connect(),params=[f.tenant,revoked.scope.spaceId,revoked.scope.actorId],membership=(await f.admin.query('SELECT revision,revoked_at FROM fabric.memberships WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',params)).rows[0];let refused:Promise<void>|undefined;
+  try{
+   await revocationBlock.query('BEGIN');const pid=Number((await revocationBlock.query('SELECT pg_backend_pid() AS pid')).rows[0].pid);
+   await revocationBlock.query('UPDATE fabric.memberships SET revoked_at=clock_timestamp(),revision=revision+1 WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',params);
+   refused=deny(()=>revoked.control.recovery().abandon(revokedId),'UNAUTHORIZED');refused.catch(()=>{});await observed(pid);
+   await revocationBlock.query('COMMIT');await refused;
+   assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE upload_id=$1',[revokedId])).rows[0].n,0,'Observed wait-time revocation has no abandonment effect');
+  }finally{
+   await revocationBlock.query('ROLLBACK');revocationBlock.release();await refused?.catch(()=>{});
+   await f.admin.query('UPDATE fabric.memberships SET revoked_at=$4,revision=$5 WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$3',[...params,membership.revoked_at,membership.revision]);
+  }
+  assert.deepEqual(await revoked.control.recovery().outcome(),{uploadId:revokedId,status:'pending',replayAllowed:false});reads++;
  });
  await t.test('STAGING/authenticated-recovery-stage-first-observed-wait',async()=>{
   const s=await setup();let id='',release!:()=>void,enter!:()=>void;
@@ -435,6 +546,7 @@ export async function registerStagingPreparationTests(t:TestContext,f:Fixture,cr
   for(const mode of ['commit','rollback'] as const){
    const s=await setup(),id=await s.adapter.stage(s.saved.binding,value,description),before=await f.native.snapshot(s.scope,s.saved.sessionId);
    await f.native.stop(s.scope,{sessionId:s.saved.sessionId,key:randomUUID(),expiresAt:new Date(Date.now()+30_000).toISOString(),observedRevision:before.revision});
+   const stopped=await f.native.snapshot(s.scope,s.saved.sessionId);assert.equal(stopped.stopped,true);
    const proxy=await startCommitWireProxy(f.fixtureDsn('controller'),mode),pool=new pg.Pool({connectionString:proxy.dsn,max:1,connectionTimeoutMillis:2000});
    const transport=(e:Error)=>assert.equal(e.message,'Connection terminated unexpectedly');pool.on('error',transport);pool.on('connect',c=>c.on('error',transport));
    try{
@@ -443,11 +555,16 @@ export async function registerStagingPreparationTests(t:TestContext,f:Fixture,cr
     try{await recovery.abandon(id);assert.fail('Genuine COMMIT loss must refuse');}catch(e){failure=e;}
     assert.ok(failure instanceof FoundationError&&failure.code==='UNKNOWN_COMMIT');
     assert.deepEqual(safeFailure(failure),{schemaVersion:1,status:'unknown',error:'UNKNOWN_COMMIT',replayAllowed:false,nextAction:'original-key-lookup'});
-    const recreated=new AuthenticatedStagingPreparation(f.uow,a.authority,await f.scopeFor(),s.resolver,s.materialId,witness).recovery();
+    const recreated=new AuthenticatedStagingPreparation(f.uow,a.authority,await f.scopeFor(),s.resolver,s.materialId,new StagingWitnessJournal(witnessRoot)).recovery();
     assert.deepEqual(await recreated.outcome(),{uploadId:id,status:mode==='commit'?'abandoned':'pending',replayAllowed:false});reads++;
     assert.deepEqual(await new OwnedCipherFiles(s.r,crypto,recreated.control).collect(),mode==='commit'?{removed:1,protected:0}:{removed:0,protected:1});
     assert.equal(proxy.dropped(),mode==='commit'?1:0);assert.equal(proxy.requestsDropped(),mode==='rollback'?1:0);
     if(mode==='rollback'){await recreated.abandon(id);assert.deepEqual(await new OwnedCipherFiles(s.r,crypto,recreated.control).collect(),{removed:1,protected:0});}
+    assert.deepEqual(await recreated.outcome(),{uploadId:id,status:'abandoned',replayAllowed:false});reads++;
+    assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_reservations WHERE command_key=$1',[s.saved.commandKey])).rows[0].n,1);
+    assert.equal((await f.admin.query('SELECT count(*)::int AS n FROM fabric.storage_staging_abandonments WHERE command_key=$1',[s.saved.commandKey])).rows[0].n,1);
+    assert.deepEqual(await f.native.snapshot(s.scope,s.saved.sessionId),stopped,'Original-key uncertainty recovery never resumes its stopped native run');
+    await deny(()=>s.adapter.stage(s.saved.binding,value,description),'STALE_FENCE');
     writes+=2;
    }finally{await pool.end();await proxy.close();}
   }

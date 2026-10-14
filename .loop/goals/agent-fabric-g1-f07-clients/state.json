@@ -2,10 +2,10 @@
   "schema": "loop.state/2",
   "goal_id": "agent-fabric-g1-f07-clients",
   "status": "ready",
-  "status_reason": "Approved by human (via Claude): gpt-6.1-sol max effort. Start with `loop start`.",
-  "approved_digest": "sha256:60e16288cf4220e13d7739901e1332a752d7491fe186c030e7a476129333cacb",
-  "approved_by": "human (via Claude): gpt-6.1-sol max effort",
-  "approved_at": "2026-10-13T03:42:11+00:00",
+  "status_reason": "Approved by human (via Claude): tester role effort high. Start with `loop start`.",
+  "approved_digest": "sha256:35788b2cd0fb79366651799ad3efacda788257b516b74a0db8d5776d80439056",
+  "approved_by": "human (via Claude): tester role effort high",
+  "approved_at": "2026-10-14T14:14:05+00:00",
   "tasks": [],
   "questions": [],
   "checks": {},
@@ -35,7 +35,7 @@
   "next_cycle_at": null,
   "integrity": "ok",
   "created_at": "2026-10-06T15:59:25+00:00",
-  "updated_at": "2026-10-13T03:42:11+00:00",
+  "updated_at": "2026-10-14T14:14:05+00:00",
   "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1",
   "approved_contract": {
     "objective": "Deliver the G1-F07 increment of Agent Fabric G1: Web/Electron/mobile operating the same Task: shared events/reconnect, desktop sleep → mobile steer/Stop → web/desktop result, distinct pilot timing measurements, then complete G1 independent acceptance.\n\nLedger requirements in scope (docs/planning/g1-remaining-ledger.csv):\n- AF-04: 桌面移动网页操作同一Task — remaining: 共享事件/重连契约；真实desktop sleep/mobile steer/web result/stale Stop\n- UX-04: Act preflight后桌面睡眠远端继续移动端同任务 — remaining: accepted/reconnect契约；真实desktop sleep/mobile steer/结果\n\nCreate g1-clients/ with a build and g1-clients/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f07-plan.md and docs/evidence/g1-f07-acceptance.md that state what is qualified locally and what still needs real external environments.",
@@ -44,7 +44,8 @@
       "Paid model/product APIs, cloud resources, real credentials, remote deployments and messages to people are OFF unless approved with loop_ask(kind=approval).",
       "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
       "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
-      "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger."
+      "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger.",
+      "Human standing approval 2026-10-13 (broad autonomy; supersedes the narrower standing approvals above and the approval step of any AGENTS.md freeze/re-freeze flow, which you still record in the turn report). Proceed WITHOUT asking for: any production code, test, check-script, harness, plan, task, dependency or team change within this goal's scope; re-freezing configurations; installing local dependencies; local builds, containers and test data the project owns; creating and mounting the project's own disposable test fixtures (temporary directories, disk images, permission-denied targets) as stand-ins for physical devices, recording what stays unqualified; running and operating the project's own app through its own code and test hooks; applying the product's own documented retention to its own data. When a choice is open, pick the recommended option, record loop_note(kind=\"decision\") and continue. Ask (loop_ask kind=approval) ONLY for: changing product requirements, scope or acceptance budgets; spending money or paid/remote resources; real credentials, secrets, or system/privacy/security settings; deploying to shared or production environments; messages to people; deleting the user's personal data or anything outside the project; operating other apps; force-push, history rewrite or branch deletion."
     ],
     "acceptance": [
       {
@@ -145,7 +146,12 @@
       "model": "gpt-6.1-sol",
       "permission_mode": null,
       "extra_args": [],
-      "effort": "max"
+      "effort": "xhigh",
+      "roles": {
+        "tester": {
+          "effort": "high"
+        }
+      }
     },
     "pipeline": "full"
   }

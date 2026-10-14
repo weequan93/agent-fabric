@@ -1,30 +1,1018 @@
 # G1-F05 local acceptance evidence — interim
 
-## Current verification status — Turn247, live harness progress
+## Current verification status — Turn339, H02 registry repair
+
+F05 remains **not accepted**,73/81 tasks done. [Turn339 report](../loop/agent-fabric-g1-f05-storage/develop-turn339/report.md)
+records original job-e179294710 FAIL1/7014842ms within approved14400s. The outer
+nine suites pass947 tests; the freshly built H02-owned copy completes all ten
+suites/984 tests, then H02 crashes while comparing atomic-disconnect through the
+original manifest, which lacks that suite. H01/H03/H04 and H02's first11 leaves
+pass. The direct one-line correction uses the runner's executionSuites registry
+and retains every assertion. The settled tester independently confirms the
+failure, repair and remaining successful child command records. All133 current
+fixtures have matching raw normal container/root removals; controller zombie/full
+process reaping and historical fixtures remain unqualified. No self-seal change,
+new proof/profile/reconstruction task, timing optimization, check/budget change,
+task completion or PASS-only consolidation occurs. Full controller acceptance
+14400s is next; complete repaired local gates and real X01–X09 remain pending.
+Paid/remote/real-secret actions stay OFF. Original streams and limits are in the
+report; the prior FAIL/TIMEOUT histories remain unchanged.
+
+## Historical verification status — Turn335, copied delivery interrupted
+
+F05 remains **not accepted**,73/81 tasks done. [Turn335 report](../loop/agent-fabric-g1-f05-storage/develop-turn335/report.md)
+records original job-df07c43458 TIMEOUT7200095ms under7200s. Fresh original and
+H02-owned-copy builds each execute nine suites/947 passing tests, including
+273-test backup/restore;68 observations have six zero violation counters. H01
+passes6 leaves; H02 passes11 leaves but its actual copied delivery is interrupted
+during D03. Complete H02/H03/H04, outer delivery, aggregate and final guards remain
+unqualified. A settled tester confirms the complete original streams, unchanged
+atomic source/2000ms guards and no demonstrated product assertion failure.
+Raw132 fixtures/130 normal removals remain distinct from separate guarded
+disposal of only the interrupted current two fixtures and positive copy; all
+other containers stay unchanged. Historical fixture/full process settlement and
+real X01–X09 stay unqualified. Human5085/5086 applies/approves14400s and directly
+orders a full rerun; live and approved definitions match14400/600/600/900s.
+No source/seal change, timing optimization, new proof task, task completion or
+PASS-only merge occurs. The prior atomic FAIL and3600s timeout remain in
+[Turn334 report](../loop/agent-fabric-g1-f05-storage/develop-turn334/report.md).
+Paid/remote/real-secret actions stay OFF. Latest original streams and exact
+scope are in the Turn335 report.
+
+## Historical verification status — Turn330, product acceptance incomplete
+
+F05 remains **not accepted**. [Turn330 report](../loop/agent-fabric-g1-f05-storage/develop-turn330/report.md) follows the newer
+human product-first decision at2026-10-14T07:02:50. One settled read-only tester
+finds no supported source defect; source/tests/seals and all2581 accepted hashes
+stay exact. Controller `acceptance.g1-storage-behavior`,job-9d30b47c5e, times out
+at1800152ms under its actual unchanged1800s definition. Fresh build and eight
+complete outer suites pass674 tests with zero fail/cancelled/skipped/TODO;26
+observations have six zero violations. Backup/restore is interrupted, with no
+complete aggregate report, D/H or final cleanup; two current fixture removals
+remain unqualified. Complete original streams and hashes are in the report.
+This incomplete run shows no supported product defect or hang. No timeout-only
+optimization, source repair, new profile/reconstruction/proof task, unchanged
+retry, task-done or finish occurs. The PASS-only four-task merge is not triggered;
+proof-framework work is paused per the human decision. Actual acceptance1800s
+versus authorized full up-to2700s hang guards remains a configuration discrepancy,
+not a performance requirement. No `.loop/` file or raw evidence is edited by hand.
+Earlier interrupted fixtures, full H02/main D-H/aggregate/terminal/security/
+independent/final/product and whole AF-07/UX-01/G1/G2/real X01–X09 remain
+unqualified. Paid/remote/real secrets/shared deployment/messages remain OFF.
+Final status edits occur after terminal settlement and do not refresh its
+workspace fingerprint.
+
+## Historical verification status — Turn329, repair controller-verified
+
+F05 remains **not accepted**. [Turn329 report](../loop/agent-fabric-g1-f05-storage/develop-turn329/report.md) records joined
+read-only tester review and same-turn controller regression of Turn328's source
+repair. Job-fceb1f3adb passes all six repair checks plus measurement120s; task
+verification job-94d4a1c311 passes all six again and controller marks owned-copy
+repair done,81 tasks/73 done. Latest strict6459ms/H-build1657773/H-cleanup89239/
+D-evidence8229/D-operations126737/encryption179757 and measurement35852 pass;
+complete original streams/hashes and empty stderr are in the report. Hbuild19/
+cleanup24/evidence9/operations28/encryption32 have zero fail/cancelled/skipped/
+TODO. Actual prestart and private stream/cancellation close/drain/no later
+dispatch/removal/full fresh recovery pass. Complete copy/origin/raw gates and
+both-scanner TOTAL16/fresh/separate poison/actual-close/recovery remain.
+Source/tests/seals/accepted2581 stay exact; no re-freeze, dependency, new layer/
+history tree, requirement/scope/check/budget/timeout or capacity change occurs.
+No note/doc/lifecycle mutation occurs during copied runs. Candidate1177/f3276bdf
+remains exact. Component/slice reports remain diagnosticOnly=true/external=pending;
+measurement remains structuralOnly=true. These local repair regressions do not
+qualify full H02, main D/H, aggregate, terminal or product acceptance. Next main
+D then H retains actual2700s humanOct14 hang guards; no timeout-only profiling/
+optimization. Earlier interrupted-fixture settlement, security/independent/
+final/product and whole AF-07/UX-01/G1/G2/real X01–X09 remain unqualified. Final
+summary edits follow terminal settlement and do not refresh earlier workspace
+fingerprints. Paid/remote/real-secret/shared-deployment/messages remain OFF.
+
+## Historical verification status — Turn324, six-stage history repaired
+
+F05 remains **not accepted**. [Turn324 report](../loop/agent-fabric-g1-f05-storage/develop-turn324/report.md)
+records joined direct native8-branch/30-inverse repair and existing3+3 supplied
+staged resets. Native mismatches6→0; local all1127/1106/1103/1100 history,
+34 refusals/whole-prior-source replay/accepted2581 pass. Standing-approved
+re-freeze advances only composition existing execution inverse9→10/currentDigest
+and native added self seal; all old assertions/keysets/pins/four tester files/
+transport/receipt/correction records stay exact. Controller serialized build
+7497ms/measurement120s33899ms/native-proof120s87598ms PASS with complete original
+stdout1148/4620844/17202968bytes and empty stderr in report. Native current
+all:true/32 original refusal controls and complete196-child packed structural
+proof pass; productQualification=false/external=pending and outer current-run
+provenance still refuses. H-cost/old-fixture/private/full H02 and all remaining
+gates stay unqualified; no H retry/task-done or requirement/check/budget/scope/
+capacity/buffer/interface change. Whole AF-07/UX-01/G1/G2/X01–X09 remain
+unqualified/OFF in actual environments below; delivered bytes cannot be recalled.
+Repair active81tasks72done.
+
+## Historical verification status — Turn322, earliest inverse repair is partial
+
+F05 remains **not accepted**. [Turn322 report](../loop/agent-fabric-g1-f05-storage/develop-turn322/report.md)
+records joined64-path/132-substitution migration into the existing earliest
+native-packed reverse, retaining all old assertions/keysets/pins/unselected
+binary bytes and exact full Turn321 self replay. Only existing native-added
+self digest and composition execution inverse8→9/currentDigest advance under
+standing approval; four tester files/whole transport/accepted2581 stay exact.
+Local1103/1100history+198mutants/64pre-reverted-source refusals pass. Controller
+build6170ms/measurement120s33475ms PASS on1177-file245a77e5…d3d04a8, complete
+original stdout1148/4625471bytes and empty stderr in report. Actual TS2307/
+missing-fixture failures, lossless streams/44chunks/25negative controls/cleanup
+qualify structural behavior only; no outer/full candidate or author verdict.
+Native-history mismatches fall73→9; all:true correctly refuses the first
+remaining check-execution-measurement predecessor. Nine stage-dependent inputs,
+H-cost/old-fixture/PLAN312/private/full acceptance remain pending; no unchanged
+H retry/task-done or check/budget/scope/capacity/buffer/interface change.
+Latest full H/main D-H gates remain unchanged; whole AF-07/UX-01/G1/G2 and real
+X01–X09 provider/KMS, physical/cluster restore, enterprise retention/erasure/
+identity/human judgment, F06/delivery, models/billing and signed clients remain
+unqualified/OFF. Delivered bytes cannot be recalled. Repair active81tasks72done.
+
+## Historical verification status — Turn321, transport history repaired locally
+
+F05 remains **not accepted**. [Turn321 report](../loop/agent-fabric-g1-f05-storage/develop-turn321/report.md)
+records existing-source strict inverses for64 supplied-current files,132 exact
+substitutions and unchanged historical pins. Local all1103/1100 predecessor
+hashes,192 mutation refusals/six old negatives and accepted2581 pass. One
+existing composition entry changes7→8/currentDigest under standing approval;
+all prior entries/keysets/history and four tester files remain exact.
+Controller strict-build PASS6079ms/measurement120s PASS33497ms verify1103/1100
+history, actual TS2307/missing-fixture negative behavior, complete success/fatal
+streams and owned cleanup; both original stderr streams are empty. These
+structural results provide no full F05/independent verdict. No new registry/layer/
+fallback, test/buffer/interface/check/budget/scope/capacity change or H retry/
+task-done occurs. Separate older composition all:true history, H cost, old
+fixture settlement, PLAN312/private-controls/full H02 and all remaining gates
+stay unqualified; whole AF-07/UX-01/G1/G2/real X01–X09 remain pending.
+
+## Historical verification status — Turn320, historical origins found
+
+F05 remains **not accepted**. [Turn320 report](../loop/agent-fabric-g1-f05-storage/develop-turn320/report.md)
+finds all64 exact predecessor source files in the already retained Turn135
+bootstrap tree: complete native-coherent693887bytes match every unchanged pin.
+The missing runtime inverses remain unresolved; no fallback/new registry/keyset
+change is introduced. One joined read-only tester counts mandatory H01 work:
+35successful observed pairs cover442.421875GiB of whole-buffer zero comparisons
+and904960 pathname-stat mirrors, not a measured timeout cause. Both first
+unprepared H-build children and their removal are proved from complete original
+TAP continuations; no later positive/H01 phase is identified. All source/tests/
+seals/accepted2581/runtime candidate remain exact. No check/retry/task-done or
+new behavior qualification occurs. Latest buildPASS6875ms/H-buildTIMEOUT900090ms/
+measurementFAIL1252ms retain their original limits. Exact inverse/cost/old-fixture
+repair, all unchanged gates and real external X01–X09 remain; whole AF-07/UX-01/
+G1/G2 are unqualified. No scope/budget/capacity/external change applies.
+
+## Historical verification status — Turn319, private controls compiled only
+
+F05 remains **not accepted**. [Turn319 report](../loop/agent-fabric-g1-f05-storage/develop-turn319/report.md)
+records actual copied-runner cancellation/stream/terminated-worker test controls
+inside existing H02 leaves after tester join. Native exact-instance stopped-state
+barriers precede the faults; normal settlement/removal-only and fresh complete
+two-reader recovery are required. No new driver/interface/buffer/check is added.
+All660 predecessor Hbuild assertions remain (795now); other three owners are
+byte-exact. Three exact inserts advance only the existing F05 Hbuild reconstruction
+entry78→81 under standing approval; old entries/keysets/history/accepted2581 stay
+exact. Controller strict-build PASS6875ms compiles these controls but does not
+execute them. Native discovery/identity refusal remains a failure, not activity
+or cleanup qualification. H-build's latest900090ms timeout and measurement's1252ms
+historical failure remain; supported cost/history/old-fixture repair and all
+repair/main/aggregate/terminal/security/independent/final/product gates remain.
+No H retry/task-done, acceptance/scope/check/budget/capacity or external change.
+Whole AF-07/UX-01/G1/G2/X01–X09 remain unqualified in the actual environments below.
+
+## Historical verification status — Turn318, repair remains unqualified
+
+F05 remains **not accepted**. [Turn318 report](../loop/agent-fabric-g1-f05-storage/develop-turn318/report.md)
+records direct fixed-ten copied-runner IPC/nonce/current intended-operation/
+cancellation and H02 source repair after tester join. All prior assertions,
+accepted2581, historical arrays/digests/keysets/raw bytes stay protected; precise
+existing F05 inverses record the standing-approved re-freeze. Final controller
+job-16cbff3d65 passes strict-build6166ms, cleanup88323ms/24tests and delivery
+evidence7832ms/9tests, zero bad counters/empty stderr. New H01 private controls
+and full H02 are compiled but not reached here. Actual active-suite cancellation
+and positive private failed-workload/stream removal still need tests/execution;
+hostile removal-only probes cannot qualify them. H-build's latest900090ms
+timeout/no terminal report and measurement's1252ms historical-SQL failure remain;
+whole1103/1100 audit still finds the same64 unmapped paths. No unchanged H retry
+or task-done. Supported cost/history/old-fixture recovery and all repair/main/
+aggregate/terminal/security/independent/final/product gates remain mandatory.
+Whole AF-07/UX-01/G1/G2/X01–X09 remain unqualified in actual external environments
+as detailed below; no scope/check/budget/capacity or external authorization change.
+
+## Historical verification status — Turn317, repair remains unqualified
+
+F05 remains **not accepted**. [Turn317 report](../loop/agent-fabric-g1-f05-storage/develop-turn317/report.md)
+records local complete-guard measurements4151–4251ms and the settled removal of
+one new diagnostic copy, plus64 unmapped historical predecessor paths across
+both1103/1100 inventories. Neither is controller behavioral evidence. Existing
+arrays/digests/keysets/raw history remain unchanged; no source/test/seal change
+or new check/retry/task-done occurs. The tester finds no deterministic H01
+deadlock and confirms H02's original-runner gap is separate from H-build, which
+does not execute that good leaf. Latest results stay Turn316 five repair PASS/
+H-build TIMEOUT900090ms/measurement FAIL1252ms. New H01 cases, private IPC/H02,
+full acceptance and whole AF-07/UX-01/G1/G2/X01–X09 remain unqualified. Existing
+repair/main/aggregate/terminal/independent gates, budgets and external owners
+remain; no turn/hour capacity gate or new external action applies.
+
+## Historical verification status — Turn316, buffer implementation remains unqualified
+
+F05 remains **not accepted**. [Turn316 report](../loop/agent-fabric-g1-f05-storage/develop-turn316/report.md)
+records implementation after Turn315's fresh independent review: invocation-local
+sixteen-buffer leases in both existing HC/D scanners, and existing H01 total
+allocation/backing census plus all three poisoning schedules for each scanner.
+All prior reads/guards/assertions remain; exact existing F05 reconstruction
+entries preserve predecessor history and accepted2581. Standing Oct13 approval
+covers the recorded re-freeze; requirements, checks and bounds stay unchanged.
+
+Both actual final readers match complete original/private12928-file,
+418689614-byte pairs against independent expectations before the supported
+retry. These local diagnostics establish no H/PLAN312 qualification. Latest
+unchanged controller results: strict-build6009ms, H-cleanup85706ms,
+D-evidence7667ms, D-operations89671ms and owned-encryption180592ms PASS;
+H-build TIMEOUT900090ms without a terminal report. The new H01 cases remain
+unqualified. Measurement-drain120s FAIL1252ms at the same SQL history gate,
+before its migrated caller. Original complete streams/hashes are linked in
+the report. Four behavior reports have zero bad counters; shipped currentness
+gates pass before final doc edits and qualified:false/authorVerdict:false stays.
+
+No unchanged H retry or task-done follows. Supported workload/cost repair,
+exact historical mapping, interrupted fixture settlement/removal and private
+fixed-ten IPC/cancellation/H02 remain pending, before main TWO D/H900s,
+aggregate1800s and terminal/independent/final/product acceptance. Whole
+AF-07/UX-01/G1/G2 and X01–X09 remain unqualified: actual provider/KMS/durability,
+device/power/host/cluster restore/current authority/production RPO/RTO,
+enterprise retention/hold/residency/identity/human judgment, real delivery
+revocation/F06 isolation, supplier/model/billing and signed physical clients
+still need approved external environments. Paid/remote/real-secret actions
+stay OFF; no turn/hour capacity gate or check-budget change applies.
+
+## Historical verification status — Turn313, corrected plan awaiting review
+
+F05 remains **not accepted**. [Turn313 report](../loop/agent-fabric-g1-f05-storage/plan-turn313/report.md)
+records a plan/docs-only correction of independent PLAN312-01/02. The existing
+[PLAN311 H01 prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md#plan311-01--invocation-local-erased-buffer-leases)
+requires total allocation/backing-storage census≤16 per complete many-file
+invocation for each actual HC/D scanner, retained across closes, and fresh
+disjoint backing storage on the next independent invocation. It also requires
+separate allocation, initial-zeroing and erasure fault schedules against both
+shipped scanners, including actual held siblings and waiting/later units for
+erasure. Required oracles are the injected cause, no good tree, zero queued/
+later fd/read starts after poisoning, no dirty reuse, all started IO/closes/
+leases settled before rejection/recovery/removal, and fresh exact full recovery.
+These prescribed cases have **not been implemented or executed** in this turn.
+The current active-buffer hook and Turn311 prototype cannot qualify them.
+
+Oct13 standing approval covers this bounded plan correction. No runtime/test/
+seal changes, re-freeze, build, fixture, controller check or task-done occur;
+requirements, checks and900s/1800s bounds remain unchanged. Fresh independent
+review precedes implementation; both actual final reader measurements still
+precede H retry. Latest original five repair PASS/H-build TIMEOUT900087ms and
+measurement SQL-history FAIL1293ms remain, as do pending failed-fixture
+settlement/mapping, private IPC/cancellation/H02 and terminal/independent/final/
+product gates. No new local behavioral qualification is claimed. Real provider/
+KMS/durability/host/power/cluster restore, production RPO/RTO, enterprise policy/
+identity/human judgment, real delivery revocation/F06 isolation, supplier/
+billing and signed/physical clients remain external X01–X09 gates. Whole
+AF-07/UX-01/G1/G2 remain unqualified; paid/remote/real-secret actions stay OFF.
+
+## Historical verification status — Turn311, buffer design needs review
+
+F05 remains **not accepted**. [Turn311 report](../loop/agent-fabric-g1-f05-storage/develop-turn311/report.md)
+counts at least635 required successful H01 scan pairs and measures per-file
+512KiB allocation churn. An in-memory invocation-local16-buffer prototype
+returns exact original/private419MB snapshots in eight paired comparisons with
+about11%/24% mean savings. Unique generations/zero-before-reuse/erasure and four
+settled failure controls pass locally; actual fresh copy guards/owned removal/
+accepted2581/sibling preservation succeed. These are diagnostics, not final
+reader/H/behavior qualification. PLAN311 clarifies no retained plaintext and
+failure-poisoned admission; fresh independent review precedes buffer source
+edits and both actual final readers must be measured before retry. Tester joins
+read-only, all required independent reads/assertions/recoveries remain. No
+runtime/test/seal/build/check change, re-freeze or task-done occurs. Latest
+original five repair PASS/H-build TIMEOUT900087ms and measurement SQL-history
+FAIL1293ms remain; interrupted fixture cleanup is still unqualified. Private
+IPC/cancellation/H02/full acceptance and real X01–X09 stay pending; whole
+AF-07/UX-01/G1/G2 remain unqualified.
+
+## Historical verification status — Turn310, timeout diagnosis corrected
+
+F05 remains **not accepted**. [Turn310 report](../loop/agent-fabric-g1-f05-storage/develop-turn310/report.md)
+corrects the earlier preparation inference: existing negative controls recreated
+and restored the owner marker. Native restoration timestamps and awaited source
+order support progress beyond the read schedules into later controls, without a
+terminal component verdict. Actual shipped preparation9.84–10.47s and complete
+guards4.66–5.70s are local diagnostics; profile samples show substantial hashing,
+native input work and GC. A queue prototype has mixed timings and supplies no
+retry justification. Three fresh diagnostic copies settle successful explicit
+removal/protected2581/sibling preservation; the older interrupted fixture remains
+untouched and its cleanup unqualified. No runtime/test/seal change, re-freeze,
+new controller check or task-done occurs. Latest original results remain five
+repair PASS/H-build TIMEOUT900087ms and measurement-drain SQL-history FAIL1293ms.
+H02/private IPC/cancellation, repair/full acceptance and real X01–X09 stay
+pending; whole AF-07/UX-01/G1/G2 remain unqualified. The corrected attribution
+above supersedes the historical Turn309 preparation inference.
+
+## Historical verification status — Turn309, reader repair regressing
+
+F05 remains **not accepted**. The [Turn309 report](../loop/agent-fabric-g1-f05-storage/develop-turn309/report.md)
+records the fresh Turn308 independent plan PASS, direct bounded independent
+installed readers and awaited factory/guard/run/close/nine-owner callers. Final
+actual original/private418689614-byte snapshots are exact and roughly16–20%
+faster; native filesystem peak16/outstanding0,512KiB per-file buffers, descriptor/
+EOF/full-census and every predecessor assertion remain. Earlier direct diagnostic
+failures/interruption/cleanup uncertainty are retained; new H01 settlement cases
+remain unqualified until controller execution. Standing-approved F05 entries
+reconstruct exact prior bytes/history/keysets; accepted2581 stay intact.
+
+Serialized unchanged checks settle: latest build6480/D-evidence25004/H-cleanup
+99498/D-operations137073/E197048ms PASS; H-build TIMEOUT900087ms/no terminal
+report. Initial H fails on a test-hook fd reuse race; joined per-open generation
+repair precedes the timeout. Four successful behavior reports have zero bad
+counters. Earlier three behavior passes are stale after that repair, and their
+currentness gates correctly refuse; no current full repair verdict follows.
+Measurement-drain120s fails1293ms at the documented Turn270 SQL historical
+predecessor mismatch before the migrated caller. New held schedules/timeout
+fixture settlement and broader preservation repair remain unqualified. The
+report links/hashes all latest originals; no unchanged H retry/task-done occurs.
+Untouched timeout marker timestamps place its write about2s before termination,
+before preparation's final guard. Entry to the new read schedules is unproven;
+read-only static review finds no supported new deadlock. Complete-copy/
+preparation cost needs measurement before another retry.
+H02/private IPC/cancellation/repair completion, original TWO main D/H900s,
+aggregate1800s, terminal/security/independent/final/product acceptance remain
+pending. Whole AF-07/UX-01/G1/G2 and real external X01–X09 remain unqualified/OFF.
+
+## Historical verification status — Turn307, design review required
+
+F05 remains **not accepted**. The [Turn307 report](../loop/agent-fabric-g1-f05-storage/develop-turn307/report.md)
+records exact full original/owned-copy async16 diagnostic snapshots with about
+19–21% mean scan savings and actual identity-proved fixture removal. PLAN307-01
+specifies nine existing interface owners, full reads/native coherence, operation
+ownership before awaits and complete failure/cleanup settlement. Fresh independent
+plan review precedes implementation. No source/test/seal/check/budget change,
+build or controller retry occurs; prototype timings qualify no behavior or900s
+result. Every predecessor assertion/read remains. Latest original repair checks
+are Turn305: five PASS/H-build TIMEOUT900110ms. H02/private IPC/cancellation,
+repair completion, main D/H, aggregate/terminal/independent/final/product and
+real external X01–X09 remain pending. No capacity gate applies.
+
+## Historical original verification results — Turn305, repair in progress
+
+F05 remains **not accepted**. The [Turn305 report](../loop/agent-fabric-g1-f05-storage/develop-turn305/report.md)
+records joined direct prepared copied checker dispatch/postbuild/final guards,
+preserved970 prior test lines and precise existing F05 entries. Original serial
+checks: buildPASS6493ms/HbuildTIMEOUT900110ms/D-evidencePASS8178ms/H-cleanup
+PASS98717ms/D-operationsPASS125038ms/EfullPASS216363ms. Four successful behavior
+reports have zero bad counters; report links/hashes all12 complete original
+streams and verifies actual candidate/commands before this update. Copied D,
+metadata refusal/recovery and positive copy cleanup are observed in incomplete
+H stdout; no terminal H/component qualification follows. A small regular-closure
+assertion-formatting diagnostic is insufficient support for retry and is rejected.
+All fixtures from that diagnostic are identity-proved removed; interrupted H
+cleanup remains unqualified. No task-done or unchanged main H retry occurs.
+
+Private ten-suite IPC/nonce/cancellation/H02/intended marker-downgrade binding,
+positive failure-removal controls and bounded H cost repair remain pending.
+The broader historical F05 SQL predecessor gate also stays pending. Main
+D/H900s, aggregate1800s, terminal/security/independent/final/product, whole
+AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified. Local passes imply no
+provider/KMS/custody, physical recovery/RPO/RTO, enterprise policy/identity,
+F06 isolation, billing or signed-client acceptance. Paid/remote/real-secret/
+deployment/message actions remain OFF.
+
+## Historical verification status — Turn304, repair in progress
+
+F05 remains **not accepted**. The [Turn304 report](../loop/agent-fabric-g1-f05-storage/develop-turn304/report.md)
+records joined direct copy-first refusals with all successful full reads/guards
+preserved, exact F05-only entries, and both completed serial controller jobs.
+All six repair checks PASS: build6931ms/H-build856342ms/H-cleanup100838ms/
+D-evidence8464ms/D-operations116016ms/owned-encryption201865ms. H fresh-build
+740515.08875ms improves from801584.771416ms; H19/18leaves,D9/7,H-cleanup24/23,
+D-operations28/24,E32/28, all zero fail/cancel/skip/TODO. The report links/hashes
+all12 complete original streams and binds actual commands/fingerprint/candidate.
+These qualify current local primitive/reader/operations/E observations, with
+component/slice diagnosticOnly=true/external=pending. No task-done/H02 verdict.
+The separate historical F05 all=true preservation diagnostic still refuses the
+later Turn270 SQL fix; that broader gate remains pending and is not hidden.
+
+Actual positive checker dispatch, runner post-build validation and copied ten-suite
+IPC/nonce/cancellation/H02 remain required before all six repair checks/task-done.
+Main D101437msPASS/H900130msTIMEOUT, aggregate/terminal/security/independent/final/
+product acceptance, whole AF-07/UX-01/G1/G2 and real external X01–X09 remain pending.
+Local copy/reader observations do not qualify provider/KMS/custody/durability,
+physical-device/power/host/cluster recovery or production RPO/RTO, enterprise
+policy/identity/human judgment, revocation/F06 isolation, supplier/billing or
+signed physical clients. Paid/remote/real-secret/deployment/message actions stay OFF.
+
+## Historical verification status — Turn298, repair in progress
+
+F05 remains **not accepted**. The [Turn298 report](../loop/agent-fabric-g1-f05-storage/develop-turn298/report.md)
+records the bounded closed initial metadata slice: exact pinned shim/templates,
+modules/settings/store/graph, workspace fields/hooks/native timestamps and
+installed/wanted lock/version/notice validation at positive copy and copied-D
+boundaries. Initial private shims remain original-equal and quarantined.
+Turn297 controller build6096ms/H-build808914ms/D-evidence8712ms passes qualify
+initial full installed closure/origin/refusal/owned-cleanup primitives only;
+Turn298 job-4d1ec22b0b passes build6566ms/H-build786538ms/D-evidence8024ms
+(H19tests/18leaves,D9tests/7leaves,zero bad counters), including40 new direct
+metadata refusal/restoration controls. Actual five-file build
+transition, fixed copied ten-suite IPC/cancellation/H02 and all six repair
+checks/task-done remain required. Full D101437msPASS/H900130msTIMEOUT remains;
+aggregate/terminal/independent/final/product, whole AF-07/UX-01/G1/G2 and X01–X09
+remain pending. No full retry or product acceptance claim occurs.
+
+## Historical verification status — Turn296, repair in progress
+
+F05 remains **not accepted**. The [Turn296 report](../loop/agent-fabric-g1-f05-storage/develop-turn296/report.md)
+records positive regular input closure, actual copied D reading, immutable
+original fingerprint/command provenance and missing/mutation/forgery/recovery
+controls in existing H01/D02 leaves. Controller job-3068cdcc69 passes build6255ms,
+harness-build241513ms (19tests/18leaves) and delivery-evidence7905ms
+(9tests/7leaves), zero fail/cancel/skip/TODO. These are local primitive results.
+Private dependency metadata/payload validation and copied ten-suite IPC/
+cancellation/full H02 remain before all six repair checks/task-done. Original
+D101437msPASS/H900130msTIMEOUT, aggregate/terminal/independent/final/product,
+whole AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified. No full retry,
+restricted external action or acceptance claim occurs.
+
+## Historical verification status — Turn294, repair in progress
+
+F05 remains **not accepted**. After resources confirmation and independent
+round4 plan-review PASS, the bounded PLAN290-01 reader repair starts in the
+existing delivery reader and D02/complete-controller-streams helper. Raw TAP
+prefix/depth/order distinguishes outer acceptance from nested diagnostics;
+exact-one outer report/fresh build and separately complete ten-suite nested
+prerequisite gates remain. The [Turn294 report](../loop/agent-fabric-g1-f05-storage/develop-turn294/report.md)
+records actual joined verification and remaining work. Controller job-73858918df
+passes strict-build5539ms and delivery-evidence-component6998ms (9tests,7variants,
+zero failures/cancellations/skips/TODO). Stream-format controls qualify the reader
+only, not actual copied H02 or product acceptance.
+
+The same repair task remains active: complete owned inputs/origins, private
+installation metadata transitions, async execution/settlement/cancellation and
+real copy regressions are still required before the six-check done submission.
+Latest original D101437msPASS/H900130msTIMEOUT remains; no full D/H retry or
+aggregate pass is claimed. Full H/copy/terminal/independent/final/product gates,
+whole AF-07/UX-01/G1/G2 and external X01–X09 remain pending. Existing external
+limits below remain unchanged; restricted external actions stay OFF.
+
+## Historical verification status — Turn291, PLAN290-01 plan correction
+
+F05 remains **not accepted**. Independent round4 review found that the delivery
+reader flattened TAP-prefixed nested H02 build/report records into outer
+records, making the required terminal aggregate audit fail after a completed
+copy. The [revised prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md)
+allocates a direct scope-preserving correction in the existing reader and
+focused assertions inside D02/complete-controller-streams. Exactly one genuine
+outer aggregate report and successful fresh outer build remain required;
+nested-only success cannot satisfy them. The copied ten-suite workload, its
+build/current candidate, coverage, zero violations and cleanup are retained
+and validated separately. Complete original raw bytes/hashes, currentness and
+all pending/stale/severe/independent verdict gates remain mandatory.
+
+Seven-file ownership and all six repair checks/labels remain; only existing
+repair/main-harness/aggregate/terminal task details change. No wrapper, new
+driver, receipt layer, >=1 gate, source/test/pin change, build, H retry or
+freeze/re-freeze occurs here. PLAN287-01's exact five generated metadata rules
+remain. The [Turn291 report](../loop/agent-fabric-g1-f05-storage/plan-turn291/report.md)
+records static validation and submission; this plan revision supplies neither
+a reader regression pass nor an independent review verdict. Resources
+confirmation and independent plan review precede implementation. Turn289 local
+resource probes remain availability observations only.
+
+Latest original job-3d03803295 D101437msPASS/H900130msTIMEOUT remains blocking;
+its stdout already contains outer strict-build at line23 and nested build at
+line150. The reader finding is independent of that timeout and establishes no
+full-H performance improvement. Original D/H900s, aggregate1800s, controller
+terminal checks and security/code/final/product gates remain unchanged.
+All96 requirements stay covered; no scope, acceptance budget or capacity gate
+changes. Full H/copy/aggregate/terminal acceptance and whole AF-07/UX-01/G1/G2
+remain pending.
+
+Real X01–X09 environments remain unqualified: provider object/volume encryption,
+managed key custody/rotation and durability; power/host/cluster recovery and
+production RPO/RTO; enterprise retention/legal hold/residency; brokered stream/
+download revocation; F06 runtime/egress isolation; enterprise SSO/current
+directory/human judgment; actual supplier/model/quality/billing; signed physical
+F07 clients; later G2–G5 breadth. Local fixtures establish no production policy
+or SLA, and delivered bytes cannot be recalled. Restricted external actions
+remain OFF. Standing Oct13 approval covers this local plan choice.
+
+Controller records the revised plan final:81tasks/72done/zero uncovered.
+Only four task details change; all81 check arrays,96 full requirements, four
+acceptance definitions and policy/dependency/coverage/role/team fields remain
+identical. Resources confirmation is next, then independent plan review.
+No source or behavioral qualification, new review verdict or pending job exists.
+
+## Historical verification status — Turn288, PLAN287-01 plan correction
+
+F05 remains **not accepted**. Independent round3 plan review found a static
+conflict: the copied-build prescription froze pnpm's root-dependent launchers
+while requiring the unchanged real offline install. The revised
+[prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md)
+separates immutable package payloads/links from five exact generated storage
+metadata paths. Original installed bytes, package/version/notice/lock pins and
+copied immutable hashes remain protected. Only the private unchanged install
+may regenerate those paths, with exact copy-local shim templates, closed
+metadata fields and native-precision timestamp validation; the installed lock
+must retain pinned bytes. Recovery dependencies remain entirely immutable and
+their launchers uninvoked in the F05 workload.
+
+The existing H01/HARNESS-BUILD fresh-build leaf will exercise an actual relocated
+build plus package/link/metadata mutation refusals. Seven-file implementation
+ownership, all prior assertions, the six repair commands, original D/H900s and
+aggregate1800s remain. This turn changes plan documents/task detail only; no
+build, copied behavior, H retry, dependency installation or source re-freeze.
+The [Turn288 report](../loop/agent-fabric-g1-f05-storage/plan-turn288/report.md)
+records static validation and the joined read-only tester critique. Revised
+`loop_plan(final=true)` submission requires fresh independent review before
+implementation; it is not a review verdict or completion of the repair.
+
+Latest original job-3d03803295 D101437msPASS/H900130msTIMEOUT remains blocking.
+Earlier component/E and design-input passes retain their limited qualification.
+Full H/copy/security/aggregate/terminal/independent/final/product gates, whole
+AF-07/UX-01/G1/G2 and X01–X09 remain pending. Real provider encryption/KMS/key
+custody/durability, power/host/cluster recovery, enterprise policy/identity/human
+judgment, delivery revocation, F06 isolation, real supplier/model/billing and
+F07 physical signed clients remain unqualified. Restricted external actions
+stay OFF; delivered bytes cannot be recalled. No product requirement, scope,
+acceptance budget or capacity gate changes.
+
+Controller accepts the final revised plan:81tasks/72done/zero uncovered;
+all81 task check arrays and requirement/acceptance definitions remain identical.
+Only the two repair/main-harness task details change. Resources confirmation is
+next, followed by fresh independent plan review; no new verdict or job pending.
+
+## Historical verification status — Turn286, owned-copy design
+
+F05 remains **not accepted**. COPY284-01 has a concrete
+[direct prescription](../loop/agent-fabric-g1-f05-storage/owned-copy-prescription.md):
+complete source/docs/dependency/controller/raw copies, original absolute-command/
+Git evidence origin versus actual copied bytes, outer-capability stripping,
+async child ownership and full stream/failure/nested cleanup. Design changes
+documents only; they establish no copied execution or timeout improvement.
+
+PLAN286-01 submits a **separate** bounded implementation prerequisite for
+independent review before code or changed-candidate D/H. Existing design checks
+validate integrity and original local delivery evidence only. Repair component
+checks will prove the primitive/origin negatives; only actual full H02 can prove
+the ten-suite positive copy. Existing original two D/H900s, aggregate1800s,
+all H/E/D leaves and security/terminal/independent/final/product gates remain.
+Latest original job-3d03803295 D101437msPASS/H900130msTIMEOUT is unchanged;
+Turn283 component/E results retain their limited local qualification.
+
+The [Turn286 report](../loop/agent-fabric-g1-f05-storage/develop-turn286/report.md)
+records actual design check results and the joined tester critique. Full H/copy,
+whole AF-07/UX-01/G1/G2 and X01–X09 remain unqualified, including real storage/KMS/
+custody/durability, power/host/cluster recovery, enterprise retention/legal hold/
+residency, delivery revocation, F06 isolation, enterprise identity/human judgment,
+supplier/billing and signed physical clients. Paid/remote/real-secret/shared
+deployment/human-message actions stay OFF; delivered bytes cannot be recalled.
+No freeze/re-freeze or requirement/scope/acceptance-budget change occurs here.
+
+Original controller job-0ae9315763 passes the two design input checks212ms/738ms
+and marks the design task done; full original streams are linked/hashed in the
+report. PLAN286-01 now registers81tasks/72done/4pending/1active/4dropped, all96
+requirements covered, every80 existing task check arrays/acceptance definitions
+unchanged. Independent plan_review is current; its previous round2 pass is
+historical. No new copy/behavior/independent acceptance result or pending check
+job exists.
+
+## Historical verification status — Turn284, H02 copy gap
+
+F05 remains **not accepted**. Role-first tester and lead confirm COPY284-01:
+H02/good-full-run freshly builds and executes the original repository, without
+the owned current-source positive copy required by the live task/check and plan.
+Hostile/compiler/cleanup copies do not prove that missing positive boundary.
+All existing H/E/D assertions and ten sequential non-H/AD order remain; this
+finding does not establish a cause of the900s timeout. No source/build/behavior
+change, H run or main-task-done claim occurs this turn.
+
+PLAN284-01 adds a bounded design prerequisite to resolve copied source/docs/
+complete raw/controller-origin bindings, original absolute paths/fingerprint,
+capability stripping and async ownership/LIFO/census/copy cleanup in existing
+seams. A separate reviewed implementation plan and actual full D/H remain
+required; no new observer/receipt layer or retained candidate tree is permitted.
+Latest original D101437msPASS/H900130msTIMEOUT remains, source candidate
+e8ea418e…ef8b30/1177files is unchanged, and the Turn283 component passes retain
+their limited qualification. Original D/H900s and aggregate1800s remain.
+
+The [Turn284 report](../loop/agent-fabric-g1-f05-storage/develop-turn284/report.md)
+records the joined review, original evidence and bounded next step. Full H/copy,
+security/aggregate/terminal/independent/final/product gates, whole AF-07/UX-01/
+G1/G2 and external X01–X09 remain unqualified. Restricted external actions stay
+OFF; no freeze/re-freeze occurs and delivered bytes cannot be recalled.
+
+Controller registers80 tasks/71done/4pending/1active/4dropped with all96
+requirements covered. Independent plan_review is next; no new review verdict
+or check job is pending, and all79 existing task check arrays remain unchanged.
+
+## Historical verification status — Turn283, metadata implementation
+
+F05 remains **not accepted**. Independently reviewed PLAN281-01 is implemented:
+four fresh directory metadata reads use lstatSync and root realpathSync.native.
+Async marker contents and all current/native/audience/witness/time/recovery
+semantics remain. One role-first tester joins real metadata/refusal/restoration
+cases inside original integrity leaves; every prior assertion/census survives.
+
+Latest completion controller job-eb95e31d29 passes authority118, staging75,
+artifact-publication18, restore-activation36 and E01–E04 32tests/all28leaves.
+Each freshly builds current sources; all279tests pass with zero fail/cancel/
+skip/TODO/violations and complete owned fixture cleanup. Product1177files
+SHA256e8ea418e…ef8b30. Controller marks the source task done,71/79 tasks;
+original full D/H is next with no job pending. These are local component/
+encryption passes, not full H acceptance.
+
+The [Turn283 report](../loop/agent-fabric-g1-f05-storage/develop-turn283/report.md)
+links latest original logs/hashes, six overlapping admission probes and existing
+phase measurements without copies
+or another profiler. Last original D PASS/H TIMEOUT900130ms remains blocking;
+changed-candidate original D/H900s, aggregate1800s, security, terminal, regression,
+independent/final/product gates remain. No scheduling improvement or full-H
+cause is claimed. Synchronous metadata blocking, physical-device latency and
+hostile path-race safety remain unqualified. Full AF-07/UX-01/G1/G2 and X01–X09
+external qualification remain pending; restricted external actions stay OFF.
+No freeze/re-freeze/pin change was required. Delivered bytes cannot be recalled.
+
+## Historical verification status — Turn281, bounded metadata plan
+
+F05 remains **not accepted**. No product/build/workload changes or new behavioral
+result occur this turn. Latest original D PASS101437ms/H TIMEOUT900130ms remains
+blocking; diagnostic completion supplies no full-H cause. PLAN281-01 proposes
+only fresh synchronous directory metadata validations, preserving asynchronous
+marker reads and all authority/native/audience/witness/time/recovery boundaries.
+An independently reviewed source task and complete real component/encryption
+regressions must finish before changed-candidate original D/H. No unchanged H
+retry, cache, wrapper, assertion omission or deadline increase is authorized.
+
+One role-first read-only tester joined source/evidence review with no edits or
+work in flight. Existing integrity checks confirm2581 accepted inputs unchanged
+and the unchanged1177-file product67a9a60a…f1893. Source implementation and any
+performance benefit remain unproven. Synchronous metadata can block the event
+loop; physical-device latency and stronger marker path safety are unqualified.
+The [Turn281 report](../loop/agent-fabric-g1-f05-storage/develop-turn281/report.md)
+records the separate bounded plan, exact original results and qualification
+limits. Full H/aggregate/security/terminal/independent/final/product acceptance,
+full AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified. Restricted external
+actions stay OFF; delivered bytes cannot be recalled.
+
+Controller registers79 tasks/70done/4dropped/5live, all96 requirements covered.
+Independent plan_review is the next assignment; no new review verdict or check
+job is pending. The new source task and full harness are not complete.
+
+## Historical verification status — Turn280, direct CPU diagnosis complete
+
+F05 remains **not accepted**; `f05-14-harness` remains active. First polled
+original job-2183c4010f to finished: in-process resource probe PASS314ms,
+fresh strict build PASS5320ms and direct sampling PASS10726ms/exit0. The
+controller completed only the diagnostic task,70/78done with4dropped/4live.
+No product/test/harness/check/dependency changes or freeze/re-freeze occurred.
+Candidate remains67a9a60a65e52ac1ce3d7bfc78f221b68c13a850820942d9ef4ecd7e9d0f1893
+/1177 files; the strict build verifies2581 accepted inputs unchanged.
+
+One unchanged x.files executes five public operations.4306 node-resolved samples
+sum to6174875us plus750us tail; F05 weighted intervals179544us2.91%, idle4875407us
+78.96%.287 source-attribution-unknown samples remain included. This whole x.files
+sample identifies no behavior-safe repair/full-H root cause; it measures neither
+exact CPU/PG wait nor a percentile. Role-first read-only tester independently
+verified accounting, owner semantics and cleanup and joined without edits or
+work in flight. Original model/container/root cleanup completes before summary;
+controller outer-process cleanup:zombie and whole-host reaping stay unqualified.
+
+Latest full original job-3d03803295 remains D PASS101437ms/H TIMEOUT900130ms:
+H02 complete useful report,H03/H04 and remaining workload/cleanup are unqualified.
+No unchanged H retry or main-task-done claim. A supported source repair needs a
+separate bounded reviewed plan and full real component regressions before
+changed-candidate original D/H900s. Aggregate1800s and every H/E/D assertion and
+ten sequential non-H/AD order remain mandatory. No capacity gate applies.
+
+The [Turn279/280 report](../loop/agent-fabric-g1-f05-storage/develop-turn279/report.md)
+records the exact reconstructible input, latest original streams/hashes, joined
+review, missing prior-turn report recovery and attribution limits. Full H,
+aggregate/security/terminal/independent/final/product acceptance, whole AF-07/
+UX-01/G1/G2 and external X01–X09 remain unqualified. Real approved provider/KMS,
+power/cluster recovery, enterprise retention/residency, delivery revocation,
+F06 isolation, identity/human judgment, supplier/billing and signed physical
+client environments are still required. Restricted external actions stay OFF;
+delivered bytes cannot be recalled.
+
+## Historical verification status — Turn265, direct admission timing
+
+F05 remains **not accepted**; `f05-14-harness` is active. Original full delivery
+PASS37/107732ms, D02 all four/D06 all three and truthful qualified:false/pending
+reviews remain. Original full H TIMEOUT900098ms remains; no unchanged retry or
+main-task-done claim. Tester confirms every H6/12/13/8 plus supplemental probe,
+real E/D case and current fresh ten-suite callback/AD order, with no seam defect.
+
+Direct owned-runtime profiling identifies repeated admission work: five file
+operations issue10285 SQL calls; four preparations invoke staging assertCurrent40
+times plus40 separate write checks and80 native loads. Latest diagnostic task
+verification `job-d2437d5a0f` passes12037ms with actual owned cleanup/census.
+It uses existing emission and measures instrumented samples; it qualifies no
+fresh build, source repair, H throughput or acceptance. The proposed check
+consolidation has unresolved refusal-order changes, so production/tests/checks
+remain unchanged. Local2581 accepted guards, preservation and manifest pass;
+product candidate remains480a3e234b…/1177 files. The diagnostic task is done;
+full harness is not. The amended plan is finalized,67/75 tasks done; controller
+next requests independent plan review. No freeze/re-freeze or acceptance-budget change.
+
+The [Turn265 report](../loop/agent-fabric-g1-f05-storage/develop-turn265/report.md)
+records original streams/hashes, profiling limits, tester review and exact
+reproducible temporary probe. Next preserve live gates and refusal ordering in
+a direct F05 repair, then prove existing component/full D/H checks within their
+unchanged bounds. Full H/aggregate, security/terminal/independent/final/product
+acceptance, whole AF-07/UX-01/G1/G2 and X01–X09 external environments remain
+unqualified. Restricted external actions stay OFF; delivered bytes cannot be recalled.
+
+## Historical verification status — Turn264, original harness failure attribution
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original
+`job-95b99ab436` on unchanged `480a3e234b…`/1177 files passes full delivery37
+tests/107732ms, including all four D02 and three D06 leaves. Its actual audit
+remains qualified:false: four terminal checks/current final acceptance missing,
+all four independent verdicts pending. Full H times out900098ms during nested
+Q04 after five completed non-H suites. H02/H03/H04 and remaining workload are
+unqualified. No task-done submission or unchanged retry.
+
+The assigned tester finds no supported defect in the five owned H/E/D seams;
+all H6/12/13/8 leaves, supplemental probes, real E/D groups and the fresh ten
+sequential non-H callback/AD order remain. Existing raw phase samples point to
+staging/publication validation for direct investigation: artifact preparation
+786.552ms reaches allocation441.256ms; actual file writing/sync thereafter
+takes24.782ms. These samples do not identify the dominant internal gate or
+qualify a root cause/performance repair. No source/test/check changes this turn.
+
+Local exact ownership-checked recovery removes three original-log fixtures;
+interrupted controller cleanup and whole-host reaping remain unqualified.
+Local2581 accepted guards, preservation and manifest pass; candidate unchanged.
+The [Turn264 report](../loop/agent-fabric-g1-f05-storage/develop-turn264/report.md)
+records original paths/hashes, timing attribution, tester findings and recovery.
+Both full prerequisites remain900s. Full H/aggregate, security/terminal/
+independent/final/product acceptance, whole AF-07/UX-01/G1/G2 and X01–X09
+external environments remain unqualified. Restricted external actions stay
+OFF; delivered bytes cannot be recalled.
+
+## Historical verification status — Turn263, bounded journal reads
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original
+`job-307db03c58` on `4a3b63cf…`/1177 files passes full delivery37 tests/
+104433ms, including all four D02 and three D06 leaves. Its audit remains
+qualified:false with missing terminal/final checks and pending independent
+verdicts. Full H times out900137ms after five non-H suites and partial recall.
+Local exact ownership-checked recovery removes three original-log fixtures;
+interrupted controller cleanup remains unqualified.
+
+The lead repairs F05 journal event descriptor I/O directly, retaining the full
+fresh scan, all file/mutation/count/chain/CAS checks, awaited fault hooks,
+four-name settlement and original error order. The tester adds an actual
+four-descriptor held growth/failure-order/settlement/recovery case inside the
+existing integrity leaf; every prior leaf remains. Fresh joined build/2581
+guards pass. Local timing samples do not establish whole-H900s feasibility;
+real external device latency/capacity and bounded event-loop blocking remain
+unqualified. Original600s authority `job-b9b34f1451` passes118 tests/all117
+leaves/75984ms on `480a3e234b…`/1177 files, zero failures/cancellations/skips/
+TODOs and violations, successful owned cleanup/census. This qualifies the
+journal path locally; full D/H proofs on this candidate are next.
+
+The [Turn263 report](../loop/agent-fabric-g1-f05-storage/develop-turn263/report.md)
+records original paths/hashes, source/test changes, local diagnosis and recovery
+limits. Both full prerequisites remain900s. Full H/aggregate, security/terminal/
+independent/final/product acceptance, whole AF-07/UX-01/G1/G2 and X01–X09
+external environments remain unqualified. Restricted external actions stay
+OFF; delivered bytes cannot be recalled.
+
+## Historical verification status — Turn262, live staging reachability
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original
+`job-e48e07fd00` on `9d9f7cf1…`/1177 files passes full delivery37 tests/
+109307ms, including all four D02 and three D06 leaves. Full H times out900086ms
+after five non-H suites and partial recall. The tester confirms H6/12/13/8,
+real E/D groups and the actual fresh sequential ten-suite callback/AD order
+remain. Local exact ownership-checked cleanup of three original-log fixtures
+does not retroactively qualify interrupted controller cleanup.
+
+The lead folds the staging reservation and three exact reachable predicates
+into one live PostgreSQL statement under existing Space/original locks.
+Material/authority/native/audience, journal/witness/terminal/original binding
+checks and every later currentness reread remain. The tester adds ten real
+command/outbox/head transitions inside the existing reachability leaf, proving
+independent outbox protection, identity misses and exact snapshot/byte recovery.
+No wrappers, cached proof, removed assertions or changed deadlines.
+
+Fresh joined build/2581 guards pass. Original600s staging `job-5f920e64a4`
+passes75 tests/all74 leaves/152140ms on `4a3b63cf…`/1177 files, with zero
+failures/cancellations/skips/TODOs, six zero violations and successful owned
+cleanup/census. Full delivery/H qualification on this repaired candidate is
+next; one fewer query per staging currentness read does not establish900s
+whole-H feasibility.
+
+The [Turn262 report](../loop/agent-fabric-g1-f05-storage/develop-turn262/report.md)
+records original stream paths/hashes, actual partial-run timings, joined source/
+test change and recovery limits. Both full prerequisites remain900s. Historical
+failures and pending independent reviews remain visible. Full H/aggregate,
+security/terminal/independent/final/product acceptance, whole AF-07/UX-01/G1/G2
+and X01–X09 external environments remain unqualified. Restricted external
+actions stay OFF; delivered bytes cannot be recalled.
+
+## Historical verification status — Turn261, current harness timeout
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original
+`job-9e0ce11062` on `e112175c…`/1177 files passes full delivery37 tests/
+113614ms, including all four D02 and three D06 leaves, zero failures/
+cancellations/skips/TODOs and successful owned cleanup/census. Full H times
+out900144ms during nested Q04 after five non-H suites pass. H02/H03/H04,
+remaining workload and interrupted cleanup are unqualified.
+
+The assigned tester confirms all H6/12/13/8 leaves, supplemental probes,
+real E/D groups and the fresh sequential ten-suite callback/AD order remain.
+Local ownership-checked recovery removes the three reproducible leftover
+fixtures; this does not turn interrupted controller cleanup into a pass.
+The lead joins adjacent epoch/policy reads in the F05 authority owner under
+the existing barrier, retaining exact anchor/policy binding, live control scans
+and every final identity/time check. Missing-row/recovery cases extend an
+existing authority leaf. Fresh build/2581 guards pass; original900s
+`job-65da5fc9e7` passes41 authority tests/all35 leaves/87828ms on `9d9f7cf1…`,
+with zero violations and owned cleanup/census. Full delivery/H qualification
+on this repaired candidate is next. One fewer query per check does not
+establish whole-H feasibility.
+
+The [Turn261 report](../loop/agent-fabric-g1-f05-storage/develop-turn261/report.md)
+records original stream paths/hashes, actual partial-run timings, source/test
+change and recovery limits. Both full prerequisites remain bounded by900s.
+Historical failures and pending independent reviews remain visible. Full H/
+aggregate, security/terminal/independent/final/product acceptance, whole AF-07/
+UX-01/G1/G2 and X01–X09 external environments remain unqualified. Restricted
+external actions stay OFF; delivered bytes cannot be recalled.
+
+## Historical verification status — Turn260, typed publication scan
+
+F05 remains **not accepted**; `f05-14-harness` remains active. The lead batches
+the seven typed publication-override control projections into one live SQL
+statement, retaining every UNION, numeric order, field order,512-row bound,
+pg numeric-string/Date encoding, optional share scan and authority check.
+No control is cached. The joined tester adds independent historical PostgreSQL
+comparisons inside existing A01/same-scope for all six overrides, combinations,
+numeric1/2/10 ordering, timestamps and real512/513 publication boundaries.
+All original H/E/D assertions and the ten-suite sequential callback remain.
+
+Fresh strict build,2581 accepted-input guards, preservation and registry pass.
+Original full-authority900s `job-e27f54004d` passes41 tests/all35 leaves/96285ms
+on `e112175c…`/1177 files, with zero failures/cancellations/skips/TODOs,
+six zero violations and successful owned cleanup/census. Nine sampled override
+calls per scope take12.437/13.046ms versus historical24.088/27.982ms; these
+small projection scopes do not qualify whole-file or full-H throughput.
+
+The [Turn260 report](../loop/agent-fabric-g1-f05-storage/develop-turn260/report.md)
+records source/test changes and latest original streams/hashes. The stored
+historical2700s H timeout is tightened through the Loop plan API to the current
+explicit900s requirement, preserving its command and workload; standing approval
+covers the re-freeze. Fresh serialized full delivery/H900s prerequisites are
+next. Latest delivery PASS37/D02four/D06three and H2700059ms timeout remain
+historical after this source change. No task-done or current full-H claim.
+
+Full H/aggregate, security/terminal/independent/final/product acceptance,
+whole AF-07/UX-01/G1/G2 and X01–X09 external environments remain unqualified.
+Historical failures and pending independent reviews remain visible; restricted
+external actions stay OFF. Delivered bytes cannot be recalled.
+
+## Historical verification status — Turn259, bounded epoch reads
+
+F05 remains **not accepted**; `f05-14-harness` remains active. The lead fixes
+the epoch reader's writerless-FIFO hang and growth beyond its16KiB check
+directly at source. Nonblocking open, bounded positional reads and final
+size/mtime/ctime validation retain every reread/chain assertion and four-handle
+ordered failure cleanup. The joined tester adds five shared real refusal cases
+to the existing epoch integrity and full-authority recovered leaves, preserving
+all original H/E/D leaves and the ten-suite sequential nonrecursive callback.
+
+Fresh strict build,2581 accepted-input guards, execution preservation and
+registry pass. On `1a1a99ca…`/1177 files, original controller
+`job-60e6dbc960` passes118 authority component tests/81399ms within600s;
+`job-8c97bcbac0` passes41 full-authority tests/all35 leaves/86991ms within900s;
+`job-a0eea7b270` passes37 full-delivery tests/all31 leaves/122813ms within900s,
+including all four D02 and three D06. All have zero failures/cancellations/
+skips/TODOs, six zero violations, empty stderr and successful owned cleanup/
+census. Original streams are read directly; none are copied.
+
+The [Turn259 report](../loop/agent-fabric-g1-f05-storage/develop-turn259/report.md)
+records exact original paths/hashes, the source defect, tester delivery and
+qualification limits. Latest full H remains the historical2700059ms timeout
+during backup R09, before nested delivery/H03/H04. This correctness repair
+does not prove a throughput improvement or current full-H timing. No unchanged
+full-H retry or task-done claim; no job is pending at handoff.
+
+Full H/aggregate, security/terminal/independent/final/product acceptance,
+whole AF-07/UX-01/G1/G2 and X01–X09 external environments remain unqualified.
+Historical failures and pending independent reviews remain visible; restricted
+external actions stay OFF. Delivered bytes cannot be recalled.
+
+## Historical verification status — Turn257, real restore and file-path timing
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original900s
+restore-measurement `job-dd41f4d43c` passes21 tests/266878ms/exit0 on
+`10cc1c0f…`: all18 R07–R09 leaves, six zero violations,18 owned process
+cleanups and one container/root pair. All ten R09 writer-order schedules
+complete; their file setup takes6747–7869ms per schedule. This component
+does not qualify the complete backup workload or whole H.
+
+Lead adds clock-only samples through existing file/publication hooks in the
+existing authority fixture output row, preserving every operation/assertion.
+Fresh strict build,2581 accepted-input guards, execution preservation and
+registry pass. Existing900s authority `job-69c7222747` passes41 tests/82434ms
+on `af489292…`, all35 leaves, six zero violations and owned cleanup/census.
+Sampled file-write/fsync intervals are smaller than admission/prerequisite/
+return scopes; no durability or SQL change is supported. Joined tester
+confirms H6/12/13/8, real E/D and the actual ten-suite nonrecursive callback.
+Latest original full delivery remains PASS37/all four D02/three D06; H
+remains TIMEOUT2700059ms during backup R09. Its eight completed sequential
+dispatches alone took1990860.720ms; current full-H timing remains unqualified.
+Next is source attribution before repair, not an unchanged full-H retry.
+No task-done claim; no controller job is pending at this handoff.
+
+The [Turn257 report](../loop/agent-fabric-g1-f05-storage/develop-turn257/report.md)
+records latest original paths/hashes, candidates, hook edit and timing limits;
+[Turn256](../loop/agent-fabric-g1-f05-storage/develop-turn256/report.md) retains
+the source silence repair. Poll any running job before F05/cache/census/report
+mutation.
+Full H/aggregate, security/terminal/independent/final/product acceptance,
+X01–X09 and whole AF-07/UX-01/G1/G2 remain unqualified; restricted external
+actions stay OFF. Historical failures and independent reviews remain visible.
+
+## Historical verification status — Turn253, full workload timeout
 
 F05 remains **not accepted**; `f05-14-harness` remains active. Original controller
-`job-57b51eaad8` passed full delivery37 tests/112640ms, including all D02/D06
-leaves and owned cleanup, but full H timed out at2700083ms. Buffered raw output
-cannot identify the interrupted nested suite or qualify H behavior/cleanup.
-Original hashes, failures, source changes and limits are in the
-[Turn247 report](../loop/agent-fabric-g1-f05-storage/develop-turn247/report.md).
+`job-d419d85025` passes full delivery37 tests/109725ms, including all four D02
+and three D06 leaves, zero failures/cancellations/skips/TODOs, six zero
+violations and owned cleanup/census. Its full H times out2700059ms/exit−15
+after eight actual non-H suites pass, including all61 volume tests. Actual
+backup/restore R09 is interrupted; nested delivery and parent H03/H04 are not
+reached. The previous volume silence failure is absent. Full H and interrupted
+cleanup remain unqualified.
 
-The existing execution seam now streams actual child progress asynchronously,
-retains complete output and all strict gates/bounds, and is awaited by its real
-callers. All H/E/D assertions and ten-suite order remain. A real parent/child
-acknowledgement regression passes locally; accepted2581 inputs are unchanged.
-Six idle owned synthetic timeout fixtures/roots were removed after fresh
-ownership checks; this does not qualify interrupted cleanup. No new proof layer,
-candidate tree, retries, skips, selectors or deadline increase.
+Lead locally recovers only the three exact reproducible timeout containers
+and roots with existing fresh ownership checks. A direct query-plan probe in
+the existing authority fixture excludes the staging consumed-original FULL
+JOIN as the dominant sampled cost. Original controller `job-aaef944df3`
+passes41 authority tests/91852ms on the diagnostic candidate, with every
+mandatory leaf, six zero violations and owned cleanup/census. No product
+logic, test oracle, accepted input or deadline changes. Joined tester confirms
+all H/E/D assertions and the actual ten-suite callback remain.
 
-Serialized controller `job-0bed32d3f2` on candidate
-`sha256:92146e61fe97a9d8827a5456f71da961495fcdb9f59d557ae463e26e455bbaf9`
-passes contracts12 tests/8468ms; hostile harness component is pending. Poll
-before F05/cache/census mutation, then require fresh complete delivery900s and
-H2700s results. No task-done claim. Historical failures and pending independent
-verdicts remain visible. Full H02/aggregate, security/terminal/independent/final/
+The [Turn253 report](../loop/agent-fabric-g1-f05-storage/develop-turn253/report.md)
+records latest original paths/hashes, distinct candidates, partial-run limits,
+local recovery and rejected cost hypothesis. The authority diagnosis is settled;
+the existing complete backup/restore controller check is next, followed by
+direct source cost attribution. No task-done claim. Full H/aggregate,
+security/terminal/independent/final/product acceptance, X01–X09 and whole
+AF-07/UX-01/G1/G2 remain unqualified; restricted external actions stay OFF.
+
+## Historical verification status — Turn252, silent-worker source repair
+
+F05 remains **not accepted**; `f05-14-harness` remains active. Original controller
+`job-ccb71ebfe7` passed full delivery37 tests/111092ms, including all four D02
+and three D06 leaves, zero test failures/cancellations/skips/TODOs, six zero
+violations and owned cleanup/census. Full H failed2174677ms/exit1 within its
+approved2700s bound. Its first seven real non-H suites passed; volume-draft
+failed28 of61 tests. Nested backup/restore and delivery were not reached.
+
+Lead and joined tester traced20 V leaf failures to temporary volume phase logs
+violating the existing IPC workers' zero-stdout/stderr assertion. One later
+failure is a cascade; two nested V04 errors still need isolation by a fresh run.
+Lead removes temporary volume logs and dead clocks at their source, keeping
+all operations, authority/index/audience/MAC guards and assertions. Local fresh
+strict build,2581 accepted-input guards, execution preservation, registry and
+scoped source whitespace checks pass. H6/12/13/8 plus supplemental probes,
+real E cipher/copy, D01–D06 and the actual ten-suite sequential callback remain.
+
+The [Turn252 report](../loop/agent-fabric-g1-f05-storage/develop-turn252/report.md)
+records latest original paths/hashes, exact failure limits and tester delivery.
+The existing serialized delivery900s/harness2700s prerequisites are next;
+the prior delivery pass does not qualify the repair. Poll a running job before
+F05/cache/census/report mutation. Historical failures and pending independent
+reviews remain visible. Full H/aggregate, security/terminal/independent/final/
 product acceptance, X01–X09 and whole AF-07/UX-01/G1/G2 remain unqualified;
-restricted external actions stay OFF.
+restricted external actions stay OFF. No task-done claim.
+
+## Historical verification status — Turn251, restored guard and full prerequisites
+
+F05 remains **not accepted**; `f05-14-harness` remains active. The human restored
+the exact accepted39-byte root `.gitignore`; all2581 original accepted-input
+guards, execution preservation and registry pass locally. Lead made no accepted
+input change. The assigned tester joined a read-only H/E/D review with no
+supported defect; every required leaf and the actual ten-suite nonrecursive
+goodFullRun remain.
+
+Fresh serialized delivery900s and approved harness2700s prerequisites are being
+resubmitted with the existing volume phase samples. The latest settled delivery
+failed before build/test on the pre-restoration guard; the latest full H timed
+out during real backup R09 after eight non-H passes. Prior delivery D02/D06
+passes remain historical. Original paths/hashes, review delivery and next steps
+are in the [Turn251 report](../loop/agent-fabric-g1-f05-storage/develop-turn251/report.md);
+earlier failures remain in [Turn250](../loop/agent-fabric-g1-f05-storage/develop-turn250/report.md)
+and the original controller streams. Poll any running job before F05/cache/
+census/report mutation. No task-done claim. Full H02/aggregate, security/
+terminal/independent/final/product acceptance, X01–X09 and whole AF-07/UX-01/
+G1/G2 remain unqualified; restricted external actions stay OFF.
 
 ## Historical verification status — Turn246, full prerequisites next
 
@@ -4876,3 +5864,125 @@ external erasure and legal holds, enterprise SSO/JML/service identities, paid
 models/provider routes/regions/billing, remote runtime isolation and physical
 clients remain unqualified/OFF. Already delivered bytes cannot be recalled.
 No paid/cloud/credential/security-setting/deployment/message action occurred.
+
+
+## Turn270 — bounded control-scan repair qualified locally
+
+Controller `job-d0c79fc6ee` verified `f05-14-control-scan` on candidate
+`sha256:67a9a60a65e52ac1ce3d7bfc78f221b68c13a850820942d9ef4ecd7e9d0f1893`
+(1,177 files): authority, staging, artifact publication and restore activation all
+pass after fresh strict builds, 247 tests / 243 existing leaves, zero failed,
+cancelled, skipped or TODO tests, all six violation counters zero, unchanged
+2,581 accepted inputs and complete owned-fixture cleanup. The no-override digest
+uses one fresh fixed read-only invoker function; historical digests, typed
+publication overrides, refusal priority and native/source/audience/wait/effect
+boundaries are retained. The first failed new staging fixture reused an older
+native membership binding; its direct fixture correction and original failed
+logs are documented in the [source-change report](../loop/agent-fabric-g1-f05-storage/develop-turn270/report.md),
+with latest original streams, hashes and measured component intervals.
+
+This qualifies only the bounded repair's local component behavior. Original full
+D/H at 900 seconds, separate aggregate at 1,800 seconds, security/terminal work,
+independent/final/product acceptance and AF-07/UX-01 closure remain pending;
+real external X01–X09 environments remain unqualified and OFF. This supplies
+neither a full-H speed guarantee nor a deployment or whole-G1/G2 claim.
+
+### Turn272 — original full H still times out
+
+Latest original `job-3d03803295` passes delivery (37 tests/31 leaves,
+101,437ms) but times out full H at 900,130ms. Fresh outer/nested builds and
+five prerequisite files complete; Q06's ten leaf OKs do not supply its parent,
+full recall/H02 report or H03/H04 completion. Partial zero violations and later
+ownership-verified fixture recovery cannot qualify complete H or its interrupted
+cleanup. Exact original streams/hashes, retained workload, tester review and
+bounded next diagnosis are in the [Turn272 report](../loop/agent-fabric-g1-f05-storage/develop-turn272/report.md).
+No unchanged H retry or task-done claim occurs. Original D/H900s and aggregate1800s
+remain unchanged; AF-07/UX-01, full acceptance and external X01–X09 remain
+unqualified. The proposed existing direct-profiler prerequisite is diagnostic
+only and needs controller plan review before execution.
+
+
+### Turn295 — generic async children and owned cleanup qualified locally
+
+Controller job-cb2a2dc5c1 passes strict build5566ms, harness-build106587ms and
+harness-cleanup84171ms on1177-file candidate
+`sha256:b354586555bae16676c08e96f89a7f2c1147ad5306bd812600275793e6d1dec7`.
+The43tests/41existing leaves have zero fail/cancel/skip/TODO and exercise actual
+UTF8 streams/arguments, capability exclusions, nonzero/spawn/stream failure and
+fresh recovery, same-copy/active-close refusal, disjoint child settlement and
+identity-proved cleanup after guard/root/owner failures. The
+[Turn295 report](../loop/agent-fabric-g1-f05-storage/develop-turn295/report.md)
+links original complete evidence and records source corrections/seal entries.
+
+This qualifies those supervised local primitives. Owned-copy preparation,
+private dependency transitions, original/copy D provenance and fixed ten-suite
+IPC/cancellation remain active repair work. H02, latest original H900s timeout,
+full D/H, aggregate1800s, terminal/security/independent/final/product acceptance
+and whole AF-07/UX-01/G1/G2 remain unqualified. External X01–X09 provider/KMS,
+physical/cluster recovery, enterprise retention/erasure/identity/human judgment,
+brokered revocation, F06 isolation, models/billing and signed clients/later
+increments remain OFF/unqualified; delivered bytes cannot be recalled.
+
+### Turn297 — initial installed dependency closure qualified locally
+
+Controller job-e494afd9f3 passes strict-build6096ms, H-build808914ms and
+D-evidence8712ms on1177-file candidatea34c16c3…880aad7:28tests/25existing
+leaves, zero fail/cancel/skip/TODO. H01 independently verifies complete original/
+private storage and recovery files, modes/types, confined relative links,
+version/notice/lock equality,35 refusal/cleanup controls and exact recovery.
+The first H-build900073ms timeout exposed pathological native assertion diff
+formatting; the exact comparison predicate fix preserves every guard and
+snapshot. Original failures/latest complete streams, precise F05 re-freeze and
+the interrupted first-copy cleanup gap are in the
+[Turn297 report](../loop/agent-fabric-g1-f05-storage/develop-turn297/report.md).
+
+This qualifies initial installed-input integrity only. Closed original metadata
+rules, five build transitions, actual relocated positive build and fixed copied
+ten-suite IPC/cancellation remain active. Full H02, original D/H900s,
+aggregate1800s, terminal/security/independent/final/product acceptance and whole
+AF-07/UX-01/G1/G2 stay pending; external X01–X09 remain unqualified/OFF.
+
+
+### Turn299 — observed relocated-build metadata qualified locally
+
+Original job-00548ca461 passes strict-build6575ms, H-build808056ms and
+D-evidence8085ms on1177-file candidate72d9d77b…b71c19d:28tests/25existing
+leaves, zero bad counters. H01's two existing relocated builds exercise exact
+five-file outputs/native timestamp windows plus60 negative schedules/61 refusal
+assertions,10 native positive controls and whole original/private immutable
+census/source/sibling recovery. Every prior test line/name/count remains.
+Complete original streams/hashes and precise standing-approved F05 seal entries
+are in the [Turn299 report](../loop/agent-fabric-g1-f05-storage/develop-turn299/report.md).
+
+This qualifies supervised observed metadata outputs only. Positive parent/owner
+hash advancement, copied-runner post-build dispatch/final validation and fixed
+ten-suite IPC/cancellation/H02 remain active. All six repair checks/done still
+precede main TWO D/H900s; latest original full H900130msTIMEOUT remains unchanged.
+Aggregate1800s, terminal/security/independent/final/product acceptance, whole
+AF-07/UX-01/G1/G2 and external X01–X09 remain unqualified/OFF.
+
+### Turn301 — copied build observed, component timeout retained
+
+[Turn301 report](../loop/agent-fabric-g1-f05-storage/develop-turn301/report.md)
+records joined exact body/cleanup error retention and original stable
+job-7eb79e0224: buildPASS7116ms, H-buildTIMEOUT900092ms and D-evidencePASS8067ms.
+The actual prepared copied build and its final guard cleanup succeed in the
+original stream; the component lacks a terminal report, so standalone transition
+and new error-retention cases remain unqualified by the full check. No timeout
+budget, guard or prior assertion is weakened; repeated complete traversal cost
+needs a supported direct repair before another run. Full repair/H02/main D/H/
+aggregate/terminal/independent/final/product acceptance and whole AF-07/UX-01/
+G1/G2 remain pending. Interrupted-copy cleanup and real X01–X09 stay unqualified.
+
+### Turn302 — direct refusal cost repaired, harness timeout retained
+
+[Turn302 report](../loop/agent-fabric-g1-f05-storage/develop-turn302/report.md)
+records full-read timings, joined test-stat/HC/D census changes and exact F05-only
+reconstruction entries. Every successful two-owner census and prior guard remains.
+Latest original job-53162ecd7f: buildPASS6488ms/D-evidencePASS8070ms (9tests/7leaves/
+zero bad outcomes), HbuildTIMEOUT900159ms. Complete H stdout has fresh-build leaf
+PASS801585ms, actual copied build/final cleanup, and later negative/recovery
+controls, but no terminal component report. This cannot complete the repair/H02,
+main D/H/aggregate/terminal/independent/final/product gates or whole AF-07/UX-01/
+G1/G2. Main H900130ms timeout remains; real X01–X09 and interrupted historical copy
+cleanup remain unqualified. No budget change or unchanged retry is authorized.

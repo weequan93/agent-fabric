@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { DatabaseError } from 'pg';
 import { CurrentAudienceVerifier,NativeRepository,assertVerifiedScope,revalidateScope,lockSpaceBarrier,
  type SqlTransaction,type VerifiedScope } from './owners.js';
 import { currentScope } from '../../g1-model/src/model-repository.js';
@@ -25,23 +26,15 @@ const hash=(raw:unknown)=>'sha256:'+createHash('sha256').update(JSON.stringify(r
  * no descriptive content. Whole-cluster recovery/capacity is not qualified here. */
 export async function controlDigest(tx:SqlTransaction,tenantId:string,spaceId:string,policyRevision:number,policyOverride?:ReturnType<typeof StoragePolicySchema.parse>,restrictionOverride?:{sourceId:string;revision:number;epoch:number;at:string},tombstoneOverride?:{entity:{class:string;id:string;revision:number};epoch:number;key:string;at:string},workOverride?:{actorId:string;key:string;binding:string;receiptId:string;jobId:string;entity:{class:string;id:string;revision:number};epoch:number;at:string},headOverride?:{class:string;id:string;revision:number;witness:string;keyId:string;generation:string;epoch:number;at:string;expiresAt:string},shareOverride?:{relationId:string;sourceSpaceId:string;sourceId:string;sourceRevision:number;sourceTaskId:string;sourceEpoch:number;destinationEpoch:number}):Promise<string>{
  const data:unknown[]=[];
- // Ordinary reads still rescan every control at every boundary. Send the seven
- // bounded projections together, preserving pg numeric strings, field/row order
- // and Date encoding used by existing anchors. Publication overrides retain the
- // original typed UNION queries below; no control result is cached.
+ // Ordinary reads still rescan every control at every boundary. The fixed
+ // invoker function sends seven core and optional sharing projections in one
+ // fresh call. Publication overrides retain their original typed UNIONs.
  if(!policyOverride&&!restrictionOverride&&!tombstoneOverride&&!workOverride&&!headOverride&&!shareOverride){
-  const projections=[
-   'SELECT kind FROM fabric.storage_rooms WHERE tenant_id=$1 AND space_id=$2',
-   'SELECT revision::text AS revision,periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3',
-   'SELECT class,id,revision::text AS revision,witness,key_id,generation,epoch::text AS epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 ORDER BY class,id,storage_current_heads.revision',
-   'SELECT class,id,revision::text AS revision,epoch::text AS epoch,command_key,at FROM fabric.storage_tombstones WHERE tenant_id=$1 AND space_id=$2 ORDER BY class,id,storage_tombstones.revision',
-   'SELECT source_id,source_revision::text AS source_revision,epoch::text AS epoch,kind,at FROM fabric.storage_restrictions WHERE tenant_id=$1 AND space_id=$2 ORDER BY source_id,storage_restrictions.source_revision,kind',
-   'SELECT actor_id,command_key,binding_digest,receipt_id,epoch::text AS epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 ORDER BY actor_id,command_key',
-   'SELECT job_id,actor_id,command_key,class,target_id,target_revision::text AS target_revision,epoch::text AS epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 ORDER BY job_id'
-  ];
-  const raw=(await tx.query('SELECT json_build_array('+projections.map(sql=>"(SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM ("+sql+' LIMIT 513) q)').join(',')+') AS controls',[tenantId,spaceId,policyRevision])).rows[0]?.['controls'];
-  demand(Array.isArray(raw)&&raw.length===7,'AUTHORITY_UNAVAILABLE');
-  for(const rows of raw){
+  const result=await tx.query('SELECT controls,sharing_error FROM fabric.storage_current_controls($1::uuid,$2::uuid,$3::numeric)',[tenantId,spaceId,policyRevision]);
+  demand(result.rows.length===1,'AUTHORITY_UNAVAILABLE');
+  const row=result.rows[0]!,raw=row['controls'];
+  demand(Array.isArray(raw)&&(raw.length===7||raw.length===8),'AUTHORITY_UNAVAILABLE');
+  for(const rows of raw.slice(0,7)){
    demand(Array.isArray(rows)&&rows.length<=512,'AUTHORITY_UNAVAILABLE');
    for(const row of rows){
     demand(row!==null&&typeof row==='object'&&!Array.isArray(row),'AUTHORITY_UNAVAILABLE');
@@ -51,7 +44,27 @@ export async function controlDigest(tx:SqlTransaction,tenantId:string,spaceId:st
    }
    data.push(rows);
   }
+  // A sharing SQL failure is deferred across the JSON bridge only to retain
+  // historical core-before-share refusal priority. It never authorizes a digest.
+  const failure=row['sharing_error'];
+  if(failure!==null){
+   demand(raw.length===7&&typeof failure==='object'&&!Array.isArray(failure),'AUTHORITY_UNAVAILABLE');
+   const error=failure as Record<string,unknown>;
+   demand(typeof error['code']==='string'&&/^[A-Z0-9]{5}$/.test(error['code'])&&typeof error['message']==='string','AUTHORITY_UNAVAILABLE');
+   const refused=new DatabaseError(error['message'],0,'error');refused.code=error['code'];
+   for(const field of ['detail','hint','where'] as const){
+    demand(typeof error[field]==='string','AUTHORITY_UNAVAILABLE');
+    if(error[field])refused[field]=error[field];
+   }
+   throw refused;
+  }
+  if(raw.length===8){
+   const shares=raw[7];demand(Array.isArray(shares)&&shares.length<=512,'AUTHORITY_UNAVAILABLE');
+   demand(shares.every(row=>row!==null&&typeof row==='object'&&!Array.isArray(row)),'AUTHORITY_UNAVAILABLE');data.push(shares);
+  }
+  return hash(data);
  }else{
+ const projections:{sql:string;values:readonly unknown[]}[]=[];
  for(const sql of [
   'SELECT kind FROM fabric.storage_rooms WHERE tenant_id=$1 AND space_id=$2',
   'SELECT revision,periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3',
@@ -61,20 +74,49 @@ export async function controlDigest(tx:SqlTransaction,tenantId:string,spaceId:st
   'SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 ORDER BY actor_id,command_key',
   'SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 ORDER BY job_id'
  ]){
-  const rows=headOverride&&sql.includes('FROM fabric.storage_current_heads')
-   ?(await tx.query(`SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM (SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::text,$7::uuid,$8::uuid,$9::numeric,$10::timestamptz,$11::timestamptz) h ORDER BY class,id,revision LIMIT 513`,[tenantId,spaceId,headOverride.class,headOverride.id,headOverride.revision,headOverride.witness,headOverride.keyId,headOverride.generation,headOverride.epoch,headOverride.at,headOverride.expiresAt])).rows
+  const projection=headOverride&&sql.includes('FROM fabric.storage_current_heads')
+   ?{sql:`SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM (SELECT class,id,revision,witness,key_id,generation,epoch,accepted_at,expires_at FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::text,$7::uuid,$8::uuid,$9::numeric,$10::timestamptz,$11::timestamptz) h ORDER BY class,id,revision LIMIT 513`,values:[tenantId,spaceId,headOverride.class,headOverride.id,headOverride.revision,headOverride.witness,headOverride.keyId,headOverride.generation,headOverride.epoch,headOverride.at,headOverride.expiresAt]}
    :workOverride&&sql.includes('FROM fabric.storage_commands')
-   ?(await tx.query(`SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM (SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::text,$6::uuid,$7::numeric,$8::timestamptz) c ORDER BY actor_id,command_key LIMIT 513`,[tenantId,spaceId,workOverride.actorId,workOverride.key,workOverride.binding,workOverride.receiptId,workOverride.epoch,workOverride.at])).rows
+   ?{sql:`SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM (SELECT actor_id,command_key,binding_digest,receipt_id,epoch,at FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::text,$6::uuid,$7::numeric,$8::timestamptz) c ORDER BY actor_id,command_key LIMIT 513`,values:[tenantId,spaceId,workOverride.actorId,workOverride.key,workOverride.binding,workOverride.receiptId,workOverride.epoch,workOverride.at]}
    :workOverride&&sql.includes('FROM fabric.storage_outbox')
-   ?(await tx.query(`SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM (SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::uuid,$6::text,$7::uuid,$8::numeric,$9::numeric,$10::timestamptz) j ORDER BY job_id LIMIT 513`,[tenantId,spaceId,workOverride.jobId,workOverride.actorId,workOverride.key,workOverride.entity.class,workOverride.entity.id,workOverride.entity.revision,workOverride.epoch,workOverride.at])).rows
+   ?{sql:`SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM (SELECT job_id,actor_id,command_key,class,target_id,target_revision,epoch,at FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::uuid,$5::uuid,$6::text,$7::uuid,$8::numeric,$9::numeric,$10::timestamptz) j ORDER BY job_id LIMIT 513`,values:[tenantId,spaceId,workOverride.jobId,workOverride.actorId,workOverride.key,workOverride.entity.class,workOverride.entity.id,workOverride.entity.revision,workOverride.epoch,workOverride.at]}
    :tombstoneOverride&&sql.includes('FROM fabric.storage_tombstones')
-   ?(await tx.query(`SELECT class,id,revision,epoch,command_key,at FROM (SELECT class,id,revision,epoch,command_key,at FROM fabric.storage_tombstones WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::numeric,$7::uuid,$8::timestamptz) d ORDER BY class,id,revision LIMIT 513`,[tenantId,spaceId,tombstoneOverride.entity.class,tombstoneOverride.entity.id,tombstoneOverride.entity.revision,tombstoneOverride.epoch,tombstoneOverride.key,tombstoneOverride.at])).rows
+   ?{sql:`SELECT class,id,revision,epoch,command_key,at FROM (SELECT class,id,revision,epoch,command_key,at FROM fabric.storage_tombstones WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::text,$4::uuid,$5::numeric,$6::numeric,$7::uuid,$8::timestamptz) d ORDER BY class,id,revision LIMIT 513`,values:[tenantId,spaceId,tombstoneOverride.entity.class,tombstoneOverride.entity.id,tombstoneOverride.entity.revision,tombstoneOverride.epoch,tombstoneOverride.key,tombstoneOverride.at]}
    :restrictionOverride&&sql.includes('FROM fabric.storage_restrictions')
-   ?(await tx.query(`SELECT source_id,source_revision,epoch,kind,at FROM (SELECT source_id,source_revision,epoch,kind,at FROM fabric.storage_restrictions WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::numeric,$5::numeric,'revoked'::text,$6::timestamptz) r ORDER BY source_id,source_revision,kind LIMIT 513`,[tenantId,spaceId,restrictionOverride.sourceId,restrictionOverride.revision,restrictionOverride.epoch,restrictionOverride.at])).rows
+   ?{sql:`SELECT source_id,source_revision,epoch,kind,at FROM (SELECT source_id,source_revision,epoch,kind,at FROM fabric.storage_restrictions WHERE tenant_id=$1 AND space_id=$2 UNION ALL SELECT $3::uuid,$4::numeric,$5::numeric,'revoked'::text,$6::timestamptz) r ORDER BY source_id,source_revision,kind LIMIT 513`,values:[tenantId,spaceId,restrictionOverride.sourceId,restrictionOverride.revision,restrictionOverride.epoch,restrictionOverride.at]}
    :sql.includes('$3')&&policyOverride
-   ?(await tx.query('SELECT $1::numeric AS revision,$2::jsonb AS periods,$3::jsonb AS operations',[policyRevision,JSON.stringify(policyOverride.periods),JSON.stringify(policyOverride.operations)])).rows
-   :(await tx.query(sql+' LIMIT 513',sql.includes('$3')?[tenantId,spaceId,policyRevision]:[tenantId,spaceId])).rows;
-  demand(rows.length<=512,'AUTHORITY_UNAVAILABLE');data.push(rows);
+   ?{sql:'SELECT $1::numeric AS revision,$2::jsonb AS periods,$3::jsonb AS operations',values:[policyRevision,JSON.stringify(policyOverride.periods),JSON.stringify(policyOverride.operations)]}
+   :{sql:sql+' LIMIT 513',values:sql.includes('$3')?[tenantId,spaceId,policyRevision]:[tenantId,spaceId]};
+  projections.push(projection);
+ }
+ // Keep the original ordered/typed UNIONs and row limits intact. Each
+ // projection gets its own bind positions in one live statement. Convert only
+ // numeric driver fields to text before JSON encoding, then restore Dates;
+ // existing independent anchors must keep their exact historical digest.
+ const columns=[
+  'kind','revision::text AS revision,periods,operations',
+  'class,id,revision::text AS revision,witness,key_id,generation,epoch::text AS epoch,accepted_at,expires_at',
+  'class,id,revision::text AS revision,epoch::text AS epoch,command_key,at',
+  'source_id,source_revision::text AS source_revision,epoch::text AS epoch,kind,at',
+  'actor_id,command_key,binding_digest,receipt_id,epoch::text AS epoch,at',
+  'job_id,actor_id,command_key,class,target_id,target_revision::text AS target_revision,epoch::text AS epoch,at'
+ ];
+ const values:unknown[]=[],parts=projections.map((projection,index)=>{
+  const offset=values.length;values.push(...projection.values);
+  const sql=projection.sql.replace(/\$(\d+)/g,(_match,n:string)=>'$'+(offset+Number(n)));
+  return "(SELECT coalesce(json_agg(row_to_json(q)),'[]'::json) FROM (SELECT "+columns[index]+' FROM ('+sql+') typed) q)';
+ });
+ const raw=(await tx.query('SELECT json_build_array('+parts.join(',')+') AS controls',values)).rows[0]?.['controls'];
+ demand(Array.isArray(raw)&&raw.length===7,'AUTHORITY_UNAVAILABLE');
+ for(const rows of raw){
+  demand(Array.isArray(rows)&&rows.length<=512,'AUTHORITY_UNAVAILABLE');
+  for(const row of rows){
+   demand(row!==null&&typeof row==='object'&&!Array.isArray(row),'AUTHORITY_UNAVAILABLE');
+   for(const field of ['at','accepted_at','expires_at'])if(field in row){
+    demand(typeof row[field]==='string'&&Number.isFinite(Date.parse(row[field])),'AUTHORITY_UNAVAILABLE');row[field]=new Date(row[field]);
+   }
+  }
+  data.push(rows);
  }
  }
  if((await tx.query("SELECT to_regclass('fabric.storage_shares') IS NOT NULL AS installed")).rows[0]?.['installed']===true){
@@ -140,11 +182,19 @@ export class StorageAuthorityRepository implements CurrentStorageAuthority {
   demand(anchor,'AUTHORITY_UNAVAILABLE');
   // These rows are immutable; the Space barrier serializes every enrolled
   // epoch publication. SELECT FOR SHARE would require an unnecessary UPDATE ACL.
-  const row=(await tx.query('SELECT epoch,anchor_id,policy_revision,control_digest FROM fabric.storage_authority_epoch WHERE tenant_id=$1 AND space_id=$2 ORDER BY epoch DESC LIMIT 1',[scope.tenantId,scope.spaceId])).rows[0];
+  // The Space barrier already serializes enrolled publications. Read the
+  // latest epoch and its requested immutable policy in one live snapshot;
+  // absence of either still fails closed, and no result crosses check calls.
+  const row=(await tx.query(`SELECT e.epoch,e.anchor_id,e.policy_revision,e.control_digest,
+   p.periods,p.operations FROM
+   (SELECT epoch,anchor_id,policy_revision,control_digest FROM fabric.storage_authority_epoch
+    WHERE tenant_id=$1 AND space_id=$2 ORDER BY epoch DESC LIMIT 1) e
+   LEFT JOIN fabric.storage_policy p ON p.tenant_id=$1 AND p.space_id=$2 AND p.revision=$3`,
+   [scope.tenantId,scope.spaceId,anchor.policyRevision])).rows[0];
   demand(row&&Number(row['epoch'])===anchor.epoch&&row['anchor_id']===anchor.anchorId
    &&Number(row['policy_revision'])===anchor.policyRevision&&row['control_digest']===anchor.controlDigest,'AUTHORITY_UNAVAILABLE');
-  const policyRow=(await tx.query('SELECT periods,operations FROM fabric.storage_policy WHERE tenant_id=$1 AND space_id=$2 AND revision=$3',[scope.tenantId,scope.spaceId,anchor.policyRevision])).rows[0];
-  demand(policyRow,'AUTHORITY_UNAVAILABLE');const policy=StoragePolicySchema.parse(policyRow);
+  demand(row['periods']!==null&&row['operations']!==null,'AUTHORITY_UNAVAILABLE');
+  const policy=StoragePolicySchema.parse({periods:row['periods'],operations:row['operations']});
   demand(new Set(policy.operations).size===policy.operations.length&&Object.values(policy.periods).every(n=>n<=86400),'RETENTION_RESTRICTED');
   demand(policy.operations.includes(operation),'UNAUTHORIZED');
   demand(await controlDigest(tx,scope.tenantId,scope.spaceId,anchor.policyRevision)===anchor.controlDigest,'AUTHORITY_UNAVAILABLE');

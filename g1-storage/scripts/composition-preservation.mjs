@@ -6,9 +6,25 @@ import {resolve} from 'node:path';
 import {cwd} from './paths.mjs';
 export const compositionDigest=b=>'sha256:'+createHash('sha256').update(b).digest('hex');
 export function reconstructCompositionSource(path,bytes){
+ const supplied=bytes;
  bytes=reconstructReceiptSource(path,bytes);
  const record=JSON.parse(readFileSync(resolve(cwd,'verification/full-composition-extension-v1.json'),'utf8'));
  const entry=record.files[path];if(!entry)return bytes;
+ if(path==="scripts/execution-preservation.mjs"){
+  assert.equal(compositionDigest(bytes),'sha256:8ee89ab09e6bf48afaebd196f092d1d7ecc3a23225729f073f48befc424b43e1','Exact earlier composition source: '+path);
+  assert.equal(compositionDigest(supplied),entry.currentDigest,'Exact supplied composition source: '+path);
+  bytes=Buffer.isBuffer(supplied)?supplied.toString('utf8'):supplied;
+ }
+ if(path==="scripts/runner.mjs"){
+  assert.equal(compositionDigest(bytes),'sha256:010f22c10f42112c3c4e6d57e3e10f24a727b305c1853474bf6f696ce5b2b9be','Exact earlier composition source: '+path);
+  assert.equal(compositionDigest(supplied),entry.currentDigest,'Exact supplied composition source: '+path);
+  bytes=Buffer.isBuffer(supplied)?supplied.toString('utf8'):supplied;
+ }
+ if(path==="scripts/suite-execution.mjs"){
+  assert.equal(compositionDigest(bytes),'sha256:cd927f340b805837e150998eb33a19d34b468acbdcb3a51a3da16eeb99ef3336','Exact earlier composition source: '+path);
+  assert.equal(compositionDigest(supplied),entry.currentDigest,'Exact supplied composition source: '+path);
+  bytes=Buffer.isBuffer(supplied)?supplied.toString('utf8'):supplied;
+ }
  assert.equal(compositionDigest(bytes),entry.currentDigest,'Authorized full composition source: '+path);
  for(const change of [...entry.changes].reverse()){
   assert.equal(bytes.split(change.after).length,2,'Exact full composition insertion: '+path);

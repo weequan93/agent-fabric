@@ -16,7 +16,8 @@
     "Paid model/product APIs, cloud resources, real credentials, remote deployments and messages to people are OFF unless approved with loop_ask(kind=approval).",
     "Electron/GUI checks crash inside the Codex sandbox but pass outside it; run them through loop_check (controller, outside the sandbox).",
     "Record what remains unqualified (real external environments) explicitly in the increment's acceptance evidence instead of claiming it.",
-    "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger."
+    "Follow docs/planning/roadmap.md, docs/planning/g1-foundations-plan.md and the master specification sections cited in the ledger.",
+    "Human standing approval 2026-10-13 (broad autonomy; supersedes the narrower standing approvals above and the approval step of any AGENTS.md freeze/re-freeze flow, which you still record in the turn report). Proceed WITHOUT asking for: any production code, test, check-script, harness, plan, task, dependency or team change within this goal's scope; re-freezing configurations; installing local dependencies; local builds, containers and test data the project owns; creating and mounting the project's own disposable test fixtures (temporary directories, disk images, permission-denied targets) as stand-ins for physical devices, recording what stays unqualified; running and operating the project's own app through its own code and test hooks; applying the product's own documented retention to its own data. When a choice is open, pick the recommended option, record loop_note(kind=\"decision\") and continue. Ask (loop_ask kind=approval) ONLY for: changing product requirements, scope or acceptance budgets; spending money or paid/remote resources; real credentials, secrets, or system/privacy/security settings; deploying to shared or production environments; messages to people; deleting the user's personal data or anything outside the project; operating other apps; force-push, history rewrite or branch deletion."
   ],
   "acceptance": [
     {
@@ -117,7 +118,12 @@
     "model": "gpt-6.1-sol",
     "permission_mode": null,
     "extra_args": [],
-    "effort": "max"
+    "effort": "xhigh",
+    "roles": {
+      "tester": {
+        "effort": "high"
+      }
+    }
   },
   "created_at": "2026-10-06T15:59:25+00:00",
   "pipeline": "full"

@@ -156,10 +156,14 @@ export class AuthenticatedStagingPreparation implements StagingControl {
   const row=(await tx.query(`SELECT r.*,c.object_digest,c.manifest_digest,c.object_size,c.manifest_size,a.at AS abandoned_at,
    to_char(a.at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS abandoned_witness_at,
    floor(extract(epoch from clock_timestamp())*1000)::text AS observed_at,
-   floor(extract(epoch from r.lease_until)*1000)::text AS lease_ms
+   floor(extract(epoch from r.lease_until)*1000)::text AS lease_ms,
+   EXISTS(SELECT 1 FROM fabric.storage_current_heads h WHERE h.tenant_id=r.tenant_id AND h.space_id=r.space_id
+    AND h.class=r.class AND h.id=r.id AND h.revision=r.revision AND h.generation=r.generation AND h.key_id=r.key_id)
+   OR EXISTS(SELECT 1 FROM fabric.storage_commands c WHERE c.tenant_id=r.tenant_id AND c.space_id=r.space_id AND c.actor_id=$4 AND c.command_key=$5)
+   OR EXISTS(SELECT 1 FROM fabric.storage_outbox o WHERE o.tenant_id=r.tenant_id AND o.space_id=r.space_id AND o.actor_id=$4 AND o.command_key=$5) AS reachable
    FROM fabric.storage_staging_reservations r LEFT JOIN fabric.storage_staging_confirmations c USING(tenant_id,space_id,upload_id)
    LEFT JOIN fabric.storage_staging_abandonments a USING(tenant_id,space_id,actor_id,command_key,upload_id)
-   WHERE r.tenant_id=$1 AND r.space_id=$2 AND r.upload_id=$3`,[this.scope.tenantId,this.scope.spaceId,id])).rows[0];
+   WHERE r.tenant_id=$1 AND r.space_id=$2 AND r.upload_id=$3`,[this.scope.tenantId,this.scope.spaceId,id,this.scope.actorId,m.commandKey])).rows[0];
   demand(row,'AUTHORITY_UNAVAILABLE');
   const b=BindingSchema.parse({schemaVersion:1,tenantId:row['tenant_id'],spaceId:row['space_id'],class:row['class'],id:row['id'],revision:Number(row['revision']),generation:row['generation'],keyId:row['key_id']});
   demand(row['actor_id']===this.scope.actorId&&row['command_key']===m.commandKey&&row['material_id']===this.#materialId
@@ -173,11 +177,10 @@ export class AuthenticatedStagingPreparation implements StagingControl {
   demand(same(w.original,this.#witness(m,id)),'AUTHORITY_UNAVAILABLE');
   demand(!w.terminal||(abandoned instanceof Date&&w.terminal.at===row['abandoned_witness_at']),'AUTHORITY_UNAVAILABLE');
   demand(abandoned===null||w.intent,'AUTHORITY_UNAVAILABLE');
-  const reachable=(await tx.query(`SELECT
-   EXISTS(SELECT 1 FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 AND class=$3 AND id=$4 AND revision=$5 AND generation=$6 AND key_id=$7)
-   OR EXISTS(SELECT 1 FROM fabric.storage_commands WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$8 AND command_key=$9)
-   OR EXISTS(SELECT 1 FROM fabric.storage_outbox WHERE tenant_id=$1 AND space_id=$2 AND actor_id=$8 AND command_key=$9) AS reachable`,
-   [this.scope.tenantId,this.scope.spaceId,b.class,b.id,b.revision,b.generation,b.keyId,this.scope.actorId,m.commandKey])).rows[0]?.['reachable'];
+  // The held Space/original locks serialize these pointers with the staging
+  // row. Read every predicate in the same live statement; later current()
+  // boundaries still reread it after waits/effects, with no proof cached.
+  const reachable=row['reachable'];
   demand(typeof reachable==='boolean','AUTHORITY_UNAVAILABLE');
   demand(!w.intent||!reachable,'AUTHORITY_UNAVAILABLE');
   demand(!consumed||(reachable&&abandoned===null),'AUTHORITY_UNAVAILABLE');
