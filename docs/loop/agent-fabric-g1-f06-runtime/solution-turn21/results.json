@@ -1,0 +1,784 @@
+{
+  "assurance": "design-only",
+  "productChecksRun": false,
+  "pgRun": false,
+  "dockerRun": false,
+  "remoteRun": false,
+  "at": "2026-10-15T19:00:40.398Z",
+  "node": "v22.22.3",
+  "solutionSha256": "594b26e47efd4e905985978cfd1114f9b759b87bbbab508cc5130e3a3c9b4079",
+  "records": [
+    {
+      "name": "strict-installed-owner-signatures",
+      "observation": {
+        "command": [
+          "/Users/super/.hermes/node/bin/node",
+          "/Users/super/Documents/ai/agent-fabric/node_modules/typescript/bin/tsc",
+          "--noEmit",
+          "--strict",
+          "--noUncheckedIndexedAccess",
+          "--exactOptionalPropertyTypes",
+          "--target",
+          "ES2023",
+          "--lib",
+          "ES2024",
+          "--module",
+          "NodeNext",
+          "--moduleResolution",
+          "NodeNext",
+          "--esModuleInterop",
+          "--types",
+          "node",
+          "--typeRoots",
+          "/Users/super/Documents/ai/agent-fabric/node_modules/@types",
+          "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts"
+        ],
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "eight-type-negatives",
+      "observation": {
+        "status": 2,
+        "stdout": "../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(154,7): error TS2740: Type '{ readonly state: \"waiting\"; readonly ticketId: string; readonly ownerTaskId: string | null; readonly reason: string; readonly resolver: string; readonly charges: \"unknown\" | \"none\" | \"continuing\"; }' is missing the following properties from type 'RuntimeLease': leaseId, binding, instanceId, generation, and 4 more.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(155,7): error TS2322: Type 'number' is not assignable to type '{ readonly cancellation: number; readonly worker: number; readonly resource: number; }'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(156,7): error TS2322: Type '1' is not assignable to type '2'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(157,41): error TS2344: Type '\"savePlan\"' does not satisfy the constraint '\"lookup\" | \"prepare\" | \"readWithTransaction\" | \"commit\"'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(158,7): error TS2322: Type 'Promise<boolean>' is not assignable to type 'boolean'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(160,7): error TS2322: Type 'false' is not assignable to type 'true'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(161,7): error TS2741: Property '[reconciliationAuthority]' is missing in type '{ operationId: string; originalBindingDigest: string; actorId: string; authorityRevision: number; stoppedOrExpiredSnapshotDigest: string; lookupPolicyDigest: string; expiresAt: string; dispatch: false; }' but required in type 'FreshReconciliationAuthority'.\n../../../../../var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-design-turn21-tPPyF0/specimen.mts(162,46): error TS2344: Type '\"settleStopped\"' does not satisfy the constraint '\"reconciling\" | \"claim\" | \"guardedIO\" | \"confirm\" | \"unresolved\"'.\n",
+        "stderr": "",
+        "expectedErrors": 8,
+        "observedErrors": 8
+      }
+    },
+    {
+      "name": "source-established-gaps-and-seams",
+      "observation": {
+        "nativeStopOrder": [
+          290,
+          387,
+          942
+        ],
+        "rawFenceIsKeyFirst": true,
+        "ordinaryReconciliationRejectsStoppedExpired": true,
+        "sources": {
+          "nativeStop": {
+            "path": "g1-model/src/native-repository.ts",
+            "sha256": "ccb442928349d9680cdc99e8741723b05b2108e63a0ecf2755f8e8d2ecbe0669"
+          },
+          "nativeOriginalKey": {
+            "path": "g1-model/src/model-repository.ts",
+            "sha256": "99dd42f3ddcc332c657ee6b90f3e0199cef5036c13f19db0b265501e5a5895ad"
+          },
+          "rawFence": {
+            "path": "g1-recovery/src/fence-repository.ts",
+            "sha256": "c70f4bea08a0da1bc8ca65954e0613d76ffbe448e4085b8afd9e0687148ff4a6"
+          },
+          "effect": {
+            "path": "g1-recovery/src/effect-repository.ts",
+            "sha256": "0a579915a653a4ea9e367be4ac202443710281bf8fb3562c41ddb09ae3bb4381"
+          },
+          "recovery": {
+            "path": "g1-recovery/src/repository.ts",
+            "sha256": "c32c88deebc70435d4c088ff44ee483d4587082e8135bcb36e6c66ad6874dc20"
+          },
+          "barrier": {
+            "path": "g1-recovery/src/fence-guard.ts",
+            "sha256": "726194cf877e795384fdbea1d10882e4eec7eb7c4d3757dd15a34d8e27540c00"
+          },
+          "transitions": {
+            "path": "g1-recovery/src/contracts.ts",
+            "sha256": "cf10ff681b02f156b6591a9323ccc17366dbd61cb6b0814d027fe59cd0a1379d"
+          },
+          "receipt": {
+            "path": "g1-recovery/src/effect-protocol.ts",
+            "sha256": "e673c81eb92568b069d0dee0976729f7afef003f92e54cebe7b3eee29b022523"
+          },
+          "effectMigration": {
+            "path": "g1-recovery/migrations/0006_effect_reconciliation.sql",
+            "sha256": "a6528f72191a19576b88f4d40e9ef3c5d7ce7f8a55d23565c4015f3b0a2fc659"
+          },
+          "recoveryMigration": {
+            "path": "g1-recovery/migrations/0004_recovery.sql",
+            "sha256": "f8ef0b1e8dffba943843f72d6bc070a7ccf229c68e2363d214b8f4391e33cf13"
+          },
+          "artifact": {
+            "path": "g1-storage/src/artifact-publication.ts",
+            "sha256": "54a13e6b064fc95e8b8b8047fdbeb61fc82c2c0d4586a00ec9e8864633e32707"
+          },
+          "lineage": {
+            "path": "g1-model/migrations/0012_family_budget.sql",
+            "sha256": "c156b08d707d2175036606aad19144c3b43e7679031b1524a9a6b482497296a7"
+          }
+        }
+      }
+    },
+    {
+      "name": "abstract-lock-prefix-contract",
+      "observation": {
+        "installedAcyclic": true,
+        "rawFenceNativeCycleDetected": true,
+        "edges": {
+          "barrier": [
+            "native-original",
+            "fence-key",
+            "owner-rows",
+            "f06-rows",
+            "storage-original"
+          ],
+          "native-original": [
+            "fence-key",
+            "owner-rows"
+          ],
+          "fence-key": [
+            "owner-rows"
+          ],
+          "effect-phase": [
+            "barrier",
+            "owner-rows"
+          ],
+          "owner-rows": [
+            "f06-rows"
+          ],
+          "recovery-command": [
+            "barrier",
+            "owner-rows",
+            "f06-rows"
+          ],
+          "runtime-command": [
+            "barrier",
+            "owner-rows",
+            "f06-rows"
+          ],
+          "storage-original": [
+            "owner-rows"
+          ]
+        },
+        "claim": "design-only, not real PG scheduling or deadlock qualification"
+      }
+    },
+    {
+      "name": "normative-protocol-inventory",
+      "observation": {
+        "variants": {
+          "P02/unchanged-callers": [
+            "native-first-equal",
+            "native-first-conflict",
+            "top-level-first-equal",
+            "top-level-first-conflict",
+            "raw-composition-rejected-before-commands",
+            "distinct-keys",
+            "native-stop-versus-transfer-both-winners",
+            "native-admission-fresh",
+            "f05-publication"
+          ],
+          "P02/transfer-atomic": [
+            "stopped-original-stop-run",
+            "stopped-original-stop-task",
+            "lease-expired-original",
+            "effect-expired-original",
+            "stop-and-both-expiries",
+            "owner-recreation",
+            "safe-successor-write",
+            "lookup-unavailable-held",
+            "receipt-mismatch-held",
+            "nonterminal-held",
+            "authority-expired-held",
+            "quiescence-missing-held",
+            "revoked-identity-held",
+            "precommit-rollback",
+            "lost-settlement-commit-ack",
+            "concurrent-settlement-dedup-conflict",
+            "old-worker-replay-denied"
+          ],
+          "P02/barrier-first": [
+            "live-reconcile-confirm-before-stop",
+            "stop-before-reconcile",
+            "reconcile-before-stop-before-confirm",
+            "fence-before-send",
+            "claim-ack-lost",
+            "illegal-direct-confirm-negative"
+          ]
+        },
+        "unchanged": {
+          "requirements": 101,
+          "families": 142,
+          "pChildren": 29,
+          "acceptanceSeconds": [
+            1800,
+            600,
+            600,
+            900
+          ],
+          "dockerAllowed": false,
+          "remoteApproved": false
+        },
+        "implementationOrder": {
+          "manifest": "leaf-plan-contract.json",
+          "expectedLeafCount": 53,
+          "settlementBeforeTransfer": [
+            "f06-09c",
+            "f06-09d",
+            "f06-09e",
+            "f06-09f",
+            "f06-09g"
+          ],
+          "transfer": "f06-09h",
+          "legalPhaseSchedules": "f06-09i",
+          "fullP01P02": "f06-09j"
+        },
+        "protocolSha256": "b5a7a6fef1e02dec92d9f993bc48025ff679f9e74cf6fccf9557386746debac9"
+      }
+    },
+    {
+      "name": "requirement-allocation",
+      "observation": {
+        "finalized": 101,
+        "allocated": 101,
+        "missing": [],
+        "duplicates": []
+      }
+    },
+    {
+      "name": "replacement-leaf-DAG-and-turn-envelopes",
+      "observation": {
+        "count": 53,
+        "dependencies": {
+          "f06-01a": [],
+          "f06-01b": [
+            "f06-01a"
+          ],
+          "f06-02a": [
+            "f06-01b"
+          ],
+          "f06-02b": [
+            "f06-02a"
+          ],
+          "f06-03a": [
+            "f06-01b"
+          ],
+          "f06-03b": [
+            "f06-03a"
+          ],
+          "f06-04a": [
+            "f06-02b",
+            "f06-03b"
+          ],
+          "f06-04b": [
+            "f06-04a",
+            "f06-05"
+          ],
+          "f06-05": [
+            "f06-02b"
+          ],
+          "f06-06a": [
+            "f06-04b",
+            "f06-05"
+          ],
+          "f06-06b": [
+            "f06-06a",
+            "f06-03b"
+          ],
+          "f06-06c": [
+            "f06-06b"
+          ],
+          "f06-06d": [
+            "f06-06c"
+          ],
+          "f06-06e": [
+            "f06-06d",
+            "f06-02b"
+          ],
+          "f06-07a": [
+            "f06-06e"
+          ],
+          "f06-07b": [
+            "f06-07a"
+          ],
+          "f06-07c": [
+            "f06-07b"
+          ],
+          "f06-08a": [
+            "f06-01b",
+            "f06-03b"
+          ],
+          "f06-08b": [
+            "f06-08a"
+          ],
+          "f06-09a": [
+            "f06-08b",
+            "f06-02b"
+          ],
+          "f06-09b": [
+            "f06-09a",
+            "f06-04b"
+          ],
+          "f06-09c": [
+            "f06-09b"
+          ],
+          "f06-09d": [
+            "f06-09c"
+          ],
+          "f06-09e": [
+            "f06-09d"
+          ],
+          "f06-09f": [
+            "f06-09e"
+          ],
+          "f06-09g": [
+            "f06-09f"
+          ],
+          "f06-09h": [
+            "f06-09g"
+          ],
+          "f06-09i": [
+            "f06-09h",
+            "f06-06e"
+          ],
+          "f06-09j": [
+            "f06-09i"
+          ],
+          "f06-10a": [
+            "f06-09j",
+            "f06-03b"
+          ],
+          "f06-10b": [
+            "f06-10a"
+          ],
+          "f06-11a": [
+            "f06-02b",
+            "f06-08b",
+            "f06-09j",
+            "f06-10b"
+          ],
+          "f06-11b": [
+            "f06-11a"
+          ],
+          "f06-11c": [
+            "f06-11b"
+          ],
+          "f06-11d": [
+            "f06-11c"
+          ],
+          "f06-11e": [
+            "f06-11d"
+          ],
+          "f06-12a": [
+            "f06-07c"
+          ],
+          "f06-12b": [
+            "f06-12a",
+            "f06-11e"
+          ],
+          "f06-13a": [
+            "f06-12a"
+          ],
+          "f06-13b": [
+            "f06-13a",
+            "f06-12b"
+          ],
+          "f06-13c": [
+            "f06-13b"
+          ],
+          "f06-13d1": [
+            "f06-13c"
+          ],
+          "f06-13d2": [
+            "f06-13d1"
+          ],
+          "f06-13d3": [
+            "f06-13d2"
+          ],
+          "f06-13d4": [
+            "f06-13d3"
+          ],
+          "f06-13d5": [
+            "f06-13d4"
+          ],
+          "f06-13e": [
+            "f06-13d5"
+          ],
+          "f06-14a": [
+            "f06-13e",
+            "f06-11e"
+          ],
+          "f06-14b": [
+            "f06-14a"
+          ],
+          "f06-14c": [
+            "f06-14b"
+          ],
+          "f06-14d": [
+            "f06-14c"
+          ],
+          "f06-14e": [
+            "f06-14d"
+          ],
+          "f06-15": [
+            "f06-07c",
+            "f06-11e",
+            "f06-14e"
+          ]
+        },
+        "maxTurnMinutes": 120,
+        "unmeasured": true
+      }
+    },
+    {
+      "name": "document-leaf-contract-exact-mirror",
+      "observation": {
+        "rows": 53,
+        "checks": "exact output, dependencies, commands and estimates"
+      }
+    },
+    {
+      "name": "leaf-plan-negative-contracts",
+      "observation": {
+        "rejected": [
+          "oversized",
+          "missing-dependency",
+          "settlement-prerequisite-removed",
+          "phase-fixture-too-early",
+          "aggregate-replaced-by-subset"
+        ],
+        "claim": "Design validator only; not runtime runner behavior"
+      }
+    },
+    {
+      "name": "downstream-regeneration-required",
+      "observation": {
+        "documents": [
+          "test-plan.md",
+          "task-plan.json",
+          "docs/planning/g1-f06-plan.md",
+          "readiness.md"
+        ],
+        "status": "rejected artifacts must regenerate at their assigned stages; no pass inferred"
+      }
+    },
+    {
+      "name": "fresh-original-pure-transition-contract",
+      "observation": {
+        "variants": [
+          {
+            "id": "live-reconcile-confirm-before-stop",
+            "effect": "confirmed",
+            "run": "cancelling",
+            "writes": 1,
+            "errors": [],
+            "trace": [
+              {
+                "step": "claim",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "reconciling",
+                "effect": "reconciling",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "lookup",
+                "effect": "reconciling",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "confirm",
+                "effect": "confirmed",
+                "run": "paused",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "stop",
+                "effect": "confirmed",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": []
+              }
+            ]
+          },
+          {
+            "id": "stop-before-reconcile",
+            "effect": "unknown",
+            "run": "cancelling",
+            "writes": 1,
+            "errors": [
+              "STALE_AUTHORITY",
+              "STALE_AUTHORITY"
+            ],
+            "trace": [
+              {
+                "step": "claim",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "stop",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "reconciling",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": [
+                  "STALE_AUTHORITY"
+                ]
+              },
+              {
+                "step": "confirm",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": [
+                  "STALE_AUTHORITY",
+                  "STALE_AUTHORITY"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "reconcile-before-stop-before-confirm",
+            "effect": "reconciling",
+            "run": "cancelling",
+            "writes": 1,
+            "errors": [
+              "STALE_AUTHORITY"
+            ],
+            "trace": [
+              {
+                "step": "claim",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "reconciling",
+                "effect": "reconciling",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "lookup",
+                "effect": "reconciling",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "stop",
+                "effect": "reconciling",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "confirm",
+                "effect": "reconciling",
+                "run": "cancelling",
+                "writes": 1,
+                "errors": [
+                  "STALE_AUTHORITY"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "fence-before-send",
+            "effect": "unknown",
+            "run": "cancelling",
+            "writes": 0,
+            "errors": [
+              "STALE_AUTHORITY",
+              "STALE_AUTHORITY",
+              "STALE_AUTHORITY"
+            ],
+            "trace": [
+              {
+                "step": "claim",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "stop",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 0,
+                "errors": [
+                  "STALE_AUTHORITY"
+                ]
+              },
+              {
+                "step": "reconciling",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 0,
+                "errors": [
+                  "STALE_AUTHORITY",
+                  "STALE_AUTHORITY"
+                ]
+              },
+              {
+                "step": "confirm",
+                "effect": "unknown",
+                "run": "cancelling",
+                "writes": 0,
+                "errors": [
+                  "STALE_AUTHORITY",
+                  "STALE_AUTHORITY",
+                  "STALE_AUTHORITY"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "claim-ack-lost",
+            "effect": "unknown",
+            "run": "reconciling",
+            "writes": 0,
+            "errors": [
+              "UNKNOWN_COMMIT",
+              "STALE_AUTHORITY"
+            ],
+            "trace": [
+              {
+                "step": "claim-ack-lost",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": [
+                  "UNKNOWN_COMMIT"
+                ]
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": [
+                  "UNKNOWN_COMMIT",
+                  "STALE_AUTHORITY"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "illegal-direct-confirm-negative",
+            "effect": "unknown",
+            "run": "reconciling",
+            "writes": 1,
+            "errors": [
+              "ILLEGAL_TRANSITION"
+            ],
+            "trace": [
+              {
+                "step": "claim",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 0,
+                "errors": []
+              },
+              {
+                "step": "send",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "lookup",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": []
+              },
+              {
+                "step": "confirm",
+                "effect": "unknown",
+                "run": "reconciling",
+                "writes": 1,
+                "errors": [
+                  "ILLEGAL_TRANSITION"
+                ]
+              }
+            ]
+          }
+        ],
+        "rejectedLiveWithoutReconciling": true,
+        "rejectedReconcileBeforeSend": true,
+        "originalFenceStopUsesDedicatedSchemaPath": true,
+        "genericReconcilingToCancellingStillRejected": true,
+        "sourceSha256": "cf10ff681b02f156b6591a9323ccc17366dbd61cb6b0814d027fe59cd0a1379d",
+        "claim": "Original pure transition functions + source-bound finite schedule model; NO owner method, PG/locks, fixture or F06 implementation executed"
+      }
+    },
+    {
+      "name": "preserved-baseline-and-unrelated-work",
+      "observation": {
+        "files": 4768,
+        "changed": [
+          "docs/loop/agent-fabric-g1-f06-runtime/solution.md"
+        ],
+        "includes": "accepted source/check/raw, prior diagnostics, downstream planning and current unrelated F05 snapshot",
+        "claim": "Read-only hash comparison against beginning-of-turn snapshot; not a refreeze or accepted product check"
+      }
+    },
+    {
+      "name": "document-contracts",
+      "observation": {
+        "normativeSolutionUpdated": true,
+        "downstreamArtifactsRequireRegeneration": true,
+        "localLinks": true,
+        "balancedFences": true,
+        "documents": {
+          "/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/solution.md": "594b26e47efd4e905985978cfd1114f9b759b87bbbab508cc5130e3a3c9b4079",
+          "/Users/super/Documents/ai/agent-fabric/docs/planning/g1-f06-plan.md": "ca70cebe0da04c4dde7e16d0241066bbd7d682925bfb93de6e5d049ab52dbd0a",
+          "/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/readiness.md": "d29556919f48c67fa20abb05b6c265539df85f92ab7fb7fc6f0bc4dc408bcb92",
+          "/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-plan.md": "c0b0914a82a98657cb611c0e8d0580029fac6b1534547a978065fb05f3fb4561"
+        },
+        "scope": "design-only; no product behavior claimed"
+      }
+    }
+  ]
+}

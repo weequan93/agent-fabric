@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, readFileSync, rmSync, lstatSync, existsSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, rmSync, lstatSync, existsSync, renameSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -29,9 +29,12 @@ export async function executionGateProbe(){
   // The real child cannot finish until this parent's event loop acknowledges
   // its file creation. A synchronous suite wait deadlocks until the explicit
   // hostile deadline; streaming execution must keep the parent responsive.
-  const started=join(directory,'started'),ack=join(directory,'ack');
+  const started=join(directory,'started'),ack=join(directory,'ack'),stagedAck=join(directory,'.ack-'+owner+'.tmp');
   let acknowledged=false,running=true;
-  const acknowledge=()=>{if(!running)return;if(existsSync(started)){acknowledged=true;writeFileSync(ack,'ack');}else setImmediate(acknowledge);};
+  const acknowledge=()=>{if(!running)return;if(existsSync(started)){
+   // The concurrent child must only observe the complete acknowledgement.
+   writeFileSync(stagedAck,'ack',{flag:'wx',mode:0o600});renameSync(stagedAck,ack);acknowledged=true;
+  }else setImmediate(acknowledge);};
   setImmediate(acknowledge);
   try{
    writeFileSync(file,`import test from 'node:test';import assert from 'node:assert/strict';import {writeFileSync,existsSync,readFileSync} from 'node:fs';

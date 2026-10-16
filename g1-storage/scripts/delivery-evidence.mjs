@@ -347,15 +347,58 @@ export function assertStream(bytes,expected){assert.equal(bytes.length,expected.
 // Scope is derived from the raw TAP line, never from the JSON payload. Keep
 // payloads unchanged for existing all-depth fixture and cleanup consumers.
 const contexts=new WeakMap();
+// Native node:test stdout is escaped once per TAP layer and may be folded
+// at arbitrary pipe-read boundaries. Decode each physical fragment separately:
+// the reporter escapes fragments independently, even across a JSON escape.
+function tapFragment(text,depth){
+ for(let layer=0;layer<depth;layer++){
+  let decoded='';
+  for(let index=0;index<text.length;index++){
+   const char=text[index];
+   if(char==='#')return null;
+   if(char!=='\\'){decoded+=char;continue;}
+   const next=text[++index];
+   if(next!=='\\'&&next!=='#')return null;
+   decoded+=next;
+  }
+  text=decoded;
+ }
+ return text;
+}
+function tapBoundary(text){
+ // Recognized TAP boundaries and new object records terminate continuation.
+ // Arbitrary comment text inside an open JSON string is not distinguishable
+ // from a pipe fragment; standard native TAP boundaries are closed here.
+ return text.trim()===''||/^\s*(?:TAP version\b|Bail out!|pragma\b|\{|(?:Subtest:|tests\b|suites\b|pass\b|fail\b|cancelled\b|skipped\b|todo\b|duration_ms\b|diagnostic\b)|(?:not )?ok\b|\d+\.\.|---|\.\.\.)/.test(text);
+}
 export function records(bytes){
- const rows=[];
- for(const [order,line] of bytes.toString().split(/\r?\n/).entries()){
-  const prefix=/^(?:[ \t]*\\?# )*/.exec(line)[0];
-  const text=line.slice(prefix.length);
+ const rows=[],lines=bytes.toString().split(/\r?\n/);
+ const physical=line=>{const prefix=/^(?:[ \t]*\\?# )*/.exec(line)[0];return {prefix,text:line.slice(prefix.length),depth:(prefix.match(/#/g)??[]).length};};
+ for(let order=0;order<lines.length;order++){
+  const {prefix,text,depth}=physical(lines[order]);
   if(!text.startsWith('{'))continue;
-  let value;try{value=JSON.parse(text);}catch{continue;}
+  let value,end=order;
+  // Keep legacy complete unescaped records unchanged. Their backslashes can
+  // be indistinguishable from native TAP escaping, so only incomplete/raw-
+  // invalid records enter the native decoder; folding never uses raw JSON.
+  try{value=JSON.parse(text);}catch{
+   if(depth===0)continue;
+   let decoded=tapFragment(text,depth);
+   if(decoded===null)continue;
+   for(;;){
+    try{value=JSON.parse(decoded);break;}catch{
+     if(end+1>=lines.length)break;
+     const next=physical(lines[end+1]);
+     if(next.prefix!==prefix||tapBoundary(next.text))break;
+     const fragment=tapFragment(next.text,depth);
+     if(fragment===null)break;
+     decoded+=fragment;end++;
+    }
+   }
+  }
   if(!value||typeof value!=='object'||Array.isArray(value))continue;
-  contexts.set(value,Object.freeze({prefix,depth:(prefix.match(/#/g)??[]).length,order}));rows.push(value);
+  contexts.set(value,Object.freeze({prefix,depth,order}));rows.push(value);
+  order=end;
  }
  return rows;
 }
@@ -433,6 +476,9 @@ function assertReports(actual,selected,registry,candidate){
  for(const [id,suite] of selected){
   const components=id==='recall-ask'?registry.recallAskObservationSources.map(s=>registry.executionComponents[s.component]):id==='backup-restore'?registry.backupRestoreObservationSources.map(s=>registry.executionComponents[s.component]):id==='commit-conflict'?[...registry.commitConflictPredecessors.map(c=>registry.executionComponents[c]),suite]:[suite];
   const expectedCases=components.flatMap(c=>c.cases),expectedVariants=Object.assign({},...components.map(c=>c.variants));
+  // Full H03 also executes its mandatory missing-fixture refusal after the
+  // thirteen registry schedules; it is an actual required execution.
+  if(id==='harness')expectedVariants.H03=[...expectedVariants.H03,'H03/missing-fixture-never-skipped'];
   const reports=actual.filter(r=>r.suite===id);assert.equal(reports.length,1);const r=reports[0];
   for(const field of ['fail','cancelled','skipped','todo'])assert.equal(r[field],0,'No failed/cancelled/skipped/TODO workload: '+id);
   const descriptor=fullDescriptor(id);
@@ -440,6 +486,10 @@ function assertReports(actual,selected,registry,candidate){
   else assert.equal(r.cases.length,expectedCases.length);
   for(const c of expectedCases){assert(r.cases.some(name=>name===c||name.startsWith(c+' / ')),c);for(const leaf of expectedVariants[c])assert.equal(r.executions.filter(e=>e.indent===4&&e.name===leaf&&(e.parent===c||e.parent.startsWith(c+' / '))).length,1,leaf);}
   if(!descriptor){assert.equal(r.tests,expectedCases.length+Object.values(expectedVariants).flat().length);assert.equal(r.variants.length,Object.values(expectedVariants).flat().length);}
+  if(id==='harness'){
+   assert.equal(r.tests,44);assert.equal(r.variants.length,40);
+   assert.deepEqual(r.executions.filter(e=>e.name==='H03/missing-fixture-never-skipped'),[{indent:4,number:14,name:'H03/missing-fixture-never-skipped',parent:'H03'}],'Exact mandatory H03 missing-fixture execution');
+  }
   assert.equal(r.executions.length,r.tests);assert.deepEqual(r.variants,r.executions.filter(e=>e.indent>0).map(e=>e.name));
   const checkObservation=(o,required,suiteId)=>{
    assert(o&&o.suite===suiteId,'Actual observation identity required: '+suiteId);
@@ -460,13 +510,27 @@ function assertReports(actual,selected,registry,candidate){
 }
 function segment(rows,commands,mode,report,candidate){
  const scope=recordContext(report);
- const matching=commands.filter(c=>c.context.prefix===scope.prefix&&c.context.depth===scope.depth&&c.record.mode===mode);
- const starts=matching.filter(c=>c.record.measurement==='storage-parent-start'),returns=matching.filter(c=>c.record.measurement==='storage-parent-return');
- assert.equal(starts.length,1,'Exactly one '+mode+' command start');assert.equal(returns.length,1,'Exactly one '+mode+' command return');
- const start=starts[0],end=returns[0];assert(start.end<scope.order&&scope.order<end.context.order,'Report inside its actual command segment');
+ // Earlier settled hostile attempts share this TAP scope. Select the actual
+ // report-containing adjacent pair across ALL modes so another command cannot
+ // interleave or lend provenance to the successful prerequisite.
+ const matching=commands.filter(c=>c.context.prefix===scope.prefix&&c.context.depth===scope.depth);
+ for(let pair=0;pair<matching.length;pair+=2){
+  const first=matching[pair],last=matching[pair+1];
+  assert(first.record.measurement==='storage-parent-start'&&last?.record.measurement==='storage-parent-return','Only settled noninterleaved same-scope command attempts');
+  assert.deepEqual(last.binding,first.binding,'Settled attempt retains exact command provenance');
+  assert.equal(last.record.mode,first.record.mode,'Settled attempt retains command mode');
+ }
+ const index=matching.findLastIndex(c=>c.end<scope.order),start=matching[index],end=matching[index+1];
+ assert(start?.record.measurement==='storage-parent-start','Actual '+mode+' command start before report');
+ assert(end?.record.measurement==='storage-parent-return','Actual '+mode+' command return after report');
+ assert(start.end<scope.order&&scope.order<end.context.order,'Report inside its actual command segment');
+ assert.equal(start.record.mode,mode);assert.equal(end.record.mode,mode,'Same command mode on settlement');
+ if(index>0)assert.equal(matching[index-1].record.measurement,'storage-parent-return','No overlapping command start before report segment');
+ if(index+2<matching.length)assert.equal(matching[index+2].record.measurement,'storage-parent-start','No overlapping command return after report segment');
  assert.deepEqual(end.binding,start.binding,'Same command provenance on settlement');assert.equal(end.record.success,true,'Successful command settlement required');
+ assert.deepEqual(matching.filter(c=>isDeepStrictEqual(c.binding,start.binding)),[start,end],'Unique actual command provenance pair');
  assert.equal(start.binding.candidate,candidate);assert.equal(start.record.candidate,candidate);assert.equal(end.record.candidate,candidate);
- const previous=commands.filter(c=>c.context.prefix===scope.prefix&&c.context.depth===scope.depth&&c.end<start.context.order&&c.record.measurement==='storage-parent-return').at(-1)?.end??-1;
+ const previous=matching[index-1]?.end??-1;
  const local=rows.filter(r=>sameScope(report,r)&&recordContext(r).order>previous&&recordContext(r).order<end.end);
  const candidates=local.filter(r=>r.measurement==='storage-candidate'&&recordContext(r).order<start.context.order);
  assert.equal(candidates.length,1,'Exactly one candidate for the actual command');assert.equal(candidates[0].digest,candidate);assert.equal(candidates[0].diagnosticOnly,mode!=='aggregate');

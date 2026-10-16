@@ -116,12 +116,12 @@ async function runSelected(mode,selected){
  assertBaseline();console.log(JSON.stringify({measurement:'frozen-storage-registry',...assertManifest()}));const candidate=candidateSnapshot();
  console.log(JSON.stringify({measurement:'storage-candidate',...candidate,diagnosticOnly:mode!=='aggregate'}));
  assertExecutionPreservation();
- let commandMeasurement;
+ let commandMeasurement,integrationAdmitted=false;
  const errors=[],reports=[];
  let built;
  try{
   if(mode==='harness-prerequisite')assertPrivateAdmission();
-  commandMeasurement=startMeasurement('command',{mode,candidate:candidate.digest},true);
+  commandMeasurement=startMeasurement('command',{mode,candidate:candidate.digest},{containers:'observe'});
   await commandMeasurement.ready;
   const buildMeasurement=startMeasurement('build',{mode,candidate:candidate.digest});
   let copiedBuildStarted,copiedBuildFinished;
@@ -141,13 +141,17 @@ async function runSelected(mode,selected){
   const {verifyAtomicPhaseRecords}=await import(pathToFileURL(resolve(emittedTests,'helpers/atomic-disconnect-records.js')).href);
   validateSuiteFiles(selected,resolve(cwd,'tests'),emittedTests);
   for(const [id,suite] of selected){
+   if(mode==='harness-prerequisite')assertPrivateAdmission();
+   // The actual registered integration metadata governs every entry path. A
+   // fresh strict census must settle before publication or fixture imports.
+   const lifetimeMeasurement=startMeasurement('suite-lifetime',{suite:id,mode,candidate:candidate.digest},suite.integration||integrationAdmitted);
+   try{
+   await lifetimeMeasurement.ready;
+   if(suite.integration){integrationAdmitted=true;commandMeasurement.census=true;}
    if(mode==='harness-prerequisite'){
     assertPrivateAdmission();privatePrerequisite.admitted.push(id);
     console.log(JSON.stringify({measurement:'harness-prerequisite-dispatch',suite:id,nonce:privatePrerequisite.nonce,owner:privatePrerequisite.owner}));
    }
-   const lifetimeMeasurement=startMeasurement('suite-lifetime',{suite:id,mode,candidate:candidate.digest});
-   try{
-   await lifetimeMeasurement.ready;
    const descriptor=mode!=='component'?fullDescriptor(id):null;
    const predecessors=(id==='commit-conflict'?commitConflictPredecessors:id==='recall-ask'?recallAskPredecessors:id==='backup-restore'?backupRestorePredecessors:[]).map(name=>components[name]);
    const registeredComponents=mode!=='component'&&['recall-ask','backup-restore'].includes(id)
@@ -182,6 +186,7 @@ async function runSelected(mode,selected){
     if(callbacks!==1)throw new Error('Fixture omitted mandatory execution');
    }else await execute({});
    }finally{try{await endMeasurement(lifetimeMeasurement);}catch(error){errors.push(error);}}
+   if(errors.length)throw new AggregateError([...errors],'Suite return must settle strict census before further admission');
    if(mode==='harness-prerequisite')assertPrivateAdmission();
   }
   if(reports.length!==selected.length)throw new Error('Mandatory execution report missing');

@@ -1,0 +1,2522 @@
+{
+  "source": "read-only controller state; controller owns actual status",
+  "officialRemainingImplementationSplitSubmitted": false,
+  "planFinal": false,
+  "counts": {
+    "pending": 41,
+    "active": 2,
+    "done": 14,
+    "dropped": 13
+  },
+  "tasks": [
+    {
+      "id": "f06-01",
+      "status": "dropped",
+      "title": "Freeze owner-bound contracts and strict runtime package primitives",
+      "depends_on": [],
+      "covers": [
+        "AF-13.19",
+        "AF-13.27",
+        "UX-03.07",
+        "R-001",
+        "R-010",
+        "R-011",
+        "R-013",
+        "R-016",
+        "R-027",
+        "R-029",
+        "R-031",
+        "AF-13.16",
+        "AF-13.18",
+        "UX-07.08",
+        "UX-07.09",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-contract-kernel",
+          "run": "node g1-runtime/scripts/check-component.mjs contract-kernel",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification. Includes all eight named contracts inside C01-C06, malformed/type negatives and actual installed owner signatures; local traces cannot qualify PG.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-02",
+      "status": "dropped",
+      "title": "Implement native intent admission and Plan bridge fixture journey",
+      "depends_on": [
+        "f06-01"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.25",
+        "AF-13.26",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09",
+        "R-011",
+        "R-012",
+        "R-021"
+      ],
+      "checks": [
+        {
+          "id": "f06-admission",
+          "run": "node g1-runtime/scripts/check-component.mjs admission",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-03",
+      "status": "dropped",
+      "title": "Implement durable local queue, single assignment and fixture usage",
+      "depends_on": [
+        "f06-01"
+      ],
+      "covers": [
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.05",
+        "UX-07.06",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.10",
+        "UX-07.11",
+        "UX-07.12",
+        "UX-07.13",
+        "R-011",
+        "R-021",
+        "R-028",
+        "R-029"
+      ],
+      "checks": [
+        {
+          "id": "f06-resources",
+          "run": "node g1-runtime/scripts/check-component.mjs resources",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "integration"
+        },
+        {
+          "id": "f06-lease-queue",
+          "run": "node g1-runtime/scripts/check-suites.mjs lease-queue",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-04",
+      "status": "dropped",
+      "title": "Implement bounded tool and egress paths with actual observers",
+      "depends_on": [
+        "f06-01",
+        "f06-02",
+        "f06-03"
+      ],
+      "covers": [
+        "AF-13",
+        "AF-13.03",
+        "AF-13.05",
+        "AF-13.07",
+        "AF-13.21",
+        "AF-13.25",
+        "AF-13.27",
+        "R-012",
+        "R-016",
+        "UX-07.05",
+        "AF-13.11"
+      ],
+      "checks": [
+        {
+          "id": "f06-tools",
+          "run": "node g1-runtime/scripts/check-component.mjs tools",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "integration"
+        },
+        {
+          "id": "f06-tool-egress",
+          "run": "node g1-runtime/scripts/check-suites.mjs tool-paths egress",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-05",
+      "status": "done",
+      "title": "Implement sensitive browser and input refusals",
+      "depends_on": [
+        "f06-02b"
+      ],
+      "covers": [
+        "UX-07.14",
+        "UX-07.15",
+        "UX-07.16",
+        "UX-07.17",
+        "UX-10",
+        "UX-10.01",
+        "UX-10.02",
+        "UX-10.03",
+        "UX-10.04",
+        "UX-10.05",
+        "UX-10.06",
+        "UX-10.07",
+        "UX-10.08",
+        "UX-10.09",
+        "UX-10.10",
+        "UX-10.11",
+        "UX-10.12"
+      ],
+      "checks": [
+        {
+          "id": "f06-05-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs browser-refusal",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-06",
+      "status": "dropped",
+      "title": "Compose continuation, Stop and recovery with serial pilot timing",
+      "depends_on": [
+        "f06-02",
+        "f06-03",
+        "f06-04",
+        "f06-05"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.10",
+        "AF-13.11",
+        "AF-13.12",
+        "AF-13.13",
+        "AF-13.14",
+        "AF-13.15",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-018",
+        "R-019",
+        "R-029",
+        "R-020",
+        "R-011",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-continuation",
+          "run": "node g1-runtime/scripts/check-component.mjs continuation",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification. Five local stopped/expiry paths and all seven assertion groups mandatory; no actual PG/COMMIT qualification.",
+          "stage": "integration"
+        },
+        {
+          "id": "f06-recovery-timing",
+          "run": "node g1-runtime/scripts/check-suites.mjs authority-intent recovery-stop",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Serial actual recreated-process recovery plus full fixed pilot sample protocol; all failures/cancellations retained. No concurrent build/task/check. Local assurance only. Fixed inventory requires five actual write/lost-SEND-ACK/recreated-original-settlement/safe-successor paths and every held/replay/fault group; ordinary post-Stop reconciliation must deny.",
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f06-07",
+      "status": "dropped",
+      "title": "Close local qualification materials and strict full harness evidence",
+      "depends_on": [
+        "f06-01",
+        "f06-02",
+        "f06-03",
+        "f06-04",
+        "f06-05",
+        "f06-06"
+      ],
+      "covers": [
+        "AF-13.06",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.22",
+        "AF-13.23",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-014",
+        "R-015",
+        "R-017",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-030",
+        "R-031",
+        "R-032",
+        "UX-10.12",
+        "AF-13.24",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-009",
+        "R-010",
+        "R-013",
+        "R-016"
+      ],
+      "checks": [
+        {
+          "id": "f06-qualification-harness",
+          "run": "node g1-runtime/scripts/check-suites.mjs qualification-matrix harness-integrity",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free strict current source AND test build; nonempty assigned assertions, no failed/cancelled/skipped/TODO cases. Diagnostic only; no aggregate qualification.",
+          "stage": "security"
+        },
+        {
+          "id": "f06-full-local",
+          "run": "node g1-runtime/scripts/check.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Controller full current-build nine-suite local run; includes serial timing, complete raw evidence and cleanup. RemoteQualified remains false; P/X and inherited checks separate.",
+          "stage": "acceptance"
+        }
+      ]
+    },
+    {
+      "id": "f06-08",
+      "status": "dropped",
+      "title": "Implement additive PG runtime schema and scoped queue persistence",
+      "depends_on": [
+        "f06-01",
+        "f06-03"
+      ],
+      "covers": [
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "R-010",
+        "R-011",
+        "R-023",
+        "R-027",
+        "R-029"
+      ],
+      "checks": [
+        {
+          "id": "f06-pg-queue-schema",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/cancel-expiry P02/reopen-slot P02/wait-current P05",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "CONDITIONAL: actual eligible PG/original owners required. Do not invoke any Docker-dependent helper under current ban. Prerequisite refusal/fixture simulation cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09",
+      "status": "dropped",
+      "title": "Install safe fence composition, original effect settlement and atomic transfer",
+      "depends_on": [
+        "f06-02",
+        "f06-04",
+        "f06-06",
+        "f06-08"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.25",
+        "AF-13.26",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.05",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "R-011",
+        "R-018",
+        "R-027",
+        "R-029"
+      ],
+      "checks": [
+        {
+          "id": "f06-original-owner-fences",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P01 P02",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "CONDITIONAL: actual eligible PG/original owners required. Do not invoke any Docker-dependent helper under current ban. Prerequisite refusal/fixture simulation cannot complete this task. Require checkpoint(a) facade/native Stop actual lock schedules, then(b) original stopped/expired read-only settlement with five paths/all seven groups, then(c) full atomic-transfer and all13 P01/P02 children; no premature transfer completion.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-10",
+      "status": "dropped",
+      "title": "Integrate real-format usage receipts with the existing allowance family",
+      "depends_on": [
+        "f06-03",
+        "f06-08",
+        "f06-09"
+      ],
+      "covers": [
+        "UX-07.10",
+        "UX-07.11",
+        "R-011",
+        "R-023",
+        "R-027"
+      ],
+      "checks": [
+        {
+          "id": "f06-finops-owner",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P03",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "CONDITIONAL: actual eligible PG/original owners required. Do not invoke any Docker-dependent helper under current ban. Prerequisite refusal/fixture simulation cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-11",
+      "status": "dropped",
+      "title": "Implement the linked Plan maintenance bridge on real F05 and close owners",
+      "depends_on": [
+        "f06-02",
+        "f06-08",
+        "f06-09",
+        "f06-10"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.26",
+        "UX-03",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.07",
+        "UX-07.06",
+        "R-010",
+        "R-011",
+        "R-023",
+        "R-027"
+      ],
+      "checks": [
+        {
+          "id": "f06-plan-f05-bridge",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "CONDITIONAL: actual eligible PG/original owners required. Do not invoke any Docker-dependent helper under current ban. Prerequisite refusal/fixture simulation cannot complete this task.",
+          "stage": "integration"
+        },
+        {
+          "id": "f06-full-real-owners",
+          "run": "node g1-runtime/scripts/check-owners.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Full mandatory P01-P05:29 named children and all variants, actual original owner/UoW/F05 bytes and model12 lineage. CONDITIONAL: actual eligible PG/original owners required. Do not invoke any Docker-dependent helper under current ban. Prerequisite refusal/fixture simulation cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-12",
+      "status": "dropped",
+      "title": "Pin the exact backend API, image and approved environment contract",
+      "depends_on": [
+        "f06-07",
+        "f06-11"
+      ],
+      "covers": [
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.21",
+        "AF-13.22",
+        "R-007",
+        "R-014",
+        "R-015",
+        "R-023",
+        "R-031",
+        "R-032"
+      ],
+      "checks": [
+        {
+          "id": "f06-pinned-backend-contract",
+          "run": "node g1-runtime/scripts/check-component.mjs contract-kernel",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Conditional completion: expanded exact backend contracts must validate concrete later-approved host/image facts, not placeholders. Docker-free research/negative diagnostics alone leave12 pending.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-13",
+      "status": "dropped",
+      "title": "Implement pinned Linux lifecycle and single-assignment backend",
+      "depends_on": [
+        "f06-12"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.10",
+        "AF-13.11",
+        "AF-13.12",
+        "AF-13.22",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.12",
+        "UX-07.13",
+        "R-007",
+        "R-015",
+        "R-016",
+        "R-023",
+        "R-029",
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-linux-lifecycle",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X01 X04",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "DO NOT RUN NOW: remote approval withheld. Exact later authorization and pinned host/image/control facts required before any connection, install, inventory or allocation. Actual selected X cases must pass; guard refusal cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-14",
+      "status": "dropped",
+      "title": "Verify deployed boundaries, journeys, costs and serial timing",
+      "depends_on": [
+        "f06-11",
+        "f06-13"
+      ],
+      "covers": [
+        "AF-13",
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.03",
+        "AF-13.04",
+        "AF-13.05",
+        "AF-13.06",
+        "AF-13.07",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.10",
+        "AF-13.11",
+        "AF-13.12",
+        "AF-13.13",
+        "AF-13.14",
+        "AF-13.15",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.21",
+        "AF-13.22",
+        "AF-13.23",
+        "AF-13.24",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.05",
+        "UX-07.06",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.10",
+        "UX-07.11",
+        "UX-07.12",
+        "UX-07.13",
+        "UX-07.14",
+        "UX-07.15",
+        "UX-07.16",
+        "UX-07.17",
+        "UX-10",
+        "UX-10.01",
+        "UX-10.02",
+        "UX-10.03",
+        "UX-10.04",
+        "UX-10.05",
+        "UX-10.06",
+        "UX-10.07",
+        "UX-10.08",
+        "UX-10.09",
+        "UX-10.10",
+        "UX-10.11",
+        "UX-10.12",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-009",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-019",
+        "R-020",
+        "R-023",
+        "R-024",
+        "R-026",
+        "R-029",
+        "R-030",
+        "R-031",
+        "R-032",
+        "AF-13.25",
+        "AF-13.26",
+        "AF-13.27",
+        "R-011"
+      ],
+      "checks": [
+        {
+          "id": "f06-deployed-behavior",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X02 X03 X05 X06 X07 X08 X09 X10",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "DO NOT RUN NOW: remote approval withheld. Exact later authorization and pinned host/image/control facts required before any connection, install, inventory or allocation. Actual selected X cases must pass; guard refusal cannot complete this task.",
+          "stage": "security"
+        },
+        {
+          "id": "f06-full-approved-deployment",
+          "run": "node g1-runtime/scripts/check-remote.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Full unchanged X01-X10 inventory and all applicable exact-profile probes. DO NOT RUN NOW: remote approval withheld. Exact later authorization and pinned host/image/control facts required before any connection, install, inventory or allocation. Actual selected X cases must pass; guard refusal cannot complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-15",
+      "status": "pending",
+      "title": "Run unchanged regressions and hand off current evidence",
+      "depends_on": [
+        "f06-07c",
+        "f06-11e",
+        "f06-14e"
+      ],
+      "covers": [
+        "AF-13.22",
+        "AF-13.23",
+        "AF-13.24",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-009",
+        "R-010",
+        "R-017",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-030",
+        "R-031",
+        "R-032"
+      ],
+      "checks": [
+        {
+          "id": "f06-15-check-1",
+          "run": "node g1-runtime/scripts/check.mjs",
+          "timeout": 1800,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion.",
+          "stage": "acceptance"
+        },
+        {
+          "id": "f06-15-check-2",
+          "run": "node g1-identity/scripts/check.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion.",
+          "stage": "regression"
+        },
+        {
+          "id": "f06-15-check-3",
+          "run": "node g1-foundations/scripts/check.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion.",
+          "stage": "regression"
+        },
+        {
+          "id": "f06-15-check-4",
+          "run": "node g1-foundations/scripts/check-retained.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion.",
+          "stage": "regression"
+        }
+      ]
+    },
+    {
+      "id": "f06-01a",
+      "status": "done",
+      "title": "Create strict package and original-owner contracts",
+      "depends_on": [],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "AF-13.19",
+        "AF-13.27",
+        "R-001",
+        "R-010",
+        "R-011",
+        "R-013",
+        "R-016",
+        "R-018",
+        "R-027",
+        "R-029",
+        "R-031",
+        "UX-03.07",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-01a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C01 C02 C03 C04 C05 C06",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-01b",
+      "status": "done",
+      "title": "Build shared strict runners and owned fixture primitives",
+      "depends_on": [
+        "f06-01a"
+      ],
+      "covers": [
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-009",
+        "R-010",
+        "R-013",
+        "R-016",
+        "R-030"
+      ],
+      "checks": [
+        {
+          "id": "f06-01b-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H01 H02 H03 H04 H10 H15 H16",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-02a",
+      "status": "done",
+      "title": "Implement native Ask and bounded Act admission",
+      "depends_on": [
+        "f06-01b"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.26",
+        "R-011",
+        "R-012",
+        "R-021",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-02a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs admission --cases I00/ask I01 I02 I05/admission I06/admission I07 I08/admission I09/admission",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f06-02b",
+      "status": "done",
+      "title": "Implement linked Plan fixture save and reopen",
+      "depends_on": [
+        "f06-02a"
+      ],
+      "covers": [
+        "R-011",
+        "UX-03",
+        "UX-03.03",
+        "UX-03.04"
+      ],
+      "checks": [
+        {
+          "id": "f06-02b-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs admission --cases I03 I04",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-03a",
+      "status": "done",
+      "title": "Implement durable atomic local resource repository",
+      "depends_on": [
+        "f06-01b"
+      ],
+      "covers": [
+        "R-011",
+        "R-021",
+        "R-029",
+        "UX-07",
+        "UX-07.02",
+        "UX-07.07",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-03a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs resources --cases Q00/atomic-ownership Q02/repository Q07/repository Q09/queue-commit",
+          "timeout": 240,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-03b",
+      "status": "done",
+      "title": "Implement single assignment and local lifecycle usage",
+      "depends_on": [
+        "f06-03a"
+      ],
+      "covers": [
+        "R-011",
+        "R-021",
+        "R-028",
+        "R-029",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.06",
+        "UX-07.07",
+        "UX-07.09",
+        "UX-07.10",
+        "UX-07.11",
+        "UX-07.12",
+        "UX-07.13"
+      ],
+      "checks": [
+        {
+          "id": "f06-03b-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs lease-queue --cases Q00/conflicts Q01 Q02 Q03 Q04 Q06 Q07 Q09 Q10 Q11 Q12 Q13/lifecycle",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-04a",
+      "status": "done",
+      "title": "Implement fixed shell SDK and stdio MCP dispatch",
+      "depends_on": [
+        "f06-02b",
+        "f06-03b"
+      ],
+      "covers": [
+        "AF-13",
+        "AF-13.03",
+        "AF-13.05",
+        "AF-13.07",
+        "AF-13.21",
+        "AF-13.25",
+        "AF-13.27",
+        "R-012",
+        "R-016",
+        "UX-07.05"
+      ],
+      "checks": [
+        {
+          "id": "f06-04a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs tools",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-04b",
+      "status": "done",
+      "title": "Implement bounded egress and close tool paths",
+      "depends_on": [
+        "f06-04a",
+        "f06-05"
+      ],
+      "covers": [
+        "AF-13",
+        "AF-13.03",
+        "AF-13.05",
+        "AF-13.07",
+        "AF-13.11",
+        "AF-13.21",
+        "AF-13.25",
+        "AF-13.27",
+        "R-012",
+        "R-016",
+        "UX-07.05"
+      ],
+      "checks": [
+        {
+          "id": "f06-04b-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs tool-paths egress",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-06a",
+      "status": "done",
+      "title": "Implement continuation Stop and process control",
+      "depends_on": [
+        "f06-04b",
+        "f06-05"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.10",
+        "AF-13.12",
+        "AF-13.13",
+        "AF-13.14",
+        "AF-13.15",
+        "AF-13.17",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-06a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs continuation --cases A04 A10 A12 A13 A14 A15 A17",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-06b",
+      "status": "done",
+      "title": "Implement local original settlement base journeys",
+      "depends_on": [
+        "f06-06a",
+        "f06-03b"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-06b-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/base A18/base R18/base",
+          "timeout": 360,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-06c",
+      "status": "active",
+      "title": "Verify local settlement authority receipt and quiescence",
+      "depends_on": [
+        "f06-06b",
+        "f06-06c-pilot"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08"
+      ],
+      "checks": [
+        {
+          "id": "f06-06c-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/fresh-authority A16/trusted-terminal-get A16/quiescence-snapshot A18/fresh-authority A18/trusted-terminal-get A18/quiescence-snapshot R18/fresh-authority R18/trusted-terminal-get R18/quiescence-snapshot",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-06d",
+      "status": "pending",
+      "title": "Verify local settlement faults atomicity and no replay",
+      "depends_on": [
+        "f06-06c"
+      ],
+      "covers": [
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-06d-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/original-owner-atomicity A16/rollback-commit-recovery A16/concurrent-dedup-conflict A16/old-worker-replay-denied A18/original-owner-atomicity A18/rollback-commit-recovery A18/concurrent-dedup-conflict A18/old-worker-replay-denied R18/original-owner-atomicity R18/rollback-commit-recovery R18/concurrent-dedup-conflict R18/old-worker-replay-denied",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-06e",
+      "status": "pending",
+      "title": "Close local authority recovery and serial pilot timing",
+      "depends_on": [
+        "f06-06d",
+        "f06-02b"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.04",
+        "AF-13.10",
+        "AF-13.12",
+        "AF-13.13",
+        "AF-13.14",
+        "AF-13.15",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.20",
+        "AF-13.26",
+        "R-011",
+        "R-018",
+        "R-019",
+        "R-020",
+        "R-021",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.08",
+        "UX-03.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-06e-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs continuation",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "performance"
+        },
+        {
+          "id": "f06-06e-check-2",
+          "run": "node g1-runtime/scripts/check-suites.mjs authority-intent recovery-stop",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f06-07a",
+      "status": "pending",
+      "title": "Implement capability matrix and exact qualification registry",
+      "depends_on": [
+        "f06-06e"
+      ],
+      "covers": [
+        "AF-13.06",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.22",
+        "AF-13.23",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-014",
+        "R-015",
+        "R-017",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-031",
+        "R-032",
+        "UX-10.12"
+      ],
+      "checks": [
+        {
+          "id": "f06-07a-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs qualification-matrix",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-07b",
+      "status": "pending",
+      "title": "Complete strict harness sabotage and evidence integrity",
+      "depends_on": [
+        "f06-07a"
+      ],
+      "covers": [
+        "AF-13.24",
+        "R-001",
+        "R-002",
+        "R-003",
+        "R-009",
+        "R-010",
+        "R-013",
+        "R-016",
+        "R-030"
+      ],
+      "checks": [
+        {
+          "id": "f06-07b-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs harness-integrity",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-07c",
+      "status": "pending",
+      "title": "Publish local release materials and full local gate",
+      "depends_on": [
+        "f06-07b"
+      ],
+      "covers": [
+        "AF-13.19",
+        "AF-13.27",
+        "R-001",
+        "R-003",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-009",
+        "R-010",
+        "R-017",
+        "R-022",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-027",
+        "R-028",
+        "R-029",
+        "R-030",
+        "R-031",
+        "R-032",
+        "UX-03.07",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.06",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.10",
+        "UX-07.11",
+        "UX-07.12",
+        "UX-07.13"
+      ],
+      "checks": [
+        {
+          "id": "f06-07c-check-1",
+          "run": "node g1-runtime/scripts/check.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-08a",
+      "status": "active",
+      "title": "Install additive PG schema and atomic queue keys",
+      "depends_on": [
+        "f06-01b",
+        "f06-03b"
+      ],
+      "covers": [
+        "R-010",
+        "R-011",
+        "R-023",
+        "R-027",
+        "R-029",
+        "UX-07",
+        "UX-07.02",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-08a-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/wait-current P05/install-compatibility",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-08b",
+      "status": "pending",
+      "title": "Verify PG queue cancellation recreation and rollback",
+      "depends_on": [
+        "f06-08a"
+      ],
+      "covers": [
+        "R-010",
+        "R-011",
+        "R-023",
+        "R-027",
+        "R-029",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-08b-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/cancel-expiry P02/reopen-slot P02/wait-current P05",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09a",
+      "status": "pending",
+      "title": "Install fence-only authenticated prelocking composition",
+      "depends_on": [
+        "f06-08b",
+        "f06-02b"
+      ],
+      "covers": [
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-09a-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/unchanged-callers/native-stop P02/unchanged-callers/raw-composition-rejected-before-commands",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09b",
+      "status": "pending",
+      "title": "Install ACK-only original effect dispatch adapter",
+      "depends_on": [
+        "f06-09a",
+        "f06-04b"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.26",
+        "AF-13.27",
+        "R-011",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08"
+      ],
+      "checks": [
+        {
+          "id": "f06-09b-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P01/current-authority/execution P01/dispatch-binding/execution P02/claim-one-use",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09c",
+      "status": "pending",
+      "title": "Implement fresh original read-only settlement authority",
+      "depends_on": [
+        "f06-09b"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-09c-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/base P02/transfer-atomic/trusted-terminal-get/base",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09d",
+      "status": "pending",
+      "title": "Implement constrained original-owner metadata settlement",
+      "depends_on": [
+        "f06-09c"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "AF-13.25",
+        "R-011",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-09d-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/original-owner-atomicity/settlement P01/worker-db-denial",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09e",
+      "status": "pending",
+      "title": "Verify PG settlement authority and receipt field denials",
+      "depends_on": [
+        "f06-09d"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-09e-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/negative P02/transfer-atomic/trusted-terminal-get/negative P01/current-authority/settlement",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-09f",
+      "status": "pending",
+      "title": "Verify PG quiescence snapshots and stale execution denial",
+      "depends_on": [
+        "f06-09e"
+      ],
+      "covers": [
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08"
+      ],
+      "checks": [
+        {
+          "id": "f06-09f-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/quiescence-snapshot P02/transfer-atomic/old-worker-replay-denied/pre-transfer P01/dispatch-binding/settlement",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-09g",
+      "status": "pending",
+      "title": "Verify PG original settlement faults and dedup",
+      "depends_on": [
+        "f06-09f"
+      ],
+      "covers": [
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-09g-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/rollback-commit-recovery/settlement P02/transfer-atomic/concurrent-dedup-conflict",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09h",
+      "status": "pending",
+      "title": "Implement atomic original fence and queue transfer",
+      "depends_on": [
+        "f06-09g"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-09h-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic P02/phase-first",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09i",
+      "status": "pending",
+      "title": "Verify legal original-owner phase and Stop races",
+      "depends_on": [
+        "f06-09h",
+        "f06-06e"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-09i-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/phase-first/pre-transfer P02/barrier-first",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-09j",
+      "status": "pending",
+      "title": "Close all real authority effect and owner lock cases",
+      "depends_on": [
+        "f06-09i"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.13",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.19",
+        "AF-13.20",
+        "AF-13.25",
+        "AF-13.26",
+        "R-011",
+        "R-018",
+        "R-029",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.05",
+        "UX-07.06",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-09j-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P01 P02",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-10a",
+      "status": "pending",
+      "title": "Implement real-format usage in original allowance family",
+      "depends_on": [
+        "f06-09j",
+        "f06-03b"
+      ],
+      "covers": [
+        "R-011",
+        "R-027",
+        "UX-07.10",
+        "UX-07.11"
+      ],
+      "checks": [
+        {
+          "id": "f06-10a-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P03/family-receipts",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-10b",
+      "status": "pending",
+      "title": "Verify real usage rollback and lost acknowledgement",
+      "depends_on": [
+        "f06-10a"
+      ],
+      "covers": [
+        "R-011",
+        "R-027",
+        "UX-07.10",
+        "UX-07.11"
+      ],
+      "checks": [
+        {
+          "id": "f06-10b-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P03",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-11a",
+      "status": "pending",
+      "title": "Implement private Plan maintenance child admission",
+      "depends_on": [
+        "f06-02b",
+        "f06-08b",
+        "f06-09j",
+        "f06-10b"
+      ],
+      "covers": [
+        "R-011",
+        "UX-03.03",
+        "UX-03.04"
+      ],
+      "checks": [
+        {
+          "id": "f06-11a-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/restricted-child/admission P04/parent-current/admission P04/budget-lineage/admission",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-11b",
+      "status": "pending",
+      "title": "Integrate real Plan artifact publication and reopen",
+      "depends_on": [
+        "f06-11a"
+      ],
+      "covers": [
+        "R-011",
+        "UX-03",
+        "UX-03.03",
+        "UX-03.04"
+      ],
+      "checks": [
+        {
+          "id": "f06-11b-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/save-reopen P04/hook-transaction",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-11c",
+      "status": "pending",
+      "title": "Verify Plan CAS authority and budget separation",
+      "depends_on": [
+        "f06-11b"
+      ],
+      "covers": [
+        "R-011",
+        "UX-03",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-07.06"
+      ],
+      "checks": [
+        {
+          "id": "f06-11c-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/version-cas P04/original-key P04/restricted-child P04/parent-current P04/source-audience P04/budget-lineage P04/promotion-separation",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-11d",
+      "status": "pending",
+      "title": "Verify Plan staging publication and commit recovery",
+      "depends_on": [
+        "f06-11c"
+      ],
+      "covers": [
+        "R-009",
+        "R-011",
+        "R-016",
+        "UX-03.03"
+      ],
+      "checks": [
+        {
+          "id": "f06-11d-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/staging-failure P04/publication-rollback P04/commit-ack-loss",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-11e",
+      "status": "pending",
+      "title": "Run full real Plan and owner integration gates",
+      "depends_on": [
+        "f06-11d"
+      ],
+      "covers": [
+        "R-003",
+        "R-005",
+        "R-010",
+        "R-011",
+        "R-017",
+        "R-023",
+        "R-024",
+        "R-027"
+      ],
+      "checks": [
+        {
+          "id": "f06-11e-check-1",
+          "run": "node g1-runtime/scripts/check-owners.mjs --cases P04",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        },
+        {
+          "id": "f06-11e-check-2",
+          "run": "node g1-runtime/scripts/check-owners.mjs",
+          "timeout": 600,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-12a",
+      "status": "pending",
+      "title": "Pin release-specific backend protocol without activation",
+      "depends_on": [
+        "f06-07c"
+      ],
+      "covers": [
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.21",
+        "AF-13.22",
+        "R-007",
+        "R-014",
+        "R-015",
+        "R-023",
+        "R-031",
+        "R-032"
+      ],
+      "checks": [
+        {
+          "id": "f06-12a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/backend-pins",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-12b",
+      "status": "pending",
+      "title": "Bind later approved host facts and limits",
+      "depends_on": [
+        "f06-12a",
+        "f06-11e"
+      ],
+      "covers": [
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.22",
+        "R-007",
+        "R-014",
+        "R-015",
+        "R-031",
+        "R-032"
+      ],
+      "checks": [
+        {
+          "id": "f06-12b-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/approved-host-manifest",
+          "timeout": 180,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-13a",
+      "status": "pending",
+      "title": "Implement disabled pinned backend on local protocol fixture",
+      "depends_on": [
+        "f06-12a"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.08",
+        "AF-13.10",
+        "AF-13.11",
+        "R-014",
+        "R-015",
+        "R-016",
+        "R-029"
+      ],
+      "checks": [
+        {
+          "id": "f06-13a-check-1",
+          "run": "node g1-runtime/scripts/check-component.mjs backend-lifecycle",
+          "timeout": 300,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification.",
+          "stage": "unit"
+        }
+      ]
+    },
+    {
+      "id": "f06-13b",
+      "status": "pending",
+      "title": "Qualify actual image readiness and resource controls",
+      "depends_on": [
+        "f06-13a",
+        "f06-12b"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.10",
+        "AF-13.11",
+        "AF-13.12",
+        "AF-13.22",
+        "R-007",
+        "R-015",
+        "R-016",
+        "R-023",
+        "R-029",
+        "UX-07.05"
+      ],
+      "checks": [
+        {
+          "id": "f06-13b-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X01",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13c",
+      "status": "pending",
+      "title": "Qualify deployed one-assignment queue base behavior",
+      "depends_on": [
+        "f06-13b"
+      ],
+      "covers": [
+        "R-015",
+        "R-016",
+        "R-029",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.12"
+      ],
+      "checks": [
+        {
+          "id": "f06-13c-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/base",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f06-13d1",
+      "status": "pending",
+      "title": "Qualify deployed original settlement: stopped-original-stop-run",
+      "depends_on": [
+        "f06-13c"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-13d1-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-run",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13d2",
+      "status": "pending",
+      "title": "Qualify deployed original settlement: stopped-original-stop-task",
+      "depends_on": [
+        "f06-13d1"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-13d2-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-task",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13d3",
+      "status": "pending",
+      "title": "Qualify deployed original settlement: lease-expired-original",
+      "depends_on": [
+        "f06-13d2"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-13d3-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/lease-expired-original",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13d4",
+      "status": "pending",
+      "title": "Qualify deployed original settlement: effect-expired-original",
+      "depends_on": [
+        "f06-13d3"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-13d4-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/effect-expired-original",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13d5",
+      "status": "pending",
+      "title": "Qualify deployed original settlement: stop-and-both-expiries",
+      "depends_on": [
+        "f06-13d4"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-029",
+        "UX-07.08",
+        "UX-07.09"
+      ],
+      "checks": [
+        {
+          "id": "f06-13d5-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stop-and-both-expiries",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-13e",
+      "status": "pending",
+      "title": "Run full deployed lifecycle and recovery gate",
+      "depends_on": [
+        "f06-13d5"
+      ],
+      "covers": [
+        "AF-13.04",
+        "AF-13.08",
+        "AF-13.09",
+        "AF-13.10",
+        "AF-13.11",
+        "AF-13.12",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "AF-13.22",
+        "R-007",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-023",
+        "R-029",
+        "UX-07",
+        "UX-07.01",
+        "UX-07.02",
+        "UX-07.07",
+        "UX-07.08",
+        "UX-07.09",
+        "UX-07.12"
+      ],
+      "checks": [
+        {
+          "id": "f06-13e-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X01 X04",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-14a",
+      "status": "pending",
+      "title": "Verify deployed all-path containment and trust limits",
+      "depends_on": [
+        "f06-13e",
+        "f06-11e"
+      ],
+      "covers": [
+        "AF-13",
+        "AF-13.03",
+        "AF-13.05",
+        "AF-13.06",
+        "AF-13.07",
+        "AF-13.11",
+        "AF-13.21",
+        "AF-13.25",
+        "R-012",
+        "R-015",
+        "R-016",
+        "UX-07.03",
+        "UX-07.04",
+        "UX-07.05"
+      ],
+      "checks": [
+        {
+          "id": "f06-14a-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X02 X05",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-14b",
+      "status": "pending",
+      "title": "Verify deployed intent artifact lifecycle and costs",
+      "depends_on": [
+        "f06-14a"
+      ],
+      "covers": [
+        "AF-13.01",
+        "AF-13.02",
+        "AF-13.26",
+        "R-011",
+        "R-015",
+        "R-016",
+        "UX-03",
+        "UX-03.01",
+        "UX-03.02",
+        "UX-03.03",
+        "UX-03.04",
+        "UX-03.05",
+        "UX-03.06",
+        "UX-03.07",
+        "UX-03.08",
+        "UX-03.09",
+        "UX-07.10",
+        "UX-07.11",
+        "UX-07.13"
+      ],
+      "checks": [
+        {
+          "id": "f06-14b-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X03 X06",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "e2e"
+        }
+      ]
+    },
+    {
+      "id": "f06-14c",
+      "status": "pending",
+      "title": "Verify deployed browser and GUI refusal profile",
+      "depends_on": [
+        "f06-14b"
+      ],
+      "covers": [
+        "R-015",
+        "R-016",
+        "R-026",
+        "UX-07.14",
+        "UX-07.15",
+        "UX-07.16",
+        "UX-07.17",
+        "UX-10",
+        "UX-10.01",
+        "UX-10.02",
+        "UX-10.03",
+        "UX-10.04",
+        "UX-10.05",
+        "UX-10.06",
+        "UX-10.07",
+        "UX-10.08",
+        "UX-10.09",
+        "UX-10.10",
+        "UX-10.11",
+        "UX-10.12"
+      ],
+      "checks": [
+        {
+          "id": "f06-14c-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X07 X08",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-14d",
+      "status": "pending",
+      "title": "Verify deployed watchdog recovery and serial timing",
+      "depends_on": [
+        "f06-14c"
+      ],
+      "covers": [
+        "AF-13.12",
+        "AF-13.13",
+        "AF-13.14",
+        "AF-13.15",
+        "AF-13.16",
+        "AF-13.17",
+        "AF-13.18",
+        "R-011",
+        "R-015",
+        "R-016",
+        "R-018",
+        "R-019",
+        "R-020"
+      ],
+      "checks": [
+        {
+          "id": "f06-14d-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X09",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f06-14e",
+      "status": "pending",
+      "title": "Run deployment release drill and full X gate",
+      "depends_on": [
+        "f06-14d"
+      ],
+      "covers": [
+        "AF-13.22",
+        "AF-13.23",
+        "AF-13.24",
+        "R-004",
+        "R-005",
+        "R-006",
+        "R-007",
+        "R-008",
+        "R-009",
+        "R-010",
+        "R-015",
+        "R-016",
+        "R-017",
+        "R-023",
+        "R-024",
+        "R-025",
+        "R-026",
+        "R-030",
+        "R-031",
+        "R-032"
+      ],
+      "checks": [
+        {
+          "id": "f06-14e-check-1",
+          "run": "node g1-runtime/scripts/check-remote.mjs --cases X10",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "security"
+        },
+        {
+          "id": "f06-14e-check-2",
+          "run": "node g1-runtime/scripts/check-remote.mjs",
+          "timeout": 900,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-06c-pilot",
+      "status": "done",
+      "title": "Establish genuine five-path quiescence vector restoration pilot",
+      "depends_on": [
+        "f06-06b"
+      ],
+      "covers": [
+        "AF-13.16",
+        "AF-13.18",
+        "R-011",
+        "R-018",
+        "UX-07.08"
+      ],
+      "checks": [
+        {
+          "id": "f06-06c-pilot-check-1",
+          "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/quiescence-snapshot/settlement/stopped-original-stop-run/wrong-boot A16/quiescence-snapshot/settlement/stopped-original-stop-task/wrong-boot A16/quiescence-snapshot/settlement/lease-expired-original/wrong-boot A16/quiescence-snapshot/settlement/effect-expired-original/wrong-boot A16/quiescence-snapshot/settlement/stop-and-both-expiries/wrong-boot",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Strict current source/test build; all five existing exact pilot leaves,18 independently owned actual negative/fresh-restored-successor journeys including all14 draft schema fields distributed explicitly; actual process/stream/raw/census/cleanup and no skip/TODO. Pilot only; parent full1425 inventory and480s gate unchanged.",
+          "stage": "security"
+        }
+      ]
+    },
+    {
+      "id": "f06-test-design-profile",
+      "status": "pending",
+      "title": "Measure unchanged local settlement pilot concurrency for test design",
+      "depends_on": [
+        "f06-06c-pilot"
+      ],
+      "covers": [
+        "R-003",
+        "R-018"
+      ],
+      "checks": [
+        {
+          "id": "f06-test-design-profile-check-1",
+          "run": "node docs/loop/agent-fabric-g1-f06-runtime/test-design-turn38/profile.mjs",
+          "timeout": 480,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Docker-free design-only measured current-pilot concurrency. Fail closed on failed actual dispatch, resource/deadline/identity/raw/census/cleanup uncertainty; no fitting complete-command or product acceptance assertion.",
+          "stage": "performance"
+        }
+      ]
+    },
+    {
+      "id": "f06-test-design-census",
+      "status": "done",
+      "title": "Resolve process residue after guarded concurrency specimen cancellation",
+      "depends_on": [
+        "f06-06c-pilot"
+      ],
+      "covers": [
+        "R-016"
+      ],
+      "checks": [
+        {
+          "id": "f06-test-design-census-check-1",
+          "run": "node docs/loop/agent-fabric-g1-f06-runtime/test-design-turn38/recover-owned.mjs",
+          "timeout": 60,
+          "cwd": ".",
+          "expect_exit": 0,
+          "description": "Fresh actual OS census and nonce/birth-proven individual owned-process recovery only; preserve all failed evidence and fixture dirs; fail if any uncertain residue.",
+          "stage": "integration"
+        }
+      ]
+    },
+    {
+      "id": "f06-test-design-cancel",
+      "status": "done",
+      "title": "Design diagnostic: reproduce birth-integrity cancellation gap and fresh owned recovery",
+      "depends_on": [],
+      "covers": [],
+      "checks": [
+        {
+          "id": "f06-design-cancellation-counterexample",
+          "argv": [
+            "node",
+            "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs"
+          ],
+          "timeout": 60,
+          "cwd": ".",
+          "expect_exit": 0,
+          "stage": "integration"
+        }
+      ]
+    }
+  ]
+}

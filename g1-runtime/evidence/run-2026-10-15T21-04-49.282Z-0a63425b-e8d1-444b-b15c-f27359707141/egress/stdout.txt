@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: A11/full
+ok 1 - A11/full
+  ---
+  duration_ms: 779.105875
+  type: 'test'
+  ...
+# Subtest: E01/full
+not ok 2 - E01/full
+  ---
+  duration_ms: 467.628083
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RHQKgJ/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"status":403,"body":{"code":"REQUIRED_CAPABILITY_UNSUPPORTED","preservedWork":true,"cost":{"status":"unknown"},"resolver":"task-requester","replayAllowed":false}}
+    
+    403 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 403
+  operator: 'strictEqual'
+  stack: |-
+    Object.issue (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RHQKgJ/g1-runtime/tests/helpers/egress-fixture.js:124:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RHQKgJ/g1-runtime/tests/helpers/egress-cases.js:140:31
+    async withFixture (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RHQKgJ/g1-runtime/tests/helpers/egress-cases.js:41:24)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RHQKgJ/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: E02/full
+ok 3 - E02/full
+  ---
+  duration_ms: 1854.25525
+  type: 'test'
+  ...
+# Subtest: E03/full
+ok 4 - E03/full
+  ---
+  duration_ms: 1149.666791
+  type: 'test'
+  ...
+# Subtest: E04/full
+ok 5 - E04/full
+  ---
+  duration_ms: 846.227958
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5214.859667

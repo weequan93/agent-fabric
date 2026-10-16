@@ -1,18 +1,23 @@
 # Loop · agent-fabric: G1-F05 storage
 
-**RUNNING** — Turn 339 finished (ok).
+**PAUSED** — Pause requested by human (via Claude); the runner stops after the current step.
 
-- Goal `agent-fabric-g1-f05-storage` · kind **develop** · updated 2026-10-14T14:14:05+00:00
-- Next: **wait_job** (controller) — Waiting for check job job-4796beec7d (acceptance.g1-storage-behavior), started 2026-10-14T13:52:09+00:00.
-- Runner: running · pid 32446 · adapter codex
-- Turns 339 · agent time 4829.0 min · reported cost $0.00 (partial: some turns reported no cost)
+- Goal `agent-fabric-g1-f05-storage` · kind **develop** · updated 2026-10-15T16:17:36+00:00
+- Next: **paused** (none) — Paused by an operator. Resume with `loop resume`.
+- Runner: exited · pid 34259 · adapter codex
+- Turns 390 · agent time 5061.8 min · reported cost $0.00 (partial: some turns reported no cost)
 
 ## Working on
 
-- Controller check job `job-4796beec7d` (1 checks) running 22 min
-- `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs · checks 1/2 · 10 recent turns · last (turn 339): Fixed H02’s registry lookup crash without changing assertions. The tester independently reviewed the correction.
+- `f05-14-nonpg-census-repair` Require strict container census at integration admission with direct harness ass · checks 1/2 · 1 recent turns · last (turn 389): Implemented the four-file census repair and added assertions within existing test leaves. Syntax and TypeScript diagnostics pass; protected inputs remain unchanged.
 
-Full controller acceptance is running as `job-4796beec7d`. F05 remains unaccepted pend
+Controller regressions await the r
+- `f05-14-ack-publication-repair` Publish the execution-gate probe acknowledgement atomically · checks 0/2 · 6 recent turns · waits for f05-14-nonpg-census-repair · last (turn 384): Both regressions failed before build/tests because the observational census requires unavailable Docker for non-PG checks.
+
+The acknowledgement repair remains unchanged. Submitted a bounded source cor
+- `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs · checks 1/2 · 22 recent turns · waits for f05-14-ack-publication-repair · last (turn 373): Delivery passed all 37 tests. The harness job was lost, but its logs revealed an acknowledgement-file race before interruption.
+
+Registered a bounded repair and submitted it for independent controller
 
 ## Pipeline
 
@@ -23,11 +28,11 @@ Full controller acceptance is running as `job-4796beec7d`. F05 remains unaccepte
 - requirements_review: pass
 - solution: docs/loop/agent-fabric-g1-f05-storage/solution.md
 - test_design: docs/loop/agent-fabric-g1-f05-storage/test-plan.md
-- plan: 81 tasks · 0 uncovered · final
+- plan: 85 tasks · 0 uncovered · final
 - resources: docs/loop/agent-fabric-g1-f05-storage/readiness.md
-- plan_review: pass
-- develop: 73/81 tasks
-- test: integration:fail, regression:pass, regression:pass, regression:pass
+- plan_review: pass (round 4)
+- develop: 75/85 tasks
+- test: integration:pass, regression:pass, regression:pass, regression:pass
 - reviews: security:-, code:-, performance-review:-
 - final-acceptance: pending
 - product-acceptance: pending
@@ -42,7 +47,7 @@ Ledger requirements in scope (docs/planning/g1-remaining-ledger.csv):
 
 Create g1-storage/ with a build and g1-storage/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f05-plan.md and docs/evidence/g1-f05-acceptance.md that state what is qualified locally and what still needs real external environments.
 
-## Tasks (73/81 done)
+## Tasks (75/85 done)
 
 - ● `f05-01` Freeze executable contracts, owner composition and independent build · architect
 - ● `f05-02` Install scoped PG authority, authenticated fixture and current control ledger ← f05-01 · backend
@@ -105,7 +110,7 @@ Create g1-storage/ with a build and g1-storage/scripts/check.mjs that strictly b
 - ● `f05-11-atomic-disconnect` Repair owned atomic disconnection with mandatory repeated phase proof ← f05-11-atomic, f05-11-knowledge, f05-11-lifecycle-fix · tester
 - – `f05-11-suite-execution` Remove obsolete per-file timeout and prove complete lifecycle schedule ← f05-11-races, f05-10, f05-11-full-predecessors · tester
 - ○ `f05-15-schedule` Prove complete current aggregate workload before terminal delivery ← f05-14, f05-15-evidence · tester
-- ◐ `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs ← f05-10, f05-11, f05-12, f05-13, f05-15-evidence, f05-14-cipher, f05-14-copies, f05-14-control-scan, f05-14-postscan-profile, f05-14-direct-cpu-profile, f05-14-epoch-metadata, f05-14-owned-copy-design, f05-14-owned-copy-repair · 1×tester
+- ◐ `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs ← f05-10, f05-11, f05-12, f05-13, f05-15-evidence, f05-14-cipher, f05-14-copies, f05-14-control-scan, f05-14-postscan-profile, f05-14-direct-cpu-profile, f05-14-epoch-metadata, f05-14-owned-copy-design, f05-14-owned-copy-repair, f05-14-tap-reader-repair, f05-14-backup-schedules-repair, f05-14-ack-publication-repair · 1×tester — last checks failed: f05-14-harness.full-harness-prerequisite
 - ● `f05-11-measurement-drain` Repair fatal-path measurement output and prove complete hostile regression ← f05-11-races, f05-10 · tester
 - – `f05-11-full-predecessors` Repair complete S-L/S-V predecessor isolation and exact result admission ← f05-11-races, f05-10, f05-11-measurement-drain, f05-11-full-receipt-transport · tester — last checks failed: f05-11-full-predecessors.complete-lifecycle-isolation-admission, f05-11-full-predecessors.complete-volume-isolation-admission
 - – `f05-11-full-receipt-transport` Repair native full-registration receipt framing and real serializer controls ← f05-11-measurement-drain, f05-11-races, f05-10, f05-11-receipt-boundaries, f05-11-lock-observation-investigation, f05-11-maintenance-failure-capture · tester — last checks failed: f05-11-full-receipt-transport.complete-lifecycle-native-receipts
@@ -125,14 +130,14 @@ Create g1-storage/ with a build and g1-storage/scripts/check.mjs that strictly b
 - ● `f05-14-epoch-metadata` Reduce fresh epoch-directory metadata scheduling with unchanged authority ← f05-14-direct-cpu-profile, f05-14-control-scan · 1×tester
 - ● `f05-14-owned-copy-design` Prescribe direct H02 owned-copy execution and immutable D origin handling ← f05-14-epoch-metadata, f05-14-copies, f05-15-evidence · 1×tester
 - ● `f05-14-owned-copy-repair` Repair direct H02 owned-copy execution and immutable D origins ← f05-14-owned-copy-design · 1×tester
-
-## Checks running now
-
-- `job-4796beec7d` acceptance.g1-storage-behavior · started 2026-10-14T13:52:09+00:00 · pid 36733
+- ● `f05-14-tap-reader-repair` Repair direct evidence reader for actual native TAP folded nested report ← f05-14-owned-copy-repair · 1×tester
+- ● `f05-14-backup-schedules-repair` Repair backup expiry and activation schedules, including the R09 retention leaf ← f05-14-tap-reader-repair · 1×tester
+- ◐ `f05-14-ack-publication-repair` Publish the execution-gate probe acknowledgement atomically ← f05-14-backup-schedules-repair, f05-14-nonpg-census-repair · 1×tester — last checks failed: f05-14-ack-publication-repair.complete-contracts, f05-14-ack-publication-repair.complete-harness-build
+- ◐ `f05-14-nonpg-census-repair` Require strict container census at integration admission with direct harness assertions ← f05-14-backup-schedules-repair · 1×tester
 
 ## Acceptance checks
 
-- ✗ `g1-storage-behavior` fail · 2026-10-14T13:39:31+00:00 — `node g1-storage/scripts/check.mjs`
+- ✓ `g1-storage-behavior` pass · 2026-10-15T04:51:17+00:00 — `node g1-storage/scripts/check.mjs`
 - ✓ `identity-behavior` pass · 2026-10-07T21:07:26+00:00 — `node g1-identity/scripts/check.mjs`
 - ✓ `foundation-behavior` pass · 2026-10-07T21:07:29+00:00 — `node g1-foundations/scripts/check.mjs`
 - ✓ `retained-baselines` pass · 2026-10-09T08:42:02+00:00 — `node g1-foundations/scripts/check-retained.mjs`
@@ -147,45 +152,50 @@ Create g1-storage/ with a build and g1-storage/scripts/check.mjs that strictly b
 
 ## Findings
 
-- `f-da55f95e28` [evidence/recorded] Turn322 final joined direct inverse migration controller checks PASS: strict-build job-14b79dc6f2 6170ms/full originalstdout1148 sha256b950ecbc...079dd; unchangedmeasurement120s job-f0060db7d8 33475ms/stdout4625471 sha2563ba74858...6cdc3; bothstderr0. Shippedreader verifies complete originals/actual
-- `f-4d0678d098` [evidence/recorded] Turn324 after final tester join, unchanged serialized controller checks PASS exit0/completed: strict-build job-30ccdf1e93 7497ms stdout1148 sha25699c57997…04c11; measurement120s job-9b2ddff1c8 33899ms stdout4620844 fa62d5c8…76d0e; existing native-proof120s job-f0444d685e 87598ms stdout17202968 43bb0
-- `f-be69ca93c6` [evidence/recorded] Turn326 local source-equivalent FIFO prototype completes6 alternating complete HC/D original/private comparisons plus8 unchanged H01-hooked full pair scans. Original/private535+14935 entries,12928files418689614bytes exact; every hook16TOTAL allocations/backings,fresh disjoint,26474reads25856descript
-- `f-b2f21f150e` [root_cause/recorded] Turn328 terminal job-54d7e5d2be is six PASS/one H-build FAIL443134ms, not timeout. Fresh-build92.372s exact input guard correctly refuses seq4970 turn.finished327 event (events1997399→1997781bytes exact old/new hashes) during copied evidence reading; future active copy checks must remain within turn
-- `f-574b79e7cc` [evidence/recorded] Turn329 same-turn job-fceb1f3adb terminal ALL7 PASS: strict5857ms/H-build1651629/H-cleanup87656/D-evidence7930/D-operations96884/E196587/measurement35852. Complete original stdout+stderr read/hashed; all stderr0. Hbuild19/cleanup24/evidence9/operations28/E32 tests, every fail/cancelled/skipped/TODO0
-- `f-955d530291` [evidence/recorded] Turn330 follows human5026 product-first directive. Original acceptance.g1-storage-behavior job-9d30b47c5e terminal TIMEOUT1800152ms/exit-15/cleanupterminated, actual unchanged1800s definition, fingerprintgit:5127ad245a5419cb6cd36365. Complete original stdout1526223B/c7a08d3d and stderr0 read/hashed.
-- `f-83945ea212` [root_cause/recorded] Turn334 actual original product check job-247fb30362 FAIL exit1 duration583478ms, not3600s timeout. Sole underlying assertion atomic-disconnect.mjs67: setup-close 32551.711667ms exceeds 30000ms. All 5 child suites pass 284 tests; AD 62 tests/50 real phases/10 hostile probes pass, maximum 100 phase w
-- `f-75ed9b2d09` [evidence/recorded] Turn334 after approved exact AD correction, complete current product rerun job-e22a9f2e36 TIMEOUT3600136ms exit-15, cleanup=terminated, fingerprint3396ad7d. Candidate1177/e4331848; fresh build and9outer suites947tests including273backup/restore PASS, zero fail/cancel/skip/TODO;34observations sixzero
-- `f-32c83073ff` [evidence/recorded] Turn335 complete original job-df07c43458 TIMEOUT7200095ms exit-15 cleanup=terminated fingerprint91899077; stdout4953152/6a30a4743d223a0be37b76b1904a4aece7623ca0b82b6c0017f5385883fdf6f2, stderr0 retained. Original freshbuild6831.107ms and H02copybuild12841.519ms each execute9suites947tests incl273bac
-- `f-ceeed71b42` [root_cause/confirmed] Turn339 independently confirmed actual job-e179294710 FAIL1/7014842ms sole genuine leaf H02/good-full-run TypeError at harness.test.ts55 after actual private fixed10run PASS984 and successful copy removal. Manifest.suites lacks atomic-disconnect while actual runner uses registry.executionSuites. App
+- `f-7a64627fd5` [evidence/recorded] Turn351 guide-first tester exact ownership NONE independently read full original job-4445694ede: stdout1806716bytes SHA25632d4f2093a5aa1be6bdffce2c8ecddb52628c5deaa6ecc0eb899094ef9ade42a,stderr2177bytes SHA2564295cd2cff0010a6efb62513735279a189e1dfc77b1e652e0dbd607d0560e516. First8public674/674; back
+- `f-5e7dcc15df` [evidence/recorded] Turn355 complete original cleanup job-4be7b07573 PASS0/88429ms under existing2700;build6326.3155ms,outer24/24=1parent23leaves,0fail/cancel/skip/TODO.26 captured sync pairs incl3 multiline exact bytes/digests;3missing-fixture faults eachfreshbuild/exact6guards/status1/no report;2async complete.10copy
+- `f-ad49ca2f02` [root_cause/recorded] Turn356 original full72299576ff completed fail1/7701624ms(no timeout),freshbuild6409.070875ms;ordinary9suite947/947,H42/44=one H02/good-full-run leaf+parent failure,H03all14/H04all8 pass. Copied8suite674/674 before missing emitted g1-local/src/client.js during backup import;copied/outerD unreached. 
+- `f-d08023a01a` [root_cause/recorded] F05-T358-TAP-READER: Original acceptance job-7b2a813852 PASS exit0/7959471ms, actual outer1028/copied984. Lead and guide-first tester independently reproduce shipped delivery-evidence.mjs records() ignoring actual copied harness-prerequisite report: raw stdout lines19117-19121 TAP-folded/escaped; ex
+- `f-ac23b283e0` [root_cause/recorded] Turn362 serialized component job-e0d45689d6 PASS0/13286ms,9tests/zero fail-cancelled-skipped-todo,fresh build,2581 preserved. Exact original raw job-ad90cadf0e FAIL1/226ms: reader now reaches outer assertReports but existing harness count expected43 versus actual44 at delivery-evidence.mjs:485. Raw 
+- `f-10a77945da` [root_cause/recorded] Turn362 supplemental H03 repair independently reviewed and component job-991ef4f499 PASS0/8816ms. Next exact original raw job-398b006673 FAIL1/223ms at segment: four legitimate same-depth harness-prerequisite command starts exist across the actual hostile H probes plus genuine copied run; old consum
+- `f-13f12dc9fc` [root_cause/recorded] Turn364 complete original job-f2c552a504: delivery PASS0/127564ms, harness FAIL1/5188327ms, not timeout. Raw two copied backup leaf defects: BACKUP/expired-command-before-open-after-fsync-and-barrier-wait EXPIRED_COMMAND during initial capture of +700ms command (backup-confirmation-component.ts131),
+- `f-b836af27c5` [root_cause/recorded] Turn373 original taskdone job-1f27292043 controller LOST/check process exited without a result; delivery PASS0/129516ms (37/37, zero bad counters), harness has no terminal result. Complete H raw1935135 bytes SHA b83b4d562cec68ad57947c2d9b8bc92b42691ae60aa101d0bfaa018866dbb1ab already contains actual
+- `f-15baf33bae` [evidence/recorded] Turn377 pre-check actual state: loop_status working_on.job=null; direct ps -axo pid=,ppid=,lstart=,command= succeeds (838 rows, no g1-storage/scripts, fabric-storage-harness/private driver or storage-build contracts/harness matches). Python subprocess(ps) separately fails EPERM; direct tool ps obser
+- `f-44a5490f9d` [evidence/confirmed] Turn379 job-1f97ff347d FINISHED both FAIL1 before build/tests: contracts7452ms/harness-build625ms. Full original logs read/hash: identical stdout1523 SHAa59aeb4e47e17202b3d41d31dcba201b3b60ae8a81073cb2d8754f808229fdca; stderr1022 SHAb949111541cfadf5accdbd77f388c323023d30472d8ae896229d39e7ee01066e an
 
 ## Recent turns
 
-- #335 work · codex/gpt-6.1-sol @xhigh · ok · 537s · progress — Started controller run `job-e179294710` with the human-approved 14400-second hang guard.
+- #386 plan · codex/gpt-6.1-sol @high · ok · 291s · progress — Revised and submitted the plan for independent review, addressing both findings:
 
-The previous run passed 947 tests in both the original and copied suites, but the full harness remained incomp
-- #336 work · codex/gpt-6.1-sol @xhigh · exit 1 · 15s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #337 work · codex/gpt-6.1-sol @xhigh · exit 1 · 3s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #338 work · codex/gpt-6.1-sol @xhigh · exit 1 · 4s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #339 work · codex/gpt-6.1-sol @xhigh · ok · 570s · progress — Fixed H02’s registry lookup crash without changing assertions. The tester independently reviewed the correction.
+- Strict Docker census at integration-suite admission.
+- Direct assertions added to the planned repair scope.
+- Existi
+- #387 resources · codex/gpt-6.1-sol @high · ok · 267s · progress — Updated [readiness.md](docs/loop/agent-fabric-g1-f05-storage/readiness.md) and completed the resources stage.
 
-Full controller acceptance is running as `job-4796beec7d`. F05 remains unaccepted pend
+Toolchain and preservation probes passed. Docker, controller process checks and owned-fix
+- #388 review · codex/gpt-6.1-sol @high · ok · 194s · progress — Recorded `plan_review: pass`. PLAN385-01/02 are resolved in the revised plan; all 96 requirements have task coverage, with no dependency gaps or cycles.
+
+The bounded repair may proceed. Controller ver
+- #389 work · codex/gpt-6.1-sol @high · ok · 564s · progress — Implemented the four-file census repair and added assertions within existing test leaves. Syntax and TypeScript diagnostics pass; protected inputs remain unchanged.
+
+Controller regressions await the r
+- #390 work · interrupted · 0s · no progress — Runner stopped during this turn; the workspace was kept as-is.
 
 ## Recent notes
 
-- 2026-10-14T11:42:34+00:00 [handoff] Turn335 staffed tester/root/tester read role guide FIRST; exact fileownershipNONE, returned independent complete originalstream/behavior/cleanup/14400configurationreview. Explicitly SETTLED with no edits/checks/builds/fixtures/resources/controllerwork in flight. Lead reviews report/currentplan/evide
-- 2026-10-14T13:42:51+00:00 [decision] Unblocked: Continue approved from Telegram
-- 2026-10-14T13:47:29+00:00 [decision] Turn339 product-first job-e179294710 terminal FAIL1/7014842ms within approved14400s, not timeout. Actual private H02 owned-copy fixed ten workload reports success/exit0/complete true, then sole genuine leaf fails harness.test.ts:55 TypeError because :53 imports manifest.suites, lacking atomic-discon
-- 2026-10-14T13:52:01+00:00 [root_cause] Turn339 independently confirmed actual job-e179294710 FAIL1/7014842ms sole genuine leaf H02/good-full-run TypeError at harness.test.ts55 after actual private fixed10run PASS984 and successful copy removal. Manifest.suites lacks atomic-disconnect while actual runner uses registry.executionSuites. App
-- 2026-10-14T13:52:01+00:00 [handoff] Turn339 prescribed guide-first tester /root/tester owns no files, independently reviewed complete original terminal result and direct single-line H02 lookup repair, confirms remaining private command frames assertions and explicitly SETTLED with no edits/builds/checks/fixtures/resources/cleanup/cont
-- 2026-10-14T14:14:05+00:00 [decision] 人工决定（加快修复循环）：完整验收 acceptance.g1-storage-behavior 约 2 小时，因为 harness 会在复制的 runner 里把 10 个产品套件再跑一遍。以后修复时先用快速的组件/切片检查迭代（如 check-component.mjs harness、check-slice.mjs <失败的套件>，几分钟），确认通过后才跑一次完整验收作最终确认。当前 job-4796beec7d 照常等结果；若失败，只针对失败项用快速检查迭代。
+- 2026-10-15T15:33:53+00:00 [handoff] Turn389 END: direct four-file repair implemented, tester JOINED/frozen and lead source-reviewed. Candidate sha256:cd75f45003f3054773b92353f16cb6e438ca7b00f07bb10baf88c2fb855ccb27/1177files. Local syntax2, read-only tsc --noEmit --incremental false, whitespace, existing2581 preservation and64cases/42
+- 2026-10-15T16:00:26+00:00 [handoff] Suggestion scouting only. Loop next/status shows active G1-F05 task f05-14-nonpg-census-repair at 75/85 tasks; Turn389 source repair is present but controller regressions await fresh process/no-overlap, offline dependency/build and owned-fixture safety gates. Status reports controller runner lost (h
+- 2026-10-15T16:03:14+00:00 [progress] Continued in chat from joined Turn389 repair. Fresh permitted outside-sandbox read-only host census now succeeds: 701 rows/162066bytes, only matching project process is current Loop MCP pid15524; no project check/native runner overlap observed. Docker labelled census still actual exit1, unavailable/
+- 2026-10-15T16:06:12+00:00 [decision] Tester caught nested-C03 build would interfere with a prepared positive copy's enclosing installation window before execution. Approved narrower move into existing H02/removed-suite's first existing unprepared UUID-marked HarnessCopy, importing its actual runner in-process and forwarding real ps/bui
+- 2026-10-15T16:07:14+00:00 [handoff] Tester seat JOINED/frozen after source plan and lead review. Delivered only53 additional lines in existing H02/removed-suite first unprepared UUID-copy schedule; C03 restored exactly to Turn389. Actual copied runner/real ps/strict build with Docker-only faults asserts true integration lifetime start
+- 2026-10-15T16:17:36+00:00 [decision] 人工决定 2026-10-16：F05 暂缓——剩下的检查全部依赖 Docker（PostgreSQL fixture），而 Docker 会让这台 Mac 死机。先做 F06 的文档阶段和 F07。Docker 安全后（Docker 磁盘镜像移到内置 SSD 或改为内置盘启动），再恢复 F05。
 
 ## Goal queue
 
 - ✓ 1. `agent-fabric-g1-f03-recovery` agent-fabric: G1-F03 recovery — done
 - ✓ 2. `agent-fabric-g1-f04-model-finops` agent-fabric: G1-F04 model — done
-- ▶ 3. `agent-fabric-g1-f05-storage` agent-fabric: G1-F05 storage — running · approved
+- ▶ 3. `agent-fabric-g1-f05-storage` agent-fabric: G1-F05 storage — paused · approved
 - ○ 4. `agent-fabric-g1-f06-runtime` agent-fabric: G1-F06 runtime — ready · approved
-- ○ 5. `agent-fabric-g1-f07-clients` agent-fabric: G1-F07 clients — ready · approved
 
 The runner continues with the next approved goal after this one is done.
 

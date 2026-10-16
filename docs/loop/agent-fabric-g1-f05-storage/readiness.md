@@ -1,4 +1,722 @@
-# G1-F05 readiness — Turn339 H02 registry repair
+# G1-F05 readiness — Turn390 verification resumed
+
+Fresh permitted host process observation succeeds with no project test overlap.
+The existing strict offline build also passes; missing store did not require a
+fetch or dependency change. Docker remains unavailable/unknown. Historical six
+cache fixtures stay untouched and unqualified. A tester is adding actual-runner
+post-admission loss assertions in existing H02/removed-suite before the two serialized
+controller regressions. See [Turn390 report](develop-turn390/report.md).
+No behavioral pass or F05 acceptance is claimed. This supersedes the previous
+missing-census-route and offline-build readiness statements below.
+
+## Turn389 development update
+
+Independent plan review passed round4. The four-file census repair and existing
+leaf assertions are implemented and source-reviewed; the tester has joined.
+Syntax/read-only TypeScript diagnostics pass. No behavioral check is dispatched:
+fresh controller process/no-overlap, strict offline build/dependency and exact
+owned-fixture safety gates remain pending. Sandbox process census is EPERM;
+actual Docker census exits1/socket ENOENT. Six interrupted fixtures remain
+untouched. No current absence, cleanup, daemon/PG or acceptance claim follows.
+See [Turn389 report](develop-turn389/report.md). The detailed resource limits
+below remain in force; its plan-review-pending status is superseded here.
+
+# Turn387 resources revision
+
+Checked 2026-10-15 UTC, resources stage after **PLAN385-01/02** and the
+[Turn386 plan revision](plan-turn386.md). **Ready for independent plan review;
+source development follows a pass. Test dispatch remains gated below.**
+F05 is not accepted: 75/85 tasks done, four dropped, six unfinished live tasks.
+This current report supersedes all readiness, ownership, timeout and access
+claims in the historical sections below. No production/test edit, build,
+behavior test, controller check, service operation, environment change or
+fixture cleanup was performed in this resource turn.
+
+Read the brief, solution, test-plan environment/fixture and harness/evidence
+obligations, revised plan and live task/check/requirement/policy objects.
+Consulted the original roadmap, foundations sequence, AF-07/UX-01 ledger,
+master storage/recall/lifecycle/recovery/adversarial requirements and F02
+evidence. Inspected original build, measurement, runner, fixture and existing
+contract/Hbuild consumers, including the actual private cancellation/workload/
+stream schedules. No earlier author summary substitutes for independent review.
+
+## Review findings and resource boundary
+
+**PLAN385-01:** harness-build really launches the private fixed-ten runner and
+holds its actual contracts process before authority. The earlier blanket claim
+that it has no PG-capable workload was incorrect. The planned command census
+always requires successful actual process observation and attempts Docker.
+Before integration admission, Docker failure must be explicitly unknown and
+unqualified, with real status/signal/error/output diagnostics. It cannot stand
+for successful empty container identities or proof of absence. Preserve exact
+bytes, identities and digests on success, including genuine empty success.
+
+Before **each** registered integration suite's admitted-list/dispatch publication,
+fixture import/start or work, require a fresh successful strict process and
+Docker census at the existing runner loop, across component, slice, aggregate
+and private fixed-ten entry paths. Derive this from actual integration metadata.
+Contracts may precede that boundary in full/private workloads. After integration
+admission, suite-return and command-final census remain strict, including Docker
+loss; legacy/structural callers retain strict defaults. No selector, shortened
+workload, alternate success report or public environment bypass is introduced.
+An uncancelled full workload still needs real Docker before its first PG suite.
+
+**PLAN385-02:** one tester owns only the existing
+`scripts/execution-measurement.mjs`, `scripts/runner.mjs`,
+`tests/helpers/register-contract-tests.ts` and
+`tests/helpers/register-harness-build-tests.ts` within `g1-storage/`.
+Minimal direct assertions stay inside current leaves, preserving all existing
+assertions, registry identities/counts and workloads. They must exercise actual
+measurement start/return, explicit unknown diagnostics versus empty success,
+exact success bytes/IDs/digests, fatal missing/failed/empty process census,
+strict legacy Docker refusal, pre-integration refusal in PG/component/full/
+private paths and strict post-admission return/final failure. Existing held
+contracts cancellation/workload/stream schedules must decode observations and
+retain real native dispatch, normal suite/pipe settlement, no later admission
+and independently proved owned cleanup. Isolated test-local fault injection
+proves branches only; it does not qualify Docker/PG. No new probe module,
+wrapper, receipt, history mapping or verification layer is part of the repair.
+
+## Fresh bounded resource probes
+
+All command probes used Node `spawnSync` with a 5000ms timeout. Results below
+are availability observations, not controller behavioral acceptance. Nothing
+was installed, pulled, started, mounted, killed or deleted.
+
+| Resource / purpose | Probe and current result | Owner / next gate |
+| --- | --- | --- |
+| Node / pnpm / TypeScript / Python / Git | **Ready:** `node --version`, `pnpm --version`, `g1-storage/node_modules/.bin/tsc --version`, `python3 --version`, `git --version` all exit0: v22.22.3 / 10.18.0 / 5.9.3 / 3.13.5 / 2.51.0. | Build lead; preserve pins. No new runtime or account needed. |
+| Accepted inputs and installed packages | **Ready to read:** existing `assertBaseline()` verifies all2581 accepted inputs unchanged. `assertDependencyMetadata()` passes18 packages/17 notices; installed `.pnpm/lock.yaml` equals wanted lock byte-for-byte. | Existing preservation check only; no history reconstruction. Security assessment remains unknown; missing installed pg-types/pgpass notices stay declared. |
+| Offline package store / fresh strict build | **Missing in this sandbox; outside-controller availability unconfirmed:** `lstatSync('/private/tmp/agent-fabric-pnpm-store')` returns ENOENT. Installed package graph/compiler is readable. No install or build attempted. | Build lead confirms the existing offline/frozen/ignore-scripts build through controller before regressions. Restore project-owned local dependencies if necessary under standing approval; do not infer a successful offline install or contact paid resources. |
+| Mandatory process census / no overlap | **Missing through this sandbox route:** exact `ps -axo pid=,ppid=,lstart=,comm=` yields status:null, error.code EPERM, `spawnSync ps EPERM`, no stdout. Controller status reports job:null, which is not host absence proof. | Lead obtains fresh real controller-side process/owner/descendant and no-overlap observations before dispatch or cleanup. Never drop mandatory ps or change security settings. Latest controller failure's generic census message cannot identify whether its ps failed. |
+| Docker and actual PG16.12 fixture | **Missing connectivity:** Docker client29.1.0 is installed; exact labelled census below exits1 with socket ENOENT. Container state and cached image availability are unknown. No PG service started. | Fixture lead owns readiness before any integration admission/full run. Missing Docker may be observed explicitly only by repaired pre-integration code. Existing cached-image/pull=never, non-owner PG/current identity and ownership/LIFO guards remain mandatory. No Docker app or environment change here. |
+| Disk / CPU / memory | **Disk ready:** `df -Pk . /private/tmp` exits0,1189726804KiB available,39% used. **CPU/RAM unconfirmed:** `sysctl -n hw.logicalcpu hw.memsize` exits1, `sysctl: sysctl fmt -1 1024 1: Operation not permitted`. Prior daemon capacity observations are historical. | Serialized-check lead; no reservation, SLA, performance target or added concurrency implied. Reconfirm actual daemon capacity before PG workloads. |
+| Interrupted fixture ownership / cleanup | **Present; cleanup unqualified:** six nonsymlink harness directories listed below, with owner files. Sandbox `/private/tmp` name census shows no storage-prefixed roots; this does not prove whole-host/root/container absence. | Lead must verify original marker/root/instance identities, current owner/descendants and required LIFO settlement through controller before affected checks/removal. No directory was removed or adopted, no marker rewritten. |
+| Owned filesystem, crypto, IPC, loopback and synthetic identities | **Existing implementation available; fresh operation unqualified:** Node built-ins, installed F01–F04/native owners, fixture/build/copy and local IdP code are readable. No new dependency, real key or account is required by the four-file repair. No listener/child/fsync fixture was started this turn. | Tester uses existing test-local facilities and owned temporary data; lead requires actual async native/pipe/owned-root settlement in complete checks. Reconfirm fixture resources at controller dispatch, not with invented positives. |
+| Electron / browser / mobile / CI | **Established controller route, no fresh qualification:** F02 evidence records outside-sandbox retained Electron/Android success; unchanged entry points exist. No other app, device or shared CI operated. | Terminal tester runs the unchanged regressions via loop_check outside sandbox; physical clients/signing/shared environments remain external gates. |
+| APIs / cloud / credentials / external accounts | **Needs approved real environment for external qualification; not needed for this local repair.** No paid/model call, cloud resource, real secret, shared deployment or message used. | X01–X09 owners below; ask approval only for an actual reserved action. No human decision is pending for this resources assignment. |
+
+Exact Docker probe:
+`docker ps -a --filter label=agent-fabric.storage-fixture-owner --no-trunc --format '{{.ID}}'`.
+Status1, signal:null, no spawn error, stdout empty, stderr:
+
+```text
+failed to connect to the docker API at unix:///Users/super/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/super/.docker/run/docker.sock: connect: no such file or directory
+```
+
+Do not describe that socket failure as permission denial or successful empty
+census. The six observed cache directories are `fabric-storage-harness-8l2hed`,
+`fabric-storage-harness-GZQItZ`, `fabric-storage-harness-UIWI4G`,
+`fabric-storage-harness-jdZ7J7`, `fabric-storage-harness-jwe8MB` and
+`fabric-storage-harness-wGy7di`; directory presence/owner filename alone is
+insufficient removal authority.
+
+## Checks, teams, access and progression
+
+The current source still demands Docker at command start. Original
+[job-55901f3dee](../../../.loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-55901f3dee/)
+finished both regressions FAIL1 before build/tests (contracts1879ms,
+Hbuild626ms), at measurement line13 / runner line124. Complete four original
+streams were read and rehashed; none changed. These failures exercise no ack
+assertion and establish no passing repair. No unchanged retry was launched.
+
+After independent plan review passes, implement/review the four-file repair,
+settle the current candidate and necessary F05-only configuration updates,
+then satisfy fresh controller process/no-overlap, dependency/build and exact
+owned-fixture safety gates. Run the existing two checks serialized:
+
+- `node g1-storage/scripts/check-slice.mjs contracts` —900s; all12 original
+  tests/C01–C03 variants plus direct current-leaf assertions.
+- `node g1-storage/scripts/check-component.mjs harness-build` —2700s; all19
+  original tests/18 leaves and supplemental assertions, including the unchanged
+  real nested cancellation/workload/stream schedules and added direct assertions.
+
+Require zero failed/cancelled/skipped/TODO, complete current strict build and
+independently proved owned cleanup. Component success does not qualify full
+H02, whole-host cleanup or F05 acceptance. The acknowledgement task still
+depends on this prerequisite. Original delivery2700s/harness14400s, downstream
+four14400s task checks, aggregate acceptance14400s and retained600/600/900s
+commands remain unchanged. Historical1800s/900s prose and obsolete per-file
+limits below are superseded; timeouts are hang guards, not optimization targets.
+
+Live audit:85 tasks =75done/4pending/2active/4dropped;81 nondropped tasks cover
+all96 requirements, no unknown cover IDs, missing dependencies or cycles.
+Every team requests at most one specialist. Goal omits agent.team_limit;
+installed controller engine.py uses default4 specialists/task. Lead plus one
+tester fits the four host slots. No agent was started here. Global max_iterations
+and max_hours are null: no remaining-turn/hour gate or budget amendment applies.
+
+The next independent reviewer retains explicit **read-only filesystem access**
+through functions.exec/exec_command in addition to Loop next/status/note/review,
+to inspect original context/stage/live-state/source/raw files. This procedural
+source-read exception changes no sandbox, security or controller setting.
+Do not edit, build/test, operate services/network, remove fixtures or start
+agents in that review; issue exactly one independent verdict and stop.
+
+X01 real provider encryption/KMS (storage/security), X02 physical/multi-host/
+whole-cluster recovery and production RPO/RTO (recovery/SRE), X03 enterprise
+retention/holds/residency/erasure (policy/security), X04 actual link/stream/cache
+revocation (delivery/security), X05 F06 runtime isolation (runtime/security),
+X06 real SSO/human judgments (identity/policy), X07 suppliers/models/quality/
+billing (model/FinOps), X08 signed physical clients (F07) and X09 G2–G5 depth
+(increment owners) all remain unqualified. Each needs its approved actual
+environment and executed evidence; local fixtures grant no whole AF-07/UX-01/
+G1/G2 acceptance. Security, aggregate, terminal, independent, final and product
+gates remain pending. The current acceptance evidence already records these
+limits and is not rewritten by this resource turn.
+
+Only this readiness document and controller notes change. Standing Oct13
+approval covers in-scope local coordination and later necessary F05-only
+re-freeze; no freeze/re-freeze occurs here. No production/test/check/task/team/
+dependency/pin/environment/protected/raw input change, approval-only action or
+manual .loop edit occurs. All resource gaps have an owner and dispatch gate;
+next is independent plan review, not implementation in this turn.
+
+---
+
+# Historical readiness notes — superseded by Turn387 above
+
+## Turn386 plan revision
+
+2026-10-15 UTC. Plan revision for **PLAN385-01/02**, pending independent review.
+F05 remains **not accepted**, 75/85 tasks done. This section supersedes older
+current-readiness claims below; historical observations remain historical.
+Read [the Turn386 repair plan](plan-turn386.md) and the live task
+`f05-14-nonpg-census-repair` directly. No source/build/test/environment action or
+new resource observation occurred this turn.
+
+The prior claim that harness-build never starts a PG-capable workload was
+incorrect. Its actual cancellation/workload/stream schedules start the private
+fixed-ten runner and hold contracts before authority. The revised repair allows
+explicit unknown/unqualified Docker observations before integration, while
+requiring a fresh strict process/container census before **each** integration
+admission/dispatch/fixture across component/slice/aggregate/private paths.
+Once integration is admitted, return/command-final census stays strict.
+Legacy census defaults stay strict; process census is always mandatory.
+
+The last observed Docker socket remains unavailable, with current container
+state unknown. No environment change is part of this plan. The prescribed
+non-PG regressions are expected to reach and settle real held contracts only
+after the source repair and direct branch assertions; no present pass is
+claimed. Uncancelled full/PG runs still need actual Docker plus original
+ownership/LIFO settlement. Six interrupted fixtures remain untouched and their
+cleanup unqualified. Fresh controller process/no-overlap, dependency and owned
+fixture safety checks are prerequisites to regression dispatch.
+
+Single tester ownership expands to the existing measurement/runner and
+register-contract-tests/register-harness-build-tests files, with minimal direct
+assertions inside current leaves. Keep every original assertion, registry,
+workload and check command; contracts900/harness-build2700, original D2700/
+H14400 and downstream timeouts unchanged. No new wrapper/proof/history layer.
+Independent review precedes implementation. Whole-host/external/final/product
+qualification remains pending. The explicit read-only reviewer source-access
+exception below also applies to this revised prerequisite; no environment,
+security or controller configuration change is authorized by this revision.
+
+## Historical Turn375 reviewer access revision
+
+2026-10-15 UTC. Resources stage, addressing **REVIEW374-01**. The bounded
+`f05-14-ack-publication-repair` can enter independent plan review, then source
+development after a pass. F05 remains **not accepted**, 75/84 tasks done.
+This section supersedes older readiness/access/status statements below. It does
+not qualify the repair or declare all full-integration resources ready.
+
+## Explicit read-only access for the next independent reviewer
+
+The next independent plan reviewer is explicitly permitted to use **read-only
+filesystem commands through `functions.exec` / `exec_command`** (or equivalent
+`cat`, `sed`, `rg`, Python reads) in addition to `loop_next`, `loop_status`,
+`loop_note` and `loop_review`. This is a specific procedural exception to the
+generic review protocol's four-Loop-tools-only wording, so the reviewer can
+fulfill the assigned independent source-level review. Keep the existing
+read-only sandbox and controller MCP mutation allowlist. Do not edit files,
+build/run tests or checks, operate services/network, delete fixtures, start
+agents or alter controller/configuration/security settings. Record exactly one
+independent `loop_review` verdict, then stop.
+
+The same explicit exception is recorded in a controller decision and handoff so
+it is visible without first opening this file. It renews Turn360's source-read
+clarification for this actual prerequisite. The controller's installed
+`prompts.py` still appends the restrictive generic wording, while the plan
+assignment requires original source reading; `adapters.py` already selects a
+read-only sandbox. No controller source, configuration or security setting is
+changed. This supplies review access, not an independent finding or pass.
+Standing Oct13 authorization covers this in-scope workflow decision.
+
+Read these **originals directly**, not a copied bundle or prior-author summary:
+
+- Context: `docs/planning/roadmap.md`, `docs/planning/g1-foundations-plan.md`,
+  `docs/planning/g1-remaining-ledger.csv` (AF-07/UX-01),
+  `docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md`
+  (ledger §§2,5,7,15–18,31; evidence/recovery §§14,27–30,32),
+  `docs/evidence/g1-f02-acceptance.md`, `g1-identity/scripts/check.mjs`.
+- Stage documents: `docs/loop/agent-fabric-g1-f05-storage/` contains
+  `product-brief.md`, `solution.md`, `test-plan.md`, this `readiness.md`, and
+  `develop-turn373/report.md`. Read `docs/planning/g1-f05-plan.md` for current
+  and historical task context, preserving the stated human supersessions.
+- Exact live requirements, tasks and checks:
+  `.loop/goals/agent-fabric-g1-f05-storage/state.json`; goal, acceptance and
+  policy: the same directory's `goal.json`. Extract full objects for
+  `f05-14-ack-publication-repair`, `f05-14-harness`, `f05-14`,
+  `f05-15-schedule`, `f05-15` and requirements R-069–R-078, especially
+  R-075/R-076. Include detail, checks, covers, dependencies, role, team and status;
+  `loop_status` summaries alone are insufficient.
+- Sole proposed edit: `g1-storage/tests/helpers/execution-gate-probe.ts`.
+  Callers: `register-contract-tests.ts` and `register-harness-build-tests.ts`
+  in the same helper directory, including the actual cancellation/workload/
+  stream schedules and line1457 normal-settlement assertion. Inspect
+  `g1-storage/scripts/{build,runner,suite-execution,registry,manifest,check-slice,check-component}.mjs`
+  and the existing tests/component registrations as needed.
+- Original immutable streams:
+  `.loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-1f27292043/`
+  contains `f05-14-harness.full-delivery-prerequisite/{stdout,stderr}.log` and
+  `f05-14-harness.full-harness-prerequisite/{stdout,stderr}.log`.
+  Read complete originals and the H acknowledgement failure at physical
+  lines1919–1936; keep TAP prefixes/order. Report/hash references remain in
+  `develop-turn373/report.md`.
+- For the protocol conflict only, read installed
+  `/Users/super/Documents/ai/loop-engineering-code/loop_engineering/{prompts,adapters}.py`
+  and role guides. These are not edit targets.
+
+All listed context/stage/live-state/helper originals were successfully read in
+this turn. Latest raw rehash matches Turn373: D stdout159175 bytes,
+`2e4e76b788da0d6d39a0f2a09f4640cd371ba57fdc06e98a70cebb903d448006`;
+H stdout1935135 bytes,
+`b83b4d562cec68ad57947c2d9b8bc92b42691ae60aa101d0bfaa018866dbb1ab`;
+both stderr0 bytes. Helper4438 bytes,
+`783a476dbe2929d362223721ee397155696306c3569320cf881177e9943a9e00`.
+No source/raw/check definition changed.
+
+## Current resources and owners
+
+Fresh bounded direct observations below establish availability only, not
+controller acceptance. No build, test, service or controller check was started.
+
+| Resource / purpose | Actual probe and status | Owner / next gate |
+| --- | --- | --- |
+| Node/pnpm/TypeScript/Python/Git | **Ready:** exact `--version` commands exit0:22.22.3/10.18.0/5.9.3/3.13.5/2.51.0. | Build lead; unchanged pins. |
+| Installed dependencies and accepted inputs | **Ready locally:** existing `assertDependencyMetadata()` passes18 packages/17 notices; installed/wanted lock bytes equal. Existing `assertBaseline()` verifies2581 accepted inputs unchanged. | Build/security lead; security assessment unknown and missing installed pg-types/pgpass notices remain declared. This is the existing preservation guard, not a new history layer. |
+| Offline store / build execution | **Not freshly confirmed through controller.** Exact `lstatSync('/private/tmp/agent-fabric-pnpm-store')` returns ENOENT in this sandbox; installed `.modules.yaml` still names its `/v10` path. Installed source dependencies are readable. This does not prove the outside-controller store is absent or that pnpm's installed-graph offline install fails. | Build lead: before repair regressions, verify the existing original strict-build through controller after overlap/fixture checks. If unavailable, restore only project-owned local dependency resources under Oct13 authorization. Do not invent a successful install or use paid/remote resources. |
+| Disk/CPU/memory | **Disk ready:** `df -Pk . /private/tmp`1220622052KiB available,37% used. Prior Docker12CPU/32GiB observations are historical; current daemon capacity unconfirmed. | Serialized-check lead; no new concurrency or performance target. Repair uses existing native child/copy workload. |
+| Process census | **Needs controller route:** exact Node `spawnSync('ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8',timeout:10000})` gives status:null, EPERM, `spawnSync ps EPERM`. | Lead must obtain fresh outside-sandbox overlap/owner-process census before dispatch/cleanup. Latest live state has no queued/running check job; that alone cannot prove native process absence. No host permission change or census bypass. |
+| Docker/PostgreSQL | **Missing current daemon connectivity:** `docker version --format '{{json .}}'` exits1; client29.1.0, server:null; exact stderr: `Cannot connect to the Docker daemon at unix:///Users/super/.docker/run/docker.sock. Is the docker daemon running?` | Fixture lead owns runtime readiness before later PG/full D/H. Do not infer container absence, operate another app or claim a permission error. Existing contracts/harness-build registrations do not admit PG suites, so Docker alone does not block this source repair or its non-PG regressions. |
+| Interrupted owned copy/roots | **Present, cleanup unqualified:** only `fabric-storage-harness-wGy7di` found under the storage cache; owner marker remains `a2946569-3e87-4a48-b04b-5ab6feddb58d`. Current directory/root inode and realpath match marker; sandbox-visible device16777240 differs from recorded16777238. | Lead must independently verify actual original identities and no live owner/descendants through controller, and resolve interrupted container/root/copy cleanup in existing LIFO order before applicable checks. No deletion or copied evidence tree this turn; sandbox observations are insufficient removal authority. |
+| Owned temp files, crypto, native IPC and loopback/synthetic identities | **Existing implementation resources available; actual repair regressions pending.** Helper uses an owned mkdtemp directory, marker, real asynchronous node:test child and Node fs/crypto. Installed native/IdP/storage owners and fixture scripts are readable. No new account, key or dependency is needed for staged same-directory exclusive-write/rename. | Tester owns helper only; lead owns dispatch/fixtures. Preserve2000ms positive hostile cap,200ms explicit negative timeout and every cleanup/refusal assertion. |
+| GUI/browser/mobile/shared CI | **Established controller route; not needed for this bounded repair.** Existing F02 evidence and unchanged regression entry points remain readable. | Terminal tester runs retained GUI checks outside sandbox through controller. Actual devices/signing/shared deployments remain X08/external gates. No other app operated. |
+| External systems/accounts | **Needs approved actual environment; not a local repair prerequisite.** No paid model/API, cloud, real credential, shared deployment or human message used. | X01–X09 owners/gates below remain unchanged and unqualified. |
+
+## Exact bounded checks and progression
+
+The following are the exact current registered check objects (read live state
+independently as well). No check definition, workload, timeout or acceptance
+budget was altered by this resources revision:
+
+```json
+[
+  {
+    "id": "complete-contracts",
+    "run": "node g1-storage/scripts/check-slice.mjs contracts",
+    "timeout": 900,
+    "cwd": ".",
+    "expect_exit": 0,
+    "description": "Existing complete contracts12 strict fresh build and exact C01-C03/9 variants, actual responsive child acknowledgement/unicode/hostile timeout and all negative gate schedules; zero bad TAP counters and owned cleanup.",
+    "stage": "unit"
+  },
+  {
+    "id": "complete-harness-build",
+    "run": "node g1-storage/scripts/check-component.mjs harness-build",
+    "timeout": 2700,
+    "cwd": ".",
+    "expect_exit": 0,
+    "description": "Existing complete harness-build19/18 leaves and all supplemental source/emission/copy/cancellation/workload/stream/current-capability/settlement/recovery/cleanup assertions, real copied contracts; no selector or full H02 qualification.",
+    "stage": "integration"
+  }
+]
+```
+
+One tester owns only the helper. After independent plan review, implement
+same-directory exclusive staged complete acknowledgement plus atomic rename,
+then set acknowledged. Preserve callers, exact 'ack'/unicode reads, actual
+asynchronous responsiveness, all negative schedules and existing limits.
+After source review and resource/overlap gates, run both checks serialized and
+require complete12/19 registrations, all supplemental assertions, zero bad TAP
+counters and actual owned cleanup. Settle source/complete-original-raw review
+before changed-candidate original delivery2700s/harness14400s. Components cannot
+replace full H02, aggregate, terminal or independent/final/product acceptance.
+
+Live plan audit:84 tasks =75done/4pending/1active/4dropped;80 nondropped tasks
+cover all96 requirements, no unknown IDs, missing dependencies or cycles.
+Every task has at most one specialist; no explicit goal team_limit, installed
+validator defaults to4 specialists/task. Lead plus one tester fits four host
+slots. No agent was started here. Serialize shared caches/census/fixtures.
+`max_iterations` and `max_hours` are null: no remaining-turn/hour capacity gate
+or budget amendment applies. Preserve all exact approved guards, including
+four14400s task guards and14400s acceptance. Historical shorter prose below is
+superseded; timeouts are hang guards, not optimization targets.
+
+Original D remains PASS0/129516ms37/37; original H is lost/incomplete with a real
+pre-interruption cancellation failure. Job-loss cause and whole-host cleanup
+remain unproved. X01 provider/KMS (storage/security), X02 physical/multi-host/
+whole-cluster recovery and production RPO/RTO (recovery/SRE), X03 enterprise
+retention/holds/residency/erasure (policy/security), X04 actual delivery/cache
+revocation (delivery/security), X05 F06 isolation (runtime/security), X06 real
+SSO/human judgment (identity/policy), X07 supplier/model/billing (model/FinOps),
+X08 signed physical clients (F07), and X09 G2–G5 depth (increment owners) remain
+unqualified. Each needs its approved actual environment and executed evidence.
+Local resource observations grant no whole AF-07/UX-01/G1/G2 acceptance.
+
+Only readiness documentation and controller notes change. No freeze/re-freeze,
+production/test edit, check dispatch, dependency install, fixture removal,
+controller/security setting change or human approval request occurs. Next is
+independent plan review with the explicit source-read exception above.
+
+# Historical checkpoint — Turn373
+
+[Original interrupted D/H review](develop-turn373/report.md): job-1f27292043
+controller LOST; delivery PASS0/129516ms37/37, harness missing terminal result
+but actual H02/cancellation failure already recorded. Inner responsive contracts
+probe read empty ack; direct source publication race requires bounded atomic
+acknowledgement repair. F05 not accepted75/84. New sixteenth prerequisite owns
+only execution-gate-probe.ts; independent plan review before edits, complete
+contracts900/harness-build2700 and settled review before changed-candidate
+original D2700/H14400. No unchanged full retry or source/check/guard change.
+Current process snapshot has no storage runner; Docker socket is unavailable,
+container absence/cleanup unproven. One original-owned interrupted cache copy
+requires independent identity/owner-process checks before disposal and further PG/full integration. Contracts
+and harness-build do not admit a PG suite; unavailable Docker alone does not
+block their repair/regression. No another-app operation or fixture deletion this turn. Whole-host,
+remaining copied suites/H02/H03/H04/terminal and real X01–X09 remain unqualified.
+
+# G1-F05 readiness — Turn367 resources confirmation
+
+2026-10-15 UTC. **Local resources are ready for independent plan review of the
+revised `f05-14-backup-schedules-repair`. F05 remains not accepted, 74/83 tasks
+done.** This section supersedes historical resource/status descriptions below.
+It confirms availability, not the R09 diagnosis, repair, review or acceptance.
+
+Read the brief, solution, test-plan environment/case catalog, current plan and
+[Turn366 revision](plan-turn366/report.md), live task/check/requirement/policy
+objects, package/build/check/fixture scripts and the three repair helpers.
+Consulted the roadmap, foundations plan, AF-07/UX-01 ledger, master storage and
+recovery boundaries and F02 evidence. The installed resource-planner guide and
+controller team validator were also read. No production/test code was written.
+
+## PLAN365-01 resource delta and development gate
+
+The existing tester now owns `backup-confirmation-component.ts`,
+`restore-activation-component.ts` and **`verify-restore-measurement.ts`**. No
+additional tool, account, service, dependency or team seat is needed. The latter
+leaf still uses `backup:1` and the generic three-second busy poll. Its actual
+failure cause remains unestablished: translated `not-saved/UNAUTHORIZED` does
+not identify a SQL exception. Diagnosis belongs to the upcoming development
+task, using the actual capture/confirmation/head/UoW/error/SQL path and owned
+local transaction observations where needed.
+
+The recommended fixture-only 30-second backup period is supported by the
+existing 60-second enrolled policy (`createAuthorityRouteFixture` and
+`enrollAuthority`). Preserve normal command lifetimes, production expiry/error
+semantics and the accepted two-second lock guard. Require successful confirmation,
+an actual nonempty eligible-before archive read, then a nonbusy deadline-aware
+wait tied to the original PostgreSQL receipt/inventory expiry. After expiry,
+both read/import must return exact `RETENTION_RESTRICTED`, with no further
+decryption opens, unchanged controls/archive and the identical committed receipt.
+Retain both prior repaired leaves, every assertion and all 273 registrations.
+
+The sole existing check remains
+`node g1-storage/scripts/check-slice.mjs backup-restore` (2700s), with fresh
+strict build. Its complete pass and settled source/raw review must precede the
+existing changed-candidate delivery-audit (2700s) and harness (14400s), serially.
+No check, registry, requirement, budget or guard was changed here; no new
+observer, wrapper, copied candidate or verification layer was introduced.
+
+## Resource inventory and bounded observations
+
+Fresh direct probes below are resource observations, not controller acceptance.
+No new build or controller check was dispatched. The latest controller slice
+already establishes actual clean-build/fixture availability despite its failure.
+
+| Resource / purpose | Check and result | Owner / qualification limit |
+| --- | --- | --- |
+| Node, pnpm, TypeScript, Python, Git | **Ready.** `node --version`, `pnpm --version`, package `.bin/tsc --version`, `python3 --version`, `git --version`: 22.22.3 / 10.18.0 / 5.9.3 / 3.13.5 / 2.51.0, exit 0. | Build/evidence lead; no toolchain change. |
+| Dependencies and offline package store | **Ready locally.** `/private/tmp/agent-fabric-pnpm-store` exists; installed/wanted lock bytes equal. Installed pg8.16.3, @types/pg8.15.5, @types/node22.18.6, TS5.9.3 match pins. Existing metadata validator passes 18 packages/17 notices. Latest original slice records successful offline/frozen/ignore-scripts install and strict build. | Build/security lead. No registry contact or new install. Security assessment remains unknown; missing installed pg-types/pgpass notices remain declared. |
+| Accepted inputs and build/check entry points | **Ready.** Existing `assertBaseline()` reads and verifies all 2581 accepted inputs unchanged. Read original build/check/slice sources; latest slice emits fresh strict-build measurement with lock ca42a644…37ec4. | Lead; this is the existing preservation check, not a historical mapping layer or repaired-behavior pass. |
+| Docker and cached PG image | **Ready.** `docker version`, `context show`, `info`: client29.1.0/server29.1.2, desktop-linux, 12CPU/33864495104 bytes RAM. `docker image inspect` verifies image ID and RepoDigest exactly `postgres@sha256:c91180c6d82dbb6e7a99c0905d799ae88e22a3406ef7ef02a7defed5a2013333`. | Fixture owner; pull=never, no cloud/registry resource. |
+| PostgreSQL startup and actual expiry clock | **Ready.** Started one uniquely labeled disposable container from the exact cached image, 1CPU/256MiB/128PID, loopback-only port and generated fixture password in a mode0600 temporary env file. Bounded actual `psql -X -U postgres -d storage_test -v ON_ERROR_STOP=1 -At -c 'SELECT 1'` readiness succeeds. PG16.12 read-only transaction observes `clock_timestamp()<expiry`, nonbusy pg_sleep, then `clock_timestamp()>=expiry`, both true; rollback succeeds. | Tester/fixture owner. Only clock/tool availability; no R09 repair, timing/SLA, authority or production expiry qualification. |
+| Owned probe cleanup and preexisting containers | **Ready for this probe.** Verify exact container ID/name/unique label before `docker rm --force --volumes`; temporary env/root removed. Exact all-container census before/after equals; final resource-probe-label census empty. Existing storage containers cc26a43ae7cb and 3c42ab380310 are untouched. | Fixture lead; do not infer historical or whole-host cleanup. No user's data was removed. |
+| Disk/CPU/memory and fixture concurrency | **Ready for the declared envelope.** `df -Pk . /private/tmp` reports 1144994508KiB available, 41% used. Docker capacity above supports unchanged declared maximum five owned fixtures (1CPU/256MiB/128PID each); actual prior five-fixture observation remains historical below. | Serialized check owner. Capacity snapshot, not reservation, performance target or fresh five-fixture conformance run. |
+| Process census / controller route | **Ready through controller; sandbox restriction reproduced.** Exact Node `spawnSync('ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8',timeout:5000})` yields status:null, code:EPERM, message:`spawnSync ps EPERM`. Latest original controller slice records actual process census and native fixtures. Loop next/status/note work; no active job. | Lead runs full fixtures through controller, preserving fatal census checks. No host permission/security change or bypass. |
+| Owned encrypted files, restore roots, crypto, HTTP/IPC, local IdP and synthetic accounts | **Ready through existing fixture/controller route.** Latest original slice starts the pinned PG, independent local authority/native owners and physically separate marked content/backup/restore/authority roots; all but the R09 leaf/parent pass. Existing source provides ephemeral keys, synthetic grants and local ports without real credentials. | Storage/identity/recovery/tester owners. Reuse current fixture; no physical device, remote account or provider required. This failed slice does not qualify the repaired candidate. |
+| Original source and raw evidence | **Ready to inspect.** Three helper sources, stage documents, full live task objects and original stdout/stderr read. Original stream sizes/hashes below match Turn366. | Tester/lead and independent reviewer; read originals, no raw rewriting or copied evidence bundle. |
+| Browser/Electron/mobile and retained regression route | **Ready through established controller route.** F02 evidence records native Electron and Android success outside sandbox; no browser or GUI is needed for the bounded helper repair. | Terminal tester reruns unchanged controller regressions. Physical/signed clients remain X08. No other app operated. |
+| External APIs, real accounts, devices and shared CI/deployment | **Needs approval and real qualification for X01–X09; not local prerequisites.** None used, requested or claimed. | Named external owners below; exact reserved action requires loop_ask approval. |
+
+The first resource startup attempt used `pg_isready` and reached PostgreSQL's
+bootstrap server before database creation: exact subsequent
+`docker exec -i <owned-id> psql -X -U postgres -d storage_test -v ON_ERROR_STOP=1 -At`
+returned `FATAL: database "storage_test" does not exist`. Its owned container and
+volume were removed in finally. The corrected bounded probe waits for actual
+`SELECT 1` in that database and passes the clock queries. This is a probe
+readiness correction, not a product source change or a permission failure.
+
+## Original failure and evidence boundary
+
+[Original stdout](../../../.loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-df77d1804b/f05-14-backup-schedules-repair.complete-backup-restore/stdout.log)
+is 319467 bytes, SHA256 `90b19f4f76558296720612bc593b6ce0718be85b55100715ece9f7e82cd68595`;
+[stderr](../../../.loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-df77d1804b/f05-14-backup-schedules-repair.complete-backup-restore/stderr.log)
+is 2195 bytes, SHA256 `2b289a48084790112bd4514ab0fddf00de328585aaa06aa029aac5be6c7661a1`.
+Lines1994–2023 show R09 confirmation failure; 2040–2048 show273 tests/271pass/
+2fail/zero cancelled-skipped-TODO. Both previous repaired leaves passed.
+Job completion is FAIL1/987169ms, not a repaired prerequisite pass. No expiry
+read/import assertion that was prevented by failed confirmation is qualified.
+
+## Teams, budgets, external gaps and next owner
+
+Fresh live audit:83 tasks =74done/3pending/2active/4dropped; all96 requirements
+covered by nondropped tasks, zero unknown IDs, missing predecessors or cycles.
+Every task uses at most one specialist. Goal has no explicit team_limit; actual
+controller defaults to four specialists/task, and host has four total slots.
+Lead plus one tester fits. No sub-agent was started in this resources turn.
+File edits, shared builds and fixture/census checks must serialize after joins.
+
+Goal `max_iterations` and `max_hours` are null; no remaining-turn/hour capacity
+gate or amendment applies. Retain all exact live guards, including the four
+human-approved14400s task guards and14400s acceptance check. Old900s/1800s and
+240000ms wording below is historical; guards are not performance requirements.
+No freeze/re-freeze occurred. Standing Oct13 authorization covers these local
+resources and documentation; no approval request or pending human decision is
+needed for this stage.
+
+External gaps remain: X01 provider/KMS (storage/security); X02 physical or
+whole-cluster loss and production RPO/RTO (recovery/SRE); X03 enterprise retention,
+legal hold/residency/erasure (policy/security); X04 real delivery/cache revocation
+(delivery/security); X05 actual F06 isolation (runtime/security); X06 enterprise
+SSO and human judgment (identity/policy); X07 suppliers/model/billing (model/FinOps);
+X08 signed physical clients (F07); X09 G2–G5 semantic/lifecycle depth (respective
+increment owners). Each needs its approved actual environment and executed
+evidence; none is silently treated as a local test skip or passed guarantee.
+
+Next owner is the independent plan reviewer, with the existing explicit
+read-only source/raw access below. After review, the tester diagnoses and repairs
+the three-helper prerequisite, then lead obtains its complete controller pass
+and settled source/raw review before full D/H. Aggregate, terminal regressions,
+independent/final/product acceptance, full H02 and whole-host reaping remain
+pending; no whole AF-07/UX-01/G1/G2 or external qualification is claimed.
+
+# Historical G1-F05 readiness — Turn366 R09 prerequisite revision
+
+F05 remains **not accepted**, 74/83 tasks done. [Turn366 plan revision](plan-turn366/report.md)
+addresses PLAN365-01. Original prerequisite job-df77d1804b finished FAIL1/987169ms:
+backup-restore273 has 271 pass/2 fail (R09/backup-expiry and its parent), zero
+cancelled/skipped/TODO. Both Turn364 repaired leaves pass. The new failure is at
+confirmation under the leaf's one-second backup retention; translated
+not-saved/UNAUTHORIZED does not establish its underlying SQL cause.
+
+Revise existing f05-14-backup-schedules-repair to give its tester the third helper,
+verify-restore-measurement.ts, for direct diagnosis and repair. Require an adequate
+supported finite fixture period (recommended30s within existing60s policy),
+successful confirmation and eligible-before read, then a deadline-aware local
+wait on the actual PostgreSQL expiry. Preserve exact expired read/import refusals,
+no further decryption opens, unchanged controls/archive and the identical original
+committed receipt, plus both prior repaired leaves and all273 registrations.
+The complete strict-build slice2700s must pass and receive settled source/raw
+review before changed-candidate original delivery2700s/harness14400s. All task
+check arrays and approved guards remain unchanged; no new wrapper or proof layer.
+
+This is a plan submission, not a repair pass. No source, pin, raw or accepted-input
+change, build/check dispatch or freeze/re-freeze occurs this turn. Independent
+plan review precedes development. Full H02, aggregate/terminal/independent/final/
+product acceptance, whole-host reaping (controller cleanup=zombie), whole
+AF-07/UX-01/G1/G2 and real X01–X09 qualification remain open.
+
+# Historical G1-F05 readiness — Turn364 bounded schedule repair
+
+F05 remains **not accepted**,74/83 tasks done. [Turn364 report](develop-turn364/report.md)
+records original job-f2c552a504: delivery PASS0/127564ms; harness FAIL1/5188327ms,
+completed under its approved guard. H44 reports42pass/2fail, all6/12/14/8 leaves
+retained. Copied first8 suites674pass; backup273 has two failing leaves plus
+parents, then aborts before copied delivery. Full ten-file H02 remains incomplete.
+Guide-first tester and lead independently diagnose premature700ms capture expiry
+and a likely2s contender lock timeout (SQL code hidden, inference only).
+New prerequisite f05-14-backup-schedules-repair owns two direct test files:
+real seed expiry/empty capture then DB-clock command expiry, and early/final gates
+preserving no-open/rollback/exact-conflict assertions. Its existing full
+backup-restore273-test slice2700s must pass before changed-candidate full D/H.
+This pre-dispatch summary claims no repaired-schedule pass; consult controller
+state/handoff for dispatch and outcome. Accepted inputs/raw/production behavior,
+existing checks/timeouts/resource limits/requirements/registry remain unchanged.
+No freeze/re-freeze or added proof layer. Controller cleanup=zombie; whole-host,
+whole AF-07/UX-01/G1/G2, aggregate/terminal/independent/final/product and real
+X01–X09 qualification remain open.
+
+# Historical G1-F05 readiness — Turn363 full task verification queued
+
+F05 remains **not accepted**,74/82 tasks done. All14 harness prerequisites are
+done; guide-first tester and coordinator read-only readiness review settled
+without an identified blocker. [Turn363 report](develop-turn363/report.md)
+records the unchanged registered delivery2700s/harness14400s checks, to execute
+once serially through controller task verification. No code or check changes.
+This pre-dispatch status claims no new pass; use controller job state/handoff
+for dispatch and outcome. Preserve captured source/documents during execution;
+next turn poll that existing job without overlapping work.
+
+Turn362 component9/9 and original full-log coverage outer1028/copied984 remain
+completed prerequisite evidence, not fresh full behavior/current acceptance.
+Full D/H/aggregate/terminal, independent/final/product and real X01–X09 remain
+pending. Whole-host cleanup and whole AF-07/UX-01/G1/G2 remain unqualified.
+No freeze/re-freeze, external action or new verification layer.
+
+# Historical G1-F05 readiness — Turn362 direct reader repair verified
+
+Controller verified `f05-14-tap-reader-repair`,74/82 tasks done; F05 remains
+**not accepted**. [Turn362 report](develop-turn362/report.md) records the two-file
+tester delivery, settled coordinator source/raw review and latest original
+controller streams. Job-8044ad7259 passes component9/9 with fresh build/all2581
+accepted hashes unchanged in9238ms, then original full-log coverage in224ms,
+outer1028/copied984. All checks serialize; no job or human decision is pending.
+
+Native folded/escaped exact payload/prefix/depth/order, H03's actual supplemental
+execution and genuine report-containing command are now consumed with hostile
+controls. Original raw, workloads, registry, requirements, checks, resource bounds
+and four approved14400s task guards remain unchanged. Legacy short-line ambiguity
+and arbitrary unmarked-comment limitations are explicit; no new proof layer or
+copied raw fixture exists. These status edits follow verification and do not
+refresh its fingerprint. Existing local resources below remain sufficient for
+next `f05-14-harness`; no dependency or environment change was introduced.
+
+Historical raw coverage is not fresh full behavior/current-candidate acceptance.
+Full H/aggregate/terminal, registered independent and final/product gates remain
+pending. Controller cleanup=zombie; whole-host/historical/physical cleanup and
+real X01–X09 remain unqualified. Paid/remote/real-secret/shared-deployment/messages/
+other-app/personal-data/history actions remain OFF. No full check starts here.
+
+# Historical G1-F05 readiness — Turn360 reviewer access and direct TAP repair
+
+2026-10-15 UTC. **Local resources are ready for a fresh independent plan review
+of `f05-14-tap-reader-repair`. F05 remains unaccepted,73/82 tasks done.** This
+section supersedes older readiness status/budget/repair descriptions below;
+those remain historical. The [Turn360 report](resources-turn360/report.md)
+records fresh probes, the original controller build, exact raw references and
+limits. No production or test source was changed in this resources stage.
+
+## REVIEW359-ACCESS: explicit read-only review access
+
+The next independent plan reviewer is explicitly authorized to use read-only
+filesystem tools (`functions.exec`/`exec_command`, or equivalent `cat`, `sed`,
+`rg` and Python reads) for the materials listed below. This is a specific
+procedural exception to the generic reviewer protocol's four-Loop-tool-only
+wording, needed to fulfill its source-first review assignment. Keep the existing
+read-only sandbox and controller MCP mutation allowlist. Do not edit files,
+build/run checks, operate services/network, or start agents. Record exactly one
+independent `loop_review` verdict, then stop. This clarification is recorded in a
+controller decision note and handoff; it changes no product permission,
+requirement, scope, acceptance budget, controller code or security setting.
+
+Read originals directly, without a copied bundle or new proof layer:
+
+- Source context: `docs/planning/roadmap.md`, `docs/planning/g1-foundations-plan.md`,
+  `docs/planning/g1-remaining-ledger.csv` (AF-07/UX-01),
+  `docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md`
+  (ledger §§2,5,7,15–18,31; evidence/recovery §§14,27–30,32),
+  `docs/evidence/g1-f02-acceptance.md` and `g1-identity/scripts/check.mjs`.
+- Stage documents: [brief](product-brief.md), [solution](solution.md),
+  [test plan](test-plan.md), this readiness, and the
+  [current F05 plan](../../planning/g1-f05-plan.md). The
+  [Turn358 report](develop-turn358/report.md) gives the current defect/design.
+- Exact live plan and requirements:
+  `.loop/goals/agent-fabric-g1-f05-storage/state.json`; goal, acceptance and policy:
+  `.loop/goals/agent-fabric-g1-f05-storage/goal.json`. Read/extract full task
+  objects for `f05-14-tap-reader-repair`, `f05-14-harness`, `f05-14`,
+  `f05-15-schedule`, `f05-15`; include `detail`, `checks`, `depends_on`, `covers`,
+  `team`, `status`, and finalized requirements R-070/R-071/R-075/R-076.
+  Summaries in `loop_status` are not a substitute for these exact objects.
+- Repair inputs: `g1-storage/scripts/delivery-evidence.mjs` and
+  `g1-storage/tests/helpers/delivery-evidence-component.ts`; existing package,
+  build, component-check, registry and full-composition scripts as needed.
+- Immutable original full streams:
+  `.loop/goals/agent-fabric-g1-f05-storage/runs/checks/job-7b2a813852/acceptance.g1-storage-behavior/{stdout,stderr}.log`.
+  Inspect physical stdout lines19117–19121 and surrounding order. The
+  [resource report](resources-turn360/report.md) gives hashes and the latest
+  strict-build stream links. Controller prompts/adapter source at the original
+  launcher library `/Users/super/Documents/ai/loop-engineering-code/loop_engineering/`
+  may also be inspected read-only to verify the procedural conflict.
+
+All listed originals were successfully opened locally. Installed Codex adapter
+already selects `read-only` for reviews; the defect is contradictory protocol
+wording, not a demonstrated file-access permission failure. No controller
+implementation/configuration change or human approval is needed for this
+in-scope workflow clarification under standing Oct13 authorization. The next
+reviewer must independently assess adequacy; this author grants no review pass.
+
+## Historical resource inventory
+
+| Resource and purpose | Fresh check/result | Owner and remaining limit |
+| --- | --- | --- |
+| Node/pnpm/TypeScript/Python/Git | **Ready.** Versions22.22.3/10.18.0/5.9.3/3.13.5/2.51.0 exit0. | Existing build/evidence owners. No new dependency/toolchain. |
+| Current strict build and accepted preservation | **Ready.** Existing controller `f05-14-owned-copy-repair.strict-build`, job-b2aba11db6 PASS0/9023ms; fresh source/test/imported-owner emission,2581 accepted hashes unchanged before/after. | Build owner; availability only, no new reader behavior qualification. Controller cleanup:`zombie`, whole-host reaping unqualified. |
+| Offline package store and lock | **Ready locally.** Store exists, wanted/installed locks equal ca42a644…37ec4; actual frozen/offline/ignore-scripts install192ms.18packages/17notices. | Build/security owner. Security assessment unknown; installed pg-types/pgpass notices missing as already declared. No registry/API contact. |
+| Native node:test TAP and child process | **Ready.** Bounded actual child exits0 with pass1/empty stderr. Original folded/escaped large native report is readable in immutable full stdout. | Reader/tester owner. Planned large-payload exact round-trip/hostile controls remain unimplemented. |
+| Sources, stage docs, live task/check/requirements and raw | **Ready to inspect.** All original paths above read successfully; full stdout6508961bytes hash4c60fd8e…321458, stderr0. | Independent reviewer and evidence owner; preserve originals/prefix/depth/order. No copied raw fixture or source bundle. |
+| Docker and pinned local PG | **Ready.** Client29.1.0/server29.1.2,desktop-linux/aarch64; cached image/RepoDigest c91180c6…13333 matches fixture pin. | Fixture owner. Pull=never; five-fixture1CPU/256MiB/128PID envelope unchanged. No service/container operated here. |
+| Process census and preexisting fixtures | **Controller route ready; sandbox restriction reproduced.** Exact Node spawn of `ps -axo pid=,ppid=,comm=`/5000ms returns status:null/EPERM/`spawnSync ps EPERM`. Label census shows two old owned containers, recorded in report and untouched. | Fixture owner. Preserve preexisting census; historical fixture/whole-host cleanup unqualified. No bypass/security change. |
+| Disk/CPU/memory | **Ready for declared local envelope.**1153973276KiB available/40%used; Docker12CPU/33864495104bytes RAM. | Serialized build/check owner. Snapshot, not reservation, SLA or timing target. |
+| Synthetic accounts, PG, IdP, HTTP/IPC, crypto and owned storage/restore roots | **Ready through existing fixture/controller route.** Actual original full run passed outer1028/copied984 including real restore/Ask/cleanup. No new resource is introduced by this two-file reader change. | Existing fixture/storage/identity/recovery owners. Dated behavior, not repaired-candidate qualification. Physical devices/KMS/cluster loss are pending. |
+| Browser/Electron/mobile and accepted regressions | **Existing controller route.** Retained F02 evidence records native Electron/Android success outside sandbox; no GUI needed for this reader task. | Terminal tester reruns unchanged controller regressions; no other app operated here. Physical/signed-client qualification remains X08. |
+| Paid/remote APIs, real accounts, devices, shared CI/deployment | **Needs approval and real qualification for X01–X09; not a local repair prerequisite.** No external resource requested or used. | External owners/gates below; exact reserved action requires loop_ask approval when needed. |
+
+## Plan, checks, teams and capacity
+
+Fresh live audit:82tasks=73done/4pending/1active/4dropped;78nondropped tasks cover
+all96 finalized requirements. No uncovered/unknown IDs, missing predecessors or
+cycles. Each task has at most one specialist; goal has no explicit team_limit,
+installed controller defaults to four specialists/task, host has four total
+slots. Lead+one specialist fits. No delegation this resources turn.
+
+The direct repair depends on completed `f05-14-owned-copy-repair`; active
+`f05-14-harness` depends on that repair. Its exact two existing checks remain:
+`node g1-storage/scripts/check-component.mjs delivery-evidence` (2700s), then
+the registered `original-full-raw-reader` Node argv (180s) reading/hash-checking
+the immutable actual full stdout and calling existing `assertAggregateCoverage`.
+The latter is historical format/coverage regression only, never fresh behavior.
+Read its full live argv in state.json before review. All shared-cache/census
+checks serialize. Only the two named source/test files belong to the repair.
+
+The current reader still yields outerReports1/nestedReports0 instead of1 for
+the original full stdout. Keep genuine outer build/command/candidate singleton,
+all ten copied suites/order/coverage/observations/cleanup, raw prefix/depth and
+physical order. Existing D02 seven leaves plus actual large native TAP escaped
+payload positives and truncation/corruption/interleaving/scope refusals must be
+reviewed before implementation. No wrapper, raw normalization substitute,
+history reconstruction, new artifact tree or verification layer is authorized.
+
+Global max_iterations/max_hours are null; no remaining-turn/hour capacity gate
+applies. The four exact human-approved task hang guards remain14400s (full H
+prerequisite, terminal H, schedule aggregate, terminal aggregate); goal aggregate
+acceptance14400s is unchanged. Other checks remain exact. Stale historical
+900/1800/2700 prose below cannot override these decisions. No timeout-only
+optimization, re-freeze, check/task/team/budget or product-scope change occurs.
+
+## Qualification boundary and next action
+
+Submit resources, repeat independent plan review with the explicit read-only
+access above, then implement the bounded direct reader repair only after a pass.
+Run its serialized existing component/raw checks and settle source/raw review
+before changed-candidate full D/H and remaining security/aggregate/terminal/
+independent/final/product gates. All resource jobs are settled; no human decision
+is pending for this local repair. No full retry or task completion occurs here.
+
+Real X01–X09 remain unqualified: provider encryption/KMS (storage/security),
+physical/multi-host disaster recovery/RPO/RTO (recovery/SRE), enterprise
+retention/legal hold/residency (policy/security), real brokered delivery/links
+and exposure windows (delivery/security), F06 OS/runtime/egress (runtime/security),
+enterprise SSO and real human judgment (identity/policy), actual models/quality/
+billing (model/FinOps), signed physical clients/sleep/accessibility (F07 clients),
+and G2–G5 semantic/curation/connector/JML/Fleet/Reflect/adapter depth (respective
+increment owners). Approval and actual external evidence remain required for
+each advertised profile. Local availability/full-run history does not qualify
+whole AF-07/UX-01, G1/G2 or production. Paid/remote/real-secret/shared-deployment/
+other-app/messages/personal-data/history actions remain OFF.
+
+# Historical G1-F05 readiness — Turn339 H02 registry repair
 
 F05 remains **not accepted**,73/81 tasks done. [Turn339 report](develop-turn339/report.md)
 records original job-e179294710 FAIL1/7014842ms within approved14400s. The outer

@@ -1,0 +1,963 @@
+{
+  "version": 1,
+  "assurance": "design-only",
+  "implemented": false,
+  "controllerPlanSubmitted": false,
+  "supersedes": "rejected turn18 exactly15-task proposal",
+  "turnMinutes": 120,
+  "taskCount": 53,
+  "paths": [
+    "stopped-original-stop-run",
+    "stopped-original-stop-task",
+    "lease-expired-original",
+    "effect-expired-original",
+    "stop-and-both-expiries"
+  ],
+  "groups": [
+    "fresh-authority",
+    "trusted-terminal-get",
+    "quiescence-snapshot",
+    "original-owner-atomicity",
+    "rollback-commit-recovery",
+    "concurrent-dedup-conflict",
+    "old-worker-replay-denied"
+  ],
+  "unchanged": {
+    "requirements": 101,
+    "families": 142,
+    "pChildren": 29,
+    "acceptanceSeconds": [
+      1800,
+      600,
+      600,
+      900
+    ],
+    "dockerAllowed": false,
+    "remoteApproved": false
+  },
+  "tasks": [
+    {
+      "id": "f06-01a",
+      "depends_on": [],
+      "output": "Strict package/build, installed owner aliases, closed schemas and all eight C contracts/type negatives.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C01 C02 C03 C04 C05 C06"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 180,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-01b",
+      "depends_on": [
+        "f06-01a"
+      ],
+      "output": "Shared process/census/raw/TAP/build/cleanup primitives; closed leaf-selector inventories on existing runners, no product capability from a selector; initial harness sabotage.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H01 H02 H03 H04 H10 H15 H16"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 300,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-02a",
+      "depends_on": [
+        "f06-01b"
+      ],
+      "output": "Native runtime HTTP admission/current intent/envelope and target observers; actual no-VM Ask and separately authorized Act.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs admission --cases I00/ask I01 I02 I05/admission I06/admission I07 I08/admission I09/admission"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 180,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-02b",
+      "depends_on": [
+        "f06-02a"
+      ],
+      "output": "Local linked Plan persistence fixture, version/reopen/CAS and immutable parent; no real SQL seeding.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs admission --cases I03 I04"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 180,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-03a",
+      "depends_on": [
+        "f06-01b"
+      ],
+      "output": "SQLite all-or-nothing queue/keys/cancel/current expiry; scoped durable ownership and views.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs resources --cases Q00/atomic-ownership Q02/repository Q07/repository Q09/queue-commit"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 240,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-03b",
+      "depends_on": [
+        "f06-03a"
+      ],
+      "output": "One-assignment allocator/unknown slot/reopen/fixture usage and basic owned executor; eligible independent-process races, with Q08 full recovery closing07c.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs lease-queue --cases Q00/conflicts Q01 Q02 Q03 Q04 Q06 Q07 Q09 Q10 Q11 Q12 Q13/lifecycle"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 480,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-04a",
+      "depends_on": [
+        "f06-02b",
+        "f06-03b"
+      ],
+      "output": "Closed shell/SDK/stdio-MCP descriptors/dispatch and actual child target effects/refusals.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs tools"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 300,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-04b",
+      "depends_on": [
+        "f06-04a",
+        "f06-05"
+      ],
+      "output": "Bounded egress redirects/streams/policy loss, actual destination observers and full tool/egress suites.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs tool-paths egress"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 480,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-05",
+      "depends_on": [
+        "f06-02b"
+      ],
+      "output": "Browser/profile/grant/input pre-exposure refusal and independent/recreated clients; no login driver.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs browser-refusal"
+      ],
+      "implementationMinutes": [
+        55,
+        85
+      ],
+      "checkSeconds": 480,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-06a",
+      "depends_on": [
+        "f06-04b",
+        "f06-05"
+      ],
+      "output": "Continuation/Stop/outage/monotonic executor, generation recreation and owned stream/descendant control.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs continuation --cases A04 A10 A12 A13 A14 A15 A17"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 300,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-06b",
+      "depends_on": [
+        "f06-06a",
+        "f06-03b"
+      ],
+      "output": "Local original read-only issuer/GET/metadata settlement and useful successor base cases for ALL five paths.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/base A18/base R18/base"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 360,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-06c",
+      "depends_on": [
+        "f06-06b"
+      ],
+      "output": "All five local paths: every fresh-authority/terminal-receipt/quiescence field/provenance/snapshot refusal and recovery.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/fresh-authority A16/trusted-terminal-get A16/quiescence-snapshot A18/fresh-authority A18/trusted-terminal-get A18/quiescence-snapshot R18/fresh-authority R18/trusted-terminal-get R18/quiescence-snapshot"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 480,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-06d",
+      "depends_on": [
+        "f06-06c"
+      ],
+      "output": "All five local paths: original metadata atomicity, every crash/ACK-loss, concurrent dedup/conflict and before/during/after replay denial.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/original-owner-atomicity A16/rollback-commit-recovery A16/concurrent-dedup-conflict A16/old-worker-replay-denied A18/original-owner-atomicity A18/rollback-commit-recovery A18/concurrent-dedup-conflict A18/old-worker-replay-denied R18/original-owner-atomicity R18/rollback-commit-recovery R18/concurrent-dedup-conflict R18/old-worker-replay-denied"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 480,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-06e",
+      "depends_on": [
+        "f06-06d",
+        "f06-02b"
+      ],
+      "output": "Complete continuation/authority/recovery registrations; serial fixed 100-command/30-Stop pilot samples and full suite closure.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs continuation",
+        "node g1-runtime/scripts/check-suites.mjs authority-intent recovery-stop"
+      ],
+      "implementationMinutes": [
+        35,
+        60
+      ],
+      "checkSeconds": 780,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate; serial measurement"
+    },
+    {
+      "id": "f06-07a",
+      "depends_on": [
+        "f06-06e"
+      ],
+      "output": "Qualification registry/matrix, desired/effective policy, manifest binding and deny-before-connect remote guard.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs qualification-matrix"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 300,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-07b",
+      "depends_on": [
+        "f06-07a"
+      ],
+      "output": "Finish H01\u2013H16 sabotage on disposable copies through SAME real runner/build/result/evidence/cleanup functions.",
+      "checks": [
+        "node g1-runtime/scripts/check-suites.mjs harness-integrity"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-07c",
+      "depends_on": [
+        "f06-07b"
+      ],
+      "output": "Runbooks/manifests/current local evidence and strict full nine-suite local run; explicit outstanding P/X/regressions.",
+      "checks": [
+        "node g1-runtime/scripts/check.mjs"
+      ],
+      "implementationMinutes": [
+        35,
+        60
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate; serial full local"
+    },
+    {
+      "id": "f06-08a",
+      "depends_on": [
+        "f06-01b",
+        "f06-03b"
+      ],
+      "output": "Additive F06 migrations and scoped PG queue/key/constraints/currentness; preserve original ledgers.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/wait-current P05/install-compatibility"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-08b",
+      "depends_on": [
+        "f06-08a"
+      ],
+      "output": "PG queue cancel/expiry/reopen/real COMMIT ACK recovery and nondestructive rollback; full queue-only subset.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/cancel-expiry P02/reopen-slot P02/wait-current P05"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09a",
+      "depends_on": [
+        "f06-08b",
+        "f06-02b"
+      ],
+      "output": "Private fence-only real authenticated prelocking factory/facades/all-route eligibility; unchanged native Stop same-key equal/conflict BOTH orders, lookup/distinct-key controls.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/unchanged-callers/native-stop P02/unchanged-callers/raw-composition-rejected-before-commands"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09b",
+      "depends_on": [
+        "f06-09a",
+        "f06-04b"
+      ],
+      "output": "ACK-only original authenticated effect prepare/claim/guardedIO dispatch, private invocation slot; original execution-authority/binding and one-use/lost-ACK cases.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P01/current-authority/execution P01/dispatch-binding/execution P02/claim-one-use"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09c",
+      "depends_on": [
+        "f06-09b"
+      ],
+      "output": "Fresh original-actor dispatch:false issuer and trusted GET/observation; five stopped/expiry paths with base authority/target proofs; no transfer closure.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/base P02/transfer-atomic/trusted-terminal-get/base"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09d",
+      "depends_on": [
+        "f06-09c"
+      ],
+      "output": "Constrained original settlement SQL/adapter, original events/receipt/outbox/Run CAS; all legal state branches and five positive settled originals.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/original-owner-atomicity/settlement P01/worker-db-denial"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09e",
+      "depends_on": [
+        "f06-09d"
+      ],
+      "output": "Five-path field-by-field current authority/policy/session/audience/provenance and target/receipt/transport negatives with restored fresh READ recovery.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/negative P02/transfer-atomic/trusted-terminal-get/negative P01/current-authority/settlement"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09f",
+      "depends_on": [
+        "f06-09e"
+      ],
+      "output": "Five-path real descendant/stream exclusion, native Stop snapshot both orders and stale observations; old worker denied before/during settlement.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/quiescence-snapshot P02/transfer-atomic/old-worker-replay-denied/pre-transfer P01/dispatch-binding/settlement"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09g",
+      "depends_on": [
+        "f06-09f"
+      ],
+      "output": "Five-path settlement write/event/Run/receipt/outbox crash/rollback and real lost-COMMIT-ACK lookup, concurrent dedup/conflict.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/rollback-commit-recovery/settlement P02/transfer-atomic/concurrent-dedup-conflict"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09h",
+      "depends_on": [
+        "f06-09g"
+      ],
+      "output": "Atomic original resource-fence/queue transfer, checkpoint/final-COMMIT faults and all five useful successor paths; replay denial after transfer.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic P02/phase-first"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09i",
+      "depends_on": [
+        "f06-09h",
+        "f06-06e"
+      ],
+      "output": "Actual competing-owner barrier/phase fixture with C=reconciling and separate D=confirm; all six legal/misuse variants in \u00a75.1 and phase-first hold/refusal.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P02/phase-first/pre-transfer P02/barrier-first"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-09j",
+      "depends_on": [
+        "f06-09i"
+      ],
+      "output": "Finish native Stop/admission/fresh/F05 transfer coexistence in both orders; full P01/P02 closure and actual whole-command timing.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P01 P02"
+      ],
+      "implementationMinutes": [
+        35,
+        60
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-10a",
+      "depends_on": [
+        "f06-09j",
+        "f06-03b"
+      ],
+      "output": "Versioned real-format service/resource receipt reserve/settle/dedup on original allowance family; shared interval conservation.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P03/family-receipts"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-10b",
+      "depends_on": [
+        "f06-10a"
+      ],
+      "output": "FinOps rollback/lost-COMMIT-ACK/original-key liability recovery; complete P03.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P03"
+      ],
+      "implementationMinutes": [
+        45,
+        70
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-11a",
+      "depends_on": [
+        "f06-02b",
+        "f06-08b",
+        "f06-09j",
+        "f06-10b"
+      ],
+      "output": "Private PlanMaintenanceAdmission/derived SQL child writer, actual model12 parent lineage, restricted child/current parent admission.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P04/restricted-child/admission P04/parent-current/admission P04/budget-lineage/admission"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-11b",
+      "depends_on": [
+        "f06-11a"
+      ],
+      "output": "Actual F05 prepare/commit/read hooks and reopen through real bytes/journals; one complete useful Plan save and exact transaction witness.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P04/save-reopen P04/hook-transaction"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-11c",
+      "depends_on": [
+        "f06-11b"
+      ],
+      "output": "Logical version CAS/original key, full restricted-child/parent/source/payer/family-budget denials; real Act promotion separation.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P04/version-cas P04/original-key P04/restricted-child P04/parent-current P04/source-audience P04/budget-lineage P04/promotion-separation"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-11d",
+      "depends_on": [
+        "f06-11c"
+      ],
+      "output": "Real storage staging/publication rollback/lost-ACK recovery at every former seam, no replacement child/stage/charge.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P04/staging-failure P04/publication-rollback P04/commit-ack-loss"
+      ],
+      "implementationMinutes": [
+        60,
+        85
+      ],
+      "checkSeconds": 600,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-11e",
+      "depends_on": [
+        "f06-11d"
+      ],
+      "output": "Full P04 then full P01\u2013P05 current real-owner closure, all29 children/variants and honest integration evidence.",
+      "checks": [
+        "node g1-runtime/scripts/check-owners.mjs --cases P04",
+        "node g1-runtime/scripts/check-owners.mjs"
+      ],
+      "implementationMinutes": [
+        25,
+        50
+      ],
+      "checkSeconds": 1200,
+      "handoffMinutes": 10,
+      "eligibility": "Real PG required; prohibited while Docker restriction applies"
+    },
+    {
+      "id": "f06-12a",
+      "depends_on": [
+        "f06-07c"
+      ],
+      "output": "Exact release/API/config/image/bootstrap/port compatibility research and pinned backend protocol fixture contract; no host assumptions.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/backend-pins"
+      ],
+      "implementationMinutes": [
+        45,
+        70
+      ],
+      "checkSeconds": 180,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate"
+    },
+    {
+      "id": "f06-12b",
+      "depends_on": [
+        "f06-12a",
+        "f06-11e"
+      ],
+      "output": "After explicit authorization: exact permitted host/image/boot/limits/one-guest/verifier facts and approved manifest; missing facts remain pending.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/approved-host-manifest"
+      ],
+      "implementationMinutes": [
+        45,
+        70
+      ],
+      "checkSeconds": 180,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13a",
+      "depends_on": [
+        "f06-12a"
+      ],
+      "output": "Disabled-by-default pinned backend adapter and owned local lifecycle/inventory/approval/pin protocol tests. No activation or remote I/O.",
+      "checks": [
+        "node g1-runtime/scripts/check-component.mjs backend-lifecycle"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 300,
+      "handoffMinutes": 10,
+      "eligibility": "Docker-free L; controller census gate; protocol only"
+    },
+    {
+      "id": "f06-13b",
+      "depends_on": [
+        "f06-13a",
+        "f06-12b"
+      ],
+      "output": "Authorized image/bootstrap, identity/mount/readiness/resource enforcement/activation and cleanup; X01 all advertised controls.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X01"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13c",
+      "depends_on": [
+        "f06-13b"
+      ],
+      "output": "Real one-assignment allocator/queue/cancellation/restart/unknown allocation slot/inventory/old handles, base X04.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/base"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13d1",
+      "depends_on": [
+        "f06-13c"
+      ],
+      "output": "Deployed stopped-original-stop-run: all seven groups/every field/fault/race/replay variant, real write/lost-SEND-ACK/recreated original settlement/quiescence/useful successor.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-run"
+      ],
+      "implementationMinutes": [
+        45,
+        75
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13d2",
+      "depends_on": [
+        "f06-13d1"
+      ],
+      "output": "Deployed stopped-original-stop-task: all seven groups/every field/fault/race/replay variant, real write/lost-SEND-ACK/recreated original settlement/quiescence/useful successor.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-task"
+      ],
+      "implementationMinutes": [
+        45,
+        75
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13d3",
+      "depends_on": [
+        "f06-13d2"
+      ],
+      "output": "Deployed lease-expired-original: all seven groups/every field/fault/race/replay variant, real write/lost-SEND-ACK/recreated original settlement/quiescence/useful successor.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/lease-expired-original"
+      ],
+      "implementationMinutes": [
+        45,
+        75
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13d4",
+      "depends_on": [
+        "f06-13d3"
+      ],
+      "output": "Deployed effect-expired-original: all seven groups/every field/fault/race/replay variant, real write/lost-SEND-ACK/recreated original settlement/quiescence/useful successor.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/effect-expired-original"
+      ],
+      "implementationMinutes": [
+        45,
+        75
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13d5",
+      "depends_on": [
+        "f06-13d4"
+      ],
+      "output": "Deployed stop-and-both-expiries: all seven groups/every field/fault/race/replay variant, real write/lost-SEND-ACK/recreated original settlement/quiescence/useful successor.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stop-and-both-expiries"
+      ],
+      "implementationMinutes": [
+        45,
+        75
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-13e",
+      "depends_on": [
+        "f06-13d5"
+      ],
+      "output": "Full unchanged X01/X04 lifecycle/one-VM/recovery gate with all deployed paths and costs/inventory raw records.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X01 X04"
+      ],
+      "implementationMinutes": [
+        25,
+        50
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-14a",
+      "depends_on": [
+        "f06-13e",
+        "f06-11e"
+      ],
+      "output": "Independent all-path filesystem/process/control/egress/relay and per-run trust probes, actual allowed behavior and forbidden destinations.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X02 X05"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-14b",
+      "depends_on": [
+        "f06-14a"
+      ],
+      "output": "Actual deployed service Ask/Plan/Act/real artifact journeys plus observed lifecycle/real receipt/cost conservation.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X03 X06"
+      ],
+      "implementationMinutes": [
+        45,
+        70
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-14c",
+      "depends_on": [
+        "f06-14b"
+      ],
+      "output": "Deployed sensitive-login and GUI/input/grant actual refusals; keep unimplemented positive isolation explicit and disabled.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X07 X08"
+      ],
+      "implementationMinutes": [
+        45,
+        70
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-14d",
+      "depends_on": [
+        "f06-14c"
+      ],
+      "output": "Outer watchdog/Stop/disconnect/streams/descendants/clock; implement fixed serial timing and repeat all five settlement paths/all seven groups under X09. Reuse installed harness, not previous pass.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X09"
+      ],
+      "implementationMinutes": [
+        55,
+        80
+      ],
+      "checkSeconds": 900,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved; serial measurement"
+    },
+    {
+      "id": "f06-14e",
+      "depends_on": [
+        "f06-14d"
+      ],
+      "output": "Independent verifier/pins/operations/release-negative drill X10, then full X01\u2013X10 current-candidate gate; no missing behavior inferred from subsets.",
+      "checks": [
+        "node g1-runtime/scripts/check-remote.mjs --cases X10",
+        "node g1-runtime/scripts/check-remote.mjs"
+      ],
+      "implementationMinutes": [
+        30,
+        55
+      ],
+      "checkSeconds": 1800,
+      "handoffMinutes": 10,
+      "eligibility": "Approved real host required; remote unapproved"
+    },
+    {
+      "id": "f06-15",
+      "depends_on": [
+        "f06-07c",
+        "f06-11e",
+        "f06-14e"
+      ],
+      "output": "Current full runtime + unchanged identity/foundation/retained regressions, full raw evidence and recipient handoff; independent reviews remain later.",
+      "checks": [
+        "node g1-runtime/scripts/check.mjs",
+        "node g1-identity/scripts/check.mjs",
+        "node g1-foundations/scripts/check.mjs",
+        "node g1-foundations/scripts/check-retained.mjs"
+      ],
+      "implementationMinutes": [
+        25,
+        45
+      ],
+      "checkSeconds": 3900,
+      "handoffMinutes": 10,
+      "eligibility": "All restrictions must be resolved; controller GUI only"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import test,{type TestContext} from 'node:test';
 import assert from 'node:assert/strict';
+import type pg from 'pg';
 import {randomUUID,randomBytes,createHash} from 'node:crypto';
 import {readFile,writeFile,readdir,rename,lstat,rm} from 'node:fs/promises';
 import {resolve} from 'node:path';

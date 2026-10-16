@@ -1,0 +1,392 @@
+{
+  "kind": "future-owning-assertion-bodies",
+  "acceptance": false,
+  "cases": [
+    {
+      "id": "CB01",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "B1 before O0; keep C alive through O1/A1; enter W then ordinary completion.",
+      "expected": "C is independently proved and ACKed once; actual complete raw and no residue. Wrong/missing ACK or unproved W fails.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB02",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Freeze prefix, then create/log C before O0; first O1 includes C but frozen prefix does not. Take a new observation before A1/W.",
+      "expected": "No stale-prefix assertion failure; no invented birth record. Current later observation pairs actual birth and log.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB03",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Freeze prefix and complete O1, then append actual C birth before observe returns. Keep P alive.",
+      "expected": "No ACK based on older OS rows; C remains blocked until next proving census. Existing birth-snapshot-race control is retained freshly.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB04",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Hold C at B0, establish its actual ancestry; accept F, release only teardown.",
+      "expected": "Known C/P are removed, W remains absent; user-body startup during cancellation fails even if later cleanup is empty.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB05",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "B1 then actual C exit before O0; P remains known; accept F.",
+      "expected": "No synthetic ACK for dead C. Retain missing-ACK integrity failure and fresh absence; still remove known P. Record actual exit/OS absence, not an assumed TTL.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB06",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Prove C in O1, hold A0, cause real exit then accept F.",
+      "expected": "No stale ACK or user work; known survivors are cleaned. Exited-before-ACK cannot suppress their cleanup.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB07",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "C reaches W after A1; cancel with root and child actually live.",
+      "expected": "Wrapper/invocation fails cancellation; cleanup confirms true only after known tree absent and actual streams close. Unrelated U remains live. This control was observed by the turn39 diagnostic.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB08",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "After valid P/C ACK/W, append one wrong-nonce record for C into the owned log; accept F.",
+      "expected": "Permanent integrity failure, but known P/C cleanup is attempted and completes without outside rescue. Existing source instead short-circuits; turn39 observes both actors alive/zero signals. U survives.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB09",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "As CB08, append truncated/malformed JSON (a separate original per corruption variant).",
+      "expected": "Parse failure retained; proved tree cleanup still attempted; raw never promoted to complete if streams did not actually close.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CB10",
+      "owningId": "H08/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Append a record with wrong PPID, or name actual unrelated U as a descendant; each on its own history.",
+      "expected": "No ACK/adoption/signal for the unproved record; known P/C cleaned, integrity fails and U remains live. A nonce/title alone is insufficient.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC01",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Hold real C at B0/B1/O1/A0/A1/W in six **separate runs**; at each barrier kill only owned R or disconnect its IPC.",
+      "expected": "Independent S accepts F, stops useful work, cleans proved tree despite absent runner. Preserve disconnect failure and every started child; six traces required, no one happy run for six labels.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC02",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "During SIGTERM of known P, let its handler spawn G. Hold P alive until actual ancestry census proves G, then release P exit.",
+      "expected": "Repeated teardown discovers/stops G using actual proof, never acknowledges useful G work; final empty census/closed inherited streams required.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC03",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Alternative to CC02: exit P before G is ever independently proved; G publishes a nonce birth and is reparented.",
+      "expected": "No blind ACK/adoption/signal. Cleanup remains unconfirmed while G is unresolved; known other actors still cleaned. A separately proved independent guardian can recover its own G; historical product result stays failed.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC04",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Force a false historical birth for U's **actual current PID** and invoke the real current-instance/ownership gate. Separately test same birth/forged nonce and valid known controls.",
+      "expected": "Reject before signal; U's heartbeat/actual current birth survives. This deterministically tests reused-birth refusal against a live process, and MUST NOT be reported as actual OS PID reuse. True OS-reuse stress is optional additional evidence.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC05",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "In an owned instrumented copy make one actual census command fail, return malformed bytes or exceed its existing bound; each independent failure after known P/C acknowledged.",
+      "expected": "No pass or unproved signal; retain raw/error and unconfirmed state until fresh OS proof is available. Once census recovers, cleanup attempts for known actors proceed; no historical result rewrite or deadline reset.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CC06",
+      "owningId": "H14/full",
+      "suite": "harness-integrity",
+      "level": "security",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Accept F by cancel, timeout and runner disconnect in controlled successive orders while an existing finalization gate is held.",
+      "expected": "One immutable result, no duplicate finalization/ACK/new useful work; all triggers/causes retained. No timer reset/extension; existing wrappers fail.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CE01",
+      "owningId": "H15/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Cancel one actual child after other partitions have completed; separately fail it on CB08, raw truncation and cleanup uncertainty.",
+      "expected": "Full started/success/failed/cancelled denominator preserved; union may not pass or reuse earlier results. All failed raw remain.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CE02",
+      "owningId": "H15/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Take an actual failed result and build-cache cleanup success; feed owned collector replicas that omit one failed child, replace tree cleanup with build cleanup, or set success on missing streams.",
+      "expected": "Collector rejects every replica. Legitimate complete negative invocation remains failed, with separate build/process/stream/raw results.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CE03",
+      "owningId": "H15/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Recompute fresh census after failed cleanup, then independently clean a proved remaining actor. Record both before/after and historical report hashes.",
+      "expected": "Current residue can resolve, but historical failure/cleanup:false and measured failure stay unchanged. Any rewrite or success-only timing denominator fails.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    },
+    {
+      "id": "CE04",
+      "owningId": "H15/full",
+      "suite": "harness-integrity",
+      "level": "integration",
+      "domain": "owned-local-fixture",
+      "covers": [
+        "R-003",
+        "R-016",
+        "R-018"
+      ],
+      "preconditions": "cancellation-contract.md: Actors, barriers and evidence",
+      "steps": "Fail one late partition while another child is held just before launch/restart; let logical deadline expire near final raw/cleanup.",
+      "expected": "No new partition after failure; no fresh inner deadline, cached pass, cleanup grace counted as passing work or retry under same invocation. Entire invocation fails with pending/started branches explicit.",
+      "data": "Fresh per-branch actors/nonce/log-prefix/OS/ACK/gate/raw/signal/stream-close/immutable-result and independent-recovery records",
+      "command": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H08 H14 H15",
+      "implementation": "pending",
+      "completeBehaviorProved": false
+    }
+  ],
+  "labelsAreJourneyUpperBound": false,
+  "diagnosticCoverage": [
+    "CB07 control",
+    "CB08 counterexample only"
+  ],
+  "allBodiesImplemented": false
+}

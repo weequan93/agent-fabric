@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "kind": "resource-diagnostics-only",
+  "observedAt": "2026-10-15T19:26:48.221Z",
+  "dockerInvoked": false,
+  "remoteInvoked": false,
+  "productTestsRun": false,
+  "records": [
+    {
+      "name": "host",
+      "result": "ready",
+      "observation": {
+        "node": "v22.22.3",
+        "execPath": "/Users/super/.hermes/node/bin/node",
+        "platform": "darwin",
+        "arch": "arm64",
+        "kernel": "25.2.0",
+        "availableParallelism": 14,
+        "totalmem": 68719476736,
+        "freemem": 16011558912,
+        "loadavg": [
+          1.30615234375,
+          1.427734375,
+          1.4375
+        ]
+      },
+      "elapsedMs": 0.051625000000001364
+    },
+    {
+      "name": "version-node",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "node",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "v22.22.3\n",
+        "stderr": ""
+      },
+      "elapsedMs": 10.411124999999998
+    },
+    {
+      "name": "version-pnpm",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 233.89041699999999
+    },
+    {
+      "name": "version-python3",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "python3",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Python 3.13.5\n",
+        "stderr": ""
+      },
+      "elapsedMs": 3.314707999999996
+    },
+    {
+      "name": "version-git",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "git",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "git version 2.51.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 4.335207999999966
+    },
+    {
+      "name": "version-psql",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "psql",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "psql (PostgreSQL) 16.11 (Homebrew)\n",
+        "stderr": ""
+      },
+      "elapsedMs": 10.829124999999976
+    },
+    {
+      "name": "version-postgres",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "postgres",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "postgres (PostgreSQL) 16.11 (Homebrew)\n",
+        "stderr": ""
+      },
+      "elapsedMs": 68.53141700000003
+    },
+    {
+      "name": "version-initdb",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "initdb",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "initdb (PostgreSQL) 16.11 (Homebrew)\n",
+        "stderr": ""
+      },
+      "elapsedMs": 36.17945899999995
+    },
+    {
+      "name": "compiler",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "/Users/super/.hermes/node/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Version 5.9.3\n",
+        "stderr": ""
+      },
+      "elapsedMs": 32.958709
+    },
+    {
+      "name": "process-census",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"ps\",\"-p\",\"38217\",\"-o\",\"pid=,ppid=,pgid=,lstart=,comm=\"],\"status\":null,\"signal\":null,\"error\":\"spawnSync ps EPERM\",\"stdout\":\"\",\"stderr\":\"\"}",
+        "code": "EPERM"
+      },
+      "elapsedMs": 1.4822080000000142
+    },
+    {
+      "name": "cpu-sysctl",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.ncpu\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+        "code": null
+      },
+      "elapsedMs": 4.514833999999951
+    },
+    {
+      "name": "memory-sysctl",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.memsize\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+        "code": null
+      },
+      "elapsedMs": 2.108916000000022
+    },
+    {
+      "name": "disk",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "df",
+          "-h",
+          "/Users/super/Documents/ai/agent-fabric",
+          "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-yg695u"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk5s1   1.8Ti   712Gi   1.1Ti    39%     10M   12G    0%   /System/Volumes/Data\n/dev/disk5s1   1.8Ti   712Gi   1.1Ti    39%     10M   12G    0%   /System/Volumes/Data\n",
+        "stderr": ""
+      },
+      "elapsedMs": 3.30920900000001
+    },
+    {
+      "name": "sqlite-wal-process",
+      "result": "ready",
+      "observation": {
+        "mode": {
+          "journal_mode": "wal"
+        },
+        "busy": {
+          "command": [
+            "/Users/super/.hermes/node/bin/node",
+            "--input-type=module",
+            "-e",
+            "import {DatabaseSync} from 'node:sqlite'; const d=new DatabaseSync(process.argv[1]); try{d.exec('BEGIN IMMEDIATE');process.exitCode=2}catch(e){if(!/locked|busy/i.test(e.message))throw e; console.log(JSON.stringify({lockRefused:true,code:e.code,errcode:e.errcode}));}finally{d.close()}",
+            "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-yg695u/queue.sqlite"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "{\"lockRefused\":true,\"code\":\"ERR_SQLITE_ERROR\",\"errcode\":5}\n",
+          "stderr": "(node:38397) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "reopened": {
+          "command": [
+            "/Users/super/.hermes/node/bin/node",
+            "--input-type=module",
+            "-e",
+            "import {DatabaseSync} from 'node:sqlite'; const d=new DatabaseSync(process.argv[1]); d.exec(\"BEGIN IMMEDIATE; INSERT INTO tickets VALUES(2,'child'); COMMIT\"); console.log(JSON.stringify(d.prepare('SELECT * FROM tickets ORDER BY id').all())); d.close();",
+            "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-yg695u/queue.sqlite"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "[{\"id\":1,\"value\":\"parent\"},{\"id\":2,\"value\":\"child\"}]\n",
+          "stderr": "(node:38398) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "rows": 2
+      },
+      "elapsedMs": 56.43445799999995
+    },
+    {
+      "name": "owned-filesystem",
+      "result": "ready",
+      "observation": {
+        "atomicRename": true,
+        "symlinkFixture": true
+      },
+      "elapsedMs": 0.4722080000000233
+    },
+    {
+      "name": "loopback-http",
+      "result": "ready",
+      "observation": {
+        "status": 200,
+        "listenerClosedInFinally": true
+      },
+      "elapsedMs": 14.90016700000001
+    },
+    {
+      "name": "shell",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "/bin/sh",
+          "-c",
+          "printf synthetic-owned-shell"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "synthetic-owned-shell",
+        "stderr": ""
+      },
+      "elapsedMs": 3.4945000000000164
+    },
+    {
+      "name": "stdio-json-rpc",
+      "result": "ready",
+      "observation": {
+        "status": 0,
+        "stdout": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"synthetic-stdio\"}",
+        "stderr": ""
+      },
+      "elapsedMs": 24.468874999999912
+    },
+    {
+      "name": "owned-child-lifecycle",
+      "result": "ready",
+      "observation": {
+        "pid": 38401,
+        "code": null,
+        "signal": "SIGTERM",
+        "liveOwnedChildHandleOnly": true
+      },
+      "elapsedMs": 25.14345800000001
+    },
+    {
+      "name": "installed-owner-dependencies",
+      "result": "ready",
+      "observation": {
+        ".": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6"
+        },
+        "g1-foundations": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-identity": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-recovery": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-model": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-storage": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        }
+      },
+      "elapsedMs": 5.637499999999932
+    },
+    {
+      "name": "offline-frozen-dependency-install",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +3\n+++\nProgress: resolved 3, reused 3, downloaded 0, added 3, done\n\ndevDependencies:\n+ @types/node 22.18.6\n+ typescript 5.9.3\n\nDone in 187ms using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 222.08020900000008
+    },
+    {
+      "name": "offline-g1-foundations",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 18, downloaded 0, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 260ms using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 294.6390000000001
+    },
+    {
+      "name": "offline-g1-identity",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 18, downloaded 0, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 305ms using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 335.4882500000001
+    },
+    {
+      "name": "offline-g1-recovery",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +163\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 163, reused 163, downloaded 0, added 92\nProgress: resolved 163, reused 163, downloaded 0, added 155\nProgress: resolved 163, reused 163, downloaded 0, added 162\nProgress: resolved 163, reused 163, downloaded 0, added 163, done\n\ndependencies:\n+ @temporalio/client 1.24.0\n+ @temporalio/proto 1.24.0\n+ @temporalio/worker 1.24.0\n+ @temporalio/workflow 1.24.0\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/ms 2.1.0\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 3.5s using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 3631.6466250000003
+    },
+    {
+      "name": "offline-g1-model",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 18, downloaded 0, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 212ms using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 240.07145799999944
+    },
+    {
+      "name": "offline-g1-storage",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "pnpm",
+          "install",
+          "--ignore-workspace",
+          "--offline",
+          "--frozen-lockfile",
+          "--ignore-scripts",
+          "--store-dir",
+          "/private/tmp/agent-fabric-pnpm-store"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 18, downloaded 0, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 237ms using pnpm v10.18.0\n",
+        "stderr": ""
+      },
+      "elapsedMs": 263.76779199999964
+    },
+    {
+      "name": "strict-owner-noemit",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "/Users/super/.hermes/node/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--noEmit",
+          "--strict",
+          "--noUncheckedIndexedAccess",
+          "--exactOptionalPropertyTypes",
+          "--target",
+          "ES2023",
+          "--lib",
+          "ES2024",
+          "--esModuleInterop",
+          "--module",
+          "NodeNext",
+          "--moduleResolution",
+          "NodeNext",
+          "--allowImportingTsExtensions",
+          "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-yg695u/owner-probe.mts"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "elapsedMs": 1131.7825409999996
+    },
+    {
+      "name": "monotonic-clock",
+      "result": "ready",
+      "observation": {
+        "clock": "performance.now",
+        "resolutionObservedMs": 0.00016700000014679972,
+        "qualifiedTiming": false
+      },
+      "elapsedMs": 0.043708999999580556
+    },
+    {
+      "name": "owned-temp-cleanup",
+      "result": "ready",
+      "observation": {
+        "removed": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-yg695u",
+        "scope": "only mkdtemp-created directory"
+      }
+    }
+  ]
+}

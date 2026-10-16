@@ -1,0 +1,347 @@
+{
+  "kind": "unchanged-supervisor-cancellation-counterexample",
+  "acceptance": false,
+  "fullMatrixFit": false,
+  "remoteQualified": false,
+  "success": false,
+  "scenes": [
+    {
+      "mode": "valid-births",
+      "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914",
+      "actors": [
+        {
+          "pid": 86217,
+          "ppid": 86206,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:18 2026",
+          "command": "af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914",
+          "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914"
+        },
+        {
+          "pid": 86248,
+          "ppid": 86217,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:18 2026",
+          "command": "af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914",
+          "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914"
+        }
+      ],
+      "expectedProductVerdict": "fail-cancelled",
+      "diagnosticObserved": true,
+      "barrier": {
+        "bothBirthsAcknowledged": true,
+        "actorsPresentInFreshOS": true
+      },
+      "wrapper": {
+        "resolved": false,
+        "error": "Error: Owned supervisor failed: {\"completion\":{\"status\":1,\"signal\":null},\"result\":{\"schemaVersion\":1,\"nonce\":\"eda3fab6-4835-4a97-bb96-b9fc48e66914\",\"candidate\":\"sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4\",\"rawStreams\":{\"stdout.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"stderr.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"streamsComplete\":true,\"supervisor\":{\"pid\":86206,\"ppid\":86174},\"owned\":[{\"pid\":86217,\"ppid\":86206,\"pgid\":86174,\"birth\":\"Fri Oct 16 08:22:18 2026\",\"command\":\"af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914\",\"nonce\":\"eda3fab6-4835-4a97-bb96-b9fc48e66914\",\"observedAt\":82.639417},{\"pid\":86248,\"ppid\":86217,\"pgid\":86174,\"birth\":\"Fri Oct 16 08:22:18 2026\",\"command\":\"af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914\",\"nonce\":\"eda3fab6-4835-4a97-bb96-b9fc48e66914\",\"observedAt\":236.326208}],\"signals\":[{\"pid\":86248,\"birth\":\"Fri Oct 16 08:22:18 2026\",\"signal\":\"SIGTERM\"},{\"pid\":86217,\"birth\":\"Fri Oct 16 08:22:18 2026\",\"signal\":\"SIGTERM\"}],\"snapshots\":[{\"at\":53.003417,\"live\":[]},{\"at\":82.781042,\"live\":[86217]},{\"at\":156.535,\"live\":[86217]},{\"at\":236.447292,\"live\":[86217,86248]},{\"at\":301.289,\"live\":[86217,86248]},{\"at\":390.016125,\"live\":[86217]},{\"at\":447.573583,\"live\":[]},{\"at\":477.589833,\"live\":[]},{\"at\":507.293417,\"live\":[]}],\"exit\":{\"status\":null,\"signal\":\"SIGTERM\"},\"timedOut\":false,\"streamBytes\":0,\"cleanup\":{\"confirmed\":true,\"remaining\":[],\"historicalGroupsSignalled\":false},\"error\":\"Error: Runner cancellation\\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\\n    at process.emit (node:events:519:28)\\n    at emit (node:internal/child_process:949:14)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\"},\"stderr\":\"\"}\n    at supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:33:208)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs:68:32"
+      },
+      "supervisor": {
+        "schemaVersion": 1,
+        "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914",
+        "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+        "rawStreams": {
+          "stdout.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "streamsComplete": true,
+        "supervisor": {
+          "pid": 86206,
+          "ppid": 86174
+        },
+        "owned": [
+          {
+            "pid": 86217,
+            "ppid": 86206,
+            "pgid": 86174,
+            "birth": "Fri Oct 16 08:22:18 2026",
+            "command": "af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914",
+            "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914",
+            "observedAt": 82.639417
+          },
+          {
+            "pid": 86248,
+            "ppid": 86217,
+            "pgid": 86174,
+            "birth": "Fri Oct 16 08:22:18 2026",
+            "command": "af-runtime:eda3fab6-4835-4a97-bb96-b9fc48e66914",
+            "nonce": "eda3fab6-4835-4a97-bb96-b9fc48e66914",
+            "observedAt": 236.326208
+          }
+        ],
+        "signals": [
+          {
+            "pid": 86248,
+            "birth": "Fri Oct 16 08:22:18 2026",
+            "signal": "SIGTERM"
+          },
+          {
+            "pid": 86217,
+            "birth": "Fri Oct 16 08:22:18 2026",
+            "signal": "SIGTERM"
+          }
+        ],
+        "snapshots": [
+          {
+            "at": 53.003417,
+            "live": []
+          },
+          {
+            "at": 82.781042,
+            "live": [
+              86217
+            ]
+          },
+          {
+            "at": 156.535,
+            "live": [
+              86217
+            ]
+          },
+          {
+            "at": 236.447292,
+            "live": [
+              86217,
+              86248
+            ]
+          },
+          {
+            "at": 301.289,
+            "live": [
+              86217,
+              86248
+            ]
+          },
+          {
+            "at": 390.016125,
+            "live": [
+              86217
+            ]
+          },
+          {
+            "at": 447.573583,
+            "live": []
+          },
+          {
+            "at": 477.589833,
+            "live": []
+          },
+          {
+            "at": 507.293417,
+            "live": []
+          }
+        ],
+        "exit": {
+          "status": null,
+          "signal": "SIGTERM"
+        },
+        "timedOut": false,
+        "streamBytes": 0,
+        "cleanup": {
+          "confirmed": true,
+          "remaining": [],
+          "historicalGroupsSignalled": false
+        },
+        "error": "Error: Runner cancellation\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\n    at process.emit (node:events:519:28)\n    at emit (node:internal/child_process:949:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
+      },
+      "rawReportSha256": "aa3c890b0cf35a60ff9b960c1d2ae68635f9ffe3587d05c2850d2ccc4e88d053",
+      "postReportLive": []
+    },
+    {
+      "mode": "invalid-nonce-prefix",
+      "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+      "actors": [
+        {
+          "pid": 86611,
+          "ppid": 86572,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:19 2026",
+          "command": "af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+          "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e"
+        },
+        {
+          "pid": 86642,
+          "ppid": 86611,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:19 2026",
+          "command": "af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+          "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e"
+        }
+      ],
+      "expectedProductVerdict": "fail-cancelled",
+      "diagnosticObserved": true,
+      "barrier": {
+        "bothBirthsAcknowledged": true,
+        "actorsPresentInFreshOS": true
+      },
+      "injectedBirth": {
+        "nonce": "c7d3a936-2383-437f-afab-d9d3b6e16e42",
+        "pid": 86642,
+        "ppid": 86611
+      },
+      "wrapper": {
+        "resolved": false,
+        "error": "Error: Owned supervisor failed: {\"completion\":{\"status\":1,\"signal\":null},\"result\":{\"schemaVersion\":1,\"nonce\":\"1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e\",\"candidate\":\"sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4\",\"rawStreams\":{\"stdout.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"stderr.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"streamsComplete\":false,\"supervisor\":{\"pid\":86572,\"ppid\":86174},\"owned\":[{\"pid\":86611,\"ppid\":86572,\"pgid\":86174,\"birth\":\"Fri Oct 16 08:22:19 2026\",\"command\":\"af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e\",\"nonce\":\"1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e\",\"observedAt\":105.094875},{\"pid\":86642,\"ppid\":86611,\"pgid\":86174,\"birth\":\"Fri Oct 16 08:22:19 2026\",\"command\":\"af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e\",\"nonce\":\"1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e\",\"observedAt\":260.960334}],\"signals\":[],\"snapshots\":[{\"at\":73.694542,\"live\":[]},{\"at\":105.237625,\"live\":[86611]},{\"at\":181.569584,\"live\":[86611]},{\"at\":261.078667,\"live\":[86611,86642]},{\"at\":330.508792,\"live\":[86611,86642]}],\"exit\":null,\"timedOut\":false,\"streamBytes\":0,\"cleanup\":{\"confirmed\":false,\"error\":\"Error: Unproven descendant birth\"},\"error\":\"Error: Runner cancellation\\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\\n    at process.emit (node:events:519:28)\\n    at emit (node:internal/child_process:949:14)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\"},\"stderr\":\"\"}\n    at supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:33:208)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs:68:32"
+      },
+      "supervisor": {
+        "schemaVersion": 1,
+        "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+        "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+        "rawStreams": {
+          "stdout.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "streamsComplete": false,
+        "supervisor": {
+          "pid": 86572,
+          "ppid": 86174
+        },
+        "owned": [
+          {
+            "pid": 86611,
+            "ppid": 86572,
+            "pgid": 86174,
+            "birth": "Fri Oct 16 08:22:19 2026",
+            "command": "af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+            "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+            "observedAt": 105.094875
+          },
+          {
+            "pid": 86642,
+            "ppid": 86611,
+            "pgid": 86174,
+            "birth": "Fri Oct 16 08:22:19 2026",
+            "command": "af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+            "nonce": "1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e",
+            "observedAt": 260.960334
+          }
+        ],
+        "signals": [],
+        "snapshots": [
+          {
+            "at": 73.694542,
+            "live": []
+          },
+          {
+            "at": 105.237625,
+            "live": [
+              86611
+            ]
+          },
+          {
+            "at": 181.569584,
+            "live": [
+              86611
+            ]
+          },
+          {
+            "at": 261.078667,
+            "live": [
+              86611,
+              86642
+            ]
+          },
+          {
+            "at": 330.508792,
+            "live": [
+              86611,
+              86642
+            ]
+          }
+        ],
+        "exit": null,
+        "timedOut": false,
+        "streamBytes": 0,
+        "cleanup": {
+          "confirmed": false,
+          "error": "Error: Unproven descendant birth"
+        },
+        "error": "Error: Runner cancellation\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\n    at process.emit (node:events:519:28)\n    at emit (node:internal/child_process:949:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
+      },
+      "rawReportSha256": "8460c2a5b7178374e6d67f74b077179f656feeb7f81079f4c2f3dd2a322b1714",
+      "postReportLive": [
+        {
+          "pid": 86642,
+          "ppid": 1,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:19 2026",
+          "command": "af-runtime:1644efa3-e861-4e25-a9e2-6e6e5ac3fb6e"
+        }
+      ]
+    }
+  ],
+  "recovery": [
+    {
+      "label": "valid-births",
+      "before": [],
+      "signals": [],
+      "after": [],
+      "confirmed": true
+    },
+    {
+      "label": "invalid-nonce-prefix",
+      "before": [
+        {
+          "pid": 86642,
+          "ppid": 1,
+          "pgid": 86174,
+          "birth": "Fri Oct 16 08:22:19 2026",
+          "command": "(node)"
+        }
+      ],
+      "signals": [],
+      "after": [],
+      "confirmed": false
+    },
+    {
+      "label": "final-known-birth-census",
+      "before": [],
+      "signals": [],
+      "after": [],
+      "confirmed": true
+    }
+  ],
+  "sentinel": {
+    "instance": {
+      "pid": 86185,
+      "ppid": 86174,
+      "pgid": 86174,
+      "birth": "Fri Oct 16 08:22:18 2026",
+      "command": "af-design-sentinel:8534c605-3c9f-4114-b300-84ac41c62922",
+      "nonce": "8534c605-3c9f-4114-b300-84ac41c62922"
+    },
+    "checks": [
+      {
+        "after": "valid-births",
+        "present": true
+      }
+    ]
+  },
+  "cleanupConfirmed": true,
+  "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+  "inputs": {
+    "process.mjs": "bda44f79ea868e5e6e72e53d6326c467e65c7ab41a60c7666423c09ca27786aa",
+    "supervisor.mjs": "c9f44625adb767bff7159f32e992065bd65684734c097bfe88d96201c14316cc",
+    "bootstrap.mjs": "5f4bc47c0582a561e19ab4eb1acbf0b3981a70523b289ef19707e368ed0f1c26",
+    "birth-ack.mjs": "101dd10f9781b5e4f7b2c560ae6db80521a06298020b4f716c16b5cde8e114e9",
+    "census.mjs": "bac740d50ff9a5e744c76d91938a204c86be077d16b9d9ddaa7b38b3e5c2a935"
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(live.command.includes(o.nonce))\n\n    at recover (file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs:36:11)\n    at file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs:84:38\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "finalNonceResidue": [],
+  "binding": {
+    "probeSha256": "915373d4ab14d1666c9e6fd7ac8e6aae6c3b6513868c28ba557075e46cba042c",
+    "actorSha256": "11014f65330d666ddbb2fb69d856f8c714605b4bacb5d5fdd81524a536dcd19c"
+  }
+}

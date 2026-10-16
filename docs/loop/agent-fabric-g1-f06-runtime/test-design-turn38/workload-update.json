@@ -1,0 +1,118 @@
+{
+  "kind": "turn38-measured-design-workload-update",
+  "complete": false,
+  "executionReadiness": "NO-GO",
+  "findings": {
+    "PR-F06-08": "open",
+    "PR-F06-09": "open"
+  },
+  "baseWorkload": {
+    "path": "test-design-turn37/workload.json",
+    "sha256": "43cbde9422ca2475ee3b00da77c8d4201e5ba1486f97a5e1f28e4e6b04afb628",
+    "matrixNormativeIds": 2475,
+    "minimumIndependentJourneys": 2488,
+    "minimumReal3sExpiryOriginals": 1492,
+    "serialExpirySumMs": 4476000,
+    "continuationSerialObservationMinimumMs": 121000,
+    "minimumFunctionalLanesIgnoringAllOtherCosts": 26
+  },
+  "profile": {
+    "job": "job-5b06476310",
+    "status": "fail",
+    "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+    "report": "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn38/profile-2026-10-16T00-06-38.646Z-bb1a01a1-0138-445d-91b7-30a966676216/result.json",
+    "wholeMs": 187436.78187500002,
+    "phases": [
+      {
+        "lanes": 1,
+        "success": true,
+        "durationMs": 53838.935791,
+        "successfulDispatches": 1,
+        "completedJourneysCredited": 18,
+        "observedRssSumPeakBytes": 630308864,
+        "observedOwnedProcessesPeak": 9,
+        "minimumSampledFreeBytes": 8499494912,
+        "sampleCadenceMs": 2000,
+        "physicalUniqueMemoryClaim": false
+      },
+      {
+        "lanes": 2,
+        "success": true,
+        "durationMs": 55687.995458,
+        "successfulDispatches": 2,
+        "completedJourneysCredited": 36,
+        "observedRssSumPeakBytes": 1265057792,
+        "observedOwnedProcessesPeak": 18,
+        "minimumSampledFreeBytes": 8180531200,
+        "sampleCadenceMs": 2000,
+        "physicalUniqueMemoryClaim": false
+      },
+      {
+        "lanes": 4,
+        "success": true,
+        "durationMs": 59587.73212500001,
+        "successfulDispatches": 4,
+        "completedJourneysCredited": 72,
+        "observedRssSumPeakBytes": 2516516864,
+        "observedOwnedProcessesPeak": 35,
+        "minimumSampledFreeBytes": 8209498112,
+        "sampleCadenceMs": 2000,
+        "physicalUniqueMemoryClaim": false
+      },
+      {
+        "lanes": 8,
+        "success": false,
+        "durationMs": 13905.291916999995,
+        "successfulDispatches": 0,
+        "completedJourneysCredited": 0,
+        "observedRssSumPeakBytes": 4541366272,
+        "observedOwnedProcessesPeak": 70,
+        "minimumSampledFreeBytes": 10447962112,
+        "sampleCadenceMs": 2000,
+        "physicalUniqueMemoryClaim": false
+      }
+    ],
+    "completePassingJourneys": 126,
+    "completePassingRealExpiryOriginals": 70,
+    "maximumCompletePassingLanes": 4,
+    "unqualifiedLaneCounts": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "resourceGuardBytes": 4294967296,
+    "guardIsSpecimenChoiceNotProductBudget": true,
+    "observedHostCapacityMaximumClaim": false,
+    "historicalFailedSupervisorCleanupReports": 8,
+    "topCleanupMeaning": "build cache only; does not certify cancelled fixture/process cleanup",
+    "repeatUntilPassOrRaisedGuard": false
+  },
+  "missingCostsLedger": "nonmatrix-branches.md",
+  "allOtherLocalSuiteMs": 120000,
+  "approvedFutureRecoveryInnerMs": 300000,
+  "sourceRecoveryInnerMs": 120000,
+  "outerCeilingsUnchanged": true,
+  "stageDoneCalled": false,
+  "productionChanged": false,
+  "officialDiagnosticTasksAdded": [
+    "f06-test-design-profile",
+    "f06-test-design-census"
+  ],
+  "officialRemainingImplementationSplitSubmitted": false,
+  "proposedTaskCount": 15,
+  "proposedTotals": {
+    "implementationMinutes": [
+      600,
+      1045
+    ],
+    "wholeCheckSeconds": 7440,
+    "cleanupHandoffMinutes": 150,
+    "maximumLeafMinutes": 108.0,
+    "totalMinutes": [
+      874.0,
+      1319.0
+    ]
+  },
+  "next": "Retain resource/cancellation failures; formally size/repair deterministic cancellation behavior and measure a lower-footprint independent composition before wider ramp/full fit. Proposed15-row DAG must pass plan/resources/review before broad implementation; no Docker or remote."
+}

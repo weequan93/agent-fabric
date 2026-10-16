@@ -1,0 +1,24 @@
+/** Direct aliases to installed owners. Types do not create alternate authority. */
+export { createScopeVerifier, assertVerifiedScope, revalidateScope, FoundationError } from '../../g1-foundations/src/contracts.js';
+export type { VerifiedScope, SqlTransaction, AsyncUnitOfWork } from '../../g1-foundations/src/contracts.js';
+export { createIdentityScopeVerifier } from '../../g1-identity/src/current-authority.js';
+export type { ApprovalRepositoryPort, ExactApprovalBinding } from '../../g1-identity/src/contracts.js';
+export { approvalDigest } from '../../g1-identity/src/approval-repository.js';
+export { generationSchema, effectBindingSchema, effectSchema, bindingDigest, canonical, assertBinding, assertGeneration, assertEffectTransition, assertRunTransition } from '../../g1-recovery/src/contracts.js';
+export type { Generation, EffectBinding, Effect, Run } from '../../g1-recovery/src/contracts.js';
+export { downstreamReceiptSchema, receiptMatches, validateRequest, effectKey } from '../../g1-recovery/src/effect-protocol.js';
+export type { DownstreamReceipt } from '../../g1-recovery/src/effect-protocol.js';
+export { parseTaskEnvelope } from '../../engine/contracts/src/task-envelope.js';
+export type { TaskEnvelope } from '../../engine/contracts/src/task-envelope.js';
+export { TaskCallBindingSchema } from '../../g1-model/src/schema.js';
+export type { TaskCallBinding, CostCategory, OperatingProfile } from '../../g1-model/src/contracts.js';
+import type { ArtifactPublicationRepository } from '../../g1-storage/src/artifact-publication.js';
+import type { EffectRepository } from '../../g1-recovery/src/effect-repository.js';
+import type { NativeRepository } from '../../g1-model/src/native-repository.js';
+import type { FenceRepository } from '../../g1-recovery/src/fence-repository.js';
+export type ArtifactOwnerSeam = Pick<ArtifactPublicationRepository, 'prepare' | 'commit' | 'lookup' | 'readWithTransaction'>;
+export type EffectOwnerSeam = Pick<EffectRepository, 'claim' | 'guardedIO' | 'synchronizeDelivery' | 'reconciling' | 'confirm' | 'unresolved'>;
+export type NativeOwnerSeam = Pick<NativeRepository, 'open' | 'load' | 'fresh'>;
+export type NativeStopSeam = Pick<NativeRepository, 'stop'>;
+export type FenceOwnerSeam = Pick<FenceRepository, 'execute' | 'lookupCommand'>;
+export type { Receipt as RecoveryReceipt } from '../../g1-recovery/src/repository.js';

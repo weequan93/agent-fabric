@@ -1,0 +1,12 @@
+{
+  "assurance": "design-only",
+  "status": "failed",
+  "exitCode": 1,
+  "failure": "AssertionError: stop-before-reconcile; actual effect reconciling, expected unknown",
+  "cause": "Diagnostic incorrectly modeled FenceRepository.stop via generic assertRunTransition(reconciling,cancelling). Actual unchanged saveRun directly selects cancelling and validates runSchema; no generic transition call. Model stop threw ILLEGAL_TRANSITION so later C ran on still-live model state.",
+  "correction": "Keep original run graph and explicit negative proving generic reconciling->cancelling is illegal. Bind control-stop model to actual saveRun source, not the generic phase helper. No product source/check changed.",
+  "productChecksRun": false,
+  "pgRun": false,
+  "dockerRun": false,
+  "remoteRun": false
+}

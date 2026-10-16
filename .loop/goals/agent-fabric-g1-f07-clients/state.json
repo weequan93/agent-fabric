@@ -2,10 +2,10 @@
   "schema": "loop.state/2",
   "goal_id": "agent-fabric-g1-f07-clients",
   "status": "ready",
-  "status_reason": "Approved by human (via Claude): tester role effort high. Start with `loop start`.",
-  "approved_digest": "sha256:35788b2cd0fb79366651799ad3efacda788257b516b74a0db8d5776d80439056",
-  "approved_by": "human (via Claude): tester role effort high",
-  "approved_at": "2026-10-14T14:14:05+00:00",
+  "status_reason": "Approved by human (via Claude): gpt-6.1-sol high everywhere. Start with `loop start`.",
+  "approved_digest": "sha256:c217ae74f40ee6a37c780957c5251890a6fad7c6b62d3f61946ab1338232309f",
+  "approved_by": "human (via Claude): gpt-6.1-sol high everywhere",
+  "approved_at": "2026-10-15T03:06:22+00:00",
   "tasks": [],
   "questions": [],
   "checks": {},
@@ -35,7 +35,7 @@
   "next_cycle_at": null,
   "integrity": "ok",
   "created_at": "2026-10-06T15:59:25+00:00",
-  "updated_at": "2026-10-14T14:14:05+00:00",
+  "updated_at": "2026-10-15T03:06:22+00:00",
   "base_ref": "3875a4cae50434056225def6e2ebbfe338b6a9c1",
   "approved_contract": {
     "objective": "Deliver the G1-F07 increment of Agent Fabric G1: Web/Electron/mobile operating the same Task: shared events/reconnect, desktop sleep → mobile steer/Stop → web/desktop result, distinct pilot timing measurements, then complete G1 independent acceptance.\n\nLedger requirements in scope (docs/planning/g1-remaining-ledger.csv):\n- AF-04: 桌面移动网页操作同一Task — remaining: 共享事件/重连契约；真实desktop sleep/mobile steer/web result/stale Stop\n- UX-04: Act preflight后桌面睡眠远端继续移动端同任务 — remaining: accepted/reconnect契约；真实desktop sleep/mobile steer/结果\n\nCreate g1-clients/ with a build and g1-clients/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f07-plan.md and docs/evidence/g1-f07-acceptance.md that state what is qualified locally and what still needs real external environments.",
@@ -146,12 +146,7 @@
       "model": "gpt-6.1-sol",
       "permission_mode": null,
       "extra_args": [],
-      "effort": "xhigh",
-      "roles": {
-        "tester": {
-          "effort": "high"
-        }
-      }
+      "effort": "high"
     },
     "pipeline": "full"
   }

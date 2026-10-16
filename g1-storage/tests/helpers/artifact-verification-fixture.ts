@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import type pg from 'pg';
 import {randomBytes,randomUUID,createHash} from 'node:crypto';
 import {fork,type ChildProcess} from 'node:child_process';
 import {once} from 'node:events';

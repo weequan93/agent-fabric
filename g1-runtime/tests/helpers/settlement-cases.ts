@@ -1,0 +1,45 @@
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {bindingDigest,effectKey} from '../../src/owners.js';
+import {settlementFixture,settlementPaths,type SettlementPath,type SettlementFixture} from './settlement-fixture.js';
+import {eventually} from './continuation-fixture.js';
+import type {Observations} from './register-cases.js';
+function oldWrites(s:any,id:string){return s.writes.filter((w:any)=>w.receipt.operationId===id);}
+async function deny(f:SettlementFixture,id:string,action:string,extra:Record<string,unknown>={}){const r=await f.request(id,action,extra);assert.equal(r.status,403,JSON.stringify(r));assert.equal(r.body.replayAllowed,false);assert.equal(r.body.resourceHeld,true);return r.body.code;}
+async function journey(path:SettlementPath,family:string):Promise<Observations>{
+ const f=await settlementFixture();try{
+  const old=await f.issue(path),id=old.operationId,initial=structuredClone(old.initial),send=await f.request(id,'dispatch');assert.equal(send.status,200,JSON.stringify(send));assert.equal(send.body.sendAck,'lost');
+  await eventually(async()=>{const s=await f.snapshot();return oldWrites(s,id).length===1&&(s.streams[id]??0)===1;});
+  const applied=await f.snapshot();assert.equal(oldWrites(applied,id)[0].receipt.writeNumber,1);assert.equal(f.read(id).effect.state,'unknown');assert.equal(f.read(id).sendOutcome,'ack-lost');assert.equal(f.read(id).outbox.length,0);
+  const fenced=await f.fence(old);assert.equal(fenced.status,200,JSON.stringify(fenced));const before=f.read(id),q=await f.quiescent(id);
+  assert.equal(before.dispatchFenced,true);assert.equal(before.resource.held,true);assert.equal(before.effect.state,'unknown');assert.deepEqual(before.effect.binding,initial.effect.binding);assert.deepEqual(before.accounting,initial.accounting);
+  if(path==='lease-expired-original'){assert.equal(before.stopReceipt,null);assert.equal(before.lease.revoked,false);assert.ok(Date.parse(before.lease.expiresAt)<=Date.now());assert.ok(Date.parse(before.effect.binding.expiresAt)>Date.now());}
+  if(path==='effect-expired-original'){assert.equal(before.stopReceipt,null);assert.equal(before.lease.revoked,false);assert.ok(Date.parse(before.effect.binding.expiresAt)<=Date.now());assert.ok(Date.parse(before.lease.expiresAt)>Date.now());}
+  if(path.startsWith('stopped-')||path==='stop-and-both-expiries'){assert.equal(before.stopReceipt?.acknowledged,true);assert.equal(before.run.state,'cancelling');assert.equal(before.lease.revoked,true);assert.equal(before.session.state,'interrupted');}
+  if(path==='stopped-original-stop-task')assert.equal(before.task.retries,'blocked');
+  if(path==='stop-and-both-expiries'){assert.ok(Date.parse(before.effect.binding.expiresAt)<=Date.now());assert.ok(Date.parse(before.lease.expiresAt)<=Date.now());}
+  const deniedOrdinary=[];await f.restart();assert.equal(f.serviceBirths.length,2);assert.notEqual(f.serviceBirths[0],f.serviceBirths[1]);
+  for(const method of ['reconciling','guardedIO(false)','confirm'])deniedOrdinary.push(await deny(f,id,'ordinary',{method}));
+  await deny(f,id,'dispatch');assert.equal(await f.directOld(id),403);assert.equal(await f.directOld(id,true),403,'GET-only credential cannot POST');
+  const targetBefore=await f.snapshot(),recovered=await f.request(id,'recover');assert.equal(recovered.status,200,JSON.stringify(recovered));assert.equal(recovered.body.authority.dispatch,false);assert.ok(Date.parse(recovered.body.authority.expiresAt)>Date.parse(before.effect.binding.expiresAt)||Date.parse(before.effect.binding.expiresAt)>Date.now(),'Fresh lookup authority is independent of original expired effect');
+  assert.ok(Date.parse(recovered.body.authority.expiresAt)-Date.parse(recovered.body.authority.issuedAt)<=30_000);assert.ok(Date.parse(recovered.body.authority.expiresAt)<=Date.parse(f.f.state.authority.sessionExpiresAt));
+  const settled=f.read(id),targetAfter=await f.snapshot(),receipt=oldWrites(targetAfter,id)[0].receipt;
+  assert.equal(settled.effect.state,'confirmed');assert.equal(settled.effect.receiptDigest,bindingDigest(receipt));assert.equal(settled.effect.nextAction,null);assert.equal(recovered.body.receipt.key,effectKey(id,'f06-original-settlement'));assert.equal(recovered.body.receipt.dispatch,false);
+  assert.equal(settled.run.revision,before.run.revision+1);assert.deepEqual({...settled.run,revision:before.run.revision},before.run);
+  for(const key of ['task','lease','session','resource','accounting','historicalDigest','admission','approval','stopReceipt','snapshot'] as const)assert.deepEqual(settled[key],before[key],key+' history never revived or rewritten');
+  assert.deepEqual(settled.effect.binding,initial.effect.binding);assert.equal(settled.resource.held,true);assert.equal(Object.keys(settled.commands).length,1);assert.equal(settled.outbox.length,1);assert.equal(settled.events.filter(e=>e.phase==='f06-original-settlement-enter').length,1);assert.equal(settled.events.filter(e=>e.phase==='f06-original-settlement-confirmed').length,1);
+  assert.equal(targetAfter.gets.length,targetBefore.gets.length+1);assert.deepEqual(targetAfter.gets.at(-1).operationId,id);assert.equal(targetAfter.gets.at(-1).method,'GET');assert.deepEqual(targetAfter.writes,targetBefore.writes);assert.equal(recovered.body.observation.writeNumber,1);assert.equal(recovered.body.observation.streamsClosed,true);assert.equal(recovered.body.observation.descendantsQuiescent,true);
+  // Recreated owner recovers the immutable original metadata command without GET/send.
+  await f.restart();const settledBytes=bindingDigest(f.read(id)),lookupBefore=await f.snapshot(),replayed=await f.request(id,'recover');assert.equal(replayed.status,200,JSON.stringify(replayed));assert.deepEqual(replayed.body.receipt,recovered.body.receipt);assert.equal(replayed.body.observation,null);assert.equal(bindingDigest(f.read(id)),settledBytes);assert.deepEqual(await f.snapshot(),lookupBefore);
+  await deny(f,id,'dispatch');for(const method of ['reconciling','guardedIO(false)','confirm'])await deny(f,id,'ordinary',{method});
+  const next=await f.successor(old);assert.notEqual(next.operationId,id);assert.notEqual(next.initial.run.binding.runId,initial.run.binding.runId);assert.notEqual(next.initial.task.taskId,initial.task.taskId);assert.notEqual(next.initial.lease.leaseId,initial.lease.leaseId);assert.notEqual(next.initial.resource.instanceId,initial.resource.instanceId);assert.notEqual(next.initial.resource.bootId,initial.resource.bootId);
+  const successor=await f.request(next.operationId,'dispatch');assert.equal(successor.status,200,JSON.stringify(successor));await eventually(async()=>oldWrites(await f.snapshot(),next.operationId).length===1);const useful=await f.snapshot();assert.equal(useful.value,(f.bindings[next.operationId].request.arguments as any).value);assert.equal(oldWrites(useful,id).length,1);assert.equal(oldWrites(useful,next.operationId)[0].receipt.writeNumber,1);await deny(f,id,'dispatch');assert.equal(await f.directOld(id),403);assert.equal(oldWrites(await f.snapshot(),id).length,1);assert.deepEqual(f.read(id).accounting,initial.accounting);
+  let lostClaim:unknown=null;
+  if(family==='A18'){
+   const stoppedSuccessor=await f.request(next.operationId,'stop',{kind:'stop-run',path:'stopped-original-stop-run',key:randomUUID()});assert.equal(stoppedSuccessor.status,200,JSON.stringify(stoppedSuccessor));await f.quiescent(next.operationId);const claim=await f.issue(path,true),beforeTarget=await f.snapshot(),claimResult=await f.request(claim.operationId,'dispatch',{loseClaimAck:true});assert.equal(claimResult.status,200,JSON.stringify(claimResult));assert.equal(claimResult.body.sendAllowed,false);assert.equal(f.read(claim.operationId).effect.state,'unknown');assert.equal(f.read(claim.operationId).process,null);await f.restart();await deny(f,claim.operationId,'dispatch');assert.deepEqual(await f.snapshot(),beforeTarget,'Lost claim-COMMIT ACK creates zero sends');lostClaim={operationId:claim.operationId,sendCount:0,fixtureCommitOnly:true};
+  }
+  return {'continuation-state':{path,family,sendAck:'actually-lost',originalState:'confirmed-metadata-only',freshAuthority:recovered.body.authority,deniedOrdinary,oldTaskAndRunAndBindingAndLeaseUnchanged:true,accountingUnknownPreserved:true,fixtureOnly:true,originalSqlCommit:false,settlementReceipt:recovered.body.receipt,serviceBirths:f.serviceBirths,lostClaim},'target-observer':{pid:f.targetPid,originalReceipt:receipt,originalWrites:1,exactStatusGet:targetAfter.gets.at(-1),metadataAndReplayWrites:0,successorOperationId:next.operationId,successorWrites:1,usefulDistinctSuccessorValue:useful.value,oldReadonlyCredentialPostDenied:true},'process-census':{...q,newOwnerOsProcesses:f.serviceBirths,oldParentDescendantAndStreamsIndependentlyAbsentBeforeSettlement:true,syntheticSuccessorEnrollmentOnly:true}};
+ }finally{await f.cleanup();}
+}
+export const settlementCases:Record<string,()=>Promise<Observations>>={};
+for(const family of ['A16','A18','R18'])for(const path of settlementPaths)settlementCases[family+'/base/'+path]=()=>journey(path,family);

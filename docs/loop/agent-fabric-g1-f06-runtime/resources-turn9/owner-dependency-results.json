@@ -1,0 +1,62 @@
+{
+  "kind": "resource-diagnostics-only",
+  "template": "g1-identity/package.json and frozen lock",
+  "records": [
+    {
+      "name": "first-offline",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store",
+        "--offline"
+      ],
+      "status": 1,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\n\u2009ERR_PNPM_NO_OFFLINE_TARBALL\u2009 A package is missing from the store but cannot download it in offline mode. The missing package may be downloaded from https://registry.npmjs.org/pg-protocol/-/pg-protocol-1.16.1.tgz.\n",
+      "stderr": ""
+    },
+    {
+      "name": "populate",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store",
+        "--config.registry=https://registry.npmjs.org/",
+        "--config.userconfig=/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-owner-deps-eu8p3kqk/empty-npmrc",
+        "--config.globalconfig=/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-owner-deps-eu8p3kqk/empty-npmrc",
+        "--fetch-retries=0",
+        "--fetch-timeout=10000"
+      ],
+      "status": 0,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 3, downloaded 15, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 417ms using pnpm v10.18.0\n",
+      "stderr": ""
+    },
+    {
+      "name": "fresh-offline",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store",
+        "--offline"
+      ],
+      "status": 0,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +18\n++++++++++++++++++\nProgress: resolved 18, reused 18, downloaded 0, added 18, done\n\ndependencies:\n+ pg 8.16.3\n\ndevDependencies:\n+ @types/node 22.18.6\n+ @types/pg 8.15.5\n+ typescript 5.9.3\n\nDone in 192ms using pnpm v10.18.0\n",
+      "stderr": ""
+    },
+    {
+      "name": "owned-cleanup",
+      "removed": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-owner-deps-eu8p3kqk"
+    }
+  ]
+}

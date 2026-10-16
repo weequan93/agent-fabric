@@ -1,191 +1,178 @@
-# Loop · agent-fabric: G1-F05 storage
+# Loop · agent-fabric: G1-F06 runtime
 
-**RUNNING** — Turn 339 finished (ok).
+**RUNNING** — Turn 41: test_design — Design the test cases that will prove every requirement, before development. (revise after plan_review findings)
 
-- Goal `agent-fabric-g1-f05-storage` · kind **develop** · updated 2026-10-14T14:14:05+00:00
-- Next: **wait_job** (controller) — Waiting for check job job-4796beec7d (acceptance.g1-storage-behavior), started 2026-10-14T13:52:09+00:00.
-- Runner: running · pid 32446 · adapter codex
-- Turns 339 · agent time 4829.0 min · reported cost $0.00 (partial: some turns reported no cost)
+- Goal `agent-fabric-g1-f06-runtime` · kind **develop** · updated 2026-10-16T00:39:31+00:00
+- Next: **test_design** (agent) — Design the test cases that will prove every requirement, before development. (revise after plan_review findings)
+- Runner: running · pid 53704 · adapter codex
+- Turns 41 · agent time 408.0 min · reported cost $0.00 (partial: some turns reported no cost)
 
 ## Working on
 
-- Controller check job `job-4796beec7d` (1 checks) running 22 min
-- `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs · checks 1/2 · 10 recent turns · last (turn 339): Fixed H02’s registry lookup crash without changing assertions. The tester independently reviewed the correction.
+- `f06-08a` Install additive PG schema and atomic queue keys · checks 0/1 · 5 recent turns · last (turn 34): Completed the recovery pilot: 18 real negative/recovery journeys passed, plus 25 regression assertions.
 
-Full controller acceptance is running as `job-4796beec7d`. F05 remains unaccepted pend
+Progress: **12/67 tasks done**. PostgreSQL 08a remains source-only under the no-Docker restrict
+- `f06-06c` Verify local settlement authority receipt and quiescence · checks 0/1 · 1 recent turns · last (turn 34): Completed the recovery pilot: 18 real negative/recovery journeys passed, plus 25 regression assertions.
+
+Progress: **12/67 tasks done**. PostgreSQL 08a remains source-only under the no-Docker restrict
 
 ## Pipeline
 
-● intake → ● requirements → ● requirements_review → ● solution → ● test_design → ● plan → ● resources → ● plan_review → ◐ develop → ○ test → ○ reviews → ○ final-acceptance → ○ product-acceptance → ○ done
+● intake → ● requirements → ● requirements_review → ● solution → ◐ test_design → ○ plan → ○ resources → ○ plan_review → ○ develop → ○ test → ○ reviews → ○ final-acceptance → ○ product-acceptance → ○ done
 
-- intake: docs/loop/agent-fabric-g1-f05-storage/product-brief.md
-- requirements: 96 recorded · final
-- requirements_review: pass
-- solution: docs/loop/agent-fabric-g1-f05-storage/solution.md
-- test_design: docs/loop/agent-fabric-g1-f05-storage/test-plan.md
-- plan: 81 tasks · 0 uncovered · final
-- resources: docs/loop/agent-fabric-g1-f05-storage/readiness.md
-- plan_review: pass
-- develop: 73/81 tasks
-- test: integration:fail, regression:pass, regression:pass, regression:pass
-- reviews: security:-, code:-, performance-review:-
+- intake: docs/loop/agent-fabric-g1-f06-runtime/product-brief.md
+- requirements: 101 recorded · final
+- requirements_review: pass (round 1)
+- solution: docs/loop/agent-fabric-g1-f06-runtime/solution.md
+- test_design: pending
+- plan: 70 tasks · 0 uncovered
+- resources: pending
+- plan_review: fail (round 4)
+- develop: 14/70 tasks
+- test: integration:-, regression:-, regression:-, regression:-
+- reviews: security:-, code:-
 - final-acceptance: pending
 - product-acceptance: pending
 
 ## Objective
 
-Deliver the G1-F05 increment of Agent Fabric G1: Owned storage/volume: encrypted persistence, retention/delete propagation and an actual restore, as the base for G2 memory.
+Deliver the G1-F06 increment of Agent Fabric G1: Authorized remote test deployment, qualified Linux image and protected worker/tool/egress boundaries (shell/SDK/browser/MCP/egress containment, intent ceilings, single-VM lease queueing, isolated browser profiles). Supervised local development cannot issue this qualification.
 
 Ledger requirements in scope (docs/planning/g1-remaining-ledger.csv):
-- AF-07: 记忆有作用域版本与来源 — remaining: lineage/source/audience契约；实际recall/conflict/delete/revocation
-- UX-01: 授权来源问答且不启动Space VM — remaining: service routing/source eligibility fixture；实际saved decision问答和VM未启动
+- AF-13: 所有开放工具路径无法绕过运行时策略 — remaining: 拒绝/能力丢失fixture；实际shell/SDK/browser/MCP/egress containment
+- UX-03: Ask/Plan不修改目标服务器或仓库 — remaining: intent ceiling与target-write拒绝fixture；实际请求无目标修改
+- UX-07: 冲突文件或desktop lease明示排队不偷偷多开VM — remaining: 冲突lease/owner/wait契约；实际single-VM冲突队列与费用
+- UX-10: 敏感登录真实隔离profile cookies input或阻止 — remaining: unsupported拒绝fixture；实际跨进程browser profile/cookies/input/telemetry隔离
 
-Create g1-storage/ with a build and g1-storage/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f05-plan.md and docs/evidence/g1-f05-acceptance.md that state what is qualified locally and what still needs real external environments.
+Create g1-runtime/ with a build and g1-runtime/scripts/check.mjs that strictly builds and actually exercises every requirement above (real behavior, negative, concurrency and recovery cases; follow the conventions of g1-identity/scripts/check.mjs), plus docs/planning/g1-f06-plan.md and docs/evidence/g1-f06-acceptance.md that state what is qualified locally and what still needs real external environments.
 
-## Tasks (73/81 done)
+## Tasks (14/70 done)
 
-- ● `f05-01` Freeze executable contracts, owner composition and independent build · architect
-- ● `f05-02` Install scoped PG authority, authenticated fixture and current control ledger ← f05-01 · backend
-- ● `f05-03` Persist authenticated ciphertext with owned staging and redacted copies ← f05-02 · backend
-- ● `f05-04` Admit explicit source-backed save and commit canonical pieces ← f05-03 · data
-- ● `f05-05` Integrate commit artifacts, encrypted live files, drafts and checkpoints ← f05-05-promotion, f05-05-schedule · backend
-- ● `f05-06` Integrate serve useful authorized Ask through installed native owners ← f05-06-disclosure · backend
-- ● `f05-07` Integrate propagate retention, forget and revocation through durable descendants ← f05-07-retry · data
-- ● `f05-08` Confirm durable backup and recover original confirmation ← f05-08-capture · backend
-- ● `f05-09` Integrate restore actual content into a fresh owned generation behind current authority ← f05-09-progress · backend
-- ● `f05-10` Integrate complete unit contracts and hostile harness probes ← f05-10-cleanup · tester
-- ● `f05-11` Integrate qualify authority, commit, lifecycle and volume integration schedules ← f05-11-races, f05-11-atomic-disconnect, f05-11-lifecycle-fix · tester
-- ● `f05-12` Integrate qualify native saved-decision e2e and disclosure races ← f05-12-routing · tester
-- ● `f05-13` Integrate qualify restore/recovery and measure actual local boundary ← f05-13-measurement · tester
-- ○ `f05-14` Integrate qualify encryption inventory and adversarial security gates ← f05-14-cipher, f05-14-copies, f05-14-harness · security
-- ○ `f05-15` Integrate deliver operator/evidence package and unchanged controller regressions ← f05-14, f05-15-evidence, f05-15-schedule · tester
-- ● `f05-04-status` Persist proposals, seven statuses and registered verification ← f05-04 · data
-- ● `f05-04-correction` Apply selective correction with CAS, lineage and scoped dedup ← f05-04-status · data
-- ● `f05-04-recovery` Expose original-key HTTP save and commit recovery ← f05-04-correction · backend
-- ● `f05-04-gate` Integrate canonical knowledge, commands and source content ← f05-04-recovery · data
-- ● `f05-05-artifacts` Publish durable encrypted artifacts and quarantine orphans ← f05-04-gate · backend
-- ● `f05-05-drafts` Persist live versions, recoverable drafts and distinct checkpoints ← f05-05-artifacts · backend
-- ● `f05-05-promotion` Validate CAS file promotion and current writer fences ← f05-05-drafts · backend
-- ● `f05-06-recall` Retrieve current eligible canonical sources before decryption ← f05-05 · backend
-- ● `f05-06-native` Compose useful native Ask with installed resource admission ← f05-06-recall · backend
-- ● `f05-06-disclosure` Publish reauthorized answers and versioned retrieval manifests ← f05-06-native · backend
-- ● `f05-07-retention` Commit expiry and forget restrictions with truthful impact ← f05-06 · data
-- ● `f05-07-graph` Track nested sensitive dependencies and block descendants ← f05-07-retention · data
-- ● `f05-07-maintenance` Build encrypted projections under existing maintenance allowance ← f05-07-graph · data
-- ● `f05-07-retry` Resume durable invalidation leases without resurrection ← f05-07-maintenance · data
-- ● `f05-08-capture` Capture coherent encrypted backup inventory under Space barrier ← f05-07 · backend
-- ● `f05-09-import` Validate archive and import into a fresh blocked generation ← f05-08 · backend
-- ● `f05-09-activation` Reconcile current restrictions and activate useful restored content ← f05-09-import · backend
-- ● `f05-09-progress` Recover interrupted restore and activation uncertainty ← f05-09-activation · backend
-- ● `f05-10-build` Verify hostile build and executed-result harness schedules ← f05-09 · tester
-- ● `f05-10-cleanup` Verify owned fixture cleanup and observation sabotage ← f05-10-build · tester
-- ● `f05-11-authority` Exercise authority and source-eligibility schedules ← f05-10 · tester
-- ● `f05-11-atomic` Exercise atomic knowledge commit and wire uncertainty ← f05-11-authority · tester
-- ● `f05-11-knowledge` Exercise knowledge lineage, statuses and conflict writers ← f05-11-atomic · tester
-- ● `f05-11-artifact` Exercise artifact durability and orphan cleanup schedules ← f05-11-knowledge · tester
-- ● `f05-11-volume` Exercise file promotion, draft and checkpoint schedules ← f05-11-artifact · tester
-- ● `f05-11-lifecycle` Exercise every-class expiry, forget and dependency graph ← f05-11-volume · tester
-- ● `f05-11-retry` Exercise late jobs and interrupted propagation retry ← f05-11-lifecycle · tester
-- ● `f05-11-maintenance` Exercise admitted maintenance and single-charge refusals ← f05-11-retry · tester
-- ● `f05-11-races` Exercise revocation and lifecycle publication races ← f05-11-maintenance · tester
-- ● `f05-12-recall` Exercise useful persisted Ask and recall gaps ← f05-06, f05-07, f05-09 · 1×tester
-- ● `f05-12-disclosure` Exercise answer disclosure races and immutable Space binding ← f05-06, f05-07 · 1×tester
-- ● `f05-12-routing` Exercise no-VM routing, controls and installed admission ← f05-12-recall, f05-12-disclosure, f05-09, f05-12-routing-schedule-repair · 1×tester
-- ● `f05-13-current` Exercise actual restore usefulness and current-authority gates ← f05-09, f05-06 · 1×tester
-- ● `f05-13-interruption` Exercise seven restore kill phases and wire recovery ← f05-09 · 1×tester
-- ● `f05-13-integrity` Exercise poisoned archives and forbidden authority replay ← f05-08, f05-09-import · 1×tester
-- ● `f05-13-measurement` Exercise coherent backup/operator schedules and measure restore ← f05-13-current, f05-13-interruption, f05-13-integrity, f05-13-backup-schedule-repair · 1×tester
-- ● `f05-15-docs` Deliver executable operator journey and evidence inventories ← f05-12, f05-13 · 1×tester
-- ● `f05-15-evidence` Bind evidence to candidate and block unsupported qualification ← f05-15-docs · 1×tester
-- ● `f05-14-cipher` Exercise every-class ciphertext integrity and recreated reads ← f05-03, f05-05, f05-06, f05-07, f05-09 · 1×security
-- ● `f05-14-copies` Scan all retained private copies and scoped equality probes ← f05-03, f05-05, f05-06, f05-07, f05-09 · 1×security
-- ● `f05-05-schedule` Execute all complete volume predecessors concurrently within nested fixture lifetimes ← f05-05-promotion, f05-05-custodian · backend
-- ● `f05-05-recovery` Prove exact owned recovery and recover the interrupted Turn53 fixture ← f05-05-promotion · devops
-- ● `f05-05-custodian` Keep fixture custodian alive across worker loss with exact LIFO cleanup ← f05-05-recovery · backend
-- ● `f05-11-atomic-disconnect` Repair owned atomic disconnection with mandatory repeated phase proof ← f05-11-atomic, f05-11-knowledge, f05-11-lifecycle-fix · tester
-- – `f05-11-suite-execution` Remove obsolete per-file timeout and prove complete lifecycle schedule ← f05-11-races, f05-10, f05-11-full-predecessors · tester
-- ○ `f05-15-schedule` Prove complete current aggregate workload before terminal delivery ← f05-14, f05-15-evidence · tester
-- ◐ `f05-14-harness` Prove original full D/H after bounded direct F05 source repairs ← f05-10, f05-11, f05-12, f05-13, f05-15-evidence, f05-14-cipher, f05-14-copies, f05-14-control-scan, f05-14-postscan-profile, f05-14-direct-cpu-profile, f05-14-epoch-metadata, f05-14-owned-copy-design, f05-14-owned-copy-repair · 1×tester
-- ● `f05-11-measurement-drain` Repair fatal-path measurement output and prove complete hostile regression ← f05-11-races, f05-10 · tester
-- – `f05-11-full-predecessors` Repair complete S-L/S-V predecessor isolation and exact result admission ← f05-11-races, f05-10, f05-11-measurement-drain, f05-11-full-receipt-transport · tester — last checks failed: f05-11-full-predecessors.complete-lifecycle-isolation-admission, f05-11-full-predecessors.complete-volume-isolation-admission
-- – `f05-11-full-receipt-transport` Repair native full-registration receipt framing and real serializer controls ← f05-11-measurement-drain, f05-11-races, f05-10, f05-11-receipt-boundaries, f05-11-lock-observation-investigation, f05-11-maintenance-failure-capture · tester — last checks failed: f05-11-full-receipt-transport.complete-lifecycle-native-receipts
-- ● `f05-11-receipt-boundaries` Repair SQL diagnostic framing, split native control markers and original preservation refusal paths ← f05-10, f05-11-races, f05-11-measurement-drain, f05-11-native-diagnostic-controls · tester
-- ● `f05-11-native-diagnostic-controls` Preserve raw diagnostic negative bytes through closed native test-control transport ← f05-10, f05-11-races, f05-11-measurement-drain, f05-11-native-proof-transport · tester
-- ● `f05-11-native-proof-transport` Retain complete native structural proof through bounded lossless controller transport ← f05-10, f05-11-races, f05-11-measurement-drain · tester
-- ● `f05-11-lock-observation-investigation` Investigate actual maintenance lock observation failure without changing frozen helpers ← f05-11-receipt-boundaries, f05-11-native-diagnostic-controls, f05-11-native-proof-transport · tester
-- – `f05-11-maintenance-failure-capture` Capture the unchanged original maintenance failure boundary without editing frozen sources ← f05-11-lock-observation-investigation · tester
-- ● `f05-11-lifecycle-fix` Fix the lock-wait race at its source and pass lifecycle-propagation ← f05-10, f05-11-lock-observation-investigation, f05-11-measurement-drain, f05-11-races, f05-11-receipt-boundaries · backend
-- ● `f05-12-routing-schedule-repair` Repair full Ask original migration fixture isolation ← f05-12-recall, f05-12-disclosure, f05-09, f05-13-current, f05-13-interruption, f05-12-routing-order-repair · 1×tester
-- ● `f05-12-routing-order-repair` Repair complete Ask expected registration order ← f05-12-recall, f05-12-disclosure, f05-09, f05-13-current, f05-13-interruption · tester
-- ● `f05-13-backup-schedule-repair` Repair original backup registration and killed-worker output ← f05-08, f05-09, f05-13-current, f05-13-interruption, f05-13-integrity · 1×tester
-- ● `f05-14-admission-profile` Attribute staging/publication admission latency directly ← f05-13 · tester
-- ● `f05-14-control-scan` Repair repeated F05 control-scan transport without changing admission boundaries ← f05-14-admission-profile, f05-02, f05-03, f05-05-artifacts, f05-09-activation · 1×tester
-- ● `f05-14-postscan-profile` Attribute remaining direct admission cost after the full-H timeout ← f05-14-control-scan, f05-14-admission-profile · 1×tester
-- ● `f05-14-direct-cpu-profile` Sample direct F05 file-operation cost without admission decorators ← f05-14-postscan-profile, f05-14-control-scan · 1×tester
-- ● `f05-14-epoch-metadata` Reduce fresh epoch-directory metadata scheduling with unchanged authority ← f05-14-direct-cpu-profile, f05-14-control-scan · 1×tester
-- ● `f05-14-owned-copy-design` Prescribe direct H02 owned-copy execution and immutable D origin handling ← f05-14-epoch-metadata, f05-14-copies, f05-15-evidence · 1×tester
-- ● `f05-14-owned-copy-repair` Repair direct H02 owned-copy execution and immutable D origins ← f05-14-owned-copy-design · 1×tester
-
-## Checks running now
-
-- `job-4796beec7d` acceptance.g1-storage-behavior · started 2026-10-14T13:52:09+00:00 · pid 36733
+- – `f06-01` Freeze owner-bound contracts and strict runtime package primitives · 1×architect + 1×backend + 1×tester
+- – `f06-02` Implement native intent admission and Plan bridge fixture journey ← f06-01 · 1×backend + 1×tester
+- – `f06-03` Implement durable local queue, single assignment and fixture usage ← f06-01 · 1×data + 1×backend + 1×tester
+- – `f06-04` Implement bounded tool and egress paths with actual observers ← f06-01, f06-02, f06-03 · 1×backend + 1×backend + 1×security
+- ● `f06-05` Implement sensitive browser and input refusals ← f06-02b · security
+- – `f06-06` Compose continuation, Stop and recovery with serial pilot timing ← f06-02, f06-03, f06-04, f06-05 · 1×backend + 1×tester
+- – `f06-07` Close local qualification materials and strict full harness evidence ← f06-01, f06-02, f06-03, f06-04, f06-05, f06-06 · 1×devops + 1×tester + 1×tester
+- – `f06-08` Implement additive PG runtime schema and scoped queue persistence ← f06-01, f06-03 · 1×data + 1×tester
+- – `f06-09` Install safe fence composition, original effect settlement and atomic transfer ← f06-02, f06-04, f06-06, f06-08 · 1×backend + 1×backend + 1×tester
+- – `f06-10` Integrate real-format usage receipts with the existing allowance family ← f06-03, f06-08, f06-09 · 1×backend + 1×tester
+- – `f06-11` Implement the linked Plan maintenance bridge on real F05 and close owners ← f06-02, f06-08, f06-09, f06-10 · 1×backend + 1×backend + 1×tester
+- – `f06-12` Pin the exact backend API, image and approved environment contract ← f06-07, f06-11 · 1×architect + 1×devops
+- – `f06-13` Implement pinned Linux lifecycle and single-assignment backend ← f06-12 · 1×devops + 1×backend + 1×tester
+- – `f06-14` Verify deployed boundaries, journeys, costs and serial timing ← f06-11, f06-13 · 1×tester + 1×security + 1×devops
+- ○ `f06-15` Run unchanged regressions and hand off current evidence ← f06-07c, f06-11e, f06-14e · tester
+- ● `f06-01a` Create strict package and original-owner contracts · architect
+- ● `f06-01b` Build shared strict runners and owned fixture primitives ← f06-01a · tester
+- ● `f06-02a` Implement native Ask and bounded Act admission ← f06-01b · backend
+- ● `f06-02b` Implement linked Plan fixture save and reopen ← f06-02a · backend
+- ● `f06-03a` Implement durable atomic local resource repository ← f06-01b · data
+- ● `f06-03b` Implement single assignment and local lifecycle usage ← f06-03a · backend
+- ● `f06-04a` Implement fixed shell SDK and stdio MCP dispatch ← f06-02b, f06-03b · backend
+- ● `f06-04b` Implement bounded egress and close tool paths ← f06-04a, f06-05 · backend
+- ● `f06-06a` Implement continuation Stop and process control ← f06-04b, f06-05 · backend
+- ● `f06-06b` Implement local original settlement base journeys ← f06-06a, f06-03b · backend
+- ◐ `f06-06c` Verify local settlement authority receipt and quiescence ← f06-06b, f06-06c-pilot · security
+- ○ `f06-06d` Verify local settlement faults atomicity and no replay ← f06-06c · tester
+- ○ `f06-06e` Close local authority recovery and serial pilot timing ← f06-06d, f06-02b · tester
+- ○ `f06-07a` Implement capability matrix and exact qualification registry ← f06-06e · devops
+- ○ `f06-07b` Complete strict harness sabotage and evidence integrity ← f06-07a · tester
+- ○ `f06-07c` Publish local release materials and full local gate ← f06-07b · devops
+- ◐ `f06-08a` Install additive PG schema and atomic queue keys ← f06-01b, f06-03b · data
+- ○ `f06-08b` Verify PG queue cancellation recreation and rollback ← f06-08a · data
+- ○ `f06-09a` Install fence-only authenticated prelocking composition ← f06-08b, f06-02b · backend
+- ○ `f06-09b` Install ACK-only original effect dispatch adapter ← f06-09a, f06-04b · backend
+- ○ `f06-09c` Implement fresh original read-only settlement authority ← f06-09b · backend
+- ○ `f06-09d` Implement constrained original-owner metadata settlement ← f06-09c · backend
+- ○ `f06-09e` Verify PG settlement authority and receipt field denials ← f06-09d · security
+- ○ `f06-09f` Verify PG quiescence snapshots and stale execution denial ← f06-09e · security
+- ○ `f06-09g` Verify PG original settlement faults and dedup ← f06-09f · tester
+- ○ `f06-09h` Implement atomic original fence and queue transfer ← f06-09g · backend
+- ○ `f06-09i` Verify legal original-owner phase and Stop races ← f06-09h, f06-06e · tester
+- ○ `f06-09j` Close all real authority effect and owner lock cases ← f06-09i · tester
+- ○ `f06-10a` Implement real-format usage in original allowance family ← f06-09j, f06-03b · backend
+- ○ `f06-10b` Verify real usage rollback and lost acknowledgement ← f06-10a · tester
+- ○ `f06-11a` Implement private Plan maintenance child admission ← f06-02b, f06-08b, f06-09j, f06-10b · backend
+- ○ `f06-11b` Integrate real Plan artifact publication and reopen ← f06-11a · backend
+- ○ `f06-11c` Verify Plan CAS authority and budget separation ← f06-11b · security
+- ○ `f06-11d` Verify Plan staging publication and commit recovery ← f06-11c · tester
+- ○ `f06-11e` Run full real Plan and owner integration gates ← f06-11d · tester
+- ○ `f06-12a` Pin release-specific backend protocol without activation ← f06-07c · architect
+- ○ `f06-12b` Bind later approved host facts and limits ← f06-12a, f06-11e · devops
+- ○ `f06-13a` Implement disabled pinned backend on local protocol fixture ← f06-12a · backend
+- ○ `f06-13b` Qualify actual image readiness and resource controls ← f06-13a, f06-12b · devops
+- ○ `f06-13c` Qualify deployed one-assignment queue base behavior ← f06-13b · devops
+- ○ `f06-13d1` Qualify deployed original settlement: stopped-original-stop-run ← f06-13c · tester
+- ○ `f06-13d2` Qualify deployed original settlement: stopped-original-stop-task ← f06-13d1 · tester
+- ○ `f06-13d3` Qualify deployed original settlement: lease-expired-original ← f06-13d2 · tester
+- ○ `f06-13d4` Qualify deployed original settlement: effect-expired-original ← f06-13d3 · tester
+- ○ `f06-13d5` Qualify deployed original settlement: stop-and-both-expiries ← f06-13d4 · tester
+- ○ `f06-13e` Run full deployed lifecycle and recovery gate ← f06-13d5 · tester
+- ○ `f06-14a` Verify deployed all-path containment and trust limits ← f06-13e, f06-11e · security
+- ○ `f06-14b` Verify deployed intent artifact lifecycle and costs ← f06-14a · tester
+- ○ `f06-14c` Verify deployed browser and GUI refusal profile ← f06-14b · security
+- ○ `f06-14d` Verify deployed watchdog recovery and serial timing ← f06-14c · tester
+- ○ `f06-14e` Run deployment release drill and full X gate ← f06-14d · tester
+- ● `f06-06c-pilot` Establish genuine five-path quiescence vector restoration pilot ← f06-06b · security
+- ○ `f06-test-design-profile` Measure unchanged local settlement pilot concurrency for test design ← f06-06c-pilot · test-designer
+- ● `f06-test-design-census` Resolve process residue after guarded concurrency specimen cancellation ← f06-06c-pilot · test-designer
+- ● `f06-test-design-cancel` Design diagnostic: reproduce birth-integrity cancellation gap and fresh owned recovery · tester
 
 ## Acceptance checks
 
-- ✗ `g1-storage-behavior` fail · 2026-10-14T13:39:31+00:00 — `node g1-storage/scripts/check.mjs`
-- ✓ `identity-behavior` pass · 2026-10-07T21:07:26+00:00 — `node g1-identity/scripts/check.mjs`
-- ✓ `foundation-behavior` pass · 2026-10-07T21:07:29+00:00 — `node g1-foundations/scripts/check.mjs`
-- ✓ `retained-baselines` pass · 2026-10-09T08:42:02+00:00 — `node g1-foundations/scripts/check-retained.mjs`
+- ○ `g1-runtime-behavior` not run — `node g1-runtime/scripts/check.mjs`
+- ○ `identity-behavior` not run — `node g1-identity/scripts/check.mjs`
+- ○ `foundation-behavior` not run — `node g1-foundations/scripts/check.mjs`
+- ○ `retained-baselines` not run — `node g1-foundations/scripts/check-retained.mjs`
 
 ## Reviews
 
 - ○ `security` (agent) pending
 - ○ `code` (agent) pending
-- ○ `performance-review` (agent) pending
 - ○ `final-acceptance` (agent) pending
 - ○ `product-acceptance` (agent) pending
 
 ## Findings
 
-- `f-da55f95e28` [evidence/recorded] Turn322 final joined direct inverse migration controller checks PASS: strict-build job-14b79dc6f2 6170ms/full originalstdout1148 sha256b950ecbc...079dd; unchangedmeasurement120s job-f0060db7d8 33475ms/stdout4625471 sha2563ba74858...6cdc3; bothstderr0. Shippedreader verifies complete originals/actual
-- `f-4d0678d098` [evidence/recorded] Turn324 after final tester join, unchanged serialized controller checks PASS exit0/completed: strict-build job-30ccdf1e93 7497ms stdout1148 sha25699c57997…04c11; measurement120s job-9b2ddff1c8 33899ms stdout4620844 fa62d5c8…76d0e; existing native-proof120s job-f0444d685e 87598ms stdout17202968 43bb0
-- `f-be69ca93c6` [evidence/recorded] Turn326 local source-equivalent FIFO prototype completes6 alternating complete HC/D original/private comparisons plus8 unchanged H01-hooked full pair scans. Original/private535+14935 entries,12928files418689614bytes exact; every hook16TOTAL allocations/backings,fresh disjoint,26474reads25856descript
-- `f-b2f21f150e` [root_cause/recorded] Turn328 terminal job-54d7e5d2be is six PASS/one H-build FAIL443134ms, not timeout. Fresh-build92.372s exact input guard correctly refuses seq4970 turn.finished327 event (events1997399→1997781bytes exact old/new hashes) during copied evidence reading; future active copy checks must remain within turn
-- `f-574b79e7cc` [evidence/recorded] Turn329 same-turn job-fceb1f3adb terminal ALL7 PASS: strict5857ms/H-build1651629/H-cleanup87656/D-evidence7930/D-operations96884/E196587/measurement35852. Complete original stdout+stderr read/hashed; all stderr0. Hbuild19/cleanup24/evidence9/operations28/E32 tests, every fail/cancelled/skipped/TODO0
-- `f-955d530291` [evidence/recorded] Turn330 follows human5026 product-first directive. Original acceptance.g1-storage-behavior job-9d30b47c5e terminal TIMEOUT1800152ms/exit-15/cleanupterminated, actual unchanged1800s definition, fingerprintgit:5127ad245a5419cb6cd36365. Complete original stdout1526223B/c7a08d3d and stderr0 read/hashed.
-- `f-83945ea212` [root_cause/recorded] Turn334 actual original product check job-247fb30362 FAIL exit1 duration583478ms, not3600s timeout. Sole underlying assertion atomic-disconnect.mjs67: setup-close 32551.711667ms exceeds 30000ms. All 5 child suites pass 284 tests; AD 62 tests/50 real phases/10 hostile probes pass, maximum 100 phase w
-- `f-75ed9b2d09` [evidence/recorded] Turn334 after approved exact AD correction, complete current product rerun job-e22a9f2e36 TIMEOUT3600136ms exit-15, cleanup=terminated, fingerprint3396ad7d. Candidate1177/e4331848; fresh build and9outer suites947tests including273backup/restore PASS, zero fail/cancel/skip/TODO;34observations sixzero
-- `f-32c83073ff` [evidence/recorded] Turn335 complete original job-df07c43458 TIMEOUT7200095ms exit-15 cleanup=terminated fingerprint91899077; stdout4953152/6a30a4743d223a0be37b76b1904a4aece7623ca0b82b6c0017f5385883fdf6f2, stderr0 retained. Original freshbuild6831.107ms and H02copybuild12841.519ms each execute9suites947tests incl273bac
-- `f-ceeed71b42` [root_cause/confirmed] Turn339 independently confirmed actual job-e179294710 FAIL1/7014842ms sole genuine leaf H02/good-full-run TypeError at harness.test.ts55 after actual private fixed10run PASS984 and successful copy removal. Manifest.suites lacks atomic-disconnect while actual runner uses registry.executionSuites. App
+- `f-627a2142b4` [root_cause/recorded] Retain failed precheckjob1a9247fac1/candidate0d0228: all5 A16 passed; A18 exact target snapshot failed because owner restart closed an unrelated live successor stream. Repair establishes acknowledged stop + independent quiescence of successor BEFORE exact unchanged lostclaim baseline (no assertion w
+- `f-63cf36fbe4` [hypothesis/open] Second precheck82ab8b9591 finished50236ms,14/15 passed; all5 A16 and4/5A18+allR18 passed. Lease-expiry A18 refused actual termination because parent close lacked observed descendant-exited ACK; conservatively failed and held, not downgraded to success. Fixed specimen child-close path to await IPC se
+- `f-3260917e3f` [evidence/recorded] Completion controllerjobefdc469e4c PASS15/15 in51289ms whole360s and original120s inner, after current build preserved3767 files. Runtime raw run2026-10-15T21-46-53.361Z-e25c3371-4e71-4cf9-8b4a-52c1a681ceea. Precheck13df6fdf3b separatelyPASS51192ms, both earlier failed attempts retained. No source c
+- `f-3ea10f0d21` [evidence/recorded] Turn33 final currentcandidateea22b5ac5db6b9b37b7aac3146bb0cc5c64c6d7608dfec33a77e201df1c75d11 controller06b ef dc469e4c PASS15/15 51289ms (job-efdc469e4c); unchanged regressionsjob1e5ee5356e01a10/10 7694ms,01b7/7 17019ms,06a7/7 53393ms,03b15/15 23133ms. Machineaudit54assertions36currentstreams447act
+- `f-4c25da923d` [evidence/recorded] Root controller pilot precheck job3d4e037098 PASS5/5 registered wrongboot leaves with18actual independent schema-fault/restoredGET/useful-successor journeys in56878ms overall/52011.40075ms inner, no fail/cancel/skip/TODO. Source remains frozen; completion4e09893cc1 separately running, root owns fina
+- `f-d334eb6fdb` [evidence/recorded] Turn34 controller completed pilot: job4e09893cc1 PASS5/5 in56592ms, actualinner51671.781375ms, all18independent negative/freshrestored-useful-successor journeys; precheck3d4e037098PASS56878ms. Currentruntimecandidate7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4. All14schemafaults 
+- `f-0c77ed8424` [root_cause/recorded] Turn37 source-bound correction to PR-F06-08: actual case-inventory componentViews.continuation includes R19 (2487 IDs=2485 recovery+A11egress+A13authority), contrary to turn36's omit-R19/31s assumption. Its unchanged300s WHOLE command contains121s serial samples+build/three suites/cleanup. Human rec
+- `f-e78faef312` [root_cause/recorded] Turn38 controller job-5b06476310 measured unchanged candidate7089d81f4ccd: complete1/2/4-lane pilot phases PASS53.839/55.688/59.588s,126 independent actual negative+fresh-restoredGET+useful-successor journeys. Eight-lane phase crossed conservative4GiB sum-owned-RSS guard(sample4541366272bytes,70live
+- `f-6f2b7840d8` [root_cause/recorded] Turn39 unchanged-supervisor diagnostic job-13454408d5 PASS2915ms establishes a counterexample, NOT product acceptance: after root+grandchild OS births/ACKs, one intentionally invalid-nonce row in owned births.ndjson makes cleanup observe() throw before signaling; report cleanup:false/streamsComplete
+- `f-f5062b62cd` [evidence/recorded] Turn40 local STATIC design audit only (no controller behavior claim): test-plan §19 + test-design-turn40/{cohort-contract.md,model.py,cohort-assignment-expiry-first.json,audit-final.json,report.md}. Ten deterministic packing candidates retain2488 reference branches/2475 owning cases/1492 actual3s ex
 
 ## Recent turns
 
-- #335 work · codex/gpt-6.1-sol @xhigh · ok · 537s · progress — Started controller run `job-e179294710` with the human-approved 14400-second hang guard.
+- #36 test_design · codex/gpt-6.1-sol @high · ok · 526s · progress — Updated the [test-design draft](/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-plan.md) with state-independence rules and a proposed task split. Both findings remain
+- #37 test_design · codex/gpt-6.1-sol @high · ok · 745s · progress — Updated the [test design](/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-plan.md) with the approved 300s inner limit, exact partition candidates and bounded task pro
+- #38 test_design · codex/gpt-6.1-sol @high · ok · 1121s · progress — Updated the [test plan](/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-plan.md) with measured limits and cancellation cases.
 
-The previous run passed 947 tests in both the original and copied suites, but the full harness remained incomp
-- #336 work · codex/gpt-6.1-sol @xhigh · exit 1 · 15s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #337 work · codex/gpt-6.1-sol @xhigh · exit 1 · 3s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #338 work · codex/gpt-6.1-sol @xhigh · exit 1 · 4s · no progress — {"message": "Your workspace is out of credits. Add credits to continue."}
-- #339 work · codex/gpt-6.1-sol @xhigh · ok · 570s · progress — Fixed H02’s registry lookup crash without changing assertions. The tester independently reviewed the correction.
+- 126 independent journeys passed at 1/
+- #39 test_design · codex/gpt-6.1-sol @high · ok · 614s · progress — Reproduced the cancellation cleanup defect and specified 20 future test cases. Independent recovery verified no remaining owned processes; production code is unchanged.
 
-Full controller acceptance is running as `job-4796beec7d`. F05 remains unaccepted pend
+Test design remains incomplete
+- #40 test_design · codex/gpt-6.1-sol @high · ok · 485s · progress — Updated [test-plan.md](/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-plan.md) with a cohort composition proposal, six isolation probes and reproducible static sched
 
 ## Recent notes
 
-- 2026-10-14T11:42:34+00:00 [handoff] Turn335 staffed tester/root/tester read role guide FIRST; exact fileownershipNONE, returned independent complete originalstream/behavior/cleanup/14400configurationreview. Explicitly SETTLED with no edits/checks/builds/fixtures/resources/controllerwork in flight. Lead reviews report/currentplan/evide
-- 2026-10-14T13:42:51+00:00 [decision] Unblocked: Continue approved from Telegram
-- 2026-10-14T13:47:29+00:00 [decision] Turn339 product-first job-e179294710 terminal FAIL1/7014842ms within approved14400s, not timeout. Actual private H02 owned-copy fixed ten workload reports success/exit0/complete true, then sole genuine leaf fails harness.test.ts:55 TypeError because :53 imports manifest.suites, lacking atomic-discon
-- 2026-10-14T13:52:01+00:00 [root_cause] Turn339 independently confirmed actual job-e179294710 FAIL1/7014842ms sole genuine leaf H02/good-full-run TypeError at harness.test.ts55 after actual private fixed10run PASS984 and successful copy removal. Manifest.suites lacks atomic-disconnect while actual runner uses registry.executionSuites. App
-- 2026-10-14T13:52:01+00:00 [handoff] Turn339 prescribed guide-first tester /root/tester owns no files, independently reviewed complete original terminal result and direct single-line H02 lookup repair, confirms remaining private command frames assertions and explicitly SETTLED with no edits/builds/checks/fixtures/resources/cleanup/cont
-- 2026-10-14T14:14:05+00:00 [decision] 人工决定（加快修复循环）：完整验收 acceptance.g1-storage-behavior 约 2 小时，因为 harness 会在复制的 runner 里把 10 个产品套件再跑一遍。以后修复时先用快速的组件/切片检查迭代（如 check-component.mjs harness、check-slice.mjs <失败的套件>，几分钟），确认通过后才跑一次完整验收作最终确认。当前 job-4796beec7d 照常等结果；若失败，只针对失败项用快速检查迭代。
+- 2026-10-16T00:23:43+00:00 [root_cause] Turn39 unchanged-supervisor diagnostic job-13454408d5 PASS2915ms establishes a counterexample, NOT product acceptance: after root+grandchild OS births/ACKs, one intentionally invalid-nonce row in owned births.ndjson makes cleanup observe() throw before signaling; report cleanup:false/streamsComplete
+- 2026-10-16T00:29:52+00:00 [handoff] Turn39 test_design INCOMPLETE; no stage_done/product closure/production change. Read test-plan.md §18 and test-design-turn39/{report.md,cancellation-contract.md,cancellation-cases.json,result.json,final-results.json}. Unchanged7089d81f4ccd supervisor counterexample: wrong-nonce record after actual P
+- 2026-10-16T00:32:04+00:00 [decision] Turn40 test_design will specify a lower-footprint cohort protocol and reproducible static assignment/budget audit, not launch live cohorts: shared service infrastructure may serve disjoint namespaces per §15.2, but current target-wide value/config cannot. Preserve each actually admitted original, li
+- 2026-10-16T00:38:07+00:00 [evidence] Turn40 local STATIC design audit only (no controller behavior claim): test-plan §19 + test-design-turn40/{cohort-contract.md,model.py,cohort-assignment-expiry-first.json,audit-final.json,report.md}. Ten deterministic packing candidates retain2488 reference branches/2475 owning cases/1492 actual3s ex
+- 2026-10-16T00:38:07+00:00 [handoff] Turn40 test_design INCOMPLETE; PR08/09 OPEN;14/70 unchanged. Read test-plan §19 and test-design-turn40/report.md/cohort-contract.md/current cohort-assignment-expiry-first.json/audit-final.json. Proposed lower-footprint namespaces share listener/service/recovery epoch ONLY, not mutable authority/targ
+- 2026-10-16T00:39:31+00:00 [decision] Turn41 test_design will enumerate exact matrix state/order/fault recipes and all continuation nonmatrix branch obligations in docs-owned static artifacts; preserve current 5350 IDs/101 requirements and all deadlines/samples. No live cohort, diagnostic task, production edits, Docker, remote, official
 
 ## Goal queue
 
 - ✓ 1. `agent-fabric-g1-f03-recovery` agent-fabric: G1-F03 recovery — done
 - ✓ 2. `agent-fabric-g1-f04-model-finops` agent-fabric: G1-F04 model — done
-- ▶ 3. `agent-fabric-g1-f05-storage` agent-fabric: G1-F05 storage — running · approved
-- ○ 4. `agent-fabric-g1-f06-runtime` agent-fabric: G1-F06 runtime — ready · approved
-- ○ 5. `agent-fabric-g1-f07-clients` agent-fabric: G1-F07 clients — ready · approved
+- ○ 3. `agent-fabric-g1-f05-storage` agent-fabric: G1-F05 storage — paused · approved
+- ▶ 4. `agent-fabric-g1-f06-runtime` agent-fabric: G1-F06 runtime — running · approved
 
 The runner continues with the next approved goal after this one is done.
 

@@ -1,0 +1,212 @@
+{
+  "kind": "resource-document-diagnostics-only",
+  "observedAt": "2026-10-15T18:06:37.599269+00:00",
+  "reportSha256": "021a3f834422d1d2dc07b540f62c6cf298aa80f8861931160b68e3b955c42d7b",
+  "allPass": true,
+  "checks": [
+    {
+      "name": "all-local-document-links",
+      "pass": true,
+      "details": {
+        "links": 29,
+        "missing": [],
+        "onlyFutureLinkAllowed": "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/final-results.json"
+      }
+    },
+    {
+      "name": "source-plan-lock-and-unrelated-work-preserved",
+      "pass": true,
+      "details": {
+        "files": 54,
+        "mismatches": [],
+        "controllerStateExcluded": true
+      }
+    },
+    {
+      "name": "original-protected-raw-hashes",
+      "pass": true,
+      "details": [
+        {
+          "source": "g1-foundations/scripts/check-retained.mjs",
+          "variable": "frozen",
+          "files": 597,
+          "rawFilesWithinSet": 88,
+          "mismatches": []
+        },
+        {
+          "source": "g1-identity/scripts/check.mjs",
+          "variable": "preserved",
+          "files": 42,
+          "rawFilesWithinSet": 0,
+          "mismatches": []
+        }
+      ]
+    },
+    {
+      "name": "official-revised-plan-teams-covers-checks",
+      "pass": true,
+      "details": {
+        "differences": [],
+        "tasks": 15,
+        "checks": 25,
+        "checkSeconds": 13860,
+        "requirementCoverage": 101,
+        "specialists": {
+          "f06-01": 3,
+          "f06-02": 2,
+          "f06-03": 3,
+          "f06-04": 3,
+          "f06-05": 2,
+          "f06-06": 2,
+          "f06-07": 3,
+          "f06-08": 2,
+          "f06-09": 3,
+          "f06-10": 2,
+          "f06-11": 3,
+          "f06-12": 2,
+          "f06-13": 3,
+          "f06-14": 3,
+          "f06-15": 0
+        }
+      }
+    },
+    {
+      "name": "original-acceptance-and-policy-budgets",
+      "pass": true,
+      "details": {
+        "acceptance": [
+          [
+            [
+              "node",
+              "g1-runtime/scripts/check.mjs"
+            ],
+            1800
+          ],
+          [
+            [
+              "node",
+              "g1-identity/scripts/check.mjs"
+            ],
+            600
+          ],
+          [
+            [
+              "node",
+              "g1-foundations/scripts/check.mjs"
+            ],
+            600
+          ],
+          [
+            [
+              "node",
+              "g1-foundations/scripts/check-retained.mjs"
+            ],
+            900
+          ]
+        ],
+        "policy": {
+          "max_iterations": null,
+          "max_hours": null,
+          "turn_timeout_minutes": 120,
+          "check_timeout_seconds": 3600
+        },
+        "teamLimit": 4
+      }
+    },
+    {
+      "name": "remediated-clean-offline-installs",
+      "pass": true,
+      "details": {
+        "recoveryOffline": 0,
+        "clients": {
+          "g1-local/web": 0,
+          "g1-local/desktop": 0,
+          "g1-local/mobile": 0
+        },
+        "nativeInstallScriptsRun": false
+      }
+    },
+    {
+      "name": "installed-owner-import-and-seam-prerequisites",
+      "pass": true,
+      "details": {
+        "compile": {
+          "command": [
+            "/Users/super/.hermes/node/bin/node",
+            "node_modules/typescript/bin/tsc",
+            "--noEmit",
+            "--strict",
+            "--noUncheckedIndexedAccess",
+            "--exactOptionalPropertyTypes",
+            "--target",
+            "ES2023",
+            "--lib",
+            "ES2024",
+            "--module",
+            "NodeNext",
+            "--moduleResolution",
+            "NodeNext",
+            "--allowImportingTsExtensions",
+            "--esModuleInterop",
+            "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-owner-compile-0USZhQ/owners.mts"
+          ],
+          "status": 0,
+          "error": null,
+          "stdout": "",
+          "stderr": "",
+          "skipLibCheck": false,
+          "productionCodeExecuted": false
+        },
+        "assertions": {
+          "artifactHooks": true,
+          "artifactRequiresAskMaintenance": true,
+          "artifactPhysicalRevisionOne": true,
+          "claimAddsPermitAfterAwait": true,
+          "guardConsumesBeforeUow": true,
+          "model12ParentTrigger": true,
+          "borrowedUowPresent": true,
+          "inheritedRealSshProbe": true
+        },
+        "actualSqlBehaviorQualified": false
+      }
+    },
+    {
+      "name": "local-primitives-and-exact-unavailable-states",
+      "pass": true,
+      "details": {
+        "ready": [
+          "sqlite-wal-process",
+          "loopback-http",
+          "owned-filesystem",
+          "shell",
+          "stdio-json-rpc",
+          "owned-child-lifecycle",
+          "offline-frozen-dependency-install",
+          "offline-g1-foundations",
+          "offline-g1-identity",
+          "offline-g1-model",
+          "offline-g1-storage",
+          "owned-temp-cleanup"
+        ],
+        "censusError": {
+          "message": "{\"command\":[\"ps\",\"-p\",\"66258\",\"-o\",\"pid=,ppid=,pgid=,lstart=,comm=\"],\"status\":null,\"signal\":null,\"error\":\"spawnSync ps EPERM\",\"stdout\":\"\",\"stderr\":\"\"}",
+          "code": "EPERM"
+        },
+        "initialFailuresPreserved": true
+      }
+    },
+    {
+      "name": "readiness-gates-and-fixed-checkpoints",
+      "pass": true,
+      "details": {
+        "missingTokens": [],
+        "taskDoneClaims": false,
+        "remoteQualified": false
+      }
+    }
+  ],
+  "productTestsRun": false,
+  "dockerInvoked": false,
+  "guiInvoked": false,
+  "remoteTestEnvironmentAccessed": false
+}

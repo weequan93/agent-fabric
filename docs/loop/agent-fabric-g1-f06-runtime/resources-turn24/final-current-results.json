@@ -1,0 +1,237 @@
+{
+  "assurance": "resource-document-diagnostics-only",
+  "productChecksRun": false,
+  "dockerRun": false,
+  "pgServiceRun": false,
+  "guiRun": false,
+  "remoteRun": false,
+  "controllerAcceptance": false,
+  "records": [
+    {
+      "name": "exact-53-controller-leaves",
+      "passed": true,
+      "observation": {
+        "pending": 53,
+        "dropped": 13,
+        "implementationDone": 0
+      }
+    },
+    {
+      "name": "all-requirements-covered",
+      "passed": true,
+      "observation": {
+        "requirements": 101
+      }
+    },
+    {
+      "name": "all-leaves-single-implementer-within-turn",
+      "passed": true,
+      "observation": {
+        "maximumMinutes": 120.0,
+        "oneLeadPlusNoAdditionalTeam": true,
+        "noParallelSpeedup": true
+      }
+    },
+    {
+      "name": "every-leaf-rendered-exactly-once",
+      "passed": true,
+      "observation": {
+        "rows": 53
+      }
+    },
+    {
+      "name": "unchanged-policy-and-final-ceilings",
+      "passed": true,
+      "observation": {
+        "turnMinutes": 120,
+        "checkSeconds": 3600,
+        "finalSeconds": [
+          1800,
+          600,
+          600,
+          900
+        ],
+        "totalPolicyUnlimited": true
+      }
+    },
+    {
+      "name": "check-invocation-arithmetic",
+      "passed": true,
+      "observation": {
+        "invocations": 59,
+        "checkCeilingsSeconds": 36180,
+        "laterAcceptanceSeparate": true
+      }
+    },
+    {
+      "name": "fresh-permitted-local-resource-probes",
+      "passed": true,
+      "observation": {
+        "records": 29,
+        "expectedExactMissing": [
+          "process-census",
+          "cpu-sysctl",
+          "memory-sysctl"
+        ],
+        "observedAt": "2026-10-15T19:26:48.221Z"
+      }
+    },
+    {
+      "name": "permission-claims-exactly-reproduced",
+      "passed": true,
+      "observation": {
+        "censusError": {
+          "message": "{\"command\":[\"ps\",\"-p\",\"38217\",\"-o\",\"pid=,ppid=,pgid=,lstart=,comm=\"],\"status\":null,\"signal\":null,\"error\":\"spawnSync ps EPERM\",\"stdout\":\"\",\"stderr\":\"\"}",
+          "code": "EPERM"
+        },
+        "sysctlErrors": [
+          {
+            "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.ncpu\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+            "code": null
+          },
+          {
+            "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.memsize\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+            "code": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "strict-owner-signatures-and-clean-client-dependencies",
+      "passed": true,
+      "observation": {
+        "clients": 4,
+        "installedSeams": {
+          "artifactHooks": true,
+          "artifactRequiresAskMaintenance": true,
+          "artifactPhysicalRevisionOne": true,
+          "claimAddsPermitAfterAwait": true,
+          "guardConsumesBeforeUow": true,
+          "model12ParentTrigger": true,
+          "borrowedUowPresent": true,
+          "inheritedRealSshProbe": true
+        },
+        "binaryExecuted": false
+      }
+    },
+    {
+      "name": "six-legal-source-bound-phases-and-eight-negatives",
+      "passed": true,
+      "observation": {
+        "modelOnlyNotPGScheduling": true,
+        "variants": [
+          "live-reconcile-confirm-before-stop",
+          "stop-before-reconcile",
+          "reconcile-before-stop-before-confirm",
+          "fence-before-send",
+          "claim-ack-lost",
+          "illegal-direct-confirm-negative"
+        ]
+      }
+    },
+    {
+      "name": "all-closed-subsets-and-full-aggregate-counts-retained",
+      "passed": true,
+      "observation": {
+        "designNodes": 5350,
+        "notExecutedTests": true,
+        "fullLocal": 2622,
+        "fullP": 948,
+        "fullX": 1780
+      }
+    },
+    {
+      "name": "whole-invocation-models-honestly-unmeasured",
+      "passed": true,
+      "observation": {
+        "P-full": {
+          "ceilingSeconds": 600,
+          "reservedSeconds": 565,
+          "unallocatedSeconds": 35,
+          "measured": false
+        },
+        "X-full": {
+          "ceilingSeconds": 900,
+          "reservedSeconds": 860,
+          "unallocatedSeconds": 40,
+          "measured": false
+        },
+        "L-full-continuation-300": {
+          "ceilingSeconds": 300,
+          "reservedSeconds": 290,
+          "unallocatedSeconds": 10,
+          "measured": false
+        },
+        "L-full-900": {
+          "ceilingSeconds": 900,
+          "reservedSeconds": 830,
+          "unallocatedSeconds": 70,
+          "measured": false
+        }
+      }
+    },
+    {
+      "name": "unchanged-transitive-prohibited-paths-explicit",
+      "passed": true,
+      "observation": {
+        "identityDocker": true,
+        "foundationDockerAndRealSSH": true,
+        "commandsInspectedOnly": true
+      }
+    },
+    {
+      "name": "named-owned-gaps-and-unchanged-protected-constants",
+      "passed": true,
+      "observation": {
+        "protectedConstants": [
+          {
+            "source": "g1-foundations/scripts/check-retained.mjs",
+            "variable": "frozen",
+            "files": 597,
+            "rawFilesWithinSet": 88,
+            "mismatches": []
+          },
+          {
+            "source": "g1-identity/scripts/check.mjs",
+            "variable": "preserved",
+            "files": 42,
+            "rawFilesWithinSet": 0,
+            "mismatches": []
+          }
+        ],
+        "missingF06Outputs": {
+          "g1-runtime/package.json": false,
+          "g1-runtime/scripts/build.mjs": false,
+          "g1-runtime/scripts/check.mjs": false,
+          "g1-runtime/scripts/check-owners.mjs": false,
+          "g1-runtime/scripts/check-remote.mjs": false,
+          "docs/evidence/g1-f06-acceptance.md": false
+        },
+        "exactElectronArchiveAbsent": true
+      }
+    },
+    {
+      "name": "report-links-and-fences",
+      "passed": true,
+      "observation": {
+        "links": 33,
+        "missing": []
+      }
+    },
+    {
+      "name": "all-preexisting-files-preserved-except-readiness",
+      "passed": true,
+      "observation": {
+        "snapshotFiles": 76649,
+        "changes": [
+          "docs/loop/agent-fabric-g1-f06-runtime/readiness.md"
+        ],
+        "includesAcceptedSourcesRawAndUnrelatedF05": true,
+        "notBehavioralEvidence": true
+      }
+    }
+  ],
+  "passed": true,
+  "readinessSha256": "c34b4103b43b7446ad474572ce30e83ed904e24f0b15b51f95c3d3a732f83c8d",
+  "validatorSha256": "e750a06a7998aef1d5302c19e3d056ceae4f3862f40d0872ead6a87546ee295c"
+}

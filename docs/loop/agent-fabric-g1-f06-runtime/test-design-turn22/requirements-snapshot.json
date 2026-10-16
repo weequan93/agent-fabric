@@ -1,0 +1,810 @@
+[
+  {
+    "id": "AF-13",
+    "text": "Every exposed shell, SDK, browser, MCP/connector and direct-egress path must enforce the same actual resource policy boundary, including child processes bypassing cooperative brokers.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§2 AF-13,10 Tools as effect contracts,13; docs/planning/g1-remaining-ledger.csv:14; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”, §“Scope and priorities / Must”",
+    "verify": "security + integration: enumerate each exposed path, execute an allowed owned-fixture operation and equivalent forbidden file/process/network attempts through each, including direct children; observe destination and filesystem/process effects. Repeat on approved Linux deployment before claiming containment.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.01",
+    "text": "Effective execution authority must be the intersection of organization, Space, role, task intent/envelope, tool rules and qualified runtime capabilities.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §14 A policy hierarchy; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "unit + security integration: independently restrict each dimension and assert denied dispatch/effects despite permission in all others; retain a fully authorized successful case.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.02",
+    "text": "Client manifests, current-Space/tenant/owner/payer/role values, prompts, model outputs and MCP descriptions must not create authority.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§3 Switching,7,14,26; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "security integration: forged/stale fields, hostile repo/tool/web content and misleading MCP metadata cannot retarget or elevate actual execution; inspect immutable records and effects.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.03",
+    "text": "An operation must be governed by its actual resource and effect rather than its tool name; unknown high-impact effects must be blocked or require human execution.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §10 A task envelope; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "security integration: disguise equivalent external/protected writes as shell, browser, SDK and MCP operations; unknown effects cause zero dispatch/mutation and expose a safe refusal.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.04",
+    "text": "Missing, expired or lost mandatory runtime controls must block affected scheduling/continuation without silent fallback to local, unapproved-region or weaker execution.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§7 Three execution classes,12–13,25; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "security + recovery integration: remove required capabilities before admission and mid-run, expire qualification and attempt alternative paths; verify actual refusal/cessation, zero fallback allocation and clear blocked state.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.05",
+    "text": "The qualified runtime must protect policy/control services from arbitrary task and third-party executable-plugin modification.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§7,13 Independent authority,25; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "security: under worker identity attempt modification of policy authority and control-service interfaces/files from opened paths; inspect protected state remains unchanged on actual deployment; local refusal evidence remains limited.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.06",
+    "text": "Workers must not modify protected checks, protected receipts or audit/security sinks; worker diagnostics must remain distinct from verifier evidence.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Protected completion,13 Evidence,22; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Should”",
+    "verify": "security + review: worker attempts check/receipt/audit tampering and self-reported pass injection are denied; verifier-owned receipt identity and unchanged protected data are independently observed.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.07",
+    "text": "Broad credentials, signing/gateway master keys and host-administration sockets must remain outside worker-readable prompts, files and mounts; supported credentials must be brokered and narrowly scoped.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Protected completion,11,12 Deployment profiles,13 Secrets",
+    "verify": "security: inspect launch mounts/environment and synthetic secret canaries; attempt file/socket/key access from each exposed worker path and verify no disclosure or host-control access.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.08",
+    "text": "Computer readiness must be withheld until image, policy, mounts, capacity/resource limits, workload identity and current access are validated.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Persistent identity and Computer startup; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration + security: actual startup positive case and one invalid/missing input per prerequisite; inspect no terminal/dispatch/Ready before validation and explicit preparation/failure phases.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.09",
+    "text": "Advertised Linux resource limits must be proven by actual enforcement on the selected host/kernel/image rather than inferred from adapter declarations.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Deployment profiles; docs/planning/g1-foundations-plan.md:18; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”",
+    "verify": "security + integration on approved deployment: launch bounded owned workloads against advertised process/CPU/memory/resource controls and observe enforced behavior, image/kernel/architecture and required host capabilities; retain unavailable cases as unqualified.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.10",
+    "text": "A startup-only filesystem/process policy change must remain Pending recreation until a worker reports the matching qualified runtime/policy generation.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §13 Runtime qualification; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery integration: change startup-only policy, attempt stale-generation execution and recreate worker; assert pending status before matching qualified report and activation only afterward.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.11",
+    "text": "Live-refreshable policy controls must use their actual activation semantics and expose control coverage and last verification without unsupported immediate-active claims.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §13 Independent authority and Runtime qualification; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Should”",
+    "verify": "integration + review: exercise a supported live update and delayed/failed activation; inspect effective enforcement generation, administrator coverage/verification and user limitation output.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.12",
+    "text": "Sensitive privileged execution must require current grants and short leases so controller disconnection prevents continuation after lease expiry.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §13 Limits; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "security + recovery: disconnect controller with worker active, advance/measure a declared clock and observe no privileged continuation after qualified expiry; initial maximum lease is 30 seconds as a pilot test parameter, with process/external outcome reported separately.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.13",
+    "text": "Authorization-service failure must fail closed for affected reads/actions and privileged continuation.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §28 Dependency failure; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "security integration: make authority unavailable before dispatch and during continuation; inspect no unauthorized reads/effects and explicit blocked/wait state; successful recovery revalidates current authority.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.14",
+    "text": "Required audit/evidence unavailability must block affected sensitive dispatch, and telemetry gaps must remain visibly stale or alerted.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§22,28 Dependency failure; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration: interrupt required evidence/audit route and heartbeat/telemetry independently; assert affected sensitive effects do not dispatch and missing observations are not represented as success/zero usage.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.15",
+    "text": "An unreachable runtime must have authority revoked and be reported unknown/quarantined rather than confirmed stopped.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12 runtime states,22,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery integration: lose heartbeat/transport during an owned operation; inspect lease revocation, unknown effect/termination state and no replacement write until reconciliation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.16",
+    "text": "Runtime recovery must revalidate current identity/membership, policy, approval expiry and remaining budget before authorized continuation.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8 Interruption,12 runtime states,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery + security integration: recreate with each authority condition revoked/stale and assert denial, then permit a valid current case; restored snapshots cannot resurrect authority.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.17",
+    "text": "A replacement/restarted worker must use a new fencing generation that rejects old-worker writes and publication.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8,26,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "concurrency + recovery integration: retain an old independent worker across replacement and race old/new writes; observe zero accepted stale-generation effects.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.18",
+    "text": "Unknown in-flight effects must be reconciled by original operation identity before new writes; expiry, lease release, lost acknowledgements or restart must not authorize blind replay.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8 Effect protocol,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery integration: crash after actual owned-target write and before acknowledgement, recreate, query/reconcile original receipt and assert one effect; unresolved outcomes remain waiting/unknown.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.19",
+    "text": "Opened actions must record exact target, operation identity, complete arguments/digest, artifact preconditions, actor/policy, required approval, budget reservation and execution lease before dispatch.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8 Effect protocol,10 Tools,14 Approval",
+    "verify": "integration + security: inspect durable pre-dispatch bindings; change target/digest/precondition/policy or send partial streamed arguments and verify no dispatch; allowed complete operation settles from execution-path receipt.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.20",
+    "text": "An exact-action approval must remain bound to tenant, Space, actor, task, target/action, normalized argument/artifact digest, policy revision, expiry and applicable value limits.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §14 Approval contract; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "security integration using existing authority: valid synthetic gate allows exact operation; independently altered/expired bindings deny with no effects. This does not qualify real human judgment or SSO.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.21",
+    "text": "Remote access must not expose public SSH/RDP/VNC by default; supported relays and file/preview/desktop paths must be authenticated, short-lived and scoped.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Deployment profiles",
+    "verify": "security + deployment review after approval: inspect actual listening interfaces/rules and attempt unauthenticated/expired/wrong-scope access; verify supported relay succeeds only within grant and lifetime.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.22",
+    "text": "Sensitive runtime controls and qualification evidence must apply to the exact tested deployment, with no software-only claim of Sentry/hardware assurance.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12–13,32; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Problem and outcome”, §“Explicit non-scope”",
+    "verify": "review + deployment security: compare published support/control matrix with actual topology/image and evidence; reject unsupported claim or missing mandatory control; hardware claims require separate actual integration evidence.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.23",
+    "text": "High-severity authorization, isolation, stale-approval or duplicate-effect defects must block the affected release profile.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§2 Release discipline,29–30; docs/planning/roadmap.md:40",
+    "verify": "review + security: verify qualification/reporting cannot mark an affected profile supported with an unresolved release-blocking finding, regardless of positive task or latency results.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.24",
+    "text": "The finite required release suite must observe zero forbidden effects, cross-Space disclosures, unauthorized dispatches, duplicate effects and stale-generation writes.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§29,31; docs/planning/roadmap.md:28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”",
+    "verify": "security + concurrency + recovery: independently inspect owned destination counters, files, dispatch/receipt records and disclosure canaries throughout required cases; retain finite sample limits and every failure.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03",
+    "text": "Actual Ask and Plan requests must leave target servers and repositories unchanged.",
+    "source": "docs/planning/g1-remaining-ledger.csv:24; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§5 Intent controls,31 UX-03; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "e2e + security: send real local requests, including forged/escalating writes on every exposed path, and compare target files/repository digests plus owned target-service mutation counters; repeat equivalent requests on approved remote environment for external qualification.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.01",
+    "text": "New conversations must start in Ask and must not silently exceed their recorded intent ceiling.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5 Intent controls; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration: create a conversation without intent, issue action-like text and inspect Ask ceiling/no target effects; accepting an explicit Act transition is a separate positive case.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.02",
+    "text": "Ordinary Ask must use an authorized service worker with no Space filesystem or unrestricted shell and must not provision or wake a Space VM.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§3 Switching,7 Three execution classes; docs/planning/roadmap.md:36; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "integration + security: execute successful, denied and failing ordinary Ask requests; inspect provision/wake/mount/dispatch counters and service process access. Actual qualified service-worker isolation/no-VM inventory requires approved environment.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.03",
+    "text": "Plan must save a versioned plan through the artifact service while retaining its prohibition on target mutation.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5 Intent controls; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "integration: submit Plan, reopen versioned artifact through owning service and inspect distinct artifact write alongside zero target-service/file/repository effects.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.04",
+    "text": "Routine transcript, audit and explicit memory-control persistence must remain distinct from forbidden Ask/Plan target mutation.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5 Intent controls; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration: actual Ask/Plan persistence succeeds under its existing grants while target-write attempts remain denied; inspect respective service records and target state.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.05",
+    "text": "Live read-only computer inspection must be explicitly declared and satisfy required capability, access, resource and startup-consent checks.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§3 Switching,5 Intent controls,7; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration + security: undeclared/missing-consent inspection cannot mount/start/access computer; supported declared read-only case succeeds without write authority and exposes computer transition.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.06",
+    "text": "Act execution must follow explicit user selection or accepted task preflight and remain within its recorded TaskEnvelope.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§5 Intent controls,10 Task envelope; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "e2e + security: actual bounded Act operation modifies one authorized fixture after admission; unaccepted preflight, scope expansion and outside-envelope operations produce zero effects.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.07",
+    "text": "The task envelope must bind requirement revision, allowed effects, exact targets, source audience, model/runtime policy, cost ceilings, continuation and verification obligations.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Task envelope,26 admission; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "integration + review: inspect persisted envelope and preflight; altered/stale target, requirements or policy cannot expand effects, and routine covered operations do not require redundant approval.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.08",
+    "text": "Changing tool or model/quality choice must not raise the task intent ceiling or bypass an exact-action gate.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§1 Product invariants,9 Understandable model,10,14; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "security integration: switch model profile and tool route during Ask/Plan or bounded Act; assert unchanged intent/effect limits and no gated effect without current exact approval.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-03.09",
+    "text": "The preflight must disclose intended result, sources, Space/audience, required computer, model policy, payer/cost limits and later approval needs, labeling unknown costs/support.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §5 Intent controls; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration + review: inspect actual admission/preflight responses for service and computer work, denied support and unknown cost; compare disclosed values to authoritative envelope and allocation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07",
+    "text": "A task requesting a conflicting file, package-install, browser-profile or desktop resource must queue with its current owner and conflict reason.",
+    "source": "docs/planning/g1-remaining-ledger.csv:28; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12 Computer startup,31 UX-07; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "concurrency integration: independent processes simultaneously contend for each supported resource class; inspect waiting task/owner/resource/reason and actual effects to prove no overlapping conflicting writes.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.01",
+    "text": "Strict single-computer contention must not silently allocate additional VMs/workers.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§4 Membership,12 contention,26 profile; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”, §“Scope and priorities / Must”",
+    "verify": "concurrency + e2e: record every allocator call and inventory before/during contention and duplicate admission; local fixture allocation count remains one and approved provider inventory must independently prove actual one-VM behavior.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.02",
+    "text": "Tenant, Space, Task and resource bindings must remain immutable through admission, queueing, execution and recovery, independent of current tab/Space selection.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§3 Switching and identity,26; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Should”",
+    "verify": "security + concurrency integration: queue in Space A, switch to B and recreate services; observe original A target or explicit conflict, no remount/credential crossover and no wrong-Space release/write.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.03",
+    "text": "Only demonstrably disjoint work whose resource separation can be enforced may execute concurrently with leased mutable work.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Tools,12 contention,21 Mutation barrier; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "concurrency integration: disjoint allowed operations make progress, overlapping operations queue, and an unenforceable-disjointness case pauses/serializes rather than racing.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.04",
+    "text": "When strong per-task isolation is absent, serialization may admit only workloads safe under the common Space trust boundary; locks/worktrees must not qualify hostile or differently privileged code.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§4 Membership,12 contention; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”, §“Explicit non-scope”",
+    "verify": "security + review: same-trust serialized workload succeeds; hostile/differently privileged request is refused without an explicitly permitted isolated backend; inspect matrix never calls serialization isolation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.05",
+    "text": "Each supported run on the shared VM must receive its own process identity, scratch directory, dependency context and resource lease to the extent actually supported by the backend.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Computer startup and contention",
+    "verify": "integration + security on qualified backend: inspect independent running processes, scratch/dependency bindings and leases; test unauthorized cross-run access as required by advertised isolation; unsupported fields cannot be advertised as enforced.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.06",
+    "text": "Canonical file promotion must use controlled commits with version preconditions instead of unconstrained conflicting writes.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Tools,12 contention,15 Draft/canonical; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "concurrency integration: two processes start from the same base; one authorized promotion succeeds and stale/conflicting promotion queues/conflicts without silent overwrite; inspect canonical bytes/version.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.07",
+    "text": "Cancelling a queued request must prevent its later acquisition/execution while allowing subsequent eligible queued work to progress.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8 cancellation,12 contention; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "concurrency + recovery integration: cancel a real waiting task then release owner/recreate queue service; cancelled task never mutates or receives a live lease, next valid waiter can progress.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.08",
+    "text": "Owner failure or lease expiry must preserve resource ownership and fencing until safe transfer; timeout alone must not imply old process termination.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8,12,21,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”, §“Open questions and risks”",
+    "verify": "concurrency + recovery: crash/disconnect owner, expire lease, retain stale process and race replacement; observe no overlapping conflicting effects and no transfer based only on unconfirmed termination.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.09",
+    "text": "Lease/queue service recreation must preserve queued work, current ownership and fencing rather than granting duplicate owners or allocations.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§8,12,28; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "recovery integration across independent processes: recreate service during owned and queued phases, inspect durable state, then safely resume once; stale owner and duplicate acquisition cannot write.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.10",
+    "text": "Shared VM compute cost must be counted once to its owning Space; task views must use an explicit allocation method or show unallocated shared cost.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §11 Make cost ownership visible; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "integration + accounting: concurrent tasks and waiting tasks share one measured fixture interval; inspect totals and task allocation so full machine charge is never multiplied. Actual deployed duration/provider charges require approved observation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.11",
+    "text": "Waiting, task Stop or conversation archive must not imply an already-running/reserved VM or retained storage is free; compute, storage, estimates and settled costs must be distinct.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§11 cost ownership,12 deployment; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”, §“Scope and priorities / Should”",
+    "verify": "integration: exercise wait/Stop/archive with running fixture resource and retained storage, inspect continuing charge categories and uncertainty; compare deployed inventory/usage with actual costs only after approval.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.12",
+    "text": "Computer provisioning/wake must occur only after admission of a task requiring computer capabilities.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Computer startup; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "integration: before admission and for ordinary service work allocation count stays zero; authorized computer task causes one visible preparing/validating transition and bounded allocation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.13",
+    "text": "Suspension must require no active driver or noncheckpointable workload, an explicit saved-state policy and settled resource leases.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Computer startup and contention",
+    "verify": "integration + recovery: attempt suspend with each unsafe prerequisite then a safe owned case; inspect denied/queued unsafe suspension and preserved committed state with leases settled in successful case.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.14",
+    "text": "If desktop/browser input is opened, each session must have at most one active input driver with independently granted viewers.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Single-driver ownership; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "concurrency + security: race two driver requests and viewers, verify one current driver, allowed view-only observation and zero input under view-only grant; old driver generation is rejected.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.15",
+    "text": "Human takeover must block every conflicting GUI/shell/SDK/API/browser/filesystem mutation path, invalidate queued input and disclose in-flight effects before granting human control.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Single-driver and Mutation barrier; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "concurrency + security e2e if opened: run actual conflicting mutations through every path during takeover, observe barrier/effects and new human fencing generation; disjoint read-only work continues only where enforceable.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.16",
+    "text": "Human disconnection/driver expiry must leave mutable work paused; agent resume must be explicit and require fresh observation, base-version reconciliation and current permission.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Mutation barrier; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery e2e if input opened: disconnect, expire lease, edit fixture as human, reconnect/restart and attempt stale input; no automatic resume/replay, explicit valid return reobserves/reconciles before effects.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-07.17",
+    "text": "Queued GUI actions must bind a current observation and lease, expire rather than replay after reconnect, and reobserve after relevant focus/geometry/state changes.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Controlled operation and Streaming; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "security + recovery e2e if GUI opened: change focus/frame/geometry, expire/reconnect and send queued action; verify zero stale/wrong-target effects and successful freshly authorized postcondition-checked action.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10",
+    "text": "Any supported sensitive authentication session must prevent other agent-controlled processes from reading its profile, cookies, clipboard or input channels.",
+    "source": "docs/planning/g1-remaining-ledger.csv:31; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§21 Authentication isolation,31 UX-10; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "security e2e on supported actual browser/OS boundary: independent adversarial agent processes attempt profile/cookie/clipboard/input access during synthetic login; inspect canary disclosure and unauthorized input counts. A profile-name/directory test cannot qualify isolation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.01",
+    "text": "Unsupported sensitive-session isolation must block the flow before authentication or credential exposure and explain a permitted private/supported alternative.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§21 Authentication isolation,31 UX-10; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”, §“Scope and priorities / Must”",
+    "verify": "security integration: request sensitive login on absent/unqualified/lost isolation; assert zero browser-login start, credential handoff or agent input/capture and inspect safe alternative. Explicitly qualify refusal only.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.02",
+    "text": "Required sensitive-session isolation and separate grants must be verified before authentication begins.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§13,21 Authentication isolation; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "security integration: spoof a named profile, expired qualification or stale grant; independent actual access probes fail readiness and login remains blocked; approved supported boundary allows synthetic user-only login.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.03",
+    "text": "Agent capture and input must be suspended throughout user-only authentication.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Sensitive sessions; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "security e2e if supported: inject synthetic login canaries and simultaneous capture/input requests; verify no capture bytes or agent input during user-only phase and explicit allowed transitions afterward.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.04",
+    "text": "User-only authentication suspension must also prevent sensitive capture in recordings and telemetry.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Sensitive sessions; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "security e2e: exercise actual configured recording/log/telemetry paths during synthetic authentication; independently inspect outputs for zero credential/input canary disclosure and denied capture; inspect configuration cannot reopen capture.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.05",
+    "text": "Personal authenticated browser data must not be imported into a group desktop by default.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Sensitive sessions; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Constraints and qualification evidence”",
+    "verify": "security integration + review: attempted personal-profile/cookie import without separately permitted scope is refused; use only disposable project fixtures and inspect no personal paths accessed.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.06",
+    "text": "Screen view, input control, clipboard export and file download must use separate grants.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§4 Grant families,21 Authentication isolation; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "security integration if capabilities opened: independently allow each grant and attempt the other three operations; observe no implied authority and allowed grant-specific behavior.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.07",
+    "text": "Recordings must be opt-in under enterprise policy and scoped as sensitive evidence.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§21 Authentication isolation,22 Access; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "security integration + review if recording opened: default/denied recording produces no retained capture; permitted opt-in records only allowed content and follows existing Space audience/retention controls.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.08",
+    "text": "Restart, reconnect or isolation loss must fence old sensitive-session grants and must not silently restore authenticated sessions, expired credentials or input.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12 runtime states,21 Mutation barrier,28 credentials; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "recovery + security e2e: keep stale agent process/profile/session handles, lose isolation/recreate/reconnect and attempt reuse; verify refused old access and no copied/restored cookie/session authority.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.09",
+    "text": "An uncertain sensitive GUI submission must be reconciled against application state rather than resubmitted.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Sensitive sessions and irreversible actions; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”",
+    "verify": "recovery e2e if GUI submission opened: owned synthetic app accepts operation then drops acknowledgement; reconnect and verify one effect and original-operation reconciliation, with unknown state preserved when lookup is unavailable.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.10",
+    "text": "A high-impact GUI operation that cannot be reliably mediated must be left to the user or blocked; an allowed hostname must not authorize all actions there.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Sensitive sessions; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "security e2e if GUI opened: allowed site hosts an unmediated high-impact action; agent path refuses or requests human execution with zero unauthorized submission; exact permitted operation remains bounded.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.11",
+    "text": "Human takeover must target the explicitly selected remote workspace; local-device operation requires its own enrollment and selection.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §21 Authentication isolation; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Explicit non-scope”, §“Constraints and qualification evidence”",
+    "verify": "security integration + review: inspect immutable selected runtime target, reject unenrolled local target and confirm no local app/input operation in runtime journeys.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "UX-10.12",
+    "text": "Sensitive-session qualification must use actual independent-process browser/resource/input/telemetry probes; screenshot masking or a private profile directory alone must not produce an isolation pass.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§21 Authentication isolation,32 runtime decision; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Problem and outcome”, §“Goals and measurable success”, §“Open questions and risks”",
+    "verify": "security + review: compare claimed profile with probe outputs and process/OS control configuration; deliberately provide only masking/profile-directory evidence and verify qualification stays absent/refused.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.25",
+    "text": "Execution workers must not receive database owner, superuser, BYPASSRLS or direct foundation schema/table/function grants; scope assertions remain minted only by trusted services after current authority checks.",
+    "source": "docs/planning/g1-foundations-plan.md:24; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§7,15 Isolation; docs/evidence/g1-f02-acceptance.md:7,45",
+    "verify": "security integration + review: inspect worker identity/environment and denied database/service access; use unchanged actual non-owner PostgreSQL checks only when Docker prohibition is lifted, preserving pending status meanwhile; no worker/client-forged service assertions.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "R-001",
+    "text": "Create an additive g1-runtime/ package with a build and g1-runtime/scripts/check.mjs that strictly builds the current sources.",
+    "source": "Current goal required delivery; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”, §“Scope and priorities / Must”",
+    "verify": "integration + review: controller runs node g1-runtime/scripts/check.mjs from a fresh reproducible candidate and proves current-source build occurs before behavior tests; intentional build failure/stale output cannot pass.",
+    "kind": "delivery",
+    "priority": "must"
+  },
+  {
+    "id": "R-002",
+    "text": "The runtime check must require every mandatory named suite and a nonempty execution result, failing on missing/empty suites, failed/cancelled tests, skips or TODOs.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”; g1-identity/scripts/check.mjs mandatory-suite and TAP assertions; docs/evidence/g1-f02-acceptance.md:5,31",
+    "verify": "integration: harness negative fixtures remove/empty a suite or inject build/test failure, cancellation, skip and TODO; controller observes nonzero result for each and a genuine complete positive run.",
+    "kind": "verification",
+    "priority": "must"
+  },
+  {
+    "id": "R-003",
+    "text": "Runtime verification must exercise actual allowed, negative, independent-process concurrency and recreated-process recovery behavior for AF-13, UX-03, UX-07 and UX-10, rather than only policy helpers or printed labels.",
+    "source": "Current goal strict behavioral check; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”, §“Scope and priorities / Must”",
+    "verify": "integration + e2e + security: map every requirement to observable target effects, requests, allocation/lease records or canary probes; require mandatory coverage groups and independently verify successful allowed behavior as well as refusal.",
+    "kind": "verification",
+    "priority": "must"
+  },
+  {
+    "id": "R-004",
+    "text": "Create docs/planning/g1-f06-plan.md mapping requirements to concrete checks and supported local versus external verification boundaries.",
+    "source": "Current goal required delivery; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "review: verify requested plan exists, every requirement has check/verification ownership, dependency order and truthful capability/approval limitations; no external obligation replaced with a local fixture.",
+    "kind": "delivery",
+    "priority": "must"
+  },
+  {
+    "id": "R-005",
+    "text": "Create docs/evidence/g1-f06-acceptance.md enumerating measured local qualification and all outstanding external or blocked checks.",
+    "source": "Current goal required delivery and qualification constraint; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”, §“Open questions and risks”",
+    "verify": "review: inspect actual command/result references and per-obligation status, including Linux/egress/image/resources, real VM inventory/costs, sensitive browser/input/telemetry and inherited Docker-blocked checks; absence never counts as pass.",
+    "kind": "delivery",
+    "priority": "must"
+  },
+  {
+    "id": "R-006",
+    "text": "Supervised local success and unsupported-capability refusal must not issue remote deployment qualification or close outstanding real-environment obligations.",
+    "source": "docs/planning/g1-foundations-plan.md:18; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Problem and outcome”, §“Goals and measurable success”, §“Scope and priorities / Must”, §“Open questions and risks”",
+    "verify": "review + integration: local check/report explicitly labels its local scope, refusal-only capability and pending external tests; attempt to advertise an untested deployment/profile is rejected. Full goal remains open until required approved environment/evidence exist.",
+    "kind": "qualification",
+    "priority": "must"
+  },
+  {
+    "id": "R-007",
+    "text": "Qualification must bind the exact source/build, dependency lock, OS/kernel/architecture/image, workload identity, mounts, control configuration, runtime/policy generations, browser/tool versions and check definitions.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Protected completion,13,25,29; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”",
+    "verify": "review + integration: compare manifest/receipt identities with actual environment and outputs; mismatched candidate, image, lock, controls or check digest cannot reuse a pass.",
+    "kind": "qualification",
+    "priority": "must"
+  },
+  {
+    "id": "R-008",
+    "text": "Relevant source, model, policy, tool, browser or runtime changes must invalidate affected receipts and trigger required requalification.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§10 Protected completion,24,29; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”",
+    "verify": "integration + review: alter each relevant identity/generation, verify affected old evidence cannot advertise current support and requalification stays pending until matching tests run.",
+    "kind": "qualification",
+    "priority": "must"
+  },
+  {
+    "id": "R-009",
+    "text": "Complete raw outputs, original failures, cancellations, cleanup failures and measurement uncertainty must remain available rather than being replaced by successful summaries.",
+    "source": "docs/planning/roadmap.md:20; docs/evidence/g1-f02-acceptance.md:33,47; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”, §“Scope and priorities / Should”, §“Constraints and qualification evidence”",
+    "verify": "review + integration: inspect complete stdout/stderr with byte counts/digests and candidate/environment linkage; inject failure and cleanup failure and verify preserved visible outcomes and failing affected check.",
+    "kind": "evidence",
+    "priority": "must"
+  },
+  {
+    "id": "R-010",
+    "text": "All changes must be additive and preserve accepted G0, G1-local, G1-foundations and F02 checks, protected files and raw evidence; unrelated F05 worktree changes must be preserved.",
+    "source": "Current goal additive constraint; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”; docs/evidence/g1-f02-acceptance.md:31,45",
+    "verify": "review + regression: compare protected/source/raw hashes and diff scope, run required unchanged baseline guards/checks through controller when eligible; blocked Docker checks stay pending and are neither weakened nor removed.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-011",
+    "text": "Runtime integration must reuse the existing trusted identity, approval, budget, native controller, recovery, storage and verifier authorities rather than creating parallel authoritative records.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§7,15,25; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Source baseline and precedence”, §“Scope and priorities / Must”, §“Explicit non-scope”; docs/planning/g1-foundations-plan.md:13-24",
+    "verify": "review + integration: trace one owner per authority and real additive service calls; stale/client-forged authority is denied at dispatch/continuation, and F03/F04/F05 contracts remain responsible for their records.",
+    "kind": "architecture",
+    "priority": "must"
+  },
+  {
+    "id": "R-012",
+    "text": "Ordinary runtime work must remain owned by the native engine without a competitor harness executable owning the task.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§1,7,30; docs/planning/roadmap.md:36; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Source baseline and precedence”, §“Scope and priorities / Must”",
+    "verify": "integration + review: inspect actual owned worker/process census and dispatch path during allowed runtime journey; native execution cannot depend on an opaque competitor CLI for policy or completion.",
+    "kind": "architecture",
+    "priority": "must"
+  },
+  {
+    "id": "R-013",
+    "text": "Until the human lifts the 2026-10-16 restriction, do not start Docker Desktop/daemon, containers, Docker CLI or any Docker-dependent fixture/check.",
+    "source": "Current goal TEMPORARY human decision 2026-10-16; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”",
+    "verify": "review: inspect proposed commands and transitive preflight before execution; keep identity/foundation PostgreSQL/storage-dependent checks pending. If only prohibited work remains, ask via loop_ask and do not claim dependent task completion.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-014",
+    "text": "Paid APIs/resources, remote/production/shared deployments, real credentials or security/access-setting changes, communications, nonreproducible/personal/external data deletion, other-app operation and published-history destructive actions require applicable explicit human approval.",
+    "source": "Current goal standing approval 2026-10-13, reserved actions and approval list; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”",
+    "verify": "human + review: compare exact proposed operation and limits to recorded loop_ask approval before execution; no pending request, silence or general local approval authorizes a reserved action.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-015",
+    "text": "Remote testing must wait for approval identifying authorized host/provider/image/architecture, access method, permitted isolation changes, destinations, resource/VM/spend caps, test window and cleanup/retention limits.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Open questions and risks”; controller pending approval q-a1b6151885; current goal first-ask requirement",
+    "verify": "human + review: inspect actual answer to existing nonblocking approval q-a1b6151885 and enforce its limits; local eligible work may continue but no remote access/resource/deployment action occurs while unanswered.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-016",
+    "text": "Use only bounded, owned, reproducible synthetic fixture data/credentials/profiles and ownership-checked cleanup; do not affect unrelated files, processes or resources.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Constraints and qualification evidence”; docs/evidence/g1-f02-acceptance.md:7",
+    "verify": "integration + review: inspect fixture creation/ownership identifiers and cleanup, inject cleanup/interruption failures, verify unrelated sentinel files/processes survive and personal browser data/real login is never read.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-017",
+    "text": "Electron/GUI checks must run through loop_check outside the Codex sandbox; only controller-run checks count as acceptance evidence.",
+    "source": "Current goal Electron constraint; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”; docs/evidence/g1-f02-acceptance.md:21-23,31",
+    "verify": "review: examine controller job identities/current candidate and complete output for required GUI/regressions; sandbox crash or manual diagnostic cannot satisfy or weaken an acceptance check.",
+    "kind": "constraint",
+    "priority": "must"
+  },
+  {
+    "id": "R-018",
+    "text": "The runtime must propagate authorized Stop/cancellation to affected child processes/capabilities while distinguishing accepted cancellation, dispatch fencing, confirmed termination and uncertain external outcomes.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§6 Stop,8 Interruption,26; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Goals and measurable success”",
+    "verify": "concurrency + recovery integration: use current stop authority with stale progress, race dispatch and duplicate Stop, inspect new fencing generation and actual process effects; old writes fail and unknown completion is not called stopped or undone.",
+    "kind": "reliability",
+    "priority": "must"
+  },
+  {
+    "id": "R-019",
+    "text": "Measure online Stop-to-new-dispatch cessation against the 2-second pilot target separately from process termination and external completion.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §29 Pilot targets; docs/planning/roadmap.md:40; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Goals and measurable success”",
+    "verify": "performance + review: declare acceptance/start/end clocks, run online concurrent dispatch trials, report sample counts/distribution/failures/cancellations and last new dispatch; termination and external uncertainty have independent measurements, no published SLA claim.",
+    "kind": "performance",
+    "priority": "must"
+  },
+  {
+    "id": "R-020",
+    "text": "Warm accepted-command acknowledgement p95 2 seconds and visible propagation 3 seconds are pilot sizing targets; cold startup and model completion must be measured separately.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §29 Pilot targets; docs/planning/roadmap.md:40; docs/planning/decision-register.md E-07",
+    "verify": "performance + review for runtime command/status paths: specify workload/sample/clock and report observed distributions and confidence intervals with failures/cancellations; exclude cold startup/model time from warm metrics and do not claim an existing SLA.",
+    "kind": "performance",
+    "priority": "must"
+  },
+  {
+    "id": "R-021",
+    "text": "Runtime waiting/blocked/preparing/unknown/pending-recreation outcomes should explain what happened, preserved work, continuing charges and who can take the permitted next action.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Should”; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12 startup,20 waiting cards,28 Recovery",
+    "verify": "integration + review: exercise refusal, queue, preparation failure, outage and recreation responses and inspect task/resource, owner/reason, freshness/uncertainty, cost and allowed resolver; no endless running spinner or policy-widening action.",
+    "kind": "usability",
+    "priority": "should"
+  },
+  {
+    "id": "R-022",
+    "text": "The mandatory baseline capability matrix should have an operator-readable presentation explaining activation/recreation behavior, last verification, limitations and requalification triggers.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Should”; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §13 “Runtime qualification must match the displayed claim”",
+    "verify": "review: assess whether operator presentation makes the authoritative baseline matrix and activation/recreation/verification/requalification information easy to inspect. Presentation enhancements are Should; omission or inaccuracy of the baseline matrix still fails mandatory R-032, and underlying control activation/coverage/verification duties remain Must under AF-13.10, AF-13.11, R-007, R-008 and R-031.",
+    "kind": "documentation",
+    "priority": "should"
+  },
+  {
+    "id": "R-023",
+    "text": "F06 release materials must include dependency/image manifests, operating and recovery procedures, data-flow/threat-boundary changes and rollback plan.",
+    "source": "docs/planning/roadmap.md:20; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§27 Dependency discipline,30 Release evidence",
+    "verify": "review: inspect versioned package documentation for pinned dependencies/images, license/notice/vulnerability/update ownership, reproducible build metadata/SBOM and exact tested hardened configuration; verify recovery/rollback does not replay effects or restore stale authority.",
+    "kind": "documentation",
+    "priority": "must"
+  },
+  {
+    "id": "R-024",
+    "text": "Independent review and controller completion must remain separate from implementer observations; the implementer must not fabricate review signatures or self-attest missing protected verification.",
+    "source": "docs/planning/g1-foundations-plan.md:26; docs/evidence/g1-f02-acceptance.md:3,15,37,47; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Source baseline and precedence”, §“Target users”, §“Open questions and risks”",
+    "verify": "review + human: inspect current controller results and independently issued receipts/verdicts; manual logs, document consistency or prior candidate passes cannot substitute for required current checks/review/human judgments.",
+    "kind": "evidence",
+    "priority": "must"
+  },
+  {
+    "id": "R-025",
+    "text": "F06 must not claim completion of whole G1/G2–G5, general native-app automation, Design Studio, streaming/client distribution, physical devices, formal enterprise SSO or paid-model qualification.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Explicit non-scope”; docs/planning/g1-foundations-plan.md:19-20; docs/evidence/g1-f02-acceptance.md:11,37",
+    "verify": "review: inspect scope/support and acceptance claims; later product/device/supplier journeys remain explicitly unqualified under their owning gates rather than new F06 implementation obligations.",
+    "kind": "out-of-scope",
+    "priority": "must"
+  },
+  {
+    "id": "R-026",
+    "text": "F06 does not claim Windows/macOS execution-worker support, high availability, optional hardware/Sentry assurance, regulatory certification, real-credential security from synthetic tests or perfect reversal of completed effects.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Explicit non-scope”; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §§12–13,28,32",
+    "verify": "review: check advertised profile/evidence limitations retain these exclusions and do not infer them from a client platform, software-only fixture or finite pass.",
+    "kind": "out-of-scope",
+    "priority": "must"
+  },
+  {
+    "id": "R-027",
+    "text": "F03 recovery, F04 model/FinOps, F05 persistence and F07 cross-device qualification retain their ownership; F06 integrates only necessary contracts without rewriting accepted increments.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Explicit non-scope”; docs/planning/g1-foundations-plan.md:13-20",
+    "verify": "review: verify task/requirement scope and additive diffs; broader G3 browser/desktop features may be unsupported but any path opened in F06 must satisfy all applicable baseline safeguards.",
+    "kind": "out-of-scope",
+    "priority": "must"
+  },
+  {
+    "id": "R-028",
+    "text": "Optional queue/qualification inspection summaries may improve reproducibility only without expanding release profile, grants or acceptance scope.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Could”",
+    "verify": "review if implemented: compare summary against authoritative queue/evidence state and verify no new authority or unsupported qualification is conferred; omission is permitted.",
+    "kind": "optional",
+    "priority": "could"
+  },
+  {
+    "id": "R-029",
+    "text": "ComputerAssignment, storage binding, replaceable runtime instance and active execution/resource leases must remain distinct identities.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §12 Persistent identity; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Problem and outcome”, §“User journeys”",
+    "verify": "integration + recovery: inspect stable assignment/Space/storage through suspension/recreation and new instance/fencing identities; navigation or queueing cannot migrate data or inherit another credential home.",
+    "kind": "architecture",
+    "priority": "must"
+  },
+  {
+    "id": "R-030",
+    "text": "A local check success exit must be explicitly limited to local verification; missing external evidence must not be faked, skipped into a remote pass or removed to achieve green.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Problem and outcome”, §“Goals and measurable success”, §“Open questions and risks”; current goal external-qualification constraint",
+    "verify": "integration + review: run local profile with absent remote evidence and inspect output/status remains local-only; required external acceptance stays pending/unqualified and a fabricated or mismatched remote attestation cannot qualify deployment.",
+    "kind": "verification",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.26",
+    "text": "Intent, permission, exact-effect approval and authentication must each be independently satisfied where required; none may substitute for another or expand the envelope.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §14 Separate intent, permission, approval and authentication; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“User journeys”, §“Scope and priorities / Must”",
+    "verify": "security integration: test authenticated-but-forbidden, approved-but-outside-intent, task-owner-without-target-grant and permission-without-required-exact-approval requests; all cause zero effects while the fully authorized exact case succeeds.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "AF-13.27",
+    "text": "Every opened tool must declare a versioned schema, actual side-effect class, resource scope, required grants, timeout, output limits and idempotency/reconciliation behavior.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §10 Tools as effect contracts; §25 ToolAdapter; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must”",
+    "verify": "unit + integration: inspect actual tool registry/dispatch validation for each exposed path, reject malformed/unsupported required fields or partial arguments, exercise timeout/output-limit reporting with status/truncation and original-operation reconciliation.",
+    "kind": "functional",
+    "priority": "must"
+  },
+  {
+    "id": "R-031",
+    "text": "Runtime capability/qualification records must identify version, tested deployment, supported features, qualification date and expiry; self-declarations alone must not establish qualification.",
+    "source": "docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §25 Interoperability and export; §13 Runtime qualification; docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Constraints and qualification evidence”",
+    "verify": "unit + security integration + review: missing/expired/mismatched deployment records and a worker-only self-declaration cannot schedule qualified execution; independently verified current records admit only their tested capability set.",
+    "kind": "qualification",
+    "priority": "must"
+  },
+  {
+    "id": "R-032",
+    "text": "The F06 plan and acceptance evidence must include a baseline supported-capability matrix covering every advertised tool/effect path, runtime control and backend/version, explicitly distinguishing tested support, tested refusal/unsupported capability and pending external qualification, with the applicable check/evidence references and limitations.",
+    "source": "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md §“Scope and priorities / Must” (required plan/evidence deliverables), §“Goals and measurable success”, §“Constraints and qualification evidence”; docs/Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md §13 “Runtime qualification must match the displayed claim” (lines 631–635)",
+    "verify": "integration + review: the mandatory documentation/qualification gate fails when the baseline matrix is absent, an advertised path/control/backend/version is omitted, a status or required check/evidence reference is missing, or a support claim lacks matching tested evidence. Negative fixtures remove the matrix, omit a path/backend and mislabel refusal-only or externally pending evidence as tested support; each must fail. A complete truthful matrix passes the documentation gate while all missing external qualification remains pending and cannot qualify a deployment.",
+    "kind": "documentation",
+    "priority": "must"
+  }
+]

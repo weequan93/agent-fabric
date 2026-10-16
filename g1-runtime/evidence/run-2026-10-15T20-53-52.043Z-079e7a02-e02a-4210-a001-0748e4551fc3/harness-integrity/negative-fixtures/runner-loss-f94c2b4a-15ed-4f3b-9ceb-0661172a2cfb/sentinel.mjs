@@ -1,0 +1,1 @@
+process.send({ready:true});setInterval(()=>{},1000);

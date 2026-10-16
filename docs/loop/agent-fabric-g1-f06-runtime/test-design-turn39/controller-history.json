@@ -1,0 +1,308 @@
+{
+  "kind": "read-only-controller-historical-job-snapshot",
+  "jobResultsAreAuthoritativeForHistoricalVerdict": true,
+  "requeryWarning": "controller-results.json retains later loop_check replies. Their checks object reflects latest shared check state, even for an older job_id. Do NOT treat those replies as per-job historical verdicts or durations. Use jobs[].results and the original job.finished/check.result events here; original contemporaneous MCP transcript supplies the exact durations. No original failure was replaced.",
+  "jobs": [
+    {
+      "id": "job-5c67fcb71b",
+      "checks": [
+        "f06-test-design-cancel.f06-design-cancellation-counterexample"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-16T00:22:16+00:00",
+      "pid": 86169,
+      "identity": "86169@1792110137.62",
+      "purpose": null,
+      "finished_at": "2026-10-16T00:22:32+00:00",
+      "results": {
+        "f06-test-design-cancel.f06-design-cancellation-counterexample": "fail"
+      }
+    },
+    {
+      "id": "job-13454408d5",
+      "checks": [
+        "f06-test-design-cancel.f06-design-cancellation-counterexample"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-16T00:23:07+00:00",
+      "pid": 88078,
+      "identity": "88078@1792110187.63",
+      "purpose": null,
+      "finished_at": "2026-10-16T00:23:11+00:00",
+      "results": {
+        "f06-test-design-cancel.f06-design-cancellation-counterexample": "pass"
+      }
+    },
+    {
+      "id": "job-4053092113",
+      "checks": [
+        "f06-test-design-cancel.f06-design-cancellation-counterexample"
+      ],
+      "status": "finished",
+      "actor": "agent",
+      "started_at": "2026-10-16T00:25:38+00:00",
+      "pid": 92741,
+      "identity": "92741@1792110338.18",
+      "purpose": {
+        "type": "task",
+        "task": "f06-test-design-cancel"
+      },
+      "finished_at": "2026-10-16T00:25:42+00:00",
+      "results": {
+        "f06-test-design-cancel.f06-design-cancellation-counterexample": "pass"
+      }
+    }
+  ],
+  "events": [
+    {
+      "seq": 698,
+      "at": "2026-10-16T00:22:16+00:00",
+      "type": "job.started",
+      "data": {
+        "job": "job-5c67fcb71b",
+        "checks": [
+          "f06-test-design-cancel.f06-design-cancellation-counterexample"
+        ]
+      },
+      "state": "sha256:81000eb468eea374f0053f718c452cba0db0ec33622672c0538e53c44e726e38",
+      "prev": "sha256:d1ac2600945ceb8f56c9d9799fcb1de56f2d1a547de811ac2f783600f36fda71",
+      "hash": "sha256:4bb39cf5acf83af078f0835d5355fa4db63db00623dbef23909dfe8939ddcf7a"
+    },
+    {
+      "seq": 699,
+      "at": "2026-10-16T00:22:17+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-5c67fcb71b"
+      },
+      "state": "sha256:302120d9cf789fe262180742e00b2d3c2b52ea327da05badad5afd0c2a1aef5b",
+      "prev": "sha256:4bb39cf5acf83af078f0835d5355fa4db63db00623dbef23909dfe8939ddcf7a",
+      "hash": "sha256:1c58049dcd22fe00fc6bd08acc2abe2f6d268c391f815b8246e9d2ab1d5a18a1"
+    },
+    {
+      "seq": 700,
+      "at": "2026-10-16T00:22:17+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-5c67fcb71b"
+      },
+      "state": "sha256:302120d9cf789fe262180742e00b2d3c2b52ea327da05badad5afd0c2a1aef5b",
+      "prev": "sha256:1c58049dcd22fe00fc6bd08acc2abe2f6d268c391f815b8246e9d2ab1d5a18a1",
+      "hash": "sha256:4dccb459f464bc1b2377bfcd6b8d90b9df2ff5817e50cf3ece8100f7a9a488f2"
+    },
+    {
+      "seq": 701,
+      "at": "2026-10-16T00:22:31+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f06-test-design-cancel.f06-design-cancellation-counterexample",
+        "status": "fail",
+        "exit": 1
+      },
+      "state": "sha256:8167a7f1c5c11f79a29e948bb8ba8f2987a0eec699a80a39bd577be3c4a4cd6f",
+      "prev": "sha256:4dccb459f464bc1b2377bfcd6b8d90b9df2ff5817e50cf3ece8100f7a9a488f2",
+      "hash": "sha256:4c505137d026568b90a5b5b56277919f8cfdb6ba930044aff3c13f54dc206f08"
+    },
+    {
+      "seq": 702,
+      "at": "2026-10-16T00:22:32+00:00",
+      "type": "check.workspace_changed",
+      "data": {},
+      "state": "sha256:430f88671567d272b8526c2b183ac0248c76634438fcf7bd29fc3ad9d1896083",
+      "prev": "sha256:4c505137d026568b90a5b5b56277919f8cfdb6ba930044aff3c13f54dc206f08",
+      "hash": "sha256:4c4b3e107e86680023e3a12f54036af7ef9f48c110d9d62bdda2be215c2453ee"
+    },
+    {
+      "seq": 703,
+      "at": "2026-10-16T00:22:32+00:00",
+      "type": "job.finished",
+      "data": {
+        "job": "job-5c67fcb71b",
+        "results": {
+          "f06-test-design-cancel.f06-design-cancellation-counterexample": "fail"
+        },
+        "purpose": null
+      },
+      "state": "sha256:4a99aac2a651b092dc7377c10b1d763402bf784eb8bf06eb8ecfe6b3626a7dd6",
+      "prev": "sha256:4c4b3e107e86680023e3a12f54036af7ef9f48c110d9d62bdda2be215c2453ee",
+      "hash": "sha256:82ef06e90e0d37ee8fa0373fc659d7111bee9b84ec007cba57fdf2b6a115c8c0"
+    },
+    {
+      "seq": 704,
+      "at": "2026-10-16T00:23:07+00:00",
+      "type": "job.started",
+      "data": {
+        "job": "job-13454408d5",
+        "checks": [
+          "f06-test-design-cancel.f06-design-cancellation-counterexample"
+        ]
+      },
+      "state": "sha256:0f56a1b9e374cede07c785d0bba3b9a2974e5ecb30fb225a0c7e031c299951be",
+      "prev": "sha256:82ef06e90e0d37ee8fa0373fc659d7111bee9b84ec007cba57fdf2b6a115c8c0",
+      "hash": "sha256:31e204337aae2b0b8c4b0783c22234a5634108f030a9a2505eaf77e6b3754577"
+    },
+    {
+      "seq": 705,
+      "at": "2026-10-16T00:23:07+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-13454408d5"
+      },
+      "state": "sha256:98cb8095c529e087b56bfabfff54da9788f626696514253f5945bf6b3dc0327d",
+      "prev": "sha256:31e204337aae2b0b8c4b0783c22234a5634108f030a9a2505eaf77e6b3754577",
+      "hash": "sha256:ee8d592730a2c44bd9f810c55b31f1aa003e995a7f458fb1ecdf8d98929ec991"
+    },
+    {
+      "seq": 706,
+      "at": "2026-10-16T00:23:07+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-13454408d5"
+      },
+      "state": "sha256:98cb8095c529e087b56bfabfff54da9788f626696514253f5945bf6b3dc0327d",
+      "prev": "sha256:ee8d592730a2c44bd9f810c55b31f1aa003e995a7f458fb1ecdf8d98929ec991",
+      "hash": "sha256:08fa7f40b56add935ce29f9402ac067a8ce4d924462226c935b1a669f0172849"
+    },
+    {
+      "seq": 707,
+      "at": "2026-10-16T00:23:11+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f06-test-design-cancel.f06-design-cancellation-counterexample",
+        "status": "pass",
+        "exit": 0
+      },
+      "state": "sha256:58b52dc19c31997f56d84d21fec10bdd8c54c48baa1b6b5abaac257e975c1ab9",
+      "prev": "sha256:08fa7f40b56add935ce29f9402ac067a8ce4d924462226c935b1a669f0172849",
+      "hash": "sha256:4f70263932b03689365b73856d37e1d0e1213114681b98015b66d3ed227b0d98"
+    },
+    {
+      "seq": 708,
+      "at": "2026-10-16T00:23:11+00:00",
+      "type": "check.workspace_changed",
+      "data": {},
+      "state": "sha256:586c9b50083faac3ece0c64edbd3a46591e87ec9b0b27fafef2758d6a24629af",
+      "prev": "sha256:4f70263932b03689365b73856d37e1d0e1213114681b98015b66d3ed227b0d98",
+      "hash": "sha256:a0408d9362f26eaeba6c3c9faf74afd858ce4f1df4734f0a534ebc8a29b695bd"
+    },
+    {
+      "seq": 709,
+      "at": "2026-10-16T00:23:11+00:00",
+      "type": "job.finished",
+      "data": {
+        "job": "job-13454408d5",
+        "results": {
+          "f06-test-design-cancel.f06-design-cancellation-counterexample": "pass"
+        },
+        "purpose": null
+      },
+      "state": "sha256:16a72109b45624d1b63bb40c4f91acfed4a4b220cd205b84ac4cc9b2c6445dae",
+      "prev": "sha256:a0408d9362f26eaeba6c3c9faf74afd858ce4f1df4734f0a534ebc8a29b695bd",
+      "hash": "sha256:cf7bb3d4c59ae2606273665f065599042561a83dd6af3b539c24f9310f9a44d1"
+    },
+    {
+      "seq": 710,
+      "at": "2026-10-16T00:23:43+00:00",
+      "type": "note.root_cause",
+      "data": {
+        "kind": "root_cause",
+        "task": null,
+        "finding": "f-6f2b7840d8"
+      },
+      "state": "sha256:22dfd6d27ad47c36f46afd42a6c47f4eb3231d99c8a754cabca838ac0157ead9",
+      "prev": "sha256:cf7bb3d4c59ae2606273665f065599042561a83dd6af3b539c24f9310f9a44d1",
+      "hash": "sha256:c714e60d0ac0c22a52b8564150dfbd1b583abf23824db3e7b0cd8177ea1d23f2"
+    },
+    {
+      "seq": 711,
+      "at": "2026-10-16T00:25:38+00:00",
+      "type": "task.claimed",
+      "data": {
+        "task": "f06-test-design-cancel"
+      },
+      "state": "sha256:17f6f27d7e5adfae820a606685aad5b2127a3e267abebc2e91fb57d43c754c69",
+      "prev": "sha256:c714e60d0ac0c22a52b8564150dfbd1b583abf23824db3e7b0cd8177ea1d23f2",
+      "hash": "sha256:def408e68526de77e8da395a086eaa734df030765ed0f7d4bae30a973e9523c8"
+    },
+    {
+      "seq": 712,
+      "at": "2026-10-16T00:25:38+00:00",
+      "type": "job.started",
+      "data": {
+        "job": "job-4053092113",
+        "checks": [
+          "f06-test-design-cancel.f06-design-cancellation-counterexample"
+        ]
+      },
+      "state": "sha256:115490b1cbf918a57f72a175aec3009c0fe074c91b211f8ad340208ef2f66cd2",
+      "prev": "sha256:def408e68526de77e8da395a086eaa734df030765ed0f7d4bae30a973e9523c8",
+      "hash": "sha256:0d3ac532e35fd7eec04228a885d8f65f1461f168e8f065a20b114c3a66cdf67c"
+    },
+    {
+      "seq": 713,
+      "at": "2026-10-16T00:25:38+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-4053092113"
+      },
+      "state": "sha256:f023a9fbcd278a8f7dfada1ccd25773ab2afb6ec50c4cbf34f204fe288165aff",
+      "prev": "sha256:0d3ac532e35fd7eec04228a885d8f65f1461f168e8f065a20b114c3a66cdf67c",
+      "hash": "sha256:54f94d07e7adaace9da05ead6b5c698379e9f832174cc98051c53aee37798132"
+    },
+    {
+      "seq": 714,
+      "at": "2026-10-16T00:25:38+00:00",
+      "type": "job.pid",
+      "data": {
+        "job": "job-4053092113"
+      },
+      "state": "sha256:f023a9fbcd278a8f7dfada1ccd25773ab2afb6ec50c4cbf34f204fe288165aff",
+      "prev": "sha256:54f94d07e7adaace9da05ead6b5c698379e9f832174cc98051c53aee37798132",
+      "hash": "sha256:682bf2754b67e6e815104e408088eacff986eef934c1469eae85904edc152aff"
+    },
+    {
+      "seq": 715,
+      "at": "2026-10-16T00:25:41+00:00",
+      "type": "check.result",
+      "data": {
+        "check": "f06-test-design-cancel.f06-design-cancellation-counterexample",
+        "status": "pass",
+        "exit": 0
+      },
+      "state": "sha256:773d8e4b75b9d7bb805a1123d918d85cadd0ed2906f02b4f0204a612eb5cab58",
+      "prev": "sha256:682bf2754b67e6e815104e408088eacff986eef934c1469eae85904edc152aff",
+      "hash": "sha256:37d88af9c5a06aaa0b5a103e7b950f5605b7ef829d0d0ff3b31b4698ec132584"
+    },
+    {
+      "seq": 716,
+      "at": "2026-10-16T00:25:42+00:00",
+      "type": "check.workspace_changed",
+      "data": {},
+      "state": "sha256:4a9ad691b8f4c7742f58c6329b3bb57ff8b9dfcd5120ef58633cec6249864afa",
+      "prev": "sha256:37d88af9c5a06aaa0b5a103e7b950f5605b7ef829d0d0ff3b31b4698ec132584",
+      "hash": "sha256:5977e2e59ada482224f92c07959d88dc8d0b61ae8966f14521c6e418b25ea3f2"
+    },
+    {
+      "seq": 717,
+      "at": "2026-10-16T00:25:42+00:00",
+      "type": "job.finished",
+      "data": {
+        "job": "job-4053092113",
+        "results": {
+          "f06-test-design-cancel.f06-design-cancellation-counterexample": "pass"
+        },
+        "purpose": "task"
+      },
+      "state": "sha256:022f2c250ff7b580722bde08be3bcfb84fb9b2d246858d0409d6f5ec46ea5986",
+      "prev": "sha256:5977e2e59ada482224f92c07959d88dc8d0b61ae8966f14521c6e418b25ea3f2",
+      "hash": "sha256:a1280fe0d14fd47d743c47a532b23b5801311056366fadf485a9ca1037c358b2"
+    }
+  ],
+  "contemporaneousTranscriptDurationsMs": {
+    "job-5c67fcb71b": 13594,
+    "job-13454408d5": 2915,
+    "job-4053092113": 3045
+  }
+}

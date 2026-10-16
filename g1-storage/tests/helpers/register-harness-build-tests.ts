@@ -12,7 +12,16 @@ import { HarnessCopy,digest,packageRoot,repository } from './harness-copy.js';
 type Register=(name:string,body:(t:TestContext)=>Promise<void>)=>Promise<void>;
 const copy=async(body:(c:HarnessCopy)=>void|Promise<void>,dependencies=true)=>{
  const c=await HarnessCopy.create(dependencies),errors:unknown[]=[];
- try{await body(c);}catch(error){errors.push(error);}
+ try{
+  const parent=resolve(packageRoot,'node_modules/.cache'),directory=lstatSync(c.directory);
+  assert.equal(realpathSync(parent),parent,'Harness fixture parent is the canonical project cache');
+  assert.equal(dirname(c.directory),parent,'Every positive and hostile harness fixture stays in the project cache');
+  assert.equal(realpathSync(c.directory),c.directory);assert(directory.isDirectory()&&!directory.isSymbolicLink());assert.equal(directory.uid,process.getuid!());assert.equal(directory.mode&0o777,0o700);
+  assert.match(relative(parent,c.directory),/^fabric-storage-harness-[^/]+$/,'Retain the owned harness fixture prefix');
+  assert(!c.directory.startsWith(resolve(parent,'storage-build')+'/'),'Harness fixtures remain outside disposable build output');
+  assert.equal(c.root,resolve(c.directory,'candidate'));assert.equal(c.storage,resolve(c.root,'g1-storage'));
+  await body(c);
+ }catch(error){errors.push(error);}
  try{await c.close();}catch(error){errors.push(error);}
  if(errors.length===1)throw errors[0];
  if(errors.length)throw new AggregateError(errors,'Harness copy body and independently proved cleanup failed: '+errors.map(error=>String(error)).join('; '),{cause:errors[0]});
@@ -439,6 +448,7 @@ async function installedCloseSettlement(c:HarnessCopy,body:()=>Promise<void>){
  * positive copy runs no install or child and claims no prerequisite result. */
 async function positiveCopyInputs(c:HarnessCopy){
  await c.preparePositive();await c.assertPositive();
+ assert.equal(dirname(c.directory),realpathSync(resolve(packageRoot,'node_modules/.cache')),'Prepared positive copy retains its canonical project cache parent');
  const markerPath=resolve(c.directory,'owner'),markerBytes=readFileSync(markerPath);
  const marker=JSON.parse(markerBytes.toString()) as PositiveMarker;
  assert.equal(marker.schema,'owned-storage-copy-v1');assert.equal(marker.owner,c.owner);assert.equal(marker.originRoot,repository);
@@ -740,6 +750,8 @@ async function positiveCopyInputs(c:HarnessCopy){
  // disposable copy. The first copy's sentinel and both originals survive.
  const damaged=await HarnessCopy.create(true);
  try{
+  assert.equal(dirname(damaged.directory),realpathSync(resolve(packageRoot,'node_modules/.cache')),'Damaged private copy retains the project cache parent');
+  assert.notEqual(damaged.directory,c.directory,'Private copies remain distinct sibling fixtures');
   await damaged.preparePositive();const file=resolve(damaged.storage,'node_modules',payload);
   writeFileSync(file,Buffer.concat([readFileSync(file),Buffer.from('\ncleanup dependency refusal\n')]));
   await installedCloseSettlement(damaged,async()=>{
@@ -751,14 +763,18 @@ async function positiveCopyInputs(c:HarnessCopy){
  // All preceding controls restore the initial quarantined installation. The
  // next operation is the unchanged real copied build, with no runner dispatch.
  const originalCache=()=>{
-  const entries:unknown[]=[];
+  const entries:unknown[]=[];let ownFixtureExclusions=0;
   const walk=(file:string)=>{
+   // This exact proved fixture is deliberately under the original cache;
+   // its copied build output changes. Every original and sibling path remains.
+   if(file===c.directory){assert.equal(realpathSync(file),c.directory);assert.equal(dirname(file),resolve(packageRoot,'node_modules/.cache'));ownFixtureExclusions++;return;}
    const stat=lstatSync(file),path=relative(packageRoot,file),mode=stat.mode&0o7777;
    if(stat.isSymbolicLink())entries.push({path,mode,type:'link',target:readlinkSync(file)});
    else if(stat.isDirectory()){entries.push({path,mode,type:'directory'});for(const name of readdirSync(file).sort())walk(resolve(file,name));}
    else{assert(stat.isFile());const bytes=readFileSync(file);entries.push({path,mode,type:'file',bytes:bytes.length,sha256:digest(bytes)});}
   };
   if(existsSync(resolve(packageRoot,'node_modules/.cache')))walk(resolve(packageRoot,'node_modules/.cache'));
+  assert.equal(ownFixtureExclusions,1,'Only the current owned fixture is excluded from original cache preservation');
   return digest(JSON.stringify(entries));
  };
  const originalCacheDigest=originalCache(),originalSpawn=childProcess.spawn;
@@ -797,6 +813,22 @@ async function positiveCopyInputs(c:HarnessCopy){
   const output=resolve(c.cache,'g1-storage',file+suffix),stat=lstatSync(output);
   assert(stat.isFile()&&!stat.isSymbolicLink()&&stat.nlink===1);assert.equal(stat.uid,process.getuid?.());assert(readFileSync(output).length>0);
  }
+ for(const file of ['g1-model/tests/helpers/process-fixture','g1-local/src/client','g1-local/src/contracts','g1-local/src/errors'])for(const suffix of ['.js','.d.ts','.js.map']){
+  const output=resolve(c.cache,file+suffix),stat=lstatSync(output);
+  assert(stat.isFile()&&!stat.isSymbolicLink()&&stat.nlink===1);assert.equal(stat.uid,process.getuid?.());assert(readFileSync(output).length>0);
+ }
+ const processFixture=await import(pathToFileURL(resolve(c.cache,'g1-model/tests/helpers/process-fixture.js')).href) as typeof import('../../../g1-model/tests/helpers/process-fixture.js');
+ assert(processFixture.census().some(row=>row.pid===process.pid),'Actual relocated process fixture imports and performs the current census');
+ const restoreIntegrity=await import(pathToFileURL(resolve(c.cache,'g1-storage/tests/helpers/verify-restore-integrity.js')).href) as typeof import('./verify-restore-integrity.js');
+ assert.equal(typeof restoreIntegrity.registerVerifyRestoreIntegrityTests,'function','Actual relocated restore integrity module imports its complete runtime closure');
+ const {LocalClient,ClientTransportError}=await import(pathToFileURL(resolve(c.cache,'g1-local/src/client.js')).href) as typeof import('../../../g1-local/src/client.js');
+ const {LocalError}=await import(pathToFileURL(resolve(c.cache,'g1-local/src/errors.js')).href) as typeof import('../../../g1-local/src/errors.js');
+ let fetchCalls=0;
+ const client=new LocalClient('http://127.0.0.1:1',{fetch:async()=>{fetchCalls++;throw new Error('Relocated refusal must not fetch');}});
+ client.disconnect();
+ await assert.rejects(()=>client.health(),error=>error instanceof ClientTransportError&&error.code==='NOT_DELIVERED');
+ await assert.rejects(()=>client.login({} as never),error=>error instanceof LocalError&&error.code==='INVALID_SCHEMA');
+ assert.equal(fetchCalls,0,'Actual relocated client/contract/error refusals never dispatch a request');
  const admittedBytes=readFileSync(markerPath),admitted=JSON.parse(admittedBytes.toString()) as PositiveMarker;
  const postInstalled=owners.map(owner=>installedTree(c.root,owner));
  const maskFive=(trees:InstalledTree[]):InstalledTree[]=>{
@@ -881,11 +913,16 @@ async function positiveCopyInputs(c:HarnessCopy){
  const checkerPrevious={prunedAt:observedState.prunedAt,lastValidatedTimestamp:observedState.lastValidatedTimestamp};
  const capabilityKeys=['STORAGE_REPO_ROOT','STORAGE_DATABASE_URL','MODEL_DATABASE_URL','IDENTITY_OWNER_ROOT','FABRIC_OWNER','HARNESS_CHILD','HARNESS_CHILD_NONCE','LOOP_PROJECT','NODE_TEST_CONTEXT','NODE_OPTIONS','NODE_PATH','NODE_CHANNEL_FD','NODE_CHANNEL_SERIALIZATION_MODE'];
  const capabilityValues=new Map(capabilityKeys.map(key=>[key,process.env[key]]));
+ const checkerSpawn=childProcess.spawn;
+ childProcess.spawn=((file:string,argv:readonly string[]=[],options?:SpawnOptions)=>{
+  assert.equal(file,process.execPath);assert.deepEqual(argv,[resolve(c.storage,'scripts/check-component.mjs'),'delivery-evidence']);
+  return checkerSpawn(file,argv,{...options,env:{...options?.env,DOCKER_HOST:'unix://'+resolve(c.directory,'missing-docker.sock')}});
+ }) as unknown as typeof childProcess.spawn;syncBuiltinESMExports();
  const checkerStartedMs=Date.now();let checked:Awaited<ReturnType<HarnessCopy['runAsync']>>;
  try{
   for(const key of capabilityKeys)process.env[key]=key==='NODE_OPTIONS'?'--require='+resolve(c.directory,'never-load-outer-node-options.cjs'):'outer-capability-'+key;
   checked=await c.runAsync('positive-copied-delivery-evidence','scripts/check-component.mjs',['delivery-evidence']);
- }finally{for(const [key,value] of capabilityValues)if(value===undefined)delete process.env[key];else process.env[key]=value;}
+ }finally{childProcess.spawn=checkerSpawn;syncBuiltinESMExports();for(const [key,value] of capabilityValues)if(value===undefined)delete process.env[key];else process.env[key]=value;}
  const checkerFinishedMs=Date.now();
  assert.equal(checked.status,0,checked.stderr);assert.equal(checked.signal,null);assert.equal(checked.stderr,'');assert(checked.identity);
  const checkerCommand=[process.execPath,resolve(c.storage,'scripts/check-component.mjs'),'delivery-evidence'].join(' ');
@@ -912,6 +949,21 @@ async function positiveCopyInputs(c:HarnessCopy){
  assert.equal(dispatches[0].file,resolve(c.cache,'g1-storage/tests',component.file));assert.equal(dispatches[0].status,0);assert.equal(dispatches[0].signal,null);assert.equal(dispatches[0].error,null);assert.equal(dispatches[0].explicitTimeoutMs,null);
  const commands=checkerOuter.filter((row:{measurement?:string;kind?:string;binding?:{phase?:string}})=>row.measurement==='storage-measurement-transport'&&row.kind==='start'&&row.binding?.phase==='command');assert.equal(commands.length,2);
  for(const row of commands){assert.equal(row.binding.candidate,marker.candidate.digest);assert.deepEqual(row.binding.command,{executable:process.execPath,args:[resolve(c.storage,'scripts/check-component.mjs'),'delivery-evidence'],cwd:c.root});}
+ const checkerTransport=await import(pathToFileURL(resolve(packageRoot,'scripts/measurement-transport.mjs')).href);
+ const checkerFrames=checkerOuter.filter((row:{measurement?:string})=>row.measurement==='storage-measurement-transport'),checkerDecoded=[];
+ for(let index=0;index<checkerFrames.length;){const header=checkerFrames[index],count=header.count+2;
+  const decoded=checkerTransport.decodeMeasurement(checkerFrames.slice(index,index+count),header.binding);
+  assert.equal(digest(decoded.raw),header.digest);checkerDecoded.push(decoded.record);index+=count;
+ }
+ const checkerCommandCensuses=checkerDecoded.filter(row=>row.phase==='command');assert.equal(checkerCommandCensuses.length,2);
+ assert.deepEqual(checkerCommandCensuses.map(row=>row.measurement),['storage-parent-start','storage-parent-return']);
+ for(const census of [checkerCommandCensuses[0].before,checkerCommandCensuses[1].before,checkerCommandCensuses[1].after]){
+  assert(census.processBytes.trim().length>0);assert.equal(digest(census.processBytes),census.processDigest);assert.deepEqual(census.processes,census.processBytes.trimEnd().split('\n'));
+  assert.equal(census.containerBytes,null);assert.equal(census.containers,null);assert.equal(census.containerDigest,null);
+  assert.equal(census.containerObservation.status,'unknown');assert.equal(census.containerObservation.qualified,false);
+  assert.equal(census.containerObservation.exitStatus,1);assert.equal(census.containerObservation.signal,null);assert.equal(census.containerObservation.error,null);
+  assert.equal(census.containerObservation.stdout,'');assert.match(census.containerObservation.stderr,/missing-docker\.sock/);assert.match(census.containerObservation.diagnostic,/Docker census unavailable/);
+ }
  const returned=checkerOuter.filter((row:{measurement?:string;phase?:string})=>row.measurement==='storage-parent-return'&&row.phase==='command');assert.equal(returned.length,1);assert.equal(returned[0].mode,'component');assert.equal(returned[0].candidate,marker.candidate.digest);assert.equal(returned[0].success,true);
  const assertions=checkerRows.filter((row:{measurement?:string})=>row.measurement==='delivery-evidence-assertions');assert.equal(assertions.length,1);assert.equal(original.recordContext(assertions[0]).depth,1);
  assert.equal(assertions[0].candidate,marker.candidate.digest);assert.equal(assertions[0].controllerFingerprint,marker.controllerFingerprint);assert.equal(assertions[0].qualification.authorVerdict,false);assert.equal(assertions[0].qualification.externalQualification,'pending');assert.equal(assertions[0].wholeHostReaped,false);
@@ -1329,6 +1381,8 @@ async function privatePrerequisiteFailure(schedule:'cancellation'|'workload'|'st
  };
  let before:{inputs:unknown;sourceFiles:unknown;candidate:unknown;dependencies:{original:InstalledTree[];copied:InstalledTree[]}}|undefined;
  try{
+  assert.equal(dirname(c.directory),realpathSync(resolve(packageRoot,'node_modules/.cache')),'Private failure schedule uses the canonical project cache');
+  assert.notEqual(c.directory,sibling.directory,'Private failure schedule keeps a distinct owned sibling fixture');
   await c.preparePositive();
   // A useful real copied contracts check precedes the private negative. It
   // uses the unchanged known-script CLI and freshly builds its actual source.
@@ -1346,7 +1400,7 @@ async function privatePrerequisiteFailure(schedule:'cancellation'|'workload'|'st
    assert.equal(executable,process.execPath);assert.equal(argv[0],resolve(c.storage,'scripts/runner.mjs'));assert.equal(argv.length,2);
    assert.match(argv[1]!,/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/);launchedNonce=argv[1]!;
    assert.equal(options?.cwd,c.root);assert.deepEqual(options?.stdio,['ignore','pipe','pipe','ipc']);
-   const child=spawnActual(executable,argv,options);handle=child;
+   const child=spawnActual(executable,argv,{...options,env:{...options?.env,DOCKER_HOST:'unix://'+resolve(c.directory,'missing-docker.sock')}});handle=child;
    child.once('close',()=>{nativeClosed=true;resolveDispatch(false);resolveCancellation(false);});child.on('message',message=>{
     messages.push(message);if((message as {type?:string})?.type==='harness-prerequisite-cancel-accepted')resolveCancellation(true);
    });
@@ -1414,6 +1468,21 @@ async function privatePrerequisiteFailure(schedule:'cancellation'|'workload'|'st
   assert.equal(handle!.connected,false);await assert.rejects(()=>c.cancelHarnessPrerequisite(),'Settled failed copy retains no private cancellation capability');
   const rows=reader.outerRecords(reader.records(Buffer.from(result.stdout))),dispatches=rows.filter((row:{measurement?:string})=>row.measurement==='harness-prerequisite-dispatch');
   assert.deepEqual(dispatches.map((row:{suite:string})=>row.suite),['contracts'],'No integration or later mandatory suite is admitted after the held actual contracts fault');
+  const transport=await import(pathToFileURL(resolve(packageRoot,'scripts/measurement-transport.mjs')).href);
+  const frames=rows.filter((row:{measurement?:string})=>row.measurement==='storage-measurement-transport'),decoded=[];
+  for(let index=0;index<frames.length;){const header=frames[index],count=header.count+2;
+   const value=transport.decodeMeasurement(frames.slice(index,index+count),header.binding);assert.equal(digest(value.raw),header.digest);decoded.push(value.record);index+=count;
+  }
+  const commands=decoded.filter(row=>row.phase==='command');assert.equal(commands.length,2);assert.equal(commands[1].success,false);
+  assert.deepEqual(commands.map(row=>row.measurement),['storage-parent-start','storage-parent-return']);
+  for(const census of [commands[0].before,commands[1].before,commands[1].after]){
+   assert(census.processBytes.trim().length>0);assert.equal(digest(census.processBytes),census.processDigest);assert.deepEqual(census.processes,census.processBytes.trimEnd().split('\n'));
+   assert.equal(census.containerBytes,null);assert.equal(census.containers,null);assert.equal(census.containerDigest,null);
+   assert.equal(census.containerObservation.status,'unknown');assert.equal(census.containerObservation.qualified,false);
+   assert.equal(census.containerObservation.exitStatus,1);assert.equal(census.containerObservation.signal,null);assert.equal(census.containerObservation.error,null);
+   assert.equal(census.containerObservation.stdout,'');assert.match(census.containerObservation.stderr,/missing-docker\.sock/);assert.match(census.containerObservation.diagnostic,/Docker census unavailable/);
+  }
+
   const builds=rows.filter((row:{measurement?:string})=>row.measurement==='strict-build');assert.equal(builds.length,1,'The failed private operation still performed its one actual fresh build');
   assert.equal(builds[0].sourceAndTests,true);assert.equal(builds[0].cacheCleared,true);assert.equal(builds[0].node,'v22.22.3');
   assert.deepEqual(builds[0].pins,{pg:'8.16.3','@types/pg':'8.15.5','@types/node':'22.18.6',typescript:'5.9.3'});assert.equal(builds[0].install,'offline/frozen/ignore-scripts');
@@ -1459,6 +1528,7 @@ async function privatePrerequisiteFailure(schedule:'cancellation'|'workload'|'st
  // Recovery is a fresh independently prepared full original/private census,
  // never another operation or a retrospective admission on the failed copy.
  const recovered=await HarnessCopy.create();try{
+  assert.equal(dirname(recovered.directory),realpathSync(resolve(packageRoot,'node_modules/.cache')),'Fresh private recovery stays in the canonical project cache');
   assert.notEqual(recovered.directory,directory);assert.notEqual(recovered.owner,c.owner);await recovered.preparePositive();await recovered.assertPositive();
   const binding=JSON.parse(readFileSync(resolve(recovered.directory,'owner'),'utf8'));
   for(const key of ['inputs','sourceFiles','candidate'] as const)assert.deepEqual(binding[key],before[key],'Fresh recovery retains complete captured '+key);
@@ -1476,7 +1546,7 @@ async function privatePrerequisiteFailure(schedule:'cancellation'|'workload'|'st
 /** H02/good-full-run is deliberately separate: diagnostic execution cannot
  * qualify it. Full H02 below always registers it and requires its real owner. */
 export async function harnessResultNegativeSchedules(t:TestContext,prefix='H02'){
- await t.test(prefix+'/removed-suite',()=>copy(async c=>{
+ await t.test(prefix+'/removed-suite',async()=>{await copy(async c=>{
   prepare(c);rmSync(resolve(c.root,'source/probe.test.ts'));
   refused(await c.run('source-suite-missing','private-driver.mjs'),/Mandatory suite missing: probe/);
   prepare(c);rmSync(resolve(c.root,'emitted/probe.test.js'));
@@ -1485,7 +1555,124 @@ export async function harnessResultNegativeSchedules(t:TestContext,prefix='H02')
   plantStale(c);rmSync(resolve(c.storage,'tests/contracts.test.ts'));
   const r=refused(await c.run('removed-suite-full-check','scripts/check.mjs'),/ENOENT|Mandatory current storage emission missing/);
   assert.match(r.stdout,/"measurement":"storage-candidate"/);assert.doesNotMatch(r.stdout,/"measurement":"storage-test-report"/);
- }));
+ });
+ // Exercise unchanged real entry points. The test-only child endpoint names a
+ // missing socket inside that child's owned directory; the real Docker CLI
+ // supplies the refusal. No fixture or PG work is substituted.
+ for(const [entry,args,privateEntry] of [
+  ['scripts/check-component.mjs',['authority'],false],['scripts/check-slice.mjs',['authority'],false],
+  ['scripts/check.mjs',[],false],['scripts/runner.mjs',[],true]
+ ] as const){
+  const c=await HarnessCopy.create(),directory=c.directory,sibling=readFileSync(resolve(c.root,'node_modules/.cache/sibling-sentinel'));
+  const source=readFileSync(resolve(packageRoot,'src/schema.ts')),spawnActual=childProcess.spawn;
+  let child:ChildProcess|undefined,closed=false,stdoutEnded=false,stderrEnded=false,stdoutClosed=false,stderrClosed=false;
+  let result:Awaited<ReturnType<HarnessCopy['runAsync']>>|undefined,failure:unknown;
+  try{
+   if(entry==='scripts/check-component.mjs'){
+    // This existing UUID-only copy has no enclosing admitted positive runner.
+    // Its actual runner builds/censuses normally; Docker doubles refuse the
+    // first fixture census before image, root, container or PG work.
+    const runner=await import(pathToFileURL(resolve(c.storage,'scripts/runner.mjs')).href);
+    const transport=await import(pathToFileURL(resolve(c.storage,'scripts/measurement-transport.mjs')).href);
+    const originalSpawnSync=childProcess.spawnSync,originalWrite=process.stdout.write;
+    const measurementDocker=['ps','-a','--filter','label=agent-fabric.storage-fixture-owner','--no-trunc','--format','{{.ID}}'];
+    const fixtureDocker=['ps','-a','--filter','label=agent-fabric.storage-fixture-owner','--format','{{.ID}}'];
+    const calls:string[]=[],writes:string[]=[];let measurementCalls=0,buildCalls=0,runnerFailure:unknown;
+    try{
+     childProcess.spawnSync=((file:unknown,args:unknown,options:unknown)=>{
+      if(file==='docker'){
+       if(JSON.stringify(args)===JSON.stringify(measurementDocker)){
+        calls.push('measurement');measurementCalls++;
+        assert(measurementCalls<=4,'Only command/admission starts and suite/command returns may census Docker');
+        assert.equal(calls.includes('fixture'),measurementCalls>2,'Docker loss begins at the actual fixture boundary');
+        return {status:measurementCalls<=2?0:1,signal:null,stdout:'',stderr:measurementCalls<=2?'':'test-local Docker loss at '+(measurementCalls===3?'suite return':'command final')};
+       }
+       assert.deepEqual(args,fixtureDocker,'No image, container or other Docker work may run');
+       assert.equal(calls.includes('fixture'),false);assert.equal(measurementCalls,2);
+       calls.push('fixture');return {status:1,signal:null,stdout:'',stderr:'test-local fixture census failure'};
+      }
+      if(file===process.execPath&&JSON.stringify(args)===JSON.stringify([resolve(c.storage,'scripts/build.mjs')]))buildCalls++;
+      return Reflect.apply(originalSpawnSync,childProcess,[file,args,options]);
+     }) as unknown as typeof childProcess.spawnSync;syncBuiltinESMExports();
+     process.stdout.write=((chunk:unknown,encoding?:unknown,callback?:unknown)=>{
+      writes.push(String(chunk));const done=typeof encoding==='function'?encoding:callback;
+      if(typeof done==='function')queueMicrotask(()=>done());return true;
+     }) as typeof process.stdout.write;
+     try{await runner.check('component',['authority']);}catch(error){runnerFailure=error;}
+    }finally{childProcess.spawnSync=originalSpawnSync;syncBuiltinESMExports();process.stdout.write=originalWrite;}
+    assert(runnerFailure instanceof AggregateError,'The actual authority runner must fail after strict admission');
+    const causes=(error:unknown):unknown[]=>error instanceof AggregateError?error.errors.flatMap(causes):[error];
+    const errors=causes(runnerFailure).map(String);
+    assert.equal(errors.length,3,'Only the fixture refusal and the two strict return failures may explain this result');
+    assert.equal(errors.filter(value=>value==='Error: Owned storage Docker ps failed').length,1,'Retain the actual fixture refusal');
+    assert.equal(errors.filter(value=>value.startsWith('Error: Docker census unavailable:')).length,2,'Both actual suite-return and sticky command-final censuses must refuse Docker loss');
+    for(const boundary of ['suite return','command final'])assert.equal(errors.filter(value=>value.includes('test-local Docker loss at '+boundary)).length,1);
+    assert.equal(buildCalls,1,'Forward exactly one actual strict build');
+    assert.deepEqual(calls,['measurement','measurement','fixture','measurement','measurement']);
+    const rows=writes.join('').split('\n').filter(line=>line.startsWith('{')).map(line=>JSON.parse(line));
+    const builds=rows.filter(row=>row.measurement==='strict-build');assert.equal(builds.length,1);assert.equal(builds[0].sourceAndTests,true);assert.equal(builds[0].cacheCleared,true);
+    const frames=rows.filter(row=>row.measurement==='storage-measurement-transport'),decoded=[];
+    for(let index=0;index<frames.length;){const header=frames[index],count=header.count+2;const value=transport.decodeMeasurement(frames.slice(index,index+count),header.binding);assert.equal(digest(value.raw),header.digest);decoded.push(value.record);index+=count;}
+    const lifetimeStarts=decoded.filter(row=>row.measurement==='storage-parent-start'&&row.phase==='suite-lifetime');
+    assert.equal(lifetimeStarts.length,1);assert.equal(lifetimeStarts[0].suite,'authority');assert.equal(lifetimeStarts[0].mode,'component');
+    assert.equal(lifetimeStarts[0].before.containerObservation.status,'available');assert.equal(lifetimeStarts[0].before.containerObservation.qualified,true);
+    for(const row of decoded.filter(row=>row.before)){assert(row.before.processBytes.trim());assert.equal(row.before.processDigest,transport.measurementDigest(row.before.processBytes));}
+    assert.equal(decoded.filter(row=>row.measurement==='storage-parent-return'&&['suite-lifetime','command'].includes(row.phase)).length,0,'Strict failures cannot publish qualified return records');
+    assert.equal(rows.filter(row=>['storage-suite-dispatch','storage-owned-fixture','storage-test-report'].includes(row.measurement)).length,0,'The refused fixture cannot execute a PG suite or publish success');
+    assert.deepEqual(readFileSync(resolve(c.root,'node_modules/.cache/sibling-sentinel')),sibling);assert.deepEqual(readFileSync(resolve(packageRoot,'src/schema.ts')),source);
+   }
+   if(privateEntry)await c.preparePositive();
+   childProcess.spawn=((file:string,argv:readonly string[]=[],options?:SpawnOptions)=>{
+    assert.equal(child,undefined);assert.equal(file,process.execPath);assert.equal(argv[0],resolve(c.storage,entry));assert.equal(options?.cwd,c.root);
+    if(privateEntry){assert.equal(argv.length,2);assert.match(argv[1]!,/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/);assert.deepEqual(options?.stdio,['ignore','pipe','pipe','ipc']);}
+    else assert.deepEqual(argv,[resolve(c.storage,entry),...args]);
+    child=spawnActual(file,argv,{...options,env:{...options?.env,DOCKER_HOST:'unix://'+resolve(directory,'missing-docker.sock')}});
+    child.once('close',()=>{closed=true;});child.stdout!.once('end',()=>{stdoutEnded=true;});child.stderr!.once('end',()=>{stderrEnded=true;});
+    child.stdout!.once('close',()=>{stdoutClosed=true;});child.stderr!.once('close',()=>{stderrClosed=true;});return child;
+   }) as unknown as typeof childProcess.spawn;syncBuiltinESMExports();
+   try{result=privateEntry?await c.runHarnessPrerequisite('missing-docker-private-fixed-ten'):await c.runAsync('missing-docker-'+entry,entry,[...args]);}
+   catch(error){failure=error;result=(error as AggregateError&{result:Awaited<ReturnType<HarnessCopy['runAsync']>>}).result;}
+   assert(result);assert.equal(result.status,1);assert.equal(result.signal,null);assert(result.identity);assert.equal(result.identity.ppid,process.pid);assert(result.identity.birth);
+   assert.equal(closed,true);assert.equal(child!.exitCode,1);assert.equal(child!.signalCode,null);assert.equal(stdoutEnded,true);assert.equal(stderrEnded,true);assert.equal(stdoutClosed,true);assert.equal(stderrClosed,true);
+   if(privateEntry){assert(failure instanceof AggregateError);assert.equal(child!.connected,false);await assert.rejects(()=>c.cancelHarnessPrerequisite());}
+   else assert.equal(failure,undefined);
+   assert.match(result.stderr,/Docker census unavailable/);assert.match(result.stderr,/missing-docker\.sock/);
+   const reader=await import(pathToFileURL(resolve(packageRoot,'scripts/delivery-evidence.mjs')).href),rows=reader.outerRecords(reader.records(Buffer.from(result.stdout)));
+   assert.equal(rows.filter((row:{measurement?:string})=>row.measurement==='storage-owned-fixture'||row.measurement==='storage-fixture-execution-times'||row.measurement==='storage-test-report').length,0,'Unavailable strict admission cannot import/start fixture or publish a successful full report');
+   const builds=rows.filter((row:{measurement?:string})=>row.measurement==='strict-build');assert.equal(builds.length,1);assert.equal(builds[0].sourceAndTests,true);assert.equal(builds[0].cacheCleared,true);
+   const dispatches=rows.filter((row:{measurement?:string})=>row.measurement==='storage-suite-dispatch');
+   const full=entry==='scripts/check.mjs'||privateEntry;
+   assert.equal(dispatches.length,full?1:0);
+   if(full){
+    assert.equal(dispatches[0].file,resolve(c.cache,'g1-storage/tests/contracts.test.js'));assert.equal(dispatches[0].status,0);assert.equal(dispatches[0].signal,null);assert.equal(dispatches[0].error,null);
+    const lines=result.stdout.split('\n'),start=lines.indexOf('TAP version 13'),end=lines.findIndex(line=>line.startsWith('{')&&JSON.parse(line).measurement==='storage-suite-dispatch');
+    assert(start>=0&&end>start);const gate=await import(pathToFileURL(resolve(packageRoot,'scripts/process-result.mjs')).href),{suites}=await import(pathToFileURL(resolve(packageRoot,'scripts/manifest.mjs')).href);
+    const report=gate.parseTap({status:0,signal:null,stdout:lines.slice(start,end).join('\n')+'\n',stderr:result.stderr},suites.contracts.cases);
+    assert.deepEqual(report.cases,['C01 / closed contracts','C02 / finite admission bounds','C03 / independent controls and owner composition']);assert.equal(report.tests,12);
+    for(const key of ['fail','cancelled','skipped','todo'])assert.equal(report[key],0,key);
+    for(const [parent,names] of Object.entries(suites.contracts.variants) as [string,string[]][])for(const name of names)assert.equal(report.executions.filter((row:{indent:number;parent:string;name:string})=>row.indent===4&&(row.parent===parent||row.parent.startsWith(parent+' / '))&&row.name===name).length,1);
+   }
+   const admissions=rows.filter((row:{measurement?:string})=>row.measurement==='harness-prerequisite-dispatch');assert.deepEqual(admissions.map((row:{suite:string})=>row.suite),privateEntry?['contracts']:[]);
+   const transport=await import(pathToFileURL(resolve(packageRoot,'scripts/measurement-transport.mjs')).href),frames=rows.filter((row:{measurement?:string})=>row.measurement==='storage-measurement-transport'),decoded=[];
+   for(let index=0;index<frames.length;){const header=frames[index],count=header.count+2;const value=transport.decodeMeasurement(frames.slice(index,index+count),header.binding);assert.equal(digest(value.raw),header.digest);decoded.push(value.record);index+=count;}
+   assert.equal(decoded.filter(row=>row.phase==='suite-lifetime'&&row.suite==='authority').length,0,'Strict census refuses before integration lifetime/admission publication');
+   const commands=decoded.filter(row=>row.phase==='command');assert.equal(commands.length,2);assert.equal(commands[1].success,false);
+   for(const census of [commands[0].before,commands[1].before,commands[1].after]){
+    assert(census.processBytes.trim());assert.equal(digest(census.processBytes),census.processDigest);assert.deepEqual(census.processes,census.processBytes.trimEnd().split('\n'));
+    assert.equal(census.containerBytes,null);assert.equal(census.containers,null);assert.equal(census.containerDigest,null);assert.equal(census.containerObservation.status,'unknown');assert.equal(census.containerObservation.qualified,false);
+    assert.equal(census.containerObservation.exitStatus,1);assert.equal(census.containerObservation.signal,null);assert.equal(census.containerObservation.error,null);assert.equal(census.containerObservation.stdout,'');
+    assert.match(census.containerObservation.stderr,/missing-docker\.sock/);assert.match(census.containerObservation.diagnostic,/Docker census unavailable/);
+   }
+   assert.deepEqual(readFileSync(resolve(c.root,'node_modules/.cache/sibling-sentinel')),sibling);assert.deepEqual(readFileSync(resolve(packageRoot,'src/schema.ts')),source);
+  }finally{
+   childProcess.spawn=spawnActual;syncBuiltinESMExports();
+   let cleanupFailure:unknown;try{await c.close();}catch(error){cleanupFailure=error;}
+   if(privateEntry&&result){assert(cleanupFailure instanceof AggregateError);assert.equal(cleanupFailure.message,'Harness copy guards and independently proved cleanup failed');}
+   else if(cleanupFailure)throw cleanupFailure;
+   assert.equal(existsSync(directory),false,'Each actual refused entry removes only its independently proved owned copy');assert.deepEqual(readFileSync(resolve(packageRoot,'src/schema.ts')),source);
+  }
+ }
+ });
  const schedules:[string,string,RegExp][]=[
   ['removed-case',good.replace("test('PROBE'","test('OTHER'"),/Exact mandatory executed identities required/],
   ['empty-suite',"import test from 'node:test';\n",/Exact mandatory executed identities required/],

@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
 import {isDeepStrictEqual} from 'node:util';
-import { mkdtempSync,mkdirSync,readFileSync,writeFileSync,readdirSync,lstatSync,copyFileSync,rmSync,cpSync,readlinkSync,realpathSync } from 'node:fs';
+import { mkdtempSync,mkdirSync,chmodSync,readFileSync,writeFileSync,readdirSync,lstatSync,copyFileSync,rmSync,cpSync,readlinkSync,realpathSync } from 'node:fs';
 import { resolve,dirname,relative,join,isAbsolute } from 'node:path';
-import { tmpdir } from 'node:os';
 import { randomUUID,createHash } from 'node:crypto';
 import { spawn,spawnSync,type ChildProcess } from 'node:child_process';
 import { type Writable } from 'node:stream';
@@ -173,8 +172,21 @@ function writeOutput(stream:Writable,bytes:Buffer|string):Promise<void>{
 }
 /** F-H owns only regular, reproducible copies. No sibling install or cache is
  * linked into the child. All accepted inputs are copied and rehashed again. */
+function harnessDirectory(){
+ // Long-running copies stay in the project's disposable cache; OS temporary
+ // directory maintenance must not remove members of their captured closure.
+ for(const path of [packageRoot,resolve(packageRoot,'node_modules')]){
+  const s=lstatSync(path);assert(s.isDirectory()&&!s.isSymbolicLink()&&s.uid===process.getuid!(),'Owned harness cache ancestor required');
+  assert.equal(realpathSync(path),path,'Canonical harness cache ancestor required');
+ }
+ const parent=resolve(packageRoot,'node_modules/.cache');
+ mkdirSync(parent,{recursive:true,mode:0o700});
+ const s=lstatSync(parent);assert(s.isDirectory()&&!s.isSymbolicLink()&&s.uid===process.getuid!(),'Owned harness cache parent required');
+ assert.equal(realpathSync(parent),parent,'Canonical harness cache parent required');
+ return realpathSync(mkdtempSync(join(parent,'fabric-storage-harness-')));
+}
 export class HarnessCopy {
- readonly directory=realpathSync(mkdtempSync(join(tmpdir(),'fabric-storage-harness-')));
+ readonly directory=harnessDirectory();
  readonly owner=randomUUID();
  readonly root=resolve(this.directory,'candidate');
  readonly storage=resolve(this.root,'g1-storage');
@@ -222,9 +234,12 @@ export class HarnessCopy {
   if(dependencies){
    const original=await installedSnapshot(repository);
    for(const owner of ['g1-storage','g1-recovery']){
-    const installed=resolve(repository,owner,'node_modules');
-    cpSync(installed,resolve(this.root,owner,'node_modules'),{recursive:true,verbatimSymlinks:true,mode:constants.COPYFILE_FICLONE,
-     filter:path=>{const rel=relative(installed,path);return rel!=='.cache'&&!rel.startsWith('.cache/');}});
+    const installed=resolve(repository,owner,'node_modules'),destination=resolve(this.root,owner,'node_modules');
+    mkdirSync(destination,{recursive:true});chmodSync(destination,lstatSync(installed).mode&0o7777);
+    // The private fixture is inside the excluded root .cache. Copy members
+    // rather than their enclosing root, which cpSync refuses as a self-copy.
+    for(const name of readdirSync(installed).filter(name=>name!=='.cache').sort())
+     cpSync(resolve(installed,name),resolve(destination,name),{recursive:true,verbatimSymlinks:true,mode:constants.COPYFILE_FICLONE});
    }
    assert(isDeepStrictEqual(await installedSnapshot(repository,original),original),'Original installation changed during copy');
    const copied=await installedSnapshot(this.root);

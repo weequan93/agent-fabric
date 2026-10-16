@@ -1,0 +1,1696 @@
+[
+  {
+    "id": "f06-01a",
+    "role": "architect",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-01a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C01 C02 C03 C04 C05 C06",
+        "cwd": ".",
+        "stage": "unit",
+        "timeout": 180,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 180,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      10
+    ],
+    "upperTurnMinutes": 108.0
+  },
+  {
+    "id": "f06-01b",
+    "role": "tester",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      100
+    ],
+    "checks": [
+      {
+        "id": "f06-01b-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs harness-integrity --cases H01 H02 H03 H04 H10 H15 H16",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 300,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      7
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-02a",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-02a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs admission --cases I00/ask I01 I02 I05/admission I06/admission I07 I08/admission I09/admission",
+        "cwd": ".",
+        "stage": "e2e",
+        "timeout": 180,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 180,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      8
+    ],
+    "upperTurnMinutes": 103.0
+  },
+  {
+    "id": "f06-02b",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-02b-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs admission --cases I03 I04",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 180,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 180,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 103.0
+  },
+  {
+    "id": "f06-03a",
+    "role": "data",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-03a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs resources --cases Q00/atomic-ownership Q02/repository Q07/repository Q09/queue-commit",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 240,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 240,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      4
+    ],
+    "upperTurnMinutes": 104.0
+  },
+  {
+    "id": "f06-03b",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-03b-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs lease-queue --cases Q00/conflicts Q01 Q02 Q03 Q04 Q06 Q07 Q09 Q10 Q11 Q12 Q13/lifecycle",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 480,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      15
+    ],
+    "upperTurnMinutes": 113.0
+  },
+  {
+    "id": "f06-04a",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-04a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs tools",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 300,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      10
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-04b",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-04b-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs tool-paths egress",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 480,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      17
+    ],
+    "upperTurnMinutes": 113.0
+  },
+  {
+    "id": "f06-05",
+    "role": "security",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-05-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs browser-refusal",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 480,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      16
+    ],
+    "upperTurnMinutes": 113.0
+  },
+  {
+    "id": "f06-06a",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-06a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs continuation --cases A04 A10 A12 A13 A14 A15 A17",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 300,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      7
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-06b",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-06b-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/base A18/base R18/base",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 360,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 360,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      15
+    ],
+    "upperTurnMinutes": 111.0
+  },
+  {
+    "id": "f06-06c",
+    "role": "security",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-06c-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/fresh-authority A16/trusted-terminal-get A16/quiescence-snapshot A18/fresh-authority A18/trusted-terminal-get A18/quiescence-snapshot R18/fresh-authority R18/trusted-terminal-get R18/quiescence-snapshot",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 480,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1425
+    ],
+    "upperTurnMinutes": 113.0
+  },
+  {
+    "id": "f06-06d",
+    "role": "tester",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-06d-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs recovery-stop --cases A16/original-owner-atomicity A16/rollback-commit-recovery A16/concurrent-dedup-conflict A16/old-worker-replay-denied A18/original-owner-atomicity A18/rollback-commit-recovery A18/concurrent-dedup-conflict A18/old-worker-replay-denied R18/original-owner-atomicity R18/rollback-commit-recovery R18/concurrent-dedup-conflict R18/old-worker-replay-denied",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 480,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1035
+    ],
+    "upperTurnMinutes": 113.0
+  },
+  {
+    "id": "f06-06e",
+    "role": "tester",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      40,
+      70
+    ],
+    "checks": [
+      {
+        "id": "f06-06e-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs continuation",
+        "cwd": ".",
+        "stage": "performance",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      },
+      {
+        "id": "f06-06e-check-2",
+        "run": "node g1-runtime/scripts/check-suites.mjs authority-intent recovery-stop",
+        "cwd": ".",
+        "stage": "performance",
+        "timeout": 480,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 780,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      35,
+      60
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2487,
+      2508
+    ],
+    "upperTurnMinutes": 93.0
+  },
+  {
+    "id": "f06-07a",
+    "role": "devops",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-07a-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs qualification-matrix",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 300,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      21
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-07b",
+    "role": "tester",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-07b-check-1",
+        "run": "node g1-runtime/scripts/check-suites.mjs harness-integrity",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      25
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-07c",
+    "role": "devops",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      40,
+      70
+    ],
+    "checks": [
+      {
+        "id": "f06-07c-check-1",
+        "run": "node g1-runtime/scripts/check.mjs",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      35,
+      60
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2622
+    ],
+    "upperTurnMinutes": 95.0
+  },
+  {
+    "id": "f06-08a",
+    "role": "data",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-08a-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/wait-current P05/install-compatibility",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      4
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-08b",
+    "role": "data",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-08b-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/queue-atomic P02/key-collision P02/cancel-expiry P02/reopen-slot P02/wait-current P05",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      7
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-09a",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09a-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/unchanged-callers/native-stop P02/unchanged-callers/raw-composition-rejected-before-commands",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      11
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09b",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-09b-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P01/current-authority/execution P01/dispatch-binding/execution P02/claim-one-use",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      3
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-09c",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-09c-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/base P02/transfer-atomic/trusted-terminal-get/base",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      55
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-09d",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09d-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/original-owner-atomicity/settlement P01/worker-db-denial",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      91
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09e",
+    "role": "security",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09e-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/fresh-authority/negative P02/transfer-atomic/trusted-terminal-get/negative P01/current-authority/settlement",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      351
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09f",
+    "role": "security",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09f-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/quiescence-snapshot P02/transfer-atomic/old-worker-replay-denied/pre-transfer P01/dispatch-binding/settlement",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      131
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09g",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09g-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic/rollback-commit-recovery/settlement P02/transfer-atomic/concurrent-dedup-conflict",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      115
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09h",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-09h-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/transfer-atomic P02/phase-first",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      888
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-09i",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-09i-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P02/phase-first/pre-transfer P02/barrier-first",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      9
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-09j",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      40,
+      70
+    ],
+    "checks": [
+      {
+        "id": "f06-09j-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P01 P02",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      35,
+      60
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      929
+    ],
+    "upperTurnMinutes": 90.0
+  },
+  {
+    "id": "f06-10a",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-10a-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P03/family-receipts",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-10b",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      50,
+      80
+    ],
+    "checks": [
+      {
+        "id": "f06-10b-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P03",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      70
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 100.0
+  },
+  {
+    "id": "f06-11a",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-11a-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/restricted-child/admission P04/parent-current/admission P04/budget-lineage/admission",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      3
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-11b",
+    "role": "backend",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-11b-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/save-reopen P04/hook-transaction",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-11c",
+    "role": "security",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-11c-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/version-cas P04/original-key P04/restricted-child P04/parent-current P04/source-audience P04/budget-lineage P04/promotion-separation",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      10
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-11d",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      65,
+      95
+    ],
+    "checks": [
+      {
+        "id": "f06-11d-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P04/staging-failure P04/publication-rollback P04/commit-ack-loss",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 600,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      60,
+      85
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      3
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-11e",
+    "role": "tester",
+    "team": [],
+    "domain": "P",
+    "implementationMinutes": [
+      30,
+      60
+    ],
+    "checks": [
+      {
+        "id": "f06-11e-check-1",
+        "run": "node g1-runtime/scripts/check-owners.mjs --cases P04",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      },
+      {
+        "id": "f06-11e-check-2",
+        "run": "node g1-runtime/scripts/check-owners.mjs",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain P; CONDITIONAL real PG/original owners: existing Docker-backed fixtures are prohibited; do not invoke completion checks or submit done until transitive environment is eligible. Source/build drafting does not complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 1200,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      25,
+      50
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      15,
+      948
+    ],
+    "upperTurnMinutes": 90.0
+  },
+  {
+    "id": "f06-12a",
+    "role": "architect",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      50,
+      80
+    ],
+    "checks": [
+      {
+        "id": "f06-12a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/backend-pins",
+        "cwd": ".",
+        "stage": "unit",
+        "timeout": 180,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 180,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      70
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1
+    ],
+    "upperTurnMinutes": 93.0
+  },
+  {
+    "id": "f06-12b",
+    "role": "devops",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      80
+    ],
+    "checks": [
+      {
+        "id": "f06-12b-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs contract-kernel --cases C06/approved-host-manifest",
+        "cwd": ".",
+        "stage": "unit",
+        "timeout": 180,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 180,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      70
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1
+    ],
+    "upperTurnMinutes": 93.0
+  },
+  {
+    "id": "f06-13a",
+    "role": "backend",
+    "team": [],
+    "domain": "L",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-13a-check-1",
+        "run": "node g1-runtime/scripts/check-component.mjs backend-lifecycle",
+        "cwd": ".",
+        "stage": "unit",
+        "timeout": 300,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain L; Docker-free local fixture only; controller actual process-census gate required when sandbox cannot observe owned processes. No remote qualification."
+      }
+    ],
+    "wholeCheckSeconds": 300,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      5
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-13b",
+    "role": "devops",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-13b-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X01",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-13c",
+    "role": "devops",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-13c-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/base",
+        "cwd": ".",
+        "stage": "e2e",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-13d1",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      85
+    ],
+    "checks": [
+      {
+        "id": "f06-13d1-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-run",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      75
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      177
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-13d2",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      85
+    ],
+    "checks": [
+      {
+        "id": "f06-13d2-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stopped-original-stop-task",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      75
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      177
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-13d3",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      85
+    ],
+    "checks": [
+      {
+        "id": "f06-13d3-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/lease-expired-original",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      75
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      177
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-13d4",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      85
+    ],
+    "checks": [
+      {
+        "id": "f06-13d4-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/effect-expired-original",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      75
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      177
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-13d5",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      85
+    ],
+    "checks": [
+      {
+        "id": "f06-13d5-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X04/settlement/stop-and-both-expiries",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      75
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      177
+    ],
+    "upperTurnMinutes": 110.0
+  },
+  {
+    "id": "f06-13e",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      30,
+      60
+    ],
+    "checks": [
+      {
+        "id": "f06-13e-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X01 X04",
+        "cwd": ".",
+        "stage": "integration",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      25,
+      50
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      887
+    ],
+    "upperTurnMinutes": 85.0
+  },
+  {
+    "id": "f06-14a",
+    "role": "security",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-14a-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X02 X05",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-14b",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      80
+    ],
+    "checks": [
+      {
+        "id": "f06-14b-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X03 X06",
+        "cwd": ".",
+        "stage": "e2e",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      70
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-14c",
+    "role": "security",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      50,
+      80
+    ],
+    "checks": [
+      {
+        "id": "f06-14c-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X07 X08",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      45,
+      70
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-14d",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      60,
+      90
+    ],
+    "checks": [
+      {
+        "id": "f06-14d-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X09",
+        "cwd": ".",
+        "stage": "performance",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      55,
+      80
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      886
+    ],
+    "upperTurnMinutes": 115.0
+  },
+  {
+    "id": "f06-14e",
+    "role": "tester",
+    "team": [],
+    "domain": "X",
+    "implementationMinutes": [
+      35,
+      65
+    ],
+    "checks": [
+      {
+        "id": "f06-14e-check-1",
+        "run": "node g1-runtime/scripts/check-remote.mjs --cases X10",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      },
+      {
+        "id": "f06-14e-check-2",
+        "run": "node g1-runtime/scripts/check-remote.mjs",
+        "cwd": ".",
+        "stage": "security",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain X; APPROVAL WITHHELD: q-a1b6151885 approved:false; no remote connection/discovery/install/allocation or this completion check now. Later exact explicit approval AND independently observed host facts required; refusal/fixture pass cannot complete this task."
+      }
+    ],
+    "wholeCheckSeconds": 1800,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      30,
+      55
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      1,
+      1780
+    ],
+    "upperTurnMinutes": 105.0
+  },
+  {
+    "id": "f06-15",
+    "role": "tester",
+    "team": [],
+    "domain": "all",
+    "implementationMinutes": [
+      25,
+      45
+    ],
+    "checks": [
+      {
+        "id": "f06-15-check-1",
+        "run": "node g1-runtime/scripts/check.mjs",
+        "cwd": ".",
+        "stage": "acceptance",
+        "timeout": 1800,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion."
+      },
+      {
+        "id": "f06-15-check-2",
+        "run": "node g1-identity/scripts/check.mjs",
+        "cwd": ".",
+        "stage": "regression",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion."
+      },
+      {
+        "id": "f06-15-check-3",
+        "run": "node g1-foundations/scripts/check.mjs",
+        "cwd": ".",
+        "stage": "regression",
+        "timeout": 600,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion."
+      },
+      {
+        "id": "f06-15-check-4",
+        "run": "node g1-foundations/scripts/check-retained.mjs",
+        "cwd": ".",
+        "stage": "regression",
+        "timeout": 900,
+        "description": "Build current source AND tests; execute every selected registered assertion and descendant; nonempty, no fail/cancel/skip/TODO, full raw/census/owned-cleanup. Domain all; ALL GATES REQUIRED: preserved Docker-backed regressions and remote approval remain blocked; no substitute completion."
+      }
+    ],
+    "wholeCheckSeconds": 3900,
+    "evidenceHandoffReserveMinutes": 10,
+    "plannedImplementationMinutes": [
+      25,
+      45
+    ],
+    "measured": false,
+    "designAssertionNodesPerInvocation": [
+      2622
+    ],
+    "upperTurnMinutes": 120.0
+  }
+]

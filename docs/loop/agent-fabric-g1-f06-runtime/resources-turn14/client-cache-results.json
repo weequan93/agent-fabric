@@ -1,0 +1,94 @@
+{
+  "kind": "resource-diagnostics-only",
+  "dockerInvoked": false,
+  "remoteInvoked": false,
+  "productTestsRun": false,
+  "checks": [
+    {
+      "owner": "g1-local",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--offline",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store"
+      ],
+      "inputs": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "status": 0,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +3\n+++\nProgress: resolved 3, reused 3, downloaded 0, added 3, done\n\ndevDependencies:\n+ @types/node 22.18.6\n+ typescript 5.9.3\n\nDone in 188ms using pnpm v10.18.0\n",
+      "stderr": ""
+    },
+    {
+      "owner": "g1-local/web",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--offline",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store"
+      ],
+      "inputs": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "status": 1,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +23\n+++++++++++++++++++++++\n ERR_PNPM_NO_OFFLINE_TARBALL  A package is missing from the store but cannot download it in offline mode. The missing package may be downloaded from https://registry.npmjs.org/react/-/react-19.2.0.tgz.\n",
+      "stderr": ""
+    },
+    {
+      "owner": "g1-local/desktop",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--offline",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store"
+      ],
+      "inputs": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "status": 1,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +13\n+++++++++++++\n ERR_PNPM_NO_OFFLINE_TARBALL  A package is missing from the store but cannot download it in offline mode. The missing package may be downloaded from https://registry.npmjs.org/electron/-/electron-44.5.1.tgz.\n",
+      "stderr": ""
+    },
+    {
+      "owner": "g1-local/mobile",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--offline",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store"
+      ],
+      "inputs": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "status": 1,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +541\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n ERR_PNPM_NO_OFFLINE_TARBALL  A package is missing from the store but cannot download it in offline mode. The missing package may be downloaded from https://registry.npmjs.org/expo/-/expo-55.0.31.tgz.\n",
+      "stderr": ""
+    }
+  ],
+  "observedAt": "2026-10-15T17:57:56.559Z",
+  "ownedTempRemoved": true
+}

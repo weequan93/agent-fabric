@@ -1,0 +1,303 @@
+{
+  "scope": "design-document diagnostics only; no product tests/SQL/worker/Docker/GUI/remote/acceptance/review execution",
+  "testPlanSha256": "c0b0914a82a98657cb611c0e8d0580029fac6b1534547a978065fb05f3fb4561",
+  "requirementsSourceSha256": "a3c94f2a487052dd152163b3e47317c70b1617e2565d9be8bc95aa38b7744179",
+  "validatorSha256": "85d16685070f1b1ae7693261c7ed8a5ba314de8e384b4b0b31231cbc7ac4f8e7",
+  "records": [
+    {
+      "name": "finalized-requirement-mapping",
+      "observation": {
+        "count": 101,
+        "missing": [],
+        "extra": [],
+        "rowFields": "case/requirement,suite/level/domain,preconditions/data,steps,oracle"
+      }
+    },
+    {
+      "name": "family-inventory",
+      "observation": {
+        "all": 142,
+        "local": 127,
+        "P": 5,
+        "X": 10,
+        "unique": true,
+        "allFamiliesHaveLevel": true,
+        "localSuiteCount": 9
+      }
+    },
+    {
+      "name": "mandatory-owner-children",
+      "observation": {
+        "byFamily": {
+          "P01": 3,
+          "P02": 10,
+          "P03": 2,
+          "P04": 12,
+          "P05": 2
+        },
+        "total": 29,
+        "unique": true,
+        "inheritedSuiteLevelPreconditions": true
+      }
+    },
+    {
+      "name": "bounded-checkpoints",
+      "observation": {
+        "tasks": 15,
+        "queueOnlySelection": [
+          "P02/queue-atomic",
+          "P02/key-collision",
+          "P02/cancel-expiry",
+          "P02/reopen-slot",
+          "P02/wait-current",
+          "P05"
+        ],
+        "expandedQueueOnlyChildren": 7,
+        "fullPAndXRetained": true,
+        "reviewObligationsAndFixedSamplesPresent": true
+      }
+    },
+    {
+      "name": "pre-existing-case-and-measurement-preservation",
+      "observation": {
+        "untouchedFamilyRows": 133,
+        "unchangedOwnerChildRows": 23,
+        "fullSections11And12Unchanged": true,
+        "P03P04P05DetailsUnchanged": true
+      }
+    },
+    {
+      "name": "eight-named-contracts",
+      "observation": {
+        "count": 8,
+        "contracts": [
+          [
+            "CONTRACT/authority-provenance",
+            "C01",
+            "security"
+          ],
+          [
+            "CONTRACT/pins",
+            "C02",
+            "unit"
+          ],
+          [
+            "CONTRACT/matrix",
+            "C03",
+            "unit"
+          ],
+          [
+            "CONTRACT/qualification",
+            "C03",
+            "security"
+          ],
+          [
+            "CONTRACT/queue",
+            "C04",
+            "unit"
+          ],
+          [
+            "CONTRACT/effect",
+            "C05",
+            "unit"
+          ],
+          [
+            "CONTRACT/settlement",
+            "C05",
+            "unit"
+          ],
+          [
+            "CONTRACT/fence-composition",
+            "C06",
+            "integration"
+          ]
+        ],
+        "inExistingFamilies": true
+      }
+    },
+    {
+      "name": "stopped-expiry-settlement-design",
+      "observation": {
+        "paths": [
+          "stopped-original-stop-run",
+          "stopped-original-stop-task",
+          "lease-expired-original",
+          "effect-expired-original",
+          "stop-and-both-expiries"
+        ],
+        "assertionGroupsForEachPath": [
+          "fresh-authority",
+          "trusted-terminal-get",
+          "quiescence-snapshot",
+          "original-owner-atomicity",
+          "rollback-commit-recovery",
+          "concurrent-dedup-conflict",
+          "old-worker-replay-denied"
+        ],
+        "minimumPathGroupCombinations": 35,
+        "assurance": "design-only",
+        "originalOwnerMetadataOnly": true,
+        "usefulSuccessorRequired": true
+      }
+    },
+    {
+      "name": "native-stop-full-call-graph-design",
+      "observation": {
+        "sameKeyExecuteOrders": 4,
+        "lookupDistinctKeyAndRawEligibilityControls": true,
+        "barrierFirstWaitWithoutFenceKey": true,
+        "noDeadlockTimeoutPass": true,
+        "settlementBeforeTransferClosure": true
+      }
+    },
+    {
+      "name": "source-established-protocol-and-ceilings",
+      "observation": {
+        "nativeStopSourceSha256": "ccb442928349d9680cdc99e8741723b05b2108e63a0ecf2755f8e8d2ecbe0669",
+        "rawFenceSourceSha256": "c70f4bea08a0da1bc8ca65954e0613d76ffbe448e4085b8afd9e0687148ff4a6",
+        "effectSourceSha256": "0a579915a653a4ea9e367be4ac202443710281bf8fb3562c41ddb09ae3bb4381",
+        "solutionContractSha256": "afd20d3edd38de23f7c07548b80fd69cd08295292002a69ba244319d9ed5ddb3",
+        "acceptanceSeconds": [
+          1800,
+          600,
+          600,
+          900
+        ],
+        "productCodeExecuted": false
+      }
+    },
+    {
+      "name": "markdown",
+      "observation": {
+        "localLinks": [
+          "product-brief.md",
+          "solution.md",
+          "../../planning/roadmap.md",
+          "../../planning/g1-foundations-plan.md",
+          "../../planning/g1-remaining-ledger.csv",
+          "../../Agent_Fabric_Master_Product_and_Technical_Specification_v1.1.md",
+          "../../evidence/g1-f02-acceptance.md",
+          "test-design-turn12/attempt1.json",
+          "test-design-turn12/attempt2.json",
+          "test-design-turn12/attempt3.json",
+          "test-design-turn12/results.json",
+          "test-design-turn12/final-results.json",
+          "test-design-turn17/validate.py",
+          "test-design-turn17/initial-files.json",
+          "test-design-turn17/test-plan-before.md",
+          "test-design-turn17/results.json",
+          "test-design-turn17/attempt1.json",
+          "test-design-turn17/validate-attempt1.py",
+          "test-design-turn17/final-results.json"
+        ],
+        "balancedFences": true
+      }
+    },
+    {
+      "name": "read-only-installed-owner-seams",
+      "observation": {
+        "g1-storage/src/artifact-publication.ts": "54a13e6b064fc95e8b8b8047fdbeb61fc82c2c0d4586a00ec9e8864633e32707",
+        "g1-recovery/src/effect-repository.ts": "0a579915a653a4ea9e367be4ac202443710281bf8fb3562c41ddb09ae3bb4381",
+        "g1-foundations/src/postgres-uow.ts": "d7981128f1adcd7e4bccf76e6d871db9b9a0f015205d76abbb1fd2007ebf0f79",
+        "g1-model/migrations/0012_family_budget.sql": "c156b08d707d2175036606aad19144c3b43e7679031b1524a9a6b482497296a7"
+      }
+    },
+    {
+      "name": "pre-existing-tracked-work-preserved",
+      "observation": {
+        "files": 89,
+        "sha256": {
+          "docs/evidence/g1-f05-acceptance.md": "d0d5b092a1359d0f2a83374db76eada682a8af041d8c2f359efb1ea203de2597",
+          "docs/loop/agent-fabric-g1-f05-storage/readiness.md": "3f8a043a00cdb4c01b35fa630871c2d0b0176faf909964dbe3c118172287b34d",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/attempt1.json": "11f1a8483c12282adb5970d41071f8a91b5c052690104ac540f44cbef15ed7c4",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/attempt1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/attempt1.stdout": "ea369d3d218612cb92472ff58f6ad7f0601f866a0ce42345557e8decd206baeb",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/controller-submission.json": "dfdca04340d609511833a348f5329e39ea1a037a3a89d559826e36435f6a92a4",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/final-results.json": "00357cc9f639f3edfc2e82dddbbd4423950a7b654272b8e6dabbcd271dda1537",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/inputs-before.json": "4319ee875665eddde81cec1935f7c061c7393c1c2c7efa10b28032975696c4ac",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/previous-g1-f06-plan.md": "327e3af2d8f7a7f67ee16f8733476091891a2f93383197b63d4579ba733cef88",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/previous-task-plan.json": "172c4971490e63ceaf682e8ecbc3e5c0abfa787b09fbfd416a5c917e0eccc195",
+          "docs/loop/agent-fabric-g1-f06-runtime/plan-turn13/unrelated-before.json": "a6df4739dbface07d75f64e4307ad1814eb3257c05eba1a90a66ef73b897fe5c",
+          "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md": "e713d24c72b85a3515bba2b216c3bfaf177f6b7a8860447139430ca3939a16d5",
+          "docs/loop/agent-fabric-g1-f06-runtime/readiness.md": "021a3f834422d1d2dc07b540f62c6cf298aa80f8861931160b68e3b955c42d7b",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/audit-results.json": "657a5776c66f5093e6007f3e909420d20f2160e314a30daffe02185ad62c53af",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/audit.py": "897f62a9923eff5141cff5ce7152a72de240e8a7a3e528294fd48869843f6202",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/cache-results.json": "89a9524eb1cc11a6133210de1afcbbe1641b84713774f682f24f8359a73f2249",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/cache.mjs": "879e500ce985ca6647f1fe02fa614210c1af23741cd41bcd9d9c2e7fa72a5371",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/client-cache-remediation-results.json": "c27271470955382cc89a3ebe6e251a5bd498bdc8aee9689e5965a0a71ac9879d",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/client-cache-remediation.mjs": "beee1f5284f688831d6c3a6ee4ac9575d8ce270ff5af24e7e5728d0a59434f14",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/client-cache-results.json": "aa26a7c9eb7f18f5b4f8eec7978f2e57154ed84210ba152fb98a10bcfe0074f2",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/client-cache.mjs": "29747121c9b0af0701e6b550c7b07206e8e35ce94396b7a1e3a7e74940ab7a0b",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/electron-cache.json": "9fcc53555ba6631541922415a35797cff3f5ecb5d5db333ae85823eb69f04cbe",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/final-results.json": "63d0becfd154c46b0b2ad8df7da6598074a7add229bb98f8e9108443c24a2833",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/initial-snapshot.json": "4979e7b82186fde6a9fea24517c3182a9050625978cb63aba81396778d57ad6f",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/owner-audit-results.json": "10235496839c813fc2e2ad3eaefe24bbaeddb5d18d2527465b192ac9fc7575ec",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/owner-audit.mjs": "78f9ea3dffa6a939b3f69e97b00ea4a87b22ebddcb44b523c9e44f86474210bd",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/prior-readiness.md": "4b4aa014b7e951d75700b6f24378697da8b5408a386cafb4e5587d4acada6106",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/probe.mjs": "564f36615d47194d0dd5ab02100bde34c7cdc7fb3598fb5f4cd9a463684d599f",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/recheck-results.json": "6110f8b49cc21d9b430ce5fca3197834aeee42f08f6e5f649fd6f2a484432751",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/recheck.mjs": "1c54889f9e02663c752ef6579779110e2d10b66efa28b4ae3f749cf93ac60436",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/results.json": "21170e825c59a4e19f479c276695236b165566a4edfa4a927e029a0ddc9c65e4",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn14/validate.py": "26852f8fac19834f4fd0384b572af837b5ca4d46cdec2c8ff2f126c5b7ba6ca6",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/audit-results.json": "68909c62f9d7067105ab945ae0e65f25febc4841933faa4ad78641953bd5fbf8",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/audit.py": "e5deea47195dd4acff1c4bfd14edd3e80e6daf711f5b3c97db5eb2379311b64b",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/owner-dependency-results.json": "ee620798663dd55e22d759f70ad66efa8ac54b27945fd20f172b383614400b5f",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/probe.mjs": "a274a10a9a51a4c2abdf61d06fdaf0286b05a10289542deac55b760597590790",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/recheck-results.json": "bd6eed3b4c231e9340e117451c2feebb2a72eb1cd5822cfc4a4763be69937121",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/recheck.mjs": "282bf168f695a208696f5f9a38dc1a98e52e247ed716d534e66997eb81441a18",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/results.json": "6229b8ca377560a1466206870efd173342053382abe0abbeaeb311711083ca5a",
+          "docs/loop/agent-fabric-g1-f06-runtime/resources-turn9/validation.json": "8ebe4a3c250186fdde9ec033a676e1ea4b9b6153152a7013ec48384f2c831898",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn11/attempt1.json": "455c3a36aa621b75ab8cdde0ac360c98f33b9678fa59655d91b3457f1c997028",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn11/final-current-results.json": "44d3fd2deab7f04421c43bb9323a72addc0a73180d87572c05240db4bd1aefb0",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn11/final-results.json": "711f25021dfb46dfdb621e6e96b81069e48c2d19a1d120f28f209461d97839fe",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn11/results.json": "0e1293026f0b6dded0e4690d271d59b32b34b6e6fe1c748fde30521d04c61e29",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn11/validate.mjs": "93fae4948bd9078c0aa2c0ab2c823302b88798a521d2fe202631b177f48197b0",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/attempt1.json": "c0dd3d91b7ab61098f5c129347393f66fa5de314bf5988632216c40a37a7f1e5",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/attempt2.json": "d3b78dcb7bdcddf99c889611dd5256eeadcacccb41f9bc0bac3784380c713d24",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/final-results.json": "6167efbd3d93e5f9f7aa3c98c1aa48df9aca0a0a0edbb4a80069634b9c74e094",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/protocol-contract.json": "afd20d3edd38de23f7c07548b80fd69cd08295292002a69ba244319d9ed5ddb3",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/results.json": "1cb94541a20ec2ebb841c80819c65124aa2dc6cffc35d5fdcc659046fb189788",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/validate.mjs": "8d602bb58ec659979c7f5e137e79e9b829d6311e3cc1e7f1f44f7e5c1a494ae7",
+          "docs/loop/agent-fabric-g1-f06-runtime/solution.md": "38f27c2c225b749281624bc5b3e0a20639bc5ae8cfa36704e6bc7d3312f0febe",
+          "docs/loop/agent-fabric-g1-f06-runtime/task-plan.json": "42e6cdfdba4aeba8f93f500f17190f0f936989daf68f475ffb5947c55711141f",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/attempt1.json": "9034c54b884b97af2d74f52b02f89b2fb7bb03f0583a45ab9b17b495a3d95743",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/attempt2.json": "033efa524a0dbe9b70af887b365a2af8cc8fa22a8f999eb4865b5535eabb0ce3",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/attempt3.json": "e841a5f2c5470fd2e817fd14776b5b46c25f435bd28da05dd5bcebd9b1bf92bc",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/final-results.json": "0df445b5ad4630b6762085d97aa1bcb1a8b882c82756d4530cb276441828f19e",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/results.json": "713eb51cbcca5134ecefa04e526e54a835117ab9d580128b2a85c295cd665353",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate-attempt1.py": "a63f8f6f2638deb87c39bcf57e63f57fa01def9b36958afca2e3e04377dabee3",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate-attempt2.py": "d8da32255ac136f12348e000a3877121fcd8b77b96e9b388edc5c302bd9cf368",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate-attempt3.py": "d3e3c2cbeae68b46d96509ac1cd15687b1da50f28329d31801e31f630496864a",
+          "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate.py": "815499a9dfe34d2ee801b503ce8f8d59c65d8a8974bdcd776e56444be10db14d",
+          "docs/planning/g1-f05-plan.md": "dd7cfef04f19075cda500f5e2a5babf0fa57107445baf282f534d365b6e1bfc8",
+          "docs/planning/g1-f06-plan.md": "aa7e01c46256bdfbba137b65ef5710448446fe50fa8ceead59b0f9c52dfc3587",
+          "g1-storage/scripts/build.mjs": "525d291cb069c9e91fa6cbebe1c4fe674405e8c1d52aaa2de2b80a34579cf9d2",
+          "g1-storage/scripts/delivery-evidence.mjs": "26708dafaf66115df29eeb286044e6ad07c3fe9f915c6fb1216009e4219ce10a",
+          "g1-storage/scripts/execution-measurement.mjs": "5cf82eec17459b91af8622be81f394eb8ad8819c7ac0ef90c3f5df8000036142",
+          "g1-storage/scripts/execution-preservation.mjs": "0e469b3af734c24445e1341a4884a8442fdee5c380356fce21c910ecfea7abc3",
+          "g1-storage/scripts/runner.mjs": "270402c3883b6b7f4a2bfe686f2943b8b3de06239f1782f91ec0807fe725970e",
+          "g1-storage/tests/helpers/artifact-verification-fixture.ts": "644c8aab3a6b20488a84cc7b408eb3de7a718ee3903fc8f6b1fb65e78dcd87a9",
+          "g1-storage/tests/helpers/authority-fixture.ts": "08189fd9c0bc85283bc6ee7e16daf5eaa71c72fdb818498035ca03287a7e6ff6",
+          "g1-storage/tests/helpers/authority-route-fixture.ts": "e2a4311c4871fafaa3a9b661547feaae9c8b699a743d0dbef3f3db4b66a84eba",
+          "g1-storage/tests/helpers/backup-capture-component.ts": "875b4749c187db7dab19097521a5fd4047fae2a154518836a33cece0cf3ccad6",
+          "g1-storage/tests/helpers/backup-confirmation-component.ts": "2e10c917efa95e5d03df46e3768b064d223ad0a824b47ab766d4fbb98e4fca8d",
+          "g1-storage/tests/helpers/delivery-evidence-component.ts": "9c644045f45b955bebbe530c2c073e731c13be0e7bac573006f2e0c0204a996e",
+          "g1-storage/tests/helpers/execution-gate-probe.ts": "0ae43caeb678f398f3c0d16e50bbf18a006c9d46ab9344dad2a7a5b5d2697215",
+          "g1-storage/tests/helpers/harness-copy.ts": "64561ff7887356f55790d8822b8be49fa5c5b72858ece18a118323e187035c12",
+          "g1-storage/tests/helpers/lifecycle-verification-fixture.ts": "c8238ab9447c4a982f586a8932bcfc15c22788e89b36c51e3e51ec4a667fc370",
+          "g1-storage/tests/helpers/propagation-verification-fixture.ts": "07d520276a53c20b54c4786e99817f9fd99f105cb05188e5df14dc041844efdd",
+          "g1-storage/tests/helpers/register-contract-tests.ts": "73ce7342b2f0070e61908b1d07865b3a0b582b55d2820af91a406e1711ad3a50",
+          "g1-storage/tests/helpers/register-harness-build-tests.ts": "814c7783cb9ba2fe697cecd525ac3a38bb59f1eb55e2807c975c56444d03fe88",
+          "g1-storage/tests/helpers/register-harness-cleanup-tests.ts": "2e0a14c4d4ddfbb5b92c2e5dec1ce1b901d745ee76c83aa87dd923e115096e11",
+          "g1-storage/tests/helpers/register-lifecycle-verification-tests.ts": "0e34a53fa3e8b4afe0188f402ef369b4af2605b84d966c151fcb08274278e601",
+          "g1-storage/tests/helpers/restore-activation-component.ts": "e2faa5f5ff243e03e14e50ae2394304e6addf1efa04910fe1ce5707f1aafc4e9",
+          "g1-storage/tests/helpers/verify-restore-current.ts": "c80fc14d4647dcf0f6214df919ec92feda78b98f081d2f84e67bc1a659f8ae34",
+          "g1-storage/tests/helpers/verify-restore-integrity.ts": "8dae79910256834d097b1080d1b1b35a933331be99fc5cebed0c00b73bf8165b",
+          "g1-storage/tests/helpers/verify-restore-measurement.ts": "3b476dc0266efc768110d51b73645ea8809809c6200791967719a1e66efd1ca3",
+          "g1-storage/tests/helpers/volume-verification-fixture.ts": "1a10999ed5eda74b06f68286deee5548dfddac8407e60b4bee584c7487b457d6",
+          "g1-storage/tsconfig.json": "ed84c7052f558e0bcf5f4cb433837699ccd9482f8cfb96df77a5f7abc32940fe"
+        }
+      }
+    }
+  ]
+}

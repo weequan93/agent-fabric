@@ -1,0 +1,399 @@
+{
+  "kind": "unchanged-supervisor-cancellation-counterexample",
+  "acceptance": false,
+  "fullMatrixFit": false,
+  "remoteQualified": false,
+  "success": true,
+  "scenes": [
+    {
+      "mode": "valid-births",
+      "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+      "actors": [
+        {
+          "pid": 92790,
+          "ppid": 92777,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "command": "af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+          "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0"
+        },
+        {
+          "pid": 92822,
+          "ppid": 92790,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "command": "af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+          "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0"
+        }
+      ],
+      "expectedProductVerdict": "fail-cancelled",
+      "diagnosticObserved": true,
+      "barrier": {
+        "bothBirthsAcknowledged": true,
+        "actorsPresentInFreshOS": true
+      },
+      "supervisor": {
+        "schemaVersion": 1,
+        "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+        "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+        "rawStreams": {
+          "stdout.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "streamsComplete": true,
+        "supervisor": {
+          "pid": 92777,
+          "ppid": 92745
+        },
+        "owned": [
+          {
+            "pid": 92790,
+            "ppid": 92777,
+            "pgid": 92745,
+            "birth": "Fri Oct 16 08:25:39 2026",
+            "command": "af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+            "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+            "observedAt": 85.23875
+          },
+          {
+            "pid": 92822,
+            "ppid": 92790,
+            "pgid": 92745,
+            "birth": "Fri Oct 16 08:25:39 2026",
+            "command": "af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+            "nonce": "88e78fc8-f3c2-43ef-a108-bb4aef8587e0",
+            "observedAt": 241.083875
+          }
+        ],
+        "signals": [
+          {
+            "pid": 92822,
+            "birth": "Fri Oct 16 08:25:39 2026",
+            "signal": "SIGTERM"
+          },
+          {
+            "pid": 92790,
+            "birth": "Fri Oct 16 08:25:39 2026",
+            "signal": "SIGTERM"
+          }
+        ],
+        "snapshots": [
+          {
+            "at": 55.100958,
+            "live": []
+          },
+          {
+            "at": 85.392542,
+            "live": [
+              92790
+            ]
+          },
+          {
+            "at": 161.75025,
+            "live": [
+              92790
+            ]
+          },
+          {
+            "at": 241.201167,
+            "live": [
+              92790,
+              92822
+            ]
+          },
+          {
+            "at": 316.719208,
+            "live": [
+              92790,
+              92822
+            ]
+          },
+          {
+            "at": 346.870875,
+            "live": [
+              92790,
+              92822
+            ]
+          },
+          {
+            "at": 435.439917,
+            "live": [
+              92790
+            ]
+          },
+          {
+            "at": 489.934333,
+            "live": []
+          },
+          {
+            "at": 517.539625,
+            "live": []
+          },
+          {
+            "at": 545.213417,
+            "live": []
+          }
+        ],
+        "exit": {
+          "status": null,
+          "signal": "SIGTERM"
+        },
+        "timedOut": false,
+        "streamBytes": 0,
+        "cleanup": {
+          "confirmed": true,
+          "remaining": [],
+          "historicalGroupsSignalled": false
+        },
+        "error": "Error: Runner cancellation\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\n    at process.emit (node:events:519:28)\n    at emit (node:internal/child_process:949:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
+      },
+      "rawReportSha256": "e226b012fc325babfcb5201458f461e6c0ea3003422cf41413dbf8baccf926b3",
+      "postReportLive": [],
+      "wrapper": {
+        "resolved": false,
+        "error": "Error: Owned supervisor failed: {\"completion\":{\"status\":1,\"signal\":null},\"result\":{\"schemaVersion\":1,\"nonce\":\"88e78fc8-f3c2-43ef-a108-bb4aef8587e0\",\"candidate\":\"sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4\",\"rawStreams\":{\"stdout.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"stderr.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"streamsComplete\":true,\"supervisor\":{\"pid\":92777,\"ppid\":92745},\"owned\":[{\"pid\":92790,\"ppid\":92777,\"pgid\":92745,\"birth\":\"Fri Oct 16 08:25:39 2026\",\"command\":\"af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0\",\"nonce\":\"88e78fc8-f3c2-43ef-a108-bb4aef8587e0\",\"observedAt\":85.23875},{\"pid\":92822,\"ppid\":92790,\"pgid\":92745,\"birth\":\"Fri Oct 16 08:25:39 2026\",\"command\":\"af-runtime:88e78fc8-f3c2-43ef-a108-bb4aef8587e0\",\"nonce\":\"88e78fc8-f3c2-43ef-a108-bb4aef8587e0\",\"observedAt\":241.083875}],\"signals\":[{\"pid\":92822,\"birth\":\"Fri Oct 16 08:25:39 2026\",\"signal\":\"SIGTERM\"},{\"pid\":92790,\"birth\":\"Fri Oct 16 08:25:39 2026\",\"signal\":\"SIGTERM\"}],\"snapshots\":[{\"at\":55.100958,\"live\":[]},{\"at\":85.392542,\"live\":[92790]},{\"at\":161.75025,\"live\":[92790]},{\"at\":241.201167,\"live\":[92790,92822]},{\"at\":316.719208,\"live\":[92790,92822]},{\"at\":346.870875,\"live\":[92790,92822]},{\"at\":435.439917,\"live\":[92790]},{\"at\":489.934333,\"live\":[]},{\"at\":517.539625,\"live\":[]},{\"at\":545.213417,\"live\":[]}],\"exit\":{\"status\":null,\"signal\":\"SIGTERM\"},\"timedOut\":false,\"streamBytes\":0,\"cleanup\":{\"confirmed\":true,\"remaining\":[],\"historicalGroupsSignalled\":false},\"error\":\"Error: Runner cancellation\\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\\n    at process.emit (node:events:519:28)\\n    at emit (node:internal/child_process:949:14)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\"},\"stderr\":\"\"}\n    at supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:33:208)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+      }
+    },
+    {
+      "mode": "invalid-nonce-prefix",
+      "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+      "actors": [
+        {
+          "pid": 93019,
+          "ppid": 93008,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1",
+          "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1"
+        },
+        {
+          "pid": 93051,
+          "ppid": 93019,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:40 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1",
+          "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1"
+        }
+      ],
+      "expectedProductVerdict": "fail-cancelled",
+      "diagnosticObserved": true,
+      "barrier": {
+        "bothBirthsAcknowledged": true,
+        "actorsPresentInFreshOS": true
+      },
+      "injectedBirth": {
+        "nonce": "3bd1f88c-2aeb-4040-bb9b-f787874efc76",
+        "pid": 93051,
+        "ppid": 93019
+      },
+      "supervisor": {
+        "schemaVersion": 1,
+        "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+        "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+        "rawStreams": {
+          "stdout.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.txt": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "streamsComplete": false,
+        "supervisor": {
+          "pid": 93008,
+          "ppid": 92745
+        },
+        "owned": [
+          {
+            "pid": 93019,
+            "ppid": 93008,
+            "pgid": 92745,
+            "birth": "Fri Oct 16 08:25:39 2026",
+            "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1",
+            "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+            "observedAt": 81.712208
+          },
+          {
+            "pid": 93051,
+            "ppid": 93019,
+            "pgid": 92745,
+            "birth": "Fri Oct 16 08:25:40 2026",
+            "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1",
+            "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+            "observedAt": 232.175
+          }
+        ],
+        "signals": [],
+        "snapshots": [
+          {
+            "at": 51.2105,
+            "live": []
+          },
+          {
+            "at": 81.853125,
+            "live": [
+              93019
+            ]
+          },
+          {
+            "at": 155.817958,
+            "live": [
+              93019
+            ]
+          },
+          {
+            "at": 232.313125,
+            "live": [
+              93019,
+              93051
+            ]
+          },
+          {
+            "at": 306.964083,
+            "live": [
+              93019,
+              93051
+            ]
+          }
+        ],
+        "exit": null,
+        "timedOut": false,
+        "streamBytes": 0,
+        "cleanup": {
+          "confirmed": false,
+          "error": "Error: Unproven descendant birth"
+        },
+        "error": "Error: Runner cancellation\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\n    at process.emit (node:events:519:28)\n    at emit (node:internal/child_process:949:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
+      },
+      "rawReportSha256": "df1cd2e9c45aadaae3a8a444176231a31091a9e5cf2d18e7ac962dbde5a01aa6",
+      "postReportLive": [
+        {
+          "pid": 93019,
+          "ppid": 93008,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1"
+        },
+        {
+          "pid": 93051,
+          "ppid": 93019,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:40 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1"
+        }
+      ],
+      "wrapper": {
+        "resolved": false,
+        "error": "Error: Owned supervisor failed: {\"completion\":{\"status\":1,\"signal\":null},\"result\":{\"schemaVersion\":1,\"nonce\":\"411f276b-80c3-4aad-9d09-5071630b71b1\",\"candidate\":\"sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4\",\"rawStreams\":{\"stdout.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"stderr.txt\":{\"bytes\":0,\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"streamsComplete\":false,\"supervisor\":{\"pid\":93008,\"ppid\":92745},\"owned\":[{\"pid\":93019,\"ppid\":93008,\"pgid\":92745,\"birth\":\"Fri Oct 16 08:25:39 2026\",\"command\":\"af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1\",\"nonce\":\"411f276b-80c3-4aad-9d09-5071630b71b1\",\"observedAt\":81.712208},{\"pid\":93051,\"ppid\":93019,\"pgid\":92745,\"birth\":\"Fri Oct 16 08:25:40 2026\",\"command\":\"af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1\",\"nonce\":\"411f276b-80c3-4aad-9d09-5071630b71b1\",\"observedAt\":232.175}],\"signals\":[],\"snapshots\":[{\"at\":51.2105,\"live\":[]},{\"at\":81.853125,\"live\":[93019]},{\"at\":155.817958,\"live\":[93019]},{\"at\":232.313125,\"live\":[93019,93051]},{\"at\":306.964083,\"live\":[93019,93051]}],\"exit\":null,\"timedOut\":false,\"streamBytes\":0,\"cleanup\":{\"confirmed\":false,\"error\":\"Error: Unproven descendant birth\"},\"error\":\"Error: Runner cancellation\\n    at finish (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:56:17)\\n    at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/supervisor.mjs:76:53)\\n    at process.emit (node:events:519:28)\\n    at emit (node:internal/child_process:949:14)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\"},\"stderr\":\"\"}\n    at supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:33:208)\n    at async file:///Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn39/cancellation-probe.mjs:92:65"
+      }
+    }
+  ],
+  "recovery": [
+    {
+      "label": "valid-births",
+      "before": [],
+      "signals": [],
+      "after": [],
+      "confirmed": true
+    },
+    {
+      "label": "invalid-nonce-prefix",
+      "before": [
+        {
+          "pid": 93019,
+          "ppid": 93008,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1"
+        },
+        {
+          "pid": 93051,
+          "ppid": 93019,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:40 2026",
+          "command": "af-runtime:411f276b-80c3-4aad-9d09-5071630b71b1"
+        }
+      ],
+      "signals": [
+        {
+          "pid": 93051,
+          "birth": "Fri Oct 16 08:25:40 2026",
+          "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+          "signal": "SIGTERM"
+        },
+        {
+          "pid": 93019,
+          "birth": "Fri Oct 16 08:25:39 2026",
+          "nonce": "411f276b-80c3-4aad-9d09-5071630b71b1",
+          "signal": "SIGTERM"
+        }
+      ],
+      "after": [],
+      "confirmed": true
+    },
+    {
+      "label": "final-known-birth-census",
+      "before": [
+        {
+          "pid": 92756,
+          "ppid": 92745,
+          "pgid": 92745,
+          "birth": "Fri Oct 16 08:25:38 2026",
+          "command": "af-design-sentinel:196af472-62e9-4074-840b-5a65a636fdf7"
+        }
+      ],
+      "signals": [
+        {
+          "pid": 92756,
+          "birth": "Fri Oct 16 08:25:38 2026",
+          "nonce": "196af472-62e9-4074-840b-5a65a636fdf7",
+          "signal": "SIGTERM"
+        }
+      ],
+      "after": [],
+      "confirmed": true
+    }
+  ],
+  "sentinel": {
+    "instance": {
+      "pid": 92756,
+      "ppid": 92745,
+      "pgid": 92745,
+      "birth": "Fri Oct 16 08:25:38 2026",
+      "command": "af-design-sentinel:196af472-62e9-4074-840b-5a65a636fdf7",
+      "nonce": "196af472-62e9-4074-840b-5a65a636fdf7"
+    },
+    "checks": [
+      {
+        "after": "valid-births",
+        "present": true
+      },
+      {
+        "after": "invalid-nonce-prefix",
+        "present": true
+      }
+    ]
+  },
+  "cleanupConfirmed": true,
+  "candidate": "sha256:7089d81f4ccd5f1d9ac6a2674c1a20e521bbd6f4039dd9da41394f3e91f7ebb4",
+  "inputs": {
+    "process.mjs": "bda44f79ea868e5e6e72e53d6326c467e65c7ab41a60c7666423c09ca27786aa",
+    "supervisor.mjs": "c9f44625adb767bff7159f32e992065bd65684734c097bfe88d96201c14316cc",
+    "bootstrap.mjs": "5f4bc47c0582a561e19ab4eb1acbf0b3981a70523b289ef19707e368ed0f1c26",
+    "birth-ack.mjs": "101dd10f9781b5e4f7b2c560ae6db80521a06298020b4f716c16b5cde8e114e9",
+    "census.mjs": "bac740d50ff9a5e744c76d91938a204c86be077d16b9d9ddaa7b38b3e5c2a935"
+  },
+  "finalNonceResidue": [],
+  "binding": {
+    "probeSha256": "c83a584dc4eca1d402ae16193529576969bf0aeb58f110873003d2c5ef5491c2",
+    "actorSha256": "11014f65330d666ddbb2fb69d856f8c714605b4bacb5d5fdd81524a536dcd19c"
+  }
+}

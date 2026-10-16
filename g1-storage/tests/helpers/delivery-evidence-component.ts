@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync,lstatSync} from 'node:fs';
+import {readFileSync,lstatSync,mkdtempSync,writeFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {spawnSync} from 'node:child_process';
@@ -70,6 +71,7 @@ export async function registerDeliveryEvidenceTests(register:ComponentTest=test)
     const components:ControlSuite[]=id==='recall-ask'?registry.recallAskObservationSources.map((s:ObservationSource)=>registry.executionComponents[s.component]):id==='backup-restore'?registry.backupRestoreObservationSources.map((s:ObservationSource)=>registry.executionComponents[s.component]):id==='commit-conflict'?[...registry.commitConflictPredecessors.map((name:string)=>registry.executionComponents[name]),suite]:[suite];
     const cases:string[]=descriptor?clone(descriptor.parents):components.flatMap(component=>component.cases);
     const variants:Record<string,string[]>=Object.assign({},...components.map(component=>component.variants));
+    if(id==='harness')variants['H03']=[...variants['H03']!,'H03/missing-fixture-never-skipped'];
     const executions:Execution[]=descriptor?clone(descriptor.executions):cases.flatMap((parent,index)=>[...(variants[parent]??[]).map((name,leaf)=>({indent:4,number:leaf+1,name,parent})),{indent:0,number:index+1,name:parent,parent:null}]);
     let observations:unknown=suite.positives===null?null:observation(id);
     if(descriptor)observations={measurement:'storage-full-observation-composition',suite:id,candidate,sources:descriptor.registrations.map((spec:{id:string;suite:string;fixtures:number})=>{
@@ -87,7 +89,7 @@ export async function registerDeliveryEvidenceTests(register:ComponentTest=test)
    assert.equal(reports.length,11);assert.equal(prerequisite.length,10);assert.equal(prerequisite.findIndex(report=>report.suite==='atomic-disconnect'),prerequisite.findIndex(report=>report.suite==='commit-conflict')+1);
    const build={measurement:'strict-build',sourceAndTests:true,node:'v22.22.3',pins:{pg:'8.16.3','@types/pg':'8.15.5','@types/node':'22.18.6',typescript:'5.9.3'},dependencyLockDigest:'sha256:'+dependencies.lockSha256,cacheCleared:true,install:'offline/frozen/ignore-scripts'};
    const guard={measurement:'preserved-inputs',files:2581,unchanged:true};
-   const commandRows=(mode:string,command:typeof outerCommand,returning:boolean,prefix='')=>{
+   const commandRows=(mode:string,command:typeof outerCommand,returning:boolean,prefix=''):StreamEntry[]=>{
     const binding={phase:'command',candidate,command,sources};
     const value={measurement:returning?'storage-parent-return':'storage-parent-start',phase:'command',clock:'parent-monotonic',mode,candidate,startedMs:1,...(returning?{returnedMs:2,elapsedMs:1,success:true}:{}),transportBinding:binding};
     return encodeMeasurement(value,binding).map((row:Record<string,unknown>)=>entry(row,prefix));
@@ -102,6 +104,58 @@ export async function registerDeliveryEvidenceTests(register:ComponentTest=test)
    const isRecord=(row:StreamEntry,prefix:string,measurement:string)=>row.prefix===prefix&&row.value['measurement']===measurement;
    const refuse=(name:string,change:(entries:StreamEntry[])=>StreamEntry[])=>assert.throws(()=>coverage(change(clone(stream))),name);
    coverage(stream);
+   const failedCommand={executable:process.execPath,args:[resolve(copyRoot+'-failed','g1-storage/scripts/runner.mjs'),'00000000-0000-4000-8000-000000000002'],cwd:copyRoot+'-failed'};
+   const failedFixture=fixture();
+   const failedReturn=commandRows('harness-prerequisite',failedCommand,true,'# ');
+   const failedBinding=failedReturn[0]!.value['binding'];
+   const failedValue=decodeMeasurement(failedReturn.map(row=>row.value),failedBinding).record;failedValue.success=false;
+   const earlierAttempt:StreamEntry[]=[entry({measurement:'storage-candidate',digest:candidate,diagnosticOnly:true},'# '),...commandRows('harness-prerequisite',failedCommand,false,'# '),entry(guard,'# '),entry(build,'# '),entry(failedFixture.origin,'# '),...failedFixture.cleanup.map(row=>entry(row,'# ')),entry(guard,'# '),...encodeMeasurement(failedValue,failedBinding).map((row:Record<string,unknown>)=>entry(row,'# '))];
+   const afterCommand={executable:process.execPath,args:[resolve(copyRoot+'-after','g1-storage/scripts/check-component.mjs'),'harness-build'],cwd:copyRoot+'-after'};
+   const afterDiagnostic=[...commandRows('component',afterCommand,false,'# '),entry(build,'# '),entry({measurement:'storage-test-report',scope:'component',diagnosticOnly:true,externalQualification:'pending',reports:[]},'# '),...commandRows('component',afterCommand,true,'# ')];
+   const attemptStream=clone(stream);
+   const nestedAt=attemptStream.findIndex(row=>isRecord(row,'# ','storage-candidate'));
+   attemptStream.splice(nestedAt,0,...clone(earlierAttempt),...clone(diagnostic));
+   const outerFixtureAt=attemptStream.findIndex(row=>isRecord(row,'','storage-owned-fixture'));
+   attemptStream.splice(outerFixtureAt,0,...clone(afterDiagnostic));
+   coverage(attemptStream);
+   const attemptRefuse=(name:string,change:(rows:StreamEntry[])=>void)=>{const rows=clone(attemptStream);change(rows);assert.throws(()=>coverage(rows),name);};
+   const genuineReport=(rows:StreamEntry[])=>rows.findIndex(row=>isRecord(row,'# ','storage-test-report')&&row.value['scope']==='harness-prerequisite');
+   const genuineCandidate=(rows:StreamEntry[])=>rows.findLastIndex(row=>isRecord(row,'# ','storage-candidate')&&rows.indexOf(row)<genuineReport(rows));
+   const insertBeforeReport=(rows:StreamEntry[],values:StreamEntry[])=>rows.splice(genuineReport(rows),0,...values);
+   attemptRefuse('overlapping earlier start cannot enclose successful command',rows=>{const index=rows.findIndex(row=>isRecord(row,'# ','storage-candidate'));rows.splice(index,0,...commandRows('component',afterCommand,false,'# '));});
+   attemptRefuse('competing start before report',rows=>{insertBeforeReport(rows,commandRows('component',afterCommand,false,'# '));});
+   attemptRefuse('interleaved settled diagnostic command before report',rows=>{insertBeforeReport(rows,[...commandRows('component',afterCommand,false,'# '),...commandRows('component',afterCommand,true,'# ')]);});
+   attemptRefuse('interleaved return before report',rows=>{insertBeforeReport(rows,commandRows('component',afterCommand,true,'# '));});
+   attemptRefuse('duplicate selected start provenance',rows=>{insertBeforeReport(rows,commandRows('harness-prerequisite',nestedCommand,false,'# '));});
+   attemptRefuse('duplicate selected return provenance',rows=>{rows.splice(genuineReport(rows)+1,0,...commandRows('harness-prerequisite',nestedCommand,true,'# '));});
+   attemptRefuse('reused selected provenance in earlier settled attempt',rows=>{const index=rows.findIndex(row=>isRecord(row,'# ','storage-candidate'));rows.splice(index,0,...commandRows('harness-prerequisite',nestedCommand,false,'# '),...commandRows('harness-prerequisite',nestedCommand,true,'# '));});
+   const genuineReturn=(rows:StreamEntry[])=>rows.findIndex((row,index)=>index>genuineReport(rows)&&isRecord(row,'# ','storage-measurement-transport')&&row.value['kind']==='start'&&(row.value['binding'] as {command?:{cwd:string}}|undefined)?.command?.cwd===copyRoot);
+   const replaceGenuineReturn=(rows:StreamEntry[],command:typeof nestedCommand,success:boolean)=>{
+    const index=genuineReturn(rows);assert(index>=0);const count=(rows[index]!.value['count'] as number)+2;
+    const frames=commandRows('harness-prerequisite',command,true,'# '),binding=frames[0]!.value['binding'];
+    const value=decodeMeasurement(frames.map(row=>row.value),binding).record;value.success=success;
+    rows.splice(index,count,...encodeMeasurement(value,binding).map((row:Record<string,unknown>)=>entry(row,'# ')));
+   };
+   attemptRefuse('mismatched selected return binding',rows=>replaceGenuineReturn(rows,failedCommand,true));
+   attemptRefuse('selected false return cannot use earlier settlement',rows=>replaceGenuineReturn(rows,nestedCommand,false));
+   attemptRefuse('missing selected return cannot use diagnostic return',rows=>{const index=genuineReturn(rows);assert(index>=0);rows.splice(index,(rows[index]!.value['count'] as number)+2);});
+   attemptRefuse('earlier failed guards cannot supply good command',rows=>{const begin=genuineCandidate(rows),end=genuineReturn(rows);for(let index=end-1;index>begin;index--)if(isRecord(rows[index]!,'# ','preserved-inputs'))rows.splice(index,1);});
+   attemptRefuse('earlier failed cleanup cannot supply good command',rows=>{for(let index=rows.length-1;index>=0;index--)if(isRecord(rows[index]!,'# ','storage-root-cleanup')&&rows[index]!.value['owner']===nestedFixture.origin.owner)rows.splice(index,1);});
+   attemptRefuse('earlier failed build cannot supply good command',rows=>{const index=rows.findLastIndex(row=>isRecord(row,'# ','strict-build')&&rows.indexOf(row)<genuineReport(rows));rows.splice(index,1);});
+   attemptRefuse('earlier failed candidate cannot supply good command',rows=>{const index=genuineCandidate(rows);assert(index>=0);rows.splice(index,1);});
+   attemptRefuse('earlier failed report cannot supply good command',rows=>{const index=genuineReport(rows),[report]=rows.splice(index,1);const earlier=rows.findIndex(row=>isRecord(row,'# ','storage-candidate'));rows.splice(earlier,0,report!);});
+   coverage(clone(attemptStream));
+   const supplemental='H03/missing-fixture-never-skipped';
+   const harness=reports.find(report=>report.suite==='harness')!;assert.equal(harness.tests,44);assert.equal(harness.variants.length,40);
+   assert.deepEqual(harness.executions.filter(execution=>execution.name===supplemental),[{indent:4,number:14,name:supplemental,parent:'H03'}]);
+   const changeHarness=(rows:StreamEntry[],change:(report:typeof harness)=>void)=>{const report=rows.find(row=>isRecord(row,'','storage-test-report'))!;change((report.value['reports'] as typeof reports).find(report=>report.suite==='harness')!);return rows;};
+   refuse('missing H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{report.executions=report.executions.filter(execution=>execution.name!==supplemental);report.variants=report.variants.filter(name=>name!==supplemental);report.tests--;}));
+   refuse('duplicate H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{const index=report.executions.findIndex(execution=>execution.name===supplemental);report.executions.splice(index,0,clone(report.executions[index]!));report.variants.push(supplemental);report.tests++;}));
+   refuse('wrong-parent H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{report.executions.find(execution=>execution.name===supplemental)!.parent='H03 / forged';}));
+   refuse('renamed H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{report.executions.find(execution=>execution.name===supplemental)!.name='H03/missing-fixture-skipped';report.variants[report.variants.indexOf(supplemental)]='H03/missing-fixture-skipped';}));
+   refuse('wrong-number H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{report.executions.find(execution=>execution.name===supplemental)!.number=13;}));
+   refuse('wrong-indent H03 mandatory missing-fixture execution',rows=>changeHarness(rows,report=>{report.executions.find(execution=>execution.name===supplemental)!.indent=8;}));
+
    // Identical payloads retain their actual line prefix, depth and order. TAP
    // escaping and indentation cannot elevate a nested record to outer scope.
    const payload={measurement:'stream-format-control',scope:'aggregate',depth:0,prefix:''};
@@ -112,6 +166,88 @@ export async function registerDeliveryEvidenceTests(register:ComponentTest=test)
    assert.deepEqual(scoped.map((row:object)=>m.recordContext(row).depth),[0,1,2,1]);
    const orders:number[]=scoped.map((row:object)=>m.recordContext(row).order);assert(orders.every((order,index)=>index===0||order>orders[index-1]!));
    assert.deepEqual(m.outerRecords(scoped),[scoped[0]]);assert.throws(()=>m.outerRecords([payload]),/raw|context|record/i);
+   // Produce the format through the actual pinned native TAP reporter, not a
+   // hand-written escaped fixture. Its stdout pipe folds large JSON; a nested
+   // diagnostic uses the actual indented prefix and escaping on one large line.
+   const nativeOutput=(value:Record<string,unknown>,wrapped=false)=>{
+    const directory=mkdtempSync(resolve(tmpdir(),'fabric-storage-native-tap-'));
+    try{
+     const file=resolve(directory,'native.mjs');
+     writeFileSync(file,"import test from 'node:test';const value="+JSON.stringify(value)+";test('native-record',async t=>{process.stdout.write(JSON.stringify(value)+'\\n');process.stdout.write(JSON.stringify({measurement:'native-following'})+'\\n');await t.test('indented',t=>t.diagnostic(JSON.stringify(value)));});");
+     let executing=file;
+     if(wrapped){
+      executing=resolve(directory,'outer.mjs');
+      writeFileSync(executing,"import test from 'node:test';import assert from 'node:assert/strict';import{spawnSync}from'node:child_process';test('native-wrapper',()=>{const child=spawnSync(process.execPath,['--test','--test-reporter=tap',"+JSON.stringify(file)+"],{env:{...process.env,NODE_TEST_CONTEXT:undefined},encoding:'utf8',maxBuffer:16*1024*1024});assert.equal(child.error,undefined);assert.equal(child.status,0,child.stderr);process.stdout.write(child.stdout);});");
+     }
+     const result=spawnSync(process.execPath,['--test','--test-reporter=tap',executing],{env:{...process.env,NODE_TEST_CONTEXT:undefined},encoding:'utf8',maxBuffer:16*1024*1024});
+     assert.equal(result.error,undefined);assert.equal(result.signal,null);assert.equal(result.status,0,result.stderr);assert.equal(result.stderr,'');
+     return result.stdout;
+    }finally{rmSync(directory,{recursive:true,force:true});assert.throws(()=>lstatSync(directory),{code:'ENOENT'});}
+   };
+   const nativePayload={...payload,unicode:'记忆 café 😀',embedded:JSON.stringify({path:'literal\\path',hash:'#',newline:'first\nsecond',literal:'\\n'}),boundary:''};
+   const boundaryStart=Buffer.byteLength(JSON.stringify(nativePayload))-2;
+   nativePayload.boundary='x'.repeat(65535-boundaryStart)+'\\'.repeat(160000);
+   assert(Buffer.byteLength(JSON.stringify(nativePayload))>65536);
+   const native=nativeOutput(nativePayload),nativeLines=native.split(/\r?\n/),nativeRows=m.records(Buffer.from(native));
+   const nativeControls=nativeRows.filter((row:{measurement:string})=>row.measurement===payload.measurement);
+   assert.equal(nativeControls.length,2);for(const row of nativeControls)assert.deepEqual(row,nativePayload,'Exact native Unicode/embedded JSON/backslash/hash/newline round-trip');
+   const firstContext=m.recordContext(nativeControls[0]),indentedContext=m.recordContext(nativeControls[1]);
+   assert.equal(firstContext.prefix,'# ');assert.equal(firstContext.depth,1);assert.equal(nativeLines[firstContext.order]!.startsWith('# {'),true);
+   assert.equal(indentedContext.prefix,'    # ');assert.equal(indentedContext.depth,1);assert.equal(nativeLines[indentedContext.order]!.startsWith('    # {'),true);
+   const following=nativeRows.find((row:{measurement:string})=>row.measurement==='native-following');assert(following);
+   const followingContext=m.recordContext(following);assert.equal(followingContext.prefix,'# ');assert(followingContext.order>firstContext.order+1);assert(followingContext.order<indentedContext.order);
+   for(const line of nativeLines.slice(firstContext.order,followingContext.order))assert(line.startsWith('# '),'Actual folded fragments retain their exact prefix');
+   assert.equal(m.outerRecords(nativeRows).length,0,'Payload outer claims never promote native scope');
+   const folded=nativeLines.slice(firstContext.order,followingContext.order);
+   // At least one real pipe boundary falls within a JSON escape, so separately
+   // decoded physical fragments must reassemble before JSON parsing.
+   assert(folded.slice(0,-1).some(line=>(line.match(/\\+$/)?.[0].length??0)%4===2), 'Actual native boundary inside a JSON escape');
+   const nestedPayload={...nativePayload,boundary:'edge\\#\n',truth:true,number:-1.25e21,empty:null};
+   const nestedNative=nativeOutput(nestedPayload,true),nestedNativeRows=m.records(Buffer.from(nestedNative));
+   const nestedControls=nestedNativeRows.filter((row:{measurement:string})=>row.measurement===payload.measurement);
+   assert.equal(nestedControls.length,2);for(const row of nestedControls)assert.deepEqual(row,nestedPayload,'Exact twice-native-escaped payload');
+   assert.deepEqual(nestedControls.map((row:object)=>m.recordContext(row).prefix),['# \\# ','#     \\# ']);
+   assert.deepEqual(nestedControls.map((row:object)=>m.recordContext(row).depth),[2,2]);
+   const nestedLines=nestedNative.split(/\r?\n/);
+   for(const row of nestedControls){const context=m.recordContext(row);assert(nestedLines[context.order]!.startsWith(context.prefix+'{'));}
+   const nestedFollowing=nestedNativeRows.find((row:{measurement:string})=>row.measurement==='native-following');assert(nestedFollowing);
+   assert(m.recordContext(nestedControls[0]).order<m.recordContext(nestedFollowing).order);assert(m.recordContext(nestedFollowing).order<m.recordContext(nestedControls[1]).order);
+   // Split actual native escaped bytes at valid JSON token boundaries. These
+   // remain legal prefixes even when V8 reports a delimiter/number error
+   // instead of its "unexpected end" message; no error text classifies them.
+   const tokenPrefix=m.recordContext(nestedControls[0]).prefix;
+   const tokenText=nestedLines[m.recordContext(nestedControls[0]).order]!.slice(tokenPrefix.length);
+   for(const token of ['"truth":t','"number":-','"number":-1.25e+','"empty":n']){
+    const cut=tokenText.indexOf(token)+token.length;assert(cut>=token.length);
+    const splitRows=m.records(Buffer.from(tokenPrefix+tokenText.slice(0,cut)+'\n'+tokenPrefix+tokenText.slice(cut)+'\n'));
+    assert.equal(splitRows.length,1,token);assert.deepEqual(splitRows[0],nestedPayload,token);assert.deepEqual(m.recordContext(splitRows[0]),{prefix:tokenPrefix,depth:2,order:0});
+   }
+   const requiredReport=nested.find(row=>row.value['measurement']==='storage-test-report')!.value;
+   const reportNative=nativeOutput(requiredReport),reportRows=m.records(Buffer.from(reportNative));
+   const decodedReport=reportRows.find((row:{measurement:string})=>row.measurement==='storage-test-report');assert(decodedReport);assert.deepEqual(decodedReport,requiredReport);
+   const reportLines=reportNative.split(/\r?\n/),reportStart=m.recordContext(decodedReport).order;
+   const reportEnd=m.recordContext(reportRows.find((row:{measurement:string})=>row.measurement==='native-following')).order;
+   assert(reportEnd>reportStart+1,'Required copied report actually folds in native node:test output');
+   const reportFragments=reportLines.slice(reportStart,reportEnd);
+   const nativeCoverage=(fragments:string[])=>{
+    const lines=stream.flatMap(row=>row===nested.find(n=>n.value['measurement']==='storage-test-report')?fragments:[row.prefix+JSON.stringify(row.value)]);
+    const rows=m.records(Buffer.from(lines.join('\n')+'\n'));
+    m.assertAggregateCoverage({rows,candidate,command:'node g1-storage/scripts/check.mjs',commandBinding:outerCommand},registry);
+   };
+   nativeCoverage(reportFragments);
+   const rejectFragments=(name:string,change:(lines:string[])=>string[])=>assert.throws(()=>nativeCoverage(change([...reportFragments])),name);
+   rejectFragments('native required report missing',()=>[]);
+   rejectFragments('native required report duplicate',lines=>[...lines,...lines]);
+   rejectFragments('native required report truncated',lines=>lines.slice(0,-1));
+   rejectFragments('native required report corrupted',lines=>{lines[1]='# \\q'+lines[1]!.slice(2);return lines;});
+   rejectFragments('native TAP diagnostic interleaving',lines=>{lines.splice(1,0,'# Subtest: interleaved diagnostic');return lines;});
+   rejectFragments('native diagnostic counters interleaving',lines=>{lines.splice(1,0,'# tests 0');return lines;});
+   for(const diagnostic of ['','TAP version 13','Bail out! stopped','pragma +strict'])rejectFragments('native TAP boundary '+diagnostic,lines=>{lines.splice(1,0,'# '+diagnostic);return lines;});
+   rejectFragments('native new JSON interleaving',lines=>{lines.splice(1,0,'# '+JSON.stringify({measurement:'interleaved'}));return lines;});
+   rejectFragments('native changed prefix',lines=>{lines[1]='    '+lines[1];return lines;});
+   rejectFragments('native changed depth',lines=>{lines[1]='# \\# '+lines[1]!.slice(2);return lines;});
+   rejectFragments('native nested report cannot forge outer',lines=>lines.map(line=>line.slice(2)));
+   nativeCoverage(reportFragments);
    for(const measurement of ['storage-candidate','storage-test-report','strict-build']){
     refuse('missing outer '+measurement,rows=>rows.filter(row=>!isRecord(row,'',measurement)));
     refuse('duplicate outer '+measurement,rows=>{const index=rows.findIndex(row=>isRecord(row,'',measurement));rows.splice(index,0,clone(rows[index]!));return rows;});

@@ -4,9 +4,9 @@ import type { VerifiedScope,SqlTransaction } from '../../src/owners.js';
 import { StorageAuthorityRepository,StoragePolicySchema,controlDigest,type EpochAnchor } from '../../src/authority.js';
 import type { createStorageFixture } from './pg-fixture.js';
 export function transaction(client:PoolClient):SqlTransaction{return {async query<Row extends Record<string,unknown>>(sql:string,values:readonly unknown[]=[]){const r=await client.query<Row>(sql,[...values]);return {rows:r.rows,rowCount:r.rowCount};}};}
-export async function enrollAuthority(f:Awaited<ReturnType<typeof createStorageFixture>>){
+export async function enrollAuthority(f:Awaited<ReturnType<typeof createStorageFixture>>,retentionSeconds=60){
  const anchors=new Map<string,EpochAnchor>(),key=(s:VerifiedScope)=>s.tenantId+'/'+s.spaceId;
- const periods={source:60,knowledge:60,artifact:60,draft:60,'live-file':60,checkpoint:60,summary:60,index:60,cache:60,ask:60,backup:60};
+ const periods={source:retentionSeconds,knowledge:retentionSeconds,artifact:retentionSeconds,draft:retentionSeconds,'live-file':retentionSeconds,checkpoint:retentionSeconds,summary:retentionSeconds,index:retentionSeconds,cache:retentionSeconds,ask:retentionSeconds,backup:retentionSeconds};
  const policy=StoragePolicySchema.parse({periods,operations:['read','write','forget','backup','restore','maintenance','share']});
  for(const [kind,space] of Object.entries(f.spaces)){
   const tenant=kind==='foreign'?f.foreignTenant:f.tenant;

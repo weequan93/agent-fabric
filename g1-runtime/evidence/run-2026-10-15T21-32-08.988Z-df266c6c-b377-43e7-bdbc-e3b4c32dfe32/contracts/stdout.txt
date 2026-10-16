@@ -1,0 +1,89 @@
+TAP version 13
+# compiler-negative-raw-output:
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(5,7): error TS2740: Type '{ readonly state: "waiting"; readonly ticketId: string; readonly ownerTaskId: string | null; readonly reason: string; readonly resolver: string; readonly charges: "unknown" | "none" | "continuing"; }' is missing the following properties from type '{ readonly leaseId: string; readonly binding: { readonly tenantId: string; readonly spaceId: string; readonly taskId: string; readonly runId: string; readonly assignmentId: string; readonly storageBindingId: string; }; ... 5 more ...; readonly qualificationId: string; }': leaseId, binding, instanceId, generation, and 4 more.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(6,7): error TS2322: Type 'number' is not assignable to type '{ readonly cancellation: number; readonly worker: number; readonly resource: number; }'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(7,7): error TS2322: Type '1' is not assignable to type '2'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(8,40): error TS2344: Type '"savePlan"' does not satisfy the constraint '"lookup" | "prepare" | "readWithTransaction" | "commit"'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(9,7): error TS2322: Type 'Promise<boolean>' is not assignable to type 'boolean'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(10,7): error TS2322: Type 'false' is not assignable to type 'true'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(11,7): error TS2741: Property '[reconciliationAuthority]' is missing in type '{ operationId: string; originalBindingDigest: string; actorId: string; authorityRevision: number; stoppedOrExpiredSnapshotDigest: string; lookupPolicyDigest: string; issuedAt: string; expiresAt: string; sessionExpiresAt: string; dispatch: false; }' but required in type 'FreshReconciliationAuthority'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(12,41): error TS2344: Type '"settleStopped"' does not satisfy the constraint '"reconciling" | "claim" | "guardedIO" | "synchronizeDelivery" | "confirm" | "unresolved"'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(13,7): error TS2740: Type '{ backend: string; }' is missing the following properties from type '{ readonly sourceDigest: string; readonly buildDigest: string; readonly lockDigest: string; readonly checksDigest: string; readonly backend: string; readonly backendVersion: string; ... 12 more ...; readonly policyGeneration: number; }': sourceDigest, buildDigest, lockDigest, checksDigest, and 14 more.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(14,7): error TS2741: Property '[scopeBrand]' is missing in type '{ tenantId: string; spaceId: string; actorId: string; payerId: string; authorityRevision: number; membershipRevision: number; grants: never[]; }' but required in type 'VerifiedScope'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(15,7): error TS2375: Type '{ value: undefined; }' is not assignable to type '{ value?: string; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+#   Types of property 'value' are incompatible.
+#     Type 'undefined' is not assignable to type 'string'.
+# node_modules/.cache/contract-types-VaGmZf/negative.mts(17,7): error TS2322: Type '{ readonly rowId: string; readonly path: "service" | "sdk" | "shell" | "filesystem" | "browser" | "gui" | "mcp" | "egress" | "runtime"; readonly effectOrControl: string; readonly backend: string; ... 7 more ...; readonly activation: "live" | ... 1 more ... | "startup"; } & { ...; }' is not assignable to type 'SupportedRow'.
+#   Type '{ readonly rowId: string; readonly path: "service" | "sdk" | "shell" | "filesystem" | "browser" | "gui" | "mcp" | "egress" | "runtime"; readonly effectOrControl: string; readonly backend: string; ... 7 more ...; readonly activation: "live" | ... 1 more ... | "startup"; } & { ...; }' is not assignable to type '{ readonly status: "tested-support"; readonly supported: true; }'.
+#     Types of property 'status' are incompatible.
+#       Type '"pending-external"' is not assignable to type '"tested-support"'.
+# compiler-negative-specimens: 12 independent failures observed after removing expected-error directives
+# Subtest: C01/full
+ok 1 - C01/full
+  ---
+  duration_ms: 4.332125
+  type: 'test'
+  ...
+# Subtest: C02/full
+ok 2 - C02/full
+  ---
+  duration_ms: 3.482875
+  type: 'test'
+  ...
+# Subtest: C03/full
+ok 3 - C03/full
+  ---
+  duration_ms: 3.9425
+  type: 'test'
+  ...
+# Subtest: C04/full
+ok 4 - C04/full
+  ---
+  duration_ms: 1.520292
+  type: 'test'
+  ...
+# Subtest: C05/effect
+ok 5 - C05/effect
+  ---
+  duration_ms: 3.527584
+  type: 'test'
+  ...
+# Subtest: C05/legal-phase-flow
+ok 6 - C05/legal-phase-flow
+  ---
+  duration_ms: 0.59625
+  type: 'test'
+  ...
+# Subtest: C05/settlement
+ok 7 - C05/settlement
+  ---
+  duration_ms: 21.944291
+  type: 'test'
+  ...
+# Subtest: C06/api-types-fence-composition
+ok 8 - C06/api-types-fence-composition
+  ---
+  duration_ms: 2876.507125
+  type: 'test'
+  ...
+# Subtest: C06/approved-host-manifest
+ok 9 - C06/approved-host-manifest
+  ---
+  duration_ms: 0.7905
+  type: 'test'
+  ...
+# Subtest: C06/backend-pins
+ok 10 - C06/backend-pins
+  ---
+  duration_ms: 0.586833
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3029.8625

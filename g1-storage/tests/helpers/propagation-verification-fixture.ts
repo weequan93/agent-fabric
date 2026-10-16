@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import type pg from 'pg';
 import {randomUUID} from 'node:crypto';
 import {createLifecycleVerificationFixture} from './lifecycle-verification-fixture.js';
 import {PropagationRetryRepository} from '../../src/propagation-retry.js';

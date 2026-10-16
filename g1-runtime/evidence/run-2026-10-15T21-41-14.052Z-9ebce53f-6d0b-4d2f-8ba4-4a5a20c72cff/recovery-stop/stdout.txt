@@ -1,0 +1,555 @@
+TAP version 13
+# Subtest: A16/base/effect-expired-original
+ok 1 - A16/base/effect-expired-original
+  ---
+  duration_ms: 12246.923875
+  type: 'test'
+  ...
+# Subtest: A16/base/lease-expired-original
+ok 2 - A16/base/lease-expired-original
+  ---
+  duration_ms: 11994.667
+  type: 'test'
+  ...
+# Subtest: A16/base/stop-and-both-expiries
+ok 3 - A16/base/stop-and-both-expiries
+  ---
+  duration_ms: 12157.495583
+  type: 'test'
+  ...
+# Subtest: A16/base/stopped-original-stop-run
+ok 4 - A16/base/stopped-original-stop-run
+  ---
+  duration_ms: 11580.4985
+  type: 'test'
+  ...
+# Subtest: A16/base/stopped-original-stop-task
+ok 5 - A16/base/stopped-original-stop-task
+  ---
+  duration_ms: 11256.122625
+  type: 'test'
+  ...
+# Subtest: A18/base/effect-expired-original
+not ok 6 - A18/base/effect-expired-original
+  ---
+  duration_ms: 12170.858375
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    Lost claim-COMMIT ACK creates zero sends
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        denied: 3,
+        gets: [
+          {
+            at: 1792100544122,
+    ...
+          '0af7fc9d-c763-48e8-8a25-f99aab99e15d': 0,
+    +     'cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3': 0
+    -     'cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3': 1
+        },
+        value: 'useful-distinct-successor-f43f2074-7dff-41db-a37a-3ab7bc81bf9b',
+        writes: [
+          {
+            at: 1792100538187,
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    value: 'useful-distinct-successor-f43f2074-7dff-41db-a37a-3ab7bc81bf9b'
+    writes:
+      0:
+        receipt:
+          operationId: '0af7fc9d-c763-48e8-8a25-f99aab99e15d'
+          intentDigest: 'sha256:7dfef3d63aa537b5b82d4d7297f4f41c2ae7b49c0fac991cda5ea30f27f830a3'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:be7ff7f76f26e7edf526be3d4700553fa3bdddbea86eb102820ae8ed978619f0'
+          artifactDigest: 'sha256:7a3b5b95116e949e0aca8d8b9f56de0892ac6bb0ae018b08f0f683e9918ae8b2'
+          writeNumber: 1
+        bodyDigest: 'sha256:ebbfea1174d69c5d14129e40031d404a3cf505779b8b1510689ae7e2440539d8'
+        at: 1792100538187
+      1:
+        receipt:
+          operationId: 'cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3'
+          intentDigest: 'sha256:105814ff4d2bf46d98ed49c95ec6078e36b46d0a571c0df16f00ac61b1abf82c'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:3b39743a893ce366ffd42f44f31d8fef4e375bea8150d15f8bfe573dc39b4002'
+          artifactDigest: 'sha256:6d4073bbbbf9047c6b49b2ccdfe51f709bdcce7c480da89a1b9e29e09d67e09a'
+          writeNumber: 1
+        bodyDigest: 'sha256:f6662db54cee223a838ef4a486933b8032f0d0f6f15c80246eaffe239d5ec65e'
+        at: 1792100544506
+    gets:
+      0:
+        method: 'GET'
+        operationId: '0af7fc9d-c763-48e8-8a25-f99aab99e15d'
+        bindingDigest: 'sha256:7dfef3d63aa537b5b82d4d7297f4f41c2ae7b49c0fac991cda5ea30f27f830a3'
+        at: 1792100544122
+    denied: 3
+    streams:
+      0af7fc9d-c763-48e8-8a25-f99aab99e15d: 0
+      cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3: 1
+  actual:
+    value: 'useful-distinct-successor-f43f2074-7dff-41db-a37a-3ab7bc81bf9b'
+    writes:
+      0:
+        receipt:
+          operationId: '0af7fc9d-c763-48e8-8a25-f99aab99e15d'
+          intentDigest: 'sha256:7dfef3d63aa537b5b82d4d7297f4f41c2ae7b49c0fac991cda5ea30f27f830a3'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:be7ff7f76f26e7edf526be3d4700553fa3bdddbea86eb102820ae8ed978619f0'
+          artifactDigest: 'sha256:7a3b5b95116e949e0aca8d8b9f56de0892ac6bb0ae018b08f0f683e9918ae8b2'
+          writeNumber: 1
+        bodyDigest: 'sha256:ebbfea1174d69c5d14129e40031d404a3cf505779b8b1510689ae7e2440539d8'
+        at: 1792100538187
+      1:
+        receipt:
+          operationId: 'cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3'
+          intentDigest: 'sha256:105814ff4d2bf46d98ed49c95ec6078e36b46d0a571c0df16f00ac61b1abf82c'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:3b39743a893ce366ffd42f44f31d8fef4e375bea8150d15f8bfe573dc39b4002'
+          artifactDigest: 'sha256:6d4073bbbbf9047c6b49b2ccdfe51f709bdcce7c480da89a1b9e29e09d67e09a'
+          writeNumber: 1
+        bodyDigest: 'sha256:f6662db54cee223a838ef4a486933b8032f0d0f6f15c80246eaffe239d5ec65e'
+        at: 1792100544506
+    gets:
+      0:
+        method: 'GET'
+        operationId: '0af7fc9d-c763-48e8-8a25-f99aab99e15d'
+        bindingDigest: 'sha256:7dfef3d63aa537b5b82d4d7297f4f41c2ae7b49c0fac991cda5ea30f27f830a3'
+        at: 1792100544122
+    denied: 3
+    streams:
+      0af7fc9d-c763-48e8-8a25-f99aab99e15d: 0
+      cf32aa1c-7ec5-4cd3-be8d-cecaa70e34b3: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/settlement-cases.js:127:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: A18/base/lease-expired-original
+not ok 7 - A18/base/lease-expired-original
+  ---
+  duration_ms: 12185.584708
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    Lost claim-COMMIT ACK creates zero sends
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        denied: 3,
+        gets: [
+          {
+            at: 1792100556290,
+    ...
+        streams: {
+    +     '348b0901-57ce-4250-9d40-17c93aebd933': 0,
+    -     '348b0901-57ce-4250-9d40-17c93aebd933': 1,
+          '3be7d833-680d-4dd6-a7b3-16470e35ff4e': 0
+        },
+        value: 'useful-distinct-successor-6e584e0f-b5d8-4a0b-a906-53ac39007943',
+        writes: [
+          {
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    value: 'useful-distinct-successor-6e584e0f-b5d8-4a0b-a906-53ac39007943'
+    writes:
+      0:
+        receipt:
+          operationId: '3be7d833-680d-4dd6-a7b3-16470e35ff4e'
+          intentDigest: 'sha256:3f1b60eaab0b16c72be4eeb5a46472e0e197f960f3c14d7a3653b0c00cef25ec'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:49ebcc88438a747bb0455069df7ec24c6153f66c9e280d57e8b2f64b2073e436'
+          artifactDigest: 'sha256:4940965375e7c6ec7ca1613f9718580a3913540037c17b891eb18d24645f54c6'
+          writeNumber: 1
+        bodyDigest: 'sha256:75b6d36943368de83a04b0f965a38ee2d005cdcbcb240605740f1c814e65ff3c'
+        at: 1792100550357
+      1:
+        receipt:
+          operationId: '348b0901-57ce-4250-9d40-17c93aebd933'
+          intentDigest: 'sha256:7c83029d9089ccea9a8cd4bfef3f3bbe6cb37a19bb46ef68f2b2ccca56607356'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:92464c4695f6b1f302f6aec0bf230e65debdb8668767150a19171bb8b6ae715d'
+          artifactDigest: 'sha256:981cfb99c629ed3c04848edb0fc356f08f55898da5166af6e4863f645dc5acc8'
+          writeNumber: 1
+        bodyDigest: 'sha256:280b47e63fce94f26b3296f7a5911da15a369a78ea41fa7fb3ba25d1affc5718'
+        at: 1792100556663
+    gets:
+      0:
+        method: 'GET'
+        operationId: '3be7d833-680d-4dd6-a7b3-16470e35ff4e'
+        bindingDigest: 'sha256:3f1b60eaab0b16c72be4eeb5a46472e0e197f960f3c14d7a3653b0c00cef25ec'
+        at: 1792100556290
+    denied: 3
+    streams:
+      3be7d833-680d-4dd6-a7b3-16470e35ff4e: 0
+      348b0901-57ce-4250-9d40-17c93aebd933: 1
+  actual:
+    value: 'useful-distinct-successor-6e584e0f-b5d8-4a0b-a906-53ac39007943'
+    writes:
+      0:
+        receipt:
+          operationId: '3be7d833-680d-4dd6-a7b3-16470e35ff4e'
+          intentDigest: 'sha256:3f1b60eaab0b16c72be4eeb5a46472e0e197f960f3c14d7a3653b0c00cef25ec'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:49ebcc88438a747bb0455069df7ec24c6153f66c9e280d57e8b2f64b2073e436'
+          artifactDigest: 'sha256:4940965375e7c6ec7ca1613f9718580a3913540037c17b891eb18d24645f54c6'
+          writeNumber: 1
+        bodyDigest: 'sha256:75b6d36943368de83a04b0f965a38ee2d005cdcbcb240605740f1c814e65ff3c'
+        at: 1792100550357
+      1:
+        receipt:
+          operationId: '348b0901-57ce-4250-9d40-17c93aebd933'
+          intentDigest: 'sha256:7c83029d9089ccea9a8cd4bfef3f3bbe6cb37a19bb46ef68f2b2ccca56607356'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:92464c4695f6b1f302f6aec0bf230e65debdb8668767150a19171bb8b6ae715d'
+          artifactDigest: 'sha256:981cfb99c629ed3c04848edb0fc356f08f55898da5166af6e4863f645dc5acc8'
+          writeNumber: 1
+        bodyDigest: 'sha256:280b47e63fce94f26b3296f7a5911da15a369a78ea41fa7fb3ba25d1affc5718'
+        at: 1792100556663
+    gets:
+      0:
+        method: 'GET'
+        operationId: '3be7d833-680d-4dd6-a7b3-16470e35ff4e'
+        bindingDigest: 'sha256:3f1b60eaab0b16c72be4eeb5a46472e0e197f960f3c14d7a3653b0c00cef25ec'
+        at: 1792100556290
+    denied: 3
+    streams:
+      3be7d833-680d-4dd6-a7b3-16470e35ff4e: 0
+      348b0901-57ce-4250-9d40-17c93aebd933: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/settlement-cases.js:127:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: A18/base/stop-and-both-expiries
+not ok 8 - A18/base/stop-and-both-expiries
+  ---
+  duration_ms: 12150.726917
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    Lost claim-COMMIT ACK creates zero sends
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        denied: 3,
+        gets: [
+          {
+            at: 1792100568466,
+    ...
+          'd1043cfa-7c0d-4acc-a499-b13e63e29307': 0,
+    +     'ea27f532-6187-464d-80d1-0ab97ff2e58b': 0
+    -     'ea27f532-6187-464d-80d1-0ab97ff2e58b': 1
+        },
+        value: 'useful-distinct-successor-c2d5bfb3-0424-4783-b35e-6a02dcc6bf6c',
+        writes: [
+          {
+            at: 1792100562535,
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    value: 'useful-distinct-successor-c2d5bfb3-0424-4783-b35e-6a02dcc6bf6c'
+    writes:
+      0:
+        receipt:
+          operationId: 'd1043cfa-7c0d-4acc-a499-b13e63e29307'
+          intentDigest: 'sha256:4e46c42f49681755315851937ea0b0db6ef96eb32c67e468c6b2afb96017a256'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:b05f9bd55183c12fe696f0b3b59496cd8aa5fa7932454d62cacdf16d4d116b09'
+          artifactDigest: 'sha256:f6c41e294ba80bce0c81f6d5de538760f4e841aed59526396dae518b4cb63f64'
+          writeNumber: 1
+        bodyDigest: 'sha256:8aad2b6df544f8d3bf8834fd200d55a6c5ae5227d5d07b24ea3680a42d7b7582'
+        at: 1792100562535
+      1:
+        receipt:
+          operationId: 'ea27f532-6187-464d-80d1-0ab97ff2e58b'
+          intentDigest: 'sha256:79b118653efad98cc22cc6fdbede40abac6e368964af47d5ffddd954e18693ab'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:fe7ed42872b40a15ea8abe223729c0ecee7b660a3c7d8df28b9059b213c7f9e9'
+          artifactDigest: 'sha256:7ddf961a4f326aa11daedf524da7ef37c5528f5412f51a7d7ed468194abb1c42'
+          writeNumber: 1
+        bodyDigest: 'sha256:2e7db1e8f09fcbc9bd503e934a601417e947e3aa2ee3b6b948db6f940c9e2496'
+        at: 1792100568845
+    gets:
+      0:
+        method: 'GET'
+        operationId: 'd1043cfa-7c0d-4acc-a499-b13e63e29307'
+        bindingDigest: 'sha256:4e46c42f49681755315851937ea0b0db6ef96eb32c67e468c6b2afb96017a256'
+        at: 1792100568466
+    denied: 3
+    streams:
+      d1043cfa-7c0d-4acc-a499-b13e63e29307: 0
+      ea27f532-6187-464d-80d1-0ab97ff2e58b: 1
+  actual:
+    value: 'useful-distinct-successor-c2d5bfb3-0424-4783-b35e-6a02dcc6bf6c'
+    writes:
+      0:
+        receipt:
+          operationId: 'd1043cfa-7c0d-4acc-a499-b13e63e29307'
+          intentDigest: 'sha256:4e46c42f49681755315851937ea0b0db6ef96eb32c67e468c6b2afb96017a256'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:b05f9bd55183c12fe696f0b3b59496cd8aa5fa7932454d62cacdf16d4d116b09'
+          artifactDigest: 'sha256:f6c41e294ba80bce0c81f6d5de538760f4e841aed59526396dae518b4cb63f64'
+          writeNumber: 1
+        bodyDigest: 'sha256:8aad2b6df544f8d3bf8834fd200d55a6c5ae5227d5d07b24ea3680a42d7b7582'
+        at: 1792100562535
+      1:
+        receipt:
+          operationId: 'ea27f532-6187-464d-80d1-0ab97ff2e58b'
+          intentDigest: 'sha256:79b118653efad98cc22cc6fdbede40abac6e368964af47d5ffddd954e18693ab'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:fe7ed42872b40a15ea8abe223729c0ecee7b660a3c7d8df28b9059b213c7f9e9'
+          artifactDigest: 'sha256:7ddf961a4f326aa11daedf524da7ef37c5528f5412f51a7d7ed468194abb1c42'
+          writeNumber: 1
+        bodyDigest: 'sha256:2e7db1e8f09fcbc9bd503e934a601417e947e3aa2ee3b6b948db6f940c9e2496'
+        at: 1792100568845
+    gets:
+      0:
+        method: 'GET'
+        operationId: 'd1043cfa-7c0d-4acc-a499-b13e63e29307'
+        bindingDigest: 'sha256:4e46c42f49681755315851937ea0b0db6ef96eb32c67e468c6b2afb96017a256'
+        at: 1792100568466
+    denied: 3
+    streams:
+      d1043cfa-7c0d-4acc-a499-b13e63e29307: 0
+      ea27f532-6187-464d-80d1-0ab97ff2e58b: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/settlement-cases.js:127:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: A18/base/stopped-original-stop-run
+not ok 9 - A18/base/stopped-original-stop-run
+  ---
+  duration_ms: 11400.391583
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    Lost claim-COMMIT ACK creates zero sends
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        denied: 3,
+        gets: [
+          {
+            at: 1792100579859,
+    ...
+          '5e82488f-e097-4428-a8ad-b31fda1076f2': 0,
+    +     'e501310c-b531-4f5a-9d87-bda52da06439': 0
+    -     'e501310c-b531-4f5a-9d87-bda52da06439': 1
+        },
+        value: 'useful-distinct-successor-babf4f80-737a-4f50-94d1-540aea691ff8',
+        writes: [
+          {
+            at: 1792100574700,
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    value: 'useful-distinct-successor-babf4f80-737a-4f50-94d1-540aea691ff8'
+    writes:
+      0:
+        receipt:
+          operationId: '5e82488f-e097-4428-a8ad-b31fda1076f2'
+          intentDigest: 'sha256:930c4458fd0bbd13a3e8535e3b23f805604f5a008465a7a1e9fb7b9092642197'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:d1da64d8bb76c69169ff474759e4403b6f380858529bc1de4e5e24399249d77b'
+          artifactDigest: 'sha256:2b65ae04820c69664a25f0a40bece44ca286000f053e5450bf29148e7ac729c2'
+          writeNumber: 1
+        bodyDigest: 'sha256:f698106804e973463e11bd877210514dc3249df9bf373d37f938c5741a1f408c'
+        at: 1792100574700
+      1:
+        receipt:
+          operationId: 'e501310c-b531-4f5a-9d87-bda52da06439'
+          intentDigest: 'sha256:8014920aa28557b4dc830b972446b474daff37f9391bec36b5cfea4c1297c591'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:95548b168f0fe40d63f8184adb7a3b0772eca6421f29bb5938d4dc7a80f9c40f'
+          artifactDigest: 'sha256:a31e55fc822fbc3095e88591b1362aa726621979272580424ebecb7bce1243e4'
+          writeNumber: 1
+        bodyDigest: 'sha256:3daf4be1cdc51b249c40d2ef7973242f68190d27bcdc5cbdffeff3fc1c07d8b9'
+        at: 1792100580246
+    gets:
+      0:
+        method: 'GET'
+        operationId: '5e82488f-e097-4428-a8ad-b31fda1076f2'
+        bindingDigest: 'sha256:930c4458fd0bbd13a3e8535e3b23f805604f5a008465a7a1e9fb7b9092642197'
+        at: 1792100579859
+    denied: 3
+    streams:
+      5e82488f-e097-4428-a8ad-b31fda1076f2: 0
+      e501310c-b531-4f5a-9d87-bda52da06439: 1
+  actual:
+    value: 'useful-distinct-successor-babf4f80-737a-4f50-94d1-540aea691ff8'
+    writes:
+      0:
+        receipt:
+          operationId: '5e82488f-e097-4428-a8ad-b31fda1076f2'
+          intentDigest: 'sha256:930c4458fd0bbd13a3e8535e3b23f805604f5a008465a7a1e9fb7b9092642197'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:d1da64d8bb76c69169ff474759e4403b6f380858529bc1de4e5e24399249d77b'
+          artifactDigest: 'sha256:2b65ae04820c69664a25f0a40bece44ca286000f053e5450bf29148e7ac729c2'
+          writeNumber: 1
+        bodyDigest: 'sha256:f698106804e973463e11bd877210514dc3249df9bf373d37f938c5741a1f408c'
+        at: 1792100574700
+      1:
+        receipt:
+          operationId: 'e501310c-b531-4f5a-9d87-bda52da06439'
+          intentDigest: 'sha256:8014920aa28557b4dc830b972446b474daff37f9391bec36b5cfea4c1297c591'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:95548b168f0fe40d63f8184adb7a3b0772eca6421f29bb5938d4dc7a80f9c40f'
+          artifactDigest: 'sha256:a31e55fc822fbc3095e88591b1362aa726621979272580424ebecb7bce1243e4'
+          writeNumber: 1
+        bodyDigest: 'sha256:3daf4be1cdc51b249c40d2ef7973242f68190d27bcdc5cbdffeff3fc1c07d8b9'
+        at: 1792100580246
+    gets:
+      0:
+        method: 'GET'
+        operationId: '5e82488f-e097-4428-a8ad-b31fda1076f2'
+        bindingDigest: 'sha256:930c4458fd0bbd13a3e8535e3b23f805604f5a008465a7a1e9fb7b9092642197'
+        at: 1792100579859
+    denied: 3
+    streams:
+      5e82488f-e097-4428-a8ad-b31fda1076f2: 0
+      e501310c-b531-4f5a-9d87-bda52da06439: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/settlement-cases.js:127:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: A18/base/stopped-original-stop-task
+not ok 10 - A18/base/stopped-original-stop-task
+  ---
+  duration_ms: 11543.408416
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    Lost claim-COMMIT ACK creates zero sends
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        denied: 3,
+        gets: [
+          {
+            at: 1792100591280,
+    ...
+          '9067675d-bf68-40e8-9c67-caae2688b01e': 0,
+    +     'fa15d30c-e3ec-41d3-918b-f0793f070a60': 0
+    -     'fa15d30c-e3ec-41d3-918b-f0793f070a60': 1
+        },
+        value: 'useful-distinct-successor-715aeda9-230b-4ad2-b62e-756b4b18d70e',
+        writes: [
+          {
+            at: 1792100586097,
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    value: 'useful-distinct-successor-715aeda9-230b-4ad2-b62e-756b4b18d70e'
+    writes:
+      0:
+        receipt:
+          operationId: '9067675d-bf68-40e8-9c67-caae2688b01e'
+          intentDigest: 'sha256:69e498a0522b32c967aa0b01c14a78f030455bd18b412c63fb5600ade5c16848'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:42a93ea7f67bd0be849cedeb2a7a3d66f25b5f3b033ee6cf59f47cd0ff0f9db7'
+          artifactDigest: 'sha256:d751d06e00c2477ff83e73dc0258e296a2e4f0799415107dc427e656fda95170'
+          writeNumber: 1
+        bodyDigest: 'sha256:47abaffab8f83fd80681c4630fd9308fd1db93e9bedeba01d2038a4bf3d0f87d'
+        at: 1792100586097
+      1:
+        receipt:
+          operationId: 'fa15d30c-e3ec-41d3-918b-f0793f070a60'
+          intentDigest: 'sha256:b460402cf794289f605148c1a41ff0daa76e6c3c5bfd5ed06982271446680c9c'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:323315e8e108ee2f43508b2f7117d28de7310c3f95d518249290b143e9fad6b5'
+          artifactDigest: 'sha256:aa0423926af0a0c31b07395b623a8b5b034e403c852f9751080f2071f5819b0e'
+          writeNumber: 1
+        bodyDigest: 'sha256:0c3b807dcc5572525148f16b48911bd40098a36cc42fbc65035b99bccf932524'
+        at: 1792100591795
+    gets:
+      0:
+        method: 'GET'
+        operationId: '9067675d-bf68-40e8-9c67-caae2688b01e'
+        bindingDigest: 'sha256:69e498a0522b32c967aa0b01c14a78f030455bd18b412c63fb5600ade5c16848'
+        at: 1792100591280
+    denied: 3
+    streams:
+      9067675d-bf68-40e8-9c67-caae2688b01e: 0
+      fa15d30c-e3ec-41d3-918b-f0793f070a60: 1
+  actual:
+    value: 'useful-distinct-successor-715aeda9-230b-4ad2-b62e-756b4b18d70e'
+    writes:
+      0:
+        receipt:
+          operationId: '9067675d-bf68-40e8-9c67-caae2688b01e'
+          intentDigest: 'sha256:69e498a0522b32c967aa0b01c14a78f030455bd18b412c63fb5600ade5c16848'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:42a93ea7f67bd0be849cedeb2a7a3d66f25b5f3b033ee6cf59f47cd0ff0f9db7'
+          artifactDigest: 'sha256:d751d06e00c2477ff83e73dc0258e296a2e4f0799415107dc427e656fda95170'
+          writeNumber: 1
+        bodyDigest: 'sha256:47abaffab8f83fd80681c4630fd9308fd1db93e9bedeba01d2038a4bf3d0f87d'
+        at: 1792100586097
+      1:
+        receipt:
+          operationId: 'fa15d30c-e3ec-41d3-918b-f0793f070a60'
+          intentDigest: 'sha256:b460402cf794289f605148c1a41ff0daa76e6c3c5bfd5ed06982271446680c9c'
+          target: 'owned-settlement-target'
+          argsDigest: 'sha256:323315e8e108ee2f43508b2f7117d28de7310c3f95d518249290b143e9fad6b5'
+          artifactDigest: 'sha256:aa0423926af0a0c31b07395b623a8b5b034e403c852f9751080f2071f5819b0e'
+          writeNumber: 1
+        bodyDigest: 'sha256:0c3b807dcc5572525148f16b48911bd40098a36cc42fbc65035b99bccf932524'
+        at: 1792100591795
+    gets:
+      0:
+        method: 'GET'
+        operationId: '9067675d-bf68-40e8-9c67-caae2688b01e'
+        bindingDigest: 'sha256:69e498a0522b32c967aa0b01c14a78f030455bd18b412c63fb5600ade5c16848'
+        at: 1792100591280
+    denied: 3
+    streams:
+      9067675d-bf68-40e8-9c67-caae2688b01e: 0
+      fa15d30c-e3ec-41d3-918b-f0793f070a60: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/settlement-cases.js:127:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-9Dx5OS/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 5
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 120171.486208

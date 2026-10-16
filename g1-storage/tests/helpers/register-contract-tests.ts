@@ -1,4 +1,6 @@
 import test from 'node:test';
+import childProcess from 'node:child_process';
+import { syncBuiltinESMExports } from 'node:module';
 import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -140,6 +142,84 @@ export function registerContractTests(){
    assert.throws(()=>script.parseTap({status:0,signal:null,stdout:'TAP version 13\n# C01 passed\n1..0\n',stderr:''},['C01']));
    assert.throws(()=>script.parseTap({status:0,signal:null,stdout:'TAP version 13\n# Subtest: C01\nok 1 - C01 # SKIP\n1..1\n',stderr:''},['C01']));
    await executionGateProbe();
+   // Isolated boundary doubles exercise the actual measurement implementation;
+   // they qualify its branches, never a Docker daemon or a PG execution.
+   const measurement=await import(pathToFileURL(resolve('g1-storage/scripts/execution-measurement.mjs')).href);
+   const transport=await import(pathToFileURL(resolve('g1-storage/scripts/measurement-transport.mjs')).href);
+   const originalSpawnSync=childProcess.spawnSync,originalWrite=process.stdout.write;
+   const processBytes='  17 1 Thu Oct 15 12:00:00 2026 /actual-process\n';
+   let processResult:Record<string,unknown>={status:0,signal:null,stdout:processBytes,stderr:''};
+   let dockerResult:Record<string,unknown>={status:1,signal:null,stdout:'partial-container-output\n',stderr:'test-local Docker boundary failure'};
+   const calls:string[]=[],writes:string[]=[];
+   const decode=()=>{
+    const rows=writes.join('').split('\n').filter(line=>line.startsWith('{')).map(line=>JSON.parse(line));
+    const frames=rows.filter(row=>row.measurement==='storage-measurement-transport'),values=[];
+    for(let index=0;index<frames.length;){const header=frames[index],count=header.count+2;
+     const decoded=transport.decodeMeasurement(frames.slice(index,index+count),header.binding);
+     assert.equal(transport.measurementDigest(decoded.raw),header.digest);values.push(decoded.record);index+=count;
+    }return values;
+   };
+   try{
+    childProcess.spawnSync=((file:unknown)=>{assert(file==='ps'||file==='docker');calls.push(String(file));return file==='ps'?processResult:dockerResult;}) as unknown as typeof childProcess.spawnSync;syncBuiltinESMExports();
+    process.stdout.write=((chunk:unknown,encoding?:unknown,callback?:unknown)=>{
+     const bytes=String(chunk);assert(bytes.split('\n').filter(Boolean).every(line=>line.startsWith('{')),'Only this measurement boundary output is intercepted');
+     writes.push(bytes);const done=typeof encoding==='function'?encoding:callback;
+     if(typeof done==='function')queueMicrotask(()=>done());return true;
+    }) as typeof process.stdout.write;
+    const observed=measurement.startMeasurement('command',{candidate:sha},{containers:'observe'});await observed.ready;await measurement.endMeasurement(observed);
+    let values=decode();assert.deepEqual(values.map(value=>value.measurement),['storage-parent-start','storage-parent-return']);
+    for(const census of [values[0].before,values[1].before,values[1].after]){
+     assert.equal(census.processBytes,processBytes);assert.deepEqual(census.processes,[processBytes.trimEnd()]);assert.equal(census.processDigest,transport.measurementDigest(processBytes));
+     assert.equal(census.containerBytes,null);assert.equal(census.containers,null);assert.equal(census.containerDigest,null);
+     assert.deepEqual(census.containerObservation,{status:'unknown',qualified:false,exitStatus:1,signal:null,error:null,stdout:dockerResult.stdout,stderr:dockerResult.stderr,diagnostic:'Docker census unavailable: '+JSON.stringify({exitStatus:1,signal:null,error:null,stdout:dockerResult.stdout,stderr:dockerResult.stderr})});
+    }
+    assert.deepEqual(calls,['ps','docker','ps','docker']);
+    for(const containerBytes of ['bbb\naaa\n','']){
+     dockerResult={status:0,signal:null,stdout:containerBytes,stderr:''};writes.length=0;
+     const state=measurement.startMeasurement('command',{candidate:sha},true);await state.ready;await measurement.endMeasurement(state);values=decode();
+     for(const census of [values[0].before,values[1].before,values[1].after]){
+      assert.equal(census.processBytes,processBytes);assert.equal(census.processDigest,transport.measurementDigest(processBytes));assert.deepEqual(census.processes,[processBytes.trimEnd()]);
+      assert.equal(census.containerBytes,containerBytes);assert.deepEqual(census.containers,containerBytes.trim().split('\n').filter(Boolean).sort());assert.equal(census.containerDigest,transport.measurementDigest(containerBytes));
+      assert.deepEqual(census.containerObservation,{status:'available',qualified:true,exitStatus:0,signal:null,error:null,stdout:containerBytes,stderr:'',diagnostic:null});
+     }
+    }
+    for(const bad of [
+     {status:null,signal:null,error:Object.assign(new Error('spawn ps ENOENT'),{code:'ENOENT'}),stdout:null,stderr:null},
+     {status:1,signal:null,stdout:'partial processes',stderr:'ps failed'},
+     {status:0,signal:'SIGTERM',stdout:processBytes,stderr:''},
+     {status:0,signal:null,stdout:undefined,stderr:''},{status:0,signal:null,stdout:' \n',stderr:''}
+    ]){
+     processResult=bad;const count=calls.length;
+     assert.throws(()=>measurement.startMeasurement('command',{candidate:sha},{containers:'observe'}),/Process census unavailable/);
+     assert.deepEqual(calls.slice(count),['ps','docker'],'Observational mode still attempts both real command boundaries');
+     const failedResult=processResult;processResult={status:0,signal:null,stdout:processBytes,stderr:''};
+     const returning=measurement.startMeasurement('command',{candidate:sha},{containers:'observe'});await returning.ready;processResult=failedResult;
+     await assert.rejects(()=>measurement.endMeasurement(returning),(error:unknown)=>error instanceof AggregateError&&error.errors.some(value=>/Process census unavailable/.test(String(value))));
+    }
+    processResult={status:0,signal:null,stdout:processBytes,stderr:''};
+    for(const bad of [
+     {status:1,signal:null,stdout:'partial',stderr:'Docker failed'},
+     {status:null,signal:null,error:Object.assign(new Error('spawn docker ENOENT'),{code:'ENOENT'}),stdout:null,stderr:null},
+     {status:0,signal:'SIGTERM',stdout:'',stderr:''},{status:0,signal:null,stdout:undefined,stderr:''}
+    ]){
+     dockerResult=bad;assert.throws(()=>measurement.startMeasurement('command',{candidate:sha},true),/Docker census unavailable/);
+     writes.length=0;const unknown=measurement.startMeasurement('command',{candidate:sha},{containers:'observe'});await unknown.ready;await measurement.endMeasurement(unknown);
+     for(const value of decode())for(const census of [value.before,...(value.after?[value.after]:[])]){
+      assert.equal(census.containerObservation.status,'unknown');assert.equal(census.containerObservation.qualified,false);assert(census.containerObservation.diagnostic.length>0);
+      assert.equal(census.containerObservation.exitStatus,bad.status);assert.equal(census.containerObservation.signal,bad.signal);
+      assert.equal(census.containerObservation.stdout,typeof bad.stdout==='string'?bad.stdout:null);assert.equal(census.containerObservation.stderr,typeof bad.stderr==='string'?bad.stderr:null);
+      assert.deepEqual(census.containerObservation.error,'error' in bad?{name:(bad.error as Error).name,message:(bad.error as Error).message,code:'ENOENT'}:null);assert.equal(census.containers,null);assert.equal(census.containerBytes,null);
+     }
+    }
+    for(const phase of ['suite-lifetime','command']){
+     dockerResult={status:0,signal:null,stdout:'',stderr:''};
+     const admitted=measurement.startMeasurement(phase,{candidate:sha},phase==='command'?{containers:'observe'}:true);await admitted.ready;
+     // The runner makes its command policy sticky at actual integration admission.
+     admitted.census=true;dockerResult={status:1,signal:null,stdout:'',stderr:'Docker lost after integration admission'};
+     await assert.rejects(()=>measurement.endMeasurement(admitted),(error:unknown)=>error instanceof AggregateError&&error.errors.some(value=>/Docker census unavailable/.test(String(value))));
+    }
+   }finally{childProcess.spawnSync=originalSpawnSync;syncBuiltinESMExports();process.stdout.write=originalWrite;}
+
    const observationGate=await import(pathToFileURL(resolve('g1-storage/scripts/observation-gate.mjs')).href);
    const example=examples().find(x=>x[0]==='QualificationObservationSchema')![2];
    const record=S.QualificationObservationSchema.parse(example),stream='# '+JSON.stringify(record);

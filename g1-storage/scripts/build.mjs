@@ -34,7 +34,7 @@ try {
  if(o.skipLibCheck!==false||o.rootDir!=='..'||o.outDir!=='node_modules/.cache/storage-build'
   ||o.module!=='NodeNext'||o.moduleResolution!=='NodeNext'||o.noEmit===true||o.noCheck===true||o.emitDeclarationOnly===true
   ||JSON.stringify(o.paths)!==JSON.stringify({pg:['node_modules/@types/pg/index.d.ts']})
-  ||JSON.stringify(config.include)!==JSON.stringify(['src/**/*.ts','tests/**/*.ts','../g1-foundations/src/**/*.ts','../g1-identity/src/**/*.ts','../g1-recovery/src/**/*.ts','../g1-model/src/**/*.ts','../engine/*/src/**/*.ts']))throw new Error('Independent compiler boundary changed');
+  ||JSON.stringify(config.include)!==JSON.stringify(['src/**/*.ts','tests/**/*.ts','../g1-local/src/client.ts','../g1-local/src/contracts.ts','../g1-local/src/errors.ts','../g1-foundations/src/**/*.ts','../g1-identity/src/**/*.ts','../g1-recovery/src/**/*.ts','../g1-model/src/**/*.ts','../g1-model/tests/helpers/process-fixture.ts','../engine/*/src/**/*.ts']))throw new Error('Independent compiler boundary changed');
  run(process.execPath, [resolve(cwd, 'node_modules/typescript/bin/tsc'), '-p', 'tsconfig.json'], { timeout: 60_000 });
  for(const file of ['src/schema.js','src/contracts.js','src/owners.js','src/resource-composition.js',
   'src/record-inventory.js','tests/contracts.test.js','tests/components/contracts.component.test.js']){
@@ -51,6 +51,13 @@ try {
  }
  for(const owner of ['g1-foundations','g1-identity','g1-recovery','g1-model']){
   if(!lstatSync(resolve(cache,owner,'src')).isDirectory())throw new Error('Installed owner not emitted: '+owner);
+ }
+ // The owned harness copy lives beneath node_modules. Imported-only owner
+ // modules must be explicit roots to emit there rather than being treated as
+ // external library sources by TypeScript, including the local client's entire
+ // runtime closure used by the restore-integrity tests.
+ for(const file of ['g1-model/tests/helpers/process-fixture','g1-local/src/client','g1-local/src/contracts','g1-local/src/errors'])for(const suffix of ['.js','.d.ts','.js.map']){
+  if(!lstatSync(resolve(cache,file+suffix)).isFile())throw new Error('Mandatory current imported owner emission missing: '+file+suffix);
  }
  console.log(JSON.stringify({ measurement: 'strict-build', sourceAndTests: true, node: process.version, pins, dependencyLockDigest: 'sha256:' + createHash('sha256').update(readFileSync(resolve(cwd, 'pnpm-lock.yaml'))).digest('hex'), cacheCleared: true, install: 'offline/frozen/ignore-scripts' }));
 } finally { assertBaseline(); }

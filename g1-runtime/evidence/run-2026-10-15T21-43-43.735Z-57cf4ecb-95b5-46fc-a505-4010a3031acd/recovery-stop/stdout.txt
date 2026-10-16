@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: A16/base/effect-expired-original
+ok 1 - A16/base/effect-expired-original
+  ---
+  duration_ms: 4204.643042
+  type: 'test'
+  ...
+# Subtest: A16/base/lease-expired-original
+ok 2 - A16/base/lease-expired-original
+  ---
+  duration_ms: 4006.663958
+  type: 'test'
+  ...
+# Subtest: A16/base/stop-and-both-expiries
+ok 3 - A16/base/stop-and-both-expiries
+  ---
+  duration_ms: 3983.1035
+  type: 'test'
+  ...
+# Subtest: A16/base/stopped-original-stop-run
+ok 4 - A16/base/stopped-original-stop-run
+  ---
+  duration_ms: 1458.692583
+  type: 'test'
+  ...
+# Subtest: A16/base/stopped-original-stop-task
+ok 5 - A16/base/stopped-original-stop-task
+  ---
+  duration_ms: 1460.078583
+  type: 'test'
+  ...
+# Subtest: A18/base/effect-expired-original
+ok 6 - A18/base/effect-expired-original
+  ---
+  duration_ms: 4289.979625
+  type: 'test'
+  ...
+# node:internal/process/promises:394
+#     triggerUncaughtException(err, true /* fromPromise */);
+#     ^
+# AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+# false !== true
+#     at SettlementControl.stop (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-CvHgbV/g1-runtime/tests/helpers/settlement-control.js:68:16)
+#     at process.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-CvHgbV/g1-runtime/tests/helpers/settlement-api.js:159:33)
+#     at process.emit (node:events:519:28)
+#     at emit (node:internal/child_process:949:14)
+#     at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+#   generatedMessage: true,
+#   code: 'ERR_ASSERTION',
+#   actual: false,
+#   expected: true,
+#   operator: 'strictEqual',
+#   diff: 'simple'
+# }
+# Node.js v22.22.3
+# Subtest: A18/base/lease-expired-original
+not ok 7 - A18/base/lease-expired-original
+  ---
+  duration_ms: 3498.048125
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-CvHgbV/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"status":403,"body":{"code":"Expected values to be strictly equal:\n\nfalse !== true\n","replayAllowed":false,"resourceHeld":true}}
+    
+    403 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 403
+  operator: 'strictEqual'
+  stack: |-
+    journey (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-CvHgbV/g1-runtime/tests/helpers/settlement-cases.js:21:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-CvHgbV/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: A18/base/stop-and-both-expiries
+ok 8 - A18/base/stop-and-both-expiries
+  ---
+  duration_ms: 4337.42125
+  type: 'test'
+  ...
+# Subtest: A18/base/stopped-original-stop-run
+ok 9 - A18/base/stopped-original-stop-run
+  ---
+  duration_ms: 1689.478625
+  type: 'test'
+  ...
+# Subtest: A18/base/stopped-original-stop-task
+ok 10 - A18/base/stopped-original-stop-task
+  ---
+  duration_ms: 1609.974084
+  type: 'test'
+  ...
+# Subtest: R18/base/effect-expired-original
+ok 11 - R18/base/effect-expired-original
+  ---
+  duration_ms: 4116.98875
+  type: 'test'
+  ...
+# Subtest: R18/base/lease-expired-original
+ok 12 - R18/base/lease-expired-original
+  ---
+  duration_ms: 3995.157667
+  type: 'test'
+  ...
+# Subtest: R18/base/stop-and-both-expiries
+ok 13 - R18/base/stop-and-both-expiries
+  ---
+  duration_ms: 4003.874209
+  type: 'test'
+  ...
+# Subtest: R18/base/stopped-original-stop-run
+ok 14 - R18/base/stopped-original-stop-run
+  ---
+  duration_ms: 1458.064208
+  type: 'test'
+  ...
+# Subtest: R18/base/stopped-original-stop-task
+ok 15 - R18/base/stopped-original-stop-task
+  ---
+  duration_ms: 1385.778
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 14
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45615.88025

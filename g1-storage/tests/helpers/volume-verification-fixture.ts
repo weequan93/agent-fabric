@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import type pg from 'pg';
 import {randomUUID,createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';

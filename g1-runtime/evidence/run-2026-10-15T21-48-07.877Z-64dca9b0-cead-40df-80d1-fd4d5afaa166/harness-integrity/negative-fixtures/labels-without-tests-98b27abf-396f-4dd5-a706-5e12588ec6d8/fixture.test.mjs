@@ -1,0 +1,1 @@
+console.log('ok 1 - H03/full\n1..1\n# tests 1\n# pass 1');

@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "kind": "resource-diagnostics-only",
+  "observedAt": "2026-10-15T17:10:34.452Z",
+  "dockerInvoked": false,
+  "remoteInvoked": false,
+  "productTestsRun": false,
+  "records": [
+    {
+      "name": "host",
+      "result": "ready",
+      "observation": {
+        "node": "v22.22.3",
+        "execPath": "/Users/super/.hermes/node/bin/node",
+        "platform": "darwin",
+        "arch": "arm64",
+        "kernel": "25.2.0",
+        "availableParallelism": 14,
+        "totalmem": 68719476736,
+        "freemem": 9133277184,
+        "loadavg": [
+          4.111328125,
+          3.34228515625,
+          3.37109375
+        ]
+      },
+      "elapsedMs": 0.04358299999999815
+    },
+    {
+      "name": "versions",
+      "result": "ready",
+      "observation": [
+        {
+          "command": [
+            "node",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "v22.22.3\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "pnpm",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "10.18.0\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "python3",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "Python 3.13.5\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "git",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "git version 2.51.0\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "psql",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "psql (PostgreSQL) 16.11 (Homebrew)\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "postgres",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "postgres (PostgreSQL) 16.11 (Homebrew)\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "initdb",
+            "--version"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "initdb (PostgreSQL) 16.11 (Homebrew)\n",
+          "stderr": ""
+        }
+      ],
+      "elapsedMs": 146.245125
+    },
+    {
+      "name": "compiler",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "/Users/super/.hermes/node/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--version"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Version 5.9.3\n",
+        "stderr": ""
+      },
+      "elapsedMs": 31.426582999999994
+    },
+    {
+      "name": "process-census",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"ps\",\"-p\",\"66490\",\"-o\",\"pid=,ppid=,pgid=,lstart=,comm=\"],\"status\":null,\"signal\":null,\"error\":\"spawnSync ps EPERM\",\"stdout\":\"\",\"stderr\":\"\"}",
+        "code": "EPERM"
+      },
+      "elapsedMs": 0.778125000000017
+    },
+    {
+      "name": "cpu-sysctl",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.ncpu\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+        "code": null
+      },
+      "elapsedMs": 2.434042000000005
+    },
+    {
+      "name": "memory-sysctl",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"sysctl\",\"-n\",\"hw.memsize\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"\",\"stderr\":\"sysctl: sysctl fmt -1 1024 1: Operation not permitted\\n\"}",
+        "code": null
+      },
+      "elapsedMs": 2.171291999999994
+    },
+    {
+      "name": "disk",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "df",
+          "-h",
+          "/Users/super/Documents/ai/agent-fabric",
+          "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-BhompW"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk5s1   1.8Ti   707Gi   1.1Ti    39%     10M   12G    0%   /System/Volumes/Data\n/dev/disk5s1   1.8Ti   707Gi   1.1Ti    39%     10M   12G    0%   /System/Volumes/Data\n",
+        "stderr": ""
+      },
+      "elapsedMs": 1.668875000000014
+    },
+    {
+      "name": "sqlite-wal-process",
+      "result": "ready",
+      "observation": {
+        "mode": {
+          "journal_mode": "wal"
+        },
+        "busy": {
+          "command": [
+            "/Users/super/.hermes/node/bin/node",
+            "--input-type=module",
+            "-e",
+            "import {DatabaseSync} from 'node:sqlite'; const d=new DatabaseSync(process.argv[1]); try{d.exec('BEGIN IMMEDIATE');process.exitCode=2}catch(e){if(!/locked|busy/i.test(e.message))throw e; console.log(JSON.stringify({lockRefused:true,code:e.code,errcode:e.errcode}));}finally{d.close()}",
+            "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-BhompW/queue.sqlite"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "{\"lockRefused\":true,\"code\":\"ERR_SQLITE_ERROR\",\"errcode\":5}\n",
+          "stderr": "(node:66640) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "reopened": {
+          "command": [
+            "/Users/super/.hermes/node/bin/node",
+            "--input-type=module",
+            "-e",
+            "import {DatabaseSync} from 'node:sqlite'; const d=new DatabaseSync(process.argv[1]); d.exec(\"BEGIN IMMEDIATE; INSERT INTO tickets VALUES(2,'child'); COMMIT\"); console.log(JSON.stringify(d.prepare('SELECT * FROM tickets ORDER BY id').all())); d.close();",
+            "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-BhompW/queue.sqlite"
+          ],
+          "status": 0,
+          "signal": null,
+          "error": null,
+          "stdout": "[{\"id\":1,\"value\":\"parent\"},{\"id\":2,\"value\":\"child\"}]\n",
+          "stderr": "(node:66641) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+        },
+        "rows": 2
+      },
+      "elapsedMs": 51.766290999999995
+    },
+    {
+      "name": "owned-filesystem",
+      "result": "ready",
+      "observation": {
+        "atomicRename": true,
+        "symlinkFixture": true
+      },
+      "elapsedMs": 0.39195799999998826
+    },
+    {
+      "name": "loopback-http",
+      "result": "ready",
+      "observation": {
+        "status": 200,
+        "listenerClosedInFinally": true
+      },
+      "elapsedMs": 19.183749999999975
+    },
+    {
+      "name": "shell",
+      "result": "ready",
+      "observation": {
+        "command": [
+          "/bin/sh",
+          "-c",
+          "printf synthetic-owned-shell"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "stdout": "synthetic-owned-shell",
+        "stderr": ""
+      },
+      "elapsedMs": 3.1203330000000165
+    },
+    {
+      "name": "stdio-json-rpc",
+      "result": "ready",
+      "observation": {
+        "status": 0,
+        "stdout": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"synthetic-stdio\"}",
+        "stderr": ""
+      },
+      "elapsedMs": 22.12366700000001
+    },
+    {
+      "name": "owned-child-lifecycle",
+      "result": "ready",
+      "observation": {
+        "pid": 66650,
+        "code": null,
+        "signal": "SIGTERM",
+        "liveOwnedChildHandleOnly": true
+      },
+      "elapsedMs": 21.29404199999999
+    },
+    {
+      "name": "installed-owner-dependencies",
+      "result": "ready",
+      "observation": {
+        ".": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6"
+        },
+        "g1-foundations": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-identity": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-recovery": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-model": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        },
+        "g1-storage": {
+          "typescript": "5.9.3",
+          "@types/node": "22.18.6",
+          "pg": "8.16.3",
+          "@types/pg": "8.15.5"
+        }
+      },
+      "elapsedMs": 31.465250000000026
+    },
+    {
+      "name": "offline-frozen-dependency-install",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"pnpm\",\"install\",\"--ignore-workspace\",\"--offline\",\"--frozen-lockfile\",\"--ignore-scripts\",\"--store-dir\",\"/private/tmp/agent-fabric-pnpm-store\"],\"status\":1,\"signal\":null,\"error\":null,\"stdout\":\"Lockfile is up to date, resolution step is skipped\\nProgress: resolved 1, reused 0, downloaded 0, added 0\\nPackages: +3\\n+++\\n ERR_PNPM_NO_OFFLINE_TARBALL  A package is missing from the store but cannot download it in offline mode. The missing package may be downloaded from https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz.\\n\",\"stderr\":\"\"}",
+        "code": null
+      },
+      "elapsedMs": 187.342625
+    },
+    {
+      "name": "strict-owner-noemit",
+      "result": "missing",
+      "error": {
+        "message": "{\"command\":[\"/Users/super/.hermes/node/bin/node\",\"node_modules/typescript/bin/tsc\",\"--noEmit\",\"--strict\",\"--noUncheckedIndexedAccess\",\"--exactOptionalPropertyTypes\",\"--target\",\"ES2023\",\"--module\",\"NodeNext\",\"--moduleResolution\",\"NodeNext\",\"--allowImportingTsExtensions\",\"--skipLibCheck\",\"/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-BhompW/owner-probe.mts\"],\"status\":2,\"signal\":null,\"error\":null,\"stdout\":\"g1-model/src/arithmetic.ts(34,15): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-model/src/decoder.ts(9,133): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-model/src/decoder.ts(10,79): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-model/src/qualification.ts(90,231): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-storage/src/decoder.ts(10,133): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-storage/src/decoder.ts(11,79): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\ng1-storage/src/owned-cipher-files.ts(156,121): error TS2550: Property 'isWellFormed' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2024' or later.\\n\",\"stderr\":\"\"}",
+        "code": null
+      },
+      "elapsedMs": 1069.015208
+    },
+    {
+      "name": "monotonic-clock",
+      "result": "ready",
+      "observation": {
+        "clock": "performance.now",
+        "resolutionObservedMs": 0.00016599999980826396,
+        "qualifiedTiming": false
+      },
+      "elapsedMs": 0.03445800000008603
+    },
+    {
+      "name": "owned-temp-cleanup",
+      "result": "ready",
+      "observation": {
+        "removed": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-resource-BhompW",
+        "scope": "only mkdtemp-created directory"
+      }
+    }
+  ]
+}

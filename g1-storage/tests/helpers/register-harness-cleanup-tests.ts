@@ -176,7 +176,9 @@ export async function missingFixtureNeverSkipped(t:TestContext,prefix='HARNESS-C
   ] as [string,string|null,RegExp][]){if(body===null)rmSync(path);else writeFileSync(path,body);
    const r=await c.run('fixture-'+kind,'scripts/check-component.mjs',['commands']);assert.equal(r.status,1);assert.match(r.stderr,reason);
    assert.match(r.stdout,/strict-build/);assert.doesNotMatch(r.stdout,/storage-test-report|# skipped [1-9]|# todo [1-9]/);
-   assert.equal(r.stdout.split('"measurement":"preserved-inputs"').length-1,4);
+   // Runner baseline + execution preservation before/after, and build baseline
+   // before/after: all six compare the unchanged accepted-path hashes.
+   assert.equal(r.stdout.split('"measurement":"preserved-inputs"').length-1,6);
    writeFileSync(path,original);
   }}finally{writeFileSync(path,original);}
   }finally{await c.close();}

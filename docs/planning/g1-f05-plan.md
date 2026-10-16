@@ -1,6 +1,485 @@
 # G1-F05 implementation plan: owned encrypted storage and saved-decision Ask
 
-## Current implementation — Turn339, H02 registry repair
+## Current plan — Turn390, census verification resumed
+
+Fresh permitted host process census shows no project test overlap, and the
+existing strict offline build passes without dependency changes. Docker stays
+unavailable/unknown; six historical cache fixtures remain untouched. A bounded
+tester review identified missing actual-runner post-admission loss assertions;
+the additive existing-leaf repair precedes the two existing serialized controller checks.
+See [Turn390 report](../loop/agent-fabric-g1-f05-storage/develop-turn390/report.md).
+F05 remains unaccepted at75/85, with no behavioral pass or whole-host cleanup
+claim. Full/PG still needs actual strict Docker and original lifecycle gates.
+
+## Turn389 — census repair implemented; controller gates pending
+
+F05 remains **not accepted**, 75/85 tasks done. Independent plan review passed
+round4 before source edits. One guide-first tester delivered the four existing
+files assigned by [Turn386](../loop/agent-fabric-g1-f05-storage/plan-turn386.md);
+the lead owns review/docs/controller gates. Actual process census remains
+mandatory; unavailable Docker is explicitly unknown before integration, while
+each integration admission requires a fresh strict census and makes subsequent
+return/final census strict. The real fixed-ten contracts prefix and all existing
+workloads, assertions, registry identities, commands and timeouts remain.
+
+[Turn389 report](../loop/agent-fabric-g1-f05-storage/develop-turn389/report.md)
+records joined source review and dispatch gates. Syntax and read-only TypeScript
+diagnostics pass; no strict fresh build or behavioral check has run this turn.
+Sandbox ps is denied, the actual Docker socket is missing, and the offline store
+is unavailable through this route. Fresh controller process/no-overlap,
+dependency/build and exact owned-fixture safety gates precede the two existing
+serialized regressions. Six interrupted fixtures remain untouched; no absence,
+cleanup, repaired behavior or full/terminal/independent/final/product acceptance
+is claimed. PG/full and X01–X09 remain unqualified. This supersedes the earlier
+blanket no-PG-path wording below; no environment or accepted increment changes.
+
+## Current verification — Turn384, non-PG census coupling confirmed
+
+F05 remains **not accepted**, 75/85 tasks done. Exact job-55901f3dee finished
+both **FAIL1 before build/tests** (contracts1879ms, harness-build626ms):
+`Execution measurement census unavailable`. Source requires Docker census for
+all commands despite these two admitting no PG. Missing Docker socket suffices
+for failure; controller ps outcome is not distinguished by the generic error.
+No acknowledgement runtime assertion was exercised. Source/helper/C03/H02
+assertions unchanged; joined tester review found no new acknowledgement defect.
+[Turn384 report](../loop/agent-fabric-g1-f05-storage/develop-turn384/report.md).
+
+Confirmed finding f-44a5490f9d; bounded source correction prerequisite
+f05-14-nonpg-census-repair submitted for independent plan review before edits.
+Keep process census mandatory, PG/full container census strict, non-PG missing
+Docker explicitly unknown/unqualified, all real ownership/cleanup/assertion
+guards and existing contracts900/harness-build2700 checks. No unchanged retry,
+source/check/budget/accepted/raw/freeze change this turn. Six interrupted fixtures
+remain untouched; original ownership/LIFO settlement still gates PG/full.
+Original D2700/H14400, aggregate/terminal/independent/final/product, whole-host
+cleanup, AF-07/UX-01/G1/G2 and X01–X09 remain pending.
+
+## Current verification — Turn373, original harness interrupted with a source defect
+
+F05 remains **not accepted**, 75/84 tasks done. Original task verification
+job-1f27292043 is controller **lost**; delivery PASS0/129516ms (37/37), harness
+has no terminal result. [Turn373 report](../loop/agent-fabric-g1-f05-storage/develop-turn373/report.md)
+records a real pre-interruption H02/cancellation failure: copied contracts'
+responsive child reads empty acknowledgement bytes instead of exact `ack`.
+Direct file creation-before-write in execution-gate-probe.ts permits the race.
+Guide-first tester and coordinator independently agree on the bounded atomic
+publication repair; exact host scheduling and later job-loss cause are unproven.
+
+New prerequisite f05-14-ack-publication-repair owns only that existing helper.
+Independent plan review precedes source edits; existing complete contracts12
+(900s) and harness-build19 (2700s), then settled source/raw review, precede any
+changed-candidate original delivery2700s/harness14400s. No unchanged full retry.
+The actual positive copy completed its first three suites then stopped in K04;
+full H02/H03/H04, remaining copied suites, terminal results and cleanup remain
+unqualified. Docker socket availability and identity-checked interrupted-fixture
+cleanup must be resolved before PG/full integration. The two new regressions
+do not admit a PG suite; unavailable Docker alone does not block them. Earlier
+backup273 pass remains.
+No source/raw/accepted-input/existing-check/guard/workload change or freeze/re-freeze
+this turn. Aggregate/terminal/independent/final/product acceptance, whole-host
+cleanup, whole AF-07/UX-01/G1/G2 and X01–X09 qualification remain pending.
+
+## Historical plan — Turn366, R09 prerequisite revision
+
+F05 remains **not accepted**, 74/83 tasks done. [Turn366 plan revision](../loop/agent-fabric-g1-f05-storage/plan-turn366/report.md)
+addresses PLAN365-01. Original prerequisite job-df77d1804b finished FAIL1/987169ms:
+backup-restore273 has 271 pass/2 fail (R09/backup-expiry and its parent), zero
+cancelled/skipped/TODO. Both Turn364 repaired leaves pass. The new failure is at
+confirmation under the leaf's one-second backup retention; translated
+not-saved/UNAUTHORIZED does not establish its underlying SQL cause.
+
+Revise existing f05-14-backup-schedules-repair to give its tester the third helper,
+verify-restore-measurement.ts, for direct diagnosis and repair. Require an adequate
+supported finite fixture period (recommended30s within existing60s policy),
+successful confirmation and eligible-before read, then a deadline-aware local
+wait on the actual PostgreSQL expiry. Preserve exact expired read/import refusals,
+no further decryption opens, unchanged controls/archive and the identical original
+committed receipt, plus both prior repaired leaves and all273 registrations.
+The complete strict-build slice2700s must pass and receive settled source/raw
+review before changed-candidate original delivery2700s/harness14400s. All task
+check arrays and approved guards remain unchanged; no new wrapper or proof layer.
+
+This is a plan submission, not a repair pass. No source, pin, raw or accepted-input
+change, build/check dispatch or freeze/re-freeze occurs this turn. Independent
+plan review precedes development. Full H02, aggregate/terminal/independent/final/
+product acceptance, whole-host reaping (controller cleanup=zombie), whole
+AF-07/UX-01/G1/G2 and real X01–X09 qualification remain open.
+
+## Historical verification — Turn364, bounded schedule repair
+
+F05 remains **not accepted**,74/83 tasks done. [Turn364 report](../loop/agent-fabric-g1-f05-storage/develop-turn364/report.md)
+records original job-f2c552a504: delivery PASS0/127564ms; harness FAIL1/5188327ms,
+completed under its approved guard. H44 reports42pass/2fail, all6/12/14/8 leaves
+retained. Copied first8 suites674pass; backup273 has two failing leaves plus
+parents, then aborts before copied delivery. Full ten-file H02 remains incomplete.
+Guide-first tester and lead independently diagnose premature700ms capture expiry
+and a likely2s contender lock timeout (SQL code hidden, inference only).
+New prerequisite f05-14-backup-schedules-repair owns two direct test files:
+real seed expiry/empty capture then DB-clock command expiry, and early/final gates
+preserving no-open/rollback/exact-conflict assertions. Its existing full
+backup-restore273-test slice2700s must pass before changed-candidate full D/H.
+This pre-dispatch summary claims no repaired-schedule pass; consult controller
+state/handoff for dispatch and outcome. Accepted inputs/raw/production behavior,
+existing checks/timeouts/resource limits/requirements/registry remain unchanged.
+No freeze/re-freeze or added proof layer. Controller cleanup=zombie; whole-host,
+whole AF-07/UX-01/G1/G2, aggregate/terminal/independent/final/product and real
+X01–X09 qualification remain open.
+
+## Historical verification — Turn363, full task verification queued
+
+F05 remains **not accepted**,74/82 tasks done. [Turn363 report](../loop/agent-fabric-g1-f05-storage/develop-turn363/report.md)
+records all14 harness prerequisites done and settled guide-first tester plus
+coordinator readiness review, with no source changes or identified blocker.
+Next controller task verification runs original delivery-audit2700s then full
+harness14400s once, serially. Dispatch/result belongs to controller state and
+handoff; this summary is written before dispatch and claims no new pass.
+Preserve the captured workspace during the run; poll the existing job next turn.
+Turn362 component9/9 and immutable original outer1028/copied984 consumption
+remain the latest completed prerequisite evidence. Fresh full D/H, aggregate,
+terminal, independent/final/product and real X01–X09 qualification remain pending.
+Accepted increments/raw evidence/checks/workloads/resource bounds and approved
+guards remain unchanged; no freeze/re-freeze or new proof layer. Whole-host
+cleanup and whole AF-07/UX-01/G1/G2 remain unqualified.
+
+## Historical verification — Turn362, direct reader repair verified
+
+F05 remains **not accepted**,74/82 tasks done. [Turn362 report](../loop/agent-fabric-g1-f05-storage/develop-turn362/report.md)
+records controller task verification job-8044ad7259: component PASS0/9238ms,
+fresh build,9/9 tests with zero fail/cancelled/skipped/TODO and2581 accepted
+hashes unchanged; then immutable original-log coverage PASS0/224ms,
+outer1028/copied984. The two-file repair decodes actual native folded/escaped
+TAP with exact payload/prefix/depth/physical order, requires the real H03
+supplemental execution, and binds the copied report to its actual command pair
+while retaining failed earlier attempts and all coverage/provenance/cleanup gates.
+Seven shared leaves and old controls remain; native/hostile/H03/segment controls
+are added. Original raw bytes remain exact. Historical coverage is not fresh
+current-candidate behavior. Controller cleanup=zombie; source/raw review settled,
+registered independent verdicts pending. Next existing f05-14-harness, then
+remaining full/aggregate/terminal/final/product gates. No full check this turn,
+workload/registry/check/timeout/requirement/re-freeze/raw/proof-layer change.
+Four approved14400s task guards remain. Real X01–X09 and whole AF-07/UX-01/G1/G2
+remain unqualified; parser compatibility/format limits are explicit in the report.
+
+## Historical verification — Turn358, full behavior passes; reader repair pending
+
+F05 remains **not accepted**,73/82 tasks done. [Turn358 report](../loop/agent-fabric-g1-f05-storage/develop-turn358/report.md)
+records original full job-7b2a813852 PASS0/7959471ms under unchanged14400s:
+fresh outer build6042.032208ms,outer1028/1028=ordinary947+H44+D37;actual copied
+freshbuild12825.760167ms and ten sequential non-H files984/984,including real
+backup/restore,D01–D06 and AD after K. H leaves6/12/14/8 all pass. Outer39/copied38
+actual observation records have all six violations0. All60 captured pairs and92
+transports validate;25async records complete,134 distinct fixture/container/root
+tuples match,220 model instances and43copyowners report removal;protected2581
+unchanged. Controller cleanup=zombie;whole-host/external qualification stays open.
+Independent raw/source review confirms a direct reader defect:actual TAP-folded
+copied report is missed (`nestedReports=0`,required1). Registered bounded two-file
+F05 reader/D02 repair with native format/hostile regressions and immutable actual
+full-log coverage check,then independent plan/source review;no unchanged full
+retry/taskdone/finish. Human answer q-0b672d8e47 approves the exact four task H/aggregate
+guards1800/2700->14400s after measured H4977054ms/full7959209ms. Applied through
+controller plan;exact comparison shows only four timeout-field changes,commands/
+assertions/workloads unchanged. No source/re-freeze/raw/layer changes. Real X01–X09 and terminal gates remain pending.
+
+## Historical verification — Turn357, copied restore build regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn357 report](../loop/agent-fabric-g1-f05-storage/develop-turn357/report.md)
+records original harness-build job-666c3883e1 PASS0/1860818ms under unchanged2700s,
+without timeout:fresh build6016.220166ms,outer19/19 (one parent/18leaves),zero
+failed/cancelled/skipped/TODO. Actual relocated restore-module import and local
+client offline/malformed-login refusals pass with zero fetch,copied delivery
+component9/9 and all existing compiler/source/emission/TAP/failure guards pass.
+All37 direct captured pairs/48transport sequences validate;22async records
+complete,34copyowners removed,28successful guards/32sibling-preserved rows.
+Protected2581 unchanged. DiagnosticOnly/null observations and controller
+cleanup=zombie preclude fullH02/D/H/aggregate,zero-product-violation or whole-host
+qualification. Independent source/raw review is settled with no defect;final
+document QA precedes one existing full confirmation unchanged14400s. No additional
+cleanup repeat is prescribed absent a new defect;actual prior full H03/H04 pass.
+Original full72299576ff remains FAIL. No source/check/timeout/budget/re-freeze/raw/
+layer changes,taskdone or finish. Real X01–X09 and terminal gates remain pending.
+
+## Historical repair — Turn356, copied restore client emission
+
+F05 remains **not accepted**,73/81 tasks done. [Turn356 report](../loop/agent-fabric-g1-f05-storage/develop-turn356/report.md)
+records original full job-72299576ff FAIL1/7701624ms under unchanged14400s,
+without timeout:fresh build6409.070875ms,first nine ordinary suites947/947,
+H42/44,one failed H02 good-full-run leaf plus parent. H03 all14 and H04 all8
+leaves pass. Copied first eight suites674/674 pass before backup-restore cannot
+import emitted g1-local client;copied/outer delivery are unreached.
+Direct three-file F05 repair adds exact accepted client/contracts/errors compiler
+roots,requires all emitted outputs and exercises real relocated restore-module
+loading/client refusals in the existing positive leaf. Accepted sources stay exact.
+All60 captured syncpairs/88transport sequences validate;43copyowners ultimately
+removed,35successful guards/41sibling rows,protected2581 unchanged. Controller
+cleanup=zombie;no complete H02/D/H/aggregate or whole-host qualification.
+Existing harness-build2700s is next after settled independent source/docs QA;
+complete original pass/review precedes full confirmation. No cleanup rerun is
+prescribed absent a new defect;actual full H03/H04 now pass. No new PASS,taskdone,
+finish,check/timeout/budget/re-freeze/raw/layer changes. Real X01–X09 and terminal
+gates remain pending.
+
+## Historical verification — Turn355, cleanup regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn355 report](../loop/agent-fabric-g1-f05-storage/develop-turn355/report.md)
+records original job-4be7b07573 PASS0/88429ms under unchanged2700s:
+fresh strict build6326.3155ms,outer24/24 (one parent/23leaves),zero failed/
+cancelled/skipped/TODO. All13 cleanup probes,8 observation controls and three
+missing-fixture refusals pass; each missing-fixture child freshly builds and
+records exactly6 preservation checks. All26 captured child pairs match bytes/
+digests;2 async children settle. Ten copy rows cover8 owners ultimately removed,
+including deliberate refusal/recovery and sibling-guard failure records.
+All13 cleanup probes preserve unowned sentinels/census/protected2581;15 model
+process removals are recorded. DiagnosticOnly with null outer observations:
+controller cleanup=zombie;no full H02/D/H/aggregate,zero-product-violation
+or whole-host/physical claim.
+Harness-build PASS plus cleanup PASS precede one existing full confirmation
+under unchanged14400s,after settled independent QA. Original full69018380a6
+remains FAIL. No source/check/config/timeout/budget/re-freeze/raw/layer changes,
+taskdone or finish. Real X01–X09 and terminal gates remain pending.
+
+## Historical verification — Turn354, relocated helper build regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn354 report](../loop/agent-fabric-g1-f05-storage/develop-turn354/report.md)
+records original job-6de68da9d3 PASS0/1761391ms under unchanged2700s:
+fresh strict build6248.283084ms,outer19/19 tests (one parent/18leaves),no
+failed/cancelled/skipped/TODO. Actual relocated helper emission/import/census,
+copied delivery-evidence9/9 and all existing compiler/source/TAP/failure guards
+pass. All34 copy rows report removal,28 successful guards,32 preserved siblings;
+37 embedded child stream pairs match bytes/digests,22 async results settle,
+protected2581 unchanged. DiagnosticOnly with null observations: no full H02,
+H03/H04,D/H,aggregate,whole-host/historical/physical qualification. Original full
+job-69018380a6 remains FAIL. Independent raw/source/final-document review is
+clean and the tester explicitly settles. Existing cleanup2700s is next,serialized,
+then complete original result and settled review before
+one full confirmation. No source/check/config/timeout/budget/re-freeze/raw/layer
+changes,taskdone or finish. Real X01–X09 and terminal gates remain pending.
+
+## Historical repair — Turn353, full failure traced to relocated helper emission
+
+F05 remains **not accepted**,73/81 tasks done. [Turn353 report](../loop/agent-fabric-g1-f05-storage/develop-turn353/report.md)
+records original full job-69018380a6 FAIL1/4782813ms without timeout: first nine
+ordinary suites947/947 (backup273/273),H27/44,outer D unreached. H02 copied
+contracts passes before authority cannot import the model process helper; H03's
+13 probe children encounter that same missing emission,plus one obsolete4-vs6
+guard-count assertion. The direct four-file F05 repair explicitly includes the
+exact accepted helper source,requires its emitted outputs and actually imports/
+uses it in the existing relocated positive leaf; H03 now expects exactly six
+unchanged accepted-path checks. No production/requirement/controller-check/timeout/budget/
+re-freeze/raw/layer changes. Existing harness-build2700s then cleanup2700s run
+serialized after settled independent QA; full confirmation follows complete
+passes/review. No new PASS,taskdone or finish. Recorded68 owned fixture removals,
+106 exact model removals,35 zero-violation observations,38copy removals/31success/
+36siblings,protected2581 unchanged do not qualify whole-host/historical/physical
+cleanup. Real X01–X09 and complete H02/D/H/aggregate/terminal gates remain pending.
+
+## Historical verification — Turn352, complete backup/restore regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn352 report](../loop/agent-fabric-g1-f05-storage/develop-turn352/report.md)
+records original job-fc04486e46 PASS0/832757ms under unchanged1200s: fresh strict
+build6471.735792ms,273/273 TAP tests,14 parents/259 leaves,no failed/cancelled/
+skipped/TODO. Capture-first contention/revision1->2 and all R06 forbidden classes
+actually pass. All9 observations report zero violations;10 exact owned fixture
+container/root removals and29 exact model removals are recorded,protected2581
+unchanged. Guide-first independent tester confirms complete original streams
+and retained repair semantics,then explicitly settles after final docs QA.
+The slice is diagnosticOnly; one existing full14400s confirmation is next.
+Full4445694ede remains FAIL;
+complete H02/D/H/aggregate and terminal independent gates remain pending.
+No source/check/config/timeout/budget/re-freeze/raw/layer changes,taskdone or
+finish. Whole-host/historical/physical cleanup and real X01–X09 stay unqualified.
+
+## Historical verification — Turn351, full failure and bounded fixture repair
+
+F05 remains **not accepted**,73/81 tasks done. [Turn351 report](../loop/agent-fabric-g1-f05-storage/develop-turn351/report.md)
+records original full job-4445694ede FAIL1/3031248ms: first eight suites674/674,
+backup269/273 (two actual leaves plus parents); D/H unreached. Capture-first
+status-only assertion hid its refusal code; accepted2s lock-wait expiry remains
+an inference. The test now gates at existing directory-fsynced under the same
+barrier, preserving actual contention and revision1->2 oracles, and exposes
+result diagnostics/settles early capture failure. R06 exhausted59s fixture
+retention during repeated captures; only integrity fixtures now select finite300s
+through default-preserving60s enrollment parameters. All production/expiry guards,
+assertions and check timeouts remain. Complete backup-restore273-test1200s regression
+is next after independent final QA; no new PASS/taskdone/finish. Recorded65 owned
+container/root and106 model removals,37 observations/zero violations,protected2581
+unchanged. Whole-host/historical/physical cleanup and real X01–X09 remain
+unqualified; no raw/accepted/config/budget/re-freeze/layer changes.
+
+## Historical verification — Turn350, harness-build regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn350 report](../loop/agent-fabric-g1-f05-storage/develop-turn350/report.md)
+records original job-b013b2b9b8 PASS0/1635114ms under unchanged2700s:
+fresh strict build6679.141291ms;19/19 tests,all18mandatory leaves,zero failed/
+cancelled/skipped/TODO. Actual relocated positive build and copied delivery-
+evidence9/9 pass. All34 copy removals report removed;28success/32sibling,with
+six intentional fault/mutation refusals retained rather than universal cleanup
+qualification. Protected2581 stay exact. Guide-first independent tester confirms
+complete original streams and final docs,no remaining defect,and explicitly
+settles. One existing full14400s confirmation is next.
+No source/check/config/timeout/budget/re-freeze/raw/layer changes,taskdone or
+finish. Component is diagnosticOnly; full job-38eeb562ca remains FAIL and complete
+H02/D/H/aggregate acceptance remains pending. Old missing-file/historical fixture
+cleanup,whole-host reaping/limits and real X01–X09 remain unqualified.
+
+## Historical implementation — Turn349, portable fixture declarations
+
+F05 remains **not accepted**,73/81 tasks done. [Turn349 report](../loop/agent-fabric-g1-f05-storage/develop-turn349/report.md)
+records complete original harness-build job-f6a17b3b1f FAIL1/202751ms:
+outer strict build5531.712667ms;19tests11pass8fail,zero skipped/cancelled/TODO.
+Member-copy setup succeeds, but five inferred fixture factories fail copied
+strict declaration compilation with TS2742 before seven intended leaf workloads.
+The direct repair adds only an accessible pg type namespace in those five F05
+helpers; inferred contracts, runtime behavior and all assertions remain.
+Guide-first tester independently confirms cause and raw hashes/28cleanup rows
+(28removed/24success/26sibling), confirms final diff/docs and explicitly settles.
+Existing complete harness-build2700s is next; actual copied build and regression
+PASS plus settled review precede one existing full14400s confirmation.
+No new PASS/taskdone/finish; full job-38eeb562ca remains FAIL. Accepted2581 stay
+exact; no raw/config/check/timeout/budget/re-freeze/historymapping/layer changes.
+Old missing-file fixture, whole-host cleanup and real X01–X09 remain unqualified.
+
+## Historical implementation — Turn348, dependency copy correction
+
+F05 remains **not accepted**,73/81 tasks done. [Turn348 report](../loop/agent-fabric-g1-f05-storage/develop-turn348/report.md)
+records complete original harness-build job-5a41e2fab2 FAIL1/56946ms: fresh
+strict build6083.152292ms;19tests9pass10fail,zero skipped/cancelled/TODO.
+Nine leaves refuse enclosing node_modules self-copy before .cache filtering.
+The directly corrected existing allocator copies each installed top-level member
+except sole .cache into a private root with exact original mode; complete original
+and private installed comparisons and all H/E/D/cleanup assertions remain.
+Guide-first tester independently confirms cause, existing coverage and final
+diff/docs accuracy,then explicitly settles. Existing complete harness-build2700s
+is next; no
+new PASS,taskdone or finish. Full job-38eeb562ca remains FAIL; one full14400s
+confirmation follows only after complete regression PASS/review. Protected2581
+remain exact; no accepted/raw/check/timeout/budget/self-seal/re-freeze/layer changes.
+Old missing-file fixture, whole-host cleanup and real X01–X09 stay unqualified.
+
+## Historical implementation — Turn347, project-cache harness fixture
+
+F05 remains **not accepted**,73/81 tasks done. [Turn347 report](../loop/agent-fabric-g1-f05-storage/develop-turn347/report.md)
+records the direct existing HarnessCopy placement correction to canonical owned
+project `g1-storage/node_modules/.cache`, outside `storage-build`, preserving all
+copied empty/nonempty inputs, identities, dependencies and H/E/D behavior/cleanup.
+Existing tests assert placement and exclude only the exact current fixture from
+their original-cache comparison while preserving every sibling/original output.
+The obsolete active F05 historical self-seal is reconciled directly in the existing
+execution guard to unchanged accepted-path SHA256 baseline2581, per Oct12/Oct14;
+no new historical mapping or re-freeze. The guide-first tester independently
+reviews all three files and settles. Existing complete harness-build2700s is next;
+no controller component/full PASS is claimed. Original full job-38eeb562ca remains
+FAIL; one changed-candidate full confirmation14400s follows only after regression
+PASS/review. No accepted/raw/check/timeout/budget changes, taskdone or finish.
+Old missing-file fixture cleanup and real X01–X09 remain unqualified.
+
+## Historical verification — Turn346, copied empty-file loss
+
+F05 remains **not accepted**,73/81 tasks done. [Turn346 report](../loop/agent-fabric-g1-f05-storage/develop-turn346/report.md)
+records original full job-38eeb562ca FAIL1/6642189ms under unchanged14400s.
+Nine ordinary suites pass947/947; H passes42/44. Fresh positive copy build
+11638.302041ms and first seven suites613tests pass; copied volume drafts/promotion
+pass30tests, then missing zero-byte files cause candidate-context refusal before
+volume verification. Copied backup/delivery and final aggregate are unreached.
+Read-only surviving-copy comparison finds572 missing captured inputs and12 missing
+recovery dependency members,all zero-byte;originals intact. OS-temp cleanup is an
+inference,actor unknown. Tester settles and recommends direct fixture placement
+in canonical project cache,keeping all guards; existing complete harness-build
+regression must precede another full confirmation.65observations have zero
+violations,115owned fixture container/root and176model removals pass,protected2581
+stay exact. Positive copy removal is refused and remains unresolved; whole-host
+five-container/reaping,historical fixtures and realX01–X09 stay unqualified.
+No source/check/timeout/self-seal/re-freeze/profile/layer/taskdone/finish or PASS-only
+consolidation occurs. Paid/remote/real-secret actions remain OFF.
+
+## Historical verification — Turn345, backup regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn345 report](../loop/agent-fabric-g1-f05-storage/develop-turn345/report.md)
+records original job-d26a59a532 PASS0/128666ms: fresh strict build5916.607584ms,
+all55 mandatory capture/confirmation leaves plus parent pass56/56,zero failure,
+cancelled,skipped or TODO. Actual PG expiry before/after archive open,typed
+retention refusals,unchanged archive/receipt/snapshot and confirmation expiry
+rollback pass. Six violation counters are zero;one owned container/root cleanup,
+two model removals and four observed killed workers/backend disappearance pass;
+protected2581 stay exact. Controller zombie/whole-host reaping,historical fixtures
+and physical durability remain unqualified. Guide-first tester independently
+reviews complete original streams and prior single helper diff;no defect found.
+No source/check/timeout/self-seal/re-freeze/profile/history mapping/layer changes.
+One existing full confirmation under unchanged approved14400s is next;no task-done,
+finish or PASS-only consolidation. Full repaired local gates and real external
+X01–X09 remain unqualified;paid/remote/real-secret actions stay OFF.
+
+## Historical verification — Turn344, backup expiry fixture repair
+
+F05 remains **not accepted**,73/81 tasks done. [Turn344 report](../loop/agent-fabric-g1-f05-storage/develop-turn344/report.md)
+records original full job-aa7722514a FAIL1/7445159ms under unchanged14400s.
+Ordinary nine suites pass947 tests; H passes42/44. The sole genuine copied
+backup leaf failure is initial confirmation after its2s test lifetime expires;
+BACKUP/H02 failures cascade. The copied tenth delivery suite and final D/aggregate
+reports are absent. All69 observations have zero violations;132 owned fixture
+container/root removals and212 model removals succeed;protected2581 stay exact.
+Whole-host five-container/reaping and historical fixtures remain unqualified.
+The independently reviewed direct single-file test fix uses established finite20s
+backup policy and actual PG expiry, strengthens after-open typed refusal and
+before-open no-decrypt assertions, and retains all55 leaves/real rollback.
+Production/settings/check/timeouts remain unchanged. Only existing complete backup
+component900s runs next; its PASS precedes one full confirmation. No self-seal,
+re-freeze,profile,history mapping,new layer,task-done,finish or PASS-only consolidation.
+Full repaired local gates and real external X01–X09 remain unqualified;
+paid/remote/real-secret actions stay OFF.
+
+## Historical verification — Turn343, lifecycle regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn343 report](../loop/agent-fabric-g1-f05-storage/develop-turn343/report.md)
+records original job-771bfb3f6d PASS0/162204ms: fresh strict build6148.880666ms,
+all16 mandatory L01/L02/L04 leaves plus three parents pass19/19,with zero fail,
+cancelled,skipped or TODO. Exact expiry/validity boundaries,live PG tombstones,
+publication refusals and independent delete/expiry/revoke/correction graphs pass.
+Six violation counters are zero;four owned container/root cleanups and three
+model process removals succeed with unchanged census;protected2581 stay exact.
+Controller zombie/full host reaping and historical fixtures remain unqualified.
+Guide-first tester independently reviews complete original output and the prior
+two-file repair,finds no defect and settles. No source/check/timeout,self-seal,
+re-freeze,profile or proof-layer change occurs. One existing full confirmation
+under unchanged approved14400s is next; no task-done,finish or PASS-only
+consolidation occurs. Full repaired local gates and real external X01–X09 remain
+unqualified;paid/remote/real-secret actions stay OFF.
+
+## Historical verification — Turn342, lifecycle fixture repair
+
+F05 remains **not accepted**,73/81 tasks done. [Turn342 report](../loop/agent-fabric-g1-f05-storage/develop-turn342/report.md)
+records original full confirmation job-cc126294eb FAIL1/1642093ms under unchanged
+approved14400s. Six suites pass426 tests; lifecycle passes182/183 and fails solely
+L01 before child assertions because its18s test-data lease expires during setup.
+All23 observations have zero violations;45 container/root and68 model process
+cleanups succeed; final protected2581 remain unchanged. The independently reviewed
+direct test-only fix uses existing50s scenario lifetime and actual PG remaining
+deadline plus the existing25s observation guard. Stored expiry,real PG tombstones,
+exact boundary/refusal/decrypt assertions,all16 mandatory leaves,product policy
+and controller timeouts remain. Only existing complete lifecycle component900s
+runs next; a complete pass precedes one full confirmation. No new layer,profile,
+history mapping,self-seal/re-freeze,task-done,finish or PASS-only consolidation.
+Full repaired local gates and real external X01–X09 remain unqualified;
+paid/remote/real-secret actions stay OFF.
+
+## Historical verification — Turn341, restore regression passes
+
+F05 remains **not accepted**,73/81 tasks done. [Turn341 report](../loop/agent-fabric-g1-f05-storage/develop-turn341/report.md)
+records original job-9568301a6d PASS0/298235ms: fresh strict build6284.864ms,
+all18 R07/R08/R09 mandatory leaves plus three parents pass, with zero fail,
+cancelled,skipped or TODO. All five writer classes/both orders observe actual
+barrier waits; seven restore interruptions and four backup kills recover.
+Six violation counters are zero;18 model process cleanups and outer owned
+container/root removal succeed with unchanged census. The Turn340 test-only
+capture gate correction retains the real transaction barrier through final
+validations/COMMIT and every existing assertion. No new source/check/timeout,
+self-seal,re-freeze,profile or proof-layer change occurs this turn. Human Oct14
+fast iteration now permits one full confirmation through existing acceptance
+under its unchanged approved14400s guard. This component pass is diagnostic,
+not full D/H/aggregate or F05 acceptance. No task-done,finish or PASS-only
+consolidation occurs. Full local gates and real external X01–X09 remain pending;
+paid/remote/real-secret actions stay OFF.
+
+## Historical implementation — Turn339, H02 registry repair
 
 F05 remains **not accepted**,73/81 tasks done. [Turn339 report](../loop/agent-fabric-g1-f05-storage/develop-turn339/report.md)
 records original job-e179294710 FAIL1/7014842ms within approved14400s. The outer

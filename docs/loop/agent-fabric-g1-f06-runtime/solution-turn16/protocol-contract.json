@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "assurance": "design-only",
+  "implemented": false,
+  "findings": ["PR-F06-04", "PR-F06-05"],
+  "owners": {
+    "nativeStop": "g1-model/src/native-repository.ts",
+    "nativeOriginalKey": "g1-model/src/model-repository.ts",
+    "rawFence": "g1-recovery/src/fence-repository.ts",
+    "effect": "g1-recovery/src/effect-repository.ts",
+    "recovery": "g1-recovery/src/repository.ts",
+    "barrier": "g1-recovery/src/fence-guard.ts",
+    "transitions": "g1-recovery/src/contracts.ts",
+    "receipt": "g1-recovery/src/effect-protocol.ts",
+    "effectMigration": "g1-recovery/migrations/0006_effect_reconciliation.sql",
+    "recoveryMigration": "g1-recovery/migrations/0004_recovery.sql"
+  },
+  "prefixes": {
+    "nativeStop": ["barrier", "native-original", "fence-key", "barrier", "owner-rows"],
+    "installedTopFence": ["barrier", "fence-key", "barrier", "owner-rows"],
+    "effectClaim": ["effect-phase", "barrier", "owner-rows", "effect-phase"],
+    "effectConfirm": ["effect-phase", "barrier", "owner-rows", "effect-phase"],
+    "effectGuardedIO": ["barrier", "owner-rows", "f06-rows"],
+    "originalSettlement": ["recovery-command", "barrier", "owner-rows", "f06-rows"],
+    "queueTransfer": ["runtime-command", "barrier", "owner-rows", "f06-rows"],
+    "nativeAdmission": ["barrier", "owner-rows"],
+    "f05Publication": ["barrier", "storage-original", "owner-rows"]
+  },
+  "ineligibleRawTopFence": ["fence-key", "barrier", "owner-rows"],
+  "settlement": {
+    "keyPhase": "f06-original-settlement",
+    "authority": "fresh-current-private-read-only-original-actor",
+    "targetMethod": "GET",
+    "targetOutcome": "terminal-applied-exact-original",
+    "legalTransitions": [["dispatched", "confirmed"], ["unknown", "reconciling", "confirmed"], ["reconciling", "confirmed"]],
+    "writtenOriginalTables": ["recovery_operations", "recovery_runs", "recovery_effect_events", "recovery_receipts", "recovery_outbox"],
+    "preserved": ["effect.binding", "run.state", "run.generation", "run.binding", "run.outcomeDigest", "lease.expiresAt", "lease.revokedAt", "session.generation", "task.cancellation", "task.blocked", "resource.generation"],
+    "forbidden": ["POST", "claim", "resume", "lease-renewal", "worker-replay", "parallel-ledger", "lookup-absence-release"]
+  },
+  "requiredVariants": {
+    "P02/unchanged-callers": ["native-first-equal", "native-first-conflict", "top-level-first-equal", "top-level-first-conflict", "raw-composition-rejected-before-commands", "distinct-keys", "native-stop-versus-transfer-both-winners", "native-admission-fresh", "f05-publication"],
+    "P02/transfer-atomic": ["stopped-original-stop-run", "stopped-original-stop-task", "lease-expired-original", "effect-expired-original", "stop-and-both-expiries", "owner-recreation", "safe-successor-write", "lookup-unavailable-held", "receipt-mismatch-held", "nonterminal-held", "authority-expired-held", "quiescence-missing-held", "revoked-identity-held", "precommit-rollback", "lost-settlement-commit-ack", "concurrent-settlement-dedup-conflict", "old-worker-replay-denied"]
+  },
+  "tasks": {
+    "f06-01": "C05 settlement and C06 fence composition contracts",
+    "f06-06": "local stopped/expiry fresh settlement recovery fixture",
+    "f06-09": ["fence-only-prelock-and-same-key-schedules", "original-read-only-settlement", "transfer-finalization", "full-P01-P02"]
+  },
+  "unchanged": {
+    "requirements": 101,
+    "families": 142,
+    "pChildren": 29,
+    "tasks": 15,
+    "acceptanceSeconds": [1800, 600, 600, 900],
+    "dockerAllowed": false,
+    "remoteApproved": false
+  }
+}

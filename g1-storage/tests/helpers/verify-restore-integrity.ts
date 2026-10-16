@@ -33,7 +33,9 @@ export async function archiveMutation<T>(x:AuthorityRouteFixture,archive:{path:s
 }
 
 async function fixture(){
- const x=await createAuthorityRouteFixture(),f=x.f,s=f.scope,root=x.roots['restore']!,backupRoot=x.roots['backup']!,targetKeyId=randomUUID(),targetKey=randomBytes(32),targetDigest=randomBytes(32);
+ // Integrity families repeatedly prepare real archives. Their finite policy
+ // must cover those mutations; expiry is exercised by the separate expiry cases.
+ const x=await createAuthorityRouteFixture({retentionSeconds:300}),f=x.f,s=f.scope,root=x.roots['restore']!,backupRoot=x.roots['backup']!,targetKeyId=randomUUID(),targetKey=randomBytes(32),targetDigest=randomBytes(32);
  let targetOpens=0;
  const cipher=()=>{const old=x.cipher(),c=new CryptoStore({resolve:async b=>{demand(b.keyId===targetKeyId,'CONTENT_UNAVAILABLE');return {dataKey:targetKey,digestKey:targetDigest};}}),open=c.open.bind(c),seal=c.seal.bind(c),fingerprint=c.fingerprint.bind(c);
   c.open=async(b,e)=>{if(BindingSchema.parse(b).keyId!==targetKeyId)return old.open(b,e);targetOpens++;return open(b,e);};

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "resource-diagnostics-only",
+  "observedAt": "2026-10-15T17:11:24.532Z",
+  "dockerInvoked": false,
+  "remoteTestEnvironmentAccessed": false,
+  "results": [
+    {
+      "name": "populate-pinned-cache",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store",
+        "--config.registry=https://registry.npmjs.org/",
+        "--config.userconfig=/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9/empty-npmrc",
+        "--config.globalconfig=/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9/empty-npmrc",
+        "--fetch-retries=0",
+        "--fetch-timeout=10000"
+      ],
+      "cwd": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9/populate",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +3\n+++\nProgress: resolved 3, reused 0, downloaded 3, added 3, done\n\ndevDependencies:\n+ @types/node 22.18.6\n+ typescript 5.9.3\n\nDone in 334ms using pnpm v10.18.0\n",
+      "stderr": ""
+    },
+    {
+      "name": "fresh-frozen-offline",
+      "command": [
+        "pnpm",
+        "install",
+        "--ignore-workspace",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "/private/tmp/agent-fabric-pnpm-store",
+        "--offline"
+      ],
+      "cwd": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9/offline",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +3\n+++\nProgress: resolved 3, reused 3, downloaded 0, added 3, done\n\ndevDependencies:\n+ @types/node 22.18.6\n+ typescript 5.9.3\n\nDone in 173ms using pnpm v10.18.0\n",
+      "stderr": ""
+    },
+    {
+      "name": "strict-owner-noemit-es2024",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--strict",
+        "--noUncheckedIndexedAccess",
+        "--exactOptionalPropertyTypes",
+        "--target",
+        "ES2023",
+        "--lib",
+        "ES2024",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--allowImportingTsExtensions",
+        "--esModuleInterop",
+        "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9/owners.mts"
+      ],
+      "cwd": "/Users/super/Documents/ai/agent-fabric",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "runtime-isWellFormed",
+      "supported": true
+    },
+    {
+      "name": "network-scope",
+      "registry": "public npm only",
+      "paidResources": false,
+      "credentialsRequired": false,
+      "populated": true
+    },
+    {
+      "name": "owned-cleanup",
+      "removed": "/var/folders/zc/8zfqkrh55wz4825ghhhp5lr80000gn/T/af-f06-recheck-AHg8o9"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "kind": "resource-diagnostics-only",
+  "observedAt": "2026-10-15T18:39:52.246076+00:00",
+  "hashDiagnostics": [
+    {
+      "source": "g1-foundations/scripts/check-retained.mjs",
+      "variable": "frozen",
+      "files": 597,
+      "rawFilesWithinSet": 88,
+      "mismatches": []
+    },
+    {
+      "source": "g1-identity/scripts/check.mjs",
+      "variable": "preserved",
+      "files": 42,
+      "rawFilesWithinSet": 0,
+      "mismatches": []
+    }
+  ],
+  "budget": {
+    "max_iterations": null,
+    "max_hours": null,
+    "turn_timeout_minutes": 120,
+    "check_timeout_seconds": 3600
+  },
+  "teamLimit": 4,
+  "teamLimitSource": "/Users/super/Documents/ai/loop-engineering-code/loop_engineering/engine.py:596",
+  "tasks": [
+    {
+      "id": "f06-01",
+      "specialists": 3,
+      "checksSeconds": 180
+    },
+    {
+      "id": "f06-02",
+      "specialists": 2,
+      "checksSeconds": 180
+    },
+    {
+      "id": "f06-03",
+      "specialists": 3,
+      "checksSeconds": 480
+    },
+    {
+      "id": "f06-04",
+      "specialists": 3,
+      "checksSeconds": 480
+    },
+    {
+      "id": "f06-05",
+      "specialists": 2,
+      "checksSeconds": 480
+    },
+    {
+      "id": "f06-06",
+      "specialists": 2,
+      "checksSeconds": 780
+    },
+    {
+      "id": "f06-07",
+      "specialists": 3,
+      "checksSeconds": 1500
+    },
+    {
+      "id": "f06-08",
+      "specialists": 2,
+      "checksSeconds": 600
+    },
+    {
+      "id": "f06-09",
+      "specialists": 3,
+      "checksSeconds": 600
+    },
+    {
+      "id": "f06-10",
+      "specialists": 2,
+      "checksSeconds": 600
+    },
+    {
+      "id": "f06-11",
+      "specialists": 3,
+      "checksSeconds": 1200
+    },
+    {
+      "id": "f06-12",
+      "specialists": 2,
+      "checksSeconds": 180
+    },
+    {
+      "id": "f06-13",
+      "specialists": 3,
+      "checksSeconds": 900
+    },
+    {
+      "id": "f06-14",
+      "specialists": 3,
+      "checksSeconds": 1800
+    },
+    {
+      "id": "f06-15",
+      "specialists": 0,
+      "checksSeconds": 3900
+    }
+  ],
+  "totalPlannedChecksSeconds": 13860,
+  "acceptance": [
+    {
+      "id": "g1-runtime-behavior",
+      "argv": [
+        "node",
+        "g1-runtime/scripts/check.mjs"
+      ],
+      "timeout": 1800
+    },
+    {
+      "id": "identity-behavior",
+      "argv": [
+        "node",
+        "g1-identity/scripts/check.mjs"
+      ],
+      "timeout": 600
+    },
+    {
+      "id": "foundation-behavior",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check.mjs"
+      ],
+      "timeout": 600
+    },
+    {
+      "id": "retained-baselines",
+      "argv": [
+        "node",
+        "g1-foundations/scripts/check-retained.mjs"
+      ],
+      "timeout": 900
+    }
+  ],
+  "inputs": {
+    "package.json": "9dbfc30e6c9d365473d465567942f0dccfeabcf2a6fad381cbf67f87f9a89925",
+    "pnpm-lock.yaml": "fff742405893ca9a8578c6f61c101231f3290769a1a043b8517928742464922b",
+    "g1-identity/package.json": "e338528a43524f9f4e8cc0b4165754483483943c422c5d5b737db381f1e01969",
+    "g1-identity/pnpm-lock.yaml": "ca42a644c6d09dd16500bb4b7d2f1a5885bb796e4660b3ac974bdb68a2c37ec4",
+    "docs/loop/agent-fabric-g1-f06-runtime/product-brief.md": "e713d24c72b85a3515bba2b216c3bfaf177f6b7a8860447139430ca3939a16d5",
+    "docs/loop/agent-fabric-g1-f06-runtime/solution.md": "38f27c2c225b749281624bc5b3e0a20639bc5ae8cfa36704e6bc7d3312f0febe",
+    "docs/loop/agent-fabric-g1-f06-runtime/test-plan.md": "c0b0914a82a98657cb611c0e8d0580029fac6b1534547a978065fb05f3fb4561",
+    "docs/loop/agent-fabric-g1-f06-runtime/task-plan.json": "36b37db7f9e385d163374090a0d347e2868fea585d7823d41b7c93d97b2a1345",
+    "docs/planning/g1-f06-plan.md": "ca70cebe0da04c4dde7e16d0241066bbd7d682925bfb93de6e5d049ab52dbd0a"
+  },
+  "unrelatedF05ModifiedTrackedSnapshot": {
+    ".loop/goals/agent-fabric-g1-f05-storage/STATUS.md": "d3c447219ab2a2c4db8de7eb59e4de6ebf7b9a60355ea8ededa7cd8c23fe7f46",
+    ".loop/goals/agent-fabric-g1-f05-storage/events.jsonl": "676ceb6e1bdfbd6cdb5dce606206c90f26ac0554e093d587b1bcac8ac23818db",
+    ".loop/goals/agent-fabric-g1-f05-storage/goal.json": "a6c7a75da5eb092f0633f7a1fc43ea31c0cdbee145051a2a6dd3fdfe89461b97",
+    ".loop/goals/agent-fabric-g1-f05-storage/state.json": "97752886e548a4f94e5fba91ce7a3dd3fea3ce0cddf47136b4c985aecea6c8a2",
+    "docs/evidence/g1-f05-acceptance.md": "d0d5b092a1359d0f2a83374db76eada682a8af041d8c2f359efb1ea203de2597",
+    "docs/loop/agent-fabric-g1-f05-storage/readiness.md": "3f8a043a00cdb4c01b35fa630871c2d0b0176faf909964dbe3c118172287b34d",
+    "docs/planning/g1-f05-plan.md": "dd7cfef04f19075cda500f5e2a5babf0fa57107445baf282f534d365b6e1bfc8",
+    "g1-storage/scripts/build.mjs": "525d291cb069c9e91fa6cbebe1c4fe674405e8c1d52aaa2de2b80a34579cf9d2",
+    "g1-storage/scripts/delivery-evidence.mjs": "26708dafaf66115df29eeb286044e6ad07c3fe9f915c6fb1216009e4219ce10a",
+    "g1-storage/scripts/execution-measurement.mjs": "5cf82eec17459b91af8622be81f394eb8ad8819c7ac0ef90c3f5df8000036142",
+    "g1-storage/scripts/execution-preservation.mjs": "0e469b3af734c24445e1341a4884a8442fdee5c380356fce21c910ecfea7abc3",
+    "g1-storage/scripts/runner.mjs": "270402c3883b6b7f4a2bfe686f2943b8b3de06239f1782f91ec0807fe725970e",
+    "g1-storage/tests/helpers/artifact-verification-fixture.ts": "644c8aab3a6b20488a84cc7b408eb3de7a718ee3903fc8f6b1fb65e78dcd87a9",
+    "g1-storage/tests/helpers/authority-fixture.ts": "08189fd9c0bc85283bc6ee7e16daf5eaa71c72fdb818498035ca03287a7e6ff6",
+    "g1-storage/tests/helpers/authority-route-fixture.ts": "e2a4311c4871fafaa3a9b661547feaae9c8b699a743d0dbef3f3db4b66a84eba",
+    "g1-storage/tests/helpers/backup-capture-component.ts": "875b4749c187db7dab19097521a5fd4047fae2a154518836a33cece0cf3ccad6",
+    "g1-storage/tests/helpers/backup-confirmation-component.ts": "2e10c917efa95e5d03df46e3768b064d223ad0a824b47ab766d4fbb98e4fca8d",
+    "g1-storage/tests/helpers/delivery-evidence-component.ts": "9c644045f45b955bebbe530c2c073e731c13be0e7bac573006f2e0c0204a996e",
+    "g1-storage/tests/helpers/execution-gate-probe.ts": "0ae43caeb678f398f3c0d16e50bbf18a006c9d46ab9344dad2a7a5b5d2697215",
+    "g1-storage/tests/helpers/harness-copy.ts": "64561ff7887356f55790d8822b8be49fa5c5b72858ece18a118323e187035c12",
+    "g1-storage/tests/helpers/lifecycle-verification-fixture.ts": "c8238ab9447c4a982f586a8932bcfc15c22788e89b36c51e3e51ec4a667fc370",
+    "g1-storage/tests/helpers/propagation-verification-fixture.ts": "07d520276a53c20b54c4786e99817f9fd99f105cb05188e5df14dc041844efdd",
+    "g1-storage/tests/helpers/register-contract-tests.ts": "73ce7342b2f0070e61908b1d07865b3a0b582b55d2820af91a406e1711ad3a50",
+    "g1-storage/tests/helpers/register-harness-build-tests.ts": "814c7783cb9ba2fe697cecd525ac3a38bb59f1eb55e2807c975c56444d03fe88",
+    "g1-storage/tests/helpers/register-harness-cleanup-tests.ts": "2e0a14c4d4ddfbb5b92c2e5dec1ce1b901d745ee76c83aa87dd923e115096e11",
+    "g1-storage/tests/helpers/register-lifecycle-verification-tests.ts": "0e34a53fa3e8b4afe0188f402ef369b4af2605b84d966c151fcb08274278e601",
+    "g1-storage/tests/helpers/restore-activation-component.ts": "e2faa5f5ff243e03e14e50ae2394304e6addf1efa04910fe1ce5707f1aafc4e9",
+    "g1-storage/tests/helpers/verify-restore-current.ts": "c80fc14d4647dcf0f6214df919ec92feda78b98f081d2f84e67bc1a659f8ae34",
+    "g1-storage/tests/helpers/verify-restore-integrity.ts": "8dae79910256834d097b1080d1b1b35a933331be99fc5cebed0c00b73bf8165b",
+    "g1-storage/tests/helpers/verify-restore-measurement.ts": "3b476dc0266efc768110d51b73645ea8809809c6200791967719a1e66efd1ca3",
+    "g1-storage/tests/helpers/volume-verification-fixture.ts": "1a10999ed5eda74b06f68286deee5548dfddac8407e60b4bee584c7487b457d6",
+    "g1-storage/tsconfig.json": "ed84c7052f558e0bcf5f4cb433837699ccd9482f8cfb96df77a5f7abc32940fe"
+  },
+  "futureArtifacts": {
+    "g1-runtime/package.json": false,
+    "g1-runtime/scripts/build.mjs": false,
+    "g1-runtime/scripts/check.mjs": false,
+    "g1-runtime/scripts/check-owners.mjs": false,
+    "g1-runtime/scripts/check-remote.mjs": false,
+    "docs/evidence/g1-f06-acceptance.md": false
+  },
+  "hostedCIWorkflowFiles": []
+}

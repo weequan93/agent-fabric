@@ -1,0 +1,13 @@
+{
+  "scope": "design diagnostic failure, not product failure",
+  "validatorSha256": "a63f8f6f2638deb87c39bcf57e63f57fa01def9b36958afca2e3e04377dabee3",
+  "argv": [
+    "python3",
+    "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate.py",
+    "docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/results.json"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/super/Documents/ai/agent-fabric/docs/loop/agent-fabric-g1-f06-runtime/test-design-turn12/validate.py\", line 31, in <module>\n    assert len(families) == len(set(families)) == 142, (len(families), len(set(families)))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: (171, 142)\n",
+  "cause": "Family regex also counted 29 newly added child rows; 142 unique families were present. Correct regex to require whitespace after family ID, without removing any cases."
+}

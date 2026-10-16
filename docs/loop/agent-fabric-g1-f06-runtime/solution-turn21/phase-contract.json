@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "assurance": "design-only-original-transition-contract",
+  "implemented": false,
+  "variants": [
+    {
+      "id": "live-reconcile-confirm-before-stop",
+      "steps": [
+        "claim",
+        "send",
+        "reconciling",
+        "lookup",
+        "confirm",
+        "stop"
+      ],
+      "effect": "confirmed",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": []
+    },
+    {
+      "id": "stop-before-reconcile",
+      "steps": [
+        "claim",
+        "send",
+        "stop",
+        "reconciling",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": [
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "reconcile-before-stop-before-confirm",
+      "steps": [
+        "claim",
+        "send",
+        "reconciling",
+        "lookup",
+        "stop",
+        "confirm"
+      ],
+      "effect": "reconciling",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": [
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "fence-before-send",
+      "steps": [
+        "claim",
+        "stop",
+        "send",
+        "reconciling",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "cancelling",
+      "writes": 0,
+      "errors": [
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "claim-ack-lost",
+      "steps": [
+        "claim-ack-lost",
+        "send"
+      ],
+      "effect": "unknown",
+      "run": "reconciling",
+      "writes": 0,
+      "errors": [
+        "UNKNOWN_COMMIT",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "illegal-direct-confirm-negative",
+      "steps": [
+        "claim",
+        "send",
+        "lookup",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "reconciling",
+      "writes": 1,
+      "errors": [
+        "ILLEGAL_TRANSITION"
+      ]
+    }
+  ]
+}

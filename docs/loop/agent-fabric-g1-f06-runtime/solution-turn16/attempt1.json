@@ -1,0 +1,8 @@
+{
+  "kind": "design-diagnostic-failure",
+  "command": "node docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/validate.mjs docs/loop/agent-fabric-g1-f06-runtime/solution-turn16/results.json",
+  "exitCode": 1,
+  "observed": "AssertionError: Illegal original transition unknown->reconciling->confirmed at validate.mjs:51",
+  "cause": "Diagnostic searched the complete contracts source and matched Run reconciling transitions before Effect reconciling transitions. Original Effect unknown -> reconciling -> confirmed is legal. Restrict extraction to the actual effectTransitions object; retain every required transition assertion.",
+  "productCheck": false
+}

@@ -1,0 +1,593 @@
+{
+  "version": 1,
+  "assurance": "design-only",
+  "implemented": false,
+  "requirements": 101,
+  "families": 142,
+  "ownerChildren": 29,
+  "paths": [
+    "stopped-original-stop-run",
+    "stopped-original-stop-task",
+    "lease-expired-original",
+    "effect-expired-original",
+    "stop-and-both-expiries"
+  ],
+  "groups": [
+    "fresh-authority",
+    "trusted-terminal-get",
+    "quiescence-snapshot",
+    "original-owner-atomicity",
+    "rollback-commit-recovery",
+    "concurrent-dedup-conflict",
+    "old-worker-replay-denied"
+  ],
+  "phaseVariants": [
+    {
+      "id": "live-reconcile-confirm-before-stop",
+      "steps": [
+        "claim",
+        "send",
+        "reconciling",
+        "lookup",
+        "confirm",
+        "stop"
+      ],
+      "effect": "confirmed",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": []
+    },
+    {
+      "id": "stop-before-reconcile",
+      "steps": [
+        "claim",
+        "send",
+        "stop",
+        "reconciling",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": [
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "reconcile-before-stop-before-confirm",
+      "steps": [
+        "claim",
+        "send",
+        "reconciling",
+        "lookup",
+        "stop",
+        "confirm"
+      ],
+      "effect": "reconciling",
+      "run": "cancelling",
+      "writes": 1,
+      "errors": [
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "fence-before-send",
+      "steps": [
+        "claim",
+        "stop",
+        "send",
+        "reconciling",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "cancelling",
+      "writes": 0,
+      "errors": [
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "claim-ack-lost",
+      "steps": [
+        "claim-ack-lost",
+        "send"
+      ],
+      "effect": "unknown",
+      "run": "reconciling",
+      "writes": 0,
+      "errors": [
+        "UNKNOWN_COMMIT",
+        "STALE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "illegal-direct-confirm-negative",
+      "steps": [
+        "claim",
+        "send",
+        "lookup",
+        "confirm"
+      ],
+      "effect": "unknown",
+      "run": "reconciling",
+      "writes": 1,
+      "errors": [
+        "ILLEGAL_TRANSITION"
+      ]
+    }
+  ],
+  "earlyPartitions": {
+    "I00": {
+      "ask": "Actual default Ask answer/no computer and action-text refusal through native API; synthetic Act is separately admitted; target observers detect allowed Act. Does not claim Plan or all-tool routes.",
+      "plan": "Actual Plan request and artifact save/reopen with target unchanged.",
+      "all-routes": "Actual Ask/Plan write proposals on shell/SDK/MCP/browser/egress installed routes, two independent clients, restart; separately admitted Act control."
+    },
+    "I05": {
+      "admission": "Explicit declared read-only capability/access/resource/startup-consent admission negatives and typed bounded read positive via fixture port; no arbitrary execution.",
+      "routed-inspection": "Actual installed read path, attempted write and current activation/resource checks; unsupported enforceable runtime refuses."
+    },
+    "I06": {
+      "admission": "Native preflight unaccepted/changed envelope refusal, accepted bounded Act through owned target fixture, key replay/conflict.",
+      "all-routes": "Same envelope through installed tool paths and concurrent/restarted clients; outside envelope zero effects."
+    },
+    "I08": {
+      "admission": "Persisted Ask/Plan/Act ceilings under two deterministic model choices, forged tool metadata refusal at native admission.",
+      "all-routes": "Switch actual installed tool routes; ceiling and exact-action approval remain enforced at actual effects."
+    },
+    "I09": {
+      "admission": "Service and fixture-computer/refused/unknown-cost preflight matches immutable envelope and calls no allocator.",
+      "lifecycle": "Actual installed allocator/preparing/current capability projections agree with preflight; zero preflight allocation."
+    },
+    "Q00": {
+      "atomic-ownership": "Two OS clients on shared SQLite: sorted A+B/B+A unique complete owner/wait rows, no partial set, visible owner/reason and safe repository release; no process termination claim.",
+      "conflicts": "Four real resource classes, 20 races each; actual conflicting effects, FIFO eligible successor and no overlap/extra fixture VM."
+    },
+    "Q02": {
+      "repository": "Immutable scoped SQLite admission/lookup/cancel/release after tab switch and new process; deny forged tenant/Space/resource/owner/payer.",
+      "execution": "Same bindings through actual allocator/launch/execution/recovery; no foreign mount/credential/effect."
+    },
+    "Q07": {
+      "repository": "Cancellation-before-acquisition and acquisition-before-cancel transactions, duplicate cancel, expiry and fresh-process durable next eligible ticket; no fabricated quiescence.",
+      "executor": "Actual cancelled waiter never launches/mutates; release/acquire/cancel races and eligible successor actual effect."
+    },
+    "Q09": {
+      "queue-commit": "New process after SQLite precommit/postcommit, busy/IO/ambiguous ACK and original-key lookup; no partial owner/ticket.",
+      "allocation-reopen": "Actual durable allocator unknown original slot lookup, no duplicate allocation; new process while owned/queued."
+    },
+    "Q13": {
+      "lifecycle": "Unsafe driver/noncheckpointable/saved-policy/lease prerequisites; safe fixture suspend with committed bytes and fresh instance/current grants.",
+      "unknown-effect": "Unknown target effect blocks suspension until original settlement and quiescence; no stale resume."
+    },
+    "P01/current-authority": {
+      "execution": "All original execution authority/approval/source/payer/session/wait/time negatives plus fully current real target dispatch.",
+      "settlement": "All five paths: fresh original-actor read/write, current Task/source/lookup policy, after-wait/IO/precommit revocations, private provenance and valid recovery; no live historical approval demand."
+    },
+    "P01/dispatch-binding": {
+      "execution": "Full original immutable binding/inner-route/partial-argument/unsupported path and unresolved Native.fresh bypass negatives with original positive.",
+      "settlement": "All five paths: copied/expired/genuine dispatch:false authority and settled stopped/expired metadata cannot claim/send/resume/renew or redirect lookup to write."
+    },
+    "P02/phase-first": {
+      "pre-transfer": "Both observed phase-key-versus-barrier orders with unresolved prepared/unknown original; bounded hold/refusal, no late phase key/no successor.",
+      "post-transfer": "After valid original settlement/quiescence finalize a useful transferred successor, unchanged tuple authority, old-worker denial; no retrospective early-subset pass."
+    },
+    "P02/unchanged-callers": {
+      "native-stop": "All four same-key equal/conflict execute schedules plus both-order lookup and distinct-key controls in \u00a710.2.1; real unchanged Native.stop and fence facade.",
+      "raw-composition-rejected-before-commands": "Actual startup/route/import eligibility rejects disposable raw/mismatched composition before any command/DB effect.",
+      "remaining-owner-races": "Transfer versus unchanged native Stop/admission/fresh, installed fence and F05 publisher in both barrier orders; Stop/settlement snapshot race, actual bytes/journals."
+    },
+    "P04/restricted-child": {
+      "admission": "Real derived SQL child from exact private save-key context; direct original Plan artifact call denies, forged child/binding and unconstrained function invocation deny; no admin-seeded linkage.",
+      "post-admission": "Valid restricted child cannot normal-turn/model/tool/promote/allocate/create child or broaden grants/billing; inspect worker/controller privileges."
+    },
+    "P04/parent-current": {
+      "admission": "Real current parent Plan/session/control/requirements/expiry/role/payer plus storage maintenance/write gates checked before derived child.",
+      "publication-reopen": "All parent and storage maintenance/write/read revocations during observed publication/read waits and before release; current positive and no denied bytes."
+    },
+    "P04/budget-lineage": {
+      "admission": "Actual model12 parent Run/task/payer/costCenter/department/pins and shared allowance family; missing/ambiguous/invalid parent refuses without reset.",
+      "reservations-settlements": "Actual reserve/settle membership conservation/dedup, concurrent near-ceiling saves, exhausted/revoked family/liability, incompatible policy and no second budget."
+    }
+  },
+  "settlementTemplates": {
+    "fresh-authority": {
+      "base": [
+        "issue-after-original-locks",
+        "original-actor-current-session-read-write",
+        "current-task-source-lookup-policy",
+        "historical-approval-binding-integrity",
+        "session-and-30s-bounded-independent-expiry",
+        "dispatch-false-private-observation"
+      ],
+      "negative": [
+        "actor-substitution",
+        "owner-substitution",
+        "task-read-missing",
+        "task-write-missing",
+        "session-revoked",
+        "task-access-revoked",
+        "source-audience-revoked",
+        "lookup-policy-denied",
+        "authority-unavailable",
+        "copied-authority",
+        "cast-authority",
+        "deserialized-authority",
+        "forged-authority",
+        "operation-substitution",
+        "binding-digest-substitution",
+        "target-substitution",
+        "connector-substitution",
+        "trust-pin-substitution",
+        "policy-revision-substitution",
+        "generation-substitution",
+        "instance-substitution",
+        "boot-substitution",
+        "expired-before-lookup",
+        "expired-after-lookup",
+        "expired-exact-now",
+        "longer-than-session",
+        "longer-than-30s",
+        "missing-original-operation",
+        "missing-original-run",
+        "missing-original-approval",
+        "missing-original-session",
+        "missing-original-lease",
+        "missing-installed-schema",
+        "historical-binding-corrupt",
+        "historical-approval-corrupt",
+        "wrong-effect-class",
+        "wrong-mutation-path",
+        "wrong-effect-state",
+        "unenrolled-connector",
+        "current-revoked-after-wait",
+        "current-revoked-after-io",
+        "current-revoked-before-settlement",
+        "restored-fresh-read-recovers"
+      ]
+    },
+    "trusted-terminal-get": {
+      "base": [
+        "bounded-original-id-get",
+        "authenticated-pinned-transport",
+        "exact-schema-binding-positive-write-number",
+        "terminal-applied-original-writer-complete",
+        "fresh-after-io"
+      ],
+      "negative": [
+        "wrong-target",
+        "wrong-action",
+        "wrong-args-digest",
+        "wrong-artifact-version",
+        "wrong-intent-digest",
+        "wrong-operation-id",
+        "zero-write-number",
+        "negative-write-number",
+        "malformed-receipt",
+        "altered-receipt-bytes",
+        "invalid-signature",
+        "forged-trust",
+        "worker-supplied-receipt",
+        "redirect",
+        "alternate-endpoint",
+        "post-route",
+        "launch-route",
+        "send-on-404",
+        "lookup-unavailable",
+        "lookup-404",
+        "lookup-absent",
+        "lookup-pending",
+        "lookup-nonterminal",
+        "lookup-not-applied",
+        "launch-ack-only",
+        "expired-observation",
+        "restored-fresh-get-recovers"
+      ]
+    },
+    "quiescence-snapshot": {
+      "settlement": [
+        "descendant-still-alive",
+        "stream-still-open",
+        "quiescence-missing",
+        "quiescence-stale",
+        "wrong-boot",
+        "wrong-resource",
+        "stop-before-observation",
+        "stop-after-observation",
+        "generation-before-observation",
+        "generation-after-observation",
+        "policy-before-observation",
+        "policy-after-observation",
+        "discard-and-fresh-read",
+        "independent-complete-exclusion"
+      ]
+    },
+    "original-owner-atomicity": {
+      "settlement": [
+        "original-key-lookup-first",
+        "separate-authenticated-lookup-settlement-transactions",
+        "fixed-key-payload-independent-evidence-time",
+        "exact-lock-prefix",
+        "private-invoker-sql-original-constraints",
+        "dispatched-confirmed",
+        "unknown-reconciling-confirmed",
+        "reconciling-confirmed",
+        "already-confirmed-same-receipt",
+        "confirmed-conflicting-receipt-denied",
+        "binding-byte-identical",
+        "receipt-digest-and-next-action",
+        "original-event-phases",
+        "original-receipt-outbox-once",
+        "run-revision-plus-one-only",
+        "task-run-session-lease-generation-preserved",
+        "unknown-budget-liability-preserved",
+        "no-second-ledger-no-nested-owner-no-executable-predicate-bypass"
+      ]
+    },
+    "rollback-commit-recovery": {
+      "settlement": [
+        "crash-before-observation-return",
+        "rollback-before-first-write",
+        "rollback-after-operation",
+        "rollback-after-enter-event",
+        "rollback-after-confirmed-event",
+        "rollback-after-run",
+        "rollback-after-receipt",
+        "rollback-after-outbox",
+        "rollback-before-real-commit",
+        "real-commit-ack-lost",
+        "recreate-before-original-key-lookup",
+        "lookup-unavailable-keeps-unknown",
+        "committed-original-receipt-recovered",
+        "proved-absence-fresh-read-metadata-only",
+        "crash-settled-before-transfer"
+      ],
+      "transfer": [
+        "checkpoint-precommit",
+        "checkpoint-commit-ack-lost",
+        "stop-ack-lost-original-key-lookup",
+        "quiescence-crash",
+        "finalize-before-commit",
+        "finalize-real-commit-ack-lost",
+        "finalize-recreate-original-key-lookup",
+        "no-partial-fence-queue-receipt-outbox"
+      ]
+    },
+    "concurrent-dedup-conflict": {
+      "settlement": [
+        "identical-key-digest-two-processes",
+        "different-binding-same-key",
+        "different-target-receipt-same-key",
+        "different-evidence-stale-snapshot",
+        "observed-original-key-barrier-wait",
+        "one-event-receipt-outbox-revision",
+        "fresh-timestamp-same-idempotency-payload",
+        "current-valid-recovery"
+      ]
+    },
+    "old-worker-replay-denied": {
+      "pre-transfer": [
+        "old-worker-before-settlement",
+        "old-worker-during-settlement",
+        "changed-generation-old-run",
+        "retained-handle",
+        "retained-stream",
+        "consumed-same-instance-claim",
+        "recreated-adapter",
+        "forged-read-only-authority",
+        "genuine-read-only-authority",
+        "new-key-old-effect",
+        "resume-denied",
+        "renewal-denied"
+      ],
+      "post-transfer": [
+        "old-worker-after-settlement",
+        "old-worker-after-transfer",
+        "retained-canonical-handle-after-transfer",
+        "same-instance-after-transfer",
+        "recreated-adapter-after-transfer",
+        "new-key-after-transfer",
+        "no-budget-reset-or-native-final",
+        "exactly-one-distinct-successor-write"
+      ]
+    }
+  },
+  "transferFinalization": [
+    "held-without-terminal-proof",
+    "held-without-quiescence",
+    "successor-grant-revoked",
+    "successor-budget-exhausted",
+    "successor-tuple-mismatch",
+    "concurrent-state-reader",
+    "single-original-resource-generation",
+    "old-sessions-leases-fenced-prepared-cancelled",
+    "queue-receipt-outbox-same-commit",
+    "fresh-distinct-successor-admitted",
+    "useful-successor-write",
+    "stopped-task-not-resumed",
+    "no-model-binding-rewrite"
+  ],
+  "localRecoveryRemaining": {
+    "A16": [
+      "executable-continuation-currentness"
+    ],
+    "A18": [
+      "legacy-release-expiry-resend-new-key-unavailable-lookup"
+    ],
+    "R18": [
+      "native-monotonic-stop-parent-child-stale-progress-and-unrelated-pid"
+    ]
+  },
+  "selectorRules": {
+    "prefixExpandsAllDescendants": true,
+    "overlapRefusesBeforeIO": true,
+    "unknownRefusesBeforeIO": true,
+    "fullInventoryUnchanged": true
+  },
+  "fixtureRules": "Every named leaf retains all parent-row assertions applicable to its stated boundary. Independent vector variants may share nonce-owned path setup with explicit restoration and fresh evidence; never seed confirmed effects or cache passes. Stable IDs are not execution evidence.",
+  "nativeStopVariants": [
+    "native-first-equal",
+    "native-first-conflict",
+    "top-level-first-equal",
+    "top-level-first-conflict",
+    "lookup-coexistence/native-first-equal",
+    "lookup-coexistence/native-first-conflict",
+    "lookup-coexistence/top-level-first-equal",
+    "lookup-coexistence/top-level-first-conflict",
+    "distinct-keys/native-first",
+    "distinct-keys/top-level-first"
+  ],
+  "remainingOwnerRaces": [
+    "native-stop/owner-first",
+    "native-stop/transfer-first",
+    "native-admission/owner-first",
+    "native-admission/transfer-first",
+    "native-fresh/owner-first",
+    "native-fresh/transfer-first",
+    "fence-execute/owner-first",
+    "fence-execute/transfer-first",
+    "f05-publication/owner-first",
+    "f05-publication/transfer-first",
+    "stop-settlement-snapshot/owner-first",
+    "stop-settlement-snapshot/transfer-first"
+  ],
+  "additionalLocalPartitions": {
+    "C05": {
+      "effect": "Original effect decoder/type/binding/unknown-no-replay cases and CONTRACT/effect.",
+      "settlement": "Full CONTRACT/settlement original read-only decoder/provenance/metadata contract, no product adapter or SQL execution.",
+      "legal-phase-flow": "Original pure transitions: claim UNKNOWN/Run RECONCILING, UNKNOWN\u2192RECONCILING\u2192CONFIRMED positive, illegal direct-confirm and fenced denial separate."
+    },
+    "C06": {
+      "api-types-fence-composition": "All existing API/body/type/compiler/facade/slot contracts and CONTRACT/fence-composition.",
+      "backend-pins": "Closed synthetic backend pins/protocol version/compatibility-record decoders and missing/mismatch/refused before-connect cases;12a separately supplies source-pinned real research evidence.",
+      "approved-host-manifest": "Closed synthetic host authorization/evidence manifest missing/false/refused negatives and scoped synthetic positive;12b requires actual independently sourced approved facts, L never suffices."
+    },
+    "A00": {
+      "closed-paths": "Shell/SDK/stdio-MCP/owned filesystem positives/refusals, child bypass attempts, independent clients and restart on these paths only.",
+      "browser-and-egress": "Actual browser/prelaunch refusal, direct bounded egress positive/refusal and all cross-route concurrent/restart assertions."
+    },
+    "A03": {
+      "closed-paths": "Disguised equivalent forbidden/unknown writes through shell/SDK/MCP and actual allowed fixed operation.",
+      "browser-and-egress": "Browser/prelaunch refusal and actual egress aliases/allowed-host unknown effect; zero alternate-route dispatch."
+    },
+    "A05": {
+      "closed-paths": "Protected policy/control replicas via shell/SDK/MCP/fixed child and owner RPC attempts.",
+      "browser-and-egress": "Browser/egress alias protected-replica/control attempts with unchanged bytes/authority."
+    },
+    "A07": {
+      "closed-paths": "Actual shell/SDK/MCP launch env/context, broad synthetic key/socket refusal, scoped fixture credential expiry.",
+      "browser-and-egress": "Same no-broad-secret/current credential contract on browser/refusal and actual bounded egress."
+    },
+    "A27": {
+      "contract": "Descriptor/arguments/schema/time/output/unknown-id decoder boundary cases before launch.",
+      "closed-paths": "Actual owned process timeout/output/exact-boundary/one-byte-over/ACK-loss and original-ID recovery."
+    },
+    "Q05": {
+      "owned-process-context": "Actual fixed run process/scratch/dependency/lease observations, stronger identity/isolation refusal; no OS containment claim."
+    }
+  },
+  "componentViews": {
+    "contract-kernel": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "A19",
+      "A27/contract",
+      "I07",
+      "R27"
+    ],
+    "admission": [
+      "I00",
+      "I01",
+      "I02",
+      "I03",
+      "I04",
+      "I05",
+      "I06",
+      "I07",
+      "I08",
+      "I09",
+      "A01",
+      "A02",
+      "A13",
+      "A19",
+      "A20",
+      "A26",
+      "R11",
+      "R21"
+    ],
+    "resources": [
+      "Q00",
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12",
+      "Q13",
+      "R28",
+      "R29"
+    ],
+    "tools": [
+      "A00/closed-paths",
+      "A03/closed-paths",
+      "A05/closed-paths",
+      "A07/closed-paths",
+      "A21",
+      "A25",
+      "A27",
+      "Q05",
+      "R12"
+    ],
+    "browser-gate": [
+      "B00",
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B11",
+      "B12",
+      "Q14",
+      "Q15",
+      "Q16",
+      "Q17"
+    ],
+    "continuation": [
+      "A04",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "R18",
+      "R19"
+    ],
+    "backend-lifecycle": [
+      "A08",
+      "R14",
+      "R15",
+      "C06/backend-pins",
+      "C06/approved-host-manifest"
+    ]
+  },
+  "recoveryVectorInterpretation": "Each named variant is a required independently recorded assertion/subcase in the original owning test function. Vectors may reuse restored nonce-owned path setup. Manifest binds individual observations; assertion-vector count is not number of independently provisioned environments, test cases or product results."
+}

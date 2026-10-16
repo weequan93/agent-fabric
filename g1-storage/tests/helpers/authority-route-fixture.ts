@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import type pg from 'pg';
 import {randomBytes,randomUUID,createHash} from 'node:crypto';
 import {mkdir,lstat,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -35,7 +36,7 @@ const stable=(v:unknown)=>{const h=createHash('sha256').update(JSON.stringify(v)
 
 /** Only fixture enrollment/composition: all reads/writes use the installed
  * public product repositories. No replacement authority/content implementation. */
-export async function createAuthorityRouteFixture(){
+export async function createAuthorityRouteFixture({retentionSeconds=60}:{retentionSeconds?:number}={}){
  const fixtureStarted=performance.now();
  const f=await createStorageFixture(),dataKey=randomBytes(32),digestKey=randomBytes(32),keyId=randomUUID(),generation=randomUUID();
  const count={save:0,ask:0,forget:0,restore:0,read:0,write:0,deny:0,conflict:0,propagate:0,backup:0,owner:0,harness:0};
@@ -47,7 +48,7 @@ export async function createAuthorityRouteFixture(){
   const migrationStarted=performance.now();
   await migrateStorageRestoreProgress(f.admin,{ownedSyntheticDatabase:true,owner:f.owner,instance:f.instance,root:f.root});
   const migrationReturned=performance.now();
-  const ownerBefore=await installedOwnerSnapshot(f.admin),a=await enrollAuthority(f),roots=JSON.parse(process.env['STORAGE_OWNED_ROOTS']!) as Record<string,OwnedAnchorRoot>;
+  const ownerBefore=await installedOwnerSnapshot(f.admin),a=await enrollAuthority(f,retentionSeconds),roots=JSON.parse(process.env['STORAGE_OWNED_ROOTS']!) as Record<string,OwnedAnchorRoot>;
   console.log(JSON.stringify({measurement:'authority-fixture-phase-times',clock:'child-monotonic',fixtureSetupMs:migrationStarted-fixtureStarted,migrationMs:migrationReturned-migrationStarted,enrollmentMs:performance.now()-migrationReturned}));
   const journal=new EpochWitnessJournal(roots['authority']!),originalCurrent=journal.current.bind(journal);
   journal.current=async(t,s)=>online?originalCurrent(t,s):undefined;
@@ -63,7 +64,7 @@ export async function createAuthorityRouteFixture(){
   const snapshot=async()=>{const names=(await f.admin.query("SELECT relname FROM pg_class WHERE relnamespace='fabric'::regnamespace AND relkind='r' AND relname LIKE 'storage_%' ORDER BY relname")).rows.map(r=>String(r.relname));return {storage:await Promise.all(names.map(async n=>[n,(await f.admin.query('SELECT row_to_json(x) AS r FROM fabric.'+n+' x ORDER BY row_to_json(x)::text')).rows])),accounting:await accountingSnapshot(f)};};
   const ref=async(s:VerifiedScope,cl:string,id:string)=>f.uow.withScope(s,async tx=>{await authority().check(tx,s,'read');const h=(await tx.query('SELECT witness FROM fabric.storage_current_heads WHERE tenant_id=$1 AND space_id=$2 AND class=$3 AND id=$4 ORDER BY revision DESC LIMIT 1',[s.tenantId,s.spaceId,cl,id])).rows[0];demand(h);return {class:cl,id,revision:1,witness:String(h['witness'])};});
   const core=async(s:VerifiedScope)=>{
-   const narrative='source-'+randomUUID()+' Ω 漢字 🙂',source={...await base(s),action:'source' as const,title:'restricted-title-'+randomUUID(),uri:null,narrative,contentDigest:sourceNarrativeDigest(narrative),retentionExpiresAt:new Date(Date.now()+59_000).toISOString(),saveReusable:true};
+   const narrative='source-'+randomUUID()+' Ω 漢字 🙂',source={...await base(s),action:'source' as const,title:'restricted-title-'+randomUUID(),uri:null,narrative,contentDigest:sourceNarrativeDigest(narrative),retentionExpiresAt:new Date(Date.now()+(retentionSeconds-1)*1000).toISOString(),saveReusable:true};
    assert.equal((await canonical().source(s,source)).status,'source-accepted');count.save++;count.write++;
    const save:SaveCommand={...await base(s),action:'save',assertion:{subject:'decision-'+randomUUID(),value:'decision-value-'+randomUUID()+' Ω 🙂',sourceId:source.targetId,sourceRevision:1,validFrom:new Date(Date.now()-1000).toISOString(),validUntil:null,expiresAt:new Date(Date.parse(source.retentionExpiresAt)-100).toISOString(),classification:s.spaceId===f.spaces.personal?'personal':'group',intent:'assert',checkId:null}};
    assert.equal((await canonical().save(s,save)).status,'saved-here');count.save++;count.write++;

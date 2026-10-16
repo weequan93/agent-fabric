@@ -1,0 +1,1 @@
+import {test} from 'node:test';const c=new AbortController();test('H03/full',{signal:c.signal},async()=>{c.abort();await new Promise(()=>{});});

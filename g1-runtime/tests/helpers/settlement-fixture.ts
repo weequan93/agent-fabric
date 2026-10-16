@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import {fork,type ChildProcess} from 'node:child_process';
+import {once} from 'node:events';
+import {fileURLToPath} from 'node:url';
+import {join} from 'node:path';
+import {mkdirSync,writeFileSync,renameSync,readFileSync} from 'node:fs';
+import {randomUUID} from 'node:crypto';
+import {admissionFixture,id} from './admission-fixture.js';
+import {bindingDigest,approvalDigest,effectBindingSchema,effectSchema,type Generation} from '../../src/owners.js';
+import type {OriginalSnapshot} from '../../src/contracts.js';
+import {ledgerRead,ledgerSave,type LocalOriginalRecord} from './settlement-ledger.js';
+import {api} from './owned-capsule.js';
+export const settlementPaths=['stopped-original-stop-run','stopped-original-stop-task','lease-expired-original','effect-expired-original','stop-and-both-expiries'] as const;
+export type SettlementPath=OriginalSnapshot['path'];
+function message(child:ChildProcess):Promise<any>{return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('SETTLEMENT_IPC_TIMEOUT')),7000);child.once('error',reject);child.once('message',m=>{clearTimeout(timer);resolve(m);});});}
+export async function settlementFixture(){
+ const f=await admissionFixture(),root=join(f.root,'original-settlement');mkdirSync(root);f.state.authority.grants=[...f.state.authority.grants,'task:read'];
+ const admin=randomUUID(),target=fork(fileURLToPath(new URL('./settlement-target.js',import.meta.url)),[root,admin],{execArgv:[],stdio:['ignore','inherit','inherit','ipc']}),ready=await message(target);assert.equal(ready.pid,target.pid);const targetUrl='http://127.0.0.1:'+ready.port;
+ const bindings:Record<string,any>={},settlementFaults:Record<string,unknown>={},serviceBirths:number[]=[],children:ChildProcess[]=[];let service:ChildProcess|null=null,base='';
+ function persist(){const token=JSON.parse(Buffer.from(f.token().split('.')[1]!,'base64url').toString()),path=join(root,'config.json'),tmp=path+'.'+randomUUID();writeFileSync(tmp,JSON.stringify({issuer:token.iss,authority:f.state.authority,tokenRevoked:f.state.tokenRevoked,sourceAvailable:f.state.sourceAvailable,sourceAudience:f.state.sourceAudience,lookupAllowed:true,intersection:f.state.intersection,bindings,settlementFaults,target:targetUrl,targetAdmin:admin}),{flag:'wx'});renameSync(tmp,path);}
+ const owner=async(path:string,body?:unknown)=>{const r=await fetch(targetUrl+path,{method:body===undefined?'GET':'POST',headers:{authorization:admin},...(body===undefined?{}:{body:JSON.stringify(body)}),signal:AbortSignal.timeout(4000)});assert.equal(r.status,200);return await r.json() as any;};
+ async function start(){persist();service=fork(fileURLToPath(new URL('./settlement-api.js',import.meta.url)),[root],{execArgv:[],stdio:['ignore','inherit','inherit','ipc']});children.push(service);const ready=await message(service);assert.equal(ready.pid,service.pid);serviceBirths.push(service.pid!);base='http://127.0.0.1:'+ready.port;}
+ async function stop(){if(service){const child=service,closed=once(child,'close');child.send('close');await closed;service=null;}}
+ async function request(operationId:string,action:string,extra:Record<string,unknown>={}){persist();const r=await fetch(base+'/original',{method:'POST',headers:{authorization:'Bearer '+f.token()},body:JSON.stringify({operationId,action,...extra}),signal:AbortSignal.timeout(15_000)});return {status:r.status,body:await r.json() as any};}
+ await start();
+ return {f,root,bindings,settlementFaults,serviceBirths,targetPid:target.pid!,owner,request,read:(op:string)=>ledgerRead(root,op),snapshot:()=>owner('/snapshot'),
+  async issue(path:SettlementPath,successor=false){
+   const draft=await f.request('POST','',{key:randomUUID(),text:'Exact owned original external write',intent:'act',targetId:id(6)});assert.equal(draft.status,200);const scope=await f.scope(),admission=(await f.admission.status(scope,draft.body.taskId)).record;assert.equal((await f.request('POST','/'+admission.taskId+'/accept',{preflightDigest:admission.preflightDigest})).status,200);
+   const operationId=admission.preflight.operationId,now=Date.now(),short=now+3000,long=now+25_000,leaseExpiry=!successor&&(path==='lease-expired-original'||path==='stop-and-both-expiries')?short:long,effectExpiry=!successor&&(path==='effect-expired-original'||path==='stop-and-both-expiries')?short:long;
+   const generation:Generation=successor?{cancellation:1,worker:2,resource:2}:{cancellation:0,worker:1,resource:1},artifact='fixture original bounded payload '+randomUUID(),artifactDigest=bindingDigest(artifact),args={artifactDigest,value:successor?'useful-distinct-successor-'+randomUUID():'original-value-'+randomUUID()};
+   const runBinding={task:{tenantId:scope.tenantId,spaceId:scope.spaceId,taskId:admission.taskId},runId:admission.preflight.runId,requirementsRevision:1,engineVersion:'owned-local-fixture-v1',behaviorVersion:'1',schemaVersion:1,environmentDigest:bindingDigest('owned-local-fixture'),dependencyLockDigest:bindingDigest('fixture-dependencies')};
+   const binding=effectBindingSchema.parse({run:runBinding,sessionId:randomUUID(),operationId,target:'owned-settlement-target',resourceId:id(6),action:'bounded-original-write',argsDigest:bindingDigest(args),artifactId:randomUUID(),artifactVersion:1,artifactDigest,actorId:scope.actorId,policyRevision:1,audienceDigest:bindingDigest([scope.actorId]),approvalId:randomUUID(),budgetReservationId:randomUUID(),executionLeaseId:randomUUID(),generation,expiresAt:new Date(effectExpiry).toISOString(),effectClass:'external-write',mutationPath:'api',downstream:'idempotency-and-lookup'});
+   const historicalDigest=bindingDigest({admission,binding,accounting:{reservationId:binding.budgetReservationId,reserved:7,settled:null,unknown:true}});
+   const row:LocalOriginalRecord={admission,effect:effectSchema.parse({binding,state:'prepared',receiptDigest:null,nextAction:null}),run:{binding:runBinding,revision:1,generation,state:'running',wait:null,outcomeDigest:null},task:{taskId:admission.taskId,retries:'allowed',cancellationGeneration:0,state:'open'},lease:{leaseId:binding.executionLeaseId,expiresAt:new Date(leaseExpiry).toISOString(),revoked:false},session:{sessionId:binding.sessionId,generation,state:'ready'},approval:{approvalId:binding.approvalId!,bindingDigest:approvalDigest((await import('../../src/admission.js')).exactAdmissionBinding(admission)),consumed:true},resource:{instanceId:randomUUID(),bootId:randomUUID(),generation,held:true},accounting:{reservationId:binding.budgetReservationId,reserved:7,settled:null,unknown:true},historicalDigest,dispatchFenced:false,snapshot:null,stopReceipt:null,process:null,sendOutcome:'not-sent',events:[],commands:{},outbox:[],evidence:null};
+   ledgerSave(root,operationId,row);const request={intent:binding,arguments:args,artifact},connectorDigest=bindingDigest('installed-owned-original-status-GET'),trustDigest=bindingDigest(['synthetic-local-target-pin',target.pid]),lookupPolicyDigest=bindingDigest(['read-original-only',scope.actorId,1]);
+   bindings[operationId]={request,writeCredential:randomUUID(),readCredential:randomUUID(),connectorDigest,trustDigest,lookupPolicyDigest,admissionDigest:bindingDigest(admission),effectDigest:bindingDigest(binding),historicalDigest};persist();await owner('/enroll',{...bindings[operationId],expiresAt:Math.min(leaseExpiry,effectExpiry),lostSendAck:true});return {operationId,path,initial:row};
+  },
+  async fence(original:{operationId:string;path:SettlementPath}){const {operationId,path}=original;if(path==='lease-expired-original'||path==='effect-expired-original'){const r=ledgerRead(root,operationId),deadline=path==='lease-expired-original'?Date.parse(r.lease.expiresAt):Date.parse(r.effect.binding.expiresAt);await new Promise(resolve=>setTimeout(resolve,Math.max(0,deadline-Date.now()+15)));return request(operationId,'expire',{path});}
+   const response=await request(operationId,'stop',{kind:path==='stopped-original-stop-task'?'stop-task':'stop-run',key:randomUUID(),path:path==='stop-and-both-expiries'?'stopped-original-stop-run':path});
+   if(path==='stop-and-both-expiries'){const r=ledgerRead(root,operationId),deadline=Math.max(Date.parse(r.lease.expiresAt),Date.parse(r.effect.binding.expiresAt));await new Promise(resolve=>setTimeout(resolve,Math.max(0,deadline-Date.now()+15)));return request(operationId,'expire',{path});}return response;
+  },
+  async restart(){const before=service?.pid;await stop();await start();assert.notEqual(service?.pid,before);},
+  async quiescent(operationId:string){const row=ledgerRead(root,operationId);assert.ok(row.process?.terminated&&row.process.parentExited&&row.process.childExited&&row.process.streamsComplete);const {census}=await api('census'),rows=census();assert.ok(!rows.some((p:any)=>p.pid===row.process!.parentPid||p.pid===row.process!.childPid));const s=await owner('/snapshot');assert.equal(s.streams[operationId]??0,0);return {process:row.process,targetStreams:0};},
+  /** Explicit TEST-ONLY enrollment after independent metadata/process/target proof.
+   * This is not the original F03 resource-fence/queue transfer implementation. */
+  async successor(original:{operationId:string;path:SettlementPath}){const old=ledgerRead(root,original.operationId);assert.equal(old.effect.state,'confirmed');assert.ok(old.dispatchFenced&&old.resource.held&&old.evidence?.streamsClosed&&old.outbox.length===1);await this.quiescent(original.operationId);const actual=await owner('/snapshot');assert.equal(actual.writes.filter((w:any)=>w.receipt.operationId===original.operationId).length,1);return this.issue(original.path,true);},
+  async directOld(operationId:string,readOnlyCredential=false){const b=bindings[operationId],r=await fetch(targetUrl+'/effect',{method:'POST',headers:{authorization:readOnlyCredential?b.readCredential:b.writeCredential},body:JSON.stringify(b.request),signal:AbortSignal.timeout(3000)});return r.status;},
+  async cleanup(){await stop();for(const child of children)assert.ok(child.exitCode!==null||child.signalCode!==null);const closed=once(target,'close');target.send('close');await closed;await f.cleanup();}
+ };
+}
+export type SettlementFixture=Awaited<ReturnType<typeof settlementFixture>>;

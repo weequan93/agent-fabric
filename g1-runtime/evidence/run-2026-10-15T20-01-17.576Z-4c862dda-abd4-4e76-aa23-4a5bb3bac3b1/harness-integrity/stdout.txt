@@ -1,0 +1,113 @@
+TAP version 13
+# Subtest: H01/full
+ok 1 - H01/full
+  ---
+  duration_ms: 1771.838417
+  type: 'test'
+  ...
+# Subtest: H02/full
+ok 2 - H02/full
+  ---
+  duration_ms: 1758.692417
+  type: 'test'
+  ...
+# Subtest: H03/full
+not ok 3 - H03/full
+  ---
+  duration_ms: 299.623458
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(readFileSync(join(dir, 'stdout.txt')).length > 0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    cases.H03/full (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/harness-integrity.test.js:129:20)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: H04/full
+not ok 4 - H04/full
+  ---
+  duration_ms: 285.254833
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/Users/super/Documents/ai/agent-fabric/g1-runtime/evidence/run-2026-10-15T20-01-17.576Z-4c862dda-abd4-4e76-aa23-4a5bb3bac3b1/harness-integrity/negative-fixtures/tap-valid-de5dc7eb-d637-4641-b428-087fba64a2d8/births.ndjson'"
+  code: 'ENOENT'
+  stack: |-
+    readFileSync (node:fs:440:20)
+    supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:29:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async dispatch (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/runner.mjs:23:15)
+    async cases.H04/full (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/harness-integrity.test.js:136:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: H10/full
+not ok 5 - H10/full
+  ---
+  duration_ms: 317.48825
+  type: 'test'
+  location: '/Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:8:9'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /required observations/. Input:
+    
+    "Error: ENOENT: no such file or directory, open '/Users/super/Documents/ai/agent-fabric/g1-runtime/evidence/run-2026-10-15T20-01-17.576Z-4c862dda-abd4-4e76-aa23-4a5bb3bac3b1/harness-integrity/negative-fixtures/actual-observations-feae395a-047e-474f-9eba-ce88aca50610/births.ndjson'"
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: "ENOENT: no such file or directory, open '/Users/super/Documents/ai/agent-fabric/g1-runtime/evidence/run-2026-10-15T20-01-17.576Z-4c862dda-abd4-4e76-aa23-4a5bb3bac3b1/harness-integrity/negative-fixtures/actual-observations-feae395a-047e-474f-9eba-ce88aca50610/births.ndjson'"
+  stack: |-
+    readFileSync (node:fs:440:20)
+    supervise (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/process.mjs:29:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async dispatch (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/scripts/runner.mjs:23:15)
+    async waitForActual (node:assert:644:5)
+    async Function.rejects (node:assert:767:25)
+    async cases.H10/full (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/harness-integrity.test.js:171:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async cases.H10/full (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/harness-integrity.test.js:171:5)
+    async TestContext.<anonymous> (file:///Users/super/Documents/ai/agent-fabric/g1-runtime/node_modules/.cache/runtime-build-RTDRWV/g1-runtime/tests/helpers/register-cases.js:9:28)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: H15/full
+ok 6 - H15/full
+  ---
+  duration_ms: 326.653167
+  type: 'test'
+  ...
+# Subtest: H16/full
+ok 7 - H16/full
+  ---
+  duration_ms: 138.710125
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 4
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4999.632042
